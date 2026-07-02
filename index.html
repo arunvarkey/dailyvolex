@@ -345,6 +345,115 @@ canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
 }
 .add-row-btn:hover{color:var(--ui-text);border-color:var(--ui-dim)}
 
+/* ══════════════════════════════════════
+   MOBILE RESPONSIVE
+   ══════════════════════════════════════ */
+@media (max-width: 768px) {
+  html,body{overflow:hidden;height:100%;height:100dvh}
+
+  /* Header — compact */
+  header{
+    height:48px;padding:0 .75rem;gap:.5rem;
+    overflow-x:auto;overflow-y:hidden;
+    -webkit-overflow-scrolling:touch;
+  }
+  header::-webkit-scrollbar{display:none}
+  .brand-name{font-size:.82rem}
+  .brand-sub{display:none}
+  .brand-pipe{display:none}
+  .hbtn{padding:.3rem .6rem;font-size:.65rem}
+  .layout-cards{gap:3px}
+  .lcard{padding:4px 8px;gap:3px}
+  .lcard-thumb{width:22px;height:32px}
+  .lcard-label{font-size:.55rem}
+
+  /* Main area — stack vertically */
+  main{
+    flex-direction:column;
+    overflow:hidden;
+    height:calc(100dvh - 48px - 56px);
+  }
+
+  /* Hide desktop sidebar and right panel by default */
+  aside{ display:none; }
+  .right-panel{ display:none; }
+
+  /* Mobile tab panels — full screen sheets */
+  aside.mob-active,
+  .right-panel.mob-active{
+    display:flex;
+    position:fixed;
+    left:0;right:0;bottom:56px;
+    height:55dvh;
+    overflow-y:auto;
+    z-index:50;
+    border-top:1px solid var(--ui-border2);
+    border-radius:20px 20px 0 0;
+    box-shadow:0 -8px 40px rgba(0,0,0,.7);
+    width:100%;
+    flex-direction:column;
+    padding:.8rem .75rem;
+    gap:.45rem;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  /* Preview canvas — fills available space */
+  .preview-area{
+    flex:1;
+    padding:.5rem;
+    gap:.4rem;
+    overflow:hidden;
+    min-height:0;
+  }
+  .phone-wrap{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:0;
+  }
+  .phone-frame{
+    border-radius:20px;
+  }
+  canvas#cv{
+    max-height:calc(55dvh - 40px);
+    max-width:100%;
+    width:auto !important;
+    height:auto !important;
+  }
+  .preview-hint{font-size:.6rem;padding:.2rem .7rem}
+
+  /* Bottom tab bar */
+  #mob-tabs{
+    position:fixed;bottom:0;left:0;right:0;
+    height:56px;
+    background:var(--ui-surface);
+    border-top:1px solid var(--ui-border);
+    display:flex;align-items:stretch;
+    z-index:100;
+  }
+  .mob-tab{
+    flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:3px;cursor:pointer;border:none;background:transparent;
+    color:var(--ui-muted);font-family:var(--font);font-size:.6rem;font-weight:600;
+    letter-spacing:.2px;transition:color .15s;padding:0;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .mob-tab svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .mob-tab.active{color:var(--tp)}
+  .mob-tab.active svg{filter:drop-shadow(0 0 4px var(--tp))}
+
+  /* Export buttons larger on mobile */
+  .ebtn{padding:.8rem;font-size:.85rem}
+
+  /* Wider tbl-rows on mobile */
+  .tbl-row{grid-template-columns:1fr 1fr}
+  .tbl-row input{font-size:.8rem}
+}
+
+/* Hide mob-tabs on desktop */
+#mob-tabs{display:none}
+
 /* Video upload */
 .vid-strip{
   width:100%;padding:.48rem .6rem;border-radius:7px;border:1px dashed var(--ui-border2);
@@ -512,6 +621,26 @@ canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
 
 </main>
 </div>
+
+<!-- Mobile bottom tab bar -->
+<nav id="mob-tabs">
+  <button class="mob-tab active" data-panel="preview">
+    <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="3"/><circle cx="12" cy="18" r="1" fill="currentColor" stroke="none"/></svg>
+    Preview
+  </button>
+  <button class="mob-tab" data-panel="style">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    Style
+  </button>
+  <button class="mob-tab" data-panel="content">
+    <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+    Content
+  </button>
+  <button class="mob-tab" data-panel="export">
+    <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Export
+  </button>
+</nav>
 
 <div id="toast"><div class="spin"></div><span id="toastMsg">Ready</span></div>
 <video id="hiddenVid" loop muted playsinline style="display:none"></video>
@@ -1663,6 +1792,51 @@ renderPanel();
 render();
 
 showToast('DailyVolex Pro loaded. Start creating.', 4000);
+
+/* ═══════════════════════════════════════════════
+   MOBILE TAB NAVIGATION
+   ═══════════════════════════════════════════════ */
+(function initMobileTabs(){
+  const tabs = document.querySelectorAll('.mob-tab');
+  const aside = document.querySelector('aside');
+  const rightPanel = document.getElementById('rightPanel');
+  if(!tabs.length) return;
+
+  function isMobile(){ return window.innerWidth <= 768; }
+
+  function showPanel(panel){
+    // Reset
+    aside.classList.remove('mob-active');
+    rightPanel.classList.remove('mob-active');
+    tabs.forEach(t=>t.classList.remove('active'));
+    document.querySelector(`.mob-tab[data-panel="${panel}"]`).classList.add('active');
+
+    if(panel==='style') aside.classList.add('mob-active');
+    else if(panel==='content'||panel==='export') rightPanel.classList.add('mob-active');
+    // preview: both hidden, canvas visible
+  }
+
+  tabs.forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      if(!isMobile()) return;
+      const p = tab.dataset.panel;
+      // If already active and panel open, toggle closed back to preview
+      if(tab.classList.contains('active') && p!=='preview'){
+        showPanel('preview');
+      } else {
+        showPanel(p);
+      }
+    });
+  });
+
+  // On resize, clean up mobile state if going desktop
+  window.addEventListener('resize',()=>{
+    if(!isMobile()){
+      aside.classList.remove('mob-active');
+      rightPanel.classList.remove('mob-active');
+    }
+  });
+})();
 </script>
 </body>
 </html>
