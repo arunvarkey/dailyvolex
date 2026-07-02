@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DailyVolex Pro — Instagram Content Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ─────────────────────────────────────────────────────
+   DailyVolex Pro — Content Studio UI
+   ───────────────────────────────────────────────────── */
+:root {
+  --ui-bg:      #060608;
+  --ui-surface: #0c0c12;
+  --ui-panel:   #0f0f16;
+  --ui-card:    #16161f;
+  --ui-card2:   #1c1c28;
+  --ui-border:  rgba(255,255,255,0.055);
+  --ui-border2: rgba(255,255,255,0.10);
+  --ui-text:    #c8cfe8;
+  --ui-muted:   #484d6a;
+  --ui-dim:     #252838;
+  --font:       'Inter', sans-serif;
+  --font-head:  'Space Grotesk', sans-serif;
+  --font-mono:  'JetBrains Mono', monospace;
+  --tp: #BB1919;
+  --ta: #ff4444;
+  --tg: rgba(187,25,25,0.15);
+  --radius: 10px;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:var(--ui-bg);color:var(--ui-text);font-family:var(--font);font-size:14px;overflow:hidden}
+::selection{background:rgba(187,25,25,.28)}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--ui-dim);border-radius:3px}
+
+/* ── App shell ── */
+#app{display:flex;flex-direction:column;height:100vh}
+
+/* ── Header ── */
+header{
+  height:56px;display:flex;align-items:center;gap:.75rem;
+  padding:0 1rem 0 1.1rem;flex-shrink:0;
+  background:var(--ui-surface);
+  border-bottom:1px solid var(--ui-border);
+  position:relative;z-index:20
+}
+.brand{display:flex;align-items:center;gap:.55rem;flex-shrink:0}
+.brand-icon{
+  width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--ta),var(--tp));
+  font-family:var(--font-head);font-weight:800;font-size:13px;color:#fff;letter-spacing:-.5px
+}
+.brand-name{font-family:var(--font-head);font-weight:700;font-size:.95rem;color:#fff;letter-spacing:.2px}
+.brand-pipe{width:1px;height:20px;background:var(--ui-border2);margin:0 .25rem}
+
+/* Visual Layout Cards in header */
+.layout-cards{display:flex;gap:5px}
+.lcard{
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  padding:5px 12px;border-radius:8px;cursor:pointer;border:1px solid transparent;
+  background:transparent;font-family:var(--font);transition:all .18s;position:relative
+}
+.lcard:hover{background:var(--ui-card);border-color:var(--ui-border2)}
+.lcard.active{background:var(--ui-card2);border-color:var(--tp)}
+.lcard-thumb{
+  width:28px;height:40px;border-radius:4px;background:var(--ui-dim);
+  position:relative;overflow:hidden;flex-shrink:0
+}
+/* Thumbnail miniatures */
+.lcard[data-layout="breaking"] .lcard-thumb::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:40%;
+  background:linear-gradient(to top,rgba(187,25,25,.7),transparent)
+}
+.lcard[data-layout="stories"] .lcard-thumb::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:60%;
+  background:linear-gradient(to top,rgba(187,25,25,.4),transparent)
+}
+.lcard[data-layout="facts"] .lcard-thumb::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:70%;
+  background:repeating-linear-gradient(180deg,rgba(255,255,255,.06) 0,rgba(255,255,255,.06) 5px,transparent 5px,transparent 10px)
+}
+.lcard[data-layout="quote"] .lcard-thumb::after{
+  content:'';position:absolute;inset:4px;border-radius:50%;
+  background:radial-gradient(circle,rgba(187,25,25,.5) 0%,transparent 70%)
+}
+.lcard-label{font-size:.62rem;font-weight:600;color:var(--ui-muted);white-space:nowrap;letter-spacing:.2px}
+.lcard.active .lcard-label{color:var(--tp)}
+
+.header-sep{flex:1}
+.hbtn{
+  padding:.38rem .85rem;border-radius:7px;cursor:pointer;font-size:.72rem;
+  font-weight:600;border:1px solid var(--ui-border2);background:transparent;
+  color:var(--ui-text);font-family:var(--font);transition:all .15s;
+  display:flex;align-items:center;gap:.35rem;white-space:nowrap;flex-shrink:0
+}
+.hbtn:hover{background:var(--ui-card);border-color:var(--ui-border2)}
+.hbtn.primary{
+  background:linear-gradient(135deg,var(--tp),color-mix(in srgb,var(--tp) 60%,#000));
+  border-color:transparent;color:#fff;font-weight:700
+}
+.hbtn.primary:hover{opacity:.9}
+
+main{flex:1;display:flex;overflow:hidden;min-height:0}
+
+/* ── Left Sidebar ── */
+aside{
+  width:214px;flex-shrink:0;overflow-y:auto;
+  background:var(--ui-panel);border-right:1px solid var(--ui-border);
+  padding:.8rem .6rem;display:flex;flex-direction:column;gap:.45rem
+}
+
+/* Section headers */
+.sl{
+  font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;
+  color:var(--ui-muted);padding:.2rem .2rem .1rem;margin-top:.4rem;
+  display:flex;align-items:center;gap:.4rem
+}
+.sl::after{content:'';flex:1;height:1px;background:var(--ui-border)}
+
+/* Theme grid */
+.theme-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.3rem}
+.theme-btn{
+  background:var(--ui-card);border:1px solid var(--ui-border);border-radius:8px;
+  padding:.5rem .35rem;cursor:pointer;display:flex;align-items:center;gap:.4rem;
+  font-size:.68rem;font-weight:600;color:var(--ui-muted);transition:all .15s;
+  font-family:var(--font);text-align:left
+}
+.theme-btn:hover{background:var(--ui-card2);color:var(--ui-text)}
+.theme-btn.active{background:var(--ui-card2);color:#fff;border-color:var(--tp);box-shadow:0 0 0 1px var(--tp) inset}
+.tdot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+
+/* Ratio picker */
+.ratio-group{display:flex;gap:.3rem}
+.ratio-btn{
+  flex:1;padding:.4rem .2rem;border-radius:7px;cursor:pointer;font-size:.65rem;
+  font-weight:700;text-align:center;background:var(--ui-card);border:1px solid var(--ui-border);
+  color:var(--ui-muted);transition:all .15s;font-family:var(--font-mono);line-height:1.35
+}
+.ratio-btn:hover{background:var(--ui-card2)}
+.ratio-btn.active{border-color:var(--tp);color:var(--tp);background:var(--ui-card2)}
+
+/* Form fields */
+.field{margin-bottom:.55rem}
+.field label{display:block;font-size:.64rem;font-weight:600;color:var(--ui-muted);
+  text-transform:uppercase;letter-spacing:.5px;margin-bottom:.28rem}
+.field input,.field textarea,.field select{
+  width:100%;background:var(--ui-card);border:1px solid var(--ui-border);border-radius:7px;
+  padding:.48rem .6rem;color:var(--ui-text);font-family:var(--font);font-size:.8rem;
+  transition:border-color .15s,box-shadow .15s;resize:vertical
+}
+.field input:focus,.field textarea:focus,.field select:focus{
+  outline:none;border-color:var(--tp);box-shadow:0 0 0 3px rgba(187,25,25,.1)
+}
+.field textarea{min-height:68px;line-height:1.5}
+.field select option{background:#16161f}
+
+/* Logo drop zone */
+.logo-drop{
+  width:100%;aspect-ratio:2.2;border:1.5px dashed var(--ui-border2);border-radius:8px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3rem;
+  cursor:pointer;font-size:.68rem;color:var(--ui-muted);transition:all .15s;
+  background:var(--ui-card);overflow:hidden;position:relative
+}
+.logo-drop:hover{border-color:var(--tp);color:var(--ui-text);background:var(--ui-card2)}
+.logo-drop img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:4px}
+
+/* Asset rows */
+.asset-rows{display:flex;flex-direction:column;gap:.35rem}
+.asset-row{
+  display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:.3rem;align-items:center;
+  background:var(--ui-card);border-radius:7px;padding:.4rem .45rem;border:1px solid var(--ui-border)
+}
+.asset-row input{background:transparent;border:none;padding:.15rem 0;font-size:.75rem;
+  color:var(--ui-text);font-family:var(--font-mono);width:100%}
+.asset-row input:focus{outline:none}
+.up-down{width:22px;height:22px;border-radius:5px;border:none;cursor:pointer;font-size:.7rem;font-weight:700;flex-shrink:0}
+.up-down.up{background:rgba(0,212,80,.14);color:#00d460}
+.up-down.dn{background:rgba(255,55,55,.14);color:#ff4444}
+
+/* Table rows */
+.tbl-rows{display:flex;flex-direction:column;gap:.3rem}
+.tbl-row{
+  display:grid;grid-template-columns:1fr 1fr auto;gap:.3rem;align-items:center;
+  background:var(--ui-card);border-radius:7px;padding:.38rem .45rem;border:1px solid var(--ui-border)
+}
+.tbl-row input{background:transparent;border:none;padding:.12rem 0;font-size:.75rem;
+  color:var(--ui-text);font-family:var(--font-mono);width:100%}
+.tbl-row input:focus{outline:none}
+.ttype{padding:.18rem .28rem;border-radius:4px;font-size:.62rem;font-weight:700;cursor:pointer;
+  border:none;font-family:var(--font-mono);flex-shrink:0;background:var(--ui-dim);color:var(--ui-text)}
+
+/* ── Center Preview ── */
+.preview-area{
+  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:var(--ui-bg);gap:.8rem;overflow:hidden;padding:1rem;
+  background-image:radial-gradient(circle at 50% 50%, rgba(187,25,25,.03) 0%, transparent 70%)
+}
+.phone-wrap{position:relative;flex-shrink:0}
+/* Ambient glow behind phone */
+.phone-wrap::before{
+  content:'';position:absolute;inset:-20px;border-radius:60px;
+  background:radial-gradient(ellipse at center, var(--tg) 0%, transparent 70%);
+  pointer-events:none;z-index:0;transition:background .4s
+}
+.phone-frame{
+  border-radius:36px;background:#000;overflow:hidden;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.07),
+    0 24px 60px rgba(0,0,0,.9),
+    0 8px 20px rgba(0,0,0,.6);
+  position:relative;flex-shrink:0;z-index:1
+}
+.phone-notch{
+  position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:80px;height:16px;background:#000;
+  border-bottom-left-radius:11px;border-bottom-right-radius:11px;z-index:2
+}
+/* Instagram-style side buttons */
+.phone-btn{position:absolute;background:rgba(255,255,255,.08);border-radius:2px}
+.phone-btn.vol1{width:3px;height:22px;left:-4px;top:22%}
+.phone-btn.vol2{width:3px;height:30px;left:-4px;top:30%}
+.phone-btn.pwr{width:3px;height:36px;right:-4px;top:26%}
+canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
+.preview-hint{
+  font-size:.68rem;color:var(--ui-muted);text-align:center;line-height:1.7;
+  background:var(--ui-surface);border:1px solid var(--ui-border);
+  border-radius:20px;padding:.3rem .9rem
+}
+
+/* ── Right Panel ── */
+.right-panel{
+  width:268px;flex-shrink:0;overflow-y:auto;
+  background:var(--ui-panel);border-left:1px solid var(--ui-border);
+  padding:.8rem .65rem;display:flex;flex-direction:column;gap:.55rem
+}
+
+/* Panel sections */
+.panel-section{
+  background:var(--ui-card);border-radius:var(--radius);
+  border:1px solid var(--ui-border);
+  display:flex;flex-direction:column;gap:.55rem;overflow:hidden
+}
+.panel-head{
+  display:flex;align-items:center;gap:.5rem;
+  padding:.65rem .75rem .55rem;
+  border-bottom:1px solid var(--ui-border);
+  background:linear-gradient(to right,var(--ui-card2),var(--ui-card))
+}
+.panel-head-icon{
+  width:22px;height:22px;border-radius:6px;
+  background:linear-gradient(135deg,var(--tp),color-mix(in srgb,var(--tp) 50%,#000));
+  display:flex;align-items:center;justify-content:center;font-size:.7rem;flex-shrink:0
+}
+.panel-head-title{font-family:var(--font-head);font-weight:700;font-size:.8rem;color:#fff}
+.panel-body{padding:.6rem .75rem;display:flex;flex-direction:column;gap:.5rem}
+
+/* Viral features panel — special styling */
+.viral-section{
+  background:linear-gradient(135deg,rgba(187,25,25,.06),rgba(255,100,0,.04));
+  border:1px solid rgba(187,25,25,.2);border-radius:var(--radius);
+  display:flex;flex-direction:column;gap:.45rem;overflow:hidden
+}
+.viral-head{
+  display:flex;align-items:center;gap:.5rem;
+  padding:.65rem .75rem .55rem;
+  background:linear-gradient(to right,rgba(187,25,25,.12),transparent);
+  border-bottom:1px solid rgba(187,25,25,.15)
+}
+.viral-head-icon{font-size:1rem}
+.viral-head-title{font-family:var(--font-head);font-weight:700;font-size:.8rem;color:#fff}
+.viral-head-badge{
+  margin-left:auto;font-size:.58rem;font-weight:700;
+  background:var(--tp);color:#fff;padding:.15rem .45rem;border-radius:20px;letter-spacing:.3px
+}
+.viral-body{padding:.55rem .75rem;display:flex;flex-direction:column;gap:.35rem}
+
+/* Toggle row */
+.toggle-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.38rem .1rem
+}
+.toggle-row+.toggle-row{border-top:1px solid var(--ui-border)}
+.toggle-label{font-size:.75rem;color:var(--ui-text);display:flex;align-items:center;gap:.4rem}
+.toggle-sub{font-size:.64rem;color:var(--ui-muted);display:block;margin-top:1px}
+.sw{position:relative;width:36px;height:20px;flex-shrink:0}
+.sw input{opacity:0;width:0;height:0}
+.sw-track{position:absolute;inset:0;border-radius:20px;background:var(--ui-dim);cursor:pointer;transition:.25s}
+.sw-track::before{content:'';position:absolute;height:14px;width:14px;left:3px;bottom:3px;
+  background:#fff;border-radius:50%;transition:.25s}
+.sw input:checked+.sw-track{background:var(--tp)}
+.sw input:checked+.sw-track::before{transform:translateX(16px)}
+
+/* Category chips */
+.cat-chips{display:flex;flex-wrap:wrap;gap:.28rem}
+.cat-chip{
+  padding:.22rem .5rem;border-radius:20px;border:1px solid var(--ui-border2);
+  font-size:.64rem;font-weight:700;cursor:pointer;color:var(--ui-muted);
+  background:transparent;transition:all .12s;font-family:var(--font)
+}
+.cat-chip:hover{color:#fff;border-color:rgba(187,25,25,.4)}
+.cat-chip.active-chip{color:var(--tp);border-color:var(--tp);background:rgba(187,25,25,.08)}
+
+/* Export buttons */
+.export-btns{display:flex;flex-direction:column;gap:.45rem}
+.ebtn{
+  width:100%;padding:.65rem;border-radius:8px;cursor:pointer;font-size:.78rem;
+  font-weight:700;border:none;display:flex;align-items:center;justify-content:center;
+  gap:.45rem;font-family:var(--font-head);transition:all .2s;letter-spacing:.2px
+}
+.ebtn-png{background:linear-gradient(135deg,#1d4ed8,#1e3a8a);color:#fff;box-shadow:0 2px 12px rgba(29,78,216,.25)}
+.ebtn-png:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(29,78,216,.35)}
+.ebtn-vid{background:linear-gradient(135deg,var(--tp),#8b0000);color:#fff;box-shadow:0 2px 12px rgba(187,25,25,.25)}
+.ebtn-vid:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(187,25,25,.35)}
+.ebtn-vid.recording{background:linear-gradient(135deg,#450a0a,#1f0707);cursor:not-allowed;box-shadow:none;transform:none}
+
+/* Duration slider */
+.dur-row{display:flex;align-items:center;gap:.6rem;padding:.25rem 0}
+.dur-row input[type=range]{flex:1;accent-color:var(--tp);height:3px}
+.dur-val{font-family:var(--font-mono);font-size:.73rem;color:var(--ui-text);min-width:26px;text-align:right}
+
+/* Toast */
+#toast{
+  position:fixed;bottom:1.5rem;right:1.5rem;z-index:100;
+  background:rgba(10,10,18,.97);border:1px solid rgba(187,25,25,.5);border-radius:10px;
+  padding:.7rem 1rem;color:#fff;font-size:.78rem;font-weight:500;
+  display:flex;align-items:center;gap:.55rem;max-width:260px;
+  box-shadow:0 8px 28px rgba(0,0,0,.6),0 0 20px rgba(187,25,25,.08);
+  pointer-events:none;opacity:0;transform:translateY(8px);transition:all .22s
+}
+#toast.show{opacity:1;transform:translateY(0)}
+.spin{width:13px;height:13px;border:2px solid rgba(255,255,255,.15);
+  border-top-color:var(--tp);border-radius:50%;animation:spin .8s linear infinite;flex-shrink:0;display:none}
+#toast.loading .spin{display:block}
+@keyframes spin{100%{transform:rotate(360deg)}}
+
+/* Util */
+.add-row-btn{
+  width:100%;padding:.38rem;border-radius:6px;border:1px dashed var(--ui-border2);
+  background:transparent;color:var(--ui-muted);font-size:.7rem;cursor:pointer;
+  font-family:var(--font);transition:all .15s
+}
+.add-row-btn:hover{color:var(--ui-text);border-color:var(--ui-dim)}
+
+/* Video upload */
+.vid-strip{
+  width:100%;padding:.48rem .6rem;border-radius:7px;border:1px dashed var(--ui-border2);
+  background:var(--ui-card);color:var(--ui-muted);font-size:.7rem;
+  cursor:pointer;text-align:center;transition:all .15s;display:block;line-height:1.6
+}
+.vid-strip:hover{border-color:var(--tp);color:var(--ui-text);background:var(--ui-card2)}
+.vid-name{font-family:var(--font-mono);color:var(--tp);font-size:.67rem;margin-top:.15rem;display:block}
+
+/* Export note */
+.export-note{font-size:.64rem;color:var(--ui-muted);line-height:1.65;padding:.1rem 0}
+.export-note strong{color:var(--ui-text)}
+
+/* Video look grid */
+.look-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.28rem}
+.look-btn{
+  padding:.42rem .3rem;border-radius:7px;cursor:pointer;font-size:.62rem;
+  font-weight:600;text-align:center;background:var(--ui-card);border:1px solid var(--ui-border);
+  color:var(--ui-muted);transition:all .15s;font-family:var(--font);line-height:1.35
+}
+.look-btn:hover{background:var(--ui-card2);color:var(--ui-text)}
+.look-btn.active{border-color:var(--tp);color:var(--tp);background:var(--ui-card2)}
+.look-icon{font-size:.85rem;display:block;margin-bottom:2px}
+</style>
+</head>
+<body>
+<div id="app">
+
+<!-- ── Header ── -->
+<header>
+  <div class="brand">
+    <div class="brand-icon">DV</div>
+    <div>
+      <div class="brand-name">DailyVolex Pro</div>
+      <div class="brand-sub">Instagram Content Studio</div>
+    </div>
+  </div>
+
+  <div class="layout-cards" style="margin-left:.8rem">
+    <div class="lcard active" data-layout="breaking">
+      <div class="lcard-thumb"></div>
+      <div class="lcard-label">Breaking</div>
+    </div>
+    <div class="lcard" data-layout="stories">
+      <div class="lcard-thumb"></div>
+      <div class="lcard-label">Top Stories</div>
+    </div>
+    <div class="lcard" data-layout="facts">
+      <div class="lcard-thumb"></div>
+      <div class="lcard-label">Key Facts</div>
+    </div>
+    <div class="lcard" data-layout="quote">
+      <div class="lcard-thumb"></div>
+      <div class="lcard-label">Stat Card</div>
+    </div>
+  </div>
+
+  <div class="header-sep"></div>
+
+  <button class="hbtn" id="loadBtn" title="Load saved session">↑ Load</button>
+  <button class="hbtn primary" id="saveBtn" title="Save to browser (Ctrl+S)">Save</button>
+</header>
+
+<main>
+<!-- ── Left Sidebar ── -->
+<aside>
+  <div class="sl">Brand</div>
+
+  <div class="field">
+    <label>Channel Name</label>
+    <input type="text" id="brandName" value="DailyVolex">
+  </div>
+  <div class="field">
+    <label>Handle</label>
+    <input type="text" id="brandHandle" value="@dailyvolex">
+  </div>
+  <div class="field">
+    <label>Logo (optional)</label>
+    <div class="logo-drop" id="logoDrop">
+      <img id="logoPreview" style="display:none">
+      <span id="logoDropLabel">Click to upload</span>
+    </div>
+    <input type="file" id="logoInput" accept="image/*" style="display:none">
+  </div>
+
+  <div class="sl">Theme</div>
+  <div class="theme-grid">
+    <button class="theme-btn active" data-theme="bbc">
+      <span class="tdot" style="background:#BB1919;box-shadow:0 0 6px #BB1919"></span>BBC
+    </button>
+    <button class="theme-btn" data-theme="cnn">
+      <span class="tdot" style="background:#CC0000;box-shadow:0 0 6px #CC0000"></span>CNN
+    </button>
+    <button class="theme-btn" data-theme="bloomberg">
+      <span class="tdot" style="background:#F5A623;box-shadow:0 0 6px #F5A623"></span>Bloomberg
+    </button>
+    <button class="theme-btn" data-theme="cnbc">
+      <span class="tdot" style="background:#0077C8;box-shadow:0 0 6px #0077C8"></span>CNBC
+    </button>
+    <button class="theme-btn" data-theme="reuters">
+      <span class="tdot" style="background:#FF6600;box-shadow:0 0 6px #FF6600"></span>Reuters
+    </button>
+    <button class="theme-btn" data-theme="terminal">
+      <span class="tdot" style="background:#00C851;box-shadow:0 0 6px #00C851"></span>Terminal
+    </button>
+    <button class="theme-btn" data-theme="custom">
+      <span class="tdot" id="customDot" style="background:#a855f7;box-shadow:0 0 6px #a855f7"></span>Custom
+    </button>
+  </div>
+  <div class="field" id="customColorField" style="display:none">
+    <label>Custom Color</label>
+    <input type="color" id="customColor" value="#a855f7" style="height:36px;padding:2px 4px">
+  </div>
+
+  <div class="sl">Format</div>
+  <div class="ratio-group">
+    <button class="ratio-btn active" data-ratio="9:16">9:16<br><span style="font-weight:400;font-size:.6rem">Reels</span></button>
+    <button class="ratio-btn" data-ratio="4:5">4:5<br><span style="font-weight:400;font-size:.6rem">Feed</span></button>
+    <button class="ratio-btn" data-ratio="1:1">1:1<br><span style="font-weight:400;font-size:.6rem">Square</span></button>
+  </div>
+
+  <div class="sl">Background</div>
+  <label class="vid-strip" for="videoInput">
+    Upload video (MP4)<br>
+    <span class="vid-name" id="vidName">No video — particle BG active</span>
+  </label>
+  <input type="file" id="videoInput" accept="video/mp4,video/webm" style="display:none">
+  <button class="add-row-btn" id="clearVideoBtn" style="display:none">✕ Remove video</button>
+
+  <div class="sl" id="vidLookSection" style="display:none">Video Look</div>
+  <div class="look-grid" id="vidLookGrid" style="display:none">
+    <button class="look-btn active" data-look="cinematic"><span class="look-icon">🎬</span>Cinematic</button>
+    <button class="look-btn" data-look="warm"><span class="look-icon">☀️</span>Warm</button>
+    <button class="look-btn" data-look="cold"><span class="look-icon">🧊</span>Cold</button>
+    <button class="look-btn" data-look="neon"><span class="look-icon">✨</span>Neon</button>
+    <button class="look-btn" data-look="bw"><span class="look-icon">🎞️</span>B&W</button>
+    <button class="look-btn" data-look="raw"><span class="look-icon">📹</span>Raw</button>
+  </div>
+  <div class="toggle-row" id="letterboxRow" style="display:none">
+    <span class="toggle-label">Letterbox bars<span class="toggle-sub">Cinematic 2.35:1 crop</span></span>
+    <label class="sw"><input type="checkbox" id="letterboxToggle"><span class="sw-track"></span></label>
+  </div>
+</aside>
+
+<!-- ── Center Preview ── -->
+<div class="preview-area">
+  <div class="phone-wrap">
+    <div class="phone-frame" id="phoneFrame">
+      <div class="phone-notch"></div>
+      <div class="phone-btn vol1"></div>
+      <div class="phone-btn vol2"></div>
+      <div class="phone-btn pwr"></div>
+      <canvas id="cv" width="1080" height="1920"></canvas>
+    </div>
+  </div>
+  <div class="preview-hint">
+    Preview at <strong id="resLabel">1080 × 1920</strong> · Export renders at full resolution
+  </div>
+</div>
+
+<!-- ── Right Panel ── -->
+<div class="right-panel" id="rightPanel">
+  <!-- Dynamic content injected by JS -->
+</div>
+
+</main>
+</div>
+
+<div id="toast"><div class="spin"></div><span id="toastMsg">Ready</span></div>
+<video id="hiddenVid" loop muted playsinline style="display:none"></video>
+
+<script>
+'use strict';
+
+/* ═══════════════════════════════════════════════
+   THEMES
+   ═══════════════════════════════════════════════ */
+const THEMES = {
+  // BBC-inspired: deep charcoal, clean white, signature red
+  bbc:      { p:'#BB1919', pr:'187,25,25',   a:'#ffffff', bg:['#0a0a0a','#141414','#1c1c1c'] },
+  // CNN Breaking: pure black, vivid red, high contrast
+  cnn:      { p:'#CC0000', pr:'204,0,0',     a:'#FF4444', bg:['#000000','#0d0000','#1a0000'] },
+  // Bloomberg terminal: black with signature amber
+  bloomberg:{ p:'#F5A623', pr:'245,166,35',  a:'#FF6B00', bg:['#000000','#080400','#100800'] },
+  // CNBC: deep navy, electric blue, gold
+  cnbc:     { p:'#0077C8', pr:'0,119,200',   a:'#FFB800', bg:['#000814','#001428','#001e3c'] },
+  // Reuters: slate grey, white, red
+  reuters:  { p:'#FF6600', pr:'255,102,0',   a:'#ffffff', bg:['#0f0f0f','#171717','#1f1f1f'] },
+  // Terminal: pure black, matrix green — crypto/trading
+  terminal: { p:'#00C851', pr:'0,200,81',    a:'#00FF66', bg:['#000000','#00080a','#001208'] },
+  custom:   { p:'#a855f7', pr:'168,85,247',  a:'#ec4899', bg:['#0a0514','#130820','#1c0d2e'] },
+};
+
+/* ═══════════════════════════════════════════════
+   VIDEO LOOK PRESETS
+   Each look applies a CSS filter to the raw video draw,
+   then colour-tint overlays via composite ops, then vignette.
+   ═══════════════════════════════════════════════ */
+const VIDEO_LOOKS = {
+  // Teal-shadow + orange-highlight — the Hollywood blockbuster grade
+  cinematic: {
+    filter:      'brightness(0.87) contrast(1.18) saturate(0.80)',
+    overlay:     'rgba(10,25,60,.17)',   overlayMode: 'multiply',
+    overlay2:    'rgba(255,135,18,.07)', overlay2Mode:'screen',
+    vignette:    0.74,
+  },
+  // Golden hour — warm amber tones, lush saturation
+  warm: {
+    filter:      'brightness(0.93) contrast(1.06) saturate(1.22)',
+    overlay:     'rgba(255,140,28,.15)', overlayMode: 'screen',
+    vignette:    0.52,
+  },
+  // Icey thriller — crushed shadows, desaturated
+  cold: {
+    filter:      'brightness(0.83) contrast(1.24) saturate(0.60)',
+    overlay:     'rgba(18,48,118,.28)',  overlayMode: 'multiply',
+    vignette:    0.84,
+  },
+  // Theme-coloured light leaks — crypto/neon aesthetic
+  neon: {
+    filter:      'brightness(0.80) contrast(1.28) saturate(1.06)',
+    vignette:    0.76,
+  },
+  // Silver-screen editorial
+  bw: {
+    filter:      'grayscale(1) contrast(1.28) brightness(0.90)',
+    vignette:    0.70,
+  },
+  // No treatment — just light darkening
+  raw: {
+    filter:      'brightness(0.93)',
+    vignette:    0.26,
+  },
+};
+
+/* ═══════════════════════════════════════════════
+   STATE
+   ═══════════════════════════════════════════════ */
+const S = {
+  layout: 'breaking',
+  theme:  'bbc',
+  ratio:  '9:16',
+  brand:  { name:'DailyVolex', handle:'@dailyvolex', logo:null },
+  breaking: {
+    category: 'BREAKING NEWS',
+    headline: 'BITCOIN SURGES PAST $120,000 IN BIGGEST SINGLE-DAY RALLY OF 2026',
+    source:   'DailyVolex Terminal Analytics',
+    ticker:   'BTC +8.4%  ···  ETH +12.3%  ···  SOL +18.9%  ···  CRYPTO MARKET CAP HITS $2.4T  ···  ',
+    showTicker: true,
+  },
+  stories: {
+    label:   'TOP STORIES',
+    date:    'July 2026',
+    items: [
+      'SEC approves first spot Ethereum ETF in landmark decision',
+      'Fed signals rate cuts as inflation drops to 2.1%',
+      'BlackRock Bitcoin fund crosses $50B in assets under management',
+      'India launches CBDC pilot across 5 major cities',
+      'El Salvador reports $40M profit on Bitcoin reserves',
+    ],
+    ticker: 'DailyVolex  ···  Your daily crypto & finance news  ···  ',
+    showTicker: true,
+  },
+  facts: {
+    title:    'WHAT YOU NEED TO KNOW',
+    subtitle: 'DailyVolex · July 2026',
+    rows: [
+      { label:'What happened',  value:'SEC approves Ethereum ETF'          },
+      { label:'Who decided',    value:'5-2 Commissioner vote'              },
+      { label:'When',           value:'July 2, 2026'                       },
+      { label:'Market reaction',value:'ETH +18% in 24 hours'              },
+      { label:'What\'s next',   value:'Trading begins Monday, July 7'      },
+      { label:'Why it matters', value:'Opens crypto to $30T pension market'},
+    ],
+    ticker: 'DailyVolex  ···  Breaking it down for you  ···  ',
+    showTicker: true,
+  },
+  quote: {
+    stat:    '$2.4T',
+    label:   'Total Crypto Market Cap',
+    context: 'Highest level since 2021 as institutional buying accelerates into Q3.',
+    source:  'CoinMarketCap · July 2026',
+    ticker:  'MARKET DATA  ···  DailyVolex  ···  ',
+    showTicker: true,
+  },
+  video: null,
+  customColor: '#a855f7',
+  recordDuration: 8,
+  tickerX: 0,
+  videoLoaded: false,
+  videoLook: 'cinematic',
+  letterbox: false,
+  recording: false,
+  particles: [],
+  raf: null,
+  fontsReady: false,
+};
+
+/* ═══════════════════════════════════════════════
+   DOM REFS
+   ═══════════════════════════════════════════════ */
+const cv     = document.getElementById('cv');
+const ctx    = cv.getContext('2d');
+const vid    = document.getElementById('hiddenVid');
+const toast  = document.getElementById('toast');
+const toastM = document.getElementById('toastMsg');
+
+/* ═══════════════════════════════════════════════
+   CANVAS DIMENSIONS per ratio
+   ═══════════════════════════════════════════════ */
+const DIMS = {
+  '9:16': [1080, 1920],
+  '4:5':  [1080, 1350],
+  '1:1':  [1080, 1080],
+};
+
+function applyRatio(ratio) {
+  const [w, h] = DIMS[ratio];
+  cv.width  = w;
+  cv.height = h;
+  document.getElementById('resLabel').textContent = `${w} × ${h}`;
+  scalePreviewer();
+}
+
+function scalePreviewer() {
+  const area   = document.querySelector('.preview-area');
+  const maxH   = area.clientHeight - 80;
+  const maxW   = area.clientWidth  - 40;
+  const scaleH = maxH / cv.height;
+  const scaleW = maxW / cv.width;
+  const scale  = Math.min(scaleH, scaleW, 1);
+  const frame  = document.getElementById('phoneFrame');
+  const notch  = frame.querySelector('.phone-notch');
+  const border = S.ratio === '9:16' ? 36 : 16;
+  frame.style.borderRadius = border + 'px';
+  frame.style.width  = (cv.width  * scale) + 'px';
+  frame.style.height = (cv.height * scale) + 'px';
+  cv.style.width  = (cv.width  * scale) + 'px';
+  cv.style.height = (cv.height * scale) + 'px';
+  notch.style.display = S.ratio === '9:16' ? '' : 'none';
+}
+
+/* ═══════════════════════════════════════════════
+   TOAST
+   ═══════════════════════════════════════════════ */
+let toastTimer;
+function showToast(msg, dur=3000, loading=false) {
+  toastM.textContent = msg;
+  toast.classList.toggle('loading', loading);
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  if (dur > 0) toastTimer = setTimeout(hideToast, dur);
+}
+function hideToast() {
+  toast.classList.remove('show','loading');
+}
+
+/* ═══════════════════════════════════════════════
+   PARTICLES
+   ═══════════════════════════════════════════════ */
+function initParticles() {
+  S.particles = [];
+  for (let i = 0; i < 55; i++) {
+    S.particles.push({
+      x: Math.random() * cv.width,
+      y: Math.random() * cv.height,
+      vx: (Math.random()-.5)*1.2,
+      vy: (Math.random()-.5)*1.2,
+      r: Math.random()*2+1,
+      a: Math.random()*.45+.08,
+    });
+  }
+}
+
+function updateParticles() {
+  for (const p of S.particles) {
+    p.x += p.vx; p.y += p.vy;
+    if (p.x<0||p.x>cv.width)  p.vx*=-1;
+    if (p.y<0||p.y>cv.height) p.vy*=-1;
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   CANVAS HELPERS
+   ═══════════════════════════════════════════════ */
+function rrect(x,y,w,h,r) {
+  r = Math.min(r, w/2, h/2);
+  ctx.beginPath();
+  ctx.moveTo(x+r,y);
+  ctx.arcTo(x+w,y, x+w,y+h, r);
+  ctx.arcTo(x+w,y+h, x,y+h, r);
+  ctx.arcTo(x,y+h, x,y, r);
+  ctx.arcTo(x,y, x+w,y, r);
+  ctx.closePath();
+}
+
+function fitText(text, maxW, maxSize, minSize, weight, family) {
+  let size = maxSize;
+  ctx.font = `${weight} ${size}px '${family}'`;
+  while (ctx.measureText(text).width > maxW && size > minSize) {
+    size -= 2;
+    ctx.font = `${weight} ${size}px '${family}'`;
+  }
+  return size;
+}
+
+function wrapLines(text, maxW) {
+  const words = text.split(' ');
+  const lines = [];
+  let line = '';
+  for (const w of words) {
+    const test = line ? line+' '+w : w;
+    if (ctx.measureText(test).width > maxW && line) {
+      lines.push(line); line = w;
+    } else {
+      line = test;
+    }
+  }
+  if (line) lines.push(line);
+  return lines;
+}
+
+/* ═══════════════════════════════════════════════
+   DRAW: BACKGROUND (video or generative)
+   ═══════════════════════════════════════════════ */
+function drawBG(theme) {
+  if (S.videoLoaded) {
+    const W=cv.width, H=cv.height;
+    const vr=vid.videoWidth/vid.videoHeight, cr=W/H;
+    let sx,sy,sw,sh;
+    if (vr>cr){ sh=vid.videoHeight; sw=sh*cr; sx=(vid.videoWidth-sw)/2; sy=0; }
+    else       { sw=vid.videoWidth;  sh=sw/cr; sx=0; sy=(vid.videoHeight-sh)/2; }
+
+    const look = VIDEO_LOOKS[S.videoLook] || VIDEO_LOOKS.cinematic;
+
+    // 1 ── Draw video with CSS-style colour grade
+    ctx.filter = look.filter || 'none';
+    ctx.drawImage(vid, sx,sy,sw,sh, 0,0,W,H);
+    ctx.filter = 'none';
+
+    // 2 ── Primary tint overlay (e.g. teal multiply for cinematic shadows)
+    if (look.overlay) {
+      ctx.globalCompositeOperation = look.overlayMode || 'multiply';
+      ctx.fillStyle = look.overlay;
+      ctx.fillRect(0,0,W,H);
+      ctx.globalCompositeOperation = 'source-over';
+    }
+
+    // 3 ── Secondary overlay (e.g. warm orange screen for highlights)
+    if (look.overlay2) {
+      ctx.globalCompositeOperation = look.overlay2Mode || 'screen';
+      ctx.fillStyle = look.overlay2;
+      ctx.fillRect(0,0,W,H);
+      ctx.globalCompositeOperation = 'source-over';
+    }
+
+    // 4 ── Neon: theme-coloured light leaks at top-right
+    if (S.videoLook === 'neon') {
+      const leak1 = ctx.createLinearGradient(0,0,0,H*.30);
+      leak1.addColorStop(0, `rgba(${theme.pr},.22)`);
+      leak1.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = leak1; ctx.fillRect(0,0,W,H*.30);
+      const leak2 = ctx.createLinearGradient(W,0,W*.70,0);
+      leak2.addColorStop(0, `rgba(${theme.pr},.14)`);
+      leak2.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = leak2; ctx.fillRect(W*.70,0,W*.30,H*.45);
+    }
+
+    // 5 ── Cinematic vignette (oval, not square)
+    const vig = ctx.createRadialGradient(W*.5,H*.48,H*.14, W*.5,H*.48,H*.76);
+    vig.addColorStop(0, 'rgba(0,0,0,0)');
+    vig.addColorStop(1, `rgba(0,0,0,${look.vignette ?? 0.65})`);
+    ctx.fillStyle = vig; ctx.fillRect(0,0,W,H);
+
+    // 6 ── Optional letterbox bars (cinematic 2.35:1 crop feel)
+    if (S.letterbox) {
+      const bh = Math.round(H * 0.073);
+      ctx.fillStyle = '#000';
+      ctx.fillRect(0,0,W,bh);
+      ctx.fillRect(0,H-bh,W,bh);
+    }
+  } else {
+    const g = ctx.createLinearGradient(0,0,0,cv.height);
+    g.addColorStop(0,theme.bg[0]); g.addColorStop(.5,theme.bg[1]); g.addColorStop(1,theme.bg[2]);
+    ctx.fillStyle=g; ctx.fillRect(0,0,cv.width,cv.height);
+    ctx.strokeStyle=`rgba(${theme.pr},.035)`; ctx.lineWidth=2;
+    const gs=110;
+    for(let x=0;x<cv.width;x+=gs){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,cv.height);ctx.stroke();}
+    for(let y=0;y<cv.height;y+=gs){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(cv.width,y);ctx.stroke();}
+    updateParticles();
+    for (const p of S.particles) {
+      ctx.save();
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${theme.pr},${p.a})`;
+      ctx.shadowColor=theme.p; ctx.shadowBlur=6;
+      ctx.fill(); ctx.restore();
+    }
+    ctx.strokeStyle=`rgba(${theme.pr},.06)`; ctx.lineWidth=1.5;
+    for(let i=0;i<S.particles.length;i++){
+      for(let j=i+1;j<S.particles.length;j++){
+        const dx=S.particles[i].x-S.particles[j].x, dy=S.particles[i].y-S.particles[j].y;
+        const dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<200){
+          ctx.globalAlpha=(1-dist/200)*.2;
+          ctx.beginPath(); ctx.moveTo(S.particles[i].x,S.particles[i].y);
+          ctx.lineTo(S.particles[j].x,S.particles[j].y); ctx.stroke();
+        }
+      }
+    }
+    ctx.globalAlpha=1;
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   DRAW: WATERMARK  (top-left corner, unobtrusive)
+   — BBC/CNN style: channel ID sits quietly over video
+   ═══════════════════════════════════════════════ */
+function drawBranding(theme) {
+  const W=cv.width, pad=56, py=52;
+
+  // Tiny logo mark
+  const ls=40, lx=pad, ly=py;
+  ctx.save();
+  const lg=ctx.createLinearGradient(lx,ly,lx+ls,ly+ls);
+  lg.addColorStop(0,theme.p); lg.addColorStop(1,theme.a);
+  ctx.fillStyle=lg; rrect(lx,ly,ls,ls,9); ctx.fill();
+  if (S.brand.logo) {
+    ctx.save(); rrect(lx+2,ly+2,ls-4,ls-4,7); ctx.clip();
+    ctx.drawImage(S.brand.logo,lx+2,ly+2,ls-4,ls-4); ctx.restore();
+  } else {
+    ctx.fillStyle='rgba(0,0,0,.85)'; ctx.font=`800 20px 'Space Grotesk'`;
+    ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillText('DV', lx+ls/2, ly+ls/2+1);
+  }
+  ctx.restore();
+
+  // Channel name — small, muted
+  ctx.save();
+  ctx.fillStyle='rgba(255,255,255,.6)'; ctx.font=`600 22px 'Space Grotesk'`;
+  ctx.textAlign='left'; ctx.textBaseline='middle';
+  ctx.shadowColor='rgba(0,0,0,.8)'; ctx.shadowBlur=8;
+  ctx.fillText(S.brand.name||'DailyVolex', lx+ls+12, ly+ls/2);
+  ctx.restore();
+
+  // Blinking dot top-right — just a dot, no box
+  const t=Date.now()*.003;
+  const blink=0.4+0.6*Math.sin(t);
+  ctx.save();
+  ctx.globalAlpha=blink;
+  ctx.fillStyle=theme.p; ctx.shadowColor=theme.p; ctx.shadowBlur=14;
+  ctx.beginPath(); ctx.arc(W-pad, py+ls/2, 8, 0, Math.PI*2); ctx.fill();
+  ctx.restore();
+}
+
+/* ═══════════════════════════════════════════════
+   DRAW: TICKER BAR — slim minimal strip
+   ═══════════════════════════════════════════════ */
+function drawTicker(tickerText, theme) {
+  const H=cv.height, W=cv.width, barH=56;
+  ctx.fillStyle='rgba(0,0,0,.88)'; ctx.fillRect(0,H-barH,W,barH);
+  // Thin top accent line
+  ctx.save();
+  ctx.fillStyle=theme.p; ctx.shadowColor=theme.p; ctx.shadowBlur=8;
+  ctx.fillRect(0,H-barH,W,2); ctx.restore();
+  // Small label block
+  const lblW=72;
+  ctx.fillStyle=theme.p; ctx.fillRect(0,H-barH+2,lblW,barH-2);
+  ctx.fillStyle='rgba(0,0,0,.9)'; ctx.font=`800 20px 'Space Grotesk'`;
+  ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.fillText('DV', lblW/2, H-barH/2+1);
+  // Scrolling text
+  ctx.save();
+  ctx.beginPath(); ctx.rect(lblW+14,H-barH,W-lblW-14,barH); ctx.clip();
+  ctx.fillStyle='rgba(255,255,255,.75)'; ctx.font=`500 20px 'JetBrains Mono'`; ctx.textBaseline='middle';
+  const tw=ctx.measureText(tickerText).width;
+  S.tickerX-=2.2; if(S.tickerX<-(tw+80)) S.tickerX=W;
+  ctx.fillText(tickerText, S.tickerX+lblW+18, H-barH/2+1);
+  if(S.tickerX+lblW+18<W-tw) ctx.fillText(tickerText, S.tickerX+tw+lblW+100, H-barH/2+1);
+  ctx.restore();
+}
+
+/* ═══════════════════════════════════════════════
+   LAYOUT: BREAKING NEWS — floating text, no panel
+   ═══════════════════════════════════════════════ */
+function drawBreaking(theme) {
+  const W=cv.width, H=cv.height, d=S.breaking;
+  const tickerH=d.showTicker?56:0;
+  const pad=72;
+
+  // Deep scrim only at bottom half — video breathes above
+  const scrim=ctx.createLinearGradient(0,H*.48,0,H-tickerH);
+  scrim.addColorStop(0,'rgba(0,0,0,0)');
+  scrim.addColorStop(.55,'rgba(0,0,0,.72)');
+  scrim.addColorStop(1,'rgba(0,0,0,.96)');
+  ctx.fillStyle=scrim; ctx.fillRect(0,H*.48,W,H*.52-tickerH);
+
+  // Anchor point — bottom of text block sits at 88% of frame
+  const baseY=H-tickerH-Math.round(H*0.12);
+
+  // Source — smallest, at very bottom
+  ctx.save();
+  ctx.fillStyle='rgba(255,255,255,.32)'; ctx.font=`400 26px 'JetBrains Mono'`;
+  ctx.textAlign='left'; ctx.textBaseline='bottom';
+  ctx.fillText(d.source, pad, baseY);
+  ctx.restore();
+
+  // Headline — large, white, heavy shadow, floats up from source
+  const hlW=W-pad*2;
+  ctx.save();
+  let hlSz=88; ctx.font=`800 ${hlSz}px 'Space Grotesk'`;
+  let hlLines=wrapLines(d.headline,hlW);
+  while(hlLines.length>2&&hlSz>52){hlSz-=4;ctx.font=`800 ${hlSz}px 'Space Grotesk'`;hlLines=wrapLines(d.headline,hlW);}
+  ctx.fillStyle='#ffffff';
+  ctx.textAlign='left'; ctx.textBaseline='bottom';
+  ctx.shadowColor='rgba(0,0,0,.95)'; ctx.shadowBlur=28; ctx.shadowOffsetY=3;
+  const lineH=hlSz*1.12;
+  const hlLines2=hlLines.slice(0,2);
+  const hlBlockH=hlLines2.length*lineH;
+  const hlBaseY=baseY-36;
+  hlLines2.reverse().forEach((l,i)=>{
+    ctx.fillText(l, pad, hlBaseY - i*lineH);
+  });
+  ctx.restore();
+
+  // Thin accent line above headline block
+  const lineY=hlBaseY-hlBlockH-24;
+  ctx.save();
+  ctx.fillStyle=theme.p; ctx.shadowColor=theme.p; ctx.shadowBlur=12;
+  ctx.fillRect(pad, lineY, 56, 3);
+  ctx.restore();
+
+  // Category — tiny caps, spaced, above line
+  ctx.save();
+  ctx.fillStyle='rgba(255,255,255,.45)'; ctx.font=`600 24px 'JetBrains Mono'`;
+  ctx.textAlign='left'; ctx.textBaseline='bottom';
+  ctx.fillText(d.category.toUpperCase(), pad, lineY-12);
+  ctx.restore();
+
+  if(d.showTicker) drawTicker(d.ticker,theme);
+}
+
+/* ═══════════════════════════════════════════════
+   LAYOUT: TOP STORIES — numbered headlines floating
+   ═══════════════════════════════════════════════ */
+function drawStories(theme) {
+  const W=cv.width, H=cv.height, d=S.stories;
+  const tickerH=d.showTicker?56:0;
+  const px=64;
+
+  // Scrim — covers lower 2/3 so headlines read clearly
+  const scrim=ctx.createLinearGradient(0,H*.28,0,H-tickerH);
+  scrim.addColorStop(0,'rgba(0,0,0,0)');
+  scrim.addColorStop(.30,'rgba(0,0,0,.68)');
+  scrim.addColorStop(1,'rgba(0,0,0,.92)');
+  ctx.fillStyle=scrim; ctx.fillRect(0,H*.28,W,H*.72-tickerH);
+
+  // Section label
+  ctx.save();
+  ctx.fillStyle='rgba(255,255,255,.30)'; ctx.font=`600 22px 'JetBrains Mono'`;
+  ctx.textAlign='left'; ctx.textBaseline='top';
+  ctx.fillText(d.label+'  ·  '+d.date, px, H*.38);
+  ctx.restore();
+
+  // Accent rule
+  ctx.save();
+  ctx.fillStyle=theme.p; ctx.shadowColor=theme.p; ctx.shadowBlur=10;
+  ctx.fillRect(px, H*.38+32, 48, 2);
+  ctx.restore();
+
+  // Numbered headline list
+  const items=d.items.slice(0,5);
+  const n=items.length;
+  const rowH=Math.min(108, Math.floor((H*.54-tickerH)/n));
+  const startY=H*.38+52;
+  items.forEach((headline,i)=>{
+    const y=startY+i*rowH;
+    ctx.save();
+    if(i>0){ ctx.fillStyle='rgba(255,255,255,.06)'; ctx.fillRect(px,y,W-px*2,1); }
+    // Number badge
+    ctx.fillStyle=theme.p; ctx.font=`700 22px 'JetBrains Mono'`;
+    ctx.shadowColor=theme.p; ctx.shadowBlur=8;
+    ctx.textAlign='left'; ctx.textBaseline='middle';
+    ctx.fillText(String(i+1).padStart(2,'0'), px, y+rowH/2);
+    ctx.shadowBlur=0;
+    // Headline text — wraps if too long
+    ctx.fillStyle='#fff'; ctx.font=`500 30px 'Inter'`;
+    ctx.shadowColor='rgba(0,0,0,.85)'; ctx.shadowBlur=14;
+    const maxW=W-px*2-56;
+    const hx=px+56;
+    // Simple word-wrap up to 2 lines
+    const words=headline.split(' ');
+    let line1='', line2='';
+    for(const w of words){
+      if(ctx.measureText(line1+w).width<maxW) line1+=(line1?' ':'')+w;
+      else line2+=(line2?' ':'')+w;
+    }
+    if(line2){
+      ctx.fillText(line1, hx, y+rowH/2-16);
+      ctx.fillStyle='rgba(255,255,255,.75)'; ctx.font=`400 26px 'Inter'`;
+      ctx.fillText(line2, hx, y+rowH/2+18);
+    } else {
+      ctx.fillText(line1, hx, y+rowH/2);
+    }
+    ctx.restore();
+  });
+
+  if(d.showTicker) drawTicker(d.ticker,theme);
+}
+
+/* ═══════════════════════════════════════════════
+   LAYOUT: KEY FACTS — label / value breakdown
+   ═══════════════════════════════════════════════ */
+function drawFacts(theme) {
+  const W=cv.width, H=cv.height, d=S.facts;
+  const tickerH=d.showTicker?56:0;
+  const px=64;
+
+  // Deep scrim — facts need clean readability
+  const scrim=ctx.createLinearGradient(0,H*.18,0,H-tickerH);
+  scrim.addColorStop(0,'rgba(0,0,0,0)');
+  scrim.addColorStop(.2,'rgba(0,0,0,.78)');
+  scrim.addColorStop(1,'rgba(0,0,0,.94)');
+  ctx.fillStyle=scrim; ctx.fillRect(0,H*.18,W,H*.82-tickerH);
+
+  // Title
+  ctx.save();
+  ctx.fillStyle='#fff'; ctx.font=`800 52px 'Space Grotesk'`;
+  ctx.textAlign='left'; ctx.textBaseline='top';
+  ctx.shadowColor='rgba(0,0,0,.8)'; ctx.shadowBlur=20;
+  ctx.fillText(d.title, px, H*.26);
+  ctx.restore();
+  ctx.save();
+  ctx.fillStyle='rgba(255,255,255,.3)'; ctx.font=`400 24px 'Inter'`;
+  ctx.textAlign='left'; ctx.textBaseline='top';
+  ctx.fillText(d.subtitle, px, H*.26+62);
+  ctx.restore();
+
+  // Accent rule
+  ctx.save();
+  ctx.fillStyle=theme.p; ctx.shadowColor=theme.p; ctx.shadowBlur=10;
+  ctx.fillRect(px, H*.26+96, 48, 2);
+  ctx.restore();
+
+  // Label / Value rows — clean, no type icons
+  const n=d.rows.length;
+  const rowH=Math.min(88, Math.floor((H*.62-tickerH)/n));
+  const startY=H*.26+112;
+  d.rows.forEach((row,i)=>{
+    const y=startY+i*rowH;
+    ctx.save();
+    if(i>0){ ctx.fillStyle='rgba(255,255,255,.07)'; ctx.fillRect(px,y,W-px*2,1); }
+    // Label
+    ctx.fillStyle='rgba(255,255,255,.55)'; ctx.font=`400 26px 'Inter'`;
+    ctx.textAlign='left'; ctx.textBaseline='middle';
+    ctx.shadowColor='rgba(0,0,0,.7)'; ctx.shadowBlur=8;
+    ctx.fillText(row.label, px, y+rowH/2);
+    // Value — right, white, slightly larger
+    ctx.fillStyle='#fff'; ctx.font=`700 30px 'Space Grotesk'`;
+    ctx.shadowColor='rgba(0,0,0,.8)'; ctx.shadowBlur=12;
+    ctx.textAlign='right';
+    ctx.fillText(row.value, W-px, y+rowH/2);
+    ctx.restore();
+  });
+
+  if(d.showTicker) drawTicker(d.ticker,theme);
+}
+
+/* ═══════════════════════════════════════════════
+   LAYOUT: STAT CARD — centered, floating, minimal
+   ═══════════════════════════════════════════════ */
+function drawQuote(theme) {
+  const W=cv.width, H=cv.height, d=S.quote;
+  const tickerH=d.showTicker?56:0;
+  const cx=W/2, cy=H*0.46;
+
+  // Soft radial dark zone — only behind the numbers
+  const rad=ctx.createRadialGradient(cx,cy,0,cx,cy,H*.38);
+  rad.addColorStop(0,'rgba(0,0,0,.75)');
+  rad.addColorStop(1,'rgba(0,0,0,0)');
+  ctx.fillStyle=rad; ctx.fillRect(0,0,W,H-tickerH);
+
+  // Stat — huge, glow in theme colour
+  ctx.save();
+  const sz=fitText(d.stat,W-140,220,100,'800','Space Grotesk');
+  ctx.font=`800 ${sz}px 'Space Grotesk'`;
+  ctx.textAlign='center'; ctx.textBaseline='middle';
+  // Glow layer
+  ctx.globalAlpha=.45; ctx.fillStyle=theme.p;
+  ctx.shadowColor=theme.p; ctx.shadowBlur=90;
+  ctx.fillText(d.stat,cx,cy);
+  // Crisp layer
+  ctx.globalAlpha=1; ctx.shadowBlur=24;
+  ctx.fillText(d.stat,cx,cy);
+  ctx.restore();
+
+  // Label — clean white below stat
+  ctx.save();
+  ctx.fillStyle='rgba(255,255,255,.85)'; ctx.font=`500 36px 'Inter'`;
+  ctx.textAlign='center'; ctx.textBaseline='top';
+  ctx.shadowColor='rgba(0,0,0,.7)'; ctx.shadowBlur=12;
+  ctx.fillText(d.label,cx,cy+sz/2+18);
+  ctx.restore();
+
+  // Context — muted, smaller
+  ctx.save();
+  ctx.fillStyle='rgba(255,255,255,.38)'; ctx.font=`300 26px 'Inter'`;
+  ctx.textAlign='center'; ctx.textBaseline='top';
+  const cl=wrapLines(d.context,W-220);
+  cl.forEach((l,i)=>ctx.fillText(l,cx,cy+sz/2+66+i*38));
+  ctx.restore();
+
+  // Source — tiny, just text, no pill
+  ctx.save();
+  ctx.fillStyle='rgba(255,255,255,.22)'; ctx.font=`400 22px 'JetBrains Mono'`;
+  ctx.textAlign='center'; ctx.textBaseline='top';
+  ctx.fillText(d.source, cx, cy+sz/2+66+cl.length*38+28);
+  ctx.restore();
+
+  // Thin accent line below stat number
+  ctx.save();
+  ctx.fillStyle=theme.p; ctx.shadowColor=theme.p; ctx.shadowBlur=12;
+  ctx.fillRect(cx-36, cy+sz/2+6, 72, 2);
+  ctx.restore();
+
+  if(d.showTicker) drawTicker(d.ticker,theme);
+}
+
+/* ═══════════════════════════════════════════════
+   MAIN RENDER LOOP
+   ═══════════════════════════════════════════════ */
+function render() {
+  const theme=THEMES[S.theme];
+  ctx.clearRect(0,0,cv.width,cv.height);
+  drawBG(theme);
+  drawBranding(theme);
+  switch(S.layout) {
+    case 'breaking': drawBreaking(theme); break;
+    case 'stories':  drawStories(theme);  break;
+    case 'facts':    drawFacts(theme);    break;
+    case 'quote':    drawQuote(theme);    break;
+  }
+  S.raf = requestAnimationFrame(render);
+}
+
+/* ═══════════════════════════════════════════════
+   APPLY THEME to CSS vars
+   ═══════════════════════════════════════════════ */
+function applyThemeCSS(theme) {
+  const t=THEMES[theme];
+  document.documentElement.style.setProperty('--tp', t.p);
+  document.documentElement.style.setProperty('--ta', t.a);
+  document.documentElement.style.setProperty('--tg', `rgba(${t.pr},.18)`);
+}
+
+/* ═══════════════════════════════════════════════
+   RIGHT PANEL: render content controls
+   ═══════════════════════════════════════════════ */
+function renderPanel() {
+  const rp=document.getElementById('rightPanel');
+  const theme=THEMES[S.theme];
+
+  const sections = [];
+
+  // ── Breaking ──
+  if(S.layout==='breaking') {
+    const cats=['BREAKING NEWS','EXCLUSIVE','ANALYSIS','MARKET ALERT','REPORT','JUST IN'];
+    sections.push(`
+      <div class="panel-section">
+        <div class="panel-head"><div class="panel-head-icon">📰</div><div class="panel-head-title">Breaking News</div></div>
+        <div class="panel-body">
+          <div class="cat-chips">
+            ${cats.map(c=>`<button class="cat-chip${S.breaking.category===c?' active-chip':''}" data-cat="${c}">${c}</button>`).join('')}
+          </div>
+          <div class="field">
+            <label>Category</label>
+            <input type="text" id="f-category" value="${S.breaking.category}">
+          </div>
+          <div class="field">
+            <label>Headline</label>
+            <textarea id="f-headline">${S.breaking.headline}</textarea>
+          </div>
+          <div class="field">
+            <label>Source / Attribution</label>
+            <input type="text" id="f-source" value="${S.breaking.source}">
+          </div>
+          <div class="toggle-row">
+            <span class="toggle-label">Scrolling Ticker</span>
+            <label class="sw"><input type="checkbox" id="f-ticker-toggle" ${S.breaking.showTicker?'checked':''}><span class="sw-track"></span></label>
+          </div>
+          <div class="field" id="ticker-field" style="${S.breaking.showTicker?'':'display:none'}">
+            <label>Ticker Text</label>
+            <input type="text" id="f-ticker" value="${S.breaking.ticker}">
+          </div>
+        </div>
+      </div>
+    `);
+  }
+
+  // ── Top Stories ──
+  if(S.layout==='stories') {
+    sections.push(`
+      <div class="panel-section">
+        <div class="panel-head"><div class="panel-head-icon">📰</div><div class="panel-head-title">Top Stories</div></div>
+        <div class="panel-body">
+          <div class="field">
+            <label>Section Label</label>
+            <input type="text" id="f-stories-label" value="${S.stories.label}">
+          </div>
+          <div class="field">
+            <label>Date</label>
+            <input type="text" id="f-stories-date" value="${S.stories.date}">
+          </div>
+          <div class="tbl-rows" id="storiesRows">
+            ${S.stories.items.map((item,i)=>`
+              <div class="tbl-row" data-idx="${i}">
+                <span style="font-size:.7rem;font-family:var(--font-mono);color:var(--ui-muted);padding-right:6px;flex-shrink:0">${String(i+1).padStart(2,'0')}</span>
+                <input class="tr-headline" placeholder="Headline…" value="${item}" style="flex:1">
+              </div>
+            `).join('')}
+          </div>
+          <button class="add-row-btn" id="addStoryBtn">+ Add Headline</button>
+          <div class="toggle-row">
+            <span class="toggle-label">Ticker</span>
+            <label class="sw"><input type="checkbox" id="f-stories-ticker-toggle" ${S.stories.showTicker?'checked':''}><span class="sw-track"></span></label>
+          </div>
+        </div>
+      </div>
+    `);
+  }
+
+  // ── Key Facts ──
+  if(S.layout==='facts') {
+    sections.push(`
+      <div class="panel-section">
+        <div class="panel-head"><div class="panel-head-icon">📋</div><div class="panel-head-title">Key Facts</div></div>
+        <div class="panel-body">
+          <div class="field">
+            <label>Title</label>
+            <input type="text" id="f-facts-title" value="${S.facts.title}">
+          </div>
+          <div class="field">
+            <label>Subtitle</label>
+            <input type="text" id="f-facts-subtitle" value="${S.facts.subtitle}">
+          </div>
+          <div class="tbl-rows" id="factsRows">
+            ${S.facts.rows.map((r,i)=>`
+              <div class="tbl-row" data-idx="${i}">
+                <input class="tr-label" placeholder="Label" value="${r.label}">
+                <input class="tr-value" placeholder="Value" value="${r.value}">
+              </div>
+            `).join('')}
+          </div>
+          <button class="add-row-btn" id="addFactBtn">+ Add Row</button>
+          <div class="toggle-row">
+            <span class="toggle-label">Ticker</span>
+            <label class="sw"><input type="checkbox" id="f-facts-ticker-toggle" ${S.facts.showTicker?'checked':''}><span class="sw-track"></span></label>
+          </div>
+        </div>
+      </div>
+    `);
+  }
+
+  // ── Quote ──
+  if(S.layout==='quote') {
+    sections.push(`
+      <div class="panel-section">
+        <div class="panel-head"><div class="panel-head-icon">💡</div><div class="panel-head-title">Stat Card Content</div></div>
+        <div class="panel-body">
+          <div class="field">
+            <label>Big Stat / Number</label>
+            <input type="text" id="f-stat" value="${S.quote.stat}">
+          </div>
+          <div class="field">
+            <label>Label</label>
+            <input type="text" id="f-statlabel" value="${S.quote.label}">
+          </div>
+          <div class="field">
+            <label>Context Sentence</label>
+            <textarea id="f-statcontext">${S.quote.context}</textarea>
+          </div>
+          <div class="field">
+            <label>Source</label>
+            <input type="text" id="f-statsource" value="${S.quote.source}">
+          </div>
+          <div class="toggle-row">
+            <span class="toggle-label">Ticker</span>
+            <label class="sw"><input type="checkbox" id="f-qt-ticker-toggle" ${S.quote.showTicker?'checked':''}><span class="sw-track"></span></label>
+          </div>
+        </div>
+      </div>
+    `);
+  }
+
+  // Export panel (always shown)
+  sections.push(`
+    <div class="panel-section">
+      <div class="panel-head"><div class="panel-head-icon">⬇</div><div class="panel-head-title">Export</div></div>
+      <div class="panel-body">
+        <div class="export-btns">
+          <button class="ebtn ebtn-png" id="exportPng">📸 Export PNG (Feed/Story)</button>
+          <button class="ebtn ebtn-vid${S.recording?' recording':''}" id="exportVid">
+            ${S.recording?'⏹ Stop Recording':'🎬 Record Reel (WebM)'}
+          </button>
+        </div>
+        <div class="dur-row">
+          <span style="font-size:.72rem;color:var(--ui-muted)">Duration</span>
+          <input type="range" id="recDur" min="3" max="15" step="1" value="${S.recordDuration}">
+          <span class="dur-val" id="durVal">${S.recordDuration}s</span>
+        </div>
+        <p class="export-note">PNG → Instagram Feed · Stories<br>WebM → Convert to MP4 via <strong>CloudConvert</strong> then upload as Reel</p>
+      </div>
+    </div>
+  `);
+
+  rp.innerHTML = sections.join('');
+  bindPanelEvents();
+}
+
+/* ═══════════════════════════════════════════════
+   PANEL EVENT BINDING
+   ═══════════════════════════════════════════════ */
+function bindPanelEvents() {
+  const on=(id,ev,fn)=>{ const el=document.getElementById(id); if(el) el.addEventListener(ev,fn); };
+  const onAll=(sel,ev,fn)=>document.querySelectorAll(sel).forEach(el=>el.addEventListener(ev,fn));
+
+  // Breaking News
+  on('f-category','input', e=>{ S.breaking.category=e.target.value; });
+  on('f-headline','input', e=>{ S.breaking.headline=e.target.value; });
+  on('f-source','input', e=>{ S.breaking.source=e.target.value; });
+  on('f-ticker','input', e=>{ S.breaking.ticker=e.target.value; });
+  on('f-ticker-toggle','change', e=>{
+    S.breaking.showTicker=e.target.checked;
+    const tf=document.getElementById('ticker-field');
+    if(tf) tf.style.display=e.target.checked?'':'none';
+  });
+  onAll('.cat-chip','click', e=>{
+    S.breaking.category=e.target.dataset.cat;
+    document.getElementById('f-category').value=S.breaking.category;
+    document.querySelectorAll('.cat-chip').forEach(c=>c.classList.remove('active-chip'));
+    e.target.classList.add('active-chip');
+  });
+
+  // Top Stories
+  on('f-stories-label','input', e=>{ S.stories.label=e.target.value; });
+  on('f-stories-date','input', e=>{ S.stories.date=e.target.value; });
+  on('f-stories-ticker-toggle','change', e=>{ S.stories.showTicker=e.target.checked; });
+  on('addStoryBtn','click', ()=>{
+    S.stories.items.push('');
+    renderPanel();
+  });
+  document.querySelectorAll('#storiesRows .tbl-row').forEach(row=>{
+    const i=+row.dataset.idx;
+    row.querySelector('.tr-headline').addEventListener('input',e=>S.stories.items[i]=e.target.value);
+  });
+
+  // Key Facts
+  on('f-facts-title','input', e=>{ S.facts.title=e.target.value; });
+  on('f-facts-subtitle','input', e=>{ S.facts.subtitle=e.target.value; });
+  on('f-facts-ticker-toggle','change', e=>{ S.facts.showTicker=e.target.checked; });
+  on('addFactBtn','click', ()=>{
+    S.facts.rows.push({label:'',value:''});
+    renderPanel();
+  });
+  document.querySelectorAll('#factsRows .tbl-row').forEach(row=>{
+    const i=+row.dataset.idx;
+    row.querySelector('.tr-label').addEventListener('input',e=>S.facts.rows[i].label=e.target.value);
+    row.querySelector('.tr-value').addEventListener('input',e=>S.facts.rows[i].value=e.target.value);
+  });
+
+  // Quote
+  on('f-stat','input', e=>{ S.quote.stat=e.target.value; });
+  on('f-statlabel','input', e=>{ S.quote.label=e.target.value; });
+  on('f-statcontext','input', e=>{ S.quote.context=e.target.value; });
+  on('f-statsource','input', e=>{ S.quote.source=e.target.value; });
+  on('f-qt-ticker-toggle','change', e=>{ S.quote.showTicker=e.target.checked; });
+
+  // Duration slider
+  on('recDur','input', e=>{
+    S.recordDuration=+e.target.value;
+    const dv=document.getElementById('durVal');
+    if(dv) dv.textContent=S.recordDuration+'s';
+  });
+
+  // Export PNG
+  on('exportPng','click', ()=>{
+    showToast('Generating PNG…',0,true);
+    setTimeout(()=>{
+      const link=document.createElement('a');
+      link.download=`dailyvolex_${S.layout}_${Date.now()}.png`;
+      link.href=cv.toDataURL('image/png');
+      link.click();
+      showToast('PNG downloaded!');
+    },120);
+  });
+
+  // Export Video
+  const vidBtn=document.getElementById('exportVid');
+  if(vidBtn) {
+    vidBtn.addEventListener('click', async ()=>{
+      if(S.recording) return;
+      S.recording=true; renderPanel();
+      showToast(`Recording ${S.recordDuration}s…`,0,true);
+      const stream=cv.captureStream(30);
+      const types=['video/webm;codecs=vp9','video/webm;codecs=vp8','video/webm'];
+      let opt={};
+      for(const t of types) if(MediaRecorder.isTypeSupported(t)){opt={mimeType:t};break;}
+      const rec=new MediaRecorder(stream,opt);
+      const chunks=[];
+      rec.ondataavailable=e=>{ if(e.data.size>0) chunks.push(e.data); };
+      rec.onstop=()=>{
+        const blob=new Blob(chunks,{type:'video/webm'});
+        const a=document.createElement('a');
+        a.download=`dailyvolex_reel_${Date.now()}.webm`;
+        a.href=URL.createObjectURL(blob); a.click();
+        S.recording=false; renderPanel();
+        showToast('Reel downloaded! Convert to MP4 at CloudConvert before uploading to Instagram.');
+      };
+      if(S.videoLoaded){ vid.currentTime=0; await vid.play(); }
+      rec.start();
+      let s=S.recordDuration;
+      const t=setInterval(()=>{ s--; if(s>0)showToast(`Recording: ${s}s…`,0,true); else clearInterval(t); },1000);
+      setTimeout(()=>rec.stop(), S.recordDuration*1000);
+    });
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   SAVE / LOAD
+   ═══════════════════════════════════════════════ */
+function saveState() {
+  const snap={
+    layout:S.layout,theme:S.theme,ratio:S.ratio,
+    brand:{name:S.brand.name,handle:S.brand.handle},
+    breaking:S.breaking, stories:S.stories, facts:S.facts, quote:S.quote,
+    customColor:S.customColor, recordDuration:S.recordDuration,
+  };
+  try { localStorage.setItem('dvx_v2',JSON.stringify(snap)); showToast('Session saved'); }
+  catch(e) { showToast('Save failed (storage full?)'); }
+}
+
+function loadState() {
+  try {
+    const raw=localStorage.getItem('dvx_v2');
+    if(!raw) { showToast('No saved session found'); return; }
+    const snap=JSON.parse(raw);
+    Object.assign(S.breaking, snap.breaking||{});
+    Object.assign(S.stories,  snap.stories||{});
+    Object.assign(S.facts,    snap.facts||{});
+    Object.assign(S.quote,    snap.quote||{});
+    if(snap.brand) Object.assign(S.brand, snap.brand);
+    if(snap.customColor) {
+      S.customColor=snap.customColor;
+      THEMES.custom.p=snap.customColor;
+      THEMES.custom.pr=hexToRgb(snap.customColor);
+    }
+    if(snap.recordDuration) S.recordDuration=snap.recordDuration;
+    setLayout(snap.layout||'breaking');
+    setTheme(snap.theme||'bbc');
+    setRatio(snap.ratio||'9:16');
+    // Restore brand inputs
+    document.getElementById('brandName').value=S.brand.name||'DailyVolex';
+    document.getElementById('brandHandle').value=S.brand.handle||'@dailyvolex';
+    renderPanel();
+    showToast('Session loaded');
+  } catch(e) { showToast('Failed to load session'); }
+}
+
+/* ═══════════════════════════════════════════════
+   UTILITIES
+   ═══════════════════════════════════════════════ */
+function hexToRgb(hex) {
+  const r=parseInt(hex.slice(1,3),16);
+  const g=parseInt(hex.slice(3,5),16);
+  const b=parseInt(hex.slice(5,7),16);
+  return `${r},${g},${b}`;
+}
+
+function setLayout(layout) {
+  S.layout=layout;
+  document.querySelectorAll('.lcard').forEach(t=>{
+    t.classList.toggle('active', t.dataset.layout===layout);
+  });
+  renderPanel();
+}
+
+function setTheme(theme) {
+  S.theme=theme;
+  applyThemeCSS(theme);
+  document.querySelectorAll('.theme-btn').forEach(b=>{
+    b.classList.toggle('active', b.dataset.theme===theme);
+  });
+  const cf=document.getElementById('customColorField');
+  if(cf) cf.style.display=theme==='custom'?'':'none';
+}
+
+function setRatio(ratio) {
+  S.ratio=ratio;
+  document.querySelectorAll('.ratio-btn').forEach(b=>{
+    b.classList.toggle('active', b.dataset.ratio===ratio);
+  });
+  applyRatio(ratio);
+  initParticles();
+}
+
+/* ═══════════════════════════════════════════════
+   INIT EVENT BINDINGS
+   ═══════════════════════════════════════════════ */
+function initEvents() {
+  // Layout cards
+  document.querySelectorAll('.lcard').forEach(t=>{
+    t.addEventListener('click', ()=>setLayout(t.dataset.layout));
+  });
+
+  // Video look buttons
+  document.querySelectorAll('.look-btn').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      S.videoLook=b.dataset.look;
+      document.querySelectorAll('.look-btn').forEach(lb=>lb.classList.toggle('active',lb.dataset.look===S.videoLook));
+    });
+  });
+
+  // Letterbox toggle
+  const lbToggle=document.getElementById('letterboxToggle');
+  if(lbToggle) lbToggle.addEventListener('change', e=>{ S.letterbox=e.target.checked; });
+
+  // Theme buttons
+  document.querySelectorAll('.theme-btn').forEach(b=>{
+    b.addEventListener('click', ()=>setTheme(b.dataset.theme));
+  });
+
+  // Custom color
+  document.getElementById('customColor').addEventListener('input', e=>{
+    S.customColor=e.target.value;
+    THEMES.custom.p=e.target.value;
+    THEMES.custom.pr=hexToRgb(e.target.value);
+    document.getElementById('customDot').style.cssText=`background:${e.target.value};box-shadow:0 0 6px ${e.target.value}`;
+    if(S.theme==='custom') applyThemeCSS('custom');
+  });
+
+  // Ratio
+  document.querySelectorAll('.ratio-btn').forEach(b=>{
+    b.addEventListener('click', ()=>setRatio(b.dataset.ratio));
+  });
+
+  // Brand inputs
+  document.getElementById('brandName').addEventListener('input', e=>{ S.brand.name=e.target.value; });
+  document.getElementById('brandHandle').addEventListener('input', e=>{ S.brand.handle=e.target.value; });
+
+  // Logo
+  const logoDrop=document.getElementById('logoDrop');
+  const logoInput=document.getElementById('logoInput');
+  logoDrop.addEventListener('click', ()=>logoInput.click());
+  logoInput.addEventListener('change', e=>{
+    const f=e.target.files[0]; if(!f) return;
+    const url=URL.createObjectURL(f);
+    const img=new Image(); img.onload=()=>{
+      S.brand.logo=img;
+      document.getElementById('logoPreview').src=url;
+      document.getElementById('logoPreview').style.display='';
+      document.getElementById('logoDropLabel').style.display='none';
+    }; img.src=url;
+  });
+
+  // Video
+  document.getElementById('videoInput').addEventListener('change', e=>{
+    const f=e.target.files[0]; if(!f) return;
+    const url=URL.createObjectURL(f);
+    vid.src=url; vid.load();
+    showToast('Loading video…',0,true);
+    vid.onloadeddata=()=>{
+      S.videoLoaded=true; vid.play();
+      document.getElementById('vidName').textContent=f.name;
+      document.getElementById('clearVideoBtn').style.display='';
+      ['vidLookSection','vidLookGrid','letterboxRow'].forEach(id=>{
+        const el=document.getElementById(id); if(el) el.style.display='';
+      });
+      showToast('Video loaded — Cinematic look active');
+    };
+  });
+  document.getElementById('clearVideoBtn').addEventListener('click', ()=>{
+    S.videoLoaded=false; vid.src='';
+    document.getElementById('vidName').textContent='No video — particle BG active';
+    document.getElementById('clearVideoBtn').style.display='none';
+    ['vidLookSection','vidLookGrid','letterboxRow'].forEach(id=>{
+      const el=document.getElementById(id); if(el) el.style.display='none';
+    });
+  });
+
+  // Save / Load
+  document.getElementById('saveBtn').addEventListener('click', saveState);
+  document.getElementById('loadBtn').addEventListener('click', loadState);
+  document.addEventListener('keydown', e=>{
+    if((e.ctrlKey||e.metaKey)&&e.key==='s'){e.preventDefault();saveState();}
+  });
+
+  // Resize
+  window.addEventListener('resize', scalePreviewer);
+}
+
+/* ═══════════════════════════════════════════════
+   START
+   ═══════════════════════════════════════════════ */
+document.fonts.ready.then(()=>{
+  S.fontsReady=true;
+  // Warm fonts on canvas
+  ctx.font="800 10px 'Space Grotesk'"; ctx.fillText('.',0,0);
+  ctx.font="600 10px 'JetBrains Mono'"; ctx.fillText('.',0,0);
+  ctx.font="400 10px 'Inter'"; ctx.fillText('.',0,0);
+});
+
+applyRatio('9:16');
+applyThemeCSS('bbc');
+initParticles();
+initEvents();
+renderPanel();
+render();
+
+showToast('DailyVolex Pro loaded. Start creating.', 4000);
+</script>
+</body>
+</html>
