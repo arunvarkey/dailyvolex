@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>DailyVolex Pro — Instagram Content Studio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -346,62 +348,65 @@ canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
 .add-row-btn:hover{color:var(--ui-text);border-color:var(--ui-dim)}
 
 /* ══════════════════════════════════════
-   MOBILE RESPONSIVE
+   MOBILE RESPONSIVE (iOS-safe)
    ══════════════════════════════════════ */
 @media (max-width: 768px) {
-  html,body{overflow:hidden;height:100%;height:100dvh}
+  html,body{overflow:hidden;height:100dvh;position:fixed;width:100%}
 
-  /* Header — compact */
+  /* Header — compact, horizontally scrollable */
   header{
-    height:48px;padding:0 .75rem;gap:.5rem;
+    height:48px;padding:0 .6rem;gap:.4rem;
     overflow-x:auto;overflow-y:hidden;
     -webkit-overflow-scrolling:touch;
   }
   header::-webkit-scrollbar{display:none}
-  .brand-name{font-size:.82rem}
+  .brand-name{font-size:.8rem}
   .brand-sub{display:none}
   .brand-pipe{display:none}
-  .hbtn{padding:.3rem .6rem;font-size:.65rem}
-  .layout-cards{gap:3px}
-  .lcard{padding:4px 8px;gap:3px}
-  .lcard-thumb{width:22px;height:32px}
-  .lcard-label{font-size:.55rem}
+  .hbtn{padding:.3rem .55rem;font-size:.65rem}
+  .layout-cards{gap:3px;margin-left:.4rem !important}
+  .lcard{padding:3px 7px;gap:2px}
+  .lcard-thumb{width:20px;height:28px}
+  .lcard-label{font-size:.52rem}
 
-  /* Main area — stack vertically */
+  /* Main area — preview fills space above tab bar */
   main{
     flex-direction:column;
     overflow:hidden;
-    height:calc(100dvh - 48px - 56px);
+    height:calc(100dvh - 48px - 60px - env(safe-area-inset-bottom));
   }
 
-  /* Hide desktop sidebar and right panel by default */
+  /* Panels hidden by default on mobile */
   aside{ display:none; }
   .right-panel{ display:none; }
 
-  /* Mobile tab panels — full screen sheets */
+  /* Bottom-sheet panels */
   aside.mob-active,
   .right-panel.mob-active{
     display:flex;
     position:fixed;
-    left:0;right:0;bottom:56px;
-    height:55dvh;
+    left:0;right:0;
+    bottom:calc(60px + env(safe-area-inset-bottom));
+    height:58dvh;
     overflow-y:auto;
     z-index:50;
+    border:none;
     border-top:1px solid var(--ui-border2);
-    border-radius:20px 20px 0 0;
-    box-shadow:0 -8px 40px rgba(0,0,0,.7);
+    border-radius:18px 18px 0 0;
+    box-shadow:0 -10px 44px rgba(0,0,0,.75);
     width:100%;
     flex-direction:column;
-    padding:.8rem .75rem;
+    padding:1rem .85rem calc(1rem + env(safe-area-inset-bottom));
     gap:.45rem;
     -webkit-overflow-scrolling:touch;
+    background:var(--ui-panel);
   }
 
-  /* Preview canvas — fills available space */
+  /* Preview area */
   .preview-area{
     flex:1;
-    padding:.5rem;
-    gap:.4rem;
+    padding:.5rem .5rem .3rem;
+    gap:.35rem;
     overflow:hidden;
     min-height:0;
   }
@@ -411,22 +416,17 @@ canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
     align-items:center;
     justify-content:center;
     min-height:0;
-  }
-  .phone-frame{
-    border-radius:20px;
-  }
-  canvas#cv{
-    max-height:calc(55dvh - 40px);
     max-width:100%;
-    width:auto !important;
-    height:auto !important;
   }
-  .preview-hint{font-size:.6rem;padding:.2rem .7rem}
+  .phone-wrap::before{display:none}
+  .phone-btn{display:none}
+  .preview-hint{font-size:.58rem;padding:.18rem .6rem}
 
-  /* Bottom tab bar */
+  /* Bottom tab bar with iPhone home-bar safe area */
   #mob-tabs{
     position:fixed;bottom:0;left:0;right:0;
-    height:56px;
+    height:calc(60px + env(safe-area-inset-bottom));
+    padding-bottom:env(safe-area-inset-bottom);
     background:var(--ui-surface);
     border-top:1px solid var(--ui-border);
     display:flex;align-items:stretch;
@@ -437,22 +437,36 @@ canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
     gap:3px;cursor:pointer;border:none;background:transparent;
     color:var(--ui-muted);font-family:var(--font);font-size:.6rem;font-weight:600;
     letter-spacing:.2px;transition:color .15s;padding:0;
-    -webkit-tap-highlight-color:transparent;
+    -webkit-tap-highlight-color:transparent;touch-action:manipulation;
   }
-  .mob-tab svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .mob-tab svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
   .mob-tab.active{color:var(--tp)}
-  .mob-tab.active svg{filter:drop-shadow(0 0 4px var(--tp))}
 
-  /* Export buttons larger on mobile */
-  .ebtn{padding:.8rem;font-size:.85rem}
+  /* iOS: inputs must be ≥16px or Safari zooms the page on focus */
+  .field input,.field textarea,.field select,
+  .asset-row input,.tbl-row input{font-size:16px}
+  .field label{font-size:.7rem}
 
-  /* Wider tbl-rows on mobile */
-  .tbl-row{grid-template-columns:1fr 1fr}
-  .tbl-row input{font-size:.8rem}
+  /* Bigger touch targets */
+  .ebtn{padding:.85rem;font-size:.9rem}
+  .theme-btn{padding:.6rem .45rem;font-size:.75rem}
+  .ratio-btn{padding:.55rem .2rem;font-size:.72rem}
+  .look-btn{padding:.55rem .3rem;font-size:.68rem}
+  .add-row-btn{padding:.55rem}
+  .sw{width:42px;height:24px}
+  .sw-track::before{height:18px;width:18px}
+  .sw input:checked+.sw-track::before{transform:translateX(18px)}
+
+  .tbl-row{grid-template-columns:1fr 1fr auto}
+
+  /* Toast above tab bar */
+  #toast{bottom:calc(72px + env(safe-area-inset-bottom));right:.75rem;left:.75rem;max-width:none}
 }
 
 /* Hide mob-tabs on desktop */
-#mob-tabs{display:none}
+@media (min-width: 769px){
+  #mob-tabs{display:none}
+}
 
 /* Video upload */
 .vid-strip{
@@ -767,10 +781,20 @@ const S = {
   videoLook: 'cinematic',
   letterbox: false,
   recording: false,
+  recStart: 0,
+  introStart: performance.now(),
   particles: [],
   raf: null,
   fontsReady: false,
 };
+
+/* Entrance animation helper — eased 0→1, staggered by delay (ms) */
+function introT(delay=0, dur=600) {
+  const t=(performance.now()-S.introStart-delay)/dur;
+  const c=Math.min(Math.max(t,0),1);
+  return 1-Math.pow(1-c,3); // easeOutCubic
+}
+function replayIntro(){ S.introStart=performance.now(); }
 
 /* ═══════════════════════════════════════════════
    DOM REFS
@@ -800,8 +824,9 @@ function applyRatio(ratio) {
 
 function scalePreviewer() {
   const area   = document.querySelector('.preview-area');
-  const maxH   = area.clientHeight - 80;
-  const maxW   = area.clientWidth  - 40;
+  const mobile = window.innerWidth <= 768;
+  const maxH   = area.clientHeight - (mobile ? 34 : 80);
+  const maxW   = area.clientWidth  - (mobile ? 16 : 40);
   const scaleH = maxH / cv.height;
   const scaleW = maxW / cv.width;
   const scale  = Math.min(scaleH, scaleW, 1);
@@ -906,6 +931,14 @@ function drawBG(theme) {
     let sx,sy,sw,sh;
     if (vr>cr){ sh=vid.videoHeight; sw=sh*cr; sx=(vid.videoWidth-sw)/2; sy=0; }
     else       { sw=vid.videoWidth;  sh=sw/cr; sx=0; sy=(vid.videoHeight-sh)/2; }
+
+    // Ken Burns — slow documentary push-in (1.00 → 1.06 over ~28s, eases back)
+    if (S.videoLook !== 'raw') {
+      const kb = 1 + 0.06 * (0.5 - 0.5*Math.cos(performance.now()/14000));
+      const nsw = sw/kb, nsh = sh/kb;
+      sx += (sw-nsw)/2; sy += (sh-nsh)/2;
+      sw = nsw; sh = nsh;
+    }
 
     const look = VIDEO_LOOKS[S.videoLook] || VIDEO_LOOKS.cinematic;
 
@@ -1018,7 +1051,18 @@ function drawBranding(theme) {
   ctx.fillText(S.brand.name||'DailyVolex', lx+ls+12, ly+ls/2);
   ctx.restore();
 
-  // Blinking dot top-right — just a dot, no box
+  // Live clock + blinking dot top-right — broadcast style
+  const now=new Date();
+  const hh=String(now.getHours()).padStart(2,'0');
+  const mm=String(now.getMinutes()).padStart(2,'0');
+  const colon=(now.getSeconds()%2===0)?':':' ';
+  ctx.save();
+  ctx.fillStyle='rgba(255,255,255,.55)'; ctx.font=`600 26px 'JetBrains Mono'`;
+  ctx.textAlign='right'; ctx.textBaseline='middle';
+  ctx.shadowColor='rgba(0,0,0,.8)'; ctx.shadowBlur=8;
+  ctx.fillText(hh+colon+mm, W-pad-26, py+ls/2);
+  ctx.restore();
+
   const t=Date.now()*.003;
   const blink=0.4+0.6*Math.sin(t);
   ctx.save();
@@ -1073,19 +1117,25 @@ function drawBreaking(theme) {
   // Anchor point — bottom of text block sits at 88% of frame
   const baseY=H-tickerH-Math.round(H*0.12);
 
-  // Source — smallest, at very bottom
+  // Entrance progress (staggered broadcast-style reveal)
+  const tCat=introT(0,450), tLine=introT(150,500), tHl=introT(300,650), tSrc=introT(650,500);
+
+  // Source — smallest, at very bottom, fades in last
   ctx.save();
+  ctx.globalAlpha=tSrc;
   ctx.fillStyle='rgba(255,255,255,.32)'; ctx.font=`400 26px 'JetBrains Mono'`;
   ctx.textAlign='left'; ctx.textBaseline='bottom';
   ctx.fillText(d.source, pad, baseY);
   ctx.restore();
 
-  // Headline — large, white, heavy shadow, floats up from source
+  // Headline — slides up + fades in, heavy shadow
   const hlW=W-pad*2;
   ctx.save();
   let hlSz=88; ctx.font=`800 ${hlSz}px 'Space Grotesk'`;
   let hlLines=wrapLines(d.headline,hlW);
   while(hlLines.length>2&&hlSz>52){hlSz-=4;ctx.font=`800 ${hlSz}px 'Space Grotesk'`;hlLines=wrapLines(d.headline,hlW);}
+  ctx.globalAlpha=tHl;
+  const hlRise=(1-tHl)*44; // slides up 44px as it fades in
   ctx.fillStyle='#ffffff';
   ctx.textAlign='left'; ctx.textBaseline='bottom';
   ctx.shadowColor='rgba(0,0,0,.95)'; ctx.shadowBlur=28; ctx.shadowOffsetY=3;
@@ -1094,22 +1144,26 @@ function drawBreaking(theme) {
   const hlBlockH=hlLines2.length*lineH;
   const hlBaseY=baseY-36;
   hlLines2.reverse().forEach((l,i)=>{
-    ctx.fillText(l, pad, hlBaseY - i*lineH);
+    ctx.fillText(l, pad, hlBaseY - i*lineH + hlRise);
   });
   ctx.restore();
 
-  // Thin accent line above headline block
+  // Thin accent line — wipes in left→right
   const lineY=hlBaseY-hlBlockH-24;
   ctx.save();
   ctx.fillStyle=theme.p; ctx.shadowColor=theme.p; ctx.shadowBlur=12;
-  ctx.fillRect(pad, lineY, 56, 3);
+  ctx.fillRect(pad, lineY, 56*tLine, 3);
   ctx.restore();
 
-  // Category — tiny caps, spaced, above line
+  // Category — lower-third style wipe reveal
   ctx.save();
-  ctx.fillStyle='rgba(255,255,255,.45)'; ctx.font=`600 24px 'JetBrains Mono'`;
+  ctx.font=`600 24px 'JetBrains Mono'`;
+  const catTxt=d.category.toUpperCase();
+  const catW=ctx.measureText(catTxt).width;
+  ctx.beginPath(); ctx.rect(pad, lineY-52, (catW+8)*tCat, 44); ctx.clip();
+  ctx.fillStyle='rgba(255,255,255,.45)';
   ctx.textAlign='left'; ctx.textBaseline='bottom';
-  ctx.fillText(d.category.toUpperCase(), pad, lineY-12);
+  ctx.fillText(catTxt, pad, lineY-12);
   ctx.restore();
 
   if(d.showTicker) drawTicker(d.ticker,theme);
@@ -1149,8 +1203,10 @@ function drawStories(theme) {
   const rowH=Math.min(108, Math.floor((H*.54-tickerH)/n));
   const startY=H*.38+52;
   items.forEach((headline,i)=>{
-    const y=startY+i*rowH;
+    const tr=introT(250+i*130,550);
+    const y=startY+i*rowH+(1-tr)*26;
     ctx.save();
+    ctx.globalAlpha=tr;
     if(i>0){ ctx.fillStyle='rgba(255,255,255,.06)'; ctx.fillRect(px,y,W-px*2,1); }
     // Number badge
     ctx.fillStyle=theme.p; ctx.font=`700 22px 'JetBrains Mono'`;
@@ -1222,8 +1278,10 @@ function drawFacts(theme) {
   const rowH=Math.min(88, Math.floor((H*.62-tickerH)/n));
   const startY=H*.26+112;
   d.rows.forEach((row,i)=>{
-    const y=startY+i*rowH;
+    const tr=introT(250+i*110,500);
+    const y=startY+i*rowH+(1-tr)*22;
     ctx.save();
+    ctx.globalAlpha=tr;
     if(i>0){ ctx.fillStyle='rgba(255,255,255,.07)'; ctx.fillRect(px,y,W-px*2,1); }
     // Label
     ctx.fillStyle='rgba(255,255,255,.55)'; ctx.font=`400 26px 'Inter'`;
@@ -1255,26 +1313,29 @@ function drawQuote(theme) {
   rad.addColorStop(1,'rgba(0,0,0,0)');
   ctx.fillStyle=rad; ctx.fillRect(0,0,W,H-tickerH);
 
-  // Stat — huge, glow in theme colour
+  // Stat — huge, glow in theme colour, scales in with pop
+  const tSt=introT(0,750), tLb=introT(400,500);
   ctx.save();
   const sz=fitText(d.stat,W-140,220,100,'800','Space Grotesk');
+  ctx.translate(cx,cy); ctx.scale(.86+.14*tSt,.86+.14*tSt); ctx.translate(-cx,-cy);
   ctx.font=`800 ${sz}px 'Space Grotesk'`;
   ctx.textAlign='center'; ctx.textBaseline='middle';
   // Glow layer
-  ctx.globalAlpha=.45; ctx.fillStyle=theme.p;
+  ctx.globalAlpha=.45*tSt; ctx.fillStyle=theme.p;
   ctx.shadowColor=theme.p; ctx.shadowBlur=90;
   ctx.fillText(d.stat,cx,cy);
   // Crisp layer
-  ctx.globalAlpha=1; ctx.shadowBlur=24;
+  ctx.globalAlpha=tSt; ctx.shadowBlur=24;
   ctx.fillText(d.stat,cx,cy);
   ctx.restore();
 
   // Label — clean white below stat
   ctx.save();
+  ctx.globalAlpha=tLb;
   ctx.fillStyle='rgba(255,255,255,.85)'; ctx.font=`500 36px 'Inter'`;
   ctx.textAlign='center'; ctx.textBaseline='top';
   ctx.shadowColor='rgba(0,0,0,.7)'; ctx.shadowBlur=12;
-  ctx.fillText(d.label,cx,cy+sz/2+18);
+  ctx.fillText(d.label,cx,cy+sz/2+18+(1-tLb)*16);
   ctx.restore();
 
   // Context — muted, smaller
@@ -1314,6 +1375,15 @@ function render() {
     case 'stories':  drawStories(theme);  break;
     case 'facts':    drawFacts(theme);    break;
     case 'quote':    drawQuote(theme);    break;
+  }
+  // Reel progress bar — thin line filling across the top while recording
+  if (S.recording && S.recStart) {
+    const p=Math.min((performance.now()-S.recStart)/(S.recordDuration*1000),1);
+    ctx.save();
+    ctx.fillStyle='rgba(255,255,255,.14)'; ctx.fillRect(0,0,cv.width,6);
+    ctx.fillStyle=theme.p; ctx.shadowColor=theme.p; ctx.shadowBlur=10;
+    ctx.fillRect(0,0,cv.width*p,6);
+    ctx.restore();
   }
   S.raf = requestAnimationFrame(render);
 }
@@ -1574,24 +1644,29 @@ function bindPanelEvents() {
   if(vidBtn) {
     vidBtn.addEventListener('click', async ()=>{
       if(S.recording) return;
+      if(typeof MediaRecorder==='undefined'){ showToast('Recording not supported in this browser'); return; }
       S.recording=true; renderPanel();
       showToast(`Recording ${S.recordDuration}s…`,0,true);
       const stream=cv.captureStream(30);
-      const types=['video/webm;codecs=vp9','video/webm;codecs=vp8','video/webm'];
-      let opt={};
-      for(const t of types) if(MediaRecorder.isTypeSupported(t)){opt={mimeType:t};break;}
-      const rec=new MediaRecorder(stream,opt);
+      // iOS Safari records MP4; Chrome/Firefox record WebM
+      const types=['video/mp4;codecs=avc1','video/mp4','video/webm;codecs=vp9','video/webm;codecs=vp8','video/webm'];
+      let mime='';
+      for(const t of types) if(MediaRecorder.isTypeSupported(t)){mime=t;break;}
+      const rec=new MediaRecorder(stream, mime?{mimeType:mime}:{});
+      const isMp4=mime.startsWith('video/mp4');
       const chunks=[];
       rec.ondataavailable=e=>{ if(e.data.size>0) chunks.push(e.data); };
       rec.onstop=()=>{
-        const blob=new Blob(chunks,{type:'video/webm'});
+        const blob=new Blob(chunks,{type:isMp4?'video/mp4':'video/webm'});
         const a=document.createElement('a');
-        a.download=`dailyvolex_reel_${Date.now()}.webm`;
+        a.download=`dailyvolex_reel_${Date.now()}.${isMp4?'mp4':'webm'}`;
         a.href=URL.createObjectURL(blob); a.click();
-        S.recording=false; renderPanel();
-        showToast('Reel downloaded! Convert to MP4 at CloudConvert before uploading to Instagram.');
+        S.recording=false; S.recStart=0; renderPanel();
+        showToast(isMp4?'Reel downloaded as MP4 — ready for Instagram!':'Reel downloaded! Convert to MP4 at CloudConvert before uploading to Instagram.');
       };
       if(S.videoLoaded){ vid.currentTime=0; await vid.play(); }
+      replayIntro();                 // capture the entrance animation in the recording
+      S.recStart=performance.now();  // drives the on-canvas progress bar
       rec.start();
       let s=S.recordDuration;
       const t=setInterval(()=>{ s--; if(s>0)showToast(`Recording: ${s}s…`,0,true); else clearInterval(t); },1000);
@@ -1653,6 +1728,7 @@ function hexToRgb(hex) {
 
 function setLayout(layout) {
   S.layout=layout;
+  replayIntro();
   document.querySelectorAll('.lcard').forEach(t=>{
     t.classList.toggle('active', t.dataset.layout===layout);
   });
@@ -1814,6 +1890,14 @@ showToast('DailyVolex Pro loaded. Start creating.', 4000);
     if(panel==='style') aside.classList.add('mob-active');
     else if(panel==='content'||panel==='export') rightPanel.classList.add('mob-active');
     // preview: both hidden, canvas visible
+    if(panel==='export'){
+      // Scroll the export section into view inside the panel
+      setTimeout(()=>{
+        const btn=document.getElementById('exportPng');
+        if(btn) btn.scrollIntoView({block:'center'});
+      },60);
+    }
+    setTimeout(scalePreviewer,80);
   }
 
   tabs.forEach(tab=>{
@@ -1835,7 +1919,12 @@ showToast('DailyVolex Pro loaded. Start creating.', 4000);
       aside.classList.remove('mob-active');
       rightPanel.classList.remove('mob-active');
     }
+    scalePreviewer();
   });
+  window.addEventListener('orientationchange',()=>setTimeout(scalePreviewer,300));
+
+  // iOS: initial layout settles late — rescale after load
+  if(isMobile()) setTimeout(scalePreviewer,250);
 })();
 </script>
 </body>
