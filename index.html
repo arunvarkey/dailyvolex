@@ -4,11 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="DailyVolex">
+<meta name="theme-color" content="#060608">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <title>DailyVolex Pro — Instagram Content Studio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<!-- Loaded non-blocking: on a weak mobile connection a render-blocking
+     stylesheet stalls the parser and the app never starts. Text falls back
+     to system fonts until this arrives; document.fonts.ready redraws. -->
+<link rel="stylesheet" media="print" onload="this.media='all';this.onload=null"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"></noscript>
 <style>
 /* ─────────────────────────────────────────────────────
    DailyVolex Pro — Content Studio UI
@@ -369,10 +381,13 @@ canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
   .lcard-thumb{width:20px;height:28px}
   .lcard-label{font-size:.52rem}
 
-  /* Main area — preview fills space above tab bar */
+  /* Main area — preview fills space above tab bar.
+     width/max-width pin it to the viewport: without them the oversized
+     canvas widens the flex container and the whole page scrolls sideways. */
   main{
     flex-direction:column;
     overflow:hidden;
+    width:100%;max-width:100vw;
     height:calc(100dvh - 48px - 60px - env(safe-area-inset-bottom));
   }
 
@@ -409,6 +424,7 @@ canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
     gap:.35rem;
     overflow:hidden;
     min-height:0;
+    width:100%;max-width:100vw;min-width:0;
   }
   .phone-wrap{
     flex:1;
@@ -416,8 +432,10 @@ canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
     align-items:center;
     justify-content:center;
     min-height:0;
-    max-width:100%;
+    max-width:100%;min-width:0;
   }
+  .phone-frame{max-width:100%}
+  #mob-tabs{max-width:100vw}
   .phone-wrap::before{display:none}
   .phone-btn{display:none}
   .preview-hint{font-size:.58rem;padding:.18rem .6rem}
@@ -459,6 +477,15 @@ canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
 
   .tbl-row{grid-template-columns:1fr 1fr auto}
 
+  /* Logo drop is full-panel-width here; cap it so it doesn't eat the sheet */
+  .logo-drop{aspect-ratio:auto;height:92px}
+}
+
+/* Very narrow phones: drop the wordmark so Save/Load stay reachable */
+@media (max-width: 430px){
+  .brand-name{display:none}
+  .brand{gap:0}
+
   /* Toast above tab bar */
   #toast{bottom:calc(72px + env(safe-area-inset-bottom));right:.75rem;left:.75rem;max-width:none}
 }
@@ -467,6 +494,39 @@ canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
 @media (min-width: 769px){
   #mob-tabs{display:none}
 }
+
+/* ── Install-to-home-screen hint ── */
+#installHint{
+  display:none;position:fixed;z-index:120;
+  left:.6rem;right:.6rem;bottom:calc(68px + env(safe-area-inset-bottom));
+  background:rgba(16,16,24,.97);border:1px solid var(--ui-border2);
+  border-radius:14px;padding:.7rem .8rem;
+  align-items:center;gap:.65rem;
+  box-shadow:0 10px 34px rgba(0,0,0,.65);
+  backdrop-filter:blur(12px)
+}
+#installHint.show{display:flex}
+.ih-icon{
+  width:34px;height:34px;border-radius:9px;flex-shrink:0;
+  background:linear-gradient(145deg,#ff4d4d,#8f0f0f);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-head);font-weight:800;font-size:.72rem;color:#fff
+}
+.ih-text{display:flex;flex-direction:column;gap:2px;line-height:1.4;min-width:0}
+.ih-text strong{font-size:.76rem;color:#fff;font-weight:600}
+.ih-text span{font-size:.68rem;color:var(--ui-muted)}
+.ih-text b{color:var(--ui-text);font-weight:600}
+.ih-install{
+  margin-left:auto;flex-shrink:0;padding:.42rem .8rem;border-radius:8px;border:none;
+  background:linear-gradient(135deg,var(--tp),#8b0000);color:#fff;
+  font-family:var(--font);font-size:.72rem;font-weight:700;cursor:pointer
+}
+.ih-close{
+  flex-shrink:0;margin-left:auto;width:26px;height:26px;border-radius:7px;
+  border:1px solid var(--ui-border);background:transparent;
+  color:var(--ui-muted);font-size:.7rem;cursor:pointer;line-height:1
+}
+.ih-install+.ih-close{margin-left:0}
 
 /* Video upload */
 .vid-strip{
@@ -656,6 +716,17 @@ canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
   </button>
 </nav>
 
+<!-- One-time hint: install to home screen -->
+<div id="installHint">
+  <div class="ih-icon">DV</div>
+  <div class="ih-text">
+    <strong>Add DailyVolex to your Home Screen</strong>
+    <span id="ihHow">Tap <b>Share</b> below, then <b>Add to Home Screen</b>.</span>
+  </div>
+  <button id="ihInstall" class="ih-install" hidden>Install</button>
+  <button id="ihClose" class="ih-close" aria-label="Dismiss">✕</button>
+</div>
+
 <div id="toast"><div class="spin"></div><span id="toastMsg">Ready</span></div>
 <video id="hiddenVid" loop muted playsinline style="display:none"></video>
 
@@ -825,8 +896,17 @@ function applyRatio(ratio) {
 function scalePreviewer() {
   const area   = document.querySelector('.preview-area');
   const mobile = window.innerWidth <= 768;
-  const maxH   = area.clientHeight - (mobile ? 34 : 80);
-  const maxW   = area.clientWidth  - (mobile ? 16 : 40);
+  // Cap by the viewport as well as the container: while the canvas is still
+  // at full size it can stretch its own container, which would otherwise
+  // feed an inflated width back into this calculation.
+  const vw     = document.documentElement.clientWidth  || window.innerWidth;
+  const vh     = document.documentElement.clientHeight || window.innerHeight;
+  const maxH   = Math.min(area.clientHeight, vh) - (mobile ? 34 : 80);
+  const maxW   = Math.min(area.clientWidth,  vw) - (mobile ? 16 : 40);
+  // Layout not measurable yet (still 0-height on first paint) — a negative
+  // size would be rejected by the browser and leave the canvas at its full
+  // 1080px, overflowing the frame. Wait for the next observed resize.
+  if (maxW <= 0 || maxH <= 0) return;
   const scaleH = maxH / cv.height;
   const scaleW = maxW / cv.width;
   const scale  = Math.min(scaleH, scaleW, 1);
@@ -1545,7 +1625,7 @@ function renderPanel() {
         <div class="export-btns">
           <button class="ebtn ebtn-png" id="exportPng">📸 Export PNG (Feed/Story)</button>
           <button class="ebtn ebtn-vid${S.recording?' recording':''}" id="exportVid">
-            ${S.recording?'⏹ Stop Recording':'🎬 Record Reel (WebM)'}
+            ${S.recording?'⏹ Stop Recording':`🎬 Record Reel (${recFormat()})`}
           </button>
         </div>
         <div class="dur-row">
@@ -1553,7 +1633,9 @@ function renderPanel() {
           <input type="range" id="recDur" min="3" max="15" step="1" value="${S.recordDuration}">
           <span class="dur-val" id="durVal">${S.recordDuration}s</span>
         </div>
-        <p class="export-note">PNG → Instagram Feed · Stories<br>WebM → Convert to MP4 via <strong>CloudConvert</strong> then upload as Reel</p>
+        <p class="export-note">${recFormat()==='MP4'
+          ? 'PNG → Instagram Feed · Stories<br>MP4 → <strong>Save to Photos</strong>, then post as a Reel'
+          : 'PNG → Instagram Feed · Stories<br>WebM → Convert to MP4 via <strong>CloudConvert</strong> then upload as Reel'}</p>
       </div>
     </div>
   `);
@@ -1631,11 +1713,11 @@ function bindPanelEvents() {
   on('exportPng','click', ()=>{
     showToast('Generating PNG…',0,true);
     setTimeout(()=>{
-      const link=document.createElement('a');
-      link.download=`dailyvolex_${S.layout}_${Date.now()}.png`;
-      link.href=cv.toDataURL('image/png');
-      link.click();
-      showToast('PNG downloaded!');
+      cv.toBlob(blob=>{
+        if(!blob){ showToast('Export failed — try again'); return; }
+        deliverFile(blob, `dailyvolex_${S.layout}_${Date.now()}.png`, 'image/png',
+                    'Save to Photos, then post to Instagram', 'PNG downloaded!');
+      },'image/png');
     },120);
   });
 
@@ -1658,11 +1740,12 @@ function bindPanelEvents() {
       rec.ondataavailable=e=>{ if(e.data.size>0) chunks.push(e.data); };
       rec.onstop=()=>{
         const blob=new Blob(chunks,{type:isMp4?'video/mp4':'video/webm'});
-        const a=document.createElement('a');
-        a.download=`dailyvolex_reel_${Date.now()}.${isMp4?'mp4':'webm'}`;
-        a.href=URL.createObjectURL(blob); a.click();
         S.recording=false; S.recStart=0; renderPanel();
-        showToast(isMp4?'Reel downloaded as MP4 — ready for Instagram!':'Reel downloaded! Convert to MP4 at CloudConvert before uploading to Instagram.');
+        deliverFile(blob, `dailyvolex_reel_${Date.now()}.${isMp4?'mp4':'webm'}`,
+          isMp4?'video/mp4':'video/webm',
+          'Save to Photos, then post as a Reel',
+          isMp4?'Reel saved as MP4 — ready for Instagram!'
+               :'Reel downloaded! Convert to MP4 at CloudConvert before uploading.');
       };
       if(S.videoLoaded){ vid.currentTime=0; await vid.play(); }
       replayIntro();                 // capture the entrance animation in the recording
@@ -1673,6 +1756,45 @@ function bindPanelEvents() {
       setTimeout(()=>rec.stop(), S.recordDuration*1000);
     });
   }
+}
+
+/* Which container this browser can actually record.
+   Safari/iOS gives MP4 (Instagram-ready); Chrome/Firefox give WebM. */
+function recFormat() {
+  if (typeof MediaRecorder === 'undefined') return 'WebM';
+  return (MediaRecorder.isTypeSupported('video/mp4;codecs=avc1')
+       || MediaRecorder.isTypeSupported('video/mp4')) ? 'MP4' : 'WebM';
+}
+
+/* ═══════════════════════════════════════════════
+   FILE DELIVERY
+   On iPhone/iPad a plain download is unreliable (and invisible in an
+   installed app), so hand the file to the native share sheet instead —
+   that gives "Save to Photos" and a direct route into Instagram.
+   Everywhere else, download as usual.
+   ═══════════════════════════════════════════════ */
+async function deliverFile(blob, filename, mime, shareText, downloadMsg) {
+  const file = new File([blob], filename, { type: mime });
+  const canShare = navigator.canShare && navigator.canShare({ files:[file] });
+
+  if (canShare) {
+    try {
+      await navigator.share({ files:[file], title:'DailyVolex', text:shareText });
+      showToast('Shared — choose “Save to Photos” to keep it.');
+      return;
+    } catch (err) {
+      // User dismissed the sheet — nothing more to do.
+      if (err && err.name === 'AbortError') { hideToast(); return; }
+      // Anything else: fall through to the download path below.
+    }
+  }
+
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.download = filename; a.href = url;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url), 60000);
+  showToast(downloadMsg);
 }
 
 /* ═══════════════════════════════════════════════
@@ -1923,8 +2045,67 @@ showToast('DailyVolex Pro loaded. Start creating.', 4000);
   });
   window.addEventListener('orientationchange',()=>setTimeout(scalePreviewer,300));
 
-  // iOS: initial layout settles late — rescale after load
-  if(isMobile()) setTimeout(scalePreviewer,250);
+  // iOS settles layout late (and again when Safari's bars hide/show).
+  // Observing the preview area covers every case — first paint, rotation,
+  // opening a panel, the URL bar collapsing — without polling.
+  if (typeof ResizeObserver !== 'undefined') {
+    const area = document.querySelector('.preview-area');
+    if (area) new ResizeObserver(()=>scalePreviewer()).observe(area);
+  }
+  window.addEventListener('load', ()=>setTimeout(scalePreviewer,60));
+})();
+
+/* ═══════════════════════════════════════════════
+   INSTALL TO HOME SCREEN
+   iOS has no install prompt API, so show how to do it by hand.
+   Android/Chrome fires beforeinstallprompt — offer a real button.
+   ═══════════════════════════════════════════════ */
+(function initInstallHint(){
+  const hint=document.getElementById('installHint');
+  if(!hint) return;
+  const btn=document.getElementById('ihInstall');
+  const how=document.getElementById('ihHow');
+  const DISMISSED='dvx_install_dismissed';
+
+  const standalone = window.matchMedia('(display-mode: standalone)').matches
+                  || window.navigator.standalone === true;
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
+             || (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1);
+
+  let dismissed=false;
+  try { dismissed = localStorage.getItem(DISMISSED)==='1'; } catch(e){}
+
+  // Already installed, or previously dismissed — never show it.
+  if(standalone || dismissed) return;
+
+  function show(){ hint.classList.add('show'); }
+  function close(){
+    hint.classList.remove('show');
+    try { localStorage.setItem(DISMISSED,'1'); } catch(e){}
+  }
+  document.getElementById('ihClose').addEventListener('click',close);
+
+  if(isIOS){
+    how.innerHTML='Tap <b>Share</b> below, then <b>Add to Home Screen</b>.';
+    setTimeout(show,2600);
+    return;
+  }
+
+  // Chrome / Edge / Android
+  let deferred=null;
+  window.addEventListener('beforeinstallprompt',e=>{
+    e.preventDefault(); deferred=e;
+    how.textContent='Use it full screen, straight from your home screen.';
+    btn.hidden=false; show();
+  });
+  btn.addEventListener('click',async()=>{
+    if(!deferred) return;
+    deferred.prompt();
+    const {outcome}=await deferred.userChoice;
+    deferred=null;
+    if(outcome==='accepted') close(); else hint.classList.remove('show');
+  });
+  window.addEventListener('appinstalled',close);
 })();
 </script>
 </body>
