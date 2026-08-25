@@ -672,6 +672,12 @@ canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
     <button class="ratio-btn" data-ratio="1:1">1:1<br><span style="font-weight:400;font-size:.6rem">Square</span></button>
   </div>
 
+  <div class="toggle-row">
+    <span class="toggle-label">Safe area
+      <span class="toggle-sub">Show what Instagram's UI covers</span></span>
+    <label class="sw"><input type="checkbox" id="guidesToggle"><span class="sw-track"></span></label>
+  </div>
+
   <div class="sl">Background</div>
   <label class="vid-strip" for="videoInput">
     Upload video (MP4)<br>
@@ -875,6 +881,7 @@ const S = {
   videoLook: 'cinematic',
   letterbox: false,
   recording: false,
+  guides: false,
   recStart: 0,
   introStart: performance.now(),
   particles: [],
@@ -1239,8 +1246,10 @@ function drawBreaking(theme) {
   scrim.addColorStop(1,'rgba(0,0,0,.96)');
   ctx.fillStyle=scrim; ctx.fillRect(0,H*.48,W,H*.52-tickerH);
 
-  // Anchor point — bottom of text block sits at 88% of frame
-  const baseY=H-tickerH-Math.round(H*0.12);
+  // Anchor point for the text block. In 9:16 the bottom of a Reel is covered
+  // by Instagram's caption, username and audio row, so the block is lifted
+  // clear of it. Feed ratios have no such overlay and can sit lower.
+  const baseY=H-tickerH-Math.round(H*(S.ratio==='9:16' ? 0.20 : 0.12));
 
   // Entrance progress (staggered broadcast-style reveal)
   const tCat=introT(0,450), tLine=introT(150,500), tHl=introT(300,650), tSrc=introT(650,500);
@@ -1254,18 +1263,27 @@ function drawBreaking(theme) {
   ctx.restore();
 
   // Headline — slides up + fades in, heavy shadow
-  const hlW=W-pad*2;
+  const hlW=contentRight(W,pad)-pad;
   ctx.save();
+  // Shrink until the whole headline fits in at most MAXL lines. A news
+  // graphic must never drop words: only if it still will not fit at the
+  // smallest size is the last line ellipsised, so the cut is visible.
+  const MAXL=3;
   let hlSz=88; ctx.font=`800 ${hlSz}px 'Space Grotesk'`;
   let hlLines=wrapLines(d.headline,hlW);
-  while(hlLines.length>2&&hlSz>52){hlSz-=4;ctx.font=`800 ${hlSz}px 'Space Grotesk'`;hlLines=wrapLines(d.headline,hlW);}
+  while(hlLines.length>MAXL&&hlSz>44){hlSz-=3;ctx.font=`800 ${hlSz}px 'Space Grotesk'`;hlLines=wrapLines(d.headline,hlW);}
+  let hlLines2=hlLines.slice(0,MAXL);
+  if(hlLines.length>MAXL){
+    let last=hlLines2[MAXL-1];
+    while(last.length>1&&ctx.measureText(last+'…').width>hlW) last=last.slice(0,-1);
+    hlLines2[MAXL-1]=last.replace(/\s+$/,'')+'…';
+  }
   ctx.globalAlpha=tHl;
   const hlRise=(1-tHl)*44; // slides up 44px as it fades in
   ctx.fillStyle='#ffffff';
   ctx.textAlign='left'; ctx.textBaseline='bottom';
   ctx.shadowColor='rgba(0,0,0,.95)'; ctx.shadowBlur=28; ctx.shadowOffsetY=3;
   const lineH=hlSz*1.12;
-  const hlLines2=hlLines.slice(0,2);
   const hlBlockH=hlLines2.length*lineH;
   const hlBaseY=baseY-36;
   hlLines2.reverse().forEach((l,i)=>{
@@ -1332,7 +1350,7 @@ function drawStories(theme) {
     const y=startY+i*rowH+(1-tr)*26;
     ctx.save();
     ctx.globalAlpha=tr;
-    if(i>0){ ctx.fillStyle='rgba(255,255,255,.06)'; ctx.fillRect(px,y,W-px*2,1); }
+    if(i>0){ ctx.fillStyle='rgba(255,255,255,.06)'; ctx.fillRect(px,y,contentRight(W,px)-px,1); }
     // Number badge
     ctx.fillStyle=theme.p; ctx.font=`700 22px 'JetBrains Mono'`;
     ctx.shadowColor=theme.p; ctx.shadowBlur=8;
@@ -1342,7 +1360,7 @@ function drawStories(theme) {
     // Headline text — wraps if too long
     ctx.fillStyle='#fff'; ctx.font=`500 30px 'Inter'`;
     ctx.shadowColor='rgba(0,0,0,.85)'; ctx.shadowBlur=14;
-    const maxW=W-px*2-56;
+    const maxW=contentRight(W,px)-(px+56);
     const hx=px+56;
     // Simple word-wrap up to 2 lines
     const words=headline.split(' ');
@@ -1407,7 +1425,7 @@ function drawFacts(theme) {
     const y=startY+i*rowH+(1-tr)*22;
     ctx.save();
     ctx.globalAlpha=tr;
-    if(i>0){ ctx.fillStyle='rgba(255,255,255,.07)'; ctx.fillRect(px,y,W-px*2,1); }
+    if(i>0){ ctx.fillStyle='rgba(255,255,255,.07)'; ctx.fillRect(px,y,contentRight(W,px)-px,1); }
     // Label
     ctx.fillStyle='rgba(255,255,255,.55)'; ctx.font=`400 26px 'Inter'`;
     ctx.textAlign='left'; ctx.textBaseline='middle';
@@ -1417,7 +1435,7 @@ function drawFacts(theme) {
     ctx.fillStyle='#fff'; ctx.font=`700 30px 'Space Grotesk'`;
     ctx.shadowColor='rgba(0,0,0,.8)'; ctx.shadowBlur=12;
     ctx.textAlign='right';
-    ctx.fillText(row.value, W-px, y+rowH/2);
+    ctx.fillText(row.value, contentRight(W,px), y+rowH/2);
     ctx.restore();
   });
 
@@ -1441,7 +1459,7 @@ function drawQuote(theme) {
   // Stat — huge, glow in theme colour, scales in with pop
   const tSt=introT(0,750), tLb=introT(400,500);
   ctx.save();
-  const sz=fitText(d.stat,W-140,220,100,'800','Space Grotesk');
+  const sz=fitText(d.stat,centredSafeW(W,70),220,100,'800','Space Grotesk');
   ctx.translate(cx,cy); ctx.scale(.86+.14*tSt,.86+.14*tSt); ctx.translate(-cx,-cy);
   ctx.font=`800 ${sz}px 'Space Grotesk'`;
   ctx.textAlign='center'; ctx.textBaseline='middle';
@@ -1467,7 +1485,7 @@ function drawQuote(theme) {
   ctx.save();
   ctx.fillStyle='rgba(255,255,255,.38)'; ctx.font=`300 26px 'Inter'`;
   ctx.textAlign='center'; ctx.textBaseline='top';
-  const cl=wrapLines(d.context,W-220);
+  const cl=wrapLines(d.context,centredSafeW(W,110));
   cl.forEach((l,i)=>ctx.fillText(l,cx,cy+sz/2+66+i*38));
   ctx.restore();
 
@@ -1490,8 +1508,54 @@ function drawQuote(theme) {
 /* ═══════════════════════════════════════════════
    MAIN RENDER LOOP
    ═══════════════════════════════════════════════ */
-function render() {
-  const theme=THEMES[S.theme];
+/* Where Instagram's own interface sits, as a fraction of the frame.
+   A Reel is overlaid by the caption/username/audio row along the bottom, the
+   action rail down the right and the profile strip on top. A feed post is not
+   overlaid at all — the UI sits outside the image — so it only needs a modest
+   margin to keep text off the edge. */
+const IG_SAFE = {
+  '9:16': { top:0.10, bottom:0.20, right:0.17, left:0.05 },
+  'feed': { top:0.05, bottom:0.05, right:0.05, left:0.05 },
+};
+
+/* Right-hand limit for text. In 9:16 Instagram's action rail (like, comment,
+   share) covers the right edge, so text has to stop short of it or it ends up
+   sitting under the buttons. Other ratios keep the normal margin. */
+function contentRight(W, pad) {
+  return S.ratio==='9:16' ? Math.min(W-pad, W*(1-IG_SAFE['9:16'].right)) : W-pad;
+}
+/* Width available to centred text that must stay clear of the rail on BOTH
+   sides while remaining centred in the frame. */
+function centredSafeW(W, pad) {
+  return S.ratio==='9:16' ? Math.min(W-pad*2, W*(1-IG_SAFE['9:16'].right*2)) : W-pad*2;
+}
+
+function drawGuides(theme) {
+  const W=cv.width, H=cv.height;
+  const reels = S.ratio==='9:16';
+  const z = reels ? IG_SAFE['9:16'] : IG_SAFE.feed;
+  const top=H*z.top, bottom=H*(1-z.bottom);
+  const right=W*(1-z.right), left=W*z.left;
+  ctx.save();
+  // Shade the covered regions
+  ctx.fillStyle='rgba(255,0,64,.16)';
+  ctx.fillRect(0,0,W,top);
+  ctx.fillRect(0,bottom,W,H-bottom);
+  ctx.fillRect(right,top,W-right,bottom-top);
+  ctx.fillRect(0,top,left,bottom-top);
+  // Outline the safe box
+  ctx.strokeStyle='rgba(0,255,170,.9)'; ctx.lineWidth=3; ctx.setLineDash([18,12]);
+  ctx.strokeRect(left,top,right-left,bottom-top);
+  ctx.setLineDash([]);
+  ctx.fillStyle='rgba(0,255,170,.95)';
+  ctx.font=`600 22px 'JetBrains Mono'`; ctx.textAlign='left'; ctx.textBaseline='top';
+  ctx.fillText(reels?'SAFE AREA · REELS':'SAFE AREA · FEED', left+12, top+12);
+  ctx.restore();
+}
+
+/* One frame. Kept separate from the animation loop so exports can render a
+   clean frame synchronously with the guides suppressed. */
+function drawScene(theme, withGuides) {
   ctx.clearRect(0,0,cv.width,cv.height);
   drawBG(theme);
   drawBranding(theme);
@@ -1510,6 +1574,13 @@ function render() {
     ctx.fillRect(0,0,cv.width*p,6);
     ctx.restore();
   }
+  if (withGuides) drawGuides(theme);
+}
+
+function render() {
+  const theme=THEMES[S.theme];
+  // Guides are a design aid only — never recorded, never exported.
+  drawScene(theme, S.guides && !S.recording);
   S.raf = requestAnimationFrame(render);
 }
 
@@ -1758,6 +1829,9 @@ function bindPanelEvents() {
   on('exportPng','click', ()=>{
     showToast('Generating PNG…',0,true);
     setTimeout(()=>{
+      // Repaint without guides immediately before capture, so the exported
+      // file never contains the on-screen safe-area overlay.
+      drawScene(THEMES[S.theme], false);
       cv.toBlob(blob=>{
         if(!blob){ showToast('Export failed — try again'); return; }
         deliverFile(blob, `dailyvolex_${S.layout}_${Date.now()}.png`, 'image/png',
@@ -1795,6 +1869,9 @@ function bindPanelEvents() {
       if(S.videoLoaded){ vid.currentTime=0; await vid.play(); }
       replayIntro();                 // capture the entrance animation in the recording
       S.recStart=performance.now();  // drives the on-canvas progress bar
+      // Repaint clean before capture opens, so a guided frame left on the
+      // canvas can never become the first recorded frame.
+      drawScene(THEMES[S.theme], false);
       rec.start();
       let s=S.recordDuration;
       const t=setInterval(()=>{ s--; if(s>0)showToast(`Recording: ${s}s…`,0,true); else clearInterval(t); },1000);
@@ -1941,6 +2018,13 @@ function initEvents() {
   // Letterbox toggle
   const lbToggle=document.getElementById('letterboxToggle');
   if(lbToggle) lbToggle.addEventListener('change', e=>{ S.letterbox=e.target.checked; });
+
+  // Safe-area guides (preview only)
+  const gToggle=document.getElementById('guidesToggle');
+  if(gToggle) gToggle.addEventListener('change', e=>{
+    S.guides=e.target.checked;
+    showToast(S.guides?'Safe area shown — guides are never exported':'Safe area hidden');
+  });
 
   // Theme buttons
   document.querySelectorAll('.theme-btn').forEach(b=>{
