@@ -390,21 +390,35 @@ canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
   /* Toast clears the tab bar */
   #toast{bottom:calc(72px + env(safe-area-inset-bottom, 0px));right:.75rem;left:.75rem;max-width:none}
 
-  /* Header — compact, horizontally scrollable */
+  /* Header wraps onto two rows instead of scrolling sideways. Everything on
+     one row needed 377px, so on a 360px phone the Save button fell off the
+     edge entirely. Row 1 is brand + Save/Load; the layout picker gets row 2
+     to itself as four equal segments, which fits any width by construction. */
   header{
-    height:48px;padding:0 .6rem;gap:.4rem;
-    overflow-x:auto;overflow-y:hidden;
-    -webkit-overflow-scrolling:touch;
+    min-height:48px;height:auto;padding:0 .6rem 5px;gap:.4rem;
+    flex-wrap:wrap;row-gap:4px;overflow:visible;
   }
-  header::-webkit-scrollbar{display:none}
-  .brand-name{font-size:.8rem}
+  .brand{order:0;min-width:0}
+  .brand-name{font-size:.8rem;white-space:nowrap}
   .brand-sub{display:none}
   .brand-pipe{display:none}
-  .hbtn{padding:.3rem .55rem;font-size:.65rem}
-  .layout-cards{gap:3px;margin-left:.4rem !important}
-  .lcard{padding:3px 7px;gap:2px}
-  .lcard-thumb{width:20px;height:28px}
-  .lcard-label{font-size:.52rem}
+  .header-sep{order:1;flex:1}
+  #loadBtn{order:2}
+  #saveBtn{order:3}
+  .hbtn{padding:.34rem .6rem;font-size:.68rem}
+
+  .layout-cards{
+    order:4;width:100%;gap:4px;margin-left:0 !important;
+  }
+  .lcard{
+    flex:1;min-width:0;padding:.42rem .2rem;gap:0;
+    border:1px solid var(--ui-border);background:var(--ui-card);
+  }
+  .lcard-thumb{display:none}          /* the label alone reads better this small */
+  .lcard-label{
+    font-size:.66rem;overflow:hidden;text-overflow:ellipsis;
+    max-width:100%;white-space:nowrap;
+  }
 
   /* Reserve the fixed tab bar's space here rather than on `main`: `main` is
      flex:1, and in a flex column that overrides any height we set on it — so
@@ -512,8 +526,9 @@ canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
   .logo-drop{aspect-ratio:auto;height:92px}
 }
 
-/* Very narrow phones: drop the wordmark so Save/Load stay reachable */
-@media (max-width: 430px){
+/* Smallest phones: the wordmark is the first thing to give way if row 1
+   ever runs tight. Save and Load must stay reachable. */
+@media (max-width: 340px){
   .brand-name{display:none}
   .brand{gap:0}
 }
@@ -1860,6 +1875,8 @@ function bindPanelEvents() {
       rec.onstop=()=>{
         const blob=new Blob(chunks,{type:isMp4?'video/mp4':'video/webm'});
         S.recording=false; S.recStart=0; renderPanel();
+        // Never hand over an empty file and call it a success.
+        if(!blob.size){ showToast('Recording produced no video — please try again.'); return; }
         deliverFile(blob, `dailyvolex_reel_${Date.now()}.${isMp4?'mp4':'webm'}`,
           isMp4?'video/mp4':'video/webm',
           'Save to Photos, then post as a Reel',
