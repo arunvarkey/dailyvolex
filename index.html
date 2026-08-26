@@ -197,16 +197,6 @@ aside{
 .field textarea{min-height:68px;line-height:1.5}
 .field select option{background:#16161f}
 
-/* Logo drop zone */
-.logo-drop{
-  width:100%;aspect-ratio:2.2;border:1.5px dashed var(--ui-border2);border-radius:8px;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3rem;
-  cursor:pointer;font-size:.68rem;color:var(--ui-muted);transition:all .15s;
-  background:var(--ui-card);overflow:hidden;position:relative
-}
-.logo-drop:hover{border-color:var(--tp);color:var(--ui-text);background:var(--ui-card2)}
-.logo-drop img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:4px}
-
 /* Asset rows */
 .asset-rows{display:flex;flex-direction:column;gap:.35rem}
 .asset-row{
@@ -377,6 +367,40 @@ canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
 @keyframes spin{100%{transform:rotate(360deg)}}
 
 /* Util */
+/* ── Editor rows (Top Stories / Key Facts) ──
+   The old rows crammed two inputs side by side with no way to remove one.
+   These stack their fields, give each row a number and a delete control. */
+.erows{display:flex;flex-direction:column;gap:.4rem}
+.erow{
+  display:flex;gap:.5rem;align-items:flex-start;
+  background:var(--ui-card);border:1px solid var(--ui-border);
+  border-radius:9px;padding:.5rem .55rem
+}
+.erow-num{
+  flex-shrink:0;width:22px;height:22px;border-radius:6px;
+  background:var(--ui-card2);color:var(--tp);
+  font-family:var(--font-mono);font-size:.62rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;margin-top:2px
+}
+.erow-fields{flex:1;min-width:0;display:flex;flex-direction:column;gap:.35rem}
+.erow-fields input,.erow-fields textarea{
+  width:100%;background:transparent;border:none;padding:.1rem 0;
+  color:var(--ui-text);font-family:var(--font);font-size:.84rem;resize:none;line-height:1.4
+}
+.erow-fields input:focus,.erow-fields textarea:focus{outline:none}
+.erow-fields .ef-label{
+  font-size:.64rem;font-weight:700;letter-spacing:.6px;text-transform:uppercase;
+  color:var(--ui-muted);font-family:var(--font-mono)
+}
+.erow-fields .ef-value{font-weight:600}
+.erow-fields .ef-sep{height:1px;background:var(--ui-border)}
+.erow-del{
+  flex-shrink:0;width:24px;height:24px;border-radius:6px;margin-top:1px;
+  border:1px solid var(--ui-border);background:transparent;color:var(--ui-muted);
+  font-size:.78rem;line-height:1;cursor:pointer;transition:all .15s
+}
+.erow-del:hover{color:#fff;border-color:var(--ta);background:rgba(255,68,68,.12)}
+
 .add-row-btn{
   width:100%;padding:.38rem;border-radius:6px;border:1px dashed var(--ui-border2);
   background:transparent;color:var(--ui-muted);font-size:.7rem;cursor:pointer;
@@ -539,8 +563,6 @@ canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
 
   .tbl-row{grid-template-columns:1fr 1fr auto}
 
-  /* Logo drop is full-panel-width here; cap it so it doesn't eat the sheet */
-  .logo-drop{aspect-ratio:auto;height:92px}
 }
 
 /* Smallest phones: the wordmark is the first thing to give way if row 1
@@ -660,13 +682,10 @@ canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
     <label>Handle</label>
     <input type="text" id="brandHandle" value="@dailyvolex">
   </div>
-  <div class="field">
-    <label>Logo (optional)</label>
-    <div class="logo-drop" id="logoDrop">
-      <img id="logoPreview" style="display:none">
-      <span id="logoDropLabel">Click to upload</span>
-    </div>
-    <input type="file" id="logoInput" accept="image/*" style="display:none">
+  <div class="toggle-row">
+    <span class="toggle-label">Clock
+      <span class="toggle-sub">Show the time on the graphic</span></span>
+    <label class="sw"><input type="checkbox" id="clockToggle"><span class="sw-track"></span></label>
   </div>
 
   <div class="sl">Theme</div>
@@ -863,7 +882,7 @@ const S = {
   layout: 'breaking',
   theme:  'bbc',
   ratio:  '9:16',
-  brand:  { name:'DailyVolex', handle:'@dailyvolex', logo:null },
+  brand:  { name:'DailyVolex', handle:'@dailyvolex' },
   breaking: {
     category: 'BREAKING NEWS',
     headline: 'BITCOIN SURGES PAST $120,000 IN BIGGEST SINGLE-DAY RALLY OF 2026',
@@ -915,6 +934,7 @@ const S = {
   letterbox: false,
   recording: false,
   guides: false,
+  showClock: false,
   recStart: 0,
   introStart: performance.now(),
   particles: [],
@@ -1186,55 +1206,47 @@ function drawBG(theme) {
 }
 
 /* ═══════════════════════════════════════════════
-   DRAW: WATERMARK  (top-left corner, unobtrusive)
-   — BBC/CNN style: channel ID sits quietly over video
+   DRAW: WATERMARK — small channel handle, low contrast.
+   Sits just inside the top safe line so Instagram's own
+   profile row does not cover it.
    ═══════════════════════════════════════════════ */
 function drawBranding(theme) {
-  const W=cv.width, pad=56, py=52;
+  const W=cv.width, H=cv.height, pad=64;
+  const topSafe = H * (S.ratio==='9:16' ? IG_SAFE['9:16'].top : IG_SAFE.feed.top);
+  const y = topSafe + 22;
 
-  // Tiny logo mark
-  const ls=40, lx=pad, ly=py;
-  ctx.save();
-  const lg=ctx.createLinearGradient(lx,ly,lx+ls,ly+ls);
-  lg.addColorStop(0,theme.p); lg.addColorStop(1,theme.a);
-  ctx.fillStyle=lg; rrect(lx,ly,ls,ls,9); ctx.fill();
-  if (S.brand.logo) {
-    ctx.save(); rrect(lx+2,ly+2,ls-4,ls-4,7); ctx.clip();
-    ctx.drawImage(S.brand.logo,lx+2,ly+2,ls-4,ls-4); ctx.restore();
-  } else {
-    ctx.fillStyle='rgba(0,0,0,.85)'; ctx.font=`800 20px 'Space Grotesk'`;
-    ctx.textAlign='center'; ctx.textBaseline='middle';
-    ctx.fillText('DV', lx+ls/2, ly+ls/2+1);
+  const mark = (S.brand.handle || S.brand.name || '').trim();
+  if (mark) {
+    ctx.save();
+    ctx.fillStyle='rgba(255,255,255,.34)';
+    ctx.font=`600 24px 'JetBrains Mono'`;
+    ctx.textAlign='left'; ctx.textBaseline='middle';
+    ctx.shadowColor='rgba(0,0,0,.75)'; ctx.shadowBlur=10;
+    ctx.fillText(mark, pad, y);
+    ctx.restore();
   }
-  ctx.restore();
 
-  // Channel name — small, muted
-  ctx.save();
-  ctx.fillStyle='rgba(255,255,255,.6)'; ctx.font=`600 22px 'Space Grotesk'`;
-  ctx.textAlign='left'; ctx.textBaseline='middle';
-  ctx.shadowColor='rgba(0,0,0,.8)'; ctx.shadowBlur=8;
-  ctx.fillText(S.brand.name||'DailyVolex', lx+ls+12, ly+ls/2);
-  ctx.restore();
+  // Clock is opt-in — off by default.
+  if (S.showClock) {
+    const now=new Date();
+    const hh=String(now.getHours()).padStart(2,'0');
+    const mm=String(now.getMinutes()).padStart(2,'0');
+    const colon=(now.getSeconds()%2===0)?':':' ';
+    const right=contentRight(W,pad);
+    ctx.save();
+    ctx.fillStyle='rgba(255,255,255,.5)'; ctx.font=`600 26px 'JetBrains Mono'`;
+    ctx.textAlign='right'; ctx.textBaseline='middle';
+    ctx.shadowColor='rgba(0,0,0,.8)'; ctx.shadowBlur=8;
+    ctx.fillText(hh+colon+mm, right-24, y);
+    ctx.restore();
 
-  // Live clock + blinking dot top-right — broadcast style
-  const now=new Date();
-  const hh=String(now.getHours()).padStart(2,'0');
-  const mm=String(now.getMinutes()).padStart(2,'0');
-  const colon=(now.getSeconds()%2===0)?':':' ';
-  ctx.save();
-  ctx.fillStyle='rgba(255,255,255,.55)'; ctx.font=`600 26px 'JetBrains Mono'`;
-  ctx.textAlign='right'; ctx.textBaseline='middle';
-  ctx.shadowColor='rgba(0,0,0,.8)'; ctx.shadowBlur=8;
-  ctx.fillText(hh+colon+mm, W-pad-26, py+ls/2);
-  ctx.restore();
-
-  const t=Date.now()*.003;
-  const blink=0.4+0.6*Math.sin(t);
-  ctx.save();
-  ctx.globalAlpha=blink;
-  ctx.fillStyle=theme.p; ctx.shadowColor=theme.p; ctx.shadowBlur=14;
-  ctx.beginPath(); ctx.arc(W-pad, py+ls/2, 8, 0, Math.PI*2); ctx.fill();
-  ctx.restore();
+    const blink=0.4+0.6*Math.sin(Date.now()*.003);
+    ctx.save();
+    ctx.globalAlpha=blink;
+    ctx.fillStyle=theme.p; ctx.shadowColor=theme.p; ctx.shadowBlur=14;
+    ctx.beginPath(); ctx.arc(right, y, 8, 0, Math.PI*2); ctx.fill();
+    ctx.restore();
+  }
 }
 
 /* ═══════════════════════════════════════════════
@@ -1345,70 +1357,103 @@ function drawBreaking(theme) {
   if(d.showTicker) drawTicker(d.ticker,theme);
 }
 
+/* Vertical band the content may occupy: inside Instagram's overlays in 9:16,
+   a modest margin otherwise, and always clear of the ticker. */
+function contentBand(H, tickerH) {
+  const z = S.ratio==='9:16' ? IG_SAFE['9:16'] : IG_SAFE.feed;
+  return { top: H*z.top + 60, bottom: Math.min(H*(1-z.bottom), H-tickerH-24) };
+}
+
+/* Shrink a single line until it fits, then ellipsise as a last resort. */
+function fitLine(text, maxW, size, weight, family, minSize) {
+  let sz=size;
+  ctx.font=`${weight} ${sz}px '${family}'`;
+  while (ctx.measureText(text).width > maxW && sz > minSize) {
+    sz -= 2; ctx.font=`${weight} ${sz}px '${family}'`;
+  }
+  let t=text;
+  if (ctx.measureText(t).width > maxW) {
+    while (t.length>1 && ctx.measureText(t+'…').width > maxW) t=t.slice(0,-1);
+    t=t.replace(/\s+$/,'')+'…';
+  }
+  return { text:t, size:sz };
+}
+
 /* ═══════════════════════════════════════════════
-   LAYOUT: TOP STORIES — numbered headlines floating
+   LAYOUT: TOP STORIES — a numbered rundown that fills the frame
    ═══════════════════════════════════════════════ */
 function drawStories(theme) {
   const W=cv.width, H=cv.height, d=S.stories;
   const tickerH=d.showTicker?56:0;
-  const px=64;
+  const px=64, right=contentRight(W,px), maxW=right-px;
+  const band=contentBand(H,tickerH);
 
-  // Scrim — covers lower 2/3 so headlines read clearly
-  const scrim=ctx.createLinearGradient(0,H*.28,0,H-tickerH);
+  // Scrim behind the whole content band
+  const scrim=ctx.createLinearGradient(0,band.top-120,0,H-tickerH);
   scrim.addColorStop(0,'rgba(0,0,0,0)');
-  scrim.addColorStop(.30,'rgba(0,0,0,.68)');
-  scrim.addColorStop(1,'rgba(0,0,0,.92)');
-  ctx.fillStyle=scrim; ctx.fillRect(0,H*.28,W,H*.72-tickerH);
+  scrim.addColorStop(.22,'rgba(0,0,0,.72)');
+  scrim.addColorStop(1,'rgba(0,0,0,.93)');
+  ctx.fillStyle=scrim; ctx.fillRect(0,band.top-120,W,H-tickerH-(band.top-120));
 
-  // Section label
-  ctx.save();
-  ctx.fillStyle='rgba(255,255,255,.30)'; ctx.font=`600 22px 'JetBrains Mono'`;
-  ctx.textAlign='left'; ctx.textBaseline='top';
-  ctx.fillText(d.label+'  ·  '+d.date, px, H*.38);
+  // ── Header: big label, date beneath, accent rule
+  let y=band.top;
+  const tH=introT(0,500);
+  ctx.save(); ctx.globalAlpha=tH;
+  ctx.fillStyle='#fff'; ctx.textAlign='left'; ctx.textBaseline='top';
+  ctx.shadowColor='rgba(0,0,0,.85)'; ctx.shadowBlur=18;
+  const lab=fitLine((d.label||'').toUpperCase(), maxW, 60, '800', 'Space Grotesk', 34);
+  ctx.font=`800 ${lab.size}px 'Space Grotesk'`;
+  ctx.fillText(lab.text, px, y);
+  y += lab.size + 12;
+  ctx.shadowBlur=0;
+  ctx.fillStyle='rgba(255,255,255,.42)'; ctx.font=`400 26px 'Inter'`;
+  ctx.fillText(d.date||'', px, y);
+  y += 34;
   ctx.restore();
-
-  // Accent rule
-  ctx.save();
-  ctx.fillStyle=theme.p; ctx.shadowColor=theme.p; ctx.shadowBlur=10;
-  ctx.fillRect(px, H*.38+32, 48, 2);
+  ctx.save(); ctx.globalAlpha=introT(120,420);
+  ctx.fillStyle=theme.p; ctx.shadowColor=theme.p; ctx.shadowBlur=12;
+  ctx.fillRect(px, y, 64*introT(120,420), 3);
   ctx.restore();
+  y += 30;
 
-  // Numbered headline list
-  const items=d.items.slice(0,5);
-  const n=items.length;
-  const rowH=Math.min(108, Math.floor((H*.54-tickerH)/n));
-  const startY=H*.38+52;
+  // ── Rundown: rows share the remaining band evenly
+  const items=d.items.filter(t=>String(t).trim()!=='').slice(0,6);
+  if(!items.length){ if(d.showTicker) drawTicker(d.ticker,theme); return; }
+  const avail=band.bottom-y;
+  const rowH=avail/items.length;
+  const numW=64;
+  const bodySize=Math.max(26, Math.min(38, Math.round(rowH*0.30)));
+
   items.forEach((headline,i)=>{
-    const tr=introT(250+i*130,550);
-    const y=startY+i*rowH+(1-tr)*26;
-    ctx.save();
-    ctx.globalAlpha=tr;
-    if(i>0){ ctx.fillStyle='rgba(255,255,255,.06)'; ctx.fillRect(px,y,contentRight(W,px)-px,1); }
-    // Number badge
-    ctx.fillStyle=theme.p; ctx.font=`700 22px 'JetBrains Mono'`;
-    ctx.shadowColor=theme.p; ctx.shadowBlur=8;
+    const tr=introT(220+i*120,540);
+    const top=y+i*rowH+(1-tr)*22;
+    ctx.save(); ctx.globalAlpha=tr;
+
+    if(i>0){ ctx.fillStyle='rgba(255,255,255,.10)'; ctx.fillRect(px,top,maxW,1); }
+
+    const midY=top+rowH/2;
+    // Number, in the accent colour
+    ctx.fillStyle=theme.p; ctx.font=`800 ${Math.round(bodySize*0.92)}px 'JetBrains Mono'`;
     ctx.textAlign='left'; ctx.textBaseline='middle';
-    ctx.fillText(String(i+1).padStart(2,'0'), px, y+rowH/2);
+    ctx.shadowColor=theme.p; ctx.shadowBlur=10;
+    ctx.fillText(String(i+1).padStart(2,'0'), px, midY);
     ctx.shadowBlur=0;
-    // Headline text — wraps if too long
-    ctx.fillStyle='#fff'; ctx.font=`500 30px 'Inter'`;
-    ctx.shadowColor='rgba(0,0,0,.85)'; ctx.shadowBlur=14;
-    const maxW=contentRight(W,px)-(px+56);
-    const hx=px+56;
-    // Simple word-wrap up to 2 lines
-    const words=headline.split(' ');
-    let line1='', line2='';
-    for(const w of words){
-      if(ctx.measureText(line1+w).width<maxW) line1+=(line1?' ':'')+w;
-      else line2+=(line2?' ':'')+w;
+
+    // Headline, wrapped to at most two lines
+    ctx.fillStyle='#fff'; ctx.font=`600 ${bodySize}px 'Inter'`;
+    ctx.shadowColor='rgba(0,0,0,.9)'; ctx.shadowBlur=16;
+    const tx=px+numW, tw=right-tx;
+    let lines=wrapLines(headline, tw);
+    if(lines.length>2){
+      let last=lines[1];
+      const restIdx=lines.slice(2).join(' ');
+      while(last.length>1 && ctx.measureText(last+'…').width>tw) last=last.slice(0,-1);
+      lines=[lines[0], last.replace(/\s+$/,'')+'…'];
+      void restIdx;
     }
-    if(line2){
-      ctx.fillText(line1, hx, y+rowH/2-16);
-      ctx.fillStyle='rgba(255,255,255,.75)'; ctx.font=`400 26px 'Inter'`;
-      ctx.fillText(line2, hx, y+rowH/2+18);
-    } else {
-      ctx.fillText(line1, hx, y+rowH/2);
-    }
+    const lh=bodySize*1.26;
+    const startY=midY-((lines.length-1)*lh)/2;
+    lines.forEach((ln,li)=>ctx.fillText(ln, tx, startY+li*lh));
     ctx.restore();
   });
 
@@ -1416,59 +1461,73 @@ function drawStories(theme) {
 }
 
 /* ═══════════════════════════════════════════════
-   LAYOUT: KEY FACTS — label / value breakdown
+   LAYOUT: KEY FACTS — label above, answer below, stacked.
+   Reads far better on a phone than a cramped two-column table.
    ═══════════════════════════════════════════════ */
 function drawFacts(theme) {
   const W=cv.width, H=cv.height, d=S.facts;
   const tickerH=d.showTicker?56:0;
-  const px=64;
+  const px=64, right=contentRight(W,px), maxW=right-px;
+  const band=contentBand(H,tickerH);
 
-  // Deep scrim — facts need clean readability
-  const scrim=ctx.createLinearGradient(0,H*.18,0,H-tickerH);
+  const scrim=ctx.createLinearGradient(0,band.top-120,0,H-tickerH);
   scrim.addColorStop(0,'rgba(0,0,0,0)');
-  scrim.addColorStop(.2,'rgba(0,0,0,.78)');
-  scrim.addColorStop(1,'rgba(0,0,0,.94)');
-  ctx.fillStyle=scrim; ctx.fillRect(0,H*.18,W,H*.82-tickerH);
+  scrim.addColorStop(.22,'rgba(0,0,0,.76)');
+  scrim.addColorStop(1,'rgba(0,0,0,.95)');
+  ctx.fillStyle=scrim; ctx.fillRect(0,band.top-120,W,H-tickerH-(band.top-120));
 
-  // Title
-  ctx.save();
-  ctx.fillStyle='#fff'; ctx.font=`800 52px 'Space Grotesk'`;
-  ctx.textAlign='left'; ctx.textBaseline='top';
-  ctx.shadowColor='rgba(0,0,0,.8)'; ctx.shadowBlur=20;
-  ctx.fillText(d.title, px, H*.26);
+  // ── Title block
+  let y=band.top;
+  ctx.save(); ctx.globalAlpha=introT(0,500);
+  ctx.fillStyle='#fff'; ctx.textAlign='left'; ctx.textBaseline='top';
+  ctx.shadowColor='rgba(0,0,0,.85)'; ctx.shadowBlur=20;
+  let tSize=58; ctx.font=`800 ${tSize}px 'Space Grotesk'`;
+  let tLines=wrapLines(d.title||'', maxW);
+  while(tLines.length>2 && tSize>36){ tSize-=3; ctx.font=`800 ${tSize}px 'Space Grotesk'`; tLines=wrapLines(d.title||'', maxW); }
+  tLines.slice(0,2).forEach((ln,i)=>ctx.fillText(ln, px, y+i*tSize*1.1));
+  y += Math.min(tLines.length,2)*tSize*1.1 + 10;
+  ctx.shadowBlur=0;
+  ctx.fillStyle='rgba(255,255,255,.40)'; ctx.font=`400 25px 'Inter'`;
+  ctx.fillText(d.subtitle||'', px, y);
+  y += 34;
   ctx.restore();
-  ctx.save();
-  ctx.fillStyle='rgba(255,255,255,.3)'; ctx.font=`400 24px 'Inter'`;
-  ctx.textAlign='left'; ctx.textBaseline='top';
-  ctx.fillText(d.subtitle, px, H*.26+62);
+  ctx.save(); ctx.globalAlpha=introT(120,420);
+  ctx.fillStyle=theme.p; ctx.shadowColor=theme.p; ctx.shadowBlur=12;
+  ctx.fillRect(px, y, 64*introT(120,420), 3);
   ctx.restore();
+  y += 34;
 
-  // Accent rule
-  ctx.save();
-  ctx.fillStyle=theme.p; ctx.shadowColor=theme.p; ctx.shadowBlur=10;
-  ctx.fillRect(px, H*.26+96, 48, 2);
-  ctx.restore();
+  // ── Stacked rows
+  const rows=d.rows.filter(r=>String(r.label).trim()!=='' || String(r.value).trim()!=='').slice(0,7);
+  if(!rows.length){ if(d.showTicker) drawTicker(d.ticker,theme); return; }
+  const avail=band.bottom-y;
+  const rowH=avail/rows.length;
+  const labSize=Math.max(19, Math.min(24, Math.round(rowH*0.17)));
+  const valSize=Math.max(28, Math.min(44, Math.round(rowH*0.34)));
 
-  // Label / Value rows — clean, no type icons
-  const n=d.rows.length;
-  const rowH=Math.min(88, Math.floor((H*.62-tickerH)/n));
-  const startY=H*.26+112;
-  d.rows.forEach((row,i)=>{
-    const tr=introT(250+i*110,500);
-    const y=startY+i*rowH+(1-tr)*22;
-    ctx.save();
-    ctx.globalAlpha=tr;
-    if(i>0){ ctx.fillStyle='rgba(255,255,255,.07)'; ctx.fillRect(px,y,contentRight(W,px)-px,1); }
-    // Label
-    ctx.fillStyle='rgba(255,255,255,.55)'; ctx.font=`400 26px 'Inter'`;
-    ctx.textAlign='left'; ctx.textBaseline='middle';
+  rows.forEach((row,i)=>{
+    const tr=introT(220+i*105,520);
+    const top=y+i*rowH+(1-tr)*20;
+    ctx.save(); ctx.globalAlpha=tr;
+
+    if(i>0){ ctx.fillStyle='rgba(255,255,255,.09)'; ctx.fillRect(px,top,maxW,1); }
+
+    const inner=top+(rowH-(labSize+valSize+14))/2;
+    // Label — small caps, accent tinted
+    ctx.fillStyle=`rgba(${theme.pr},.95)`;
+    ctx.font=`700 ${labSize}px 'JetBrains Mono'`;
+    ctx.textAlign='left'; ctx.textBaseline='top';
     ctx.shadowColor='rgba(0,0,0,.7)'; ctx.shadowBlur=8;
-    ctx.fillText(row.label, px, y+rowH/2);
-    // Value — right, white, slightly larger
-    ctx.fillStyle='#fff'; ctx.font=`700 30px 'Space Grotesk'`;
-    ctx.shadowColor='rgba(0,0,0,.8)'; ctx.shadowBlur=12;
-    ctx.textAlign='right';
-    ctx.fillText(row.value, contentRight(W,px), y+rowH/2);
+    const lab=fitLine(String(row.label||'').toUpperCase(), maxW, labSize, '700', 'JetBrains Mono', 15);
+    ctx.font=`700 ${lab.size}px 'JetBrains Mono'`;
+    ctx.fillText(lab.text, px, inner);
+
+    // Value — the answer, large and white
+    ctx.fillStyle='#fff';
+    ctx.shadowColor='rgba(0,0,0,.85)'; ctx.shadowBlur=14;
+    const val=fitLine(String(row.value||''), maxW, valSize, '700', 'Space Grotesk', 22);
+    ctx.font=`700 ${val.size}px 'Space Grotesk'`;
+    ctx.fillText(val.text, px, inner+labSize+10);
     ctx.restore();
   });
 
@@ -1678,22 +1737,26 @@ function renderPanel() {
         <div class="panel-head"><div class="panel-head-icon">📰</div><div class="panel-head-title">Top Stories</div></div>
         <div class="panel-body">
           <div class="field">
-            <label>Section Label</label>
-            <input type="text" id="f-stories-label" value="${S.stories.label}">
+            <label>Heading</label>
+            <input type="text" id="f-stories-label" value="${esc(S.stories.label)}" placeholder="TOP STORIES">
           </div>
           <div class="field">
             <label>Date</label>
-            <input type="text" id="f-stories-date" value="${S.stories.date}">
+            <input type="text" id="f-stories-date" value="${esc(S.stories.date)}" placeholder="July 2026">
           </div>
-          <div class="tbl-rows" id="storiesRows">
+          <label style="font-size:.64rem;font-weight:600;color:var(--ui-muted);text-transform:uppercase;letter-spacing:.5px">Headlines</label>
+          <div class="erows" id="storiesRows">
             ${S.stories.items.map((item,i)=>`
-              <div class="tbl-row" data-idx="${i}">
-                <span style="font-size:.7rem;font-family:var(--font-mono);color:var(--ui-muted);padding-right:6px;flex-shrink:0">${String(i+1).padStart(2,'0')}</span>
-                <input class="tr-headline" placeholder="Headline…" value="${item}" style="flex:1">
+              <div class="erow" data-idx="${i}">
+                <div class="erow-num">${String(i+1).padStart(2,'0')}</div>
+                <div class="erow-fields">
+                  <textarea class="tr-headline" rows="2" placeholder="Write the headline…">${esc(item)}</textarea>
+                </div>
+                <button class="erow-del" data-del="story" title="Remove">✕</button>
               </div>
             `).join('')}
           </div>
-          <button class="add-row-btn" id="addStoryBtn">+ Add Headline</button>
+          <button class="add-row-btn" id="addStoryBtn">+ Add headline</button>
           <div class="toggle-row">
             <span class="toggle-label">Ticker</span>
             <label class="sw"><input type="checkbox" id="f-stories-ticker-toggle" ${S.stories.showTicker?'checked':''}><span class="sw-track"></span></label>
@@ -1711,21 +1774,27 @@ function renderPanel() {
         <div class="panel-body">
           <div class="field">
             <label>Title</label>
-            <input type="text" id="f-facts-title" value="${S.facts.title}">
+            <input type="text" id="f-facts-title" value="${esc(S.facts.title)}" placeholder="WHAT YOU NEED TO KNOW">
           </div>
           <div class="field">
             <label>Subtitle</label>
-            <input type="text" id="f-facts-subtitle" value="${S.facts.subtitle}">
+            <input type="text" id="f-facts-subtitle" value="${esc(S.facts.subtitle)}" placeholder="DailyVolex · July 2026">
           </div>
-          <div class="tbl-rows" id="factsRows">
+          <label style="font-size:.64rem;font-weight:600;color:var(--ui-muted);text-transform:uppercase;letter-spacing:.5px">Facts</label>
+          <div class="erows" id="factsRows">
             ${S.facts.rows.map((r,i)=>`
-              <div class="tbl-row" data-idx="${i}">
-                <input class="tr-label" placeholder="Label" value="${r.label}">
-                <input class="tr-value" placeholder="Value" value="${r.value}">
+              <div class="erow" data-idx="${i}">
+                <div class="erow-num">${String(i+1).padStart(2,'0')}</div>
+                <div class="erow-fields">
+                  <input class="tr-label ef-label" value="${esc(r.label)}" placeholder="LABEL">
+                  <div class="ef-sep"></div>
+                  <input class="tr-value ef-value" value="${esc(r.value)}" placeholder="The answer">
+                </div>
+                <button class="erow-del" data-del="fact" title="Remove">✕</button>
               </div>
             `).join('')}
           </div>
-          <button class="add-row-btn" id="addFactBtn">+ Add Row</button>
+          <button class="add-row-btn" id="addFactBtn">+ Add fact</button>
           <div class="toggle-row">
             <span class="toggle-label">Ticker</span>
             <label class="sw"><input type="checkbox" id="f-facts-ticker-toggle" ${S.facts.showTicker?'checked':''}><span class="sw-track"></span></label>
@@ -1821,27 +1890,33 @@ function bindPanelEvents() {
   on('f-stories-label','input', e=>{ S.stories.label=e.target.value; });
   on('f-stories-date','input', e=>{ S.stories.date=e.target.value; });
   on('f-stories-ticker-toggle','change', e=>{ S.stories.showTicker=e.target.checked; });
-  on('addStoryBtn','click', ()=>{
-    S.stories.items.push('');
-    renderPanel();
+  on('addStoryBtn','click', ()=>{ S.stories.items.push(''); renderPanel();
+    const rows=document.querySelectorAll('#storiesRows .erow');
+    const last=rows[rows.length-1]; if(last){ last.scrollIntoView({block:'nearest'}); last.querySelector('textarea').focus(); }
   });
-  document.querySelectorAll('#storiesRows .tbl-row').forEach(row=>{
+  document.querySelectorAll('#storiesRows .erow').forEach(row=>{
     const i=+row.dataset.idx;
     row.querySelector('.tr-headline').addEventListener('input',e=>S.stories.items[i]=e.target.value);
+    row.querySelector('.erow-del').addEventListener('click',()=>{
+      S.stories.items.splice(i,1); renderPanel();
+    });
   });
 
   // Key Facts
   on('f-facts-title','input', e=>{ S.facts.title=e.target.value; });
   on('f-facts-subtitle','input', e=>{ S.facts.subtitle=e.target.value; });
   on('f-facts-ticker-toggle','change', e=>{ S.facts.showTicker=e.target.checked; });
-  on('addFactBtn','click', ()=>{
-    S.facts.rows.push({label:'',value:''});
-    renderPanel();
+  on('addFactBtn','click', ()=>{ S.facts.rows.push({label:'',value:''}); renderPanel();
+    const rows=document.querySelectorAll('#factsRows .erow');
+    const last=rows[rows.length-1]; if(last){ last.scrollIntoView({block:'nearest'}); last.querySelector('.tr-label').focus(); }
   });
-  document.querySelectorAll('#factsRows .tbl-row').forEach(row=>{
+  document.querySelectorAll('#factsRows .erow').forEach(row=>{
     const i=+row.dataset.idx;
     row.querySelector('.tr-label').addEventListener('input',e=>S.facts.rows[i].label=e.target.value);
     row.querySelector('.tr-value').addEventListener('input',e=>S.facts.rows[i].value=e.target.value);
+    row.querySelector('.erow-del').addEventListener('click',()=>{
+      S.facts.rows.splice(i,1); renderPanel();
+    });
   });
 
   // Quote
@@ -1963,6 +2038,7 @@ function saveState() {
     brand:{name:S.brand.name,handle:S.brand.handle},
     breaking:S.breaking, stories:S.stories, facts:S.facts, quote:S.quote,
     customColor:S.customColor, recordDuration:S.recordDuration,
+    showClock:S.showClock,
   };
   try { localStorage.setItem('dvx_v2',JSON.stringify(snap)); showToast('Session saved'); }
   catch(e) { showToast('Save failed (storage full?)'); }
@@ -1984,6 +2060,8 @@ function loadState() {
       THEMES.custom.pr=hexToRgb(snap.customColor);
     }
     if(snap.recordDuration) S.recordDuration=snap.recordDuration;
+    S.showClock=!!snap.showClock;
+    const ck=document.getElementById('clockToggle'); if(ck) ck.checked=S.showClock;
     setLayout(snap.layout||'breaking');
     setTheme(snap.theme||'bbc');
     setRatio(snap.ratio||'9:16');
@@ -1998,6 +2076,14 @@ function loadState() {
 /* ═══════════════════════════════════════════════
    UTILITIES
    ═══════════════════════════════════════════════ */
+/* Escape user text before it goes into panel markup. Without this a headline
+   containing a quote breaks out of the attribute and mangles the form. */
+function esc(v) {
+  return String(v==null?'':v)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
 function hexToRgb(hex) {
   const r=parseInt(hex.slice(1,3),16);
   const g=parseInt(hex.slice(3,5),16);
@@ -2084,20 +2170,9 @@ function initEvents() {
   document.getElementById('brandName').addEventListener('input', e=>{ S.brand.name=e.target.value; });
   document.getElementById('brandHandle').addEventListener('input', e=>{ S.brand.handle=e.target.value; });
 
-  // Logo
-  const logoDrop=document.getElementById('logoDrop');
-  const logoInput=document.getElementById('logoInput');
-  logoDrop.addEventListener('click', ()=>logoInput.click());
-  logoInput.addEventListener('change', e=>{
-    const f=e.target.files[0]; if(!f) return;
-    const url=URL.createObjectURL(f);
-    const img=new Image(); img.onload=()=>{
-      S.brand.logo=img;
-      document.getElementById('logoPreview').src=url;
-      document.getElementById('logoPreview').style.display='';
-      document.getElementById('logoDropLabel').style.display='none';
-    }; img.src=url;
-  });
+  // Clock (off by default — the graphic carries the handle instead)
+  const clkToggle=document.getElementById('clockToggle');
+  if(clkToggle) clkToggle.addEventListener('change', e=>{ S.showClock=e.target.checked; });
 
   // Video
   document.getElementById('videoInput').addEventListener('change', e=>{
