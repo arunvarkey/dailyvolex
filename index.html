@@ -57,6 +57,15 @@
   --tg: rgba(187,25,25,0.15);
   --radius: 10px;
 }
+/* iOS safe-area insets, named once. viewport-fit=cover lets the app paint
+   edge to edge, so the notch / Dynamic Island, the home bar and the landscape
+   ear all have to be padded around explicitly or they cover the controls. */
+:root{
+  --sa-top:    env(safe-area-inset-top, 0px);
+  --sa-bottom: env(safe-area-inset-bottom, 0px);
+  --sa-left:   env(safe-area-inset-left, 0px);
+  --sa-right:  env(safe-area-inset-right, 0px);
+}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;background:var(--ui-bg);color:var(--ui-text);font-family:var(--font);font-size:14px;overflow:hidden}
 ::selection{background:rgba(187,25,25,.28)}
@@ -388,14 +397,16 @@ canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
   html,body{overflow:hidden;height:var(--app-h,100dvh);position:fixed;width:100%}
 
   /* Toast clears the tab bar */
-  #toast{bottom:calc(72px + env(safe-area-inset-bottom, 0px));right:.75rem;left:.75rem;max-width:none}
+  #toast{bottom:calc(72px + var(--sa-bottom));
+    right:calc(.75rem + var(--sa-right));left:calc(.75rem + var(--sa-left));max-width:none}
 
   /* Header wraps onto two rows instead of scrolling sideways. Everything on
      one row needed 377px, so on a 360px phone the Save button fell off the
      edge entirely. Row 1 is brand + Save/Load; the layout picker gets row 2
      to itself as four equal segments, which fits any width by construction. */
   header{
-    min-height:48px;height:auto;padding:0 .6rem 5px;gap:.4rem;
+    min-height:calc(48px + var(--sa-top));height:auto;
+    padding:var(--sa-top) .6rem 5px;gap:.4rem;
     flex-wrap:wrap;row-gap:4px;overflow:visible;
   }
   .brand{order:0;min-width:0}
@@ -424,7 +435,11 @@ canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
      flex:1, and in a flex column that overrides any height we set on it — so
      the bar's 60px was never subtracted and the preview ran underneath it.
      Padding on the shell shrinks the flex content box, which flex respects. */
-  #app{ padding-bottom:calc(60px + env(safe-area-inset-bottom, 0px)); }
+  #app{
+    padding-left:var(--sa-left);
+    padding-right:var(--sa-right);
+    padding-bottom:calc(60px + var(--sa-bottom));
+  }
 
   /* Main area — preview fills space above tab bar.
      width/max-width pin it to the viewport: without them the oversized
@@ -446,7 +461,7 @@ canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
     display:flex;
     position:fixed;
     left:0;right:0;
-    bottom:calc(60px + env(safe-area-inset-bottom, 0px));
+    bottom:calc(60px + var(--sa-bottom));
     height:calc(var(--app-h,100dvh) * .58);
     overflow-y:auto;
     z-index:50;
@@ -456,7 +471,7 @@ canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
     box-shadow:0 -10px 44px rgba(0,0,0,.75);
     width:100%;
     flex-direction:column;
-    padding:1rem .85rem calc(1rem + env(safe-area-inset-bottom, 0px));
+    padding:1rem calc(.85rem + var(--sa-right)) calc(1rem + var(--sa-bottom)) calc(.85rem + var(--sa-left));
     gap:.45rem;
     -webkit-overflow-scrolling:touch;
     background:var(--ui-panel);
@@ -488,8 +503,10 @@ canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
   /* Bottom tab bar with iPhone home-bar safe area */
   #mob-tabs{
     position:fixed;bottom:0;left:0;right:0;
-    height:calc(60px + env(safe-area-inset-bottom, 0px));
-    padding-bottom:env(safe-area-inset-bottom, 0px);
+    height:calc(60px + var(--sa-bottom));
+    padding-bottom:var(--sa-bottom);
+    padding-left:var(--sa-left);
+    padding-right:var(--sa-right);
     background:var(--ui-surface);
     border-top:1px solid var(--ui-border);
     display:flex;align-items:stretch;
@@ -536,7 +553,8 @@ canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
 /* ── Install-to-home-screen hint ── */
 #installHint{
   display:none;position:fixed;z-index:120;
-  left:.6rem;right:.6rem;bottom:calc(68px + env(safe-area-inset-bottom, 0px));
+  left:calc(.6rem + var(--sa-left));right:calc(.6rem + var(--sa-right));
+  bottom:calc(68px + var(--sa-bottom));
   background:rgba(16,16,24,.97);border:1px solid var(--ui-border2);
   border-radius:14px;padding:.7rem .8rem;
   align-items:center;gap:.65rem;
