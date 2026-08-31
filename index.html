@@ -572,6 +572,28 @@ canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
   .brand{gap:0}
 }
 
+/* ── Finished-file offer (iOS, where a scripted download does nothing) ── */
+#fileOffer{
+  position:fixed;z-index:130;left:.6rem;right:.6rem;
+  bottom:calc(68px + var(--sa-bottom));
+  background:rgba(16,16,24,.98);border:1px solid var(--tp);border-radius:14px;
+  padding:.85rem .9rem;box-shadow:0 12px 40px rgba(0,0,0,.7)
+}
+.fo-title{font-family:var(--font-head);font-weight:700;font-size:.9rem;color:#fff}
+.fo-sub{font-size:.72rem;color:var(--ui-muted);margin-top:.15rem;line-height:1.45}
+.fo-actions{display:flex;gap:.5rem;margin-top:.6rem}
+.fo-open{
+  flex:1;text-align:center;padding:.6rem;border-radius:9px;text-decoration:none;
+  background:linear-gradient(135deg,var(--tp),#8b0000);color:#fff;
+  font-family:var(--font);font-size:.8rem;font-weight:700
+}
+.fo-close{
+  padding:.6rem .8rem;border-radius:9px;border:1px solid var(--ui-border2);
+  background:transparent;color:var(--ui-muted);font-family:var(--font);
+  font-size:.8rem;cursor:pointer
+}
+@media (min-width:769px){ #fileOffer{left:auto;right:1.5rem;width:320px;bottom:1.5rem} }
+
 /* ── Install-to-home-screen hint ── */
 #installHint{
   display:none;position:fixed;z-index:120;
@@ -746,6 +768,11 @@ canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
     <button class="look-btn" data-look="neon"><span class="look-icon">✨</span>Neon</button>
     <button class="look-btn" data-look="bw"><span class="look-icon">🎞️</span>B&W</button>
     <button class="look-btn" data-look="raw"><span class="look-icon">📹</span>Raw</button>
+  </div>
+  <div class="toggle-row" id="soundRow" style="display:none">
+    <span class="toggle-label">Sound
+      <span class="toggle-sub">Record the clip's audio</span></span>
+    <label class="sw"><input type="checkbox" id="soundToggle" checked><span class="sw-track"></span></label>
   </div>
   <div class="toggle-row" id="letterboxRow" style="display:none">
     <span class="toggle-label">Letterbox bars<span class="toggle-sub">Cinematic 2.35:1 crop</span></span>
@@ -935,6 +962,7 @@ const S = {
   recording: false,
   guides: false,
   showClock: false,
+  sound: true,
   recStart: 0,
   introStart: performance.now(),
   particles: [],
@@ -1953,15 +1981,25 @@ function bindPanelEvents() {
   if(vidBtn) {
     vidBtn.addEventListener('click', async ()=>{
       if(S.recording) return;
-      if(typeof MediaRecorder==='undefined'){ showToast('Recording not supported in this browser'); return; }
+      if(typeof MediaRecorder==='undefined'){ showToast('Recording is not supported in this browser.'); return; }
+      if(typeof cv.captureStream!=='function'){ showToast('This browser cannot record the canvas. Try Safari 15+ or Chrome.'); return; }
+      let stream;
+      try { stream=cv.captureStream(30); }
+      catch(err){ showToast('Could not start recording: '+err.message); return; }
       S.recording=true; renderPanel();
       showToast(`Recording ${S.recordDuration}s…`,0,true);
-      const stream=cv.captureStream(30);
+      // Canvas capture is silent — attach the clip's audio if we have it.
+      const atrack=recordingAudioTrack();
+      if(atrack){ try{ stream.addTrack(atrack); }catch(e){} }
       // iOS Safari records MP4; Chrome/Firefox record WebM
       const types=['video/mp4;codecs=avc1','video/mp4','video/webm;codecs=vp9','video/webm;codecs=vp8','video/webm'];
       let mime='';
       for(const t of types) if(MediaRecorder.isTypeSupported(t)){mime=t;break;}
-      const rec=new MediaRecorder(stream, mime?{mimeType:mime}:{});
+      let rec;
+      try { rec=new MediaRecorder(stream, mime?{mimeType:mime}:{}); }
+      catch(err){ S.recording=false; renderPanel(); showToast('Recorder rejected this format: '+err.message); return; }
+      rec.onerror=ev=>{ S.recording=false; S.recStart=0; renderPanel();
+        showToast('Recording failed: '+((ev.error&&ev.error.name)||'unknown error')); };
       const isMp4=mime.startsWith('video/mp4');
       const chunks=[];
       rec.ondataavailable=e=>{ if(e.data.size>0) chunks.push(e.data); };
@@ -1988,6 +2026,53 @@ function bindPanelEvents() {
       setTimeout(()=>rec.stop(), S.recordDuration*1000);
     });
   }
+}
+
+/* ═══════════════════════════════════════════════
+   AUDIO
+   A canvas stream is video only, so the background clip's sound never
+   reached the recording. Route the element through Web Audio: one branch
+   feeds the recorder, a separate branch feeds the speakers, so preview
+   volume and recorded audio stay independent.
+   Built lazily — it needs a user gesture, and createMediaElementSource can
+   only ever be called once for an element.
+   ═══════════════════════════════════════════════ */
+let _actx=null, _asrc=null, _adest=null, _again=null, _audioFailed=false;
+
+function audioGraph() {
+  if (_actx || _audioFailed) return _actx;
+  const AC = window.AudioContext || window.webkitAudioContext;
+  if (!AC) { _audioFailed=true; return null; }
+  try {
+    _actx  = new AC();
+    _asrc  = _actx.createMediaElementSource(vid);
+    _adest = _actx.createMediaStreamDestination();
+    _again = _actx.createGain();
+    _again.gain.value = S.sound ? 1 : 0;
+    _asrc.connect(_adest);                    // -> what gets recorded
+    _asrc.connect(_again).connect(_actx.destination);  // -> what you hear
+    // Routed through the graph now, so the element's own mute must come off
+    // or nothing reaches either branch.
+    vid.muted = false;
+  } catch (e) {
+    _audioFailed = true; _actx = null;
+  }
+  return _actx;
+}
+
+/* An audio track for the recorder, or null if this browser/clip has none. */
+function recordingAudioTrack() {
+  if (!S.sound || !S.videoLoaded) return null;
+  const ctx2 = audioGraph();
+  if (!ctx2) return null;
+  if (ctx2.state === 'suspended') ctx2.resume().catch(()=>{});
+  const tr = _adest.stream.getAudioTracks()[0];
+  return tr || null;
+}
+
+function applyPreviewVolume() {
+  if (_again) _again.gain.value = S.sound ? 1 : 0;
+  else if (!S.sound) vid.muted = true;
 }
 
 /* Which container this browser can actually record.
@@ -2017,16 +2102,45 @@ async function deliverFile(blob, filename, mime, shareText, downloadMsg) {
     } catch (err) {
       // User dismissed the sheet — nothing more to do.
       if (err && err.name === 'AbortError') { hideToast(); return; }
-      // Anything else: fall through to the download path below.
+      // Anything else: fall through below.
     }
   }
 
   const url = URL.createObjectURL(blob);
+  const cleanup = ()=>setTimeout(()=>URL.revokeObjectURL(url), 120000);
+
+  // iOS ignores the download attribute: the click looks like nothing happened,
+  // which is why saving a Reel appeared to be missing entirely. Offer the file
+  // as something tappable instead.
+  const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
+           || (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1);
+  if (iOS) { offerFileLink(url, filename, mime); cleanup(); return; }
+
   const a = document.createElement('a');
   a.download = filename; a.href = url;
   document.body.appendChild(a); a.click(); a.remove();
-  setTimeout(()=>URL.revokeObjectURL(url), 60000);
+  cleanup();
   showToast(downloadMsg);
+}
+
+/* A tappable card holding the finished file, for browsers where a scripted
+   download is a no-op. Opening it full screen lets the viewer save it. */
+function offerFileLink(url, filename, mime) {
+  document.getElementById('fileOffer')?.remove();
+  const isVideo = mime.startsWith('video/');
+  const box = document.createElement('div');
+  box.id = 'fileOffer';
+  box.innerHTML = `
+    <div class="fo-title">${isVideo?'Reel ready':'Image ready'}</div>
+    <div class="fo-sub">Open it, then press and hold to save${isVideo?' to Photos':''}.</div>
+    <div class="fo-actions">
+      <a class="fo-open" target="_blank" rel="noopener">Open ${isVideo?'video':'image'}</a>
+      <button class="fo-close" type="button">Close</button>
+    </div>`;
+  box.querySelector('.fo-open').href = url;
+  box.querySelector('.fo-close').addEventListener('click', ()=>box.remove());
+  document.body.appendChild(box);
+  hideToast();
 }
 
 /* ═══════════════════════════════════════════════
@@ -2140,6 +2254,15 @@ function initEvents() {
   const lbToggle=document.getElementById('letterboxToggle');
   if(lbToggle) lbToggle.addEventListener('change', e=>{ S.letterbox=e.target.checked; });
 
+  // Sound — a tap here is the user gesture that lets the audio graph start
+  const sndToggle=document.getElementById('soundToggle');
+  if(sndToggle) sndToggle.addEventListener('change', e=>{
+    S.sound=e.target.checked;
+    if(S.sound){ audioGraph(); if(_actx&&_actx.state==='suspended') _actx.resume().catch(()=>{}); }
+    applyPreviewVolume();
+    showToast(S.sound?'Sound on — it will be in the recording':'Sound off');
+  });
+
   // Safe-area guides (preview only)
   const gToggle=document.getElementById('guidesToggle');
   if(gToggle) gToggle.addEventListener('change', e=>{
@@ -2184,7 +2307,7 @@ function initEvents() {
       S.videoLoaded=true; vid.play();
       document.getElementById('vidName').textContent=f.name;
       document.getElementById('clearVideoBtn').style.display='';
-      ['vidLookSection','vidLookGrid','letterboxRow'].forEach(id=>{
+      ['vidLookSection','vidLookGrid','letterboxRow','soundRow'].forEach(id=>{
         const el=document.getElementById(id); if(el) el.style.display='';
       });
       showToast('Video loaded — Cinematic look active');
@@ -2194,7 +2317,7 @@ function initEvents() {
     S.videoLoaded=false; vid.src='';
     document.getElementById('vidName').textContent='No video — particle BG active';
     document.getElementById('clearVideoBtn').style.display='none';
-    ['vidLookSection','vidLookGrid','letterboxRow'].forEach(id=>{
+    ['vidLookSection','vidLookGrid','letterboxRow','soundRow'].forEach(id=>{
       const el=document.getElementById(id); if(el) el.style.display='none';
     });
   });
