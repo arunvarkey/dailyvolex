@@ -367,6 +367,11 @@ canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
 @keyframes spin{100%{transform:rotate(360deg)}}
 
 /* Util */
+/* Panels are flex columns with a fixed height. Without this their children
+   shrink to fit instead of overflowing, so the content is clipped AND there
+   is nothing to scroll — options simply become unreachable. */
+aside > *, .right-panel > * { flex-shrink:0 }
+
 /* ── Editor rows (Top Stories / Key Facts) ──
    The old rows crammed two inputs side by side with no way to remove one.
    These stack their fields, give each row a number and a delete control. */
@@ -546,9 +551,11 @@ canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
   .mob-tab svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
   .mob-tab.active{color:var(--tp)}
 
-  /* iOS: inputs must be ≥16px or Safari zooms the page on focus */
+  /* iOS: ANY text field under 16px makes Safari zoom the page on focus, so
+     this deliberately covers every input rather than a list that new controls
+     keep falling off. */
   .field input,.field textarea,.field select,
-  .asset-row input,.tbl-row input{font-size:16px}
+  input[type=text],input[type=number],textarea,select{font-size:16px}
   .field label{font-size:.7rem}
 
   /* Bigger touch targets */
@@ -571,6 +578,30 @@ canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
   .brand-name{display:none}
   .brand{gap:0}
 }
+
+/* ── Position pad + feed rows ── */
+.pos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.3rem;max-width:190px;margin:.1rem auto .2rem}
+.pos-btn{
+  aspect-ratio:1.6;border-radius:8px;border:1px solid var(--ui-border);
+  background:var(--ui-card);color:var(--ui-text);font-size:.9rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font-family:var(--font);
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation
+}
+.pos-btn:active{background:var(--ui-card2);border-color:var(--tp)}
+.pos-btn.reset{font-size:.62rem;font-weight:700;color:var(--ui-muted)}
+.pos-read{text-align:center;font-family:var(--font-mono);font-size:.66rem;color:var(--ui-muted);margin-bottom:.2rem}
+
+.feed-row{
+  display:flex;align-items:flex-start;gap:.5rem;background:var(--ui-card);
+  border:1px solid var(--ui-border);border-radius:9px;padding:.5rem .55rem
+}
+.feed-row .fr-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:.3rem}
+.feed-row .fr-name{font-size:.7rem;font-weight:700;color:var(--ui-text)}
+.feed-row input[type=text]{
+  width:100%;background:transparent;border:none;padding:.1rem 0;color:var(--ui-muted);
+  font-family:var(--font-mono);font-size:.72rem
+}
+.feed-row input[type=text]:focus{outline:none;color:var(--ui-text)}
 
 /* ── Finished-file offer (iOS, where a scripted download does nothing) ── */
 #fileOffer{
@@ -651,6 +682,16 @@ canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
 .look-btn:hover{background:var(--ui-card2);color:var(--ui-text)}
 .look-btn.active{border-color:var(--tp);color:var(--tp);background:var(--ui-card2)}
 .look-icon{font-size:.85rem;display:block;margin-bottom:2px}
+
+/* Last word on field sizing. Any text field under 16px makes iOS Safari zoom
+   the page on focus; this sits after every component rule so a newly added
+   control cannot quietly reintroduce the problem. */
+@media (max-width: 768px), (max-height: 500px) {
+  input[type=text],input[type=number],input[type=search],textarea,select,
+  .feed-row input[type=text],.fr-text,
+  .erow-fields input,.erow-fields textarea,
+  .erow-fields .ef-label,.erow-fields .ef-value{font-size:16px}
+}
 </style>
 </head>
 <body>
@@ -963,6 +1004,14 @@ const S = {
   guides: false,
   showClock: false,
   sound: true,
+  fullClip: false,
+  pos: { x:0, y:0 },   // content nudge, as a fraction of the frame
+  tickerFeeds: [
+    { id:'crypto', name:'Crypto',        on:true,  text:'BTC $120,400 ▲ 2.3%   ···   ETH $4,180 ▲ 1.8%   ···   SOL $245 ▲ 4.1%' },
+    { id:'world',  name:'World markets', on:false, text:'S&P 500 5,842 ▲ 0.4%   ···   NASDAQ 19,210 ▲ 0.7%   ···   FTSE 100 8,340 ▼ 0.2%' },
+    { id:'india',  name:'India',         on:false, text:'SENSEX 82,150 ▲ 0.6%   ···   NIFTY 50 25,080 ▲ 0.5%   ···   USD/INR 84.20' },
+    { id:'custom', name:'Custom text',   on:false, text:'' },
+  ],
   recStart: 0,
   introStart: performance.now(),
   particles: [],
@@ -1280,6 +1329,15 @@ function drawBranding(theme) {
 /* ═══════════════════════════════════════════════
    DRAW: TICKER BAR — slim minimal strip
    ═══════════════════════════════════════════════ */
+/* The ticker line is assembled from the feeds the user has switched on —
+   crypto, world markets, India, plus anything they type themselves. */
+function tickerText() {
+  const parts = S.tickerFeeds.filter(f=>f.on && String(f.text).trim())
+                             .map(f=>String(f.text).trim());
+  return parts.length ? parts.join('   ···   ') + '   ···   '
+                      : 'DailyVolex   ···   ';
+}
+
 function drawTicker(tickerText, theme) {
   const H=cv.height, W=cv.width, barH=56;
   ctx.fillStyle='rgba(0,0,0,.88)'; ctx.fillRect(0,H-barH,W,barH);
@@ -1310,6 +1368,7 @@ function drawTicker(tickerText, theme) {
 function drawBreaking(theme) {
   const W=cv.width, H=cv.height, d=S.breaking;
   const tickerH=d.showTicker?56:0;
+  beginShift();
   const pad=72;
 
   // Deep scrim only at bottom half — video breathes above
@@ -1382,8 +1441,17 @@ function drawBreaking(theme) {
   ctx.fillText(catTxt, pad, lineY-12);
   ctx.restore();
 
-  if(d.showTicker) drawTicker(d.ticker,theme);
+  endShift();
+  if(d.showTicker) drawTicker(tickerText(),theme);
 }
+
+/* Nudge the whole content block. Call before drawing a layout's content and
+   close with endShift(); the ticker is drawn after, so it stays anchored. */
+function beginShift() {
+  ctx.save();
+  ctx.translate(Math.round(S.pos.x*cv.width), Math.round(S.pos.y*cv.height));
+}
+function endShift() { ctx.restore(); }
 
 /* Vertical band the content may occupy: inside Instagram's overlays in 9:16,
    a modest margin otherwise, and always clear of the ticker. */
@@ -1413,6 +1481,7 @@ function fitLine(text, maxW, size, weight, family, minSize) {
 function drawStories(theme) {
   const W=cv.width, H=cv.height, d=S.stories;
   const tickerH=d.showTicker?56:0;
+  beginShift();
   const px=64, right=contentRight(W,px), maxW=right-px;
   const band=contentBand(H,tickerH);
 
@@ -1446,7 +1515,7 @@ function drawStories(theme) {
 
   // ── Rundown: rows share the remaining band evenly
   const items=d.items.filter(t=>String(t).trim()!=='').slice(0,6);
-  if(!items.length){ if(d.showTicker) drawTicker(d.ticker,theme); return; }
+  if(!items.length){ endShift(); if(d.showTicker) drawTicker(tickerText(),theme); return; }
   const avail=band.bottom-y;
   const rowH=avail/items.length;
   const numW=64;
@@ -1485,7 +1554,8 @@ function drawStories(theme) {
     ctx.restore();
   });
 
-  if(d.showTicker) drawTicker(d.ticker,theme);
+  endShift();
+  if(d.showTicker) drawTicker(tickerText(),theme);
 }
 
 /* ═══════════════════════════════════════════════
@@ -1495,6 +1565,7 @@ function drawStories(theme) {
 function drawFacts(theme) {
   const W=cv.width, H=cv.height, d=S.facts;
   const tickerH=d.showTicker?56:0;
+  beginShift();
   const px=64, right=contentRight(W,px), maxW=right-px;
   const band=contentBand(H,tickerH);
 
@@ -1527,7 +1598,7 @@ function drawFacts(theme) {
 
   // ── Stacked rows
   const rows=d.rows.filter(r=>String(r.label).trim()!=='' || String(r.value).trim()!=='').slice(0,7);
-  if(!rows.length){ if(d.showTicker) drawTicker(d.ticker,theme); return; }
+  if(!rows.length){ endShift(); if(d.showTicker) drawTicker(tickerText(),theme); return; }
   const avail=band.bottom-y;
   const rowH=avail/rows.length;
   const labSize=Math.max(19, Math.min(24, Math.round(rowH*0.17)));
@@ -1559,7 +1630,8 @@ function drawFacts(theme) {
     ctx.restore();
   });
 
-  if(d.showTicker) drawTicker(d.ticker,theme);
+  endShift();
+  if(d.showTicker) drawTicker(tickerText(),theme);
 }
 
 /* ═══════════════════════════════════════════════
@@ -1568,6 +1640,7 @@ function drawFacts(theme) {
 function drawQuote(theme) {
   const W=cv.width, H=cv.height, d=S.quote;
   const tickerH=d.showTicker?56:0;
+  beginShift();
   const cx=W/2, cy=H*0.46;
 
   // Soft radial dark zone — only behind the numbers
@@ -1622,7 +1695,8 @@ function drawQuote(theme) {
   ctx.fillRect(cx-36, cy+sz/2+6, 72, 2);
   ctx.restore();
 
-  if(d.showTicker) drawTicker(d.ticker,theme);
+  endShift();
+  if(d.showTicker) drawTicker(tickerText(),theme);
 }
 
 /* ═══════════════════════════════════════════════
@@ -1687,7 +1761,9 @@ function drawScene(theme, withGuides) {
   }
   // Reel progress bar — thin line filling across the top while recording
   if (S.recording && S.recStart) {
-    const p=Math.min((performance.now()-S.recStart)/(S.recordDuration*1000),1);
+    const secs=(S.fullClip && S.videoLoaded && isFinite(vid.duration) && vid.duration>0)
+      ? Math.ceil(vid.duration) : S.recordDuration;
+    const p=Math.min((performance.now()-S.recStart)/(secs*1000),1);
     ctx.save();
     ctx.fillStyle='rgba(255,255,255,.14)'; ctx.fillRect(0,0,cv.width,6);
     ctx.fillStyle=theme.p; ctx.shadowColor=theme.p; ctx.shadowBlur=10;
@@ -1863,6 +1939,48 @@ function renderPanel() {
     `);
   }
 
+  // ── Position (always shown) ──
+  sections.push(`
+    <div class="panel-section">
+      <div class="panel-head"><div class="panel-head-icon">✥</div><div class="panel-head-title">Position</div></div>
+      <div class="panel-body">
+        <div class="pos-read" id="posRead">${S.pos.x===0&&S.pos.y===0?'centred':`x ${(S.pos.x*100).toFixed(0)}%  ·  y ${(S.pos.y*100).toFixed(0)}%`}</div>
+        <div class="pos-grid">
+          <button class="pos-btn" data-nudge="-1,-1">↖</button>
+          <button class="pos-btn" data-nudge="0,-1">↑</button>
+          <button class="pos-btn" data-nudge="1,-1">↗</button>
+          <button class="pos-btn" data-nudge="-1,0">←</button>
+          <button class="pos-btn reset" data-nudge="reset">RESET</button>
+          <button class="pos-btn" data-nudge="1,0">→</button>
+          <button class="pos-btn" data-nudge="-1,1">↙</button>
+          <button class="pos-btn" data-nudge="0,1">↓</button>
+          <button class="pos-btn" data-nudge="1,1">↘</button>
+        </div>
+      </div>
+    </div>
+  `);
+
+  // ── Ticker feeds (always shown) ──
+  sections.push(`
+    <div class="panel-section">
+      <div class="panel-head"><div class="panel-head-icon">📈</div><div class="panel-head-title">Ticker</div></div>
+      <div class="panel-body">
+        ${S.tickerFeeds.map((f,i)=>`
+          <div class="feed-row" data-feed="${i}">
+            <label class="sw" style="margin-top:2px">
+              <input type="checkbox" class="fr-on" ${f.on?'checked':''}><span class="sw-track"></span>
+            </label>
+            <div class="fr-main">
+              <div class="fr-name">${esc(f.name)}</div>
+              <input type="text" class="fr-text" value="${esc(f.text)}" placeholder="${f.id==='custom'?'Your own ticker text…':'Values shown in the ticker'}">
+            </div>
+          </div>
+        `).join('')}
+        <p class="export-note">Switch on whichever markets you want scrolling along the bottom. Values are yours to edit — nothing is fetched live.</p>
+      </div>
+    </div>
+  `);
+
   // Export panel (always shown)
   sections.push(`
     <div class="panel-section">
@@ -1874,7 +1992,13 @@ function renderPanel() {
             ${S.recording?'⏹ Stop Recording':`🎬 Record Reel (${recFormat()})`}
           </button>
         </div>
-        <div class="dur-row">
+        ${S.videoLoaded?`
+        <div class="toggle-row">
+          <span class="toggle-label">Export whole clip
+            <span class="toggle-sub">All ${Math.round(vid.duration||0)}s, audio kept${S.sound?'':' (muted)'}</span></span>
+          <label class="sw"><input type="checkbox" id="fullClipToggle" ${S.fullClip?'checked':''}><span class="sw-track"></span></label>
+        </div>`:''}
+        <div class="dur-row" id="durRow"${S.fullClip?' style="display:none"':''}>
           <span style="font-size:.72rem;color:var(--ui-muted)">Duration</span>
           <input type="range" id="recDur" min="3" max="15" step="1" value="${S.recordDuration}">
           <span class="dur-val" id="durVal">${S.recordDuration}s</span>
@@ -1961,6 +2085,39 @@ function bindPanelEvents() {
     if(dv) dv.textContent=S.recordDuration+'s';
   });
 
+  // Position nudges
+  document.querySelectorAll('.pos-btn').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      const v=b.dataset.nudge;
+      if(v==='reset'){ S.pos.x=0; S.pos.y=0; }
+      else{
+        const [dx,dy]=v.split(',').map(Number);
+        const step=0.025;                       // 2.5% of the frame per tap
+        S.pos.x=Math.max(-0.45,Math.min(0.45, S.pos.x+dx*step));
+        S.pos.y=Math.max(-0.45,Math.min(0.45, S.pos.y+dy*step));
+      }
+      const r=document.getElementById('posRead');
+      if(r) r.textContent = (S.pos.x===0&&S.pos.y===0)
+        ? 'centred' : `x ${(S.pos.x*100).toFixed(0)}%  ·  y ${(S.pos.y*100).toFixed(0)}%`;
+    });
+  });
+
+  // Ticker feeds
+  document.querySelectorAll('.feed-row').forEach(row=>{
+    const i=+row.dataset.feed;
+    row.querySelector('.fr-on').addEventListener('change',e=>{ S.tickerFeeds[i].on=e.target.checked; });
+    row.querySelector('.fr-text').addEventListener('input',e=>{ S.tickerFeeds[i].text=e.target.value; });
+  });
+
+  // Full-clip export
+  const fc=document.getElementById('fullClipToggle');
+  if(fc) fc.addEventListener('change', e=>{
+    S.fullClip=e.target.checked;
+    const d=document.getElementById('durRow'); if(d) d.style.display=S.fullClip?'none':'';
+    if(S.fullClip && S.videoLoaded)
+      showToast(`Will record the whole ${Math.round(vid.duration)}s clip — in real time, so it takes that long.`);
+  });
+
   // Export PNG
   on('exportPng','click', ()=>{
     showToast('Generating PNG…',0,true);
@@ -2014,16 +2171,19 @@ function bindPanelEvents() {
           isMp4?'Reel saved as MP4 — ready for Instagram!'
                :'Reel downloaded! Convert to MP4 at CloudConvert before uploading.');
       };
-      if(S.videoLoaded){ vid.currentTime=0; await vid.play(); }
+      // Whole-clip export runs for the video's own length, played through once.
+      const fullLen = S.fullClip && S.videoLoaded && isFinite(vid.duration) && vid.duration>0;
+      const runSecs = fullLen ? Math.ceil(vid.duration) : S.recordDuration;
+      if(S.videoLoaded){ vid.loop=!fullLen; vid.currentTime=0; await vid.play(); }
       replayIntro();                 // capture the entrance animation in the recording
       S.recStart=performance.now();  // drives the on-canvas progress bar
       // Repaint clean before capture opens, so a guided frame left on the
       // canvas can never become the first recorded frame.
       drawScene(THEMES[S.theme], false);
       rec.start();
-      let s=S.recordDuration;
-      const t=setInterval(()=>{ s--; if(s>0)showToast(`Recording: ${s}s…`,0,true); else clearInterval(t); },1000);
-      setTimeout(()=>rec.stop(), S.recordDuration*1000);
+      let s=runSecs;
+      const t=setInterval(()=>{ s--; if(s>0)showToast(`Recording: ${s}s left…`,0,true); else clearInterval(t); },1000);
+      setTimeout(()=>{ try{rec.stop()}catch(e){} vid.loop=true; }, runSecs*1000);
     });
   }
 }
@@ -2069,6 +2229,19 @@ function recordingAudioTrack() {
   const tr = _adest.stream.getAudioTracks()[0];
   return tr || null;
 }
+
+/* Browsers only let audio start after a real user gesture, so the clip stayed
+   silent while editing even with Sound on. Arm the graph on the first touch
+   anywhere, then again whenever a clip loads. */
+function primeAudio() {
+  if (!S.sound) return;
+  const ctx2 = audioGraph();
+  if (ctx2 && ctx2.state === 'suspended') ctx2.resume().catch(()=>{});
+  applyPreviewVolume();
+  if (S.videoLoaded && vid.paused) vid.play().catch(()=>{});
+}
+['pointerdown','touchend','keydown'].forEach(evt=>
+  window.addEventListener(evt, primeAudio, { capture:true, passive:true }));
 
 function applyPreviewVolume() {
   if (_again) _again.gain.value = S.sound ? 1 : 0;
@@ -2152,7 +2325,8 @@ function saveState() {
     brand:{name:S.brand.name,handle:S.brand.handle},
     breaking:S.breaking, stories:S.stories, facts:S.facts, quote:S.quote,
     customColor:S.customColor, recordDuration:S.recordDuration,
-    showClock:S.showClock,
+    showClock:S.showClock, sound:S.sound, pos:{x:S.pos.x,y:S.pos.y},
+    tickerFeeds:S.tickerFeeds,
   };
   try { localStorage.setItem('dvx_v2',JSON.stringify(snap)); showToast('Session saved'); }
   catch(e) { showToast('Save failed (storage full?)'); }
@@ -2175,6 +2349,16 @@ function loadState() {
     }
     if(snap.recordDuration) S.recordDuration=snap.recordDuration;
     S.showClock=!!snap.showClock;
+    if(typeof snap.sound==='boolean') S.sound=snap.sound;
+    if(snap.pos) { S.pos.x=+snap.pos.x||0; S.pos.y=+snap.pos.y||0; }
+    if(Array.isArray(snap.tickerFeeds)) {
+      snap.tickerFeeds.forEach(sf=>{
+        const f=S.tickerFeeds.find(x=>x.id===sf.id);
+        if(f){ f.on=!!sf.on; if(typeof sf.text==='string') f.text=sf.text; }
+      });
+    }
+    const sd=document.getElementById('soundToggle'); if(sd) sd.checked=S.sound;
+    applyPreviewVolume();
     const ck=document.getElementById('clockToggle'); if(ck) ck.checked=S.showClock;
     setLayout(snap.layout||'breaking');
     setTheme(snap.theme||'bbc');
@@ -2305,6 +2489,8 @@ function initEvents() {
     showToast('Loading video…',0,true);
     vid.onloadeddata=()=>{
       S.videoLoaded=true; vid.play();
+      primeAudio();          // if the user has already tapped, sound starts now
+      renderPanel();         // Export gains the whole-clip option now there is a clip
       document.getElementById('vidName').textContent=f.name;
       document.getElementById('clearVideoBtn').style.display='';
       ['vidLookSection','vidLookGrid','letterboxRow','soundRow'].forEach(id=>{
@@ -2314,7 +2500,8 @@ function initEvents() {
     };
   });
   document.getElementById('clearVideoBtn').addEventListener('click', ()=>{
-    S.videoLoaded=false; vid.src='';
+    S.videoLoaded=false; S.fullClip=false; vid.src='';
+    renderPanel();
     document.getElementById('vidName').textContent='No video — particle BG active';
     document.getElementById('clearVideoBtn').style.display='none';
     ['vidLookSection','vidLookGrid','letterboxRow','soundRow'].forEach(id=>{
