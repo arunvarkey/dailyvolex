@@ -1010,6 +1010,7 @@ const S = {
   guides: false,
   showClock: false,
   sound: true,
+  avSyncMs: null,     // null = automatic; a number is an explicit audio delay
   fullClip: false,
   pos: { x:0, y:0 },   // content nudge, as a fraction of the frame
   tickerFeeds: [
@@ -1020,6 +1021,7 @@ const S = {
   ],
   recStart: 0,
   frameTrack: null,
+  stopRecording: null,
   introStart: performance.now(),
   particles: [],
   raf: null,
@@ -1807,9 +1809,15 @@ function drawScene(theme, withGuides) {
   }
   // Reel progress bar — thin line filling across the top while recording
   if (S.recording && S.recStart) {
-    const secs=(S.fullClip && S.videoLoaded && isFinite(vid.duration) && vid.duration>0)
-      ? Math.ceil(vid.duration) : S.recordDuration;
-    const p=Math.min((performance.now()-S.recStart)/(secs*1000),1);
+    const known=S.videoLoaded && isFinite(vid.duration) && vid.duration>0;
+    const secs=S.fullClip
+      ? (known ? Math.ceil(vid.duration) : 0)
+      : S.recordDuration;
+    // Without a declared length there is no bar to fill, so show elapsed
+    // progress against the clip's own playback instead.
+    const p = secs>0
+      ? Math.min((performance.now()-S.recStart)/(secs*1000),1)
+      : (known ? Math.min(vid.currentTime/vid.duration,1) : 0);
     ctx.save();
     ctx.fillStyle='rgba(255,255,255,.14)'; ctx.fillRect(0,0,cv.width,6);
     ctx.fillStyle=theme.p; ctx.shadowColor=theme.p; ctx.shadowBlur=10;
@@ -2051,7 +2059,9 @@ function renderPanel() {
         ${S.videoLoaded?`
         <div class="toggle-row">
           <span class="toggle-label">Export whole clip
-            <span class="toggle-sub">All ${Math.round(vid.duration||0)}s, audio kept${S.sound?'':' (muted)'}</span></span>
+            <span class="toggle-sub">${isFinite(vid.duration)&&vid.duration>0
+              ? 'All '+Math.round(vid.duration)+'s'
+              : 'Plays through to the end'}, audio kept${S.sound?'':' (muted)'}</span></span>
           <label class="sw"><input type="checkbox" id="fullClipToggle" ${S.fullClip?'checked':''}><span class="sw-track"></span></label>
         </div>`:''}
         <div class="dur-row" id="durRow"${S.fullClip?' style="display:none"':''}>
@@ -2059,6 +2069,16 @@ function renderPanel() {
           <input type="range" id="recDur" min="3" max="60" step="1" value="${S.recordDuration}">
           <span class="dur-val" id="durVal">${S.recordDuration}s</span>
         </div>
+        ${S.videoLoaded?`
+        <div class="dur-row" style="gap:.5rem">
+          <span style="font-size:.72rem;color:var(--ui-muted);white-space:nowrap">Audio sync</span>
+          <input type="range" id="avSync" min="0" max="300" step="10" value="${S.avSyncMs==null?autoSyncMs():S.avSyncMs}">
+          <span class="dur-val" id="avSyncVal" style="min-width:56px">${S.avSyncMs==null?'auto':S.avSyncMs+'ms'}</span>
+        </div>
+        <p class="export-note" style="margin-top:-.2rem">
+          If the sound runs <strong>ahead of</strong> the picture, slide right.
+          If it lags behind, slide left. <a href="#" id="avAuto" style="color:var(--tp)">Reset to auto</a>
+        </p>`:''}
         <p class="export-note">${recFormat()==='MP4'
           ? 'PNG → Instagram Feed · Stories<br>MP4 → <strong>Save to Photos</strong>, then post as a Reel'
           : 'PNG → Instagram Feed · Stories<br>WebM → Convert to MP4 via <strong>CloudConvert</strong> then upload as Reel'}</p>
@@ -2165,6 +2185,20 @@ function bindPanelEvents() {
     row.querySelector('.fr-text').addEventListener('input',e=>{ S.tickerFeeds[i].text=e.target.value; });
   });
 
+  // Audio sync trim
+  const av=document.getElementById('avSync');
+  if(av) av.addEventListener('input', e=>{
+    S.avSyncMs=+e.target.value;
+    const l=document.getElementById('avSyncVal'); if(l) l.textContent=S.avSyncMs+'ms';
+  });
+  const avAuto=document.getElementById('avAuto');
+  if(avAuto) avAuto.addEventListener('click', e=>{
+    e.preventDefault(); S.avSyncMs=null;
+    const sl=document.getElementById('avSync'); if(sl) sl.value=autoSyncMs();
+    const l=document.getElementById('avSyncVal'); if(l) l.textContent='auto';
+    showToast('Audio sync back to automatic');
+  });
+
   // Full-clip export
   const fc=document.getElementById('fullClipToggle');
   if(fc) fc.addEventListener('change', e=>{
@@ -2193,7 +2227,7 @@ function bindPanelEvents() {
   const vidBtn=document.getElementById('exportVid');
   if(vidBtn) {
     vidBtn.addEventListener('click', async ()=>{
-      if(S.recording) return;
+      if(S.recording){ if(S.stopRecording) S.stopRecording(); return; }
       if(typeof MediaRecorder==='undefined'){ showToast('Recording is not supported in this browser.'); return; }
       if(typeof cv.captureStream!=='function'){ showToast('This browser cannot record the canvas. Try Safari 15+ or Chrome.'); return; }
       // Ask for a stream we clock ourselves: with captureStream(30) the browser
@@ -2218,13 +2252,7 @@ function bindPanelEvents() {
         if(_adelay){
           // Measured hand-off lag, plus the interval to the next frame: the
           // picture also sits on screen until the following frame replaces it.
-          // Canvas work is queued to the GPU, so the true sampling-to-hand-off
-          // gap is not observable from JS (measuring around the draw calls
-          // returns well under a millisecond while frames take ~70ms). This
-          // factor was calibrated by measuring the actual A/V offset of
-          // recordings and is expressed in frames, so it scales with how fast
-          // the device is drawing.
-          const lag=Math.min(Math.max(_frameAvg*2/1000, 0), 0.3);
+          const lag=avSyncSeconds();
           try{ _adelay.delayTime.setValueAtTime(lag, _actx.currentTime); }catch(e){ _adelay.delayTime.value=lag; }
         }
         try{ stream.addTrack(atrack); }catch(e){}
@@ -2253,9 +2281,29 @@ function bindPanelEvents() {
                :'Reel downloaded! Convert to MP4 at CloudConvert before uploading.');
       };
       // Whole-clip export runs for the video's own length, played through once.
-      const fullLen = S.fullClip && S.videoLoaded && isFinite(vid.duration) && vid.duration>0;
-      const runSecs = fullLen ? Math.ceil(vid.duration) : S.recordDuration;
-      if(S.videoLoaded){ vid.loop=!fullLen; vid.currentTime=0; await vid.play(); }
+      const knownLen = S.videoLoaded && isFinite(vid.duration) && vid.duration>0;
+      const fullLen = S.fullClip && S.videoLoaded;
+      const runSecs = fullLen ? (knownLen ? Math.ceil(vid.duration) : 600)
+                              : S.recordDuration;
+      if(S.videoLoaded){
+        vid.loop = !fullLen;
+        // Rewind and WAIT for the seek to land. Setting currentTime starts an
+        // asynchronous seek and play() does not wait for it, so the clip could
+        // still be near its end from looping in preview — and then 'ended'
+        // fired seconds later and cut the recording short. That, not the
+        // duration slider, is what stopped long exports early.
+        if (vid.currentTime > 0.05) {
+          await new Promise(res=>{
+            let settled=false;
+            const done=()=>{ if(settled) return; settled=true;
+              vid.removeEventListener('seeked',done); res(); };
+            vid.addEventListener('seeked',done);
+            try { vid.currentTime = 0; } catch(e) { done(); }
+            setTimeout(done, 2500);           // never hang on a stuck seek
+          });
+        }
+        try { await vid.play(); } catch(e) {}
+      }
       replayIntro();                 // capture the entrance animation in the recording
       S.recStart=performance.now();  // drives the on-canvas progress bar
       // Repaint clean before capture opens, so a guided frame left on the
@@ -2265,11 +2313,26 @@ function bindPanelEvents() {
       keepAwake(true);
       let s=runSecs, stopped=false;
       const finish=()=>{ if(stopped) return; stopped=true;
-        clearInterval(t); try{rec.stop()}catch(e){}
-        vid.loop=true; vid.onended=null; S.frameTrack=null; keepAwake(false); };
+        clearInterval(t); clearTimeout(hardStop); try{rec.stop()}catch(e){}
+        vid.loop=true; vid.onended=null; S.frameTrack=null; S.stopRecording=null;
+        keepAwake(false); };
+      S.stopRecording=finish;                 // the Stop button calls this
+      showToast(fullLen
+        ? `Recording the whole clip — ${knownLen?Math.ceil(vid.duration)+'s':'until it ends'}…`
+        : `Recording ${runSecs}s…`, 0, true);
       const t=setInterval(()=>{ s--; if(s>0)showToast(`Recording: ${s}s left…`,0,true); else clearInterval(t); },1000);
-      if(fullLen) vid.onended=finish;          // stop exactly when the clip ends
-      setTimeout(finish, runSecs*1000 + 250);
+      if(fullLen) vid.onended=()=>{
+        // Only believe 'ended' once most of the clip has actually gone by. If
+        // the rewind lost a race it can fire almost immediately; rewind again
+        // and keep recording rather than truncating the export.
+        const elapsed=(performance.now()-S.recStart)/1000;
+        if(knownLen && elapsed < vid.duration*0.6){
+          try { vid.currentTime=0; vid.play(); } catch(e){}
+          return;
+        }
+        finish();
+      };
+      const hardStop=setTimeout(finish, runSecs*1000 + 400);
     });
   }
 }
@@ -2309,6 +2372,19 @@ function audioGraph() {
     _audioFailed = true; _actx = null;
   }
   return _actx;
+}
+
+/* How far to delay the recorded audio so it meets the picture.
+   Canvas work is queued to the GPU, so the real sampling-to-hand-off gap is
+   not observable from JS — timing around the draw calls reports under a
+   millisecond while frames take far longer. The automatic value is therefore
+   expressed in frames, which at least scales with how fast the device draws,
+   but it is an estimate: recording pipelines differ per device, so the user
+   can set it explicitly and it is remembered. */
+function autoSyncMs() { return Math.round(Math.min(Math.max(_frameAvg*2, 0), 300)); }
+function avSyncSeconds() {
+  const ms = (S.avSyncMs==null) ? autoSyncMs() : S.avSyncMs;
+  return Math.min(Math.max(ms,0),300)/1000;
 }
 
 /* An audio track for the recorder, or null if this browser/clip has none. */
@@ -2445,7 +2521,7 @@ function saveState() {
     brand:{name:S.brand.name,handle:S.brand.handle},
     breaking:S.breaking, stories:S.stories, facts:S.facts, quote:S.quote,
     customColor:S.customColor, recordDuration:S.recordDuration,
-    showClock:S.showClock, sound:S.sound, pos:{x:S.pos.x,y:S.pos.y},
+    showClock:S.showClock, sound:S.sound, pos:{x:S.pos.x,y:S.pos.y}, avSyncMs:S.avSyncMs,
     tickerFeeds:S.tickerFeeds,
   };
   try { localStorage.setItem('dvx_v2',JSON.stringify(snap)); showToast('Session saved'); }
@@ -2470,6 +2546,7 @@ function loadState() {
     if(snap.recordDuration) S.recordDuration=snap.recordDuration;
     S.showClock=!!snap.showClock;
     if(typeof snap.sound==='boolean') S.sound=snap.sound;
+    S.avSyncMs = (typeof snap.avSyncMs==='number') ? snap.avSyncMs : null;
     if(snap.pos) { S.pos.x=+snap.pos.x||0; S.pos.y=+snap.pos.y||0; }
     if(Array.isArray(snap.tickerFeeds)) {
       snap.tickerFeeds.forEach(sf=>{
