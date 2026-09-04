@@ -1056,6 +1056,7 @@ function applyRatio(ratio) {
   const [w, h] = DIMS[ratio];
   cv.width  = w;
   cv.height = h;
+  clearGradCache();          // gradients are sized to the frame
   document.getElementById('resLabel').textContent = `${w} × ${h}`;
   scalePreviewer();
 }
@@ -1212,9 +1213,18 @@ function drawBG(theme) {
     const look = VIDEO_LOOKS[S.videoLook] || VIDEO_LOOKS.cinematic;
 
     // 1 ── Draw video with CSS-style colour grade
-    ctx.filter = look.filter || 'none';
-    ctx.drawImage(vid, sx,sy,sw,sh, 0,0,W,H);
-    ctx.filter = 'none';
+    // Setting ctx.filter at all costs time, so only touch it when there is one.
+    if (look.filter) {
+      ctx.filter = look.filter;
+      ctx.drawImage(vid, sx,sy,sw,sh, 0,0,W,H);
+      ctx.filter = 'none';
+    } else {
+      ctx.drawImage(vid, sx,sy,sw,sh, 0,0,W,H);
+    }
+    // This is the instant the clip's picture was taken. Everything after it —
+    // grading overlays, vignette, the layout, then handing the frame over —
+    // happens later, and that gap is what puts the picture behind the sound.
+    _sampleAt = performance.now();
 
     // 2 ── Primary tint overlay (e.g. teal multiply for cinematic shadows)
     if (look.overlay) {
@@ -1245,9 +1255,12 @@ function drawBG(theme) {
     }
 
     // 5 ── Cinematic vignette (oval, not square)
-    const vig = ctx.createRadialGradient(W*.5,H*.48,H*.14, W*.5,H*.48,H*.76);
-    vig.addColorStop(0, 'rgba(0,0,0,0)');
-    vig.addColorStop(1, `rgba(0,0,0,${look.vignette ?? 0.65})`);
+    const vig = cachedGrad(`vig|${W}x${H}|${look.vignette}`, ()=>{
+      const g2 = ctx.createRadialGradient(W*.5,H*.48,H*.14, W*.5,H*.48,H*.76);
+      g2.addColorStop(0, 'rgba(0,0,0,0)');
+      g2.addColorStop(1, `rgba(0,0,0,${look.vignette ?? 0.65})`);
+      return g2;
+    });
     ctx.fillStyle = vig; ctx.fillRect(0,0,W,H);
 
     // 6 ── Optional letterbox bars (cinematic 2.35:1 crop feel)
@@ -1379,10 +1392,13 @@ function drawBreaking(theme) {
   const pad=72;
 
   // Deep scrim only at bottom half — video breathes above
-  const scrim=ctx.createLinearGradient(0,H*.48,0,H-tickerH);
-  scrim.addColorStop(0,'rgba(0,0,0,0)');
-  scrim.addColorStop(.55,'rgba(0,0,0,.72)');
-  scrim.addColorStop(1,'rgba(0,0,0,.96)');
+  const scrim=cachedGrad(`brk|${W}x${H}|${tickerH}`, ()=>{
+    const g2=ctx.createLinearGradient(0,H*.48,0,H-tickerH);
+    g2.addColorStop(0,'rgba(0,0,0,0)');
+    g2.addColorStop(.55,'rgba(0,0,0,.72)');
+    g2.addColorStop(1,'rgba(0,0,0,.96)');
+    return g2;
+  });
   ctx.fillStyle=scrim; ctx.fillRect(0,H*.48,W,H*.52-tickerH);
 
   // Anchor point for the text block. In 9:16 the bottom of a Reel is covered
@@ -1452,6 +1468,18 @@ function drawBreaking(theme) {
   if(d.showTicker) drawTicker(tickerText(),theme);
 }
 
+/* Gradients are rebuilt on every frame otherwise. At 1080x1920 that is a real
+   share of the frame budget, and a slow frame is what puts the picture behind
+   the audio: the clip is sampled when the frame starts but the frame is handed
+   to the recorder when it finishes. Cache them per size and look. */
+const _grads = new Map();
+function cachedGrad(key, make) {
+  let g = _grads.get(key);
+  if (!g) { g = make(); _grads.set(key, g); }
+  return g;
+}
+function clearGradCache() { _grads.clear(); }
+
 /* Nudge the whole content block. Call before drawing a layout's content and
    close with endShift(); the ticker is drawn after, so it stays anchored. */
 function beginShift() {
@@ -1493,10 +1521,13 @@ function drawStories(theme) {
   const band=contentBand(H,tickerH);
 
   // Scrim behind the whole content band
-  const scrim=ctx.createLinearGradient(0,band.top-120,0,H-tickerH);
-  scrim.addColorStop(0,'rgba(0,0,0,0)');
-  scrim.addColorStop(.22,'rgba(0,0,0,.72)');
-  scrim.addColorStop(1,'rgba(0,0,0,.93)');
+  const scrim=cachedGrad(`sto|${W}x${H}|${tickerH}|${Math.round(band.top)}`, ()=>{
+    const g2=ctx.createLinearGradient(0,band.top-120,0,H-tickerH);
+    g2.addColorStop(0,'rgba(0,0,0,0)');
+    g2.addColorStop(.22,'rgba(0,0,0,.72)');
+    g2.addColorStop(1,'rgba(0,0,0,.93)');
+    return g2;
+  });
   ctx.fillStyle=scrim; ctx.fillRect(0,band.top-120,W,H-tickerH-(band.top-120));
 
   // ── Header: big label, date beneath, accent rule
@@ -1576,10 +1607,13 @@ function drawFacts(theme) {
   const px=64, right=contentRight(W,px), maxW=right-px;
   const band=contentBand(H,tickerH);
 
-  const scrim=ctx.createLinearGradient(0,band.top-120,0,H-tickerH);
-  scrim.addColorStop(0,'rgba(0,0,0,0)');
-  scrim.addColorStop(.22,'rgba(0,0,0,.76)');
-  scrim.addColorStop(1,'rgba(0,0,0,.95)');
+  const scrim=cachedGrad(`fac|${W}x${H}|${tickerH}|${Math.round(band.top)}`, ()=>{
+    const g2=ctx.createLinearGradient(0,band.top-120,0,H-tickerH);
+    g2.addColorStop(0,'rgba(0,0,0,0)');
+    g2.addColorStop(.22,'rgba(0,0,0,.76)');
+    g2.addColorStop(1,'rgba(0,0,0,.95)');
+    return g2;
+  });
   ctx.fillStyle=scrim; ctx.fillRect(0,band.top-120,W,H-tickerH-(band.top-120));
 
   // ── Title block
@@ -1651,9 +1685,12 @@ function drawQuote(theme) {
   const cx=W/2, cy=H*0.46;
 
   // Soft radial dark zone — only behind the numbers
-  const rad=ctx.createRadialGradient(cx,cy,0,cx,cy,H*.38);
-  rad.addColorStop(0,'rgba(0,0,0,.75)');
-  rad.addColorStop(1,'rgba(0,0,0,0)');
+  const rad=cachedGrad(`qte|${W}x${H}`, ()=>{
+    const g2=ctx.createRadialGradient(cx,cy,0,cx,cy,H*.38);
+    g2.addColorStop(0,'rgba(0,0,0,.75)');
+    g2.addColorStop(1,'rgba(0,0,0,0)');
+    return g2;
+  });
   ctx.fillStyle=rad; ctx.fillRect(0,0,W,H-tickerH);
 
   // Stat — huge, glow in theme colour, scales in with pop
@@ -1756,8 +1793,10 @@ function drawGuides(theme) {
 
 /* One frame. Kept separate from the animation loop so exports can render a
    clean frame synchronously with the guides suppressed. */
+let _sampleAt=0, _lagAvg=0;
 function drawScene(theme, withGuides) {
   ctx.clearRect(0,0,cv.width,cv.height);
+  _sampleAt = 0;             // set inside drawBG, at the moment the clip is sampled
   drawBG(theme);
   drawBranding(theme);
   switch(S.layout) {
@@ -1779,11 +1818,19 @@ function drawScene(theme, withGuides) {
   }
   if (withGuides) drawGuides(theme);
   // Hand this freshly painted frame to the recorder.
+  if (_sampleAt) {
+    const lag = performance.now() - _sampleAt;
+    if (lag >= 0 && lag < 400) _lagAvg = _lagAvg ? _lagAvg*0.85 + lag*0.15 : lag;
+  }
   if (S.recording && S.frameTrack) { try { S.frameTrack.requestFrame(); } catch(e){} }
 }
 
+let _lastFrameT=0, _frameAvg=0;
 function render() {
   const theme=THEMES[S.theme];
+  const t=performance.now();
+  if(_lastFrameT){ const dt=t-_lastFrameT; if(dt<400) _frameAvg=_frameAvg? _frameAvg*0.9+dt*0.1 : dt; }
+  _lastFrameT=t;
   // Guides are a design aid only — never recorded, never exported.
   drawScene(theme, S.guides && !S.recording);
   S.raf = requestAnimationFrame(render);
@@ -2166,7 +2213,22 @@ function bindPanelEvents() {
       showToast(`Recording ${S.recordDuration}s…`,0,true);
       // Canvas capture is silent — attach the clip's audio if we have it.
       const atrack=recordingAudioTrack();
-      if(atrack){ try{ stream.addTrack(atrack); }catch(e){} }
+      if(atrack){
+        // Line the sound up with how far behind this device's drawing runs.
+        if(_adelay){
+          // Measured hand-off lag, plus the interval to the next frame: the
+          // picture also sits on screen until the following frame replaces it.
+          // Canvas work is queued to the GPU, so the true sampling-to-hand-off
+          // gap is not observable from JS (measuring around the draw calls
+          // returns well under a millisecond while frames take ~70ms). This
+          // factor was calibrated by measuring the actual A/V offset of
+          // recordings and is expressed in frames, so it scales with how fast
+          // the device is drawing.
+          const lag=Math.min(Math.max(_frameAvg*2/1000, 0), 0.3);
+          try{ _adelay.delayTime.setValueAtTime(lag, _actx.currentTime); }catch(e){ _adelay.delayTime.value=lag; }
+        }
+        try{ stream.addTrack(atrack); }catch(e){}
+      }
       // iOS Safari records MP4; Chrome/Firefox record WebM
       const types=['video/mp4;codecs=avc1','video/mp4','video/webm;codecs=vp9','video/webm;codecs=vp8','video/webm'];
       let mime='';
@@ -2221,7 +2283,7 @@ function bindPanelEvents() {
    Built lazily — it needs a user gesture, and createMediaElementSource can
    only ever be called once for an element.
    ═══════════════════════════════════════════════ */
-let _actx=null, _asrc=null, _adest=null, _again=null, _audioFailed=false;
+let _actx=null, _asrc=null, _adest=null, _again=null, _adelay=null, _audioFailed=false;
 
 function audioGraph() {
   if (_actx || _audioFailed) return _actx;
@@ -2233,7 +2295,12 @@ function audioGraph() {
     _adest = _actx.createMediaStreamDestination();
     _again = _actx.createGain();
     _again.gain.value = S.sound ? 1 : 0;
-    _asrc.connect(_adest);                    // -> what gets recorded
+    // The recorded picture lags by roughly one frame's drawing time — the clip
+    // is sampled when a frame starts but handed over when it finishes — so the
+    // recorded audio is delayed to match. Preview is not delayed.
+    _adelay = _actx.createDelay(0.5);
+    _adelay.delayTime.value = 0;
+    _asrc.connect(_adelay).connect(_adest);            // -> what gets recorded
     _asrc.connect(_again).connect(_actx.destination);  // -> what you hear
     // Routed through the graph now, so the element's own mute must come off
     // or nothing reaches either branch.
