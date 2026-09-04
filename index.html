@@ -1013,6 +1013,7 @@ const S = {
     { id:'custom', name:'Custom text',   on:false, text:'' },
   ],
   recStart: 0,
+  frameTrack: null,
   introStart: performance.now(),
   particles: [],
   raf: null,
@@ -1771,6 +1772,8 @@ function drawScene(theme, withGuides) {
     ctx.restore();
   }
   if (withGuides) drawGuides(theme);
+  // Hand this freshly painted frame to the recorder.
+  if (S.recording && S.frameTrack) { try { S.frameTrack.requestFrame(); } catch(e){} }
 }
 
 function render() {
@@ -2000,7 +2003,7 @@ function renderPanel() {
         </div>`:''}
         <div class="dur-row" id="durRow"${S.fullClip?' style="display:none"':''}>
           <span style="font-size:.72rem;color:var(--ui-muted)">Duration</span>
-          <input type="range" id="recDur" min="3" max="15" step="1" value="${S.recordDuration}">
+          <input type="range" id="recDur" min="3" max="60" step="1" value="${S.recordDuration}">
           <span class="dur-val" id="durVal">${S.recordDuration}s</span>
         </div>
         <p class="export-note">${recFormat()==='MP4'
@@ -2140,9 +2143,19 @@ function bindPanelEvents() {
       if(S.recording) return;
       if(typeof MediaRecorder==='undefined'){ showToast('Recording is not supported in this browser.'); return; }
       if(typeof cv.captureStream!=='function'){ showToast('This browser cannot record the canvas. Try Safari 15+ or Chrome.'); return; }
+      // Ask for a stream we clock ourselves: with captureStream(30) the browser
+      // decides when to sample, and on a throttled phone it simply stops,
+      // freezing the picture. Requesting a frame per painted frame cannot.
       let stream;
-      try { stream=cv.captureStream(30); }
-      catch(err){ showToast('Could not start recording: '+err.message); return; }
+      try {
+        stream=cv.captureStream(0);
+        const vt=stream.getVideoTracks()[0];
+        S.frameTrack = (vt && typeof vt.requestFrame==='function') ? vt : null;
+        if(!S.frameTrack){ stream=cv.captureStream(30); }   // older engines
+      } catch(err){
+        try { stream=cv.captureStream(30); S.frameTrack=null; }
+        catch(e2){ showToast('Could not start recording: '+e2.message); return; }
+      }
       S.recording=true; renderPanel();
       showToast(`Recording ${S.recordDuration}s…`,0,true);
       // Canvas capture is silent — attach the clip's audio if we have it.
@@ -2181,9 +2194,14 @@ function bindPanelEvents() {
       // canvas can never become the first recorded frame.
       drawScene(THEMES[S.theme], false);
       rec.start();
-      let s=runSecs;
+      keepAwake(true);
+      let s=runSecs, stopped=false;
+      const finish=()=>{ if(stopped) return; stopped=true;
+        clearInterval(t); try{rec.stop()}catch(e){}
+        vid.loop=true; vid.onended=null; S.frameTrack=null; keepAwake(false); };
       const t=setInterval(()=>{ s--; if(s>0)showToast(`Recording: ${s}s left…`,0,true); else clearInterval(t); },1000);
-      setTimeout(()=>{ try{rec.stop()}catch(e){} vid.loop=true; }, runSecs*1000);
+      if(fullLen) vid.onended=finish;          // stop exactly when the clip ends
+      setTimeout(finish, runSecs*1000 + 250);
     });
   }
 }
@@ -2248,6 +2266,22 @@ function applyPreviewVolume() {
   else if (!S.sound) vid.muted = true;
 }
 
+/* A phone that dims or locks stops painting the canvas, which freezes the
+   recorded picture while the audio track carries on — the classic "video
+   stopped but the sound kept going". Hold a wake lock for the duration. */
+let _wakeLock=null;
+async function keepAwake(on) {
+  try {
+    if (on) {
+      if ('wakeLock' in navigator && !_wakeLock)
+        _wakeLock = await navigator.wakeLock.request('screen');
+    } else if (_wakeLock) { await _wakeLock.release(); _wakeLock=null; }
+  } catch (e) { /* not fatal — recording still runs */ }
+}
+document.addEventListener('visibilitychange', ()=>{
+  if (document.visibilityState==='visible' && S.recording) keepAwake(true);
+});
+
 /* Which container this browser can actually record.
    Safari/iOS gives MP4 (Instagram-ready); Chrome/Firefox give WebM. */
 function recFormat() {
@@ -2266,25 +2300,24 @@ function recFormat() {
 async function deliverFile(blob, filename, mime, shareText, downloadMsg) {
   const file = new File([blob], filename, { type: mime });
   const canShare = navigator.canShare && navigator.canShare({ files:[file] });
+  const url = URL.createObjectURL(blob);
+  const cleanup = ()=>setTimeout(()=>URL.revokeObjectURL(url), 300000);
 
   if (canShare) {
     try {
       await navigator.share({ files:[file], title:'DailyVolex', text:shareText });
       showToast('Shared — choose “Save to Photos” to keep it.');
-      return;
+      cleanup(); return;
     } catch (err) {
-      // User dismissed the sheet — nothing more to do.
-      if (err && err.name === 'AbortError') { hideToast(); return; }
-      // Anything else: fall through below.
+      // Dismissing the sheet used to lose the recording entirely. Keep the
+      // file on screen so it can still be saved without recording again.
+      offerFileLink(url, filename, mime);
+      cleanup(); return;
     }
   }
 
-  const url = URL.createObjectURL(blob);
-  const cleanup = ()=>setTimeout(()=>URL.revokeObjectURL(url), 120000);
-
   // iOS ignores the download attribute: the click looks like nothing happened,
-  // which is why saving a Reel appeared to be missing entirely. Offer the file
-  // as something tappable instead.
+  // which is why saving a Reel appeared to be missing entirely.
   const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
            || (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1);
   if (iOS) { offerFileLink(url, filename, mime); cleanup(); return; }
@@ -2305,7 +2338,9 @@ function offerFileLink(url, filename, mime) {
   box.id = 'fileOffer';
   box.innerHTML = `
     <div class="fo-title">${isVideo?'Reel ready':'Image ready'}</div>
-    <div class="fo-sub">Open it, then press and hold to save${isVideo?' to Photos':''}.</div>
+    <div class="fo-sub">${isVideo
+      ? 'Opens in a new tab — press and hold the video, then Save to Photos.'
+      : 'Opens in a new tab — press and hold the image, then Add to Photos.'}</div>
     <div class="fo-actions">
       <a class="fo-open" target="_blank" rel="noopener">Open ${isVideo?'video':'image'}</a>
       <button class="fo-close" type="button">Close</button>
@@ -2490,6 +2525,7 @@ function initEvents() {
     vid.onloadeddata=()=>{
       S.videoLoaded=true; vid.play();
       primeAudio();          // if the user has already tapped, sound starts now
+      S.fullClip=true;       // a clip is here: default to exporting all of it
       renderPanel();         // Export gains the whole-clip option now there is a clip
       document.getElementById('vidName').textContent=f.name;
       document.getElementById('clearVideoBtn').style.display='';
