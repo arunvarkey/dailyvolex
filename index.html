@@ -612,10 +612,16 @@ aside > *, .right-panel > * { flex-shrink:0 }
 }
 .fo-title{font-family:var(--font-head);font-weight:700;font-size:.9rem;color:#fff}
 .fo-sub{font-size:.72rem;color:var(--ui-muted);margin-top:.15rem;line-height:1.45}
-.fo-actions{display:flex;gap:.5rem;margin-top:.6rem}
+.fo-size{font-family:var(--font-mono);font-size:.68rem;color:var(--ui-muted);font-weight:400;margin-left:.3rem}
+.fo-actions{display:flex;gap:.5rem;margin-top:.6rem;align-items:stretch}
+.fo-alt{
+  display:flex;align-items:center;justify-content:center;padding:.6rem .9rem;
+  border-radius:9px;border:1px solid var(--ui-border2);background:transparent;
+  color:var(--ui-text);font-family:var(--font);font-size:.8rem;font-weight:600;text-decoration:none
+}
 .fo-open{
   flex:1;text-align:center;padding:.6rem;border-radius:9px;text-decoration:none;
-  background:linear-gradient(135deg,var(--tp),#8b0000);color:#fff;
+  background:linear-gradient(135deg,var(--tp),#8b0000);color:#fff;border:none;cursor:pointer;
   font-family:var(--font);font-size:.8rem;font-weight:700
 }
 .fo-close{
@@ -2299,54 +2305,66 @@ function recFormat() {
    ═══════════════════════════════════════════════ */
 async function deliverFile(blob, filename, mime, shareText, downloadMsg) {
   const file = new File([blob], filename, { type: mime });
-  const canShare = navigator.canShare && navigator.canShare({ files:[file] });
-  const url = URL.createObjectURL(blob);
-  const cleanup = ()=>setTimeout(()=>URL.revokeObjectURL(url), 300000);
-
-  if (canShare) {
-    try {
-      await navigator.share({ files:[file], title:'DailyVolex', text:shareText });
-      showToast('Shared — choose “Save to Photos” to keep it.');
-      cleanup(); return;
-    } catch (err) {
-      // Dismissing the sheet used to lose the recording entirely. Keep the
-      // file on screen so it can still be saved without recording again.
-      offerFileLink(url, filename, mime);
-      cleanup(); return;
-    }
-  }
-
-  // iOS ignores the download attribute: the click looks like nothing happened,
-  // which is why saving a Reel appeared to be missing entirely.
+  const canShare = !!(navigator.canShare && navigator.canShare({ files:[file] }));
   const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
            || (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1);
-  if (iOS) { offerFileLink(url, filename, mime); cleanup(); return; }
 
-  const a = document.createElement('a');
-  a.download = filename; a.href = url;
-  document.body.appendChild(a); a.click(); a.remove();
-  cleanup();
-  showToast(downloadMsg);
+  // A plain download works on desktop, so just do it there.
+  if (!canShare && !iOS) {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.download = filename; a.href = url;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url), 300000);
+    showToast(downloadMsg);
+    return;
+  }
+
+  // Everywhere else, hand the file to a card and let the *user* tap to save.
+  // navigator.share() needs a live user gesture: calling it here — seconds or
+  // minutes after the tap that started the recording — is refused by iOS, and
+  // the fallback link does nothing inside an installed app. Sharing from the
+  // button press is a real gesture, so it actually opens the share sheet.
+  offerFile({ blob, file, filename, mime, canShare, shareText });
 }
 
-/* A tappable card holding the finished file, for browsers where a scripted
-   download is a no-op. Opening it full screen lets the viewer save it. */
-function offerFileLink(url, filename, mime) {
+/* The finished file, offered as something the user taps. */
+function offerFile({ blob, file, filename, mime, canShare, shareText }) {
   document.getElementById('fileOffer')?.remove();
   const isVideo = mime.startsWith('video/');
+  const url = URL.createObjectURL(blob);
+  const kb = Math.round(blob.size/1024);
+
   const box = document.createElement('div');
   box.id = 'fileOffer';
   box.innerHTML = `
-    <div class="fo-title">${isVideo?'Reel ready':'Image ready'}</div>
-    <div class="fo-sub">${isVideo
-      ? 'Opens in a new tab — press and hold the video, then Save to Photos.'
-      : 'Opens in a new tab — press and hold the image, then Add to Photos.'}</div>
+    <div class="fo-title">${isVideo?'Reel ready':'Image ready'} <span class="fo-size">${kb>1024?(kb/1024).toFixed(1)+' MB':kb+' KB'}</span></div>
+    <div class="fo-sub">${canShare
+      ? `Tap Save, then choose <b>Save to ${isVideo?'Photos':'Photos'}</b>.`
+      : 'Open it, then press and hold to save.'}</div>
     <div class="fo-actions">
-      <a class="fo-open" target="_blank" rel="noopener">Open ${isVideo?'video':'image'}</a>
-      <button class="fo-close" type="button">Close</button>
+      ${canShare?'<button class="fo-open" id="foSave" type="button">Save '+(isVideo?'video':'image')+'</button>':''}
+      <a class="fo-alt" id="foOpen" target="_blank" rel="noopener">Open</a>
+      <button class="fo-close" type="button">✕</button>
     </div>`;
-  box.querySelector('.fo-open').href = url;
-  box.querySelector('.fo-close').addEventListener('click', ()=>box.remove());
+  box.querySelector('#foOpen').href = url;
+  box.querySelector('.fo-close').addEventListener('click', ()=>{
+    box.remove(); setTimeout(()=>URL.revokeObjectURL(url), 1000);
+  });
+
+  const saveBtn = box.querySelector('#foSave');
+  if (saveBtn) {
+    saveBtn.addEventListener('click', async ()=>{
+      try {
+        await navigator.share({ files:[file], title:'DailyVolex', text:shareText });
+        showToast('Saved — check Photos.');
+        box.remove(); setTimeout(()=>URL.revokeObjectURL(url), 1000);
+      } catch (err) {
+        if (err && err.name === 'AbortError') return;   // sheet dismissed; card stays
+        showToast('Could not open the share sheet — use Open instead.');
+      }
+    });
+  }
   document.body.appendChild(box);
   hideToast();
 }
