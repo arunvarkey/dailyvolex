@@ -9,6 +9,11 @@
 <meta name="apple-mobile-web-app-title" content="DailyVolex">
 <meta name="theme-color" content="#060608">
 <link rel="manifest" href="manifest.json">
+<!-- Vendored, not from a CDN: the exporter must work on a flaky connection
+     and without trusting a third-party host. Deferred so they never delay
+     first paint; export falls back if they are missing. -->
+<script src="vendor/mp4box.min.js" defer></script>
+<script src="vendor/mp4-muxer.js" defer></script>
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="icon" type="image/png" sizes="32x32" href="icon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
@@ -996,19 +1001,27 @@ const S = {
   recStart: 0,
   frameTrack: null,
   stopRecording: null,
+  exportClock: null,      // set per frame while exporting a file
+  exporting: false,
+  videoFile: null,
   introStart: performance.now(),
   particles: [],
   raf: null,
   fontsReady: false,
 };
 
+/* Time source for animation. During a file export the frames are produced
+   as fast as the machine allows, so animation must follow the frame's own
+   timestamp rather than the wall clock. */
+function nowMs() { return S.exportClock!=null ? S.exportClock : performance.now(); }
+
 /* Entrance animation helper — eased 0→1, staggered by delay (ms) */
 function introT(delay=0, dur=600) {
-  const t=(performance.now()-S.introStart-delay)/dur;
+  const t=(nowMs()-S.introStart-delay)/dur;
   const c=Math.min(Math.max(t,0),1);
   return 1-Math.pow(1-c,3); // easeOutCubic
 }
-function replayIntro(){ S.introStart=performance.now(); }
+function replayIntro(){ S.introStart=nowMs(); }
 
 /* ═══════════════════════════════════════════════
    DOM REFS
@@ -1170,6 +1183,57 @@ function wrapLines(text, maxW) {
 /* ═══════════════════════════════════════════════
    DRAW: BACKGROUND (video or generative)
    ═══════════════════════════════════════════════ */
+/* Steps 2-6 of the grade: tints, neon leaks, vignette, letterbox.
+   Shared so the preview and the exported file are graded identically rather
+   than by two copies that can drift apart. */
+function applyLookOverlays(theme, look) {
+  const W=cv.width, H=cv.height;
+    // 2 ── Primary tint overlay (e.g. teal multiply for cinematic shadows)
+  if (look.overlay) {
+    ctx.globalCompositeOperation = look.overlayMode || 'multiply';
+    ctx.fillStyle = look.overlay;
+    ctx.fillRect(0,0,W,H);
+    ctx.globalCompositeOperation = 'source-over';
+  }
+
+  // 3 ── Secondary overlay (e.g. warm orange screen for highlights)
+  if (look.overlay2) {
+    ctx.globalCompositeOperation = look.overlay2Mode || 'screen';
+    ctx.fillStyle = look.overlay2;
+    ctx.fillRect(0,0,W,H);
+    ctx.globalCompositeOperation = 'source-over';
+  }
+
+  // 4 ── Neon: theme-coloured light leaks at top-right
+  if (S.videoLook === 'neon') {
+    const leak1 = ctx.createLinearGradient(0,0,0,H*.30);
+    leak1.addColorStop(0, `rgba(${theme.pr},.22)`);
+    leak1.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = leak1; ctx.fillRect(0,0,W,H*.30);
+    const leak2 = ctx.createLinearGradient(W,0,W*.70,0);
+    leak2.addColorStop(0, `rgba(${theme.pr},.14)`);
+    leak2.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = leak2; ctx.fillRect(W*.70,0,W*.30,H*.45);
+  }
+
+  // 5 ── Cinematic vignette (oval, not square)
+  const vig = cachedGrad(`vig|${W}x${H}|${look.vignette}`, ()=>{
+    const g2 = ctx.createRadialGradient(W*.5,H*.48,H*.14, W*.5,H*.48,H*.76);
+    g2.addColorStop(0, 'rgba(0,0,0,0)');
+    g2.addColorStop(1, `rgba(0,0,0,${look.vignette ?? 0.65})`);
+    return g2;
+  });
+  ctx.fillStyle = vig; ctx.fillRect(0,0,W,H);
+
+  // 6 ── Optional letterbox bars (cinematic 2.35:1 crop feel)
+  if (S.letterbox) {
+    const bh = Math.round(H * 0.073);
+    ctx.fillStyle = '#000';
+    ctx.fillRect(0,0,W,bh);
+    ctx.fillRect(0,H-bh,W,bh);
+  }
+}
+
 function drawBG(theme) {
   if (S.videoLoaded) {
     const W=cv.width, H=cv.height;
@@ -1198,50 +1262,7 @@ function drawBG(theme) {
       ctx.drawImage(vid, sx,sy,sw,sh, 0,0,W,H);
     }
 
-    // 2 ── Primary tint overlay (e.g. teal multiply for cinematic shadows)
-    if (look.overlay) {
-      ctx.globalCompositeOperation = look.overlayMode || 'multiply';
-      ctx.fillStyle = look.overlay;
-      ctx.fillRect(0,0,W,H);
-      ctx.globalCompositeOperation = 'source-over';
-    }
-
-    // 3 ── Secondary overlay (e.g. warm orange screen for highlights)
-    if (look.overlay2) {
-      ctx.globalCompositeOperation = look.overlay2Mode || 'screen';
-      ctx.fillStyle = look.overlay2;
-      ctx.fillRect(0,0,W,H);
-      ctx.globalCompositeOperation = 'source-over';
-    }
-
-    // 4 ── Neon: theme-coloured light leaks at top-right
-    if (S.videoLook === 'neon') {
-      const leak1 = ctx.createLinearGradient(0,0,0,H*.30);
-      leak1.addColorStop(0, `rgba(${theme.pr},.22)`);
-      leak1.addColorStop(1, 'rgba(0,0,0,0)');
-      ctx.fillStyle = leak1; ctx.fillRect(0,0,W,H*.30);
-      const leak2 = ctx.createLinearGradient(W,0,W*.70,0);
-      leak2.addColorStop(0, `rgba(${theme.pr},.14)`);
-      leak2.addColorStop(1, 'rgba(0,0,0,0)');
-      ctx.fillStyle = leak2; ctx.fillRect(W*.70,0,W*.30,H*.45);
-    }
-
-    // 5 ── Cinematic vignette (oval, not square)
-    const vig = cachedGrad(`vig|${W}x${H}|${look.vignette}`, ()=>{
-      const g2 = ctx.createRadialGradient(W*.5,H*.48,H*.14, W*.5,H*.48,H*.76);
-      g2.addColorStop(0, 'rgba(0,0,0,0)');
-      g2.addColorStop(1, `rgba(0,0,0,${look.vignette ?? 0.65})`);
-      return g2;
-    });
-    ctx.fillStyle = vig; ctx.fillRect(0,0,W,H);
-
-    // 6 ── Optional letterbox bars (cinematic 2.35:1 crop feel)
-    if (S.letterbox) {
-      const bh = Math.round(H * 0.073);
-      ctx.fillStyle = '#000';
-      ctx.fillRect(0,0,W,bh);
-      ctx.fillRect(0,H-bh,W,bh);
-    }
+    applyLookOverlays(theme, look);
   } else {
     const g = ctx.createLinearGradient(0,0,0,cv.height);
     g.addColorStop(0,theme.bg[0]); g.addColorStop(.5,theme.bg[1]); g.addColorStop(1,theme.bg[2]);
@@ -1309,7 +1330,7 @@ function drawBranding(theme) {
     ctx.fillText(hh+colon+mm, right-24, y);
     ctx.restore();
 
-    const blink=0.4+0.6*Math.sin(Date.now()*.003);
+    const blink=0.4+0.6*Math.sin(nowMs()*.003);
     ctx.save();
     ctx.globalAlpha=blink;
     ctx.fillStyle=theme.p; ctx.shadowColor=theme.p; ctx.shadowBlur=14;
@@ -2016,8 +2037,9 @@ function renderPanel() {
       <div class="panel-body">
         <div class="export-btns">
           <button class="ebtn ebtn-png" id="exportPng">📸 Export PNG (Feed/Story)</button>
-          <button class="ebtn ebtn-vid${S.recording?' recording':''}" id="exportVid">
-            ${S.recording?'⏹ Stop Recording':`🎬 Record Reel (${recFormat()})`}
+          <button class="ebtn ebtn-vid${(S.recording||S.exporting)?' recording':''}" id="exportVid">
+            ${S.exporting?'⏳ Exporting…':S.recording?'⏹ Stop Recording':
+              (S.videoFile&&S.fullClip&&codecsReady())?'🎬 Export Reel (MP4)':`🎬 Record Reel (${recFormat()})`}
           </button>
         </div>
         ${S.videoLoaded?`
@@ -2033,16 +2055,21 @@ function renderPanel() {
           <input type="range" id="recDur" min="3" max="60" step="1" value="${S.recordDuration}">
           <span class="dur-val" id="durVal">${S.recordDuration}s</span>
         </div>
-        ${S.videoLoaded?`
+        ${(S.videoLoaded && !(S.videoFile&&S.fullClip&&codecsReady()))?`
         <div class="dur-row" style="gap:.5rem">
           <span style="font-size:.72rem;color:var(--ui-muted);white-space:nowrap">Audio sync</span>
           <input type="range" id="avSync" min="0" max="300" step="10" value="${S.avSyncMs==null?autoSyncMs():S.avSyncMs}">
           <span class="dur-val" id="avSyncVal" style="min-width:56px">${S.avSyncMs==null?'auto':S.avSyncMs+'ms'}</span>
         </div>
         <p class="export-note" style="margin-top:-.2rem">
-          If the sound runs <strong>ahead of</strong> the picture, slide right.
-          If it lags behind, slide left. <a href="#" id="avAuto" style="color:var(--tp)">Reset to auto</a>
+          Only needed for the fallback recorder. If the sound runs
+          <strong>ahead of</strong> the picture, slide right; if it lags, slide left.
+          <a href="#" id="avAuto" style="color:var(--tp)">Reset to auto</a>
         </p>`:''}
+        ${(S.videoFile&&S.fullClip&&codecsReady())?`
+        <p class="export-note">Exports the whole clip by re-encoding it — not a screen
+        recording, so it cannot be cut short and the sound stays in step. Takes a
+        little while for a long clip.</p>`:''}
         <p class="export-note">${recFormat()==='MP4'
           ? 'PNG → Instagram Feed · Stories<br>MP4 → <strong>Save to Photos</strong>, then post as a Reel'
           : 'PNG → Instagram Feed · Stories<br>WebM → Convert to MP4 via <strong>CloudConvert</strong> then upload as Reel'}</p>
@@ -2192,6 +2219,33 @@ function bindPanelEvents() {
   if(vidBtn) {
     vidBtn.addEventListener('click', async ()=>{
       if(S.recording){ if(S.stopRecording) S.stopRecording(); return; }
+      if(S.exporting) return;
+
+      // Preferred path: read the file and re-encode it. Nothing is captured in
+      // real time, so nothing can be cut short by the screen or the browser.
+      if (S.videoFile && S.fullClip && codecsReady()) {
+        S.exporting=true; renderPanel();
+        const wasPlaying=!vid.paused; vid.pause();
+        showToast('Exporting… 0%',0,true);
+        try {
+          const blob = await exportVideoFile(S.videoFile, pct=>{
+            showToast(`Exporting… ${Math.round(pct*100)}%`,0,true);
+          });
+          S.exporting=false; S.exportClock=null; renderPanel();
+          if(wasPlaying) vid.play().catch(()=>{});
+          if(!blob || !blob.size) { showToast('Export produced no video — please try again.'); return; }
+          deliverFile(blob, `dailyvolex_reel_${Date.now()}.mp4`, 'video/mp4',
+            'Save to Photos, then post as a Reel', 'Reel exported.');
+          return;
+        } catch (err) {
+          S.exporting=false; S.exportClock=null; renderPanel();
+          if(wasPlaying) vid.play().catch(()=>{});
+          // Fall through to the real-time recorder below.
+          showToast('Using the fallback recorder — '+(err&&err.message||'export unavailable'),4000);
+          await new Promise(r=>setTimeout(r,600));
+        }
+      }
+
       if(typeof MediaRecorder==='undefined'){ showToast('Recording is not supported in this browser.'); return; }
       if(typeof cv.captureStream!=='function'){ showToast('This browser cannot record the canvas. Try Safari 15+ or Chrome.'); return; }
       // Ask for a stream we clock ourselves: with captureStream(30) the browser
@@ -2401,6 +2455,247 @@ function recFormat() {
   if (typeof MediaRecorder === 'undefined') return 'WebM';
   return (MediaRecorder.isTypeSupported('video/mp4;codecs=avc1')
        || MediaRecorder.isTypeSupported('video/mp4')) ? 'MP4' : 'WebM';
+}
+
+/* ═══════════════════════════════════════════════
+   FILE EXPORT — decode, composite, re-encode
+
+   The old path screen-recorded the canvas in real time, which meant a
+   two-minute clip needed two minutes with the screen awake and the browser
+   never throttling. On a phone that is fragile: recordings stopped early,
+   the picture froze while the sound continued, and the timing drifted.
+
+   This reads the source file, decodes every frame, draws the graphics onto
+   it and encodes the result. It is not real time — a long clip takes as long
+   as the device needs, not as long as the clip — nothing can be dropped,
+   and audio and video both start at zero so they cannot drift apart.
+   ═══════════════════════════════════════════════ */
+
+function codecsReady() {
+  return typeof VideoDecoder!=='undefined' && typeof VideoEncoder!=='undefined'
+      && typeof VideoFrame!=='undefined'   && typeof EncodedVideoChunk!=='undefined'
+      && typeof window.MP4Box!=='undefined' && typeof window.Mp4Muxer!=='undefined'
+      && typeof window.DataStream!=='undefined';
+}
+
+/* Pick codecs this device can actually encode, rather than assuming.
+   H.264 + AAC first because that is what Photos and Instagram expect and what
+   every iPhone supports; the rest are fallbacks so the exporter still works on
+   builds without the licensed codecs. */
+async function pickCodecs(W, H, fps) {
+  const video = [
+    ['avc1.640028','avc'], ['avc1.4D0032','avc'], ['avc1.42E01E','avc'],
+    ['vp09.00.10.08','vp9'], ['av01.0.08M.08','av1'],
+  ];
+  let picked = null;
+  for (const [codec, muxName] of video) {
+    try {
+      const r = await VideoEncoder.isConfigSupported({
+        codec, width:W, height:H, bitrate:6_000_000, framerate:fps });
+      if (r && r.supported) { picked = { codec, muxName }; break; }
+    } catch (e) {}
+  }
+  if (!picked) throw new Error('This device cannot encode video');
+
+  let audio = null;
+  if (typeof AudioEncoder !== 'undefined') {
+    for (const [codec, muxName] of [['mp4a.40.2','aac'], ['opus','opus']]) {
+      try {
+        const r = await AudioEncoder.isConfigSupported({
+          codec, sampleRate:48000, numberOfChannels:2, bitrate:128000 });
+        if (r && r.supported) { audio = { codec, muxName }; break; }
+      } catch (e) {}
+    }
+  }
+  return { video: picked, audio };
+}
+
+/* The codec-private data a decoder needs (avcC / hvcC / av1C / vpcC). */
+function codecDescription(mp4file, trackId) {
+  const trak = mp4file.getTrackById(trackId);
+  for (const entry of (trak.mdia.minf.stbl.stsd.entries || [])) {
+    const box = entry.avcC || entry.hvcC || entry.av1C || entry.vpcC;
+    if (box) {
+      // DataStream is its own global in this build, not a member of MP4Box.
+      const DS = window.DataStream;
+      const st = new DS(undefined, 0, DS.BIG_ENDIAN);
+      box.write(st);
+      return new Uint8Array(st.buffer, 8);      // drop the box header
+    }
+  }
+  return null;
+}
+
+/* Pull the video track's encoded samples out of the file. */
+function demux(buffer) {
+  return new Promise((resolve, reject) => {
+    const file = MP4Box.createFile();
+    const samples = [];
+    let info = null;
+    file.onError = e => reject(new Error('Could not read this video: ' + e));
+    file.onReady = i => {
+      info = i;
+      if (!i.videoTracks || !i.videoTracks.length) return reject(new Error('No video track in this file'));
+      file.setExtractionOptions(i.videoTracks[0].id, null, { nbSamples: Infinity });
+      file.start();
+    };
+    file.onSamples = (_id, _u, s) => { for (const x of s) samples.push(x); };
+    buffer.fileStart = 0;
+    file.appendBuffer(buffer);
+    file.flush();
+    if (!info) return reject(new Error('This file is not an MP4/MOV the exporter can read'));
+    const track = info.videoTracks[0];
+    resolve({ file, info, track, samples, description: codecDescription(file, track.id) });
+  });
+}
+
+/* Main entry. Returns an MP4 Blob, or throws so the caller can fall back. */
+async function exportVideoFile(file, onProgress) {
+  if (!codecsReady()) throw new Error('unsupported');
+  const arrayBuffer = await file.arrayBuffer();
+  const { track, samples, description } = await demux(arrayBuffer.slice(0));
+  if (!samples.length) throw new Error('No frames found in this video');
+
+  const W = cv.width, H = cv.height;
+  const fps = Math.min(60, Math.max(15, Math.round(
+    track.nb_samples / (track.duration / track.timescale) || 30)));
+
+  const codecs = await pickCodecs(W, H, fps);
+
+  // Decode the clip's audio up front: it tells us whether there is any sound
+  // to keep, so the muxer is built once with the right tracks.
+  let pcm = null;
+  if (S.sound && codecs.audio) {
+    try {
+      const ac = new (window.AudioContext||window.webkitAudioContext)();
+      pcm = await ac.decodeAudioData(arrayBuffer.slice(0));
+      ac.close && ac.close();
+      if (!pcm || !pcm.length) pcm = null;
+    } catch (e) { pcm = null; }        // no usable audio in this clip
+  }
+
+  const mux = new Mp4Muxer.Muxer({
+    target: new Mp4Muxer.ArrayBufferTarget(),
+    video: { codec: codecs.video.muxName, width:W, height:H },
+    audio: pcm ? { codec: codecs.audio.muxName,
+                   sampleRate: pcm.sampleRate,
+                   numberOfChannels: Math.min(pcm.numberOfChannels,2) } : undefined,
+    fastStart: 'in-memory',
+  });
+
+  // Audio: encode the whole track first — it is quick next to the video.
+  if (pcm) {
+    const rate = pcm.sampleRate, ch = Math.min(pcm.numberOfChannels, 2);
+    const enc = new AudioEncoder({
+      output:(chunk, meta)=>mux.addAudioChunk(chunk, meta),
+      error:()=>{},
+    });
+    enc.configure({ codec: codecs.audio.codec, sampleRate:rate, numberOfChannels:ch, bitrate:128000 });
+    const block = rate;                                   // ~1s at a time
+    for (let off = 0; off < pcm.length; off += block) {
+      const n = Math.min(block, pcm.length - off);
+      const inter = new Float32Array(n * ch);
+      for (let c = 0; c < ch; c++) {
+        const src = pcm.getChannelData(c);
+        for (let i = 0; i < n; i++) inter[i*ch + c] = src[off + i];
+      }
+      enc.encode(new AudioData({
+        format:'f32', sampleRate:rate, numberOfFrames:n, numberOfChannels:ch,
+        timestamp: Math.round(off / rate * 1e6), data: inter,
+      }));
+    }
+    await enc.flush();
+    enc.close();
+  }
+
+  const encoder = new VideoEncoder({
+    output:(chunk, meta)=>mux.addVideoChunk(chunk, meta),
+    error:e=>{ throw e; },
+  });
+  encoder.configure({
+    codec: codecs.video.codec, width:W, height:H,
+    bitrate: Math.min(10_000_000, Math.max(3_500_000, Math.round(W*H*fps*0.07))),
+    framerate: fps,
+  });
+
+  const theme = THEMES[S.theme];
+  const total = samples.length;
+  let done = 0, pending = 0;
+
+  const onFrame = (frame) => {
+    // Draw this frame, with the graphics animated to its own timestamp.
+    S.exportClock = frame.timestamp / 1000;
+    if (done === 0) S.introStart = S.exportClock;   // entrance starts at frame 0
+    drawExportFrame(theme, frame);
+    frame.close();
+    const out = new VideoFrame(cv, {
+      timestamp: Math.round(S.exportClock * 1000),
+      duration: Math.round(1e6 / fps),
+    });
+    encoder.encode(out, { keyFrame: done % (fps*2) === 0 });
+    out.close();
+    done++;
+    if (onProgress && (done % 5 === 0 || done === total)) onProgress(done/total);
+  };
+
+  const decoder = new VideoDecoder({ output:onFrame, error:e=>{ throw e; } });
+  const cfg = {
+    codec: track.codec,
+    codedWidth: track.video ? track.video.width : track.track_width,
+    codedHeight: track.video ? track.video.height : track.track_height,
+  };
+  if (description) cfg.description = description;
+  if (VideoDecoder.isConfigSupported) {
+    const sup = await VideoDecoder.isConfigSupported(cfg).catch(()=>null);
+    if (!sup || !sup.supported) throw new Error('This video uses a format the exporter cannot decode');
+  }
+  decoder.configure(cfg);
+
+  for (const smp of samples) {
+    decoder.decode(new EncodedVideoChunk({
+      type: smp.is_sync ? 'key' : 'delta',
+      timestamp: smp.cts * 1e6 / smp.timescale,
+      duration: smp.duration * 1e6 / smp.timescale,
+      data: smp.data,
+    }));
+    // Keep the queue bounded so memory stays sane on a phone.
+    if (decoder.decodeQueueSize > 30) {
+      await new Promise(r=>setTimeout(r, 0));
+      while (decoder.decodeQueueSize > 10) await new Promise(r=>setTimeout(r, 5));
+    }
+  }
+  await decoder.flush();
+  decoder.close();
+  await encoder.flush();
+  encoder.close();
+  mux.finalize();
+
+  S.exportClock = null;
+  void pending;
+  return new Blob([mux.target.buffer], { type:'video/mp4' });
+}
+
+/* One composited frame: the decoded picture, graded, with the graphics over it. */
+function drawExportFrame(theme, frame) {
+  const W = cv.width, H = cv.height;
+  const look = VIDEO_LOOKS[S.videoLook] || VIDEO_LOOKS.cinematic;
+  const vw = frame.displayWidth, vh = frame.displayHeight;
+  const vr = vw/vh, cr = W/H;
+  let sx, sy, sw, sh;
+  if (vr > cr) { sh = vh; sw = sh*cr; sx = (vw-sw)/2; sy = 0; }
+  else         { sw = vw; sh = sw/cr; sx = 0; sy = (vh-sh)/2; }
+
+  ctx.clearRect(0,0,W,H);
+  if (look.filter) { ctx.filter = look.filter; ctx.drawImage(frame, sx,sy,sw,sh, 0,0,W,H); ctx.filter='none'; }
+  else             { ctx.drawImage(frame, sx,sy,sw,sh, 0,0,W,H); }
+  applyLookOverlays(theme, look);
+  drawBranding(theme);
+  switch (S.layout) {
+    case 'breaking': drawBreaking(theme); break;
+    case 'stories':  drawStories(theme);  break;
+    case 'facts':    drawFacts(theme);    break;
+    case 'quote':    drawQuote(theme);    break;
+  }
 }
 
 /* ═══════════════════════════════════════════════
@@ -2645,6 +2940,7 @@ function initEvents() {
   // Video
   document.getElementById('videoInput').addEventListener('change', e=>{
     const f=e.target.files[0]; if(!f) return;
+    S.videoFile=f;                      // the exporter reads the file directly
     const url=URL.createObjectURL(f);
     vid.src=url; vid.load();
     showToast('Loading video…',0,true);
@@ -2662,7 +2958,7 @@ function initEvents() {
     };
   });
   document.getElementById('clearVideoBtn').addEventListener('click', ()=>{
-    S.videoLoaded=false; S.fullClip=false; vid.src='';
+    S.videoLoaded=false; S.fullClip=false; S.videoFile=null; vid.src='';
     renderPanel();
     document.getElementById('vidName').textContent='No video — particle BG active';
     document.getElementById('clearVideoBtn').style.display='none';
