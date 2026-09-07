@@ -655,6 +655,12 @@ aside > *, .right-panel > * { flex-shrink:0 }
 
 /* Export note */
 .export-note{font-size:.64rem;color:var(--ui-muted);line-height:1.65;padding:.1rem 0}
+.engine-note{font-size:.66rem;line-height:1.6;padding:.5rem .6rem;border-radius:8px;
+  border:1px solid;display:block}
+.engine-note strong{display:block;font-size:.7rem;margin-bottom:.15rem}
+.engine-note a{color:inherit;opacity:.75;text-decoration:underline;margin-left:.35rem}
+.engine-ok{border-color:rgba(64,200,140,.35);background:rgba(64,200,140,.08);color:#7fe0b4}
+.engine-warn{border-color:rgba(240,170,60,.4);background:rgba(240,170,60,.1);color:#f2c078}
 .export-note strong{color:var(--ui-text)}
 
 /* Video look grid */
@@ -1004,6 +1010,9 @@ const S = {
   exportClock: null,      // set per frame while exporting a file
   exporting: false,
   videoFile: null,
+  build: (window.BUILD='2026-09-07-b'),   // shown in Export, so a stale cached page is obvious
+  codecProbe: null,       // null = not asked yet, true/false = device answered
+  codecProbeWhy: '',
   introStart: performance.now(),
   particles: [],
   raf: null,
@@ -2039,9 +2048,15 @@ function renderPanel() {
           <button class="ebtn ebtn-png" id="exportPng">📸 Export PNG (Feed/Story)</button>
           <button class="ebtn ebtn-vid${(S.recording||S.exporting)?' recording':''}" id="exportVid">
             ${S.exporting?'⏳ Exporting…':S.recording?'⏹ Stop Recording':
-              (S.videoFile&&S.fullClip&&codecsReady())?'🎬 Export Reel (MP4)':`🎬 Record Reel (${recFormat()})`}
+              canExportFile()?'🎬 Export Reel (MP4)':`🎬 Record Reel (${recFormat()})`}
           </button>
         </div>
+        ${S.videoLoaded?`
+        <div class="engine-note ${exportEngineNote().ok?'engine-ok':'engine-warn'}">
+          <strong>${exportEngineNote().label||'⚠ Fallback'}</strong>
+          ${esc(exportEngineNote().text)}
+          <a href="#" id="copyDiag">Copy details</a>
+        </div>`:''}
         ${S.videoLoaded?`
         <div class="toggle-row">
           <span class="toggle-label">Export whole clip
@@ -2055,7 +2070,7 @@ function renderPanel() {
           <input type="range" id="recDur" min="3" max="60" step="1" value="${S.recordDuration}">
           <span class="dur-val" id="durVal">${S.recordDuration}s</span>
         </div>
-        ${(S.videoLoaded && !(S.videoFile&&S.fullClip&&codecsReady()))?`
+        ${(S.videoLoaded && !canExportFile())?`
         <div class="dur-row" style="gap:.5rem">
           <span style="font-size:.72rem;color:var(--ui-muted);white-space:nowrap">Audio sync</span>
           <input type="range" id="avSync" min="0" max="300" step="10" value="${S.avSyncMs==null?autoSyncMs():S.avSyncMs}">
@@ -2066,10 +2081,11 @@ function renderPanel() {
           <strong>ahead of</strong> the picture, slide right; if it lags, slide left.
           <a href="#" id="avAuto" style="color:var(--tp)">Reset to auto</a>
         </p>`:''}
-        ${(S.videoFile&&S.fullClip&&codecsReady())?`
-        <p class="export-note">Exports the whole clip by re-encoding it — not a screen
-        recording, so it cannot be cut short and the sound stays in step. Takes a
-        little while for a long clip.</p>`:''}
+        ${canExportFile()?`
+        <p class="export-note">${S.fullClip?'Exports the whole clip':'Exports the first '+S.recordDuration+'s'}
+        by re-encoding it — not a screen recording, so it cannot be cut short and the
+        sound stays in step. Takes a little while for a long clip.</p>`:''}
+        <p class="export-note" style="opacity:.6">Build ${S.build}</p>
         <p class="export-note">${recFormat()==='MP4'
           ? 'PNG → Instagram Feed · Stories<br>MP4 → <strong>Save to Photos</strong>, then post as a Reel'
           : 'PNG → Instagram Feed · Stories<br>WebM → Convert to MP4 via <strong>CloudConvert</strong> then upload as Reel'}</p>
@@ -2194,9 +2210,31 @@ function bindPanelEvents() {
   const fc=document.getElementById('fullClipToggle');
   if(fc) fc.addEventListener('change', e=>{
     S.fullClip=e.target.checked;
-    const d=document.getElementById('durRow'); if(d) d.style.display=S.fullClip?'none':'';
-    if(S.fullClip && S.videoLoaded)
-      showToast(`Will record the whole ${Math.round(vid.duration)}s clip — in real time, so it takes that long.`);
+    renderPanel();
+  });
+
+  // Diagnostics: one tap puts the reason on the clipboard, so a failure on a
+  // phone I cannot inspect can still be reported back exactly.
+  const cd=document.getElementById('copyDiag');
+  if(cd) cd.addEventListener('click', e=>{
+    e.preventDefault();
+    const t = [
+      'DailyVolex build '+S.build,
+      'engine: '+(canExportFile()?'file export':'fallback recorder'),
+      'note: '+exportEngineNote().text,
+      'VideoEncoder: '+(typeof VideoEncoder!=='undefined'),
+      'VideoDecoder: '+(typeof VideoDecoder!=='undefined'),
+      'MP4Box: '+(typeof window.MP4Box!=='undefined'),
+      'DataStream: '+(typeof window.DataStream!=='undefined'),
+      'Mp4Muxer: '+(typeof window.Mp4Muxer!=='undefined'),
+      'codec probe: '+S.codecProbe+(S.codecProbeWhy?' ('+S.codecProbeWhy+')':''),
+      'videoFile: '+(S.videoFile?S.videoFile.type+' '+S.videoFile.size+'B':'none'),
+      'ua: '+navigator.userAgent,
+    ].join('\n');
+    if(navigator.clipboard) navigator.clipboard.writeText(t).then(
+      ()=>showToast('Diagnostics copied — paste them to Claude',4000),
+      ()=>showToast(t,10000));
+    else showToast(t,10000);
   });
 
   // Export PNG
@@ -2223,14 +2261,17 @@ function bindPanelEvents() {
 
       // Preferred path: read the file and re-encode it. Nothing is captured in
       // real time, so nothing can be cut short by the screen or the browser.
-      if (S.videoFile && S.fullClip && codecsReady()) {
+      // This no longer depends on the whole-clip toggle — with it off we simply
+      // export the first N seconds through the same reliable route.
+      if (canExportFile()) {
         S.exporting=true; renderPanel();
         const wasPlaying=!vid.paused; vid.pause();
         showToast('Exporting… 0%',0,true);
         try {
+          const limit = S.fullClip ? Infinity : S.recordDuration;
           const blob = await exportVideoFile(S.videoFile, pct=>{
             showToast(`Exporting… ${Math.round(pct*100)}%`,0,true);
-          });
+          }, limit);
           S.exporting=false; S.exportClock=null; renderPanel();
           if(wasPlaying) vid.play().catch(()=>{});
           if(!blob || !blob.size) { showToast('Export produced no video — please try again.'); return; }
@@ -2240,9 +2281,12 @@ function bindPanelEvents() {
         } catch (err) {
           S.exporting=false; S.exportClock=null; renderPanel();
           if(wasPlaying) vid.play().catch(()=>{});
-          // Fall through to the real-time recorder below.
-          showToast('Using the fallback recorder — '+(err&&err.message||'export unavailable'),4000);
-          await new Promise(r=>setTimeout(r,600));
+          // Fall through to the real-time recorder below — but say so loudly,
+          // and remember the reason so the panel keeps showing it.
+          S.codecProbeWhy = (err&&err.message) || 'export failed';
+          showToast('Export failed: '+S.codecProbeWhy+' — falling back to recording, which may stop early.',6000);
+          renderPanel();
+          await new Promise(r=>setTimeout(r,1200));
         }
       }
 
@@ -2472,10 +2516,50 @@ function recFormat() {
    ═══════════════════════════════════════════════ */
 
 function codecsReady() {
-  return typeof VideoDecoder!=='undefined' && typeof VideoEncoder!=='undefined'
-      && typeof VideoFrame!=='undefined'   && typeof EncodedVideoChunk!=='undefined'
-      && typeof window.MP4Box!=='undefined' && typeof window.Mp4Muxer!=='undefined'
-      && typeof window.DataStream!=='undefined';
+  return !missingParts().length && S.codecProbe !== false;
+}
+
+/* Exactly what is absent, in words, so a failure is never silent. The old
+   build dropped to the real-time recorder without saying so — which is why a
+   clip could still stop at 22s with no explanation on screen. */
+function missingParts() {
+  const out = [];
+  if (typeof VideoDecoder==='undefined' || typeof VideoEncoder==='undefined'
+   || typeof VideoFrame==='undefined'   || typeof EncodedVideoChunk==='undefined')
+    out.push('WebCodecs (needs iOS 17 or later)');
+  if (typeof window.MP4Box==='undefined' || typeof window.DataStream==='undefined')
+    out.push('the MP4 reader (vendor/mp4box.min.js did not load)');
+  if (typeof window.Mp4Muxer==='undefined')
+    out.push('the MP4 writer (vendor/mp4-muxer.js did not load)');
+  return out;
+}
+
+/* Ask the hardware once, at startup, whether it can actually encode: the APIs
+   can all exist and the device still refuse every codec. */
+async function probeCodecs() {
+  if (S.codecProbe !== null) return S.codecProbe;
+  // The vendor scripts are deferred, so give them a moment to appear rather
+  // than declaring the device incapable while they are still arriving.
+  for (let i = 0; i < 40 && missingParts().length; i++)
+    await new Promise(r => setTimeout(r, 100));
+  if (missingParts().length) { S.codecProbe = false; renderPanel(); return false; }
+  try { await pickCodecs(1080, 1920, 30); S.codecProbe = true; }
+  catch (e) { S.codecProbe = false; S.codecProbeWhy = e && e.message; }
+  renderPanel();
+  return S.codecProbe;
+}
+
+/* A plain-English line for the Export panel, so the chosen path is visible
+   before a long export rather than discovered afterwards. */
+function exportEngineNote() {
+  const miss = missingParts();
+  if (miss.length)
+    return { ok:false, text:'Fallback recorder — this browser is missing '+miss.join(' and ')+'. Long clips may stop early.' };
+  if (S.codecProbe === false)
+    return { ok:false, text:'Fallback recorder — this device refused every video codec'+(S.codecProbeWhy?' ('+S.codecProbeWhy+')':'')+'. Long clips may stop early.' };
+  if (S.codecProbe == null)
+    return { ok:true, label:'Checking…', text:'asking this device what it can encode.' };
+  return { ok:true, label:'✓ Full export', text:'Every frame is re-encoded, so it cannot stop early.' };
 }
 
 /* Pick codecs this device can actually encode, rather than assuming.
@@ -2549,11 +2633,22 @@ function demux(buffer) {
   });
 }
 
-/* Main entry. Returns an MP4 Blob, or throws so the caller can fall back. */
-async function exportVideoFile(file, onProgress) {
+/* True when the reliable path is available for the loaded clip. */
+function canExportFile() {
+  return !!S.videoFile && codecsReady();
+}
+
+/* Main entry. Returns an MP4 Blob, or throws so the caller can fall back.
+   limitSec trims the output; Infinity exports the whole clip. */
+async function exportVideoFile(file, onProgress, limitSec) {
   if (!codecsReady()) throw new Error('unsupported');
+  const limit = (limitSec==null || !isFinite(limitSec)) ? Infinity : limitSec;
   const arrayBuffer = await file.arrayBuffer();
-  const { track, samples, description } = await demux(arrayBuffer.slice(0));
+  const { track, samples: allSamples, description } = await demux(arrayBuffer.slice(0));
+  if (!allSamples.length) throw new Error('No frames found in this video');
+  // Trim on a whole number of samples so the last frame is never half-decoded.
+  const samples = limit===Infinity ? allSamples
+    : allSamples.filter(s => s.cts / s.timescale < limit);
   if (!samples.length) throw new Error('No frames found in this video');
 
   const W = cv.width, H = cv.height;
@@ -2592,8 +2687,12 @@ async function exportVideoFile(file, onProgress) {
     });
     enc.configure({ codec: codecs.audio.codec, sampleRate:rate, numberOfChannels:ch, bitrate:128000 });
     const block = rate;                                   // ~1s at a time
-    for (let off = 0; off < pcm.length; off += block) {
-      const n = Math.min(block, pcm.length - off);
+    // Match the trimmed picture, so a shortened export keeps sound and image
+    // exactly the same length.
+    const end = limit===Infinity ? pcm.length
+      : Math.min(pcm.length, Math.round(limit * rate));
+    for (let off = 0; off < end; off += block) {
+      const n = Math.min(block, end - off);
       const inter = new Float32Array(n * ch);
       for (let c = 0; c < ch; c++) {
         const src = pcm.getChannelData(c);
@@ -2651,13 +2750,18 @@ async function exportVideoFile(file, onProgress) {
   }
   decoder.configure(cfg);
 
-  for (const smp of samples) {
+  for (let si = 0; si < samples.length; si++) {
+    const smp = samples[si];
     decoder.decode(new EncodedVideoChunk({
       type: smp.is_sync ? 'key' : 'delta',
       timestamp: smp.cts * 1e6 / smp.timescale,
       duration: smp.duration * 1e6 / smp.timescale,
       data: smp.data,
     }));
+    // Let each compressed sample go as soon as it is queued. A two-minute clip
+    // otherwise holds the whole file, the decoded audio and the growing output
+    // in memory at once, which is what gets a tab killed on a phone.
+    smp.data = null; samples[si] = null;
     // Keep the queue bounded so memory stays sane on a phone.
     if (decoder.decodeQueueSize > 30) {
       await new Promise(r=>setTimeout(r, 0));
@@ -2949,6 +3053,7 @@ function initEvents() {
       primeAudio();          // if the user has already tapped, sound starts now
       S.fullClip=true;       // a clip is here: default to exporting all of it
       renderPanel();         // Export gains the whole-clip option now there is a clip
+      probeCodecs();         // and can then say which export path this clip will take
       document.getElementById('vidName').textContent=f.name;
       document.getElementById('clearVideoBtn').style.display='';
       ['vidLookSection','vidLookGrid','letterboxRow','soundRow'].forEach(id=>{
@@ -2997,6 +3102,12 @@ renderPanel();
 render();
 
 showToast('DailyVolex Pro loaded. Start creating.', 4000);
+
+// Ask the device what it can encode, once, so the Export panel can say which
+// path a clip will take before the user commits to a long export. It polls for
+// the deferred vendor scripts itself: waiting on the 'load' event would never
+// fire while the web fonts are still outstanding, which left the check hanging.
+probeCodecs();
 
 /* ═══════════════════════════════════════════════
    MOBILE TAB NAVIGATION
