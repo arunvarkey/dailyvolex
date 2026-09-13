@@ -1010,7 +1010,7 @@ const S = {
   exportClock: null,      // set per frame while exporting a file
   exporting: false,
   videoFile: null,
-  build: (window.BUILD='2026-09-07-b'),   // shown in Export, so a stale cached page is obvious
+  build: (window.BUILD='2026-09-13-a'),   // shown in Export, so a stale cached page is obvious
   codecProbe: null,       // null = not asked yet, true/false = device answered
   codecProbeWhy: '',
   introStart: performance.now(),
@@ -2281,10 +2281,19 @@ function bindPanelEvents() {
         } catch (err) {
           S.exporting=false; S.exportClock=null; renderPanel();
           if(wasPlaying) vid.play().catch(()=>{});
-          // Fall through to the real-time recorder below — but say so loudly,
-          // and remember the reason so the panel keeps showing it.
           S.codecProbeWhy = (err&&err.message) || 'export failed';
-          showToast('Export failed: '+S.codecProbeWhy+' — falling back to recording, which may stop early.',6000);
+          if (!(err && err.recoverable)) {
+            // Mid-export failure. Do NOT quietly fall back to the real-time
+            // recorder: the only thing it can hand back is a clip that stops
+            // early, which is indistinguishable from the bug this replaced.
+            showToast('Export failed: '+S.codecProbeWhy+
+              ' — nothing was saved. Tap “Copy details” in Export and send it over.', 12000);
+            renderPanel();
+            return;
+          }
+          // The exporter never started, so recording is the only option left.
+          showToast('Cannot re-encode this file ('+S.codecProbeWhy+
+            ') — recording it instead, which may stop early on a long clip.', 7000);
           renderPanel();
           await new Promise(r=>setTimeout(r,1200));
         }
@@ -2568,7 +2577,7 @@ function exportEngineNote() {
    builds without the licensed codecs. */
 async function pickCodecs(W, H, fps) {
   const video = [
-    ['avc1.640028','avc'], ['avc1.4D0032','avc'], ['avc1.42E01E','avc'],
+    ['avc1.640033','avc'], ['avc1.640028','avc'], ['avc1.4D0032','avc'], ['avc1.42E01E','avc'],
     ['vp09.00.10.08','vp9'], ['av01.0.08M.08','av1'],
   ];
   let picked = null;
@@ -2579,7 +2588,7 @@ async function pickCodecs(W, H, fps) {
       if (r && r.supported) { picked = { codec, muxName }; break; }
     } catch (e) {}
   }
-  if (!picked) throw new Error('This device cannot encode video');
+  if (!picked) throw preflight('this device cannot encode video');
 
   let audio = null;
   if (typeof AudioEncoder !== 'undefined') {
@@ -2616,10 +2625,10 @@ function demux(buffer) {
     const file = MP4Box.createFile();
     const samples = [];
     let info = null;
-    file.onError = e => reject(new Error('Could not read this video: ' + e));
+    file.onError = e => reject(preflight('could not read this video: ' + e));
     file.onReady = i => {
       info = i;
-      if (!i.videoTracks || !i.videoTracks.length) return reject(new Error('No video track in this file'));
+      if (!i.videoTracks || !i.videoTracks.length) return reject(preflight('no video track in this file'));
       file.setExtractionOptions(i.videoTracks[0].id, null, { nbSamples: Infinity });
       file.start();
     };
@@ -2627,11 +2636,18 @@ function demux(buffer) {
     buffer.fileStart = 0;
     file.appendBuffer(buffer);
     file.flush();
-    if (!info) return reject(new Error('This file is not an MP4/MOV the exporter can read'));
+    if (!info) return reject(preflight('this file is not an MP4 or MOV the exporter can read'));
     const track = info.videoTracks[0];
     resolve({ file, info, track, samples, description: codecDescription(file, track.id) });
   });
 }
+
+/* A failure BEFORE any frame is encoded (wrong container, no codec, nothing
+   readable) means the exporter never got started, so the real-time recorder is
+   a reasonable second choice. A failure once encoding is under way is not: the
+   only thing it can produce is a clip that stops early, which is the bug this
+   whole path exists to remove. */
+function preflight(msg) { const e = new Error(msg); e.recoverable = true; return e; }
 
 /* True when the reliable path is available for the loaded clip. */
 function canExportFile() {
@@ -2641,15 +2657,15 @@ function canExportFile() {
 /* Main entry. Returns an MP4 Blob, or throws so the caller can fall back.
    limitSec trims the output; Infinity exports the whole clip. */
 async function exportVideoFile(file, onProgress, limitSec) {
-  if (!codecsReady()) throw new Error('unsupported');
+  if (!codecsReady()) throw preflight('this browser cannot re-encode video');
   const limit = (limitSec==null || !isFinite(limitSec)) ? Infinity : limitSec;
   const arrayBuffer = await file.arrayBuffer();
   const { track, samples: allSamples, description } = await demux(arrayBuffer.slice(0));
-  if (!allSamples.length) throw new Error('No frames found in this video');
+  if (!allSamples.length) throw preflight('no frames found in this video');
   // Trim on a whole number of samples so the last frame is never half-decoded.
   const samples = limit===Infinity ? allSamples
     : allSamples.filter(s => s.cts / s.timescale < limit);
-  if (!samples.length) throw new Error('No frames found in this video');
+  if (!samples.length) throw preflight('no frames found in this video');
 
   const W = cv.width, H = cv.height;
   const fps = Math.min(60, Math.max(15, Math.round(
@@ -2705,16 +2721,29 @@ async function exportVideoFile(file, onProgress, limitSec) {
     }
     await enc.flush();
     enc.close();
+    // The audio is muxed now, so drop the decoded PCM before the video pass
+    // begins. On a two-minute clip that is ~90 MB held for no reason, on top
+    // of the source file and the growing output — enough to get a tab killed.
+    pcm = null;
   }
 
+  // A throw inside these callbacks goes nowhere — it is not on any awaited
+  // call stack — so a mid-export failure used to be ignored and the file was
+  // finalised short. Record it instead and fail the whole export.
+  let fatal = null;
   const encoder = new VideoEncoder({
-    output:(chunk, meta)=>mux.addVideoChunk(chunk, meta),
-    error:e=>{ throw e; },
+    output:(chunk, meta)=>{ try { mux.addVideoChunk(chunk, meta); } catch(e){ fatal = fatal||e; } },
+    error:e=>{ fatal = fatal || e; },
   });
   encoder.configure({
     codec: codecs.video.codec, width:W, height:H,
-    bitrate: Math.min(10_000_000, Math.max(3_500_000, Math.round(W*H*fps*0.07))),
+    // Re-encoding always costs a little quality; too low a bitrate makes that
+    // loss obvious. 0.07 bits per pixel worked out at ~4.3 Mbps for a 1080x1920
+    // clip, which is well under what Instagram accepts and looked soft. 0.15
+    // puts a vertical 1080p clip near 9.3 Mbps, in line with what phones shoot.
+    bitrate: Math.min(20_000_000, Math.max(8_000_000, Math.round(W*H*fps*0.15))),
     framerate: fps,
+    latencyMode: 'quality',           // not 'realtime': nothing here is live
   });
 
   const theme = THEMES[S.theme];
@@ -2737,7 +2766,10 @@ async function exportVideoFile(file, onProgress, limitSec) {
     if (onProgress && (done % 5 === 0 || done === total)) onProgress(done/total);
   };
 
-  const decoder = new VideoDecoder({ output:onFrame, error:e=>{ throw e; } });
+  const decoder = new VideoDecoder({
+    output:f=>{ try { onFrame(f); } catch(e){ fatal = fatal||e; try{f.close();}catch(_){} } },
+    error:e=>{ fatal = fatal || e; },
+  });
   const cfg = {
     codec: track.codec,
     codedWidth: track.video ? track.video.width : track.track_width,
@@ -2746,7 +2778,7 @@ async function exportVideoFile(file, onProgress, limitSec) {
   if (description) cfg.description = description;
   if (VideoDecoder.isConfigSupported) {
     const sup = await VideoDecoder.isConfigSupported(cfg).catch(()=>null);
-    if (!sup || !sup.supported) throw new Error('This video uses a format the exporter cannot decode');
+    if (!sup || !sup.supported) throw preflight('this video uses a format the exporter cannot decode');
   }
   decoder.configure(cfg);
 
@@ -2762,20 +2794,34 @@ async function exportVideoFile(file, onProgress, limitSec) {
     // otherwise holds the whole file, the decoded audio and the growing output
     // in memory at once, which is what gets a tab killed on a phone.
     smp.data = null; samples[si] = null;
-    // Keep the queue bounded so memory stays sane on a phone.
-    if (decoder.decodeQueueSize > 30) {
+    if (fatal) break;
+    // Keep BOTH queues bounded. Only the decoder was throttled before, so on a
+    // phone the encoder's backlog grew without limit until it stalled or the
+    // tab was killed part-way through — which is what cut clips short.
+    if (decoder.decodeQueueSize > 8 || encoder.encodeQueueSize > 8) {
       await new Promise(r=>setTimeout(r, 0));
-      while (decoder.decodeQueueSize > 10) await new Promise(r=>setTimeout(r, 5));
+      let guard = 0;
+      while ((decoder.decodeQueueSize > 4 || encoder.encodeQueueSize > 4)
+             && !fatal && guard++ < 4000)
+        await new Promise(r=>setTimeout(r, 5));
     }
   }
+  if (fatal) throw fatal;
   await decoder.flush();
   decoder.close();
   await encoder.flush();
   encoder.close();
+  if (fatal) throw fatal;
   mux.finalize();
 
   S.exportClock = null;
   void pending;
+
+  // Last line of defence: never hand back a file that is short. If fewer frames
+  // came out than went in, say so rather than letting it look like the old bug.
+  if (done < total * 0.98)
+    throw new Error(`only ${done} of ${total} frames encoded — the export was cut short`);
+
   return new Blob([mux.target.buffer], { type:'video/mp4' });
 }
 
@@ -2790,6 +2836,10 @@ function drawExportFrame(theme, frame) {
   else         { sw = vw; sh = sw/cr; sx = 0; sy = (vh-sh)/2; }
 
   ctx.clearRect(0,0,W,H);
+  // The source is almost always being rescaled onto the 1080-wide canvas, so
+  // ask for the good resampler rather than the browser's fast default.
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
   if (look.filter) { ctx.filter = look.filter; ctx.drawImage(frame, sx,sy,sw,sh, 0,0,W,H); ctx.filter='none'; }
   else             { ctx.drawImage(frame, sx,sy,sw,sh, 0,0,W,H); }
   applyLookOverlays(theme, look);
