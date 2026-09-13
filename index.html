@@ -1010,7 +1010,7 @@ const S = {
   exportClock: null,      // set per frame while exporting a file
   exporting: false,
   videoFile: null,
-  build: (window.BUILD='2026-09-13-b'),   // shown in Export, so a stale cached page is obvious
+  build: (window.BUILD='2026-09-13-c'),   // shown in Export, so a stale cached page is obvious
   cancelExport: false,
   codecProbe: null,       // null = not asked yet, true/false = device answered
   codecProbeWhy: '',
@@ -2267,7 +2267,43 @@ function bindPanelEvents() {
       if (canExportFile()) {
         S.exporting=true; renderPanel();
         const wasPlaying=!vid.paused; vid.pause();
-        showToast('Exporting… 0%',0,true);
+
+        // Two things have to be got out of the way first, and not doing so is
+        // what wedged an export at 1% on a phone:
+        //
+        // 1. The live preview keeps painting the SAME canvas the exporter
+        //    composites into. It competes for the GPU and can overwrite a
+        //    composited frame between drawing it and handing it to the encoder.
+        // 2. The <video> element holds a hardware decode session. iOS allows
+        //    only a small number at once, so with our own VideoDecoder and
+        //    VideoEncoder also asking for one, the decoder can simply stop
+        //    emitting frames — no error, no progress, stuck exactly where the
+        //    queues filled.
+        if (S.raf) { cancelAnimationFrame(S.raf); S.raf = null; }
+        const savedSrc = vid.currentSrc || vid.src;
+        const savedTime = vid.currentTime || 0;
+        try { vid.removeAttribute('src'); vid.load(); } catch(e){}
+
+        const restorePreview = () => {
+          keepAwake(false);
+          try {
+            if (savedSrc) {
+              vid.src = savedSrc; vid.load();
+              vid.onloadeddata = () => { try { vid.currentTime = savedTime; } catch(e){}
+                                         if (wasPlaying) vid.play().catch(()=>{}); };
+            }
+          } catch(e){}
+          if (!S.raf) render();          // preview back on
+        };
+
+        keepAwake(true);     // a dimmed or locked screen suspends the page,
+                             // which freezes an export exactly where it stood
+        // Say how long this will take before it starts, so a slow export is
+        // never mistaken for a stuck one.
+        const clipSecs = S.fullClip ? (isFinite(vid.duration)?vid.duration:0) : S.recordDuration;
+        showToast(clipSecs > 45
+          ? `Exporting ${Math.round(clipSecs)}s of video — this can take a few minutes. Keep the screen on.`
+          : 'Exporting… 0%', clipSecs > 45 ? 5000 : 0, true);
         try {
           const limit = S.fullClip ? Infinity : S.recordDuration;
           S.cancelExport = false;
@@ -2283,14 +2319,14 @@ function bindPanelEvents() {
               0, true);
           }, limit);
           S.exporting=false; S.exportClock=null; renderPanel();
-          if(wasPlaying) vid.play().catch(()=>{});
+          restorePreview();
           if(!blob || !blob.size) { showToast('Export produced no video — please try again.'); return; }
           deliverFile(blob, `dailyvolex_reel_${Date.now()}.mp4`, 'video/mp4',
             'Save to Photos, then post as a Reel', 'Reel exported.');
           return;
         } catch (err) {
           S.exporting=false; S.exportClock=null; renderPanel();
-          if(wasPlaying) vid.play().catch(()=>{});
+          restorePreview();
           S.codecProbeWhy = (err&&err.message) || 'export failed';
           if (S.codecProbeWhy === 'cancelled') {
             S.cancelExport = false;
@@ -2515,7 +2551,7 @@ async function keepAwake(on) {
   } catch (e) { /* not fatal — recording still runs */ }
 }
 document.addEventListener('visibilitychange', ()=>{
-  if (document.visibilityState==='visible' && S.recording) keepAwake(true);
+  if (document.visibilityState==='visible' && (S.recording || S.exporting)) keepAwake(true);
 });
 
 /* Which container this browser can actually record.
@@ -2823,7 +2859,7 @@ async function exportVideoFile(file, onProgress, limitSec) {
     if (S.cancelExport) throw preflight('cancelled');
     // If nothing has come out of the encoder for a long stretch, it is wedged.
     // Say so rather than sitting at the same percentage indefinitely.
-    if (done > 0 && Date.now() - lastFrameAt > 45000)
+    if (done > 0 && Date.now() - lastFrameAt > 25000)
       throw new Error('the encoder stopped responding after '+done+' of '+total+' frames');
     // Keep BOTH queues bounded. Only the decoder was throttled before, so on a
     // phone the encoder's backlog grew without limit until it stalled or the
@@ -2837,9 +2873,14 @@ async function exportVideoFile(file, onProgress, limitSec) {
     }
   }
   if (fatal) throw fatal;
-  await decoder.flush();
+  // flush() never resolving is a real failure mode on a wedged pipeline, and
+  // an un-raced await there hangs the export with no error and no progress.
+  const withTimeout = (p, ms, what) => Promise.race([
+    p, new Promise((_,rej)=>setTimeout(()=>rej(new Error(what+' stopped responding')), ms)),
+  ]);
+  await withTimeout(decoder.flush(), 60000, 'the decoder');
   decoder.close();
-  await encoder.flush();
+  await withTimeout(encoder.flush(), 60000, 'the encoder');
   encoder.close();
   if (fatal) throw fatal;
   mux.finalize();
