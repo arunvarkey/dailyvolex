@@ -1010,8 +1010,9 @@ const S = {
   exportClock: null,      // set per frame while exporting a file
   exporting: false,
   videoFile: null,
-  build: (window.BUILD='2026-09-13-c'),   // shown in Export, so a stale cached page is obvious
+  build: (window.BUILD='2026-09-13-d'),   // shown in Export, so a stale cached page is obvious
   cancelExport: false,
+  exportLog: [],
   codecProbe: null,       // null = not asked yet, true/false = device answered
   codecProbeWhy: '',
   introStart: performance.now(),
@@ -2231,6 +2232,8 @@ function bindPanelEvents() {
       'codec probe: '+S.codecProbe+(S.codecProbeWhy?' ('+S.codecProbeWhy+')':''),
       'videoFile: '+(S.videoFile?S.videoFile.type+' '+S.videoFile.size+'B':'none'),
       'ua: '+navigator.userAgent,
+      '--- last export ---',
+      ...(S.exportLog.length ? S.exportLog : ['(no export run yet)']),
     ].join('\n');
     if(navigator.clipboard) navigator.clipboard.writeText(t).then(
       ()=>showToast('Diagnostics copied — paste them to Claude',4000),
@@ -2267,6 +2270,11 @@ function bindPanelEvents() {
       if (canExportFile()) {
         S.exporting=true; renderPanel();
         const wasPlaying=!vid.paused; vid.pause();
+        // Read this before the element is released below, or it reads back NaN.
+        const clipSecs = S.fullClip ? (isFinite(vid.duration)?vid.duration:0) : S.recordDuration;
+        S.exportLog = [];
+        logExport(`export started · build ${S.build} · ${Math.round(clipSecs)}s · `
+          + `${S.videoFile.type||'?'} ${(S.videoFile.size/1048576).toFixed(1)}MB`);
 
         // Two things have to be got out of the way first, and not doing so is
         // what wedged an export at 1% on a phone:
@@ -2300,34 +2308,60 @@ function bindPanelEvents() {
                              // which freezes an export exactly where it stood
         // Say how long this will take before it starts, so a slow export is
         // never mistaken for a stuck one.
-        const clipSecs = S.fullClip ? (isFinite(vid.duration)?vid.duration:0) : S.recordDuration;
         showToast(clipSecs > 45
           ? `Exporting ${Math.round(clipSecs)}s of video — this can take a few minutes. Keep the screen on.`
           : 'Exporting… 0%', clipSecs > 45 ? 5000 : 0, true);
         try {
           const limit = S.fullClip ? Infinity : S.recordDuration;
           S.cancelExport = false;
-          const blob = await exportVideoFile(S.videoFile, (pct,done,total,startedAt)=>{
-            // Frames and an estimate, not just a percentage: a long export that
-            // is working looks identical to a stuck one without them.
-            const secs = (Date.now()-startedAt)/1000;
-            const rate = done/Math.max(secs,0.001);
-            const left = rate>0.2 ? Math.round((total-done)/rate) : null;
+          let lastPct = -1;
+          let prog = { pct:0, done:0, total:0, at:Date.now(), startedAt:Date.now() };
+
+          // The toast is driven by a clock, not by frames arriving. If frames
+          // stop, this keeps ticking and says so — a frozen percentage is
+          // indistinguishable from a slow one, which is the whole problem.
+          const ticker = setInterval(()=>{
+            if (!S.exporting) return;
+            const stalledFor = Math.round((Date.now()-prog.at)/1000);
+            if (prog.total === 0) { showToast('Reading the video…', 0, true); return; }
+            const secs = (Date.now()-prog.startedAt)/1000;
+            const rate = prog.done/Math.max(secs,0.001);
+            const left = rate>0.2 ? Math.round((prog.total-prog.done)/rate) : null;
             const eta = left==null ? '' :
               left>90 ? ` · about ${Math.ceil(left/60)} min left` : ` · about ${left}s left`;
-            showToast(`Exporting ${Math.round(pct*100)}% · frame ${done} of ${total}${eta}`,
+            showToast(stalledFor >= 8
+              ? `Exporting ${Math.round(prog.pct*100)}% · frame ${prog.done} of ${prog.total}`
+                + ` · NO PROGRESS FOR ${stalledFor}s`
+              : `Exporting ${Math.round(prog.pct*100)}% · frame ${prog.done} of ${prog.total}${eta}`,
               0, true);
-          }, limit);
+          }, 1000);
+
+          const blob = await exportVideoFile(S.videoFile, (pct,done,total,startedAt)=>{
+            const p10 = Math.floor(pct*10);
+            if (p10 > lastPct) { lastPct = p10; logExport(`progress ${p10*10}% · frame ${done}/${total}`); }
+            prog = { pct, done, total, at:Date.now(), startedAt };
+          }, limit).finally(()=>clearInterval(ticker));
+          logExport(`encode finished · ${blob?(blob.size/1048576).toFixed(1)+'MB':'no blob'}`);
           S.exporting=false; S.exportClock=null; renderPanel();
           restorePreview();
           if(!blob || !blob.size) { showToast('Export produced no video — please try again.'); return; }
-          deliverFile(blob, `dailyvolex_reel_${Date.now()}.mp4`, 'video/mp4',
-            'Save to Photos, then post as a Reel', 'Reel exported.');
+          // Awaited: an unawaited delivery that fails leaves the last progress
+          // message on screen and looks exactly like an export frozen mid-way.
+          try {
+            await deliverFile(blob, `dailyvolex_reel_${Date.now()}.mp4`, 'video/mp4',
+              'Save to Photos, then post as a Reel', 'Reel exported.');
+            logExport('handed to the share sheet');
+          } catch (e) {
+            logExport('DELIVERY FAILED: ' + (e && e.message));
+            showToast('The video exported but could not be handed over: '
+              + (e&&e.message||'unknown') + ' — tap “Copy details”.', 12000);
+          }
           return;
         } catch (err) {
           S.exporting=false; S.exportClock=null; renderPanel();
           restorePreview();
           S.codecProbeWhy = (err&&err.message) || 'export failed';
+          logExport('FAILED: ' + S.codecProbeWhy);
           if (S.codecProbeWhy === 'cancelled') {
             S.cancelExport = false;
             showToast('Export cancelled — nothing was saved.', 4000);
@@ -2575,6 +2609,14 @@ function recFormat() {
    as the device needs, not as long as the clip — nothing can be dropped,
    and audio and video both start at zero so they cannot drift apart.
    ═══════════════════════════════════════════════ */
+
+/* Every step of an export, with timings, kept so a failure on a phone I cannot
+   inspect can be reported back exactly instead of guessed at. */
+function logExport(msg) {
+  const t = new Date().toTimeString().slice(0,8);
+  S.exportLog.push(t + '  ' + msg);
+  if (S.exportLog.length > 80) S.exportLog.shift();
+}
 
 function codecsReady() {
   return !missingParts().length && S.codecProbe !== false;
