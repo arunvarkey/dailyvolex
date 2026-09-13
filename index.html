@@ -1010,7 +1010,7 @@ const S = {
   exportClock: null,      // set per frame while exporting a file
   exporting: false,
   videoFile: null,
-  build: (window.BUILD='2026-09-13-d'),   // shown in Export, so a stale cached page is obvious
+  build: (window.BUILD='2026-09-13-e'),   // shown in Export, so a stale cached page is obvious
   cancelExport: false,
   exportLog: [],
   codecProbe: null,       // null = not asked yet, true/false = device answered
@@ -2332,7 +2332,8 @@ function bindPanelEvents() {
             showToast(stalledFor >= 8
               ? `Exporting ${Math.round(prog.pct*100)}% · frame ${prog.done} of ${prog.total}`
                 + ` · NO PROGRESS FOR ${stalledFor}s`
-              : `Exporting ${Math.round(prog.pct*100)}% · frame ${prog.done} of ${prog.total}${eta}`,
+              : `Exporting ${Math.round(prog.pct*100)}% · frame ${prog.done} of ${prog.total}`
+                + ` · ${rate.toFixed(1)} fps${eta}`,
               0, true);
           }, 1000);
 
@@ -2851,6 +2852,16 @@ async function exportVideoFile(file, onProgress, limitSec) {
   let done = 0, pending = 0;
   const startedAt = Date.now();
   let lastFrameAt = startedAt;
+  // Small queues: iOS decoders are happiest a few frames ahead, not dozens.
+  const HIGH_WATER = 6, LOW_WATER = 3;
+  let drained = null, drainTimer = null;
+  const releaseFeeder = () => {
+    if (drained && decoder.decodeQueueSize <= LOW_WATER
+                && encoder.encodeQueueSize <= LOW_WATER) {
+      clearTimeout(drainTimer);
+      const r = drained; drained = null; r();
+    }
+  };
 
   const onFrame = (frame) => {
     // Draw this frame, with the graphics animated to its own timestamp.
@@ -2867,6 +2878,7 @@ async function exportVideoFile(file, onProgress, limitSec) {
     done++;
     lastFrameAt = Date.now();
     if (onProgress && (done % 5 === 0 || done === total)) onProgress(done/total, done, total, startedAt);
+    releaseFeeder();          // room again: let the feeder queue the next sample
   };
 
   const decoder = new VideoDecoder({
@@ -2906,12 +2918,21 @@ async function exportVideoFile(file, onProgress, limitSec) {
     // Keep BOTH queues bounded. Only the decoder was throttled before, so on a
     // phone the encoder's backlog grew without limit until it stalled or the
     // tab was killed part-way through — which is what cut clips short.
-    if (decoder.decodeQueueSize > 16 || encoder.encodeQueueSize > 16) {
-      await new Promise(r=>setTimeout(r, 0));
-      let guard = 0;
-      while ((decoder.decodeQueueSize > 8 || encoder.encodeQueueSize > 8)
-             && !fatal && guard++ < 2400)
-        await new Promise(r=>setTimeout(r, 5));
+    // Backpressure, driven by the decoder itself rather than by polling.
+    //
+    // This used to spin on setTimeout(5) up to 2400 times waiting for the
+    // queues to drain. On iOS that starves the very callbacks it is waiting
+    // for: the decoder hands over its first internal batch — about 25 frames —
+    // and then never gets the main thread back to deliver any more. Fast to
+    // 25, then nothing. Waiting on a promise that onFrame resolves keeps the
+    // event loop free for the codec to actually make progress.
+    if (decoder.decodeQueueSize >= HIGH_WATER || encoder.encodeQueueSize >= HIGH_WATER) {
+      await new Promise(resolve => {
+        drained = resolve;
+        // Never wait for ever: if no frame arrives, the watchdog above must
+        // get its turn to report the stall.
+        drainTimer = setTimeout(() => { drained = null; resolve(); }, 5000);
+      });
     }
   }
   if (fatal) throw fatal;
