@@ -1010,7 +1010,8 @@ const S = {
   exportClock: null,      // set per frame while exporting a file
   exporting: false,
   videoFile: null,
-  build: (window.BUILD='2026-09-13-a'),   // shown in Export, so a stale cached page is obvious
+  build: (window.BUILD='2026-09-13-b'),   // shown in Export, so a stale cached page is obvious
+  cancelExport: false,
   codecProbe: null,       // null = not asked yet, true/false = device answered
   codecProbeWhy: '',
   introStart: performance.now(),
@@ -2047,7 +2048,7 @@ function renderPanel() {
         <div class="export-btns">
           <button class="ebtn ebtn-png" id="exportPng">📸 Export PNG (Feed/Story)</button>
           <button class="ebtn ebtn-vid${(S.recording||S.exporting)?' recording':''}" id="exportVid">
-            ${S.exporting?'⏳ Exporting…':S.recording?'⏹ Stop Recording':
+            ${S.exporting?'⏳ Exporting… (tap to cancel)':S.recording?'⏹ Stop Recording':
               canExportFile()?'🎬 Export Reel (MP4)':`🎬 Record Reel (${recFormat()})`}
           </button>
         </div>
@@ -2257,7 +2258,7 @@ function bindPanelEvents() {
   if(vidBtn) {
     vidBtn.addEventListener('click', async ()=>{
       if(S.recording){ if(S.stopRecording) S.stopRecording(); return; }
-      if(S.exporting) return;
+      if(S.exporting){ S.cancelExport = true; showToast('Cancelling…',3000); return; }
 
       // Preferred path: read the file and re-encode it. Nothing is captured in
       // real time, so nothing can be cut short by the screen or the browser.
@@ -2269,8 +2270,17 @@ function bindPanelEvents() {
         showToast('Exporting… 0%',0,true);
         try {
           const limit = S.fullClip ? Infinity : S.recordDuration;
-          const blob = await exportVideoFile(S.videoFile, pct=>{
-            showToast(`Exporting… ${Math.round(pct*100)}%`,0,true);
+          S.cancelExport = false;
+          const blob = await exportVideoFile(S.videoFile, (pct,done,total,startedAt)=>{
+            // Frames and an estimate, not just a percentage: a long export that
+            // is working looks identical to a stuck one without them.
+            const secs = (Date.now()-startedAt)/1000;
+            const rate = done/Math.max(secs,0.001);
+            const left = rate>0.2 ? Math.round((total-done)/rate) : null;
+            const eta = left==null ? '' :
+              left>90 ? ` · about ${Math.ceil(left/60)} min left` : ` · about ${left}s left`;
+            showToast(`Exporting ${Math.round(pct*100)}% · frame ${done} of ${total}${eta}`,
+              0, true);
           }, limit);
           S.exporting=false; S.exportClock=null; renderPanel();
           if(wasPlaying) vid.play().catch(()=>{});
@@ -2282,6 +2292,12 @@ function bindPanelEvents() {
           S.exporting=false; S.exportClock=null; renderPanel();
           if(wasPlaying) vid.play().catch(()=>{});
           S.codecProbeWhy = (err&&err.message) || 'export failed';
+          if (S.codecProbeWhy === 'cancelled') {
+            S.cancelExport = false;
+            showToast('Export cancelled — nothing was saved.', 4000);
+            renderPanel();
+            return;
+          }
           if (!(err && err.recoverable)) {
             // Mid-export failure. Do NOT quietly fall back to the real-time
             // recorder: the only thing it can hand back is a clip that stops
@@ -2577,7 +2593,10 @@ function exportEngineNote() {
    builds without the licensed codecs. */
 async function pickCodecs(W, H, fps) {
   const video = [
-    ['avc1.640033','avc'], ['avc1.640028','avc'], ['avc1.4D0032','avc'], ['avc1.42E01E','avc'],
+    // Level 4.0 High first. Level 5.1 (640033) is accepted by Safari but can
+    // drop the encode onto a software path, which at 1080x1920 crawls badly
+    // enough to look frozen — that is what stalled an export at 1%.
+    ['avc1.640028','avc'], ['avc1.4D0028','avc'], ['avc1.42E01E','avc'],
     ['vp09.00.10.08','vp9'], ['av01.0.08M.08','av1'],
   ];
   let picked = null;
@@ -2743,12 +2762,17 @@ async function exportVideoFile(file, onProgress, limitSec) {
     // puts a vertical 1080p clip near 9.3 Mbps, in line with what phones shoot.
     bitrate: Math.min(20_000_000, Math.max(8_000_000, Math.round(W*H*fps*0.15))),
     framerate: fps,
-    latencyMode: 'quality',           // not 'realtime': nothing here is live
+    // 'realtime' is the hardware-accelerated path. 'quality' reads better but
+    // on iOS it can fall back to a software encoder and effectively hang; the
+    // bitrate above is what actually governs how the result looks.
+    latencyMode: 'realtime',
   });
 
   const theme = THEMES[S.theme];
   const total = samples.length;
   let done = 0, pending = 0;
+  const startedAt = Date.now();
+  let lastFrameAt = startedAt;
 
   const onFrame = (frame) => {
     // Draw this frame, with the graphics animated to its own timestamp.
@@ -2763,7 +2787,8 @@ async function exportVideoFile(file, onProgress, limitSec) {
     encoder.encode(out, { keyFrame: done % (fps*2) === 0 });
     out.close();
     done++;
-    if (onProgress && (done % 5 === 0 || done === total)) onProgress(done/total);
+    lastFrameAt = Date.now();
+    if (onProgress && (done % 5 === 0 || done === total)) onProgress(done/total, done, total, startedAt);
   };
 
   const decoder = new VideoDecoder({
@@ -2795,14 +2820,19 @@ async function exportVideoFile(file, onProgress, limitSec) {
     // in memory at once, which is what gets a tab killed on a phone.
     smp.data = null; samples[si] = null;
     if (fatal) break;
+    if (S.cancelExport) throw preflight('cancelled');
+    // If nothing has come out of the encoder for a long stretch, it is wedged.
+    // Say so rather than sitting at the same percentage indefinitely.
+    if (done > 0 && Date.now() - lastFrameAt > 45000)
+      throw new Error('the encoder stopped responding after '+done+' of '+total+' frames');
     // Keep BOTH queues bounded. Only the decoder was throttled before, so on a
     // phone the encoder's backlog grew without limit until it stalled or the
     // tab was killed part-way through — which is what cut clips short.
-    if (decoder.decodeQueueSize > 8 || encoder.encodeQueueSize > 8) {
+    if (decoder.decodeQueueSize > 16 || encoder.encodeQueueSize > 16) {
       await new Promise(r=>setTimeout(r, 0));
       let guard = 0;
-      while ((decoder.decodeQueueSize > 4 || encoder.encodeQueueSize > 4)
-             && !fatal && guard++ < 4000)
+      while ((decoder.decodeQueueSize > 8 || encoder.encodeQueueSize > 8)
+             && !fatal && guard++ < 2400)
         await new Promise(r=>setTimeout(r, 5));
     }
   }
