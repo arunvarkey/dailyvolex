@@ -1010,7 +1010,7 @@ const S = {
   exportClock: null,      // set per frame while exporting a file
   exporting: false,
   videoFile: null,
-  build: (window.BUILD='2026-09-13-e'),   // shown in Export, so a stale cached page is obvious
+  build: (window.BUILD='2026-10-01-a'),   // shown in Export, so a stale cached page is obvious
   cancelExport: false,
   exportLog: [],
   codecProbe: null,       // null = not asked yet, true/false = device answered
@@ -2760,9 +2760,19 @@ async function exportVideoFile(file, onProgress, limitSec) {
   const arrayBuffer = await file.arrayBuffer();
   const { track, samples: allSamples, description } = await demux(arrayBuffer.slice(0));
   if (!allSamples.length) throw preflight('no frames found in this video');
+
+  // Phone footage rarely starts at exactly zero — the first frame commonly sits
+  // at something like 0.067s, which the MP4 writer refuses outright ("the first
+  // chunk must have a timestamp of 0"). That rejection happened inside the
+  // encoder's output callback, where it was swallowed, so the export simply
+  // stopped dead a few frames in with nothing on screen. Re-base the whole
+  // track so the first frame is at zero, which is what a player does with the
+  // container's edit list anyway.
+  const baseSec = allSamples[0].cts / allSamples[0].timescale;
+  const relSec = smp => smp.cts / smp.timescale - baseSec;
   // Trim on a whole number of samples so the last frame is never half-decoded.
   const samples = limit===Infinity ? allSamples
-    : allSamples.filter(s => s.cts / s.timescale < limit);
+    : allSamples.filter(s => relSec(s) < limit);
   if (!samples.length) throw preflight('no frames found in this video');
 
   const W = cv.width, H = cv.height;
@@ -2790,6 +2800,9 @@ async function exportVideoFile(file, onProgress, limitSec) {
                    sampleRate: pcm.sampleRate,
                    numberOfChannels: Math.min(pcm.numberOfChannels,2) } : undefined,
     fastStart: 'in-memory',
+    // Belt and braces alongside the re-basing above: absorb a non-zero first
+    // timestamp instead of rejecting the track.
+    firstTimestampBehavior: 'offset',
   });
 
   // Audio: encode the whole track first — it is quick next to the video.
@@ -2901,7 +2914,7 @@ async function exportVideoFile(file, onProgress, limitSec) {
     const smp = samples[si];
     decoder.decode(new EncodedVideoChunk({
       type: smp.is_sync ? 'key' : 'delta',
-      timestamp: smp.cts * 1e6 / smp.timescale,
+      timestamp: Math.max(0, Math.round(relSec(smp) * 1e6)),
       duration: smp.duration * 1e6 / smp.timescale,
       data: smp.data,
     }));
