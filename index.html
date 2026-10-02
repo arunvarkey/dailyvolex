@@ -802,8 +802,8 @@ aside > *, .right-panel > * { flex-shrink:0 }
     <button class="look-btn" data-look="raw"><span class="look-icon">📹</span>Raw</button>
   </div>
   <div class="toggle-row" id="soundRow" style="display:none">
-    <span class="toggle-label">Sound
-      <span class="toggle-sub">Record the clip's audio</span></span>
+    <span class="toggle-label">Preview sound
+      <span class="toggle-sub">Playback only — the export keeps the audio either way</span></span>
     <label class="sw"><input type="checkbox" id="soundToggle" checked><span class="sw-track"></span></label>
   </div>
   <div class="toggle-row" id="letterboxRow" style="display:none">
@@ -1010,8 +1010,11 @@ const S = {
   exportClock: null,      // set per frame while exporting a file
   exporting: false,
   videoFile: null,
-  build: (window.BUILD='2026-10-01-a'),   // shown in Export, so a stale cached page is obvious
+  build: (window.BUILD='2026-10-02-a'),   // shown in Export, so a stale cached page is obvious
   cancelExport: false,
+  exportAudio: true,      // keeping the sound in the file is NOT the same as
+                          // hearing it in the preview; one toggle did both, so
+                          // muting the preview silently muted the export
   exportLog: [],
   codecProbe: null,       // null = not asked yet, true/false = device answered
   codecProbeWhy: '',
@@ -2061,10 +2064,16 @@ function renderPanel() {
         </div>`:''}
         ${S.videoLoaded?`
         <div class="toggle-row">
+          <span class="toggle-label">Include sound
+            <span class="toggle-sub">Keeps the clip's audio in the saved file</span></span>
+          <label class="sw"><input type="checkbox" id="exportAudioToggle" ${S.exportAudio?'checked':''}><span class="sw-track"></span></label>
+        </div>`:''}
+        ${S.videoLoaded?`
+        <div class="toggle-row">
           <span class="toggle-label">Export whole clip
             <span class="toggle-sub">${isFinite(vid.duration)&&vid.duration>0
               ? 'All '+Math.round(vid.duration)+'s'
-              : 'Plays through to the end'}, audio kept${S.sound?'':' (muted)'}</span></span>
+              : 'Plays through to the end'}, audio kept${S.exportAudio?'':' (sound off)'}</span></span>
           <label class="sw"><input type="checkbox" id="fullClipToggle" ${S.fullClip?'checked':''}><span class="sw-track"></span></label>
         </div>`:''}
         <div class="dur-row" id="durRow"${S.fullClip?' style="display:none"':''}>
@@ -2208,6 +2217,12 @@ function bindPanelEvents() {
     showToast('Audio sync back to automatic');
   });
 
+  const ea=document.getElementById('exportAudioToggle');
+  if(ea) ea.addEventListener('change', e=>{
+    S.exportAudio=e.target.checked;
+    showToast(S.exportAudio?'The saved video will keep its sound':'The saved video will be silent');
+  });
+
   // Full-clip export
   const fc=document.getElementById('fullClipToggle');
   if(fc) fc.addEventListener('change', e=>{
@@ -2343,6 +2358,7 @@ function bindPanelEvents() {
             prog = { pct, done, total, at:Date.now(), startedAt };
           }, limit).finally(()=>clearInterval(ticker));
           logExport(`encode finished · ${blob?(blob.size/1048576).toFixed(1)+'MB':'no blob'}`);
+          const lostAudio = S.exportLog.some(l=>/audio: DROPPED/.test(l));
           S.exporting=false; S.exportClock=null; renderPanel();
           restorePreview();
           if(!blob || !blob.size) { showToast('Export produced no video — please try again.'); return; }
@@ -2352,6 +2368,7 @@ function bindPanelEvents() {
             await deliverFile(blob, `dailyvolex_reel_${Date.now()}.mp4`, 'video/mp4',
               'Save to Photos, then post as a Reel', 'Reel exported.');
             logExport('handed to the share sheet');
+            if (lostAudio) showToast('Saved — but WITHOUT sound. Tap “Copy details” to see why.', 9000);
           } catch (e) {
             logExport('DELIVERY FAILED: ' + (e && e.message));
             showToast('The video exported but could not be handed over: '
@@ -2717,26 +2734,58 @@ function codecDescription(mp4file, trackId) {
   return null;
 }
 
+/* The AudioSpecificConfig bytes an AAC decoder needs, out of the esds box.
+   mp4box exposes this differently between builds, so try the known shapes and
+   give up quietly rather than breaking the export. */
+function audioSpecificConfig(mp4file, trackId) {
+  try {
+    const trak = mp4file.getTrackById(trackId);
+    for (const entry of (trak.mdia.minf.stbl.stsd.entries || [])) {
+      const esds = entry.esds;
+      if (!esds) continue;
+      const descs = esds.esd && esds.esd.descs;
+      if (descs && descs[0] && descs[0].descs && descs[0].descs[0] && descs[0].descs[0].data)
+        return new Uint8Array(descs[0].descs[0].data);
+    }
+  } catch (e) {}
+  return null;
+}
+
 /* Pull the video track's encoded samples out of the file. */
 function demux(buffer) {
   return new Promise((resolve, reject) => {
     const file = MP4Box.createFile();
     const samples = [];
-    let info = null;
+    const audioSamples = [];
+    let info = null, vId = -1, aId = -1;
     file.onError = e => reject(preflight('could not read this video: ' + e));
     file.onReady = i => {
       info = i;
       if (!i.videoTracks || !i.videoTracks.length) return reject(preflight('no video track in this file'));
-      file.setExtractionOptions(i.videoTracks[0].id, null, { nbSamples: Infinity });
+      vId = i.videoTracks[0].id;
+      file.setExtractionOptions(vId, null, { nbSamples: Infinity });
+      // Pull the sound out too, so it can still be recovered when
+      // decodeAudioData refuses the file — which Safari does for some .mov
+      // recordings straight off the camera.
+      if (i.audioTracks && i.audioTracks.length) {
+        aId = i.audioTracks[0].id;
+        file.setExtractionOptions(aId, null, { nbSamples: Infinity });
+      }
       file.start();
     };
-    file.onSamples = (_id, _u, s) => { for (const x of s) samples.push(x); };
+    file.onSamples = (tid, _u, s) => {
+      const into = (tid === aId) ? audioSamples : samples;
+      for (const x of s) into.push(x);
+    };
     buffer.fileStart = 0;
     file.appendBuffer(buffer);
     file.flush();
     if (!info) return reject(preflight('this file is not an MP4 or MOV the exporter can read'));
     const track = info.videoTracks[0];
-    resolve({ file, info, track, samples, description: codecDescription(file, track.id) });
+    const audioTrack = (info.audioTracks && info.audioTracks[0]) || null;
+    resolve({ file, info, track, samples, description: codecDescription(file, track.id),
+              audioTrack, audioSamples,
+              audioDescription: audioTrack ? audioSpecificConfig(file, audioTrack.id) : null });
   });
 }
 
@@ -2746,6 +2795,65 @@ function demux(buffer) {
    only thing it can produce is a clip that stops early, which is the bug this
    whole path exists to remove. */
 function preflight(msg) { const e = new Error(msg); e.recoverable = true; return e; }
+
+/* Recover a clip's sound with WebCodecs when decodeAudioData will not touch it.
+   Returns something shaped like an AudioBuffer so the encoder path is unchanged,
+   or null if this route is unavailable too. */
+async function decodeAudioViaCodecs(audioTrack, audioSamples, description) {
+  if (typeof AudioDecoder === 'undefined' || !audioTrack || !audioSamples.length) return null;
+  const rate = audioTrack.audio ? audioTrack.audio.sample_rate : 48000;
+  const ch   = Math.min(audioTrack.audio ? audioTrack.audio.channel_count : 2, 2);
+  const cfg  = { codec: audioTrack.codec, sampleRate: rate, numberOfChannels: ch };
+  if (description) cfg.description = description;
+  if (AudioDecoder.isConfigSupported) {
+    const sup = await AudioDecoder.isConfigSupported(cfg).catch(()=>null);
+    if (!sup || !sup.supported) return null;
+  }
+
+  const chunks = [];      // one Float32Array per channel, per decoded block
+  let frames = 0, err = null;
+  const dec = new AudioDecoder({
+    output: data => {
+      try {
+        const n = data.numberOfFrames;
+        const planes = [];
+        for (let c = 0; c < ch; c++) {
+          const out = new Float32Array(n);
+          data.copyTo(out, { planeIndex: Math.min(c, data.numberOfChannels-1), format: 'f32-planar' });
+          planes.push(out);
+        }
+        chunks.push(planes); frames += n;
+      } catch (e) { err = err || e; }
+      data.close();
+    },
+    error: e => { err = err || e; },
+  });
+  dec.configure(cfg);
+  for (const smp of audioSamples) {
+    dec.decode(new EncodedAudioChunk({
+      type: 'key',
+      timestamp: smp.cts * 1e6 / smp.timescale,
+      duration: smp.duration * 1e6 / smp.timescale,
+      data: smp.data,
+    }));
+    if (dec.decodeQueueSize > 40) await new Promise(r=>setTimeout(r, 0));
+  }
+  await dec.flush().catch(e => { err = err || e; });
+  dec.close();
+  if (err || !frames) return null;
+
+  const merged = [];
+  for (let c = 0; c < ch; c++) {
+    const full = new Float32Array(frames);
+    let at = 0;
+    for (const planes of chunks) { full.set(planes[c], at); at += planes[c].length; }
+    merged.push(full);
+  }
+  return {                      // AudioBuffer-shaped, which is all we need
+    sampleRate: rate, numberOfChannels: ch, length: frames,
+    duration: frames / rate, getChannelData: c => merged[Math.min(c, ch-1)],
+  };
+}
 
 /* True when the reliable path is available for the loaded clip. */
 function canExportFile() {
@@ -2758,7 +2866,8 @@ async function exportVideoFile(file, onProgress, limitSec) {
   if (!codecsReady()) throw preflight('this browser cannot re-encode video');
   const limit = (limitSec==null || !isFinite(limitSec)) ? Infinity : limitSec;
   const arrayBuffer = await file.arrayBuffer();
-  const { track, samples: allSamples, description } = await demux(arrayBuffer.slice(0));
+  const { track, samples: allSamples, description,
+          audioTrack, audioSamples, audioDescription } = await demux(arrayBuffer.slice(0));
   if (!allSamples.length) throw preflight('no frames found in this video');
 
   // Phone footage rarely starts at exactly zero — the first frame commonly sits
@@ -2784,14 +2893,31 @@ async function exportVideoFile(file, onProgress, limitSec) {
   // Decode the clip's audio up front: it tells us whether there is any sound
   // to keep, so the muxer is built once with the right tracks.
   let pcm = null;
-  if (S.sound && codecs.audio) {
+  if (!S.exportAudio) {
+    logExport('audio: skipped — "Include sound" is off');
+  } else if (!codecs.audio) {
+    logExport('audio: DROPPED — this device offers no audio encoder');
+  } else {
     try {
       const ac = new (window.AudioContext||window.webkitAudioContext)();
       pcm = await ac.decodeAudioData(arrayBuffer.slice(0));
       ac.close && ac.close();
-      if (!pcm || !pcm.length) pcm = null;
-    } catch (e) { pcm = null; }        // no usable audio in this clip
+      if (!pcm || !pcm.length) { pcm = null; logExport('audio: DROPPED — the clip has no audio track'); }
+      else logExport(`audio: decoded ${pcm.duration.toFixed(1)}s, `
+        + `${pcm.numberOfChannels}ch @ ${pcm.sampleRate}Hz`);
+    } catch (e) {
+      // Safari refuses decodeAudioData on some camera .mov files. The sound is
+      // still in there, so take it apart with WebCodecs instead of giving up.
+      logExport('audio: decodeAudioData refused it (' + (e && e.message) + ') — trying WebCodecs');
+      try {
+        pcm = await decodeAudioViaCodecs(audioTrack, audioSamples, audioDescription);
+      } catch (e2) { pcm = null; }
+      if (pcm) logExport(`audio: recovered via WebCodecs — ${pcm.duration.toFixed(1)}s, `
+        + `${pcm.numberOfChannels}ch @ ${pcm.sampleRate}Hz`);
+      else logExport('audio: DROPPED — neither route could decode it');
+    }
   }
+  const wantedAudio = S.exportAudio && !!codecs.audio;
 
   const mux = new Mp4Muxer.Muxer({
     target: new Mp4Muxer.ArrayBufferTarget(),
@@ -2808,9 +2934,10 @@ async function exportVideoFile(file, onProgress, limitSec) {
   // Audio: encode the whole track first — it is quick next to the video.
   if (pcm) {
     const rate = pcm.sampleRate, ch = Math.min(pcm.numberOfChannels, 2);
+    let audioErr = null;
     const enc = new AudioEncoder({
-      output:(chunk, meta)=>mux.addAudioChunk(chunk, meta),
-      error:()=>{},
+      output:(chunk, meta)=>{ try { mux.addAudioChunk(chunk, meta); } catch(e){ audioErr = audioErr||e; } },
+      error:e=>{ audioErr = audioErr || e; },      // was swallowed entirely
     });
     enc.configure({ codec: codecs.audio.codec, sampleRate:rate, numberOfChannels:ch, bitrate:128000 });
     const block = rate;                                   // ~1s at a time
@@ -2832,6 +2959,8 @@ async function exportVideoFile(file, onProgress, limitSec) {
     }
     await enc.flush();
     enc.close();
+    if (audioErr) throw new Error('the sound could not be encoded: ' + (audioErr.message||audioErr));
+    logExport('audio: encoded and muxed');
     // The audio is muxed now, so drop the decoded PCM before the video pass
     // begins. On a two-minute clip that is ~90 MB held for no reason, on top
     // of the source file and the growing output — enough to get a tab killed.
@@ -3201,7 +3330,7 @@ function initEvents() {
     S.sound=e.target.checked;
     if(S.sound){ audioGraph(); if(_actx&&_actx.state==='suspended') _actx.resume().catch(()=>{}); }
     applyPreviewVolume();
-    showToast(S.sound?'Sound on — it will be in the recording':'Sound off');
+    showToast(S.sound?'Preview sound on':'Preview muted — the export still keeps the sound');
   });
 
   // Safe-area guides (preview only)
