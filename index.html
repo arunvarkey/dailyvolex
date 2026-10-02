@@ -1010,7 +1010,7 @@ const S = {
   exportClock: null,      // set per frame while exporting a file
   exporting: false,
   videoFile: null,
-  build: (window.BUILD='2026-10-02-a'),   // shown in Export, so a stale cached page is obvious
+  build: (window.BUILD='2026-10-02-b'),   // shown in Export, so a stale cached page is obvious
   cancelExport: false,
   exportAudio: true,      // keeping the sound in the file is NOT the same as
                           // hearing it in the preview; one toggle did both, so
@@ -2741,11 +2741,28 @@ function audioSpecificConfig(mp4file, trackId) {
   try {
     const trak = mp4file.getTrackById(trackId);
     for (const entry of (trak.mdia.minf.stbl.stsd.entries || [])) {
-      const esds = entry.esds;
-      if (!esds) continue;
-      const descs = esds.esd && esds.esd.descs;
-      if (descs && descs[0] && descs[0].descs && descs[0].descs[0] && descs[0].descs[0].data)
-        return new Uint8Array(descs[0].descs[0].data);
+      // AAC: the AudioSpecificConfig buried in esds.
+      if (entry.esds) {
+        const descs = entry.esds.esd && entry.esds.esd.descs;
+        if (descs && descs[0] && descs[0].descs && descs[0].descs[0] && descs[0].descs[0].data)
+          return new Uint8Array(descs[0].descs[0].data);
+      }
+      // Opus: dOps holds the same fields as an OpusHead but not in that
+      // layout, so build a real OpusHead from them — the muxer wants the
+      // identification header, big-endian box payload will not do.
+      if (entry.dOps) {
+        const d = entry.dOps;
+        const head = new Uint8Array(19);
+        head.set([0x4f,0x70,0x75,0x73,0x48,0x65,0x61,0x64], 0);     // "OpusHead"
+        const dv = new DataView(head.buffer);
+        head[8]  = 1;                                                // version
+        head[9]  = d.OutputChannelCount != null ? d.OutputChannelCount : 2;
+        dv.setUint16(10, d.PreSkip || 0, true);                      // little-endian
+        dv.setUint32(12, d.InputSampleRate || 48000, true);
+        dv.setInt16(16, d.OutputGain || 0, true);
+        head[18] = d.ChannelMappingFamily || 0;
+        return head;
+      }
     }
   } catch (e) {}
   return null;
@@ -2893,10 +2910,30 @@ async function exportVideoFile(file, onProgress, limitSec) {
   // Decode the clip's audio up front: it tells us whether there is any sound
   // to keep, so the muxer is built once with the right tracks.
   let pcm = null;
-  if (!S.exportAudio) {
+  const copyAudio = S.exportAudio;
+  const srcAudioCodec = (audioTrack && audioTrack.codec || '');
+  const passMux = /^mp4a/.test(srcAudioCodec) ? 'aac'
+                : /^opus/i.test(srcAudioCodec) ? 'opus' : null;
+  const descOk = !!audioDescription
+    && (passMux === 'aac'  ? audioDescription.length >= 2
+      : passMux === 'opus' ? audioDescription.length >= 19 : false);
+  const passThrough = !!(copyAudio && audioTrack && audioSamples.length
+    && passMux && descOk);
+
+  if (!copyAudio) {
     logExport('audio: skipped — "Include sound" is off');
+  } else if (!audioTrack) {
+    logExport('audio: DROPPED — this clip has no audio track');
+  } else if (passThrough) {
+    logExport('audio: original ' + passMux.toUpperCase()
+      + ' track will be copied across, not re-encoded');
   } else if (!codecs.audio) {
-    logExport('audio: DROPPED — this device offers no audio encoder');
+    if (passMux && !descOk)
+      logExport('audio: the original track cannot be copied (codec config '
+        + (audioDescription ? audioDescription.length + ' bytes, too short' : 'missing') + ')');
+    // Nothing can be re-encoded here, and the track cannot be copied either.
+    logExport('audio: DROPPED — no audio encoder on this device and the '
+      + 'original track (' + (audioTrack.codec||'?') + ') cannot be copied');
   } else {
     try {
       const ac = new (window.AudioContext||window.webkitAudioContext)();
@@ -2919,20 +2956,60 @@ async function exportVideoFile(file, onProgress, limitSec) {
   }
   const wantedAudio = S.exportAudio && !!codecs.audio;
 
+  // Best route for sound: copy the original AAC track across untouched. It
+  // needs no AudioEncoder (Safari does not always provide a usable one, and
+  // without it the sound was simply dropped), no decoding, and no re-encoding,
+  // so nothing can be lost and nothing can drift.
+  const canPassThrough = passThrough;
+
   const mux = new Mp4Muxer.Muxer({
     target: new Mp4Muxer.ArrayBufferTarget(),
     video: { codec: codecs.video.muxName, width:W, height:H },
-    audio: pcm ? { codec: codecs.audio.muxName,
-                   sampleRate: pcm.sampleRate,
-                   numberOfChannels: Math.min(pcm.numberOfChannels,2) } : undefined,
+    audio: canPassThrough
+      ? { codec: passMux,
+          sampleRate: audioTrack.audio.sample_rate,
+          numberOfChannels: audioTrack.audio.channel_count }
+      : pcm ? { codec: codecs.audio.muxName,
+                sampleRate: pcm.sampleRate,
+                numberOfChannels: Math.min(pcm.numberOfChannels,2) } : undefined,
     fastStart: 'in-memory',
     // Belt and braces alongside the re-basing above: absorb a non-zero first
     // timestamp instead of rejecting the track.
     firstTimestampBehavior: 'offset',
   });
 
-  // Audio: encode the whole track first — it is quick next to the video.
-  if (pcm) {
+  // Audio, first choice: straight copy.
+  if (canPassThrough) {
+    try {
+      let first = true, kept = 0;
+      const aBase = audioSamples[0].cts / audioSamples[0].timescale;
+      for (const smp of audioSamples) {
+        const t = smp.cts / smp.timescale - aBase;
+        if (limit !== Infinity && t >= limit) break;
+        mux.addAudioChunk(new EncodedAudioChunk({
+          type: 'key',
+          timestamp: Math.max(0, Math.round(t * 1e6)),
+          duration: Math.round(smp.duration * 1e6 / smp.timescale),
+          data: smp.data,
+        }), first ? { decoderConfig: {
+          codec: audioTrack.codec,
+          sampleRate: audioTrack.audio.sample_rate,
+          numberOfChannels: audioTrack.audio.channel_count,
+          description: audioDescription,
+        } } : undefined);
+        first = false; kept++;
+      }
+      logExport(`audio: copied the original track across — ${kept} packets, `
+        + `${audioTrack.audio.channel_count}ch @ ${audioTrack.audio.sample_rate}Hz`);
+      pcm = null;                       // nothing to re-encode
+    } catch (e) {
+      logExport('audio: copying failed (' + (e && e.message) + ')');
+      throw e;
+    }
+  }
+
+  // Audio, fallback: decode and re-encode.
+  else if (pcm) {
     const rate = pcm.sampleRate, ch = Math.min(pcm.numberOfChannels, 2);
     let audioErr = null;
     const enc = new AudioEncoder({
