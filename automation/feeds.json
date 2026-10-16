@@ -1,0 +1,17 @@
+{
+  "comment": "Free, public RSS feeds. 'weight' nudges ranking; 'topic' drives the ticker and category. Remove or add freely — nothing here needs an API key.",
+  "feeds": [
+    { "id": "coindesk",      "name": "CoinDesk",         "topic": "crypto", "weight": 1.2, "url": "https://www.coindesk.com/arc/outboundfeeds/rss/" },
+    { "id": "cointelegraph", "name": "Cointelegraph",    "topic": "crypto", "weight": 1.0, "url": "https://cointelegraph.com/rss" },
+    { "id": "decrypt",       "name": "Decrypt",          "topic": "crypto", "weight": 0.9, "url": "https://decrypt.co/feed" },
+    { "id": "theblock",      "name": "The Block",        "topic": "crypto", "weight": 1.1, "url": "https://www.theblock.co/rss.xml" },
+
+    { "id": "et-markets",    "name": "Economic Times",   "topic": "india",  "weight": 1.1, "url": "https://economictimes.indiatimes.com/markets/rssfeeds/1977021501.cms" },
+    { "id": "moneycontrol",  "name": "Moneycontrol",     "topic": "india",  "weight": 1.0, "url": "https://www.moneycontrol.com/rss/marketreports.xml" },
+    { "id": "mint-markets",  "name": "Mint",             "topic": "india",  "weight": 1.0, "url": "https://www.livemint.com/rss/markets" },
+
+    { "id": "reuters-biz",   "name": "Reuters",          "topic": "world",  "weight": 1.3, "url": "https://news.google.com/rss/search?q=when:12h+allinurl:reuters.com+business&hl=en-US&gl=US&ceid=US:en" },
+    { "id": "gnews-markets", "name": "Google News",      "topic": "world",  "weight": 0.8, "url": "https://news.google.com/rss/search?q=stock+markets+when:12h&hl=en-IN&gl=IN&ceid=IN:en" },
+    { "id": "gnews-crypto",  "name": "Google News",      "topic": "crypto", "weight": 0.8, "url": "https://news.google.com/rss/search?q=bitcoin+OR+ethereum+when:12h&hl=en-IN&gl=IN&ceid=IN:en" }
+  ]
+}

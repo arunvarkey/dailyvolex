@@ -1,0 +1,97 @@
+name: Publish on approval
+
+# The ONLY path that posts to Instagram. It runs when the repository owner
+# comments /approve on an approval issue — never on a schedule, and never from
+# anyone else's comment.
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: dailyvolex-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    # Three gates, all required: an approval issue, the word /approve, and the
+    # comment coming from the person who owns the repository. Without the last
+    # one, anybody who can comment on an issue could publish to the account.
+    if: >
+      github.event.issue.state == 'open' &&
+      contains(github.event.issue.labels.*.name, 'awaiting-approval') &&
+      startsWith(github.event.comment.body, '/approve') &&
+      github.event.comment.user.login == github.repository_owner
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Confirm there is something approved to post
+        id: find
+        run: |
+          test -f data/shortlist.json || { echo "no shortlist"; exit 1; }
+          IMAGE=$(node -e "const s=require('./data/shortlist.json');process.stdout.write(s.stories[0].image||'')")
+          test -n "$IMAGE" || { echo "no rendered image"; exit 1; }
+          test -f "$IMAGE"  || { echo "$IMAGE missing"; exit 1; }
+          echo "image=$IMAGE" >> "$GITHUB_OUTPUT"
+          echo "url=https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${GITHUB_SHA}/${IMAGE}" >> "$GITHUB_OUTPUT"
+
+      - name: Post to Instagram
+        env:
+          IG_USER_ID:      ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+        run: |
+          node automation/publish.mjs \
+            --image "${{ steps.find.outputs.url }}" \
+            --caption-file data/pending/caption-1.txt
+
+      - name: Remember what was posted, so it never comes round again
+        run: |
+          node -e "
+            const fs=require('fs');
+            const s=JSON.parse(fs.readFileSync('data/shortlist.json','utf8'));
+            const e=s.stories[0];
+            const items=(e.stories||[e]).map(x=>({
+              title:x.original||x.headline, link:x.link||null, posted:new Date().toISOString() }));
+            const p=fs.existsSync('data/posted.json')
+              ? JSON.parse(fs.readFileSync('data/posted.json','utf8')) : {posted:[]};
+            p.posted=[...items,...(p.posted||[])].slice(0,400);
+            p.updated=new Date().toISOString();
+            fs.writeFileSync('data/posted.json', JSON.stringify(p,null,2)+'\n');
+          "
+          git config user.name  "dailyvolex-bot"
+          git config user.email "noreply@github.com"
+          git add data/posted.json
+          git commit -m "Posted $(date -u +%Y-%m-%d)" || echo "nothing changed"
+          git push
+
+      - name: Say so on the issue and close it
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const ok = '${{ job.status }}' === 'success';
+            await github.rest.issues.createComment({
+              owner: context.repo.owner, repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: ok
+                ? '✅ Posted to Instagram.'
+                : `❌ Publishing failed — see [the run](${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}). Nothing was posted.`,
+            });
+            if (ok) {
+              await github.rest.issues.update({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: context.issue.number, state: 'closed',
+              });
+            }

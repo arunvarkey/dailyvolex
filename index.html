@@ -654,6 +654,12 @@ aside > *, .right-panel > * { flex-shrink:0 }
 .vid-name{font-family:var(--font-mono);color:var(--tp);font-size:.67rem;margin-top:.15rem;display:block}
 
 /* Export note */
+/* Headless: hide the editor entirely so a stray capture of the page, rather
+   than of the canvas, still shows only the graphic. */
+body.headless header,body.headless .tabbar,body.headless aside,
+body.headless .right-panel,body.headless #toast,body.headless #installHint{display:none!important}
+body.headless #app{padding:0!important}
+body.headless main{padding:0!important}
 .export-note{font-size:.64rem;color:var(--ui-muted);line-height:1.65;padding:.1rem 0}
 .engine-note{font-size:.66rem;line-height:1.6;padding:.5rem .6rem;border-radius:8px;
   border:1px solid;display:block}
@@ -1010,7 +1016,7 @@ const S = {
   exportClock: null,      // set per frame while exporting a file
   exporting: false,
   videoFile: null,
-  build: (window.BUILD='2026-10-02-b'),   // shown in Export, so a stale cached page is obvious
+  build: (window.BUILD='2026-10-16-a'),   // shown in Export, so a stale cached page is obvious
   cancelExport: false,
   exportAudio: true,      // keeping the sound in the file is NOT the same as
                           // hearing it in the preview; one toggle did both, so
@@ -3497,14 +3503,104 @@ document.fonts.ready.then(()=>{
   ctx.font="400 10px 'Inter'"; ctx.fillText('.',0,0);
 });
 
-applyRatio('9:16');
-applyThemeCSS('bbc');
+/* ═══════════════════════════════════════════════
+   HEADLESS MODE
+   With ?auto=1 the page takes its content from the URL and renders a finished
+   frame with no interaction, so a scheduled job can produce a graphic exactly
+   as the app would. Entrance animation is wound forward so the frame is not
+   caught mid-fade, and window.dvReady goes true once it is safe to capture.
+   ═══════════════════════════════════════════════ */
+function applyUrlStory() {
+  let q;
+  try { q = new URLSearchParams(location.search); } catch (e) { return false; }
+  if (q.get('auto') !== '1') return false;
+
+  const str = (k, max) => {
+    const v = q.get(k);
+    if (v == null) return null;
+    return max ? v.slice(0, max) : v;
+  };
+  const set = (k, fn) => { const v = str(k); if (v != null) fn(v); };
+
+  set('theme',  v => { if (THEMES[v]) S.theme = v; });
+  set('ratio',  v => { if (['9:16','4:5','1:1'].includes(v)) S.ratio = v; });
+  set('layout', v => { if (['breaking','stories','facts','quote'].includes(v)) S.layout = v; });
+  set('handle', v => S.brand.handle = v.slice(0,40));
+
+  set('category', v => S.breaking.category = v.slice(0,40).toUpperCase());
+  set('headline', v => S.breaking.headline = v.slice(0,160).toUpperCase());
+  set('source',   v => S.breaking.source   = v.slice(0,80));
+
+  // Top Stories: repeated &item= parameters, in order.
+  const items = q.getAll('item').filter(Boolean).slice(0,5).map(v=>v.slice(0,110));
+  if (items.length) S.stories.items = items;
+  set('label', v => S.stories.label = v.slice(0,40).toUpperCase());
+  set('date',  v => { S.stories.date = v.slice(0,40); S.facts.subtitle = v.slice(0,60); });
+
+  // Key Facts: repeated &row=Label|Value pairs.
+  const rows = q.getAll('row').filter(Boolean).slice(0,6).map(v => {
+    const i = v.indexOf('|');
+    return i < 0 ? { label:v.slice(0,40), value:'' }
+                 : { label:v.slice(0,i).slice(0,40), value:v.slice(i+1).slice(0,60) };
+  });
+  if (rows.length) S.facts.rows = rows;
+  set('title', v => S.facts.title = v.slice(0,60).toUpperCase());
+
+  set('stat',    v => S.quote.stat    = v.slice(0,20));
+  set('statlabel', v => S.quote.label = v.slice(0,60));
+  set('context', v => S.quote.context = v.slice(0,200));
+
+  // The ticker bar is assembled from the feed rows, not from the per-layout
+  // ticker string, so setting that alone left the sample prices on screen.
+  const ticker = str('ticker', 300);
+  if (ticker != null) {
+    for (const key of ['breaking','stories','facts','quote']) {
+      S[key].ticker = ticker;
+      S[key].showTicker = ticker.length > 0;
+    }
+    S.tickerFeeds = ticker.trim()
+      ? [{ id:'auto', name:'Auto', on:true, text:ticker }]
+      : S.tickerFeeds.map(f => ({ ...f, on:false }));
+  }
+
+  // Wind the entrance past its end so the frame is fully drawn, and stop the
+  // ticker scrolling so repeated runs of the same story look identical.
+  S.introStart = performance.now() - 60000;
+  S.tickerX = 0;
+  S.showClock = false;
+  S.guides = false;
+  document.body.classList.add('headless');
+  return true;
+}
+
+const HEADLESS = applyUrlStory();
+
+applyRatio(S.ratio || '9:16');
+applyThemeCSS(S.theme || 'bbc');
 initParticles();
 initEvents();
 renderPanel();
 render();
 
-showToast('DailyVolex Pro loaded. Start creating.', 4000);
+if (HEADLESS) {
+  // Capture only once the webfonts are in, or the headline renders in a
+  // fallback face and every automated graphic looks wrong.
+  const ready = () => {
+    drawScene(THEMES[S.theme], false);
+    // fonts.check() answers "can this be rendered", which is true even when
+    // the real face is missing and a fallback would be substituted. Ask
+    // whether the face itself actually loaded instead.
+    try {
+      window.dvFontsOk = [...document.fonts]
+        .some(f => /Space Grotesk/.test(f.family) && f.status === 'loaded');
+    } catch (e) { window.dvFontsOk = null; }
+    window.dvReady = true;
+  };
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(()=>setTimeout(ready, 250));
+  else setTimeout(ready, 1500);
+} else {
+  showToast('DailyVolex Pro loaded. Start creating.', 4000);
+}
 
 // Ask the device what it can encode, once, so the Export panel can say which
 // path a clip will take before the user commits to a long export. It polls for

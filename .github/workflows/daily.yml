@@ -1,0 +1,101 @@
+name: Daily shortlist
+
+# Builds the day's graphic and opens an issue asking for approval.
+# Posts NOTHING. Publishing happens only from approve.yml, after a human says so.
+
+on:
+  schedule:
+    - cron: '30 2 * * *'      # 08:00 IST
+  workflow_dispatch:
+    inputs:
+      digest:
+        description: 'One card with all headlines (otherwise one card per story)'
+        type: boolean
+        default: true
+      count:
+        description: 'How many stories to shortlist'
+        default: '3'
+
+permissions:
+  contents: write           # commit the shortlist and the rendered graphic
+  issues: write             # open the approval issue
+
+concurrency:
+  group: dailyvolex-daily
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Pick today's stories
+        run: node automation/shortlist.mjs --count "${{ inputs.count || '3' }}"
+
+      - name: Render the graphic
+        run: |
+          node automation/render.mjs \
+            ${{ (inputs.digest == false) && ' ' || '--digest' }} \
+            --ratio 4:5
+
+      - name: Write the caption
+        run: node automation/caption.mjs --index 0
+
+      - name: Publish the graphic so Instagram can fetch it
+        # Instagram pulls the image from a public URL rather than accepting an
+        # upload, so the file has to be reachable before it can be posted.
+        run: |
+          git config user.name  "dailyvolex-bot"
+          git config user.email "noreply@github.com"
+          git add data/
+          git commit -m "Shortlist for $(date -u +%Y-%m-%d)" || echo "nothing changed"
+          git push
+
+      - name: Ask for approval
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const sl = JSON.parse(fs.readFileSync('data/shortlist.json', 'utf8'));
+            const caption = fs.readFileSync('data/pending/caption-1.txt', 'utf8');
+            const entry = sl.stories[0];
+            const sha = process.env.GITHUB_SHA;
+            const img = `https://raw.githubusercontent.com/${context.repo.owner}/${context.repo.repo}/${sha}/${entry.image}`;
+
+            const stories = (entry.stories || [entry]).map(s =>
+              `- **${s.display || s.headline}**\n  _${s.source}_ · ${s.corroboration} source${s.corroboration > 1 ? 's' : ''}` +
+              (s.truncated ? ' · shortened to fit' : '') +
+              (s.link ? `\n  ${s.link}` : '')).join('\n');
+
+            const warnings = [];
+            if (sl.feedErrors?.length) warnings.push(`Feeds that failed: ${sl.feedErrors.join('; ')}`);
+            if ((entry.stories || [entry]).some(s => s.corroboration < 2))
+              warnings.push('Some stories are carried by only ONE outlet — check them before approving.');
+
+            const body = [
+              `![graphic](${img})`,
+              '',
+              '### Stories', stories,
+              '',
+              '### Caption', '```', caption.trim(), '```',
+              warnings.length ? `\n### ⚠️ Check\n${warnings.map(w => `- ${w}`).join('\n')}` : '',
+              '',
+              '---',
+              '**Comment `/approve` to post this to Instagram.** Anything else, or no reply, and it is never posted.',
+              'Close this issue to discard it.',
+            ].join('\n');
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Approve post — ${new Date().toISOString().slice(0, 10)}`,
+              body,
+              labels: ['awaiting-approval'],
+            });
