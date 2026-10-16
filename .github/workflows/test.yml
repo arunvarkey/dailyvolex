@@ -1,0 +1,52 @@
+name: Tests
+
+# Runs on every change. The pipeline is unattended, so a regression that only
+# shows up at 08:00 the next morning is a regression nobody sees coming.
+
+on:
+  push:
+    branches: [main]
+    paths: ['automation/**', 'index.html', '.github/workflows/**', 'package.json']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - run: npm install --no-audit --no-fund
+
+      - name: Logic and token tests
+        run: npm test
+
+      - name: Render from fixtures, then test the workflows themselves
+        # Uses saved feeds, so this never depends on a news site being up.
+        run: |
+          npm run build:sample
+          node automation/test-workflows.mjs
+
+      - name: Check the graphics actually came out
+        run: |
+          for f in data/pending/slide-*.png; do
+            SIZE=$(stat -c%s "$f")
+            test "$SIZE" -gt 20000 || { echo "$f is suspiciously small ($SIZE bytes)"; exit 1; }
+            echo "ok  $f  $((SIZE/1024)) KB"
+          done
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sample-graphics
+          path: data/pending/
+          retention-days: 7
