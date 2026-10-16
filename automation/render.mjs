@@ -70,6 +70,7 @@ function storyUrl(port, story, opts) {
     source: story.source,
     ticker: opts.ticker,
   });
+  if (opts.posy != null) q.set('posy', String(opts.posy));
   return `http://127.0.0.1:${port}/index.html?${q}`;
 }
 
@@ -92,6 +93,8 @@ async function renderUrl(url, index) {
 
     const dims = await page.evaluate(`JSON.stringify({w:cv.width,h:cv.height})`);
     const fontsOk = await page.evaluate('window.dvFontsOk');
+    if (process.env.DV_DEBUG) console.log('   debug:',
+      await page.evaluate(`JSON.stringify({freeze:S.tickerFreeze,x:S.tickerX,raf:!!S.raf,headless:HEADLESS})`));
     page.close();
     return { png: Buffer.from(dataUrl.split(',')[1], 'base64'), dims: JSON.parse(dims),
              fontsOk, jsErrors: page.errors.slice(0, 3) };
@@ -110,6 +113,13 @@ async function main() {
     label:  arg('label', 'TOP STORIES'),
     date:   arg('date', today),
     digest: process.argv.includes('--digest'),
+    // A carousel is the strongest format for a daily news post: the cover
+    // earns the tap, each story gets a readable card of its own, and people
+    // save and share multi-slide posts far more than single images.
+    carousel: process.argv.includes('--carousel'),
+    // Lifts the headline block off the bottom edge. Without it the card is
+    // weighted right at the base of an otherwise empty frame.
+    posy: arg('posy', '-0.10'),
   };
 
   const shortlist = await readJson(SHORTLIST, null);
@@ -124,7 +134,44 @@ async function main() {
   try {
     const usable = shortlist.stories.filter(s => s.usable);
 
-    if (opts.digest) {
+    if (opts.carousel) {
+      if (!usable.length) throw new Error('no usable headlines for a carousel');
+
+      const slides = [];
+      // Slide 1: the cover, listing everything inside.
+      const cover = await renderUrl(digestUrl(port, usable, opts), 0);
+      await writeFile(join(OUT_DIR, 'slide-1.png'), cover.png);
+      slides.push({ file: 'slide-1.png', kind: 'cover', ...cover });
+
+      // Then one card per story.
+      for (const [i, story] of usable.entries()) {
+        const slide = await renderUrl(
+          storyUrl(port, story, { ...opts, layout: 'breaking', posy: opts.posy }), i + 1);
+        const name = `slide-${i + 2}.png`;
+        await writeFile(join(OUT_DIR, name), slide.png);
+        slides.push({ file: name, kind: 'story', story, ...slide });
+      }
+
+      for (const s of slides) {
+        console.log(`rendered ${s.file}  ${s.dims.w}x${s.dims.h}  ${(s.png.length / 1024).toFixed(0)} KB`
+          + (s.fontsOk === false ? '  !! WEB FONTS DID NOT LOAD' : '')
+          + (s.jsErrors.length ? `  (page errors: ${s.jsErrors.join(' | ')})` : ''));
+        if (s.fontsOk === false) fontWarnings++;
+      }
+
+      rendered.push({
+        kind: 'carousel',
+        headline: `${usable.length} stories`,
+        images: slides.map(s => `data/pending/${s.file}`),
+        image: 'data/pending/slide-1.png',          // the cover, for previews
+        width: slides[0].dims.w, height: slides[0].dims.h,
+        sourceNames: [...new Set(usable.flatMap(s => s.sourceNames))],
+        stories: usable,
+        usable: true,
+      });
+    }
+
+    else if (opts.digest) {
       if (!usable.length) throw new Error('no usable headlines to put in a digest');
       const { png, dims, fontsOk, jsErrors } = await renderUrl(digestUrl(port, usable, opts), 0);
       await writeFile(join(OUT_DIR, 'digest.png'), png);
@@ -142,7 +189,7 @@ async function main() {
       });
     }
 
-    for (const [i, story] of (opts.digest ? [] : shortlist.stories).entries()) {
+    for (const [i, story] of ((opts.digest || opts.carousel) ? [] : shortlist.stories).entries()) {
       if (!story.usable) { console.log(`skipped (headline too short): ${story.headline}`); continue; }
       const { png, dims, fontsOk, jsErrors } = await renderUrl(storyUrl(port, story, opts), i);
       const name = `story-${i + 1}.png`;
@@ -158,7 +205,15 @@ async function main() {
   }
 
   if (!rendered.length) throw new Error('nothing rendered');
-  await writeJson(SHORTLIST, { ...shortlist, rendered: new Date().toISOString(), options: opts, stories: rendered });
+  // Write the output alongside the shortlist, never over it. Overwriting
+  // `stories` made the render destroy its own input: a second run found the
+  // previous run's output where the stories should have been.
+  await writeJson(SHORTLIST, {
+    ...shortlist,
+    rendered: new Date().toISOString(),
+    options: opts,
+    output: rendered,
+  });
   console.log(`\n${rendered.length} graphic(s) in ${OUT_DIR}`);
   if (fontWarnings)
     console.log(`WARNING: ${fontWarnings} rendered without the brand typeface — check the `

@@ -107,17 +107,20 @@ ok('category comes from the topic', categoryFor('india') === 'INDIA MARKETS');
 
 /* ── Caption ──────────────────────────────────────────────────── */
 
+for (const kind of ['digest', 'carousel']) {
 const caption = buildCaption({
-  kind: 'digest',
+  kind,
   stories: [
     { display: 'Fed cuts rates by 25 basis points', topic: 'world', source: 'Reuters' },
     { display: 'SEC approves Solana ETF', topic: 'crypto', source: 'CoinDesk' },
   ],
   sourceNames: ['Reuters', 'CoinDesk'],
 });
-ok('caption carries the headlines', caption.includes('Fed cuts rates by 25 basis points'));
-ok('caption names the sources', /Reuters/.test(caption) && /CoinDesk/.test(caption));
-ok('caption fits Instagram', caption.length <= 2200, `${caption.length} chars`);
+ok(`${kind} caption carries the headlines`, caption.includes('Fed cuts rates by 25 basis points'));
+ok(`${kind} caption names the sources`, /Reuters/.test(caption) && /CoinDesk/.test(caption));
+ok(`${kind} caption fits Instagram`, caption.length <= 2200, `${caption.length} chars`);
+ok(`${kind} caption is not a bare count`, !/^\d+ stories/.test(caption.trim()), caption.slice(0,24));
+}
 
 console.log(`\n${passed} passed, ${failed} failed`);
 process.exit(failed ? 1 : 0);

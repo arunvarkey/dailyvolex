@@ -19,7 +19,8 @@ Mondays    ─→  check the Instagram token, warn well before it expires
 
 08:00 IST  ─→  read RSS feeds
            ─→  group the same story across outlets, rank, pick the top 3
-           ─→  render a graphic with the app itself, headless
+           ─→  render a carousel with the app itself, headless
+                 (cover listing the stories, then a card for each)
            ─→  open a GitHub issue:  image + headlines + caption + sources
                                           │
                         you comment  /approve
@@ -46,11 +47,11 @@ the exact caption. It updates itself every time the job runs.
 ## Try it without posting anything
 
 ```bash
-node automation/test.mjs                         # 27 checks on the logic
+node automation/test.mjs                         # 32 checks on the logic
 node automation/test-token.mjs                   # 11 checks on the token monitor
 node automation/shortlist.mjs --fixtures         # pick stories from saved samples
 node automation/shortlist.mjs                    # or from the live feeds
-node automation/render.mjs --digest --ratio 4:5  # make the graphic
+node automation/render.mjs --carousel --ratio 4:5 # cover + a card per story
 node automation/caption.mjs --index 0            # write the caption
 ```
 
@@ -123,7 +124,9 @@ Feeds live in `automation/feeds.json` — add or remove freely, no keys needed.
 | Option | Default | Notes |
 |---|---|---|
 | `--count` | 3 | stories shortlisted |
-| `--digest` | on in the workflow | one card with every headline, instead of one card per story |
+| `--carousel` | the workflow default | cover slide listing everything, then a card per story — the strongest format for saves and shares |
+| `--digest` | — | a single card with every headline |
+| `--posy` | `-0.10` | lifts the headline block on story cards; `0` sits it at the bottom |
 | `--ratio` | `4:5` | `4:5` is the largest Instagram feed size; `9:16` for Stories |
 | `--theme` | `bbc` | any theme the app offers |
 | `--layout` | `breaking` | ignored when `--digest` is used |

@@ -8,10 +8,11 @@ on:
     - cron: '30 2 * * *'      # 08:00 IST
   workflow_dispatch:
     inputs:
-      digest:
-        description: 'One card with all headlines (otherwise one card per story)'
-        type: boolean
-        default: true
+      format:
+        description: 'What to make'
+        type: choice
+        default: carousel
+        options: [carousel, digest, cards]
       count:
         description: 'How many stories to shortlist'
         default: '3'
@@ -40,10 +41,15 @@ jobs:
         run: node automation/shortlist.mjs --count "${{ inputs.count || '3' }}"
 
       - name: Render the graphic
+        env:
+          FORMAT: ${{ inputs.format || 'carousel' }}
         run: |
-          node automation/render.mjs \
-            ${{ (inputs.digest == false) && ' ' || '--digest' }} \
-            --ratio 4:5
+          case "$FORMAT" in
+            digest) FLAG=--digest ;;
+            cards)  FLAG= ;;
+            *)      FLAG=--carousel ;;
+          esac
+          node automation/render.mjs $FLAG --ratio 4:5
 
       - name: Write the caption
         run: node automation/caption.mjs --index 0
@@ -65,9 +71,12 @@ jobs:
             const fs = require('fs');
             const sl = JSON.parse(fs.readFileSync('data/shortlist.json', 'utf8'));
             const caption = fs.readFileSync('data/pending/caption-1.txt', 'utf8');
-            const entry = sl.stories[0];
+            const entry = (sl.output || sl.stories)[0];
             const sha = process.env.GITHUB_SHA;
-            const img = `https://raw.githubusercontent.com/${context.repo.owner}/${context.repo.repo}/${sha}/${entry.image}`;
+            const raw = p => `https://raw.githubusercontent.com/${context.repo.owner}/${context.repo.repo}/${sha}/${p}`;
+            const slides = entry.images || [entry.image];
+            const img = slides.map((p, i) =>
+              `![slide ${i + 1}](${raw(p)})`).join('\n');
 
             const stories = (entry.stories || [entry]).map(s =>
               `- **${s.display || s.headline}**\n  _${s.source}_ · ${s.corroboration} source${s.corroboration > 1 ? 's' : ''}` +
@@ -80,7 +89,8 @@ jobs:
               warnings.push('Some stories are carried by only ONE outlet — check them before approving.');
 
             const body = [
-              `![graphic](${img})`,
+              slides.length > 1 ? `**Carousel — ${slides.length} slides**\n` : '',
+              img,
               '',
               '### Stories', stories,
               '',
