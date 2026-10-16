@@ -31,7 +31,10 @@ function arg(name, fallback) {
 export function buildCaption(entry, { handle = '@dailyvolex' } = {}) {
   const lines = [];
 
-  if (entry.kind === 'digest') {
+  // A carousel carries the same several stories as a digest; only the shape of
+  // the image differs. Without this it fell through to the single-story branch
+  // and the caption read "3 stories" instead of naming them.
+  if (entry.kind === 'digest' || entry.kind === 'carousel') {
     lines.push(`Today's top stories`, '');
     for (const s of entry.stories) lines.push(`• ${s.display || s.headline}`);
     lines.push('', `Sources: ${[...new Set(entry.sourceNames)].join(', ')}`);
@@ -52,17 +55,18 @@ export function buildCaption(entry, { handle = '@dailyvolex' } = {}) {
 
 async function main() {
   const shortlist = await readJson(join(ROOT, 'data', 'shortlist.json'), null);
-  if (!shortlist?.stories?.length) throw new Error('no rendered shortlist');
+  const out = shortlist?.output || shortlist?.stories;
+  if (!out?.length) throw new Error('nothing rendered yet — run render.mjs first');
 
   const index = Math.max(0, parseInt(arg('index', '0'), 10) || 0);
-  const entry = shortlist.stories[index];
+  const entry = out[index];
   if (!entry) throw new Error(`no entry at index ${index}`);
 
   const caption = buildCaption(entry);
-  const out = join(ROOT, 'data', 'pending', `caption-${index + 1}.txt`);
-  await writeFile(out, caption, 'utf8');
+  const file = join(ROOT, 'data', 'pending', `caption-${index + 1}.txt`);
+  await writeFile(file, caption, 'utf8');
   console.log(caption);
-  console.log(`\nwritten to ${out}`);
+  console.log(`\nwritten to ${file}`);
 }
 
 if (process.argv[1] && process.argv[1].endsWith('caption.mjs')) {

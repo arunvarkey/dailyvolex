@@ -994,6 +994,7 @@ const S = {
   customColor: '#a855f7',
   recordDuration: 8,
   tickerX: 0,
+  tickerFreeze: false,   // still exports hold the ticker at its start
   videoLoaded: false,
   videoLook: 'cinematic',
   letterbox: false,
@@ -1388,8 +1389,15 @@ function drawTicker(tickerText, theme) {
   ctx.save();
   ctx.beginPath(); ctx.rect(lblW+14,H-barH,W-lblW-14,barH); ctx.clip();
   ctx.fillStyle='rgba(255,255,255,.75)'; ctx.font=`500 20px 'JetBrains Mono'`; ctx.textBaseline='middle';
+  // textAlign is still 'center' from the DV label above. Left unset, the
+  // ticker is centred on its x instead of starting there — half its width too
+  // far left, which clipped the opening words against the bar's edge.
+  ctx.textAlign='left';
   const tw=ctx.measureText(tickerText).width;
-  S.tickerX-=2.2; if(S.tickerX<-(tw+80)) S.tickerX=W;
+  // A still frame must not catch the ticker mid-scroll: that clips the first
+  // word at the bar's left edge and reads as a broken graphic.
+  if (S.tickerFreeze) { S.tickerX = 0; }
+  else { S.tickerX-=2.2; if(S.tickerX<-(tw+80)) S.tickerX=W; }
   ctx.fillText(tickerText, S.tickerX+lblW+18, H-barH/2+1);
   if(S.tickerX+lblW+18<W-tw) ctx.fillText(tickerText, S.tickerX+tw+lblW+100, H-barH/2+1);
   ctx.restore();
@@ -1401,10 +1409,11 @@ function drawTicker(tickerText, theme) {
 function drawBreaking(theme) {
   const W=cv.width, H=cv.height, d=S.breaking;
   const tickerH=d.showTicker?56:0;
-  beginShift();
   const pad=72;
 
-  // Deep scrim only at bottom half — video breathes above
+  // Deep scrim only at bottom half — video breathes above. Drawn BEFORE the
+  // content shift: it is part of the frame, and moving it with the text left a
+  // bright horizontal seam wherever the block was nudged.
   const scrim=cachedGrad(`brk|${W}x${H}|${tickerH}`, ()=>{
     const g2=ctx.createLinearGradient(0,H*.48,0,H-tickerH);
     g2.addColorStop(0,'rgba(0,0,0,0)');
@@ -1413,6 +1422,8 @@ function drawBreaking(theme) {
     return g2;
   });
   ctx.fillStyle=scrim; ctx.fillRect(0,H*.48,W,H*.52-tickerH);
+
+  beginShift();
 
   // Anchor point for the text block. In 9:16 the bottom of a Reel is covered
   // by Instagram's caption, username and audio row, so the block is lifted
@@ -1529,7 +1540,6 @@ function fitLine(text, maxW, size, weight, family, minSize) {
 function drawStories(theme) {
   const W=cv.width, H=cv.height, d=S.stories;
   const tickerH=d.showTicker?56:0;
-  beginShift();
   const px=64, right=contentRight(W,px), maxW=right-px;
   const band=contentBand(H,tickerH);
 
@@ -1542,6 +1552,7 @@ function drawStories(theme) {
     return g2;
   });
   ctx.fillStyle=scrim; ctx.fillRect(0,band.top-120,W,H-tickerH-(band.top-120));
+  beginShift();
 
   // ── Header: big label, date beneath, accent rule
   let y=band.top;
@@ -1616,7 +1627,6 @@ function drawStories(theme) {
 function drawFacts(theme) {
   const W=cv.width, H=cv.height, d=S.facts;
   const tickerH=d.showTicker?56:0;
-  beginShift();
   const px=64, right=contentRight(W,px), maxW=right-px;
   const band=contentBand(H,tickerH);
 
@@ -1628,6 +1638,7 @@ function drawFacts(theme) {
     return g2;
   });
   ctx.fillStyle=scrim; ctx.fillRect(0,band.top-120,W,H-tickerH-(band.top-120));
+  beginShift();
 
   // ── Title block
   let y=band.top;
@@ -1694,7 +1705,6 @@ function drawFacts(theme) {
 function drawQuote(theme) {
   const W=cv.width, H=cv.height, d=S.quote;
   const tickerH=d.showTicker?56:0;
-  beginShift();
   const cx=W/2, cy=H*0.46;
 
   // Soft radial dark zone — only behind the numbers
@@ -1705,6 +1715,7 @@ function drawQuote(theme) {
     return g2;
   });
   ctx.fillStyle=rad; ctx.fillRect(0,0,W,H-tickerH);
+  beginShift();
 
   // Stat — huge, glow in theme colour, scales in with pop
   const tSt=introT(0,750), tLb=introT(400,500);
@@ -3563,10 +3574,22 @@ function applyUrlStory() {
       : S.tickerFeeds.map(f => ({ ...f, on:false }));
   }
 
+  // Where the content block sits, as a fraction of the frame. Lets an
+  // automated card balance a headline that would otherwise sit low against a
+  // large empty area.
+  const num = (k, lo, hi) => {
+    const v = parseFloat(q.get(k));
+    return Number.isFinite(v) ? Math.max(lo, Math.min(hi, v)) : null;
+  };
+  const px = num('posx', -0.4, 0.4), py = num('posy', -0.4, 0.4);
+  if (px != null) S.pos.x = px;
+  if (py != null) S.pos.y = py;
+
   // Wind the entrance past its end so the frame is fully drawn, and stop the
   // ticker scrolling so repeated runs of the same story look identical.
   S.introStart = performance.now() - 60000;
   S.tickerX = 0;
+  S.tickerFreeze = true;
   S.showClock = false;
   S.guides = false;
   document.body.classList.add('headless');

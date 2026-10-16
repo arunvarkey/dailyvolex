@@ -41,11 +41,17 @@ jobs:
         id: find
         run: |
           test -f data/shortlist.json || { echo "no shortlist"; exit 1; }
-          IMAGE=$(node -e "const s=require('./data/shortlist.json');process.stdout.write(s.stories[0].image||'')")
-          test -n "$IMAGE" || { echo "no rendered image"; exit 1; }
-          test -f "$IMAGE"  || { echo "$IMAGE missing"; exit 1; }
-          echo "image=$IMAGE" >> "$GITHUB_OUTPUT"
-          echo "url=https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${GITHUB_SHA}/${IMAGE}" >> "$GITHUB_OUTPUT"
+          IMAGES=$(node -e "
+            const s=require('./data/shortlist.json');
+            const e=(s.output||s.stories)[0];
+            process.stdout.write((e.images||[e.image]).filter(Boolean).join(','))")
+          test -n "$IMAGES" || { echo "no rendered image"; exit 1; }
+          for f in ${IMAGES//,/ }; do test -f "$f" || { echo "$f missing"; exit 1; }; done
+          URLS=""
+          for f in ${IMAGES//,/ }; do
+            URLS="${URLS:+$URLS,}https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${GITHUB_SHA}/${f}"
+          done
+          echo "urls=$URLS" >> "$GITHUB_OUTPUT"
 
       - name: Post to Instagram
         env:
@@ -53,7 +59,7 @@ jobs:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
         run: |
           node automation/publish.mjs \
-            --image "${{ steps.find.outputs.url }}" \
+            --images "${{ steps.find.outputs.urls }}" \
             --caption-file data/pending/caption-1.txt
 
       - name: Remember what was posted, so it never comes round again
@@ -61,7 +67,7 @@ jobs:
           node -e "
             const fs=require('fs');
             const s=JSON.parse(fs.readFileSync('data/shortlist.json','utf8'));
-            const e=s.stories[0];
+            const e=(s.output||s.stories)[0];
             const items=(e.stories||[e]).map(x=>({
               title:x.original||x.headline, link:x.link||null, posted:new Date().toISOString() }));
             const p=fs.existsSync('data/posted.json')

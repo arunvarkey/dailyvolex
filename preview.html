@@ -71,7 +71,7 @@ async function load() {
     return;
   }
 
-  const entry = (data.stories || [])[0];
+  const entry = ((data.output || data.stories) || [])[0];
   const stories = entry && entry.stories ? entry.stories : (entry ? [entry] : []);
   const when = data.rendered || data.generated;
   document.getElementById('when').textContent = when
@@ -80,9 +80,13 @@ async function load() {
 
   const parts = [];
 
-  if (entry && entry.image) {
-    parts.push(`<div class="card"><h2>The graphic</h2>
-      <img class="shot" alt="Today's graphic" src="${esc(entry.image)}${bust}">
+  const slides = entry && (entry.images || (entry.image ? [entry.image] : []));
+  if (slides && slides.length) {
+    parts.push(`<div class="card">
+      <h2>${slides.length > 1 ? `Carousel · ${slides.length} slides` : 'The graphic'}</h2>
+      ${slides.map((src, i) => `
+        <img class="shot" alt="Slide ${i+1}" src="${esc(src)}${bust}"
+             style="${i ? 'margin-top:.6rem' : ''}">`).join('')}
     </div>`);
   }
 

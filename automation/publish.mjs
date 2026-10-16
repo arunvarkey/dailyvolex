@@ -62,11 +62,17 @@ async function waitForContainer(id, token, { tries = 30, gap = 2000 } = {}) {
 }
 
 async function main() {
-  const image = arg('image');
+  // Either one image, or several for a carousel. A carousel is the stronger
+  // format for a daily roundup — a cover that earns the tap and a readable
+  // card per story — so it is worth supporting properly rather than posting
+  // three separate images.
+  const images = (arg('images', '') || arg('image', ''))
+    .split(',').map(s => s.trim()).filter(Boolean);
   const captionFile = arg('caption-file');
   const dryRun = FLAG('dry-run');
 
-  if (!image) throw new Error('--image <public url> is required');
+  if (!images.length) throw new Error('--image <url> or --images <url,url,...> is required');
+  if (images.length > 10) throw new Error('Instagram allows at most 10 images in a carousel');
 
   let caption = arg('caption', '');
   if (captionFile) caption = await readFile(captionFile, 'utf8');
@@ -74,7 +80,8 @@ async function main() {
 
   if (dryRun) {
     console.log('DRY RUN — nothing will be posted');
-    console.log('image:  ', image);
+    console.log(images.length > 1 ? `carousel of ${images.length}:` : 'image:');
+    for (const i of images) console.log('  ' + i);
     console.log('caption:\n' + caption);
     return;
   }
@@ -84,26 +91,45 @@ async function main() {
   if (!userId || !token)
     throw new Error('IG_USER_ID and IG_ACCESS_TOKEN must be set — see automation/README.md');
 
-  // Instagram must be able to reach the image itself.
-  const head = await fetch(image, { method: 'GET', headers: { range: 'bytes=0-0' } }).catch(() => null);
-  if (!head || !head.ok)
-    throw new Error(`the image URL is not publicly reachable: ${image}`);
+  // Instagram fetches these itself, so check every one is reachable before
+  // starting — a carousel that fails on its last child wastes the rest.
+  for (const url of images) {
+    const head = await fetch(url, { method: 'GET', headers: { range: 'bytes=0-0' } }).catch(() => null);
+    if (!head || !head.ok) throw new Error(`this image is not publicly reachable: ${url}`);
+  }
 
-  console.log('creating media container…');
-  const container = await graph(`${userId}/media`, {
-    image_url: image, caption, access_token: token,
-  });
-
-  console.log(`container ${container.id} — waiting for it to be ready…`);
-  await waitForContainer(container.id, token);
+  let container;
+  if (images.length === 1) {
+    console.log('creating media container…');
+    container = await graph(`${userId}/media`, {
+      image_url: images[0], caption, access_token: token,
+    });
+    console.log(`container ${container.id} — waiting for it to be ready…`);
+    await waitForContainer(container.id, token);
+  } else {
+    console.log(`creating ${images.length} carousel items…`);
+    const children = [];
+    for (const [i, url] of images.entries()) {
+      const child = await graph(`${userId}/media`, {
+        image_url: url, is_carousel_item: 'true', access_token: token,
+      });
+      await waitForContainer(child.id, token);
+      console.log(`  slide ${i + 1}/${images.length} ready`);
+      children.push(child.id);
+    }
+    console.log('creating the carousel…');
+    container = await graph(`${userId}/media`, {
+      media_type: 'CAROUSEL', children: children.join(','), caption, access_token: token,
+    });
+    await waitForContainer(container.id, token);
+  }
 
   console.log('publishing…');
   const published = await graph(`${userId}/media_publish`, {
     creation_id: container.id, access_token: token,
   });
 
-  console.log(`published: https://www.instagram.com/p/${published.id ? '' : ''}`.trim());
-  console.log(JSON.stringify(published));
+  console.log(`published — media id ${published.id}`);
 }
 
 main().catch(err => { console.error('publish failed:', err.message); process.exit(1); });
