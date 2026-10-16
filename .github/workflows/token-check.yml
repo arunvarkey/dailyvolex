@@ -1,0 +1,125 @@
+name: Instagram token check
+
+# Instagram tokens last 60 days. When one lapses, posting stops and nothing
+# says so — the kind of failure that goes unnoticed for a fortnight. This looks
+# every Monday and opens an issue while there is still time to act.
+
+on:
+  schedule:
+    - cron: '0 3 * * 1'       # Mondays, 08:30 IST
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Check the token
+        id: check
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+        run: |
+          set +e
+          OUT=$(node automation/token-check.mjs --warn-days 21)
+          CODE=$?
+          set -e
+          echo "$OUT"
+          echo "code=$CODE" >> "$GITHUB_OUTPUT"
+          echo "state=$(echo "$OUT" | grep '^state=' | cut -d= -f2)" >> "$GITHUB_OUTPUT"
+          {
+            echo 'message<<EOF'
+            echo "$OUT" | grep -v '^state=' | grep -v '^days='
+            echo EOF
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Open or update the reminder
+        uses: actions/github-script@v7
+        env:
+          STATE:   ${{ steps.check.outputs.state }}
+          MESSAGE: ${{ steps.check.outputs.message }}
+        with:
+          script: |
+            const state = process.env.STATE;
+            const message = (process.env.MESSAGE || '').trim();
+            const LABEL = 'token-expiry';
+
+            // One issue, reused. A new one every Monday would be noise, and
+            // noise is how a real warning gets ignored.
+            const { data: open } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo,
+              state: 'open', labels: LABEL,
+            });
+            const existing = open[0];
+
+            if (state === 'ok' || state === 'skipped') {
+              if (existing) {
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner, repo: context.repo.repo,
+                  issue_number: existing.number,
+                  body: `✅ Sorted — ${message}`,
+                });
+                await github.rest.issues.update({
+                  owner: context.repo.owner, repo: context.repo.repo,
+                  issue_number: existing.number, state: 'closed',
+                });
+              }
+              core.info(message || 'nothing to do');
+              return;
+            }
+
+            if (state === 'unknown') {
+              // Do not raise an alarm over a network wobble.
+              core.warning(`Could not check the token: ${message}`);
+              return;
+            }
+
+            const urgent = state === 'invalid';
+            const title = urgent
+              ? '🔴 Instagram token has stopped working — posting is down'
+              : '🟠 Instagram token expires soon';
+
+            const body = [
+              message,
+              '',
+              '### Renew it',
+              '1. <https://developers.facebook.com/tools/explorer> — generate a fresh token for the app',
+              '2. Exchange it for a long-lived one:',
+              '   ```',
+              '   GET /oauth/access_token?grant_type=fb_exchange_token',
+              '       &client_id=<app-id>&client_secret=<app-secret>&fb_exchange_token=<short-token>',
+              '   ```',
+              '3. Repo → Settings → Secrets and variables → Actions → update **IG_ACCESS_TOKEN**',
+              '4. Actions → **Instagram token check** → *Run workflow* to confirm; this issue closes itself',
+              '',
+              '> A **Page** access token derived from a long-lived **user** token does not expire at all.',
+              '> Setting it up that way once means never seeing this issue again —',
+              '> `automation/README.md` has the steps.',
+              '',
+              urgent
+                ? '_Nothing is being posted until this is renewed. The daily job still runs and still asks for approval; publishing is what fails._'
+                : '_Posting continues as normal until it expires._',
+            ].join('\n');
+
+            if (existing) {
+              await github.rest.issues.update({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: existing.number, title, body,
+              });
+              core.info(`updated issue #${existing.number}`);
+            } else {
+              const { data: created } = await github.rest.issues.create({
+                owner: context.repo.owner, repo: context.repo.repo,
+                title, body, labels: [LABEL],
+              });
+              core.info(`opened issue #${created.number}`);
+            }

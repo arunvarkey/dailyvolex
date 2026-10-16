@@ -15,6 +15,8 @@ Instagram's, which are also free.
 ## How it runs
 
 ```
+Mondays    ─→  check the Instagram token, warn well before it expires
+
 08:00 IST  ─→  read RSS feeds
            ─→  group the same story across outlets, rank, pick the top 3
            ─→  render a graphic with the app itself, headless
@@ -35,6 +37,7 @@ check that something is real and worth posting.
 
 ```bash
 node automation/test.mjs                         # 27 checks on the logic
+node automation/test-token.mjs                   # 11 checks on the token monitor
 node automation/shortlist.mjs --fixtures         # pick stories from saved samples
 node automation/shortlist.mjs                    # or from the live feeds
 node automation/render.mjs --digest --ratio 4:5  # make the graphic
@@ -71,11 +74,35 @@ Then add two repository secrets (Settings → Secrets and variables → Actions)
 | `IG_USER_ID` | the Instagram business account id from step 6 |
 | `IG_ACCESS_TOKEN` | the long-lived token from step 7 |
 
-**The token expires every 60 days.** Set a reminder — when it lapses, publishing
-fails with a clear error on the issue and nothing is posted.
-
 Until these secrets exist, everything else still works; only the final publish
 step fails.
+
+### The token expiring is the thing most likely to break this
+
+A long-lived token lasts **60 days**. When it lapses, publishing fails and the
+channel quietly stops posting.
+
+Two things guard against that:
+
+**The weekly check.** `Instagram token check` runs every Monday and opens an
+issue once the token is within 21 days of expiry, updating that same issue
+rather than opening a new one each week. It closes itself once the token is
+renewed. A network failure never raises a false alarm — it reports "could not
+tell" and stays quiet.
+
+Run it on demand any time: Actions → **Instagram token check** → *Run workflow*.
+
+**Better: use a token that never expires.** A **Page** access token derived
+from a long-lived **user** token does not expire at all. Set it up this way
+once and the reminder never fires:
+
+1. Get a long-lived *user* token (step 7 above)
+2. Call `GET /me/accounts?access_token=<long-lived-user-token>`
+3. Take `access_token` from the Page in that response — **that** is the
+   non-expiring one
+4. Use it for `IG_ACCESS_TOKEN`
+
+The check reports `this token does not expire` when you have it right.
 
 ---
 
