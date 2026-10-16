@@ -215,9 +215,14 @@ async function main() {
     output: rendered,
   });
   console.log(`\n${rendered.length} graphic(s) in ${OUT_DIR}`);
-  if (fontWarnings)
-    console.log(`WARNING: ${fontWarnings} rendered without the brand typeface — check the `
-      + `runner can reach fonts.googleapis.com before approving these.`);
+  if (fontWarnings) {
+    const msg = `${fontWarnings} graphic(s) rendered WITHOUT the brand typeface — the headline `
+      + `is in a fallback face. Check the machine can reach fonts.googleapis.com.`;
+    // --require-fonts turns this into a failure, so CI proves the typeface
+    // loads rather than printing a warning nobody reads.
+    if (process.argv.includes('--require-fonts')) throw new Error(msg);
+    console.log('WARNING: ' + msg);
+  }
 }
 
 main().catch(err => { console.error('render failed:', err.message); process.exit(1); });
