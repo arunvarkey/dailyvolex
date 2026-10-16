@@ -1,0 +1,130 @@
+<title>DailyVolex — Today's Post</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="DV Preview">
+<style>
+  :root{
+    --bg:#060608; --card:#101016; --line:#23232e;
+    --ink:#f2f2f5; --muted:#8d8d9c; --accent:#e03131; --ok:#3dd68c; --warn:#f2a93b;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);margin:0;
+    font:15px/1.6 -apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+    padding:max(16px,env(safe-area-inset-top,0)) 16px calc(32px + env(safe-area-inset-bottom,0))}
+  .wrap{max-width:620px;margin:0 auto}
+  header{display:flex;align-items:baseline;gap:.6rem;margin-bottom:.2rem}
+  h1{font-size:1.15rem;margin:0;letter-spacing:-.01em}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+  .sub{color:var(--muted);font-size:.8rem;margin:0 0 1.4rem}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:1rem;margin-bottom:1rem}
+  .card h2{font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--muted);margin:0 0 .7rem;font-weight:600}
+  img.shot{width:100%;border-radius:10px;display:block;background:#000}
+  .story{padding:.7rem 0;border-top:1px solid var(--line)}
+  .story:first-of-type{border-top:0;padding-top:0}
+  .story p{margin:0 0 .25rem;font-weight:600}
+  .meta{color:var(--muted);font-size:.76rem}
+  .pill{display:inline-block;padding:.1rem .45rem;border-radius:999px;
+    font-size:.68rem;font-weight:700;vertical-align:middle;margin-right:.35rem}
+  .multi{background:rgba(61,214,140,.14);color:var(--ok)}
+  .single{background:rgba(242,169,59,.16);color:var(--warn)}
+  pre{white-space:pre-wrap;word-break:break-word;margin:0;color:var(--ink);
+    font:13px/1.65 ui-monospace,SFMono-Regular,Menlo,monospace}
+  .note{border-left:3px solid var(--warn);padding-left:.7rem;color:var(--warn);font-size:.8rem}
+  a.btn{display:block;text-align:center;background:var(--accent);color:#fff;
+    text-decoration:none;font-weight:700;padding:.85rem;border-radius:10px;margin-top:.2rem}
+  a.ghost{background:transparent;border:1px solid var(--line);color:var(--ink);margin-top:.6rem}
+  .empty{color:var(--muted);text-align:center;padding:2.5rem 1rem}
+</style>
+
+<div class="wrap">
+  <header><span class="dot"></span><h1>Today's post</h1></header>
+  <p class="sub" id="when">Loading…</p>
+  <div id="out"></div>
+</div>
+
+<script>
+/* Reads the shortlist the daily job commits, so this page always shows the
+   most recent run. Nothing here can post anything — it is a window, not a
+   control panel. */
+const REPO = 'arunvarkey/dailyvolex';
+const esc = s => String(s == null ? '' : s)
+  .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+const bust = '?t=' + Date.now();      // never show a cached yesterday
+
+async function load() {
+  const out = document.getElementById('out');
+  let data;
+  try {
+    const res = await fetch('data/shortlist.json' + bust, { cache: 'no-store' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    data = await res.json();
+  } catch (err) {
+    document.getElementById('when').textContent = '';
+    out.innerHTML = `<div class="card"><div class="empty">
+      <p><strong>Nothing generated yet.</strong></p>
+      <p>Run <em>Daily shortlist</em> once and this page fills in.</p>
+      </div>
+      <a class="btn" href="https://github.com/${REPO}/actions/workflows/daily.yml">Run it on GitHub</a>
+    </div>`;
+    return;
+  }
+
+  const entry = (data.stories || [])[0];
+  const stories = entry && entry.stories ? entry.stories : (entry ? [entry] : []);
+  const when = data.rendered || data.generated;
+  document.getElementById('when').textContent = when
+    ? new Date(when).toLocaleString('en-GB', { dateStyle:'full', timeStyle:'short' })
+    : '';
+
+  const parts = [];
+
+  if (entry && entry.image) {
+    parts.push(`<div class="card"><h2>The graphic</h2>
+      <img class="shot" alt="Today's graphic" src="${esc(entry.image)}${bust}">
+    </div>`);
+  }
+
+  if (stories.length) {
+    parts.push(`<div class="card"><h2>${stories.length} ${stories.length===1?'story':'stories'}</h2>` +
+      stories.map(s => {
+        const n = s.corroboration || 1;
+        const cls = n > 1 ? 'multi' : 'single';
+        const label = n > 1 ? `${n} outlets` : 'single source';
+        return `<div class="story">
+          <p>${esc(s.display || s.headline)}</p>
+          <div class="meta"><span class="pill ${cls}">${label}</span>${esc(s.source || '')}
+          ${s.truncated ? ' · shortened to fit' : ''}</div>
+        </div>`;
+      }).join('') + `</div>`);
+  }
+
+  if (stories.some(s => (s.corroboration || 1) < 2)) {
+    parts.push(`<div class="card"><p class="note">Some of these are carried by only one
+      outlet. Those are the ones most worth checking before you approve.</p></div>`);
+  }
+
+  if (data.feedErrors && data.feedErrors.length) {
+    parts.push(`<div class="card"><h2>Feeds that failed</h2>
+      <pre>${esc(data.feedErrors.join('\n'))}</pre></div>`);
+  }
+
+  parts.push(`<div class="card"><h2>Caption</h2>
+    <pre id="cap">loading…</pre></div>`);
+
+  parts.push(`<a class="btn" href="https://github.com/${REPO}/issues?q=is%3Aopen+label%3Aawaiting-approval">
+    Open the approval issue</a>
+    <a class="btn ghost" href="https://github.com/${REPO}/actions/workflows/daily.yml">Generate a new one</a>`);
+
+  out.innerHTML = parts.join('');
+
+  // The caption is written as a separate file by the job.
+  try {
+    const res = await fetch('data/pending/caption-1.txt' + bust, { cache:'no-store' });
+    document.getElementById('cap').textContent = res.ok ? (await res.text()).trim() : 'not generated yet';
+  } catch { document.getElementById('cap').textContent = 'not generated yet'; }
+}
+
+load();
+</script>
