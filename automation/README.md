@@ -33,6 +33,16 @@ check that something is real and worth posting.
 
 ---
 
+## Seeing what it makes, without an Instagram account
+
+Nothing needs to be connected to watch this work. The daily job renders the
+graphic and opens an issue; it has no way to post. Publishing lives in a
+separate workflow that runs only on your `/approve` comment.
+
+**On a phone:** <https://arunvarkey.github.io/dailyvolex/preview.html> shows the
+latest run — the graphic, the stories with how many outlets carried each, and
+the exact caption. It updates itself every time the job runs.
+
 ## Try it without posting anything
 
 ```bash
