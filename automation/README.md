@@ -47,8 +47,8 @@ the exact caption. It updates itself every time the job runs.
 ## Try it without posting anything
 
 ```bash
-node automation/test.mjs                         # 32 checks on the logic
-node automation/test-token.mjs                   # 11 checks on the token monitor
+npm test                                         # 43 checks on the logic and token monitor
+npm run test:all                                 # the above, plus the workflows themselves
 node automation/shortlist.mjs --fixtures         # pick stories from saved samples
 node automation/shortlist.mjs                    # or from the live feeds
 node automation/render.mjs --carousel --ratio 4:5 # cover + a card per story

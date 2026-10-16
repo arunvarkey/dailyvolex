@@ -1,0 +1,19 @@
+{
+  "name": "dailyvolex-automation",
+  "private": true,
+  "type": "module",
+  "description": "Finds the day's news, renders it with the DailyVolex app, and asks before posting.",
+  "scripts": {
+    "test": "node automation/test.mjs && node automation/test-token.mjs",
+    "test:all": "npm test && npm run build:sample && node automation/test-workflows.mjs",
+    "build:sample": "node automation/shortlist.mjs --fixtures --quiet && node automation/render.mjs --carousel --ratio 4:5 && node automation/caption.mjs --index 0",
+    "shortlist": "node automation/shortlist.mjs",
+    "render": "node automation/render.mjs --carousel --ratio 4:5",
+    "caption": "node automation/caption.mjs --index 0",
+    "token": "node automation/token-check.mjs"
+  },
+  "devDependencies": {
+    "js-yaml": "^4.1.0"
+  },
+  "engines": { "node": ">=22" }
+}
