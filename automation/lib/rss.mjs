@@ -54,14 +54,38 @@ function atomLink(block) {
   return m ? clean(m[1]) : '';
 }
 
+/* Google News titles always end "— Real Publisher". Without pulling that out,
+   an aggregator counts as an outlet in its own right, so a single CoinDesk
+   story syndicated through Google News scores as TWO independent sources. That
+   quietly inflates the corroboration count the whole selection rests on. */
+const PUBLISHER_SUFFIX = /\s[-\u2013\u2014]\s([^-\u2013\u2014]{2,40})\s*$/;
+
+function splitPublisher(title) {
+  const m = PUBLISHER_SUFFIX.exec(title);
+  if (!m) return { title, publisher: null };
+  const publisher = m[1].trim();
+  // A trailing clause is not a publisher: real ones are short and have no
+  // sentence punctuation.
+  if (/[.,;:!?]$/.test(publisher) || publisher.split(/\s+/).length > 5)
+    return { title, publisher: null };
+  return { title: title.slice(0, m.index).trim(), publisher };
+}
+
 export function parseFeed(xml, feed) {
   if (!xml || typeof xml !== 'string') return [];
   const out = [];
   const blocks = xml.match(/<(item|entry)\b[\s\S]*?<\/\1>/gi) || [];
 
   for (const block of blocks.slice(0, MAX_ITEMS_PER_FEED)) {
-    const title = tag(block, 'title');
+    let title = tag(block, 'title');
     if (!title) continue;
+
+    // For an aggregator, the publisher in the title is the real source.
+    let source = feed.name;
+    if (feed.aggregator) {
+      const split = splitPublisher(title);
+      if (split.publisher) { title = split.title; source = split.publisher; }
+    }
 
     const link = tag(block, 'link') || atomLink(block);
     const dateStr = tag(block, 'pubDate') || tag(block, 'published')
@@ -75,7 +99,7 @@ export function parseFeed(xml, feed) {
       // An unparseable date must not read as "right now" — that would let a
       // stale item win the freshness ranking. Treat it as old instead.
       published: Number.isFinite(published) ? published : 0,
-      source: feed.name,
+      source,
       feedId: feed.id,
       topic: feed.topic,
       weight: typeof feed.weight === 'number' ? feed.weight : 1,
