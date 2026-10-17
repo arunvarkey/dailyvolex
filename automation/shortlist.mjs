@@ -37,6 +37,19 @@ async function loadFromFixtures(feeds) {
       items.push(...parseFeed(xml, feed));
     } catch { /* a missing fixture is fine */ }
   }
+
+  // Fixtures carry the dates they were written with, so they age out of the
+  // 24-hour window and every fixture run silently returns nothing — including
+  // in CI, which would have started failing the day after they were made.
+  // Re-stamp them relative to now, keeping their order and spacing.
+  if (items.length) {
+    const newest = Math.max(...items.map(i => i.published || 0));
+    const now = Date.now();
+    if (newest > 0) {
+      const shift = now - newest - 30 * 60000;      // newest item half an hour old
+      for (const i of items) if (i.published) i.published += shift;
+    }
+  }
   return { items, errors: [] };
 }
 
