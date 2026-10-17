@@ -1,33 +1,8 @@
 {
-  "generated": "2026-10-17T23:11:24.054Z",
+  "generated": "2026-10-17T23:13:03.825Z",
   "pool": 271,
   "feedErrors": [],
   "stories": [
-    {
-      "headline": "BITCOIN ETFS SEE $228M WEEKLY OUTFLOWS, MONTHLY TOTAL NEARS $618M AMID HIGH TRADING",
-      "display": "Bitcoin ETFs see $228M weekly outflows, monthly total nears $618M amid high trading",
-      "original": "Bitcoin ETFs see $228M weekly outflows, monthly total nears $618M amid high trading volumes",
-      "truncated": true,
-      "usable": true,
-      "category": "CRYPTO NEWS",
-      "source": "TradingView · Pluang",
-      "sourceNames": [
-        "TradingView",
-        "Pluang"
-      ],
-      "corroboration": 2,
-      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPNGExTndESmV2ZDIzcGJZRTJpaEpubEhSRDNRc255RjEtVmJXUzhfOVBWZVVIRDhJV21NeVl1WGl3S0FMekxsb1RPdkpsMG9CUjlBTDh3VDBFeFU1bXp6bjJ5RzZqV09KRURQUzRPeEM0Q19XMjNnZV9id0RGMU51eUttYWNJdzZCdW5iQg?oc=5",
-      "published": "2026-10-17T19:45:39.000Z",
-      "topic": "crypto",
-      "score": 5,
-      "photo": {
-        "path": "data/pending/photo-2.jpg",
-        "credit": "Photo: Icons8 team / CC0",
-        "license": "cc0",
-        "pageUrl": "https://stocksnap.io/photo/bitcoin-finance-BCEODSCQHF",
-        "query": "bitcoin"
-      }
-    },
     {
       "headline": "MICHAEL SAYLOR HIGHLIGHTS BITCOIN'S EXPANDING R...",
       "display": "Michael Saylor highlights Bitcoin's expanding r...",
@@ -46,10 +21,35 @@
       "topic": "crypto",
       "score": 5,
       "photo": {
-        "path": "data/pending/photo-3.jpg",
+        "path": "data/pending/photo-2.jpg",
         "credit": "Photo: Icons8 team / CC0",
         "license": "cc0",
         "pageUrl": "https://stocksnap.io/photo/bitcoin-finance-BCEODSCQHF",
+        "query": "bitcoin"
+      }
+    },
+    {
+      "headline": "BITCOIN ETFS SEE $228M WEEKLY OUTFLOWS, MONTHLY TOTAL NEARS $618M AMID HIGH TRADING",
+      "display": "Bitcoin ETFs see $228M weekly outflows, monthly total nears $618M amid high trading",
+      "original": "Bitcoin ETFs see $228M weekly outflows, monthly total nears $618M amid high trading volumes",
+      "truncated": true,
+      "usable": true,
+      "category": "CRYPTO NEWS",
+      "source": "TradingView · Pluang",
+      "sourceNames": [
+        "TradingView",
+        "Pluang"
+      ],
+      "corroboration": 2,
+      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPNGExTndESmV2ZDIzcGJZRTJpaEpubEhSRDNRc255RjEtVmJXUzhfOVBWZVVIRDhJV21NeVl1WGl3S0FMekxsb1RPdkpsMG9CUjlBTDh3VDBFeFU1bXp6bjJ5RzZqV09KRURQUzRPeEM0Q19XMjNnZV9id0RGMU51eUttYWNJdzZCdW5iQg?oc=5",
+      "published": "2026-10-17T19:45:39.000Z",
+      "topic": "crypto",
+      "score": 5,
+      "photo": {
+        "path": "data/pending/photo-3.jpg",
+        "credit": "Photo: Icons8 team / CC0",
+        "license": "cc0",
+        "pageUrl": "https://stocksnap.io/photo/bitcoin-finance-QXVSHD5FLF",
         "query": "bitcoin"
       }
     },
@@ -72,14 +72,14 @@
       "score": 4.55,
       "photo": {
         "path": "data/pending/photo-4.jpg",
-        "credit": "Photo: Icons8 team / CC0",
+        "credit": "Photo: Wikideas1 / CC0",
         "license": "cc0",
-        "pageUrl": "https://stocksnap.io/photo/bitcoin-finance-BCEODSCQHF",
+        "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=130267681",
         "query": "bitcoin"
       }
     }
   ],
-  "rendered": "2026-10-17T23:11:40.504Z",
+  "rendered": "2026-10-17T23:13:20.117Z",
   "options": {
     "layout": "breaking",
     "theme": "bbc",
@@ -107,38 +107,13 @@
       "width": 1080,
       "height": 1350,
       "sourceNames": [
-        "TradingView",
-        "Pluang",
         "Outlook Money",
+        "Pluang",
+        "TradingView",
         "Yahoo Finance",
         "Google News"
       ],
       "stories": [
-        {
-          "headline": "BITCOIN ETFS SEE $228M WEEKLY OUTFLOWS, MONTHLY TOTAL NEARS $618M AMID HIGH TRADING",
-          "display": "Bitcoin ETFs see $228M weekly outflows, monthly total nears $618M amid high trading",
-          "original": "Bitcoin ETFs see $228M weekly outflows, monthly total nears $618M amid high trading volumes",
-          "truncated": true,
-          "usable": true,
-          "category": "CRYPTO NEWS",
-          "source": "TradingView · Pluang",
-          "sourceNames": [
-            "TradingView",
-            "Pluang"
-          ],
-          "corroboration": 2,
-          "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPNGExTndESmV2ZDIzcGJZRTJpaEpubEhSRDNRc255RjEtVmJXUzhfOVBWZVVIRDhJV21NeVl1WGl3S0FMekxsb1RPdkpsMG9CUjlBTDh3VDBFeFU1bXp6bjJ5RzZqV09KRURQUzRPeEM0Q19XMjNnZV9id0RGMU51eUttYWNJdzZCdW5iQg?oc=5",
-          "published": "2026-10-17T19:45:39.000Z",
-          "topic": "crypto",
-          "score": 5,
-          "photo": {
-            "path": "data/pending/photo-2.jpg",
-            "credit": "Photo: Icons8 team / CC0",
-            "license": "cc0",
-            "pageUrl": "https://stocksnap.io/photo/bitcoin-finance-BCEODSCQHF",
-            "query": "bitcoin"
-          }
-        },
         {
           "headline": "MICHAEL SAYLOR HIGHLIGHTS BITCOIN'S EXPANDING R...",
           "display": "Michael Saylor highlights Bitcoin's expanding r...",
@@ -157,10 +132,35 @@
           "topic": "crypto",
           "score": 5,
           "photo": {
-            "path": "data/pending/photo-3.jpg",
+            "path": "data/pending/photo-2.jpg",
             "credit": "Photo: Icons8 team / CC0",
             "license": "cc0",
             "pageUrl": "https://stocksnap.io/photo/bitcoin-finance-BCEODSCQHF",
+            "query": "bitcoin"
+          }
+        },
+        {
+          "headline": "BITCOIN ETFS SEE $228M WEEKLY OUTFLOWS, MONTHLY TOTAL NEARS $618M AMID HIGH TRADING",
+          "display": "Bitcoin ETFs see $228M weekly outflows, monthly total nears $618M amid high trading",
+          "original": "Bitcoin ETFs see $228M weekly outflows, monthly total nears $618M amid high trading volumes",
+          "truncated": true,
+          "usable": true,
+          "category": "CRYPTO NEWS",
+          "source": "TradingView · Pluang",
+          "sourceNames": [
+            "TradingView",
+            "Pluang"
+          ],
+          "corroboration": 2,
+          "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPNGExTndESmV2ZDIzcGJZRTJpaEpubEhSRDNRc255RjEtVmJXUzhfOVBWZVVIRDhJV21NeVl1WGl3S0FMekxsb1RPdkpsMG9CUjlBTDh3VDBFeFU1bXp6bjJ5RzZqV09KRURQUzRPeEM0Q19XMjNnZV9id0RGMU51eUttYWNJdzZCdW5iQg?oc=5",
+          "published": "2026-10-17T19:45:39.000Z",
+          "topic": "crypto",
+          "score": 5,
+          "photo": {
+            "path": "data/pending/photo-3.jpg",
+            "credit": "Photo: Icons8 team / CC0",
+            "license": "cc0",
+            "pageUrl": "https://stocksnap.io/photo/bitcoin-finance-QXVSHD5FLF",
             "query": "bitcoin"
           }
         },
@@ -183,9 +183,9 @@
           "score": 4.55,
           "photo": {
             "path": "data/pending/photo-4.jpg",
-            "credit": "Photo: Icons8 team / CC0",
+            "credit": "Photo: Wikideas1 / CC0",
             "license": "cc0",
-            "pageUrl": "https://stocksnap.io/photo/bitcoin-finance-BCEODSCQHF",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=130267681",
             "query": "bitcoin"
           }
         }
