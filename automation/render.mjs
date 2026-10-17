@@ -52,7 +52,7 @@ function serve(root) {
 function digestUrl(port, stories, opts) {
   const q = new URLSearchParams({
     auto: '1', layout: 'stories', theme: opts.theme, ratio: opts.ratio,
-    label: opts.label, date: opts.date, ticker: opts.ticker,
+    label: opts.label, date: opts.date, ticker: opts.ticker, bg: opts.bg,
   });
   // The outlet's own capitalisation, untouched.
   for (const s of stories) q.append('item', s.display || s.headline);
@@ -69,6 +69,7 @@ function storyUrl(port, story, opts) {
     headline: story.headline,
     source: story.source,
     ticker: opts.ticker,
+    bg: opts.bg,
   });
   if (opts.posy != null) q.set('posy', String(opts.posy));
   return `http://127.0.0.1:${port}/index.html?${q}`;
@@ -119,7 +120,10 @@ async function main() {
     carousel: process.argv.includes('--carousel'),
     // Lifts the headline block off the bottom edge. Without it the card is
     // weighted right at the base of an otherwise empty frame.
-    posy: arg('posy', '-0.10'),
+    // With a chart behind the text the frame is full, so the headline sits in
+    // its normal place rather than being lifted to fill emptiness.
+    posy: arg('posy', '0'),
+    bg:   arg('bg', 'chart'),
   };
 
   const shortlist = await readJson(SHORTLIST, null);

@@ -785,6 +785,12 @@ body.headless main{padding:0!important}
   </div>
 
   <div class="toggle-row">
+    <span class="toggle-label">Market chart backdrop
+      <span class="toggle-sub">A generated chart behind the text, when there is no video</span></span>
+    <label class="sw"><input type="checkbox" id="backdropToggle"><span class="sw-track"></span></label>
+  </div>
+
+  <div class="toggle-row">
     <span class="toggle-label">Safe area
       <span class="toggle-sub">Show what Instagram's UI covers</span></span>
     <label class="sw"><input type="checkbox" id="guidesToggle"><span class="sw-track"></span></label>
@@ -995,6 +1001,7 @@ const S = {
   recordDuration: 8,
   tickerX: 0,
   tickerFreeze: false,   // still exports hold the ticker at its start
+  backdrop: 'particles', // or 'chart' — a generated market chart behind the text
   videoLoaded: false,
   videoLook: 'cinematic',
   letterbox: false,
@@ -1255,6 +1262,112 @@ function applyLookOverlays(theme, look) {
   }
 }
 
+/* ═══════════════════════════════════════════════
+   MARKET BACKDROP
+   A plain dark card with a headline on it reads as empty rather than as
+   designed. This draws a market chart behind the text instead — generated,
+   not photographed, so there is no licence to worry about and no risk of a
+   stock image implying something the story does not say.
+
+   The shape is derived from the headline, so each story gets its own chart and
+   the same story always looks the same.
+   ═══════════════════════════════════════════════ */
+function seedFrom(str) {
+  let h = 2166136261;
+  for (let i = 0; i < String(str).length; i++) {
+    h ^= String(str).charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
+}
+
+function seededRandom(seed) {
+  let a = seed || 1;
+  return () => {
+    a |= 0; a = (a + 0x6D2B79F5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function drawMarketBackdrop(theme, seedText) {
+  const W = cv.width, H = cv.height;
+  const rnd = seededRandom(seedFrom(seedText || 'dailyvolex'));
+
+  // Layouts that fill the frame with text need the chart to stay well back;
+  // a single headline can carry a bolder one behind it.
+  const busy = S.layout === 'stories' || S.layout === 'facts';
+  const strength = busy ? 0.45 : 1;
+
+  // A random walk with a mild drift, so it reads as a real price series
+  // rather than as noise.
+  const N = 64;
+  const drift = (rnd() - 0.45) * 0.9;
+  const pts = [];
+  let v = 0.5;
+  for (let i = 0; i < N; i++) {
+    v += (rnd() - 0.5) * 0.16 + drift / N;
+    v = Math.max(0.08, Math.min(0.92, v));
+    pts.push(v);
+  }
+
+  // Occupy the upper part of the frame, above where the headline sits.
+  const top = H * 0.14, bottom = H * 0.62;
+  const x = i => (i / (N - 1)) * W;
+  const y = i => bottom - pts[i] * (bottom - top);
+
+  // Area fill under the line.
+  const fill = ctx.createLinearGradient(0, top, 0, bottom);
+  fill.addColorStop(0, `rgba(${theme.pr},${0.22 * strength})`);
+  fill.addColorStop(1, `rgba(${theme.pr},0)`);
+  ctx.beginPath();
+  ctx.moveTo(0, bottom);
+  for (let i = 0; i < N; i++) ctx.lineTo(x(i), y(i));
+  ctx.lineTo(W, bottom);
+  ctx.closePath();
+  ctx.fillStyle = fill;
+  ctx.fill();
+
+  // The line itself, glowing in the theme colour.
+  ctx.save();
+  ctx.beginPath();
+  ctx.moveTo(x(0), y(0));
+  for (let i = 1; i < N; i++) ctx.lineTo(x(i), y(i));
+  ctx.strokeStyle = theme.p;
+  ctx.lineWidth = 4;
+  ctx.lineJoin = 'round';
+  ctx.shadowColor = theme.p;
+  ctx.shadowBlur = 26;
+  ctx.globalAlpha = 0.85 * strength;
+  ctx.stroke();
+  ctx.restore();
+
+  // A marker on the last point, the way a terminal would show the live price.
+  ctx.save();
+  ctx.fillStyle = theme.p;
+  ctx.shadowColor = theme.p; ctx.shadowBlur = 18;
+  ctx.globalAlpha = strength;
+  ctx.beginPath(); ctx.arc(x(N-1), y(N-1), 9, 0, Math.PI*2); ctx.fill();
+  ctx.restore();
+
+  // Faint horizontal levels, like a chart's gridlines.
+  ctx.save();
+  ctx.strokeStyle = 'rgba(255,255,255,.05)';
+  ctx.lineWidth = 2;
+  for (let i = 1; i < 5; i++) {
+    const gy = top + ((bottom - top) / 5) * i;
+    ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke();
+  }
+  ctx.restore();
+
+  // Vignette, so the chart sits behind the text rather than competing with it.
+  const vig = ctx.createRadialGradient(W/2, H*0.38, H*0.15, W/2, H*0.45, H*0.75);
+  vig.addColorStop(0, 'rgba(0,0,0,0)');
+  vig.addColorStop(1, 'rgba(0,0,0,.55)');
+  ctx.fillStyle = vig; ctx.fillRect(0, 0, W, H);
+}
+
 function drawBG(theme) {
   if (S.videoLoaded) {
     const W=cv.width, H=cv.height;
@@ -1292,6 +1405,14 @@ function drawBG(theme) {
     const gs=110;
     for(let x=0;x<cv.width;x+=gs){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,cv.height);ctx.stroke();}
     for(let y=0;y<cv.height;y+=gs){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(cv.width,y);ctx.stroke();}
+    if (S.backdrop === 'chart') {
+      drawMarketBackdrop(theme,
+        S.layout === 'stories' ? (S.stories.items[0] || S.stories.label)
+        : S.layout === 'facts' ? (S.facts.title)
+        : S.layout === 'quote' ? (S.quote.stat + S.quote.label)
+        : (S.breaking.headline || S.brand.handle));
+      return;
+    }
     updateParticles();
     for (const p of S.particles) {
       ctx.save();
@@ -3304,7 +3425,7 @@ function saveState() {
     brand:{name:S.brand.name,handle:S.brand.handle},
     breaking:S.breaking, stories:S.stories, facts:S.facts, quote:S.quote,
     customColor:S.customColor, recordDuration:S.recordDuration,
-    showClock:S.showClock, sound:S.sound, pos:{x:S.pos.x,y:S.pos.y}, avSyncMs:S.avSyncMs,
+    showClock:S.showClock, backdrop:S.backdrop, sound:S.sound, pos:{x:S.pos.x,y:S.pos.y}, avSyncMs:S.avSyncMs,
     tickerFeeds:S.tickerFeeds,
   };
   try { localStorage.setItem('dvx_v2',JSON.stringify(snap)); showToast('Session saved'); }
@@ -3329,6 +3450,7 @@ function loadState() {
     if(snap.recordDuration) S.recordDuration=snap.recordDuration;
     S.showClock=!!snap.showClock;
     if(typeof snap.sound==='boolean') S.sound=snap.sound;
+    if(snap.backdrop==='chart'||snap.backdrop==='particles') S.backdrop=snap.backdrop;
     S.avSyncMs = (typeof snap.avSyncMs==='number') ? snap.avSyncMs : null;
     if(snap.pos) { S.pos.x=+snap.pos.x||0; S.pos.y=+snap.pos.y||0; }
     if(Array.isArray(snap.tickerFeeds)) {
@@ -3338,6 +3460,7 @@ function loadState() {
       });
     }
     const sd=document.getElementById('soundToggle'); if(sd) sd.checked=S.sound;
+    const bd=document.getElementById('backdropToggle'); if(bd) bd.checked=S.backdrop==='chart';
     applyPreviewVolume();
     const ck=document.getElementById('clockToggle'); if(ck) ck.checked=S.showClock;
     setLayout(snap.layout||'breaking');
@@ -3457,6 +3580,14 @@ function initEvents() {
   document.getElementById('brandName').addEventListener('input', e=>{ S.brand.name=e.target.value; });
   document.getElementById('brandHandle').addEventListener('input', e=>{ S.brand.handle=e.target.value; });
 
+  const bdToggle=document.getElementById('backdropToggle');
+  if(bdToggle) bdToggle.addEventListener('change', e=>{
+    S.backdrop = e.target.checked ? 'chart' : 'particles';
+    showToast(e.target.checked
+      ? 'Market chart backdrop on'
+      : 'Back to the particle background');
+  });
+
   // Clock (off by default — the graphic carries the handle instead)
   const clkToggle=document.getElementById('clockToggle');
   if(clkToggle) clkToggle.addEventListener('change', e=>{ S.showClock=e.target.checked; });
@@ -3537,6 +3668,7 @@ function applyUrlStory() {
   set('ratio',  v => { if (['9:16','4:5','1:1'].includes(v)) S.ratio = v; });
   set('layout', v => { if (['breaking','stories','facts','quote'].includes(v)) S.layout = v; });
   set('handle', v => S.brand.handle = v.slice(0,40));
+  set('bg', v => { if (['particles','chart'].includes(v)) S.backdrop = v; });
 
   set('category', v => S.breaking.category = v.slice(0,40).toUpperCase());
   set('headline', v => S.breaking.headline = v.slice(0,160).toUpperCase());
