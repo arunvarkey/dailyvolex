@@ -6,6 +6,13 @@ name: Daily shortlist
 on:
   schedule:
     - cron: '30 2 * * *'      # 08:00 IST
+
+  # Touch .github/run-now and push to make a post on demand. The Actions
+  # "Run workflow" button needs a session that can dispatch workflows; a commit
+  # is something anyone with push access can do, from a phone included.
+  push:
+    paths: ['.github/run-now']
+
   workflow_dispatch:
     inputs:
       format:
