@@ -32,8 +32,10 @@ jobs:
 
       - name: Render from fixtures, then test the workflows themselves
         # Uses saved feeds, so this never depends on a news site being up.
+        # The strict variant fails if the brand typeface did not load, which is
+        # the only place that can actually be checked.
         run: |
-          npm run build:sample
+          npm run build:sample:strict
           node automation/test-workflows.mjs
 
       - name: Check the graphics actually came out

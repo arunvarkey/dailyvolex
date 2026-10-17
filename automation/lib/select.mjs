@@ -28,6 +28,35 @@ function normalise(title) {
     .replace(/[^a-z0-9$%. ]/g, ' ');
 }
 
+/* Being in a finance outlet's feed does not make a story finance news: a
+   crypto site's tech section put "Claude cracks a 25-year NSA number mystery"
+   straight into the shortlist. A story has to actually be about markets,
+   money, companies or policy to belong on this channel. */
+const TOPICAL = [
+  // markets and instruments
+  'market','markets','stock','stocks','share','shares','equity','equities','index','indices',
+  'bond','bonds','yield','yields','commodity','commodities','oil','gold','futures','etf','ipo',
+  'nasdaq','dow','s&p','sensex','nifty','ftse','nikkei','forex','currency','dollar','rupee','euro','yen',
+  // crypto
+  'bitcoin','btc','ethereum','eth','crypto','cryptocurrency','blockchain','token','tokens','stablecoin',
+  'defi','exchange','mining','miner','wallet','altcoin','solana','xrp','binance','coinbase','custody',
+  // money and policy
+  'fed','federal reserve','rbi','ecb','central bank','rate','rates','inflation','cpi','gdp','recession',
+  'tariff','tax','budget','stimulus','debt','deficit','regulator','regulation','sec','cftc','lawsuit',
+  'settlement','fine','ban','approval','approves','licence','license',
+  // corporate and money flows
+  'earnings','revenue','profit','loss','losses','merger','acquisition','acquires','funding','raise',
+  'raises','valuation','billion','million','trillion','investor','investors','fund','bank','banking',
+  'price','prices','surge','plunge','rally','rallies','slump','soars','tumbles','jumps','falls',
+];
+
+export function isTopical(title) {
+  const t = ' ' + String(title).toLowerCase().replace(/[^a-z0-9$&. ]/g, ' ').replace(/\s+/g, ' ') + ' ';
+  // A currency amount is itself a strong signal: "$5M settlement", "₹2,000 crore".
+  if (/[$€£₹]\s?\d/.test(title)) return true;
+  return TOPICAL.some(w => t.includes(' ' + w + ' '));
+}
+
 /* Words that carry meaning, for comparing two headlines. */
 export function keyWords(title) {
   return new Set(
@@ -114,7 +143,9 @@ export function isRepeat(title, history, threshold = 0.6) {
 export function selectStories(items, { history = [], count = 3, now = Date.now(),
                                        minSources = 1, maxAgeHours = 24 } = {}) {
   const cutoff = now - maxAgeHours * 3600000;
-  const fresh = items.filter(i => !i.published || i.published >= cutoff);
+  const fresh = items
+    .filter(i => !i.published || i.published >= cutoff)
+    .filter(i => isTopical(i.title));
 
   const ranked = rankClusters(cluster(fresh), { now });
   const chosen = [];

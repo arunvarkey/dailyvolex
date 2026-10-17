@@ -4,7 +4,7 @@
  */
 
 import { parseFeed } from './lib/rss.mjs';
-import { similarity, cluster, selectStories, isRepeat } from './lib/select.mjs';
+import { similarity, cluster, selectStories, isRepeat, isTopical, rankClusters } from './lib/select.mjs';
 import { makeHeadline, tidy, sourceLine, categoryFor } from './lib/headline.mjs';
 import { buildCaption } from './caption.mjs';
 
@@ -33,6 +33,50 @@ ok('strips markup from titles', items[1].title === 'Plain title here', items[1].
 ok('an unparseable date is treated as old, not as now', items[1].published === 0);
 ok('survives junk input', parseFeed('not xml at all', feed).length === 0);
 ok('survives empty input', parseFeed('', feed).length === 0 && parseFeed(null, feed).length === 0);
+
+/* ── Aggregators must not inflate the source count ────────────── */
+
+const gnews = { id:'g', name:'Google News', topic:'crypto', weight:1, aggregator:true };
+const gxml = `<rss><channel>
+  <item><title>Bitcoin Price and Deutsche Bank's Crypto Custody Start - CryptoTicker</title>
+    <link>https://news.google.com/x</link><pubDate>${hoursAgo(1)}</pubDate></item>
+  <item><title>Fed holds rates steady — Reuters</title>
+    <link>https://news.google.com/y</link><pubDate>${hoursAgo(1)}</pubDate></item>
+  <item><title>A headline with no publisher attached</title>
+    <link>https://news.google.com/z</link><pubDate>${hoursAgo(1)}</pubDate></item>
+</channel></rss>`;
+const gitems = parseFeed(gxml, gnews);
+ok('the real publisher replaces the aggregator', gitems[0].source === 'CryptoTicker', gitems[0].source);
+ok('the publisher suffix is stripped from the title',
+  gitems[0].title === "Bitcoin Price and Deutsche Bank's Crypto Custody Start", gitems[0].title);
+ok('an em-dash publisher is handled too', gitems[1].source === 'Reuters', gitems[1].source);
+ok('a title with no publisher is left alone',
+  gitems[2].source === 'Google News' && gitems[2].title === 'A headline with no publisher attached');
+ok('a non-aggregator feed keeps its own name', parseFeed(gxml, feed)[0].source === 'Test');
+
+// The reason this matters: one outlet syndicated through an aggregator used to
+// score as two independent sources.
+const syndicated = [
+  { title: 'Fed holds rates steady', source: 'Reuters', published: Date.now(), weight: 1, topic: 'world' },
+  ...parseFeed(`<rss><channel><item><title>Fed holds rates steady — Reuters</title>
+    <pubDate>${hoursAgo(1)}</pubDate></item></channel></rss>`, gnews),
+];
+ok('a syndicated copy does not count as corroboration',
+  rankClusters(cluster(syndicated))[0].sources === 1,
+  `${rankClusters(cluster(syndicated))[0].sources} sources`);
+
+/* ── Off-topic stories are kept out ───────────────────────────── */
+
+ok('a finance story is topical', isTopical('CFTC Wants to Drop Gemini\u2019s $5M Settlement'));
+ok('a tech story in a crypto feed is not',
+  !isTopical('\u2018Wow, it\u2019s a real discovery\u2019: Claude cracks a 25-year NSA number mystery'));
+ok('entertainment is not', !isTopical('Taylor Swift announces new album tour dates'));
+ok('a currency amount alone is enough', isTopical('Startup raises \u20b92,000 crore in fresh round'));
+ok('off-topic items never reach the shortlist',
+  !selectStories([
+    { title: 'Claude cracks a 25-year NSA number mystery', source:'A', published: Date.now(), weight:1, topic:'crypto' },
+    { title: 'Claude cracks a 25-year NSA number mystery, say researchers', source:'B', published: Date.now(), weight:1, topic:'crypto' },
+  ], { count: 3, now: Date.now() }).length);
 
 /* ── Matching the same story across outlets ───────────────────── */
 
