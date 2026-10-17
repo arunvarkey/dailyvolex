@@ -14,6 +14,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join, extname, normalize } from 'node:path';
 import { launchChrome, closeChrome, openPage } from './lib/cdp.mjs';
 import { readJson, writeJson } from './lib/store.mjs';
+import { findImage, downloadImage } from './lib/imagery.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(HERE, '..');
@@ -59,6 +60,27 @@ function digestUrl(port, stories, opts) {
   return `http://127.0.0.1:${port}/index.html?${q}`;
 }
 
+/* Try for a photograph; fall back to the generated chart. Never let this stop
+   a run — a post with a chart behind it is fine, a failed run is not. */
+async function imageFor(story, index, opts) {
+  if (opts.noPhotos) return null;
+  const found = await findImage(story.display || story.headline);
+  if (!found.image) {
+    console.log(`  no photo for "${found.query}" (${found.error}) — using the chart`);
+    return null;
+  }
+  const name = `photo-${index}.jpg`;
+  try {
+    const { bytes } = await downloadImage(found.image.url, join(OUT_DIR, name));
+    console.log(`  photo: ${found.query} · ${found.image.credit} · ${(bytes/1024).toFixed(0)} KB`);
+    return { path: `data/pending/${name}`, credit: found.image.credit,
+             license: found.image.license, pageUrl: found.image.pageUrl, query: found.query };
+  } catch (e) {
+    console.log(`  photo download failed (${e.message}) — using the chart`);
+    return null;
+  }
+}
+
 function storyUrl(port, story, opts) {
   const q = new URLSearchParams({
     auto: '1',
@@ -72,6 +94,7 @@ function storyUrl(port, story, opts) {
     bg: opts.bg,
   });
   if (opts.posy != null) q.set('posy', String(opts.posy));
+  if (story.photo) { q.set('img', story.photo.path); q.set('credit', story.photo.credit); }
   return `http://127.0.0.1:${port}/index.html?${q}`;
 }
 
@@ -124,6 +147,7 @@ async function main() {
     // its normal place rather than being lifted to fill emptiness.
     posy: arg('posy', '0'),
     bg:   arg('bg', 'chart'),
+    noPhotos: process.argv.includes('--no-photos'),
   };
 
   const shortlist = await readJson(SHORTLIST, null);
@@ -147,8 +171,10 @@ async function main() {
       await writeFile(join(OUT_DIR, 'slide-1.png'), cover.png);
       slides.push({ file: 'slide-1.png', kind: 'cover', ...cover });
 
-      // Then one card per story.
+      // Then one card per story, each with its own photograph where one can
+      // be used legally.
       for (const [i, story] of usable.entries()) {
+        story.photo = await imageFor(story, i + 2, opts);
         const slide = await renderUrl(
           storyUrl(port, story, { ...opts, layout: 'breaking', posy: opts.posy }), i + 1);
         const name = `slide-${i + 2}.png`;

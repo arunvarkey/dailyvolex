@@ -117,6 +117,38 @@ The check reports `this token does not expire` when you have it right.
 
 ---
 
+## Where the pictures come from
+
+Each story card gets a real photograph where one can legally be used, and a
+generated market chart where it cannot. Both are automatic.
+
+**What is deliberately NOT used: the outlet's own article photo.** It is the
+obvious option and it is copyright infringement — those images belong to
+Reuters, AP, Getty or the publisher, and reposting them is what gets a news
+account struck or sued. The whole asset here is credibility, so it is not a
+shortcut worth taking.
+
+Photographs come from [Openverse](https://openverse.org), which indexes openly
+licensed work, filtered to the licences that permit commercial reuse:
+
+| Licence | Used | Why |
+|---|---|---|
+| CC0, Public Domain | yes | no conditions |
+| CC BY | yes | credit required — and it is printed on the graphic |
+| CC BY-SA | **no** | share-alike would arguably cover the finished graphic |
+| CC BY-NC | **no** | non-commercial |
+| CC BY-ND | **no** | no derivatives, and the graphic is a derivative |
+
+The credit is drawn onto the card itself, bottom right. A photo with no credit
+is never used — that is enforced in the page, not just intended.
+
+The subject is chosen from the headline: "Federal Reserve" finds the building,
+"Sensex" finds Mumbai, "oil" finds a refinery. If nothing suitable and suitably
+licensed turns up, or the search is slow or down, the card falls back to the
+generated chart. A missing photo never fails a run.
+
+Run with `--no-photos` to skip the search entirely.
+
 ## Settings
 
 Feeds live in `automation/feeds.json` — add or remove freely, no keys needed.
