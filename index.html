@@ -1385,7 +1385,7 @@ function drawPhotoBackdrop(theme) {
 
   ctx.imageSmoothingEnabled = true;
   ctx.imageSmoothingQuality = 'high';
-  ctx.filter = 'grayscale(45%) contrast(115%) brightness(72%)';
+  ctx.filter = 'grayscale(55%) contrast(118%) brightness(60%)';
   ctx.drawImage(img, sx, sy, sw, sh, 0, 0, W, H);
   ctx.filter = 'none';
 
@@ -1393,9 +1393,9 @@ function drawPhotoBackdrop(theme) {
   ctx.save();
   ctx.globalCompositeOperation = 'multiply';
   const wash = ctx.createLinearGradient(0, 0, 0, H);
-  wash.addColorStop(0, `rgba(${theme.pr},.20)`);
-  wash.addColorStop(.55, 'rgba(12,12,16,.55)');
-  wash.addColorStop(1, 'rgba(10,10,14,.96)');
+  wash.addColorStop(0, `rgba(${theme.pr},.26)`);
+  wash.addColorStop(.5, 'rgba(12,12,16,.62)');
+  wash.addColorStop(1, 'rgba(10,10,14,.97)');
   ctx.fillStyle = wash; ctx.fillRect(0, 0, W, H);
   ctx.restore();
   return true;
