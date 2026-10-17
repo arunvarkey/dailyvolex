@@ -201,6 +201,19 @@ const stubEmpty = async () => ({ ok:true, json: async () => ({ results: [img({li
 ok('nothing usable yields no image, not a bad one',
   (await findImage('x', { fetchImpl: stubEmpty })).image === null);
 
+// The same subject twice must not yield the same photograph twice.
+const two = [img({license:'cc0', url:'https://x/a.jpg', width:3000}),
+             img({license:'cc0', url:'https://x/b.jpg', width:2000})];
+ok('an already-used image is skipped',
+  pickBest(two, new Set(['https://x/a.jpg'])).url === 'https://x/b.jpg');
+ok('everything used means no image, not a repeat',
+  pickBest(two, new Set(['https://x/a.jpg','https://x/b.jpg'])) === null);
+const stubTwo = async () => ({ ok:true, json: async () => ({ results: two }) });
+const second = await findImage('Bitcoin again',
+  { fetchImpl: stubTwo, exclude: new Set(['https://x/a.jpg']) });
+ok('the search honours the exclusion list', second.image?.url === 'https://x/b.jpg',
+  second.image?.url || second.error);
+
 const stubDown = async () => { throw new Error('network is down'); };
 const downed = await findImage('x', { fetchImpl: stubDown });
 ok('a failed search is not fatal', downed.image === null && /network/.test(downed.error), downed.error);

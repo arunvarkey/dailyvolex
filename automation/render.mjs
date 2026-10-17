@@ -62,9 +62,11 @@ function digestUrl(port, stories, opts) {
 
 /* Try for a photograph; fall back to the generated chart. Never let this stop
    a run — a post with a chart behind it is fine, a failed run is not. */
+const usedPhotos = new Set();       // one picture must not appear twice in a post
+
 async function imageFor(story, index, opts) {
   if (opts.noPhotos) return null;
-  const found = await findImage(story.display || story.headline);
+  const found = await findImage(story.display || story.headline, { exclude: usedPhotos });
   if (!found.image) {
     console.log(`  no photo for "${found.query}" (${found.error}) — using the chart`);
     return null;
@@ -72,6 +74,7 @@ async function imageFor(story, index, opts) {
   const name = `photo-${index}.jpg`;
   try {
     const { bytes } = await downloadImage(found.image.url, join(OUT_DIR, name));
+    usedPhotos.add(found.image.url);
     console.log(`  photo: ${found.query} · ${found.image.credit} · ${(bytes/1024).toFixed(0)} KB`);
     return { path: `data/pending/${name}`, credit: found.image.credit,
              license: found.image.license, pageUrl: found.image.pageUrl, query: found.query };

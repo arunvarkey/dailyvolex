@@ -67,8 +67,9 @@ export function isUsable(item) {
   return true;
 }
 
-export function pickBest(results) {
-  const usable = (results || []).filter(isUsable);
+export function pickBest(results, exclude) {
+  const seen = exclude instanceof Set ? exclude : new Set(exclude || []);
+  const usable = (results || []).filter(isUsable).filter(r => !seen.has(r.url));
   if (!usable.length) return null;
   // Prefer the least restrictive licence, then the largest image.
   const rank = l => (l === 'cc0' ? 0 : l === 'pdm' ? 1 : 2);
@@ -76,7 +77,7 @@ export function pickBest(results) {
   return usable[0];
 }
 
-export async function findImage(headline, { fetchImpl = fetch, timeoutMs = 12000 } = {}) {
+export async function findImage(headline, { fetchImpl = fetch, timeoutMs = 12000, exclude } = {}) {
   const q = subjectFor(headline);
   const url = `${API}?q=${encodeURIComponent(q)}`
     + `&license=${USABLE.join(',')}`
@@ -92,8 +93,12 @@ export async function findImage(headline, { fetchImpl = fetch, timeoutMs = 12000
     });
     if (!res.ok) return { image: null, query: q, error: `HTTP ${res.status}` };
     const body = await res.json();
-    const best = pickBest(body && body.results);
-    if (!best) return { image: null, query: q, error: 'nothing suitably licensed' };
+    // Three Bitcoin stories in one carousel would otherwise all get the same
+    // photograph, which reads as a mistake. Skip anything already used.
+    const best = pickBest(body && body.results, exclude);
+    if (!best) return { image: null, query: q,
+      error: exclude && exclude.size ? 'no unused image left for this subject'
+                                     : 'nothing suitably licensed' };
     return {
       image: { url: best.url, credit: creditFor(best), license: best.license,
                source: best.source, pageUrl: best.foreign_landing_url, title: best.title },
