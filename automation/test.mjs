@@ -7,6 +7,7 @@ import { parseFeed } from './lib/rss.mjs';
 import { similarity, cluster, selectStories, isRepeat, isTopical, rankClusters } from './lib/select.mjs';
 import { makeHeadline, tidy, sourceLine, categoryFor } from './lib/headline.mjs';
 import { buildCaption } from './caption.mjs';
+import { isUsable, pickBest, creditFor, subjectFor, findImage } from './lib/imagery.mjs';
 
 let passed = 0, failed = 0;
 const ok = (name, cond, detail = '') => {
@@ -148,6 +149,61 @@ ok('a headline only ever loses words, never gains them', (() => {
 
 ok('sources are named', sourceLine(['CoinDesk', 'Reuters']) === 'CoinDesk · Reuters');
 ok('category comes from the topic', categoryFor('india') === 'INDIA MARKETS');
+
+/* ── Imagery: only what may legally be reused ─────────────────── */
+
+const img = (o) => ({ url:'https://x/i.jpg', width:2000, height:1300, creator:'A Person',
+                      license:'cc0', ...o });
+
+ok('CC0 is usable', isUsable(img({ license:'cc0' })));
+ok('public domain is usable', isUsable(img({ license:'pdm' })));
+ok('CC-BY is usable, with credit', isUsable(img({ license:'by' })));
+ok('share-alike is REFUSED', !isUsable(img({ license:'by-sa' })), 'by-sa');
+ok('non-commercial is REFUSED', !isUsable(img({ license:'by-nc' })), 'by-nc');
+ok('no-derivatives is REFUSED', !isUsable(img({ license:'by-nd' })), 'by-nd');
+ok('an unknown licence is REFUSED', !isUsable(img({ license:'all-rights-reserved' })));
+ok('a missing licence is REFUSED', !isUsable(img({ license:undefined })));
+ok('a tiny image is refused', !isUsable(img({ width:600, height:400 })));
+ok('a tall portrait is refused', !isUsable(img({ width:1200, height:2000 })));
+
+ok('the least restrictive licence wins',
+  pickBest([img({license:'by', width:4000}), img({license:'cc0', width:1600})]).license === 'cc0');
+ok('nothing usable returns nothing',
+  pickBest([img({license:'by-nc'}), img({license:'by-nd'})]) === null);
+ok('an empty result is handled', pickBest([]) === null && pickBest(undefined) === null);
+
+ok('CC-BY credit names the creator and licence',
+  creditFor({ creator:'Jane Doe', license:'by', license_version:'4.0' })
+    === 'Photo: Jane Doe / CC BY 4.0',
+  creditFor({ creator:'Jane Doe', license:'by', license_version:'4.0' }));
+ok('CC0 credit still names the creator',
+  creditFor({ creator:'Jane Doe', license:'cc0' }) === 'Photo: Jane Doe / CC0');
+ok('a missing creator does not produce "undefined"',
+  !/undefined/.test(creditFor({ license:'cc0' })), creditFor({ license:'cc0' }));
+
+ok('a named institution drives the search',
+  subjectFor('Federal Reserve cuts interest rates') === 'federal reserve building',
+  subjectFor('Federal Reserve cuts interest rates'));
+ok('Sensex maps to an Indian subject',
+  /mumbai/.test(subjectFor('Sensex climbs 540 points to a record high')));
+ok('there is always a subject',
+  subjectFor('Something entirely unexpected happens').length > 0);
+
+// The search itself, with the API stubbed.
+const stubOk = async () => ({ ok:true, json: async () => ({ results: [
+  img({ license:'by-nc', creator:'No' }),            // must be skipped
+  img({ license:'by', creator:'Yes', width:3000 }),
+]}) });
+const found = await findImage('Bitcoin rallies', { fetchImpl: stubOk });
+ok('the search skips unusable licences', found.image?.credit.includes('Yes'), JSON.stringify(found.image));
+
+const stubEmpty = async () => ({ ok:true, json: async () => ({ results: [img({license:'by-nd'})] }) });
+ok('nothing usable yields no image, not a bad one',
+  (await findImage('x', { fetchImpl: stubEmpty })).image === null);
+
+const stubDown = async () => { throw new Error('network is down'); };
+const downed = await findImage('x', { fetchImpl: stubDown });
+ok('a failed search is not fatal', downed.image === null && /network/.test(downed.error), downed.error);
 
 /* ── Caption ──────────────────────────────────────────────────── */
 

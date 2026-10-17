@@ -1002,6 +1002,8 @@ const S = {
   tickerX: 0,
   tickerFreeze: false,   // still exports hold the ticker at its start
   backdrop: 'particles', // or 'chart' — a generated market chart behind the text
+  bgImage: null,         // a licensed photograph, when one was found
+  bgCredit: '',          // its attribution — never shown without this
   videoLoaded: false,
   videoLook: 'cinematic',
   letterbox: false,
@@ -1368,7 +1370,54 @@ function drawMarketBackdrop(theme, seedText) {
   ctx.fillStyle = vig; ctx.fillRect(0, 0, W, H);
 }
 
+/* A licensed photograph behind the text. Graded down hard so the headline
+   stays the thing you read, and never drawn without its credit — the licences
+   that make free reuse possible all require attribution. */
+function drawPhotoBackdrop(theme) {
+  const W = cv.width, H = cv.height, img = S.bgImage;
+  const iw = img.naturalWidth, ih = img.naturalHeight;
+  if (!iw || !ih) return false;
+
+  const ir = iw / ih, cr = W / H;
+  let sx, sy, sw, sh;
+  if (ir > cr) { sh = ih; sw = sh * cr; sx = (iw - sw) / 2; sy = 0; }
+  else         { sw = iw; sh = sw / cr; sx = 0; sy = (ih - sh) / 2; }
+
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
+  ctx.filter = 'grayscale(45%) contrast(115%) brightness(72%)';
+  ctx.drawImage(img, sx, sy, sw, sh, 0, 0, W, H);
+  ctx.filter = 'none';
+
+  // Brand wash, so a photograph from anywhere still looks like this channel.
+  ctx.save();
+  ctx.globalCompositeOperation = 'multiply';
+  const wash = ctx.createLinearGradient(0, 0, 0, H);
+  wash.addColorStop(0, `rgba(${theme.pr},.20)`);
+  wash.addColorStop(.55, 'rgba(12,12,16,.55)');
+  wash.addColorStop(1, 'rgba(10,10,14,.96)');
+  ctx.fillStyle = wash; ctx.fillRect(0, 0, W, H);
+  ctx.restore();
+  return true;
+}
+
+function drawPhotoCredit(theme) {
+  if (!S.bgCredit) return;
+  const W = cv.width, H = cv.height;
+  const tickerH = (S[S.layout] && S[S.layout].showTicker) ? 56 : 0;
+  ctx.save();
+  ctx.font = `400 20px 'JetBrains Mono'`;
+  ctx.textAlign = 'right';
+  ctx.textBaseline = 'bottom';
+  ctx.fillStyle = 'rgba(255,255,255,.62)';
+  ctx.shadowColor = 'rgba(0,0,0,.95)';
+  ctx.shadowBlur = 10;
+  ctx.fillText(S.bgCredit.slice(0, 90), W - 40, H - tickerH - 18);
+  ctx.restore();
+}
+
 function drawBG(theme) {
+  if (!S.videoLoaded && S.bgImage && drawPhotoBackdrop(theme)) return;
   if (S.videoLoaded) {
     const W=cv.width, H=cv.height;
     const vr=vid.videoWidth/vid.videoHeight, cr=W/H;
@@ -1941,6 +1990,7 @@ function drawGuides(theme) {
 function drawScene(theme, withGuides) {
   ctx.clearRect(0,0,cv.width,cv.height);
   drawBG(theme);
+  drawPhotoCredit(theme);
   drawBranding(theme);
   switch(S.layout) {
     case 'breaking': drawBreaking(theme); break;
@@ -3670,6 +3720,20 @@ function applyUrlStory() {
   set('handle', v => S.brand.handle = v.slice(0,40));
   set('bg', v => { if (['particles','chart'].includes(v)) S.backdrop = v; });
 
+  // A photograph, with the credit it must carry. Same-origin paths only: this
+  // page is rendered headlessly and must not be made to fetch arbitrary hosts.
+  const imgPath = str('img', 300);
+  if (imgPath && !/^[a-z]+:|^\/\//i.test(imgPath)) {
+    S.bgCredit = str('credit', 120) || '';
+    if (S.bgCredit) {
+      const im = new Image();
+      im.onload  = () => { S.bgImage = im; window.dvImageReady = true; };
+      im.onerror = () => { S.bgImage = null; window.dvImageReady = 'failed'; };
+      im.src = imgPath;
+      window.dvWaitingForImage = true;
+    }
+  }
+
   set('category', v => S.breaking.category = v.slice(0,40).toUpperCase());
   set('headline', v => S.breaking.headline = v.slice(0,160).toUpperCase());
   set('source',   v => S.breaking.source   = v.slice(0,80));
@@ -3741,6 +3805,11 @@ if (HEADLESS) {
   // Capture only once the webfonts are in, or the headline renders in a
   // fallback face and every automated graphic looks wrong.
   const ready = () => {
+    // Never capture before the photograph has arrived — a frame without it is
+    // a different graphic to the one that was asked for.
+    if (window.dvWaitingForImage && !window.dvImageReady) {
+      return setTimeout(ready, 150);
+    }
     drawScene(THEMES[S.theme], false);
     // fonts.check() answers "can this be rendered", which is true even when
     // the real face is missing and a fallback would be substituted. Ask

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-17T20:44:43.950Z",
+  "generated": "2026-10-17T20:48:40.383Z",
   "pool": 12,
   "feedErrors": [],
   "stories": [
@@ -18,9 +18,10 @@
       ],
       "corroboration": 3,
       "link": "https://coindesk.com/1",
-      "published": "2026-10-17T20:14:43.946Z",
+      "published": "2026-10-17T20:18:40.379Z",
       "topic": "crypto",
-      "score": 7.8
+      "score": 7.8,
+      "photo": null
     },
     {
       "headline": "SEC APPROVES SPOT SOLANA ETF APPLICATIONS FROM THREE ISSUERS",
@@ -36,9 +37,10 @@
       ],
       "corroboration": 2,
       "link": "https://coindesk.com/3",
-      "published": "2026-10-17T19:14:43.946Z",
+      "published": "2026-10-17T19:18:40.379Z",
       "topic": "crypto",
-      "score": 5.7
+      "score": 5.7,
+      "photo": null
     },
     {
       "headline": "SENSEX CLIMBS 540 POINTS TO CLOSE AT RECORD HIGH, NIFTY TOPS 26,000",
@@ -53,12 +55,13 @@
       ],
       "corroboration": 1,
       "link": "https://et.com/1",
-      "published": "2026-10-17T19:14:43.946Z",
+      "published": "2026-10-17T19:18:40.379Z",
       "topic": "india",
-      "score": 3.6
+      "score": 3.6,
+      "photo": null
     }
   ],
-  "rendered": "2026-10-17T20:44:50.391Z",
+  "rendered": "2026-10-17T20:48:46.478Z",
   "options": {
     "layout": "breaking",
     "theme": "bbc",
@@ -69,7 +72,8 @@
     "digest": false,
     "carousel": true,
     "posy": "0",
-    "bg": "chart"
+    "bg": "chart",
+    "noPhotos": false
   },
   "output": [
     {
@@ -106,9 +110,10 @@
           ],
           "corroboration": 3,
           "link": "https://coindesk.com/1",
-          "published": "2026-10-17T20:14:43.946Z",
+          "published": "2026-10-17T20:18:40.379Z",
           "topic": "crypto",
-          "score": 7.8
+          "score": 7.8,
+          "photo": null
         },
         {
           "headline": "SEC APPROVES SPOT SOLANA ETF APPLICATIONS FROM THREE ISSUERS",
@@ -124,9 +129,10 @@
           ],
           "corroboration": 2,
           "link": "https://coindesk.com/3",
-          "published": "2026-10-17T19:14:43.946Z",
+          "published": "2026-10-17T19:18:40.379Z",
           "topic": "crypto",
-          "score": 5.7
+          "score": 5.7,
+          "photo": null
         },
         {
           "headline": "SENSEX CLIMBS 540 POINTS TO CLOSE AT RECORD HIGH, NIFTY TOPS 26,000",
@@ -141,9 +147,10 @@
           ],
           "corroboration": 1,
           "link": "https://et.com/1",
-          "published": "2026-10-17T19:14:43.946Z",
+          "published": "2026-10-17T19:18:40.379Z",
           "topic": "india",
-          "score": 3.6
+          "score": 3.6,
+          "photo": null
         }
       ],
       "usable": true
