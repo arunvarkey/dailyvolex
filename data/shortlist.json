@@ -1,85 +1,67 @@
 {
-  "generated": "2026-10-17T23:13:03.825Z",
-  "pool": 271,
+  "generated": "2026-10-17T23:14:45.232Z",
+  "pool": 12,
   "feedErrors": [],
   "stories": [
     {
-      "headline": "MICHAEL SAYLOR HIGHLIGHTS BITCOIN'S EXPANDING R...",
-      "display": "Michael Saylor highlights Bitcoin's expanding r...",
-      "original": "Michael Saylor highlights Bitcoin's expanding r...",
+      "headline": "FEDERAL RESERVE CUTS INTEREST RATES BY 25 BASIS POINTS, CITING COOLING INFLATION",
+      "display": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
+      "original": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
       "truncated": false,
       "usable": true,
       "category": "CRYPTO NEWS",
-      "source": "Outlook Money · Pluang",
+      "source": "CoinDesk · Cointelegraph · Reuters",
       "sourceNames": [
-        "Outlook Money",
-        "Pluang"
+        "CoinDesk",
+        "Cointelegraph",
+        "Reuters"
       ],
-      "corroboration": 2,
-      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPUHVSLWh4OGVUeXVqdWtZQld6TUloX1FSQ3BUN25PbXV4S3hvTUVtdExFYnJnWl9yTlZ6LWl4RDdVZlN0dE9xUDNSSWFhdndsanN5SlZxR3FDSkdhb0JuczBtQWVxZDNzajVhRHhlTnhQNEJ1T1l3d0Q4cjRSclZJZ0R2QUdJeFFMWjRUVDd1ZGwyY2VZM0tnZUpMaw?oc=5",
-      "published": "2026-10-17T17:55:39.000Z",
+      "corroboration": 3,
+      "link": "https://coindesk.com/1",
+      "published": "2026-10-17T22:44:45.228Z",
       "topic": "crypto",
-      "score": 5,
-      "photo": {
-        "path": "data/pending/photo-2.jpg",
-        "credit": "Photo: Icons8 team / CC0",
-        "license": "cc0",
-        "pageUrl": "https://stocksnap.io/photo/bitcoin-finance-BCEODSCQHF",
-        "query": "bitcoin"
-      }
+      "score": 7.8,
+      "photo": null
     },
     {
-      "headline": "BITCOIN ETFS SEE $228M WEEKLY OUTFLOWS, MONTHLY TOTAL NEARS $618M AMID HIGH TRADING",
-      "display": "Bitcoin ETFs see $228M weekly outflows, monthly total nears $618M amid high trading",
-      "original": "Bitcoin ETFs see $228M weekly outflows, monthly total nears $618M amid high trading volumes",
-      "truncated": true,
+      "headline": "SEC APPROVES SPOT SOLANA ETF APPLICATIONS FROM THREE ISSUERS",
+      "display": "SEC approves spot Solana ETF applications from three issuers",
+      "original": "SEC approves spot Solana ETF applications from three issuers",
+      "truncated": false,
       "usable": true,
       "category": "CRYPTO NEWS",
-      "source": "TradingView · Pluang",
+      "source": "CoinDesk · Cointelegraph",
       "sourceNames": [
-        "TradingView",
-        "Pluang"
+        "CoinDesk",
+        "Cointelegraph"
       ],
       "corroboration": 2,
-      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPNGExTndESmV2ZDIzcGJZRTJpaEpubEhSRDNRc255RjEtVmJXUzhfOVBWZVVIRDhJV21NeVl1WGl3S0FMekxsb1RPdkpsMG9CUjlBTDh3VDBFeFU1bXp6bjJ5RzZqV09KRURQUzRPeEM0Q19XMjNnZV9id0RGMU51eUttYWNJdzZCdW5iQg?oc=5",
-      "published": "2026-10-17T19:45:39.000Z",
+      "link": "https://coindesk.com/3",
+      "published": "2026-10-17T21:44:45.228Z",
       "topic": "crypto",
-      "score": 5,
-      "photo": {
-        "path": "data/pending/photo-3.jpg",
-        "credit": "Photo: Icons8 team / CC0",
-        "license": "cc0",
-        "pageUrl": "https://stocksnap.io/photo/bitcoin-finance-QXVSHD5FLF",
-        "query": "bitcoin"
-      }
+      "score": 5.7,
+      "photo": null
     },
     {
-      "headline": "DEUTSCHE BANK IS WEEKS FROM HOLDING BITCOIN AND ETHEREUM FOR CLIENTS. COULD OTHER BIG",
-      "display": "Deutsche Bank Is Weeks From Holding Bitcoin and Ethereum for Clients. Could Other Big",
-      "original": "Deutsche Bank Is Weeks From Holding Bitcoin and Ethereum for Clients. Could Other Big Banks Follow?",
-      "truncated": true,
+      "headline": "SENSEX CLIMBS 540 POINTS TO CLOSE AT RECORD HIGH, NIFTY TOPS 26,000",
+      "display": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
+      "original": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
+      "truncated": false,
       "usable": true,
-      "category": "CRYPTO NEWS",
-      "source": "Yahoo Finance · Google News",
+      "category": "INDIA MARKETS",
+      "source": "Economic Times",
       "sourceNames": [
-        "Yahoo Finance",
-        "Google News"
+        "Economic Times"
       ],
-      "corroboration": 2,
-      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOLWlHQnpKMEFSNjlXSVBXYjNVbk5FbG1ocmQ3WlM1bjVmUS15Y3VPTDlEZUxocG5WUkZwMmNBNk9CdmYwRkIwQ2cxb09IRC02VkRRemtkaWFOclpBOFQzLTBvSm5JR25rN0FXY0taTTVsMHRUSm56TzlzMWhoaENFeXQzaC1VQnN3eFJ0RVZfSldtZHk0ZnkxX2NZNzRUeGdkd0E?oc=5",
-      "published": "2026-10-17T14:30:32.000Z",
-      "topic": "crypto",
-      "score": 4.55,
-      "photo": {
-        "path": "data/pending/photo-4.jpg",
-        "credit": "Photo: Wikideas1 / CC0",
-        "license": "cc0",
-        "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=130267681",
-        "query": "bitcoin"
-      }
+      "corroboration": 1,
+      "link": "https://et.com/1",
+      "published": "2026-10-17T21:44:45.228Z",
+      "topic": "india",
+      "score": 3.6,
+      "photo": null
     }
   ],
-  "rendered": "2026-10-17T23:13:20.117Z",
+  "rendered": "2026-10-17T23:14:52.350Z",
   "options": {
     "layout": "breaking",
     "theme": "bbc",
@@ -107,87 +89,68 @@
       "width": 1080,
       "height": 1350,
       "sourceNames": [
-        "Outlook Money",
-        "Pluang",
-        "TradingView",
-        "Yahoo Finance",
-        "Google News"
+        "CoinDesk",
+        "Cointelegraph",
+        "Reuters",
+        "Economic Times"
       ],
       "stories": [
         {
-          "headline": "MICHAEL SAYLOR HIGHLIGHTS BITCOIN'S EXPANDING R...",
-          "display": "Michael Saylor highlights Bitcoin's expanding r...",
-          "original": "Michael Saylor highlights Bitcoin's expanding r...",
+          "headline": "FEDERAL RESERVE CUTS INTEREST RATES BY 25 BASIS POINTS, CITING COOLING INFLATION",
+          "display": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
+          "original": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
           "truncated": false,
           "usable": true,
           "category": "CRYPTO NEWS",
-          "source": "Outlook Money · Pluang",
+          "source": "CoinDesk · Cointelegraph · Reuters",
           "sourceNames": [
-            "Outlook Money",
-            "Pluang"
+            "CoinDesk",
+            "Cointelegraph",
+            "Reuters"
           ],
-          "corroboration": 2,
-          "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPUHVSLWh4OGVUeXVqdWtZQld6TUloX1FSQ3BUN25PbXV4S3hvTUVtdExFYnJnWl9yTlZ6LWl4RDdVZlN0dE9xUDNSSWFhdndsanN5SlZxR3FDSkdhb0JuczBtQWVxZDNzajVhRHhlTnhQNEJ1T1l3d0Q4cjRSclZJZ0R2QUdJeFFMWjRUVDd1ZGwyY2VZM0tnZUpMaw?oc=5",
-          "published": "2026-10-17T17:55:39.000Z",
+          "corroboration": 3,
+          "link": "https://coindesk.com/1",
+          "published": "2026-10-17T22:44:45.228Z",
           "topic": "crypto",
-          "score": 5,
-          "photo": {
-            "path": "data/pending/photo-2.jpg",
-            "credit": "Photo: Icons8 team / CC0",
-            "license": "cc0",
-            "pageUrl": "https://stocksnap.io/photo/bitcoin-finance-BCEODSCQHF",
-            "query": "bitcoin"
-          }
+          "score": 7.8,
+          "photo": null
         },
         {
-          "headline": "BITCOIN ETFS SEE $228M WEEKLY OUTFLOWS, MONTHLY TOTAL NEARS $618M AMID HIGH TRADING",
-          "display": "Bitcoin ETFs see $228M weekly outflows, monthly total nears $618M amid high trading",
-          "original": "Bitcoin ETFs see $228M weekly outflows, monthly total nears $618M amid high trading volumes",
-          "truncated": true,
+          "headline": "SEC APPROVES SPOT SOLANA ETF APPLICATIONS FROM THREE ISSUERS",
+          "display": "SEC approves spot Solana ETF applications from three issuers",
+          "original": "SEC approves spot Solana ETF applications from three issuers",
+          "truncated": false,
           "usable": true,
           "category": "CRYPTO NEWS",
-          "source": "TradingView · Pluang",
+          "source": "CoinDesk · Cointelegraph",
           "sourceNames": [
-            "TradingView",
-            "Pluang"
+            "CoinDesk",
+            "Cointelegraph"
           ],
           "corroboration": 2,
-          "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPNGExTndESmV2ZDIzcGJZRTJpaEpubEhSRDNRc255RjEtVmJXUzhfOVBWZVVIRDhJV21NeVl1WGl3S0FMekxsb1RPdkpsMG9CUjlBTDh3VDBFeFU1bXp6bjJ5RzZqV09KRURQUzRPeEM0Q19XMjNnZV9id0RGMU51eUttYWNJdzZCdW5iQg?oc=5",
-          "published": "2026-10-17T19:45:39.000Z",
+          "link": "https://coindesk.com/3",
+          "published": "2026-10-17T21:44:45.228Z",
           "topic": "crypto",
-          "score": 5,
-          "photo": {
-            "path": "data/pending/photo-3.jpg",
-            "credit": "Photo: Icons8 team / CC0",
-            "license": "cc0",
-            "pageUrl": "https://stocksnap.io/photo/bitcoin-finance-QXVSHD5FLF",
-            "query": "bitcoin"
-          }
+          "score": 5.7,
+          "photo": null
         },
         {
-          "headline": "DEUTSCHE BANK IS WEEKS FROM HOLDING BITCOIN AND ETHEREUM FOR CLIENTS. COULD OTHER BIG",
-          "display": "Deutsche Bank Is Weeks From Holding Bitcoin and Ethereum for Clients. Could Other Big",
-          "original": "Deutsche Bank Is Weeks From Holding Bitcoin and Ethereum for Clients. Could Other Big Banks Follow?",
-          "truncated": true,
+          "headline": "SENSEX CLIMBS 540 POINTS TO CLOSE AT RECORD HIGH, NIFTY TOPS 26,000",
+          "display": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
+          "original": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
+          "truncated": false,
           "usable": true,
-          "category": "CRYPTO NEWS",
-          "source": "Yahoo Finance · Google News",
+          "category": "INDIA MARKETS",
+          "source": "Economic Times",
           "sourceNames": [
-            "Yahoo Finance",
-            "Google News"
+            "Economic Times"
           ],
-          "corroboration": 2,
-          "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOLWlHQnpKMEFSNjlXSVBXYjNVbk5FbG1ocmQ3WlM1bjVmUS15Y3VPTDlEZUxocG5WUkZwMmNBNk9CdmYwRkIwQ2cxb09IRC02VkRRemtkaWFOclpBOFQzLTBvSm5JR25rN0FXY0taTTVsMHRUSm56TzlzMWhoaENFeXQzaC1VQnN3eFJ0RVZfSldtZHk0ZnkxX2NZNzRUeGdkd0E?oc=5",
-          "published": "2026-10-17T14:30:32.000Z",
-          "topic": "crypto",
-          "score": 4.55,
-          "photo": {
-            "path": "data/pending/photo-4.jpg",
-            "credit": "Photo: Wikideas1 / CC0",
-            "license": "cc0",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=130267681",
-            "query": "bitcoin"
-          }
+          "corroboration": 1,
+          "link": "https://et.com/1",
+          "published": "2026-10-17T21:44:45.228Z",
+          "topic": "india",
+          "score": 3.6,
+          "photo": null
         }
       ],
       "usable": true

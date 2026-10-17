@@ -120,6 +120,28 @@ ok('a story already posted is not offered again',
 ok('repeat detection ignores wording differences',
   isRepeat('Fed cuts rates 25bps', [{ title: 'Federal Reserve cuts rates by 25 basis points' }]));
 
+/* ── A post should not be one subject three times ─────────────── */
+
+const lopsided = [
+  { title:'Bitcoin tops $90,000 on ETF inflows',       source:'A', published:now, weight:1, topic:'crypto' },
+  { title:'Ethereum rallies as staking yields climb',   source:'B', published:now, weight:1, topic:'crypto' },
+  { title:'Solana ETF approved by regulators today',    source:'C', published:now, weight:1, topic:'crypto' },
+  { title:'Sensex climbs 540 points to a record high',  source:'D', published:now, weight:1, topic:'india'  },
+];
+const spread = selectStories(lopsided, { count: 3, now });
+ok('one topic cannot take every slot',
+  spread.filter(c => c.lead.topic === 'crypto').length <= 2,
+  spread.map(c => c.lead.topic).join(','));
+ok('another topic gets in',
+  spread.some(c => c.lead.topic === 'india'),
+  spread.map(c => c.lead.topic).join(','));
+
+// On a quiet day the cap must not leave the post short.
+const onlyCrypto = lopsided.slice(0, 3);
+ok('the cap still fills the post when there is nothing else',
+  selectStories(onlyCrypto, { count: 3, now }).length === 3,
+  `${selectStories(onlyCrypto, { count: 3, now }).length} picked`);
+
 /* ── Headlines ────────────────────────────────────────────────── */
 
 ok('drops the trailing outlet name',
