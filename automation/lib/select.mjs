@@ -141,7 +141,8 @@ export function isRepeat(title, history, threshold = 0.6) {
 }
 
 export function selectStories(items, { history = [], count = 3, now = Date.now(),
-                                       minSources = 1, maxAgeHours = 24 } = {}) {
+                                       minSources = 1, maxAgeHours = 24,
+                                       maxPerTopic = 2 } = {}) {
   const cutoff = now - maxAgeHours * 3600000;
   const fresh = items
     .filter(i => !i.published || i.published >= cutoff)
@@ -150,15 +151,35 @@ export function selectStories(items, { history = [], count = 3, now = Date.now()
   const ranked = rankClusters(cluster(fresh), { now });
   const chosen = [];
   const takenTitles = [];
+  const perTopic = new Map();
 
-  for (const c of ranked) {
-    if (chosen.length >= count) break;
-    if (c.sources < minSources) continue;
-    if (isRepeat(c.lead.title, history)) continue;
-    // Do not pick two near-identical stories in one batch either.
-    if (isRepeat(c.lead.title, takenTitles.map(t => ({ title: t })))) continue;
+  const eligible = c =>
+    c.sources >= minSources
+    && !isRepeat(c.lead.title, history)
+    && !isRepeat(c.lead.title, takenTitles.map(t => ({ title: t })));
+
+  const take = c => {
     chosen.push(c);
     takenTitles.push(c.lead.title);
+    perTopic.set(c.lead.topic, (perTopic.get(c.lead.topic) || 0) + 1);
+  };
+
+  // First pass caps each topic, so a busy day in crypto does not push India
+  // and world markets off a post that covers all three. Three stories about
+  // the same subject read as one story told three times.
+  for (const c of ranked) {
+    if (chosen.length >= count) break;
+    if ((perTopic.get(c.lead.topic) || 0) >= maxPerTopic) continue;
+    if (eligible(c)) take(c);
   }
+
+  // Then fill any remaining slots without the cap, rather than posting fewer
+  // stories than asked for on a quiet day.
+  for (const c of ranked) {
+    if (chosen.length >= count) break;
+    if (chosen.includes(c)) continue;
+    if (eligible(c)) take(c);
+  }
+
   return chosen;
 }
