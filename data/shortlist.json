@@ -1,0 +1,153 @@
+{
+  "generated": "2026-10-17T07:07:27.843Z",
+  "pool": 271,
+  "feedErrors": [],
+  "stories": [
+    {
+      "headline": "CFTC WANTS TO DROP GEMINI’S $5M SETTLEMENT. A JUDGE JUST SAID NO",
+      "display": "CFTC Wants to Drop Gemini’s $5M Settlement. A Judge Just Said No",
+      "original": "CFTC Wants to Drop Gemini’s $5M Settlement. A Judge Just Said No",
+      "truncated": false,
+      "usable": true,
+      "category": "CRYPTO NEWS",
+      "source": "CoinDesk · Cointelegraph · Decrypt",
+      "sourceNames": [
+        "CoinDesk",
+        "Cointelegraph",
+        "Decrypt"
+      ],
+      "corroboration": 3,
+      "link": "https://decrypt.co/381149/cftc-wants-drop-gemini-5m-settlement-judge-said-no",
+      "published": "2026-10-16T16:36:04.000Z",
+      "topic": "crypto",
+      "score": 6.575
+    },
+    {
+      "headline": "‘WOW, IT’S A REAL DISCOVERY’: CLAUDE CRACKS A 25-YEAR NSA NUMBER MYSTERY",
+      "display": "‘Wow, it’s a real discovery’: Claude cracks a 25-year NSA number mystery",
+      "original": "‘Wow, it’s a real discovery’: Claude cracks a 25-year NSA number mystery",
+      "truncated": false,
+      "usable": true,
+      "category": "CRYPTO NEWS",
+      "source": "CoinDesk · Google News",
+      "sourceNames": [
+        "CoinDesk",
+        "Google News"
+      ],
+      "corroboration": 2,
+      "link": "https://www.coindesk.com/tech/2026/10/17/wow-it-s-a-real-discovery-claude-cracks-a-25-year-nsa-number-mystery",
+      "published": "2026-10-17T06:39:48.000Z",
+      "topic": "crypto",
+      "score": 5.7
+    },
+    {
+      "headline": "BITCOIN PRICE AND DEUTSCHE BANK'S CRYPTO CUSTODY START - CRYPTOTICKER",
+      "display": "Bitcoin Price and Deutsche Bank's Crypto Custody Start - CryptoTicker",
+      "original": "Bitcoin Price and Deutsche Bank's Crypto Custody Start - CryptoTicker",
+      "truncated": false,
+      "usable": true,
+      "category": "CRYPTO NEWS",
+      "source": "Cointelegraph · Google News",
+      "sourceNames": [
+        "Cointelegraph",
+        "Google News"
+      ],
+      "corroboration": 2,
+      "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1fODNmempPc1VJYWJicUZTQkdVRTI3YTIyeDJHQjRkNEo4ZWQtX3JwSm5vb19OS0xvTFhVLVE5S1A1LXdWU09DandFcTJFZkQ0UVdCVDhEajZseXdNVFlPN0hlenpUcGdsNWlmQUMwNVg1MXF6Si13a0hR?oc=5",
+      "published": "2026-10-17T06:19:53.000Z",
+      "topic": "crypto",
+      "score": 5.5
+    }
+  ],
+  "rendered": "2026-10-17T07:07:33.415Z",
+  "options": {
+    "layout": "breaking",
+    "theme": "bbc",
+    "ratio": "4:5",
+    "ticker": "DAILYVOLEX  ···  CRYPTO & FINANCE NEWS  ···  ",
+    "label": "TOP STORIES",
+    "date": "17 October 2026",
+    "digest": false,
+    "carousel": true,
+    "posy": "-0.10"
+  },
+  "output": [
+    {
+      "kind": "carousel",
+      "headline": "3 stories",
+      "images": [
+        "data/pending/slide-1.png",
+        "data/pending/slide-2.png",
+        "data/pending/slide-3.png",
+        "data/pending/slide-4.png"
+      ],
+      "image": "data/pending/slide-1.png",
+      "width": 1080,
+      "height": 1350,
+      "sourceNames": [
+        "CoinDesk",
+        "Cointelegraph",
+        "Decrypt",
+        "Google News"
+      ],
+      "stories": [
+        {
+          "headline": "CFTC WANTS TO DROP GEMINI’S $5M SETTLEMENT. A JUDGE JUST SAID NO",
+          "display": "CFTC Wants to Drop Gemini’s $5M Settlement. A Judge Just Said No",
+          "original": "CFTC Wants to Drop Gemini’s $5M Settlement. A Judge Just Said No",
+          "truncated": false,
+          "usable": true,
+          "category": "CRYPTO NEWS",
+          "source": "CoinDesk · Cointelegraph · Decrypt",
+          "sourceNames": [
+            "CoinDesk",
+            "Cointelegraph",
+            "Decrypt"
+          ],
+          "corroboration": 3,
+          "link": "https://decrypt.co/381149/cftc-wants-drop-gemini-5m-settlement-judge-said-no",
+          "published": "2026-10-16T16:36:04.000Z",
+          "topic": "crypto",
+          "score": 6.575
+        },
+        {
+          "headline": "‘WOW, IT’S A REAL DISCOVERY’: CLAUDE CRACKS A 25-YEAR NSA NUMBER MYSTERY",
+          "display": "‘Wow, it’s a real discovery’: Claude cracks a 25-year NSA number mystery",
+          "original": "‘Wow, it’s a real discovery’: Claude cracks a 25-year NSA number mystery",
+          "truncated": false,
+          "usable": true,
+          "category": "CRYPTO NEWS",
+          "source": "CoinDesk · Google News",
+          "sourceNames": [
+            "CoinDesk",
+            "Google News"
+          ],
+          "corroboration": 2,
+          "link": "https://www.coindesk.com/tech/2026/10/17/wow-it-s-a-real-discovery-claude-cracks-a-25-year-nsa-number-mystery",
+          "published": "2026-10-17T06:39:48.000Z",
+          "topic": "crypto",
+          "score": 5.7
+        },
+        {
+          "headline": "BITCOIN PRICE AND DEUTSCHE BANK'S CRYPTO CUSTODY START - CRYPTOTICKER",
+          "display": "Bitcoin Price and Deutsche Bank's Crypto Custody Start - CryptoTicker",
+          "original": "Bitcoin Price and Deutsche Bank's Crypto Custody Start - CryptoTicker",
+          "truncated": false,
+          "usable": true,
+          "category": "CRYPTO NEWS",
+          "source": "Cointelegraph · Google News",
+          "sourceNames": [
+            "Cointelegraph",
+            "Google News"
+          ],
+          "corroboration": 2,
+          "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1fODNmempPc1VJYWJicUZTQkdVRTI3YTIyeDJHQjRkNEo4ZWQtX3JwSm5vb19OS0xvTFhVLVE5S1A1LXdWU09DandFcTJFZkQ0UVdCVDhEajZseXdNVFlPN0hlenpUcGdsNWlmQUMwNVg1MXF6Si13a0hR?oc=5",
+          "published": "2026-10-17T06:19:53.000Z",
+          "topic": "crypto",
+          "score": 5.5
+        }
+      ],
+      "usable": true
+    }
+  ]
+}
