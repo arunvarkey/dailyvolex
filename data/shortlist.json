@@ -1,67 +1,85 @@
 {
-  "generated": "2026-10-17T23:14:45.232Z",
-  "pool": 12,
+  "generated": "2026-10-17T23:15:07.211Z",
+  "pool": 271,
   "feedErrors": [],
   "stories": [
     {
-      "headline": "FEDERAL RESERVE CUTS INTEREST RATES BY 25 BASIS POINTS, CITING COOLING INFLATION",
-      "display": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
-      "original": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
+      "headline": "MICHAEL SAYLOR HIGHLIGHTS BITCOIN'S EXPANDING R...",
+      "display": "Michael Saylor highlights Bitcoin's expanding r...",
+      "original": "Michael Saylor highlights Bitcoin's expanding r...",
       "truncated": false,
       "usable": true,
       "category": "CRYPTO NEWS",
-      "source": "CoinDesk · Cointelegraph · Reuters",
+      "source": "Outlook Money · Pluang",
       "sourceNames": [
-        "CoinDesk",
-        "Cointelegraph",
-        "Reuters"
-      ],
-      "corroboration": 3,
-      "link": "https://coindesk.com/1",
-      "published": "2026-10-17T22:44:45.228Z",
-      "topic": "crypto",
-      "score": 7.8,
-      "photo": null
-    },
-    {
-      "headline": "SEC APPROVES SPOT SOLANA ETF APPLICATIONS FROM THREE ISSUERS",
-      "display": "SEC approves spot Solana ETF applications from three issuers",
-      "original": "SEC approves spot Solana ETF applications from three issuers",
-      "truncated": false,
-      "usable": true,
-      "category": "CRYPTO NEWS",
-      "source": "CoinDesk · Cointelegraph",
-      "sourceNames": [
-        "CoinDesk",
-        "Cointelegraph"
+        "Outlook Money",
+        "Pluang"
       ],
       "corroboration": 2,
-      "link": "https://coindesk.com/3",
-      "published": "2026-10-17T21:44:45.228Z",
+      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPUHVSLWh4OGVUeXVqdWtZQld6TUloX1FSQ3BUN25PbXV4S3hvTUVtdExFYnJnWl9yTlZ6LWl4RDdVZlN0dE9xUDNSSWFhdndsanN5SlZxR3FDSkdhb0JuczBtQWVxZDNzajVhRHhlTnhQNEJ1T1l3d0Q4cjRSclZJZ0R2QUdJeFFMWjRUVDd1ZGwyY2VZM0tnZUpMaw?oc=5",
+      "published": "2026-10-17T17:55:39.000Z",
       "topic": "crypto",
-      "score": 5.7,
-      "photo": null
+      "score": 5,
+      "photo": {
+        "path": "data/pending/photo-2.jpg",
+        "credit": "Photo: Icons8 team / CC0",
+        "license": "cc0",
+        "pageUrl": "https://stocksnap.io/photo/bitcoin-finance-BCEODSCQHF",
+        "query": "bitcoin"
+      }
     },
     {
-      "headline": "SENSEX CLIMBS 540 POINTS TO CLOSE AT RECORD HIGH, NIFTY TOPS 26,000",
-      "display": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
-      "original": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
+      "headline": "BITCOIN ETFS SEE $228M WEEKLY OUTFLOWS, MONTHLY TOTAL NEARS $618M AMID HIGH TRADING",
+      "display": "Bitcoin ETFs see $228M weekly outflows, monthly total nears $618M amid high trading",
+      "original": "Bitcoin ETFs see $228M weekly outflows, monthly total nears $618M amid high trading volumes",
+      "truncated": true,
+      "usable": true,
+      "category": "CRYPTO NEWS",
+      "source": "TradingView · Pluang",
+      "sourceNames": [
+        "TradingView",
+        "Pluang"
+      ],
+      "corroboration": 2,
+      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPNGExTndESmV2ZDIzcGJZRTJpaEpubEhSRDNRc255RjEtVmJXUzhfOVBWZVVIRDhJV21NeVl1WGl3S0FMekxsb1RPdkpsMG9CUjlBTDh3VDBFeFU1bXp6bjJ5RzZqV09KRURQUzRPeEM0Q19XMjNnZV9id0RGMU51eUttYWNJdzZCdW5iQg?oc=5",
+      "published": "2026-10-17T19:45:39.000Z",
+      "topic": "crypto",
+      "score": 5,
+      "photo": {
+        "path": "data/pending/photo-3.jpg",
+        "credit": "Photo: Icons8 team / CC0",
+        "license": "cc0",
+        "pageUrl": "https://stocksnap.io/photo/bitcoin-finance-QXVSHD5FLF",
+        "query": "bitcoin"
+      }
+    },
+    {
+      "headline": "ICICI BANK Q2 RESULTS: NET PROFIT JUMPS 20% YOY TO RS 14,843 CRORE, NII RISES 18%",
+      "display": "ICICI Bank Q2 Results: Net profit jumps 20% YoY to Rs 14,843 crore, NII rises 18%",
+      "original": "ICICI Bank Q2 Results: Net profit jumps 20% YoY to Rs 14,843 crore, NII rises 18%",
       "truncated": false,
       "usable": true,
       "category": "INDIA MARKETS",
-      "source": "Economic Times",
+      "source": "Economic Times · Mint",
       "sourceNames": [
-        "Economic Times"
+        "Economic Times",
+        "Mint"
       ],
-      "corroboration": 1,
-      "link": "https://et.com/1",
-      "published": "2026-10-17T21:44:45.228Z",
+      "corroboration": 2,
+      "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/icici-bank-q2-results-net-profit-jumps-20-to-rs-14843-crore-nii-rises-18-yoy/articleshow/135011810.cms",
+      "published": "2026-10-17T10:17:31.000Z",
       "topic": "india",
-      "score": 3.6,
-      "photo": null
+      "score": 4.475,
+      "photo": {
+        "path": "data/pending/photo-4.jpg",
+        "credit": "Photo: Lmadcap from Tokyo, Japan / CC0",
+        "license": "cc0",
+        "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=112855882",
+        "query": "bank building facade"
+      }
     }
   ],
-  "rendered": "2026-10-17T23:14:52.350Z",
+  "rendered": "2026-10-17T23:15:24.125Z",
   "options": {
     "layout": "breaking",
     "theme": "bbc",
@@ -89,68 +107,87 @@
       "width": 1080,
       "height": 1350,
       "sourceNames": [
-        "CoinDesk",
-        "Cointelegraph",
-        "Reuters",
-        "Economic Times"
+        "Outlook Money",
+        "Pluang",
+        "TradingView",
+        "Economic Times",
+        "Mint"
       ],
       "stories": [
         {
-          "headline": "FEDERAL RESERVE CUTS INTEREST RATES BY 25 BASIS POINTS, CITING COOLING INFLATION",
-          "display": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
-          "original": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
+          "headline": "MICHAEL SAYLOR HIGHLIGHTS BITCOIN'S EXPANDING R...",
+          "display": "Michael Saylor highlights Bitcoin's expanding r...",
+          "original": "Michael Saylor highlights Bitcoin's expanding r...",
           "truncated": false,
           "usable": true,
           "category": "CRYPTO NEWS",
-          "source": "CoinDesk · Cointelegraph · Reuters",
+          "source": "Outlook Money · Pluang",
           "sourceNames": [
-            "CoinDesk",
-            "Cointelegraph",
-            "Reuters"
-          ],
-          "corroboration": 3,
-          "link": "https://coindesk.com/1",
-          "published": "2026-10-17T22:44:45.228Z",
-          "topic": "crypto",
-          "score": 7.8,
-          "photo": null
-        },
-        {
-          "headline": "SEC APPROVES SPOT SOLANA ETF APPLICATIONS FROM THREE ISSUERS",
-          "display": "SEC approves spot Solana ETF applications from three issuers",
-          "original": "SEC approves spot Solana ETF applications from three issuers",
-          "truncated": false,
-          "usable": true,
-          "category": "CRYPTO NEWS",
-          "source": "CoinDesk · Cointelegraph",
-          "sourceNames": [
-            "CoinDesk",
-            "Cointelegraph"
+            "Outlook Money",
+            "Pluang"
           ],
           "corroboration": 2,
-          "link": "https://coindesk.com/3",
-          "published": "2026-10-17T21:44:45.228Z",
+          "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPUHVSLWh4OGVUeXVqdWtZQld6TUloX1FSQ3BUN25PbXV4S3hvTUVtdExFYnJnWl9yTlZ6LWl4RDdVZlN0dE9xUDNSSWFhdndsanN5SlZxR3FDSkdhb0JuczBtQWVxZDNzajVhRHhlTnhQNEJ1T1l3d0Q4cjRSclZJZ0R2QUdJeFFMWjRUVDd1ZGwyY2VZM0tnZUpMaw?oc=5",
+          "published": "2026-10-17T17:55:39.000Z",
           "topic": "crypto",
-          "score": 5.7,
-          "photo": null
+          "score": 5,
+          "photo": {
+            "path": "data/pending/photo-2.jpg",
+            "credit": "Photo: Icons8 team / CC0",
+            "license": "cc0",
+            "pageUrl": "https://stocksnap.io/photo/bitcoin-finance-BCEODSCQHF",
+            "query": "bitcoin"
+          }
         },
         {
-          "headline": "SENSEX CLIMBS 540 POINTS TO CLOSE AT RECORD HIGH, NIFTY TOPS 26,000",
-          "display": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
-          "original": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
+          "headline": "BITCOIN ETFS SEE $228M WEEKLY OUTFLOWS, MONTHLY TOTAL NEARS $618M AMID HIGH TRADING",
+          "display": "Bitcoin ETFs see $228M weekly outflows, monthly total nears $618M amid high trading",
+          "original": "Bitcoin ETFs see $228M weekly outflows, monthly total nears $618M amid high trading volumes",
+          "truncated": true,
+          "usable": true,
+          "category": "CRYPTO NEWS",
+          "source": "TradingView · Pluang",
+          "sourceNames": [
+            "TradingView",
+            "Pluang"
+          ],
+          "corroboration": 2,
+          "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPNGExTndESmV2ZDIzcGJZRTJpaEpubEhSRDNRc255RjEtVmJXUzhfOVBWZVVIRDhJV21NeVl1WGl3S0FMekxsb1RPdkpsMG9CUjlBTDh3VDBFeFU1bXp6bjJ5RzZqV09KRURQUzRPeEM0Q19XMjNnZV9id0RGMU51eUttYWNJdzZCdW5iQg?oc=5",
+          "published": "2026-10-17T19:45:39.000Z",
+          "topic": "crypto",
+          "score": 5,
+          "photo": {
+            "path": "data/pending/photo-3.jpg",
+            "credit": "Photo: Icons8 team / CC0",
+            "license": "cc0",
+            "pageUrl": "https://stocksnap.io/photo/bitcoin-finance-QXVSHD5FLF",
+            "query": "bitcoin"
+          }
+        },
+        {
+          "headline": "ICICI BANK Q2 RESULTS: NET PROFIT JUMPS 20% YOY TO RS 14,843 CRORE, NII RISES 18%",
+          "display": "ICICI Bank Q2 Results: Net profit jumps 20% YoY to Rs 14,843 crore, NII rises 18%",
+          "original": "ICICI Bank Q2 Results: Net profit jumps 20% YoY to Rs 14,843 crore, NII rises 18%",
           "truncated": false,
           "usable": true,
           "category": "INDIA MARKETS",
-          "source": "Economic Times",
+          "source": "Economic Times · Mint",
           "sourceNames": [
-            "Economic Times"
+            "Economic Times",
+            "Mint"
           ],
-          "corroboration": 1,
-          "link": "https://et.com/1",
-          "published": "2026-10-17T21:44:45.228Z",
+          "corroboration": 2,
+          "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/icici-bank-q2-results-net-profit-jumps-20-to-rs-14843-crore-nii-rises-18-yoy/articleshow/135011810.cms",
+          "published": "2026-10-17T10:17:31.000Z",
           "topic": "india",
-          "score": 3.6,
-          "photo": null
+          "score": 4.475,
+          "photo": {
+            "path": "data/pending/photo-4.jpg",
+            "credit": "Photo: Lmadcap from Tokyo, Japan / CC0",
+            "license": "cc0",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=112855882",
+            "query": "bank building facade"
+          }
         }
       ],
       "usable": true
