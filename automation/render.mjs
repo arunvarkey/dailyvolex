@@ -75,19 +75,30 @@ async function imageFor(story, index, opts) {
     return null;
   }
   const name = `photo-${index}.jpg`;
-  try {
-    const { bytes } = await downloadImage(found.image.url, join(OUT_DIR, name));
-    usedPhotos.add(found.image.url);
-    console.log(`  photo: "${found.query}" · match ${found.image.relevance ?? '?'}`
-      + ` · ${found.image.credit} · ${(bytes/1024).toFixed(0)} KB`);
-    return { path: `data/pending/${name}`, credit: found.image.credit,
-             license: found.image.license, pageUrl: found.image.pageUrl,
-             query: found.query, relevance: found.image.relevance, title: found.image.title };
-  } catch (e) {
-    story.photoError = `download failed: ${e.message}`;
-    console.log(`  no photo: ${story.photoError} — using the chart`);
-    return null;
+  // Openverse indexes links that have since died, so a 404 on the best match
+  // should move to the next one rather than cost the story its picture.
+  const candidates = [found.image, ...(found.image.alternatives || [])];
+  const failures = [];
+
+  for (const cand of candidates) {
+    try {
+      const { bytes } = await downloadImage(cand.url, join(OUT_DIR, name));
+      usedPhotos.add(cand.url);
+      console.log(`  photo: "${found.query}" · match ${cand.relevance ?? '?'}`
+        + ` · ${cand.credit} · ${(bytes/1024).toFixed(0)} KB`
+        + (failures.length ? `  (after ${failures.length} dead link${failures.length>1?'s':''})` : ''));
+      return { path: `data/pending/${name}`, credit: cand.credit,
+               license: cand.license, pageUrl: cand.pageUrl,
+               query: found.query, relevance: cand.relevance, title: cand.title };
+    } catch (e) {
+      failures.push(e.message);
+      usedPhotos.add(cand.url);          // do not retry a dead link elsewhere
+    }
   }
+
+  story.photoError = `every candidate failed to download (${failures.join('; ')})`;
+  console.log(`  no photo: ${story.photoError} — using the chart`);
+  return null;
 }
 
 function storyUrl(port, story, opts) {

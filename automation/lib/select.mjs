@@ -50,6 +50,16 @@ const TOPICAL = [
   'price','prices','surge','plunge','rally','rallies','slump','soars','tumbles','jumps','falls',
 ];
 
+/* Stock tips are not news. "Analyst recommends 3 stocks to buy" is somebody's
+   advice with a price target attached, and putting it out under a news
+   channel's name is both weak editorially and uncomfortably close to passing
+   on financial advice. */
+const TIPS = /\b(recommends?|top picks?|stocks? to (buy|watch|sell)|buy or sell|target price|should you (buy|invest)|multibagger|best stocks?|these \d+ stocks?)\b/i;
+
+export function isAdvice(title) {
+  return TIPS.test(String(title));
+}
+
 export function isTopical(title) {
   const t = ' ' + String(title).toLowerCase().replace(/[^a-z0-9$&. ]/g, ' ').replace(/\s+/g, ' ') + ' ';
   // A currency amount is itself a strong signal: "$5M settlement", "₹2,000 crore".
@@ -146,7 +156,8 @@ export function selectStories(items, { history = [], count = 3, now = Date.now()
   const cutoff = now - maxAgeHours * 3600000;
   const fresh = items
     .filter(i => !i.published || i.published >= cutoff)
-    .filter(i => isTopical(i.title));
+    .filter(i => isTopical(i.title))
+    .filter(i => !isAdvice(i.title));
 
   const ranked = rankClusters(cluster(fresh), { now });
   const chosen = [];
