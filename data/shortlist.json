@@ -1,70 +1,84 @@
 {
-  "generated": "2026-10-18T22:01:00.283Z",
-  "pool": 12,
+  "generated": "2026-10-18T22:01:31.611Z",
+  "pool": 271,
   "feedErrors": [],
   "stories": [
     {
-      "headline": "FEDERAL RESERVE CUTS INTEREST RATES BY 25 BASIS POINTS, CITING COOLING INFLATION",
-      "display": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
-      "original": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
+      "headline": "BLACK MONDAY FEARS GRIP WALL STREET AS TRADERS LOSE $52 MILLION ON AI STOCK BETS",
+      "display": "Black Monday Fears Grip Wall Street as Traders Lose $52 Million on AI Stock Bets",
+      "original": "Black Monday Fears Grip Wall Street as Traders Lose $52 Million on AI Stock Bets",
       "truncated": false,
       "usable": true,
-      "category": "CRYPTO NEWS",
-      "source": "CoinDesk · Cointelegraph · Reuters",
+      "category": "WORLD MARKETS",
+      "source": "CoinDesk · Yahoo Finance",
       "sourceNames": [
         "CoinDesk",
-        "Cointelegraph",
-        "Reuters"
-      ],
-      "corroboration": 3,
-      "link": "https://coindesk.com/1",
-      "published": "2026-10-18T21:31:00.278Z",
-      "topic": "crypto",
-      "score": 7.8,
-      "photoError": "fetch failed (searched \"Federal Reserve\")",
-      "photo": null
-    },
-    {
-      "headline": "SEC APPROVES SPOT SOLANA ETF APPLICATIONS FROM THREE ISSUERS",
-      "display": "SEC approves spot Solana ETF applications from three issuers",
-      "original": "SEC approves spot Solana ETF applications from three issuers",
-      "truncated": false,
-      "usable": true,
-      "category": "CRYPTO NEWS",
-      "source": "CoinDesk · Cointelegraph",
-      "sourceNames": [
-        "CoinDesk",
-        "Cointelegraph"
+        "Yahoo Finance"
       ],
       "corroboration": 2,
-      "link": "https://coindesk.com/3",
-      "published": "2026-10-18T20:31:00.278Z",
-      "topic": "crypto",
-      "score": 5.7,
-      "photoError": "fetch failed (searched \"Solana ETF\")",
+      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPQ2F1X0NFSEExdXFUR3VwSEVRd29YMi1QQjFVb24tZ2NXbEtJZDJsY3djQzNlclRFYm05SktkNDUxS1hoX1o0VkI1ZkNETjdtNVNkdTlKaGo2TlctTEZjeEhVT0Z4ZmJPNVBCQTZKOXk3NjctMlBIZzdhYXdFY1NzZG5PQXlncEpBZ3g2anNkdjJPMVdQQUhwQg?oc=5",
+      "published": "2026-10-18T17:51:27.000Z",
+      "topic": "world",
+      "score": 5.4,
+      "photoError": "every candidate failed to download (too large (13.0 MB))",
       "photo": null
     },
     {
-      "headline": "SENSEX CLIMBS 540 POINTS TO CLOSE AT RECORD HIGH, NIFTY TOPS 26,000",
-      "display": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
-      "original": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
+      "headline": "RUSSIA STOCKS LOWER AT CLOSE OF TRADE; MOEX RUSSIA INDEX UNCHANGED",
+      "display": "Russia stocks lower at close of trade; MOEX Russia Index unchanged",
+      "original": "Russia stocks lower at close of trade; MOEX Russia Index unchanged",
       "truncated": false,
       "usable": true,
-      "category": "INDIA MARKETS",
-      "source": "Economic Times",
+      "category": "WORLD MARKETS",
+      "source": "Investing.com India · Investing.com",
       "sourceNames": [
-        "Economic Times"
+        "Investing.com India",
+        "Investing.com"
       ],
-      "corroboration": 1,
-      "link": "https://et.com/1",
-      "published": "2026-10-18T20:31:00.278Z",
-      "topic": "india",
-      "score": 3.6,
-      "photoError": "fetch failed (searched \"Sensex\")",
-      "photo": null
+      "corroboration": 2,
+      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQOVBTQ2xpM0R1LUJhdTBCT2tfOWtuUnI5Wl8tRE9Ic294Qmtkd3NNTUFHWUJvQTZhU0EtWldQa2Q3bk5jZDRpdXloRGIwVVB2bTlXTEJCZDFiaEgyNTJiUWhjTFlFSEJJalRlczRXQkx3UGdZeFJGSGVYaFJIY0F4MHdLYXdjVjZqUEVGb3NEaW02NW4tRkJqRVJrRXZtWkp4YUx1UzJJaEFRSklXamx1RTUxcTF5V2taeFhSZTJvMA?oc=5",
+      "published": "2026-10-18T21:25:17.000Z",
+      "topic": "world",
+      "score": 5.3,
+      "photo": {
+        "path": "data/pending/photo-3.jpg",
+        "credit": "Photo: Russian Presidential Press and Informati / CC BY 4.0",
+        "license": "by",
+        "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=70886381",
+        "query": "Russia",
+        "relevance": 0.13,
+        "title": "France champion of the Football World Cup Russia 2018"
+      }
+    },
+    {
+      "headline": "BITCOIN ETFS SEE $910M OUTFLOWS IN TWO WEEKS AM...",
+      "display": "Bitcoin ETFs see $910M outflows in two weeks am...",
+      "original": "Bitcoin ETFs see $910M outflows in two weeks am...",
+      "truncated": false,
+      "usable": true,
+      "category": "CRYPTO NEWS",
+      "source": "Decrypt · Pluang",
+      "sourceNames": [
+        "Decrypt",
+        "Pluang"
+      ],
+      "corroboration": 2,
+      "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOYkRDbG1sM09Xa3NOeV84bXlnOWd3VXlsc0QtV1ZZWnJQY05jdTRHaDI1aTFJY1o5ME1Sc05wWXZxSVF0WTFJLXVFTWQwUWlPdm4tdzJKLTFSakpiY3Z0RmF3WG55Z3JlMi01bXIyNnpQdk1LYW5naTNqSlN6QmxuWHdMMW9kZ3M?oc=5",
+      "published": "2026-10-18T19:24:17.000Z",
+      "topic": "crypto",
+      "score": 5.1,
+      "photo": {
+        "path": "data/pending/photo-4.jpg",
+        "credit": "Photo: 张楠赓 / CC0",
+        "license": "cc0",
+        "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=28280558",
+        "query": "bitcoin",
+        "relevance": 0.2,
+        "title": "File:Avalon-An ASIC base bitcoin machine.jpg"
+      }
     }
   ],
-  "rendered": "2026-10-18T22:01:05.755Z",
+  "rendered": "2026-10-18T22:02:31.725Z",
   "options": {
     "layout": "breaking",
     "theme": "bbc",
@@ -93,70 +107,86 @@
       "height": 1350,
       "sourceNames": [
         "CoinDesk",
-        "Cointelegraph",
-        "Reuters",
-        "Economic Times"
+        "Yahoo Finance",
+        "Investing.com India",
+        "Investing.com",
+        "Decrypt",
+        "Pluang"
       ],
       "stories": [
         {
-          "headline": "FEDERAL RESERVE CUTS INTEREST RATES BY 25 BASIS POINTS, CITING COOLING INFLATION",
-          "display": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
-          "original": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
+          "headline": "BLACK MONDAY FEARS GRIP WALL STREET AS TRADERS LOSE $52 MILLION ON AI STOCK BETS",
+          "display": "Black Monday Fears Grip Wall Street as Traders Lose $52 Million on AI Stock Bets",
+          "original": "Black Monday Fears Grip Wall Street as Traders Lose $52 Million on AI Stock Bets",
           "truncated": false,
           "usable": true,
-          "category": "CRYPTO NEWS",
-          "source": "CoinDesk · Cointelegraph · Reuters",
+          "category": "WORLD MARKETS",
+          "source": "CoinDesk · Yahoo Finance",
           "sourceNames": [
             "CoinDesk",
-            "Cointelegraph",
-            "Reuters"
-          ],
-          "corroboration": 3,
-          "link": "https://coindesk.com/1",
-          "published": "2026-10-18T21:31:00.278Z",
-          "topic": "crypto",
-          "score": 7.8,
-          "photoError": "fetch failed (searched \"Federal Reserve\")",
-          "photo": null
-        },
-        {
-          "headline": "SEC APPROVES SPOT SOLANA ETF APPLICATIONS FROM THREE ISSUERS",
-          "display": "SEC approves spot Solana ETF applications from three issuers",
-          "original": "SEC approves spot Solana ETF applications from three issuers",
-          "truncated": false,
-          "usable": true,
-          "category": "CRYPTO NEWS",
-          "source": "CoinDesk · Cointelegraph",
-          "sourceNames": [
-            "CoinDesk",
-            "Cointelegraph"
+            "Yahoo Finance"
           ],
           "corroboration": 2,
-          "link": "https://coindesk.com/3",
-          "published": "2026-10-18T20:31:00.278Z",
-          "topic": "crypto",
-          "score": 5.7,
-          "photoError": "fetch failed (searched \"Solana ETF\")",
+          "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPQ2F1X0NFSEExdXFUR3VwSEVRd29YMi1QQjFVb24tZ2NXbEtJZDJsY3djQzNlclRFYm05SktkNDUxS1hoX1o0VkI1ZkNETjdtNVNkdTlKaGo2TlctTEZjeEhVT0Z4ZmJPNVBCQTZKOXk3NjctMlBIZzdhYXdFY1NzZG5PQXlncEpBZ3g2anNkdjJPMVdQQUhwQg?oc=5",
+          "published": "2026-10-18T17:51:27.000Z",
+          "topic": "world",
+          "score": 5.4,
+          "photoError": "every candidate failed to download (too large (13.0 MB))",
           "photo": null
         },
         {
-          "headline": "SENSEX CLIMBS 540 POINTS TO CLOSE AT RECORD HIGH, NIFTY TOPS 26,000",
-          "display": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
-          "original": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
+          "headline": "RUSSIA STOCKS LOWER AT CLOSE OF TRADE; MOEX RUSSIA INDEX UNCHANGED",
+          "display": "Russia stocks lower at close of trade; MOEX Russia Index unchanged",
+          "original": "Russia stocks lower at close of trade; MOEX Russia Index unchanged",
           "truncated": false,
           "usable": true,
-          "category": "INDIA MARKETS",
-          "source": "Economic Times",
+          "category": "WORLD MARKETS",
+          "source": "Investing.com India · Investing.com",
           "sourceNames": [
-            "Economic Times"
+            "Investing.com India",
+            "Investing.com"
           ],
-          "corroboration": 1,
-          "link": "https://et.com/1",
-          "published": "2026-10-18T20:31:00.278Z",
-          "topic": "india",
-          "score": 3.6,
-          "photoError": "fetch failed (searched \"Sensex\")",
-          "photo": null
+          "corroboration": 2,
+          "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQOVBTQ2xpM0R1LUJhdTBCT2tfOWtuUnI5Wl8tRE9Ic294Qmtkd3NNTUFHWUJvQTZhU0EtWldQa2Q3bk5jZDRpdXloRGIwVVB2bTlXTEJCZDFiaEgyNTJiUWhjTFlFSEJJalRlczRXQkx3UGdZeFJGSGVYaFJIY0F4MHdLYXdjVjZqUEVGb3NEaW02NW4tRkJqRVJrRXZtWkp4YUx1UzJJaEFRSklXamx1RTUxcTF5V2taeFhSZTJvMA?oc=5",
+          "published": "2026-10-18T21:25:17.000Z",
+          "topic": "world",
+          "score": 5.3,
+          "photo": {
+            "path": "data/pending/photo-3.jpg",
+            "credit": "Photo: Russian Presidential Press and Informati / CC BY 4.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=70886381",
+            "query": "Russia",
+            "relevance": 0.13,
+            "title": "France champion of the Football World Cup Russia 2018"
+          }
+        },
+        {
+          "headline": "BITCOIN ETFS SEE $910M OUTFLOWS IN TWO WEEKS AM...",
+          "display": "Bitcoin ETFs see $910M outflows in two weeks am...",
+          "original": "Bitcoin ETFs see $910M outflows in two weeks am...",
+          "truncated": false,
+          "usable": true,
+          "category": "CRYPTO NEWS",
+          "source": "Decrypt · Pluang",
+          "sourceNames": [
+            "Decrypt",
+            "Pluang"
+          ],
+          "corroboration": 2,
+          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOYkRDbG1sM09Xa3NOeV84bXlnOWd3VXlsc0QtV1ZZWnJQY05jdTRHaDI1aTFJY1o5ME1Sc05wWXZxSVF0WTFJLXVFTWQwUWlPdm4tdzJKLTFSakpiY3Z0RmF3WG55Z3JlMi01bXIyNnpQdk1LYW5naTNqSlN6QmxuWHdMMW9kZ3M?oc=5",
+          "published": "2026-10-18T19:24:17.000Z",
+          "topic": "crypto",
+          "score": 5.1,
+          "photo": {
+            "path": "data/pending/photo-4.jpg",
+            "credit": "Photo: 张楠赓 / CC0",
+            "license": "cc0",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=28280558",
+            "query": "bitcoin",
+            "relevance": 0.2,
+            "title": "File:Avalon-An ASIC base bitcoin machine.jpg"
+          }
         }
       ],
       "usable": true
