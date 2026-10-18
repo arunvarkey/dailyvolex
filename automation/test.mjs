@@ -283,15 +283,21 @@ ok('the specific subject wins when it matches',
   `${matched.query} -> ${matched.image?.url}`);
 
 const noMatch = async () => ({ ok:true, json: async () => ({ results:
-  [img({ title:'Unrelated scenery', url:'https://x/none.jpg' })] }) });
+  [img({ title:'A red car in a forest', tags:[{name:'car'}], url:'https://x/car.jpg' })] }) });
 const fell = await findImage('Michael Saylor highlights Bitcoin treasuries', { fetchImpl: noMatch });
-ok('an unmatched search still returns a usable image rather than nothing',
-  fell.image?.url === 'https://x/none.jpg', JSON.stringify(fell.error));
+ok('a picture of nothing to do with the story is refused',
+  fell.image === null && /closely enough/.test(fell.error || ''), JSON.stringify(fell.error));
+
+const looseMatch = async () => ({ ok:true, json: async () => ({ results:
+  [img({ title:'Bitcoin mining rigs', tags:[{name:'bitcoin'}], url:'https://x/rigs.jpg' })] }) });
+ok('a loosely related picture is still used',
+  (await findImage('Michael Saylor highlights Bitcoin treasuries',
+    { fetchImpl: looseMatch })).image?.url === 'https://x/rigs.jpg');
 
 // The search itself, with the API stubbed.
 const stubOk = async () => ({ ok:true, json: async () => ({ results: [
-  img({ license:'by-nc', creator:'No' }),            // must be skipped
-  img({ license:'by', creator:'Yes', width:3000 }),
+  img({ license:'by-nc', creator:'No',  title:'Bitcoin rallies hard' }),   // skipped: licence
+  img({ license:'by',    creator:'Yes', title:'Bitcoin rallies hard', width:3000 }),
 ]}) });
 const found = await findImage('Bitcoin rallies', { fetchImpl: stubOk });
 ok('the search skips unusable licences', found.image?.credit.includes('Yes'), JSON.stringify(found.image));
@@ -301,8 +307,8 @@ ok('nothing usable yields no image, not a bad one',
   (await findImage('x', { fetchImpl: stubEmpty })).image === null);
 
 // The same subject twice must not yield the same photograph twice.
-const two = [img({license:'cc0', url:'https://x/a.jpg', width:3000}),
-             img({license:'cc0', url:'https://x/b.jpg', width:2000})];
+const two = [img({license:'cc0', url:'https://x/a.jpg', width:3000, title:'Bitcoin again'}),
+             img({license:'cc0', url:'https://x/b.jpg', width:2000, title:'Bitcoin again'})];
 ok('an already-used image is skipped',
   pickBest(two, new Set(['https://x/a.jpg'])).url === 'https://x/b.jpg');
 ok('everything used means no image, not a repeat',

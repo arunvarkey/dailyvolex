@@ -233,12 +233,21 @@ export async function findImage(headline, { fetchImpl = fetch, timeoutMs = 20000
     // Alternatives for the caller to fall back on when a link is dead.
     image.alternatives = scored.slice(1, 4).map(x => toImage(x.r, x.score));
 
-    // A specific query that actually matched wins outright. Otherwise hold it
-    // and try the next, less specific, query.
-    if (chosen.score >= minRelevance || q === queries[queries.length - 1])
-      return { image, query: q, error: null };
-    if (!fallback) fallback = { image, query: q, error: null };
+    // A query that actually matched wins outright. Anything weaker is held and
+    // judged at the end — including on the last query, which used to be
+    // returned regardless of whether it matched at all.
+    if (chosen.score >= minRelevance) return { image, query: q, error: null };
+    if (!fallback || (fallback.image.relevance || 0) < (image.relevance || 0))
+      fallback = { image, query: q, error: null };
   }
+
+  // An image with no word in common with the headline is not a picture of the
+  // story — a search for "stock market trading screen" returned a red car for
+  // a Wall Street headline. The generated chart is better than something
+  // unrelated sitting under a news headline as if it illustrated it.
+  if (fallback && !fallback.image.relevance)
+    return { image: null, query: fallback.query,
+             error: 'no image matched the story closely enough' };
 
   if (fallback) return fallback;
   return { image: null, query: queries[0],
