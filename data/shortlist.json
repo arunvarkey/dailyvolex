@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-18T22:01:31.611Z",
+  "generated": "2026-10-18T22:03:19.480Z",
   "pool": 271,
   "feedErrors": [],
   "stories": [
@@ -20,8 +20,15 @@
       "published": "2026-10-18T17:51:27.000Z",
       "topic": "world",
       "score": 5.4,
-      "photoError": "every candidate failed to download (too large (13.0 MB))",
-      "photo": null
+      "photo": {
+        "path": "data/pending/photo-2.jpg",
+        "credit": "Photo: Karen Roe / CC BY 2.0",
+        "license": "by",
+        "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=177017574",
+        "query": "stock market trading screen",
+        "relevance": 0,
+        "title": "RXY 433 1955 Karmann Ghia (1)"
+      }
     },
     {
       "headline": "RUSSIA STOCKS LOWER AT CLOSE OF TRADE; MOEX RUSSIA INDEX UNCHANGED",
@@ -40,45 +47,38 @@
       "published": "2026-10-18T21:25:17.000Z",
       "topic": "world",
       "score": 5.3,
-      "photo": {
-        "path": "data/pending/photo-3.jpg",
-        "credit": "Photo: Russian Presidential Press and Informati / CC BY 4.0",
-        "license": "by",
-        "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=70886381",
-        "query": "Russia",
-        "relevance": 0.13,
-        "title": "France champion of the Football World Cup Russia 2018"
-      }
+      "photoError": "timed out (searched \"MOEX Russia Index\")",
+      "photo": null
     },
     {
-      "headline": "BITCOIN ETFS SEE $910M OUTFLOWS IN TWO WEEKS AM...",
-      "display": "Bitcoin ETFs see $910M outflows in two weeks am...",
-      "original": "Bitcoin ETFs see $910M outflows in two weeks am...",
+      "headline": "ETHEREUM PRICE PREDICTION: CAN ETH GET BACK TO $3,000 BEFORE THE END OF 2026?",
+      "display": "Ethereum Price Prediction: Can ETH Get Back to $3,000 Before the End of 2026?",
+      "original": "Ethereum Price Prediction: Can ETH Get Back to $3,000 Before the End of 2026?",
       "truncated": false,
       "usable": true,
       "category": "CRYPTO NEWS",
-      "source": "Decrypt · Pluang",
+      "source": "Google News · Yahoo Finance",
       "sourceNames": [
-        "Decrypt",
-        "Pluang"
+        "Google News",
+        "Yahoo Finance"
       ],
       "corroboration": 2,
-      "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOYkRDbG1sM09Xa3NOeV84bXlnOWd3VXlsc0QtV1ZZWnJQY05jdTRHaDI1aTFJY1o5ME1Sc05wWXZxSVF0WTFJLXVFTWQwUWlPdm4tdzJKLTFSakpiY3Z0RmF3WG55Z3JlMi01bXIyNnpQdk1LYW5naTNqSlN6QmxuWHdMMW9kZ3M?oc=5",
-      "published": "2026-10-18T19:24:17.000Z",
+      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOYlJHUUMzMjQ3RGl5VktfSDlqdW5BU3VVR0d3NnhKWVBnOTk1eW9OaTVydWNreXdfYlhPSy1HUzFOMWFQNng0SDZMLVdwZHBsdHpzMzdseUFNUEs5LTJHTHBSQ1NuWkxBRWdmbVByVjd5b1B6N1JxZGtHUFFBN3VBMWRaS3gwYXNJTGsxbTdtWGRialFBd1hlaHZpRU9WZVV2?oc=5",
+      "published": "2026-10-18T19:52:55.000Z",
       "topic": "crypto",
-      "score": 5.1,
+      "score": 5,
       "photo": {
         "path": "data/pending/photo-4.jpg",
-        "credit": "Photo: 张楠赓 / CC0",
+        "credit": "Photo: Wikideas1 / CC0",
         "license": "cc0",
-        "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=28280558",
-        "query": "bitcoin",
-        "relevance": 0.2,
-        "title": "File:Avalon-An ASIC base bitcoin machine.jpg"
+        "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=121486217",
+        "query": "ethereum",
+        "relevance": 0.33,
+        "title": "Ethereum price daily"
       }
     }
   ],
-  "rendered": "2026-10-18T22:02:31.725Z",
+  "rendered": "2026-10-18T22:04:34.749Z",
   "options": {
     "layout": "breaking",
     "theme": "bbc",
@@ -110,8 +110,7 @@
         "Yahoo Finance",
         "Investing.com India",
         "Investing.com",
-        "Decrypt",
-        "Pluang"
+        "Google News"
       ],
       "stories": [
         {
@@ -131,8 +130,15 @@
           "published": "2026-10-18T17:51:27.000Z",
           "topic": "world",
           "score": 5.4,
-          "photoError": "every candidate failed to download (too large (13.0 MB))",
-          "photo": null
+          "photo": {
+            "path": "data/pending/photo-2.jpg",
+            "credit": "Photo: Karen Roe / CC BY 2.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=177017574",
+            "query": "stock market trading screen",
+            "relevance": 0,
+            "title": "RXY 433 1955 Karmann Ghia (1)"
+          }
         },
         {
           "headline": "RUSSIA STOCKS LOWER AT CLOSE OF TRADE; MOEX RUSSIA INDEX UNCHANGED",
@@ -151,41 +157,34 @@
           "published": "2026-10-18T21:25:17.000Z",
           "topic": "world",
           "score": 5.3,
-          "photo": {
-            "path": "data/pending/photo-3.jpg",
-            "credit": "Photo: Russian Presidential Press and Informati / CC BY 4.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=70886381",
-            "query": "Russia",
-            "relevance": 0.13,
-            "title": "France champion of the Football World Cup Russia 2018"
-          }
+          "photoError": "timed out (searched \"MOEX Russia Index\")",
+          "photo": null
         },
         {
-          "headline": "BITCOIN ETFS SEE $910M OUTFLOWS IN TWO WEEKS AM...",
-          "display": "Bitcoin ETFs see $910M outflows in two weeks am...",
-          "original": "Bitcoin ETFs see $910M outflows in two weeks am...",
+          "headline": "ETHEREUM PRICE PREDICTION: CAN ETH GET BACK TO $3,000 BEFORE THE END OF 2026?",
+          "display": "Ethereum Price Prediction: Can ETH Get Back to $3,000 Before the End of 2026?",
+          "original": "Ethereum Price Prediction: Can ETH Get Back to $3,000 Before the End of 2026?",
           "truncated": false,
           "usable": true,
           "category": "CRYPTO NEWS",
-          "source": "Decrypt · Pluang",
+          "source": "Google News · Yahoo Finance",
           "sourceNames": [
-            "Decrypt",
-            "Pluang"
+            "Google News",
+            "Yahoo Finance"
           ],
           "corroboration": 2,
-          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOYkRDbG1sM09Xa3NOeV84bXlnOWd3VXlsc0QtV1ZZWnJQY05jdTRHaDI1aTFJY1o5ME1Sc05wWXZxSVF0WTFJLXVFTWQwUWlPdm4tdzJKLTFSakpiY3Z0RmF3WG55Z3JlMi01bXIyNnpQdk1LYW5naTNqSlN6QmxuWHdMMW9kZ3M?oc=5",
-          "published": "2026-10-18T19:24:17.000Z",
+          "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOYlJHUUMzMjQ3RGl5VktfSDlqdW5BU3VVR0d3NnhKWVBnOTk1eW9OaTVydWNreXdfYlhPSy1HUzFOMWFQNng0SDZMLVdwZHBsdHpzMzdseUFNUEs5LTJHTHBSQ1NuWkxBRWdmbVByVjd5b1B6N1JxZGtHUFFBN3VBMWRaS3gwYXNJTGsxbTdtWGRialFBd1hlaHZpRU9WZVV2?oc=5",
+          "published": "2026-10-18T19:52:55.000Z",
           "topic": "crypto",
-          "score": 5.1,
+          "score": 5,
           "photo": {
             "path": "data/pending/photo-4.jpg",
-            "credit": "Photo: 张楠赓 / CC0",
+            "credit": "Photo: Wikideas1 / CC0",
             "license": "cc0",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=28280558",
-            "query": "bitcoin",
-            "relevance": 0.2,
-            "title": "File:Avalon-An ASIC base bitcoin machine.jpg"
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=121486217",
+            "query": "ethereum",
+            "relevance": 0.33,
+            "title": "Ethereum price daily"
           }
         }
       ],
