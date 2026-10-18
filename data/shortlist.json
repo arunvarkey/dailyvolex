@@ -1,73 +1,67 @@
 {
-  "generated": "2026-10-18T07:21:49.543Z",
-  "pool": 271,
+  "generated": "2026-10-18T21:55:29.741Z",
+  "pool": 12,
   "feedErrors": [],
   "stories": [
     {
-      "headline": "FPIS PULL OUT RS 52,100 CR FROM EQUITIES IN OCT SO FAR AMID GLOBAL HEADWINDS",
-      "display": "FPIs pull out Rs 52,100 cr from equities in Oct so far amid global headwinds",
-      "original": "FPIs pull out Rs 52,100 cr from equities in Oct so far amid global headwinds",
-      "truncated": false,
-      "usable": true,
-      "category": "INDIA MARKETS",
-      "source": "Economic Times · Business Standard",
-      "sourceNames": [
-        "Economic Times",
-        "Business Standard"
-      ],
-      "corroboration": 2,
-      "link": "https://economictimes.indiatimes.com/markets/stocks/news/fpis-pull-out-rs-52100-cr-from-equities-in-oct-so-far-amid-global-headwinds/articleshow/135024995.cms",
-      "published": "2026-10-18T06:33:22.000Z",
-      "topic": "india",
-      "score": 5.6,
-      "photo": null
-    },
-    {
-      "headline": "BONUS ISSUES, STOCK SPLITS & DIVIDENDS: HDB FINANCIAL, IRFC",
-      "display": "Bonus issues, stock splits & dividends: HDB Financial, IRFC",
-      "original": "Bonus issues, stock splits & dividends: HDB Financial, IRFC, TechM among 19 stocks turning ex-record date this week",
-      "truncated": false,
-      "usable": true,
-      "category": "INDIA MARKETS",
-      "source": "Economic Times · The Economic Times",
-      "sourceNames": [
-        "Economic Times",
-        "The Economic Times"
-      ],
-      "corroboration": 2,
-      "link": "https://economictimes.indiatimes.com/markets/stocks/news/bonus-issues-stock-splits-dividends-hdb-financial-irfc-techm-among-19-stocks-turning-ex-record-date-this-week/articleshow/135024511.cms",
-      "published": "2026-10-18T05:53:26.000Z",
-      "topic": "india",
-      "score": 5.6,
-      "photo": null
-    },
-    {
-      "headline": "ETHEREUM EXPLORES AI 'PARANOID MODE' TO BOOST S...",
-      "display": "Ethereum explores AI 'paranoid mode' to boost s...",
-      "original": "Ethereum explores AI 'paranoid mode' to boost s...",
+      "headline": "FEDERAL RESERVE CUTS INTEREST RATES BY 25 BASIS POINTS, CITING COOLING INFLATION",
+      "display": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
+      "original": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
       "truncated": false,
       "usable": true,
       "category": "CRYPTO NEWS",
-      "source": "Pluang · AMBCrypto",
+      "source": "CoinDesk · Cointelegraph · Reuters",
       "sourceNames": [
-        "Pluang",
-        "AMBCrypto"
+        "CoinDesk",
+        "Cointelegraph",
+        "Reuters"
+      ],
+      "corroboration": 3,
+      "link": "https://coindesk.com/1",
+      "published": "2026-10-18T21:25:29.734Z",
+      "topic": "crypto",
+      "score": 7.8,
+      "photo": null
+    },
+    {
+      "headline": "SEC APPROVES SPOT SOLANA ETF APPLICATIONS FROM THREE ISSUERS",
+      "display": "SEC approves spot Solana ETF applications from three issuers",
+      "original": "SEC approves spot Solana ETF applications from three issuers",
+      "truncated": false,
+      "usable": true,
+      "category": "CRYPTO NEWS",
+      "source": "CoinDesk · Cointelegraph",
+      "sourceNames": [
+        "CoinDesk",
+        "Cointelegraph"
       ],
       "corroboration": 2,
-      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNYTJQSk8zMVg0aWNZQXlZMTRnekdHWjNHTVpwNmt2Ynh2Z3AxVlY3ci0yVkFwZmRMVGgtWEMwWXVocHA0MXhWakRqcDFxOERtU1NrWlNXdmIydDFrSGVHQzY0bkFYQVgtV01CZG10TzdkenlNTWxUYUFKY3VCcElIREhvUQ?oc=5",
-      "published": "2026-10-18T01:54:58.000Z",
+      "link": "https://coindesk.com/3",
+      "published": "2026-10-18T20:25:29.734Z",
       "topic": "crypto",
-      "score": 5,
-      "photo": {
-        "path": "data/pending/photo-4.jpg",
-        "credit": "Photo: Unknown / CC0",
-        "license": "cc0",
-        "pageUrl": "https://www.rawpixel.com/image/5923214/photo-image-public-domain-money-free",
-        "query": "ethereum"
-      }
+      "score": 5.7,
+      "photo": null
+    },
+    {
+      "headline": "SENSEX CLIMBS 540 POINTS TO CLOSE AT RECORD HIGH, NIFTY TOPS 26,000",
+      "display": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
+      "original": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
+      "truncated": false,
+      "usable": true,
+      "category": "INDIA MARKETS",
+      "source": "Economic Times",
+      "sourceNames": [
+        "Economic Times"
+      ],
+      "corroboration": 1,
+      "link": "https://et.com/1",
+      "published": "2026-10-18T20:25:29.734Z",
+      "topic": "india",
+      "score": 3.6,
+      "photo": null
     }
   ],
-  "rendered": "2026-10-18T07:22:12.126Z",
+  "rendered": "2026-10-18T21:55:37.929Z",
   "options": {
     "layout": "breaking",
     "theme": "bbc",
@@ -95,75 +89,68 @@
       "width": 1080,
       "height": 1350,
       "sourceNames": [
-        "Economic Times",
-        "Business Standard",
-        "The Economic Times",
-        "Pluang",
-        "AMBCrypto"
+        "CoinDesk",
+        "Cointelegraph",
+        "Reuters",
+        "Economic Times"
       ],
       "stories": [
         {
-          "headline": "FPIS PULL OUT RS 52,100 CR FROM EQUITIES IN OCT SO FAR AMID GLOBAL HEADWINDS",
-          "display": "FPIs pull out Rs 52,100 cr from equities in Oct so far amid global headwinds",
-          "original": "FPIs pull out Rs 52,100 cr from equities in Oct so far amid global headwinds",
-          "truncated": false,
-          "usable": true,
-          "category": "INDIA MARKETS",
-          "source": "Economic Times · Business Standard",
-          "sourceNames": [
-            "Economic Times",
-            "Business Standard"
-          ],
-          "corroboration": 2,
-          "link": "https://economictimes.indiatimes.com/markets/stocks/news/fpis-pull-out-rs-52100-cr-from-equities-in-oct-so-far-amid-global-headwinds/articleshow/135024995.cms",
-          "published": "2026-10-18T06:33:22.000Z",
-          "topic": "india",
-          "score": 5.6,
-          "photo": null
-        },
-        {
-          "headline": "BONUS ISSUES, STOCK SPLITS & DIVIDENDS: HDB FINANCIAL, IRFC",
-          "display": "Bonus issues, stock splits & dividends: HDB Financial, IRFC",
-          "original": "Bonus issues, stock splits & dividends: HDB Financial, IRFC, TechM among 19 stocks turning ex-record date this week",
-          "truncated": false,
-          "usable": true,
-          "category": "INDIA MARKETS",
-          "source": "Economic Times · The Economic Times",
-          "sourceNames": [
-            "Economic Times",
-            "The Economic Times"
-          ],
-          "corroboration": 2,
-          "link": "https://economictimes.indiatimes.com/markets/stocks/news/bonus-issues-stock-splits-dividends-hdb-financial-irfc-techm-among-19-stocks-turning-ex-record-date-this-week/articleshow/135024511.cms",
-          "published": "2026-10-18T05:53:26.000Z",
-          "topic": "india",
-          "score": 5.6,
-          "photo": null
-        },
-        {
-          "headline": "ETHEREUM EXPLORES AI 'PARANOID MODE' TO BOOST S...",
-          "display": "Ethereum explores AI 'paranoid mode' to boost s...",
-          "original": "Ethereum explores AI 'paranoid mode' to boost s...",
+          "headline": "FEDERAL RESERVE CUTS INTEREST RATES BY 25 BASIS POINTS, CITING COOLING INFLATION",
+          "display": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
+          "original": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
           "truncated": false,
           "usable": true,
           "category": "CRYPTO NEWS",
-          "source": "Pluang · AMBCrypto",
+          "source": "CoinDesk · Cointelegraph · Reuters",
           "sourceNames": [
-            "Pluang",
-            "AMBCrypto"
+            "CoinDesk",
+            "Cointelegraph",
+            "Reuters"
+          ],
+          "corroboration": 3,
+          "link": "https://coindesk.com/1",
+          "published": "2026-10-18T21:25:29.734Z",
+          "topic": "crypto",
+          "score": 7.8,
+          "photo": null
+        },
+        {
+          "headline": "SEC APPROVES SPOT SOLANA ETF APPLICATIONS FROM THREE ISSUERS",
+          "display": "SEC approves spot Solana ETF applications from three issuers",
+          "original": "SEC approves spot Solana ETF applications from three issuers",
+          "truncated": false,
+          "usable": true,
+          "category": "CRYPTO NEWS",
+          "source": "CoinDesk · Cointelegraph",
+          "sourceNames": [
+            "CoinDesk",
+            "Cointelegraph"
           ],
           "corroboration": 2,
-          "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNYTJQSk8zMVg0aWNZQXlZMTRnekdHWjNHTVpwNmt2Ynh2Z3AxVlY3ci0yVkFwZmRMVGgtWEMwWXVocHA0MXhWakRqcDFxOERtU1NrWlNXdmIydDFrSGVHQzY0bkFYQVgtV01CZG10TzdkenlNTWxUYUFKY3VCcElIREhvUQ?oc=5",
-          "published": "2026-10-18T01:54:58.000Z",
+          "link": "https://coindesk.com/3",
+          "published": "2026-10-18T20:25:29.734Z",
           "topic": "crypto",
-          "score": 5,
-          "photo": {
-            "path": "data/pending/photo-4.jpg",
-            "credit": "Photo: Unknown / CC0",
-            "license": "cc0",
-            "pageUrl": "https://www.rawpixel.com/image/5923214/photo-image-public-domain-money-free",
-            "query": "ethereum"
-          }
+          "score": 5.7,
+          "photo": null
+        },
+        {
+          "headline": "SENSEX CLIMBS 540 POINTS TO CLOSE AT RECORD HIGH, NIFTY TOPS 26,000",
+          "display": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
+          "original": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA MARKETS",
+          "source": "Economic Times",
+          "sourceNames": [
+            "Economic Times"
+          ],
+          "corroboration": 1,
+          "link": "https://et.com/1",
+          "published": "2026-10-18T20:25:29.734Z",
+          "topic": "india",
+          "score": 3.6,
+          "photo": null
         }
       ],
       "usable": true

@@ -7,7 +7,8 @@ import { parseFeed } from './lib/rss.mjs';
 import { similarity, cluster, selectStories, isRepeat, isTopical, rankClusters } from './lib/select.mjs';
 import { makeHeadline, tidy, sourceLine, categoryFor } from './lib/headline.mjs';
 import { buildCaption } from './caption.mjs';
-import { isUsable, pickBest, creditFor, subjectFor, findImage } from './lib/imagery.mjs';
+import { isUsable, pickBest, creditFor, subjectFor, findImage,
+         queriesFor, entitiesFrom, isTitleCase, relevance } from './lib/imagery.mjs';
 
 let passed = 0, failed = 0;
 const ok = (name, cond, detail = '') => {
@@ -210,6 +211,53 @@ ok('Sensex maps to an Indian subject',
   /mumbai/.test(subjectFor('Sensex climbs 540 points to a record high')));
 ok('there is always a subject',
   subjectFor('Something entirely unexpected happens').length > 0);
+
+/* The picture should be of the story, not of its genre. */
+
+ok('a person in the headline becomes the subject',
+  queriesFor("Michael Saylor highlights Bitcoin's expanding role")[0] === 'Michael Saylor',
+  queriesFor("Michael Saylor highlights Bitcoin's expanding role")[0]);
+ok('a company in the headline becomes the subject',
+  queriesFor('ICICI Bank Q2 Results: Net profit jumps 20% YoY')[0] === 'ICICI Bank',
+  queriesFor('ICICI Bank Q2 Results: Net profit jumps 20% YoY')[0]);
+ok('an institution is found mid-sentence',
+  queriesFor('Federal Reserve cuts interest rates by 25 basis points')[0] === 'Federal Reserve');
+ok('a Title Case Headline still yields its subject',
+  queriesFor('Deutsche Bank Is Weeks From Holding Bitcoin for Clients')[0] === 'Deutsche Bank',
+  queriesFor('Deutsche Bank Is Weeks From Holding Bitcoin for Clients')[0]);
+ok('the category is kept as a last resort',
+  queriesFor('Oil prices slip on demand concerns').slice(-1)[0] === 'oil refinery');
+ok('reporting words are not mistaken for subjects',
+  !queriesFor('Net profit jumps as revenue climbs').some(q => /Net|Profit|Revenue/.test(q)),
+  JSON.stringify(queriesFor('Net profit jumps as revenue climbs')));
+ok('a title-case headline is recognised',
+  isTitleCase('Deutsche Bank Is Weeks From Holding Bitcoin for Clients')
+  && !isTitleCase('Oil prices slip on demand concerns'));
+
+ok('a result echoing the headline scores higher', (() => {
+  const h = 'ICICI Bank Q2 results beat estimates';
+  const match = { title: 'ICICI Bank headquarters Mumbai', tags: [{name:'bank'}] };
+  const generic = { title: 'A sunset over water', tags: [{name:'sunset'}] };
+  return relevance(match, h) > relevance(generic, h);
+})());
+ok('relevance copes with no title or tags', relevance({}, 'Anything at all') === 0);
+
+// Specific query matches -> it wins; nothing matches -> falls back down the list.
+const specific = async (url) => ({ ok:true, json: async () => ({ results:
+  /Saylor/.test(decodeURIComponent(url))
+    ? [img({ title:'Michael Saylor speaking', url:'https://x/saylor.jpg' })]
+    : [img({ title:'A gold coin', url:'https://x/coin.jpg' })] }) });
+const matched = await findImage('Michael Saylor highlights Bitcoin treasuries',
+  { fetchImpl: specific });
+ok('the specific subject wins when it matches',
+  matched.image?.url === 'https://x/saylor.jpg' && matched.query === 'Michael Saylor',
+  `${matched.query} -> ${matched.image?.url}`);
+
+const noMatch = async () => ({ ok:true, json: async () => ({ results:
+  [img({ title:'Unrelated scenery', url:'https://x/none.jpg' })] }) });
+const fell = await findImage('Michael Saylor highlights Bitcoin treasuries', { fetchImpl: noMatch });
+ok('an unmatched search still returns a usable image rather than nothing',
+  fell.image?.url === 'https://x/none.jpg', JSON.stringify(fell.error));
 
 // The search itself, with the API stubbed.
 const stubOk = async () => ({ ok:true, json: async () => ({ results: [
