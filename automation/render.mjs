@@ -75,9 +75,11 @@ async function imageFor(story, index, opts) {
   try {
     const { bytes } = await downloadImage(found.image.url, join(OUT_DIR, name));
     usedPhotos.add(found.image.url);
-    console.log(`  photo: ${found.query} · ${found.image.credit} · ${(bytes/1024).toFixed(0)} KB`);
+    console.log(`  photo: "${found.query}" · match ${found.image.relevance ?? '?'}`
+      + ` · ${found.image.credit} · ${(bytes/1024).toFixed(0)} KB`);
     return { path: `data/pending/${name}`, credit: found.image.credit,
-             license: found.image.license, pageUrl: found.image.pageUrl, query: found.query };
+             license: found.image.license, pageUrl: found.image.pageUrl,
+             query: found.query, relevance: found.image.relevance, title: found.image.title };
   } catch (e) {
     console.log(`  photo download failed (${e.message}) — using the chart`);
     return null;

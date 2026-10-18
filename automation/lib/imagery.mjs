@@ -45,6 +45,94 @@ export function subjectFor(headline) {
   return 'stock market trading screen';      // always something sensible
 }
 
+/* ── Matching the picture to the actual story ──────────────────
+   A category photo says nothing: "Bitcoin ETFs see $228M outflows" is not
+   about a coin in someone's hand. The named thing in the headline — ICICI
+   Bank, Michael Saylor, Deutsche Bank — makes a far better picture, so look
+   for that first and fall back to the category only when there is none. */
+
+// Capitalised words that are not the subject of anything.
+const NOT_ENTITIES = new Set(('the a an and or but of for to in on at by with from as is are '
+  + 'was were be it its this that these those new breaking exclusive update live watch '
+  + 'why how what when where who will would could should may might can says said after '
+  + 'before over under amid despite into out up down here now today yesterday report '
+  + 'reports results result net profit loss revenue earnings quarter q1 q2 q3 q4 yoy '
+  + 'crore lakh million billion trillion percent pct week weekly month monthly day daily '
+  + 'year high low first second third last next').split(' '));
+
+/* Title Case Headlines Capitalise Everything, which makes capitalisation
+   useless as a signal. Detect that rather than extracting nonsense. */
+export function isTitleCase(headline) {
+  const words = String(headline).split(/\s+/).filter(w => /[a-z]/i.test(w));
+  if (words.length < 4) return false;
+  const caps = words.filter(w => /^[A-Z]/.test(w)).length;
+  return caps / words.length > 0.65;
+}
+
+/* Named things in a headline: runs of capitalised words, longest first. */
+export function entitiesFrom(headline) {
+  if (isTitleCase(headline)) return [];
+  const text = String(headline).replace(/[^\w\s'’&.-]/g, ' ');
+  const words = text.split(/\s+/).filter(Boolean);
+
+  const runs = [];
+  let run = [];
+  for (const w of words) {
+    const bare = w.replace(/[.'’]+$/, '');
+    const capitalised = /^[A-Z]/.test(bare) && bare.length > 1;
+    const meaningful = !NOT_ENTITIES.has(bare.toLowerCase());
+    if (capitalised && meaningful) run.push(bare);
+    else { if (run.length) runs.push(run.join(' ')); run = []; }
+  }
+  if (run.length) runs.push(run.join(' '));
+
+  return runs
+    .map(r => r.replace(/['’]s$/, ''))
+    .filter(r => r.length > 2)
+    .sort((a, b) => b.split(' ').length - a.split(' ').length || b.length - a.length)
+    .slice(0, 3);
+}
+
+/* Title-case headlines capitalise everything, so the run lengths mean nothing.
+   They do still lead with their subject, though: "Deutsche Bank Is Weeks
+   From..." is about Deutsche Bank. Take the opening multi-word run. */
+function leadEntity(headline) {
+  const words = String(headline).replace(/[^\w\s'’&.-]/g, ' ').split(/\s+/).filter(Boolean);
+  const run = [];
+  for (const w of words) {
+    const bare = w.replace(/[.'’]+$/, '');
+    if (/^[A-Z]/.test(bare) && bare.length > 1 && !NOT_ENTITIES.has(bare.toLowerCase())) run.push(bare);
+    else break;
+  }
+  return run.length >= 2 ? run.join(' ') : null;
+}
+
+/* Queries to try, most specific first. */
+export function queriesFor(headline) {
+  const out = [];
+  const lead = isTitleCase(headline) ? leadEntity(headline) : null;
+  if (lead) out.push(lead);
+  for (const e of entitiesFrom(headline)) if (!out.includes(e)) out.push(e);
+  const subject = subjectFor(headline);
+  if (!out.includes(subject)) out.push(subject);
+  return out;
+}
+
+/* How well a result actually matches the story. Openverse gives a title and
+   tags; an image whose own words overlap the headline is far more likely to
+   be a picture OF the story than the biggest file the search returned. */
+export function relevance(item, headline) {
+  const words = new Set(String(headline).toLowerCase()
+    .replace(/[^a-z0-9 ]/g, ' ').split(/\s+/).filter(w => w.length > 3));
+  if (!words.size) return 0;
+
+  const hay = [item.title || '', ...(item.tags || []).map(t => t.name || t)]
+    .join(' ').toLowerCase();
+  let hits = 0;
+  for (const w of words) if (hay.includes(w)) hits++;
+  return hits / words.size;
+}
+
 /* Credit line, in the form the licence expects: who made it, under what. */
 export function creditFor(item) {
   const who = (item.creator || 'Unknown').toString().slice(0, 40);
@@ -77,8 +165,7 @@ export function pickBest(results, exclude) {
   return usable[0];
 }
 
-export async function findImage(headline, { fetchImpl = fetch, timeoutMs = 12000, exclude } = {}) {
-  const q = subjectFor(headline);
+async function searchOnce(q, { fetchImpl, timeoutMs, exclude }) {
   const url = `${API}?q=${encodeURIComponent(q)}`
     + `&license=${USABLE.join(',')}`
     + '&license_type=commercial,modification'
@@ -91,26 +178,55 @@ export async function findImage(headline, { fetchImpl = fetch, timeoutMs = 12000
       signal: ctrl.signal,
       headers: { 'user-agent': 'DailyVolex/1.0 (+https://github.com/arunvarkey/dailyvolex)' },
     });
-    if (!res.ok) return { image: null, query: q, error: `HTTP ${res.status}` };
+    if (!res.ok) return { results: [], error: `HTTP ${res.status}` };
     const body = await res.json();
-    // Three Bitcoin stories in one carousel would otherwise all get the same
-    // photograph, which reads as a mistake. Skip anything already used.
-    const best = pickBest(body && body.results, exclude);
-    if (!best) return { image: null, query: q,
-      error: exclude && exclude.size ? 'no unused image left for this subject'
-                                     : 'nothing suitably licensed' };
-    return {
-      image: { url: best.url, credit: creditFor(best), license: best.license,
-               source: best.source, pageUrl: best.foreign_landing_url, title: best.title },
-      query: q, error: null,
-    };
+    return { results: (body && body.results) || [], error: null };
   } catch (err) {
-    // No picture is a fine outcome — the generated chart takes over.
-    return { image: null, query: q,
+    return { results: [],
              error: err && err.name === 'AbortError' ? 'timed out' : String(err && err.message || err) };
   } finally {
     clearTimeout(timer);
   }
+}
+
+/* Work from the most specific subject in the headline down to its category,
+   and prefer a result whose own title and tags echo the story. The point is a
+   picture OF the story, not a picture of its genre. */
+export async function findImage(headline, { fetchImpl = fetch, timeoutMs = 12000, exclude,
+                                            minRelevance = 0.12 } = {}) {
+  const queries = queriesFor(headline);
+  let fallback = null, lastError = null;
+
+  for (const q of queries) {
+    const { results, error } = await searchOnce(q, { fetchImpl, timeoutMs, exclude });
+    if (error) { lastError = error; continue; }
+
+    const best = pickBest(results, exclude);
+    if (!best) continue;
+
+    // Of the usable results, take the one that best echoes the headline.
+    const seen = exclude instanceof Set ? exclude : new Set(exclude || []);
+    const scored = results.filter(isUsable).filter(r => !seen.has(r.url))
+      .map(r => ({ r, score: relevance(r, headline) }))
+      .sort((a, b) => b.score - a.score);
+    const chosen = scored[0] || { r: best, score: 0 };
+
+    const image = {
+      url: chosen.r.url, credit: creditFor(chosen.r), license: chosen.r.license,
+      source: chosen.r.source, pageUrl: chosen.r.foreign_landing_url, title: chosen.r.title,
+      relevance: Math.round(chosen.score * 100) / 100,
+    };
+
+    // A specific query that actually matched wins outright. Otherwise hold it
+    // and try the next, less specific, query.
+    if (chosen.score >= minRelevance || q === queries[queries.length - 1])
+      return { image, query: q, error: null };
+    if (!fallback) fallback = { image, query: q, error: null };
+  }
+
+  if (fallback) return fallback;
+  return { image: null, query: queries[0],
+           error: lastError || (exclude && exclude.size ? 'no unused image left' : 'nothing suitably licensed') };
 }
 
 /* Fetch the file itself. Refuses anything that is not actually an image, and
