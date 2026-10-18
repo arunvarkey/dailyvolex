@@ -4,7 +4,8 @@
  */
 
 import { parseFeed } from './lib/rss.mjs';
-import { similarity, cluster, selectStories, isRepeat, isTopical, rankClusters } from './lib/select.mjs';
+import { similarity, cluster, selectStories, isRepeat, isTopical, isAdvice,
+         rankClusters } from './lib/select.mjs';
 import { makeHeadline, tidy, sourceLine, categoryFor } from './lib/headline.mjs';
 import { buildCaption } from './caption.mjs';
 import { isUsable, pickBest, creditFor, subjectFor, findImage,
@@ -79,6 +80,34 @@ ok('off-topic items never reach the shortlist',
     { title: 'Claude cracks a 25-year NSA number mystery', source:'A', published: Date.now(), weight:1, topic:'crypto' },
     { title: 'Claude cracks a 25-year NSA number mystery, say researchers', source:'B', published: Date.now(), weight:1, topic:'crypto' },
   ], { count: 3, now: Date.now() }).length);
+
+/* ── Stock tips are not news ──────────────────────────────────── */
+
+ok('an analyst recommendation is refused',
+  isAdvice('Vaishali Parekh recommends 3 stocks to buy today'));
+ok('a target-price piece is refused', isAdvice('HDFC Bank target price raised to Rs 2,000'));
+ok('a multibagger piece is refused', isAdvice('This multibagger stock gained 300% in a year'));
+ok('actual news is not refused',
+  !isAdvice('ICICI Bank Q2 profit jumps 20% to Rs 14,800 crore')
+  && !isAdvice('Federal Reserve cuts interest rates'));
+ok('advice never reaches the shortlist', (() => {
+  const t = Date.now();
+  return !selectStories([
+    { title:'Analyst recommends 3 stocks to buy this week', source:'A', published:t, weight:1, topic:'india' },
+    { title:'Analyst recommends 3 stocks to buy this week now', source:'B', published:t, weight:1, topic:'india' },
+  ], { count:3, now:t }).length;
+})());
+
+/* ── Entities must not run across punctuation ─────────────────── */
+
+ok('two companies in a list are not merged into one',
+  !queriesFor('Buy these: Coforge, Lalithaa Jewellery and Titan')
+    .some(q => /Coforge Lalithaa/.test(q)),
+  JSON.stringify(queriesFor('Buy these: Coforge, Lalithaa Jewellery and Titan')));
+ok('a long opening clause is cut to a name-sized query',
+  queriesFor('Black Monday Fears Grip Wall Street as Traders Lose Nerve')[0]
+    .split(' ').length <= 3,
+  queriesFor('Black Monday Fears Grip Wall Street as Traders Lose Nerve')[0]);
 
 /* ── Matching the same story across outlets ───────────────────── */
 

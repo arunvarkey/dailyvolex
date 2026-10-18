@@ -72,7 +72,9 @@ export function isTitleCase(headline) {
 /* Named things in a headline: runs of capitalised words, longest first. */
 export function entitiesFrom(headline) {
   if (isTitleCase(headline)) return [];
-  const text = String(headline).replace(/[^\w\s'’&.-]/g, ' ');
+  // Keep punctuation as a boundary: "Coforge, Lalithaa Jewellery" is two
+  // companies, and merging them searches for a thing that does not exist.
+  const text = String(headline).replace(/[^\w\s'’&.-]/g, ' | ');
   const words = text.split(/\s+/).filter(Boolean);
 
   const runs = [];
@@ -81,12 +83,15 @@ export function entitiesFrom(headline) {
     const bare = w.replace(/[.'’]+$/, '');
     const capitalised = /^[A-Z]/.test(bare) && bare.length > 1;
     const meaningful = !NOT_ENTITIES.has(bare.toLowerCase());
-    if (capitalised && meaningful) run.push(bare);
+    if (w !== '|' && capitalised && meaningful) run.push(bare);
     else { if (run.length) runs.push(run.join(' ')); run = []; }
   }
   if (run.length) runs.push(run.join(' '));
 
   return runs
+    // Names are short. A five-word run is a sentence fragment, and searching
+    // for it finds nothing slowly.
+    .map(r => r.split(' ').slice(0, 3).join(' '))
     .map(r => r.replace(/['’]s$/, ''))
     .filter(r => r.length > 2)
     .sort((a, b) => b.split(' ').length - a.split(' ').length || b.length - a.length)
@@ -103,6 +108,7 @@ function leadEntity(headline) {
     const bare = w.replace(/[.'’]+$/, '');
     if (/^[A-Z]/.test(bare) && bare.length > 1 && !NOT_ENTITIES.has(bare.toLowerCase())) run.push(bare);
     else break;
+    if (run.length === 3) break;          // a name, not an opening clause
   }
   return run.length >= 2 ? run.join(' ') : null;
 }
@@ -193,7 +199,7 @@ async function searchOnce(q, { fetchImpl, timeoutMs, exclude }) {
 /* Work from the most specific subject in the headline down to its category,
    and prefer a result whose own title and tags echo the story. The point is a
    picture OF the story, not a picture of its genre. */
-export async function findImage(headline, { fetchImpl = fetch, timeoutMs = 12000, exclude,
+export async function findImage(headline, { fetchImpl = fetch, timeoutMs = 20000, exclude,
                                             minRelevance = 0.12, maxQueries = 2 } = {}) {
   // Each query is an API call, and the search is rate limited. Two per story —
   // the named subject and the category — is the useful part of the list; going
@@ -215,11 +221,14 @@ export async function findImage(headline, { fetchImpl = fetch, timeoutMs = 12000
       .sort((a, b) => b.score - a.score);
     const chosen = scored[0] || { r: best, score: 0 };
 
-    const image = {
-      url: chosen.r.url, credit: creditFor(chosen.r), license: chosen.r.license,
-      source: chosen.r.source, pageUrl: chosen.r.foreign_landing_url, title: chosen.r.title,
-      relevance: Math.round(chosen.score * 100) / 100,
-    };
+    const toImage = (r, score) => ({
+      url: r.url, credit: creditFor(r), license: r.license,
+      source: r.source, pageUrl: r.foreign_landing_url, title: r.title,
+      relevance: Math.round((score || 0) * 100) / 100,
+    });
+    const image = toImage(chosen.r, chosen.score);
+    // Alternatives for the caller to fall back on when a link is dead.
+    image.alternatives = scored.slice(1, 4).map(x => toImage(x.r, x.score));
 
     // A specific query that actually matched wins outright. Otherwise hold it
     // and try the next, less specific, query.
