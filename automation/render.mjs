@@ -68,7 +68,10 @@ async function imageFor(story, index, opts) {
   if (opts.noPhotos) return null;
   const found = await findImage(story.display || story.headline, { exclude: usedPhotos });
   if (!found.image) {
-    console.log(`  no photo for "${found.query}" (${found.error}) — using the chart`);
+    // Record the reason on the story: without it, "no picture" is impossible to
+    // tell apart from "rate limited" or "the API is down" after the fact.
+    story.photoError = `${found.error} (searched "${found.query}")`;
+    console.log(`  no photo: ${story.photoError} — using the chart`);
     return null;
   }
   const name = `photo-${index}.jpg`;
@@ -81,7 +84,8 @@ async function imageFor(story, index, opts) {
              license: found.image.license, pageUrl: found.image.pageUrl,
              query: found.query, relevance: found.image.relevance, title: found.image.title };
   } catch (e) {
-    console.log(`  photo download failed (${e.message}) — using the chart`);
+    story.photoError = `download failed: ${e.message}`;
+    console.log(`  no photo: ${story.photoError} — using the chart`);
     return null;
   }
 }

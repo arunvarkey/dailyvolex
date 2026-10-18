@@ -178,6 +178,7 @@ async function searchOnce(q, { fetchImpl, timeoutMs, exclude }) {
       signal: ctrl.signal,
       headers: { 'user-agent': 'DailyVolex/1.0 (+https://github.com/arunvarkey/dailyvolex)' },
     });
+    if (res.status === 429) return { results: [], error: 'rate limited by Openverse (429)' };
     if (!res.ok) return { results: [], error: `HTTP ${res.status}` };
     const body = await res.json();
     return { results: (body && body.results) || [], error: null };
@@ -193,8 +194,11 @@ async function searchOnce(q, { fetchImpl, timeoutMs, exclude }) {
    and prefer a result whose own title and tags echo the story. The point is a
    picture OF the story, not a picture of its genre. */
 export async function findImage(headline, { fetchImpl = fetch, timeoutMs = 12000, exclude,
-                                            minRelevance = 0.12 } = {}) {
-  const queries = queriesFor(headline);
+                                            minRelevance = 0.12, maxQueries = 2 } = {}) {
+  // Each query is an API call, and the search is rate limited. Two per story —
+  // the named subject and the category — is the useful part of the list; going
+  // deeper mostly spends quota to arrive at the same fallback.
+  const queries = queriesFor(headline).slice(0, maxQueries);
   let fallback = null, lastError = null;
 
   for (const q of queries) {

@@ -1,67 +1,70 @@
 {
-  "generated": "2026-10-18T21:55:55.308Z",
-  "pool": 274,
+  "generated": "2026-10-18T21:58:21.076Z",
+  "pool": 12,
   "feedErrors": [],
   "stories": [
     {
-      "headline": "BLACK MONDAY FEARS GRIP WALL STREET AS TRADERS LOSE $52 MILLION ON AI STOCK BETS",
-      "display": "Black Monday Fears Grip Wall Street as Traders Lose $52 Million on AI Stock Bets",
-      "original": "Black Monday Fears Grip Wall Street as Traders Lose $52 Million on AI Stock Bets",
+      "headline": "FEDERAL RESERVE CUTS INTEREST RATES BY 25 BASIS POINTS, CITING COOLING INFLATION",
+      "display": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
+      "original": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
       "truncated": false,
       "usable": true,
-      "category": "WORLD MARKETS",
-      "source": "CoinDesk · Yahoo Finance",
+      "category": "CRYPTO NEWS",
+      "source": "CoinDesk · Cointelegraph · Reuters",
       "sourceNames": [
         "CoinDesk",
-        "Yahoo Finance"
+        "Cointelegraph",
+        "Reuters"
       ],
-      "corroboration": 2,
-      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPQ2F1X0NFSEExdXFUR3VwSEVRd29YMi1QQjFVb24tZ2NXbEtJZDJsY3djQzNlclRFYm05SktkNDUxS1hoX1o0VkI1ZkNETjdtNVNkdTlKaGo2TlctTEZjeEhVT0Z4ZmJPNVBCQTZKOXk3NjctMlBIZzdhYXdFY1NzZG5PQXlncEpBZ3g2anNkdjJPMVdQQUhwQg?oc=5",
-      "published": "2026-10-18T17:51:27.000Z",
-      "topic": "world",
-      "score": 5.4,
+      "corroboration": 3,
+      "link": "https://coindesk.com/1",
+      "published": "2026-10-18T21:28:21.070Z",
+      "topic": "crypto",
+      "score": 7.8,
+      "photoError": "fetch failed (searched \"Federal Reserve\")",
       "photo": null
     },
     {
-      "headline": "WHAT’S NEXT FOR IDBI BANK STOCK AFTER Q2 NET PROFIT SLUMPS 39%",
-      "display": "What’s next for IDBI Bank stock after Q2 net profit slumps 39%",
-      "original": "What’s next for IDBI Bank stock after Q2 net profit slumps 39%, massive Fairfax deal? Key factors investors should watch",
+      "headline": "SEC APPROVES SPOT SOLANA ETF APPLICATIONS FROM THREE ISSUERS",
+      "display": "SEC approves spot Solana ETF applications from three issuers",
+      "original": "SEC approves spot Solana ETF applications from three issuers",
+      "truncated": false,
+      "usable": true,
+      "category": "CRYPTO NEWS",
+      "source": "CoinDesk · Cointelegraph",
+      "sourceNames": [
+        "CoinDesk",
+        "Cointelegraph"
+      ],
+      "corroboration": 2,
+      "link": "https://coindesk.com/3",
+      "published": "2026-10-18T20:28:21.070Z",
+      "topic": "crypto",
+      "score": 5.7,
+      "photoError": "fetch failed (searched \"Solana ETF\")",
+      "photo": null
+    },
+    {
+      "headline": "SENSEX CLIMBS 540 POINTS TO CLOSE AT RECORD HIGH, NIFTY TOPS 26,000",
+      "display": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
+      "original": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
       "truncated": false,
       "usable": true,
       "category": "INDIA MARKETS",
-      "source": "Economic Times · Mint",
+      "source": "Economic Times",
       "sourceNames": [
-        "Economic Times",
-        "Mint"
+        "Economic Times"
       ],
-      "corroboration": 2,
-      "link": "https://www.livemint.com/market/stock-market-news/whats-next-for-idbi-bank-stock-after-q2-net-profit-slumps-39-massive-fairfax-deal-key-factors-investors-should-watch-11792335797516.html",
-      "published": "2026-10-18T15:57:23.000Z",
+      "corroboration": 1,
+      "link": "https://et.com/1",
+      "published": "2026-10-18T20:28:21.070Z",
       "topic": "india",
-      "score": 5.3,
-      "photo": null
-    },
-    {
-      "headline": "RUSSIA STOCKS LOWER AT CLOSE OF TRADE; MOEX RUSSIA INDEX UNCHANGED",
-      "display": "Russia stocks lower at close of trade; MOEX Russia Index unchanged",
-      "original": "Russia stocks lower at close of trade; MOEX Russia Index unchanged",
-      "truncated": false,
-      "usable": true,
-      "category": "WORLD MARKETS",
-      "source": "Investing.com India · Investing.com",
-      "sourceNames": [
-        "Investing.com India",
-        "Investing.com"
-      ],
-      "corroboration": 2,
-      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQOVBTQ2xpM0R1LUJhdTBCT2tfOWtuUnI5Wl8tRE9Ic294Qmtkd3NNTUFHWUJvQTZhU0EtWldQa2Q3bk5jZDRpdXloRGIwVVB2bTlXTEJCZDFiaEgyNTJiUWhjTFlFSEJJalRlczRXQkx3UGdZeFJGSGVYaFJIY0F4MHdLYXdjVjZqUEVGb3NEaW02NW4tRkJqRVJrRXZtWkp4YUx1UzJJaEFRSklXamx1RTUxcTF5V2taeFhSZTJvMA?oc=5",
-      "published": "2026-10-18T21:25:17.000Z",
-      "topic": "world",
-      "score": 5.3,
+      "score": 3.6,
+      "photoError": "fetch failed (searched \"Sensex\")",
       "photo": null
     }
   ],
-  "rendered": "2026-10-18T21:57:30.144Z",
+  "rendered": "2026-10-18T21:58:27.112Z",
   "options": {
     "layout": "breaking",
     "theme": "bbc",
@@ -90,68 +93,69 @@
       "height": 1350,
       "sourceNames": [
         "CoinDesk",
-        "Yahoo Finance",
-        "Economic Times",
-        "Mint",
-        "Investing.com India",
-        "Investing.com"
+        "Cointelegraph",
+        "Reuters",
+        "Economic Times"
       ],
       "stories": [
         {
-          "headline": "BLACK MONDAY FEARS GRIP WALL STREET AS TRADERS LOSE $52 MILLION ON AI STOCK BETS",
-          "display": "Black Monday Fears Grip Wall Street as Traders Lose $52 Million on AI Stock Bets",
-          "original": "Black Monday Fears Grip Wall Street as Traders Lose $52 Million on AI Stock Bets",
+          "headline": "FEDERAL RESERVE CUTS INTEREST RATES BY 25 BASIS POINTS, CITING COOLING INFLATION",
+          "display": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
+          "original": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
           "truncated": false,
           "usable": true,
-          "category": "WORLD MARKETS",
-          "source": "CoinDesk · Yahoo Finance",
+          "category": "CRYPTO NEWS",
+          "source": "CoinDesk · Cointelegraph · Reuters",
           "sourceNames": [
             "CoinDesk",
-            "Yahoo Finance"
+            "Cointelegraph",
+            "Reuters"
           ],
-          "corroboration": 2,
-          "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPQ2F1X0NFSEExdXFUR3VwSEVRd29YMi1QQjFVb24tZ2NXbEtJZDJsY3djQzNlclRFYm05SktkNDUxS1hoX1o0VkI1ZkNETjdtNVNkdTlKaGo2TlctTEZjeEhVT0Z4ZmJPNVBCQTZKOXk3NjctMlBIZzdhYXdFY1NzZG5PQXlncEpBZ3g2anNkdjJPMVdQQUhwQg?oc=5",
-          "published": "2026-10-18T17:51:27.000Z",
-          "topic": "world",
-          "score": 5.4,
+          "corroboration": 3,
+          "link": "https://coindesk.com/1",
+          "published": "2026-10-18T21:28:21.070Z",
+          "topic": "crypto",
+          "score": 7.8,
+          "photoError": "fetch failed (searched \"Federal Reserve\")",
           "photo": null
         },
         {
-          "headline": "WHAT’S NEXT FOR IDBI BANK STOCK AFTER Q2 NET PROFIT SLUMPS 39%",
-          "display": "What’s next for IDBI Bank stock after Q2 net profit slumps 39%",
-          "original": "What’s next for IDBI Bank stock after Q2 net profit slumps 39%, massive Fairfax deal? Key factors investors should watch",
+          "headline": "SEC APPROVES SPOT SOLANA ETF APPLICATIONS FROM THREE ISSUERS",
+          "display": "SEC approves spot Solana ETF applications from three issuers",
+          "original": "SEC approves spot Solana ETF applications from three issuers",
+          "truncated": false,
+          "usable": true,
+          "category": "CRYPTO NEWS",
+          "source": "CoinDesk · Cointelegraph",
+          "sourceNames": [
+            "CoinDesk",
+            "Cointelegraph"
+          ],
+          "corroboration": 2,
+          "link": "https://coindesk.com/3",
+          "published": "2026-10-18T20:28:21.070Z",
+          "topic": "crypto",
+          "score": 5.7,
+          "photoError": "fetch failed (searched \"Solana ETF\")",
+          "photo": null
+        },
+        {
+          "headline": "SENSEX CLIMBS 540 POINTS TO CLOSE AT RECORD HIGH, NIFTY TOPS 26,000",
+          "display": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
+          "original": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
           "truncated": false,
           "usable": true,
           "category": "INDIA MARKETS",
-          "source": "Economic Times · Mint",
+          "source": "Economic Times",
           "sourceNames": [
-            "Economic Times",
-            "Mint"
+            "Economic Times"
           ],
-          "corroboration": 2,
-          "link": "https://www.livemint.com/market/stock-market-news/whats-next-for-idbi-bank-stock-after-q2-net-profit-slumps-39-massive-fairfax-deal-key-factors-investors-should-watch-11792335797516.html",
-          "published": "2026-10-18T15:57:23.000Z",
+          "corroboration": 1,
+          "link": "https://et.com/1",
+          "published": "2026-10-18T20:28:21.070Z",
           "topic": "india",
-          "score": 5.3,
-          "photo": null
-        },
-        {
-          "headline": "RUSSIA STOCKS LOWER AT CLOSE OF TRADE; MOEX RUSSIA INDEX UNCHANGED",
-          "display": "Russia stocks lower at close of trade; MOEX Russia Index unchanged",
-          "original": "Russia stocks lower at close of trade; MOEX Russia Index unchanged",
-          "truncated": false,
-          "usable": true,
-          "category": "WORLD MARKETS",
-          "source": "Investing.com India · Investing.com",
-          "sourceNames": [
-            "Investing.com India",
-            "Investing.com"
-          ],
-          "corroboration": 2,
-          "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQOVBTQ2xpM0R1LUJhdTBCT2tfOWtuUnI5Wl8tRE9Ic294Qmtkd3NNTUFHWUJvQTZhU0EtWldQa2Q3bk5jZDRpdXloRGIwVVB2bTlXTEJCZDFiaEgyNTJiUWhjTFlFSEJJalRlczRXQkx3UGdZeFJGSGVYaFJIY0F4MHdLYXdjVjZqUEVGb3NEaW02NW4tRkJqRVJrRXZtWkp4YUx1UzJJaEFRSklXamx1RTUxcTF5V2taeFhSZTJvMA?oc=5",
-          "published": "2026-10-18T21:25:17.000Z",
-          "topic": "world",
-          "score": 5.3,
+          "score": 3.6,
+          "photoError": "fetch failed (searched \"Sensex\")",
           "photo": null
         }
       ],

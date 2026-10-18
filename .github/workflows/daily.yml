@@ -94,6 +94,8 @@ jobs:
             if (sl.feedErrors?.length) warnings.push(`Feeds that failed: ${sl.feedErrors.join('; ')}`);
             if ((entry.stories || [entry]).some(s => s.corroboration < 2))
               warnings.push('Some stories are carried by only ONE outlet — check them before approving.');
+            for (const s of (entry.stories || [entry]))
+              if (s.photoError) warnings.push(`No photo for "${(s.display||'').slice(0,40)}…": ${s.photoError}`);
 
             const body = [
               slides.length > 1 ? `**Carousel — ${slides.length} slides**\n` : '',
