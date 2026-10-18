@@ -1,92 +1,80 @@
 {
-  "generated": "2026-10-17T23:15:07.211Z",
+  "generated": "2026-10-18T07:21:49.543Z",
   "pool": 271,
   "feedErrors": [],
   "stories": [
     {
-      "headline": "MICHAEL SAYLOR HIGHLIGHTS BITCOIN'S EXPANDING R...",
-      "display": "Michael Saylor highlights Bitcoin's expanding r...",
-      "original": "Michael Saylor highlights Bitcoin's expanding r...",
-      "truncated": false,
-      "usable": true,
-      "category": "CRYPTO NEWS",
-      "source": "Outlook Money · Pluang",
-      "sourceNames": [
-        "Outlook Money",
-        "Pluang"
-      ],
-      "corroboration": 2,
-      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPUHVSLWh4OGVUeXVqdWtZQld6TUloX1FSQ3BUN25PbXV4S3hvTUVtdExFYnJnWl9yTlZ6LWl4RDdVZlN0dE9xUDNSSWFhdndsanN5SlZxR3FDSkdhb0JuczBtQWVxZDNzajVhRHhlTnhQNEJ1T1l3d0Q4cjRSclZJZ0R2QUdJeFFMWjRUVDd1ZGwyY2VZM0tnZUpMaw?oc=5",
-      "published": "2026-10-17T17:55:39.000Z",
-      "topic": "crypto",
-      "score": 5,
-      "photo": {
-        "path": "data/pending/photo-2.jpg",
-        "credit": "Photo: Icons8 team / CC0",
-        "license": "cc0",
-        "pageUrl": "https://stocksnap.io/photo/bitcoin-finance-BCEODSCQHF",
-        "query": "bitcoin"
-      }
-    },
-    {
-      "headline": "BITCOIN ETFS SEE $228M WEEKLY OUTFLOWS, MONTHLY TOTAL NEARS $618M AMID HIGH TRADING",
-      "display": "Bitcoin ETFs see $228M weekly outflows, monthly total nears $618M amid high trading",
-      "original": "Bitcoin ETFs see $228M weekly outflows, monthly total nears $618M amid high trading volumes",
-      "truncated": true,
-      "usable": true,
-      "category": "CRYPTO NEWS",
-      "source": "TradingView · Pluang",
-      "sourceNames": [
-        "TradingView",
-        "Pluang"
-      ],
-      "corroboration": 2,
-      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPNGExTndESmV2ZDIzcGJZRTJpaEpubEhSRDNRc255RjEtVmJXUzhfOVBWZVVIRDhJV21NeVl1WGl3S0FMekxsb1RPdkpsMG9CUjlBTDh3VDBFeFU1bXp6bjJ5RzZqV09KRURQUzRPeEM0Q19XMjNnZV9id0RGMU51eUttYWNJdzZCdW5iQg?oc=5",
-      "published": "2026-10-17T19:45:39.000Z",
-      "topic": "crypto",
-      "score": 5,
-      "photo": {
-        "path": "data/pending/photo-3.jpg",
-        "credit": "Photo: Icons8 team / CC0",
-        "license": "cc0",
-        "pageUrl": "https://stocksnap.io/photo/bitcoin-finance-QXVSHD5FLF",
-        "query": "bitcoin"
-      }
-    },
-    {
-      "headline": "ICICI BANK Q2 RESULTS: NET PROFIT JUMPS 20% YOY TO RS 14,843 CRORE, NII RISES 18%",
-      "display": "ICICI Bank Q2 Results: Net profit jumps 20% YoY to Rs 14,843 crore, NII rises 18%",
-      "original": "ICICI Bank Q2 Results: Net profit jumps 20% YoY to Rs 14,843 crore, NII rises 18%",
+      "headline": "FPIS PULL OUT RS 52,100 CR FROM EQUITIES IN OCT SO FAR AMID GLOBAL HEADWINDS",
+      "display": "FPIs pull out Rs 52,100 cr from equities in Oct so far amid global headwinds",
+      "original": "FPIs pull out Rs 52,100 cr from equities in Oct so far amid global headwinds",
       "truncated": false,
       "usable": true,
       "category": "INDIA MARKETS",
-      "source": "Economic Times · Mint",
+      "source": "Economic Times · Business Standard",
       "sourceNames": [
         "Economic Times",
-        "Mint"
+        "Business Standard"
       ],
       "corroboration": 2,
-      "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/icici-bank-q2-results-net-profit-jumps-20-to-rs-14843-crore-nii-rises-18-yoy/articleshow/135011810.cms",
-      "published": "2026-10-17T10:17:31.000Z",
+      "link": "https://economictimes.indiatimes.com/markets/stocks/news/fpis-pull-out-rs-52100-cr-from-equities-in-oct-so-far-amid-global-headwinds/articleshow/135024995.cms",
+      "published": "2026-10-18T06:33:22.000Z",
       "topic": "india",
-      "score": 4.475,
+      "score": 5.6,
+      "photo": null
+    },
+    {
+      "headline": "BONUS ISSUES, STOCK SPLITS & DIVIDENDS: HDB FINANCIAL, IRFC",
+      "display": "Bonus issues, stock splits & dividends: HDB Financial, IRFC",
+      "original": "Bonus issues, stock splits & dividends: HDB Financial, IRFC, TechM among 19 stocks turning ex-record date this week",
+      "truncated": false,
+      "usable": true,
+      "category": "INDIA MARKETS",
+      "source": "Economic Times · The Economic Times",
+      "sourceNames": [
+        "Economic Times",
+        "The Economic Times"
+      ],
+      "corroboration": 2,
+      "link": "https://economictimes.indiatimes.com/markets/stocks/news/bonus-issues-stock-splits-dividends-hdb-financial-irfc-techm-among-19-stocks-turning-ex-record-date-this-week/articleshow/135024511.cms",
+      "published": "2026-10-18T05:53:26.000Z",
+      "topic": "india",
+      "score": 5.6,
+      "photo": null
+    },
+    {
+      "headline": "ETHEREUM EXPLORES AI 'PARANOID MODE' TO BOOST S...",
+      "display": "Ethereum explores AI 'paranoid mode' to boost s...",
+      "original": "Ethereum explores AI 'paranoid mode' to boost s...",
+      "truncated": false,
+      "usable": true,
+      "category": "CRYPTO NEWS",
+      "source": "Pluang · AMBCrypto",
+      "sourceNames": [
+        "Pluang",
+        "AMBCrypto"
+      ],
+      "corroboration": 2,
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNYTJQSk8zMVg0aWNZQXlZMTRnekdHWjNHTVpwNmt2Ynh2Z3AxVlY3ci0yVkFwZmRMVGgtWEMwWXVocHA0MXhWakRqcDFxOERtU1NrWlNXdmIydDFrSGVHQzY0bkFYQVgtV01CZG10TzdkenlNTWxUYUFKY3VCcElIREhvUQ?oc=5",
+      "published": "2026-10-18T01:54:58.000Z",
+      "topic": "crypto",
+      "score": 5,
       "photo": {
         "path": "data/pending/photo-4.jpg",
-        "credit": "Photo: Lmadcap from Tokyo, Japan / CC0",
+        "credit": "Photo: Unknown / CC0",
         "license": "cc0",
-        "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=112855882",
-        "query": "bank building facade"
+        "pageUrl": "https://www.rawpixel.com/image/5923214/photo-image-public-domain-money-free",
+        "query": "ethereum"
       }
     }
   ],
-  "rendered": "2026-10-17T23:15:24.125Z",
+  "rendered": "2026-10-18T07:22:12.126Z",
   "options": {
     "layout": "breaking",
     "theme": "bbc",
     "ratio": "4:5",
     "ticker": "DAILYVOLEX  ···  CRYPTO & FINANCE NEWS  ···  ",
     "label": "TOP STORIES",
-    "date": "17 October 2026",
+    "date": "18 October 2026",
     "digest": false,
     "carousel": true,
     "posy": "0",
@@ -107,86 +95,74 @@
       "width": 1080,
       "height": 1350,
       "sourceNames": [
-        "Outlook Money",
-        "Pluang",
-        "TradingView",
         "Economic Times",
-        "Mint"
+        "Business Standard",
+        "The Economic Times",
+        "Pluang",
+        "AMBCrypto"
       ],
       "stories": [
         {
-          "headline": "MICHAEL SAYLOR HIGHLIGHTS BITCOIN'S EXPANDING R...",
-          "display": "Michael Saylor highlights Bitcoin's expanding r...",
-          "original": "Michael Saylor highlights Bitcoin's expanding r...",
-          "truncated": false,
-          "usable": true,
-          "category": "CRYPTO NEWS",
-          "source": "Outlook Money · Pluang",
-          "sourceNames": [
-            "Outlook Money",
-            "Pluang"
-          ],
-          "corroboration": 2,
-          "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPUHVSLWh4OGVUeXVqdWtZQld6TUloX1FSQ3BUN25PbXV4S3hvTUVtdExFYnJnWl9yTlZ6LWl4RDdVZlN0dE9xUDNSSWFhdndsanN5SlZxR3FDSkdhb0JuczBtQWVxZDNzajVhRHhlTnhQNEJ1T1l3d0Q4cjRSclZJZ0R2QUdJeFFMWjRUVDd1ZGwyY2VZM0tnZUpMaw?oc=5",
-          "published": "2026-10-17T17:55:39.000Z",
-          "topic": "crypto",
-          "score": 5,
-          "photo": {
-            "path": "data/pending/photo-2.jpg",
-            "credit": "Photo: Icons8 team / CC0",
-            "license": "cc0",
-            "pageUrl": "https://stocksnap.io/photo/bitcoin-finance-BCEODSCQHF",
-            "query": "bitcoin"
-          }
-        },
-        {
-          "headline": "BITCOIN ETFS SEE $228M WEEKLY OUTFLOWS, MONTHLY TOTAL NEARS $618M AMID HIGH TRADING",
-          "display": "Bitcoin ETFs see $228M weekly outflows, monthly total nears $618M amid high trading",
-          "original": "Bitcoin ETFs see $228M weekly outflows, monthly total nears $618M amid high trading volumes",
-          "truncated": true,
-          "usable": true,
-          "category": "CRYPTO NEWS",
-          "source": "TradingView · Pluang",
-          "sourceNames": [
-            "TradingView",
-            "Pluang"
-          ],
-          "corroboration": 2,
-          "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPNGExTndESmV2ZDIzcGJZRTJpaEpubEhSRDNRc255RjEtVmJXUzhfOVBWZVVIRDhJV21NeVl1WGl3S0FMekxsb1RPdkpsMG9CUjlBTDh3VDBFeFU1bXp6bjJ5RzZqV09KRURQUzRPeEM0Q19XMjNnZV9id0RGMU51eUttYWNJdzZCdW5iQg?oc=5",
-          "published": "2026-10-17T19:45:39.000Z",
-          "topic": "crypto",
-          "score": 5,
-          "photo": {
-            "path": "data/pending/photo-3.jpg",
-            "credit": "Photo: Icons8 team / CC0",
-            "license": "cc0",
-            "pageUrl": "https://stocksnap.io/photo/bitcoin-finance-QXVSHD5FLF",
-            "query": "bitcoin"
-          }
-        },
-        {
-          "headline": "ICICI BANK Q2 RESULTS: NET PROFIT JUMPS 20% YOY TO RS 14,843 CRORE, NII RISES 18%",
-          "display": "ICICI Bank Q2 Results: Net profit jumps 20% YoY to Rs 14,843 crore, NII rises 18%",
-          "original": "ICICI Bank Q2 Results: Net profit jumps 20% YoY to Rs 14,843 crore, NII rises 18%",
+          "headline": "FPIS PULL OUT RS 52,100 CR FROM EQUITIES IN OCT SO FAR AMID GLOBAL HEADWINDS",
+          "display": "FPIs pull out Rs 52,100 cr from equities in Oct so far amid global headwinds",
+          "original": "FPIs pull out Rs 52,100 cr from equities in Oct so far amid global headwinds",
           "truncated": false,
           "usable": true,
           "category": "INDIA MARKETS",
-          "source": "Economic Times · Mint",
+          "source": "Economic Times · Business Standard",
           "sourceNames": [
             "Economic Times",
-            "Mint"
+            "Business Standard"
           ],
           "corroboration": 2,
-          "link": "https://economictimes.indiatimes.com/markets/stocks/earnings/icici-bank-q2-results-net-profit-jumps-20-to-rs-14843-crore-nii-rises-18-yoy/articleshow/135011810.cms",
-          "published": "2026-10-17T10:17:31.000Z",
+          "link": "https://economictimes.indiatimes.com/markets/stocks/news/fpis-pull-out-rs-52100-cr-from-equities-in-oct-so-far-amid-global-headwinds/articleshow/135024995.cms",
+          "published": "2026-10-18T06:33:22.000Z",
           "topic": "india",
-          "score": 4.475,
+          "score": 5.6,
+          "photo": null
+        },
+        {
+          "headline": "BONUS ISSUES, STOCK SPLITS & DIVIDENDS: HDB FINANCIAL, IRFC",
+          "display": "Bonus issues, stock splits & dividends: HDB Financial, IRFC",
+          "original": "Bonus issues, stock splits & dividends: HDB Financial, IRFC, TechM among 19 stocks turning ex-record date this week",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA MARKETS",
+          "source": "Economic Times · The Economic Times",
+          "sourceNames": [
+            "Economic Times",
+            "The Economic Times"
+          ],
+          "corroboration": 2,
+          "link": "https://economictimes.indiatimes.com/markets/stocks/news/bonus-issues-stock-splits-dividends-hdb-financial-irfc-techm-among-19-stocks-turning-ex-record-date-this-week/articleshow/135024511.cms",
+          "published": "2026-10-18T05:53:26.000Z",
+          "topic": "india",
+          "score": 5.6,
+          "photo": null
+        },
+        {
+          "headline": "ETHEREUM EXPLORES AI 'PARANOID MODE' TO BOOST S...",
+          "display": "Ethereum explores AI 'paranoid mode' to boost s...",
+          "original": "Ethereum explores AI 'paranoid mode' to boost s...",
+          "truncated": false,
+          "usable": true,
+          "category": "CRYPTO NEWS",
+          "source": "Pluang · AMBCrypto",
+          "sourceNames": [
+            "Pluang",
+            "AMBCrypto"
+          ],
+          "corroboration": 2,
+          "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNYTJQSk8zMVg0aWNZQXlZMTRnekdHWjNHTVpwNmt2Ynh2Z3AxVlY3ci0yVkFwZmRMVGgtWEMwWXVocHA0MXhWakRqcDFxOERtU1NrWlNXdmIydDFrSGVHQzY0bkFYQVgtV01CZG10TzdkenlNTWxUYUFKY3VCcElIREhvUQ?oc=5",
+          "published": "2026-10-18T01:54:58.000Z",
+          "topic": "crypto",
+          "score": 5,
           "photo": {
             "path": "data/pending/photo-4.jpg",
-            "credit": "Photo: Lmadcap from Tokyo, Japan / CC0",
+            "credit": "Photo: Unknown / CC0",
             "license": "cc0",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=112855882",
-            "query": "bank building facade"
+            "pageUrl": "https://www.rawpixel.com/image/5923214/photo-image-public-domain-money-free",
+            "query": "ethereum"
           }
         }
       ],
