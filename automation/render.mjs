@@ -81,8 +81,9 @@ async function imageFor(story, index, opts) {
   const failures = [];
 
   for (const cand of candidates) {
+    for (const url of [cand.url, cand.smallerUrl].filter(Boolean)) {
     try {
-      const { bytes } = await downloadImage(cand.url, join(OUT_DIR, name));
+      const { bytes } = await downloadImage(url, join(OUT_DIR, name));
       usedPhotos.add(cand.url);
       console.log(`  photo: "${found.query}" · match ${cand.relevance ?? '?'}`
         + ` · ${cand.credit} · ${(bytes/1024).toFixed(0)} KB`
@@ -92,8 +93,9 @@ async function imageFor(story, index, opts) {
                query: found.query, relevance: cand.relevance, title: cand.title };
     } catch (e) {
       failures.push(e.message);
-      usedPhotos.add(cand.url);          // do not retry a dead link elsewhere
     }
+    }
+    usedPhotos.add(cand.url);            // do not retry a dead link elsewhere
   }
 
   story.photoError = `every candidate failed to download (${failures.join('; ')})`;

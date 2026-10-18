@@ -225,6 +225,9 @@ export async function findImage(headline, { fetchImpl = fetch, timeoutMs = 20000
       url: r.url, credit: creditFor(r), license: r.license,
       source: r.source, pageUrl: r.foreign_landing_url, title: r.title,
       relevance: Math.round((score || 0) * 100) / 100,
+      // A smaller rendition to fall back on. Originals can be enormous, and
+      // the canvas is 1080 wide — a 13 MB master buys nothing.
+      smallerUrl: r.thumbnail || null,
     });
     const image = toImage(chosen.r, chosen.score);
     // Alternatives for the caller to fall back on when a link is dead.
@@ -244,7 +247,7 @@ export async function findImage(headline, { fetchImpl = fetch, timeoutMs = 20000
 
 /* Fetch the file itself. Refuses anything that is not actually an image, and
    anything implausibly large, since this runs unattended. */
-export async function downloadImage(url, destPath, { fetchImpl = fetch, maxBytes = 12_000_000 } = {}) {
+export async function downloadImage(url, destPath, { fetchImpl = fetch, maxBytes = 30_000_000 } = {}) {
   const { writeFile } = await import('node:fs/promises');
   const res = await fetchImpl(url, {
     headers: { 'user-agent': 'DailyVolex/1.0 (+https://github.com/arunvarkey/dailyvolex)' },
