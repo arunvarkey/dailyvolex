@@ -360,6 +360,25 @@ ok('one substantial opening word is enough of a subject',
   queriesFor('India To Host Global Legal Metrology Meet For First Time', 'india')[0] === 'India',
   JSON.stringify(queriesFor('India To Host Global Legal Metrology Meet For First Time', 'india')));
 
+/* "Stock Market Holiday On 20 Oct: NSE, BSE Closed For Dussehra?" was searched
+   as "Stock Market Holiday" and came back with a Taiwanese fish shop. */
+ok('generic nouns a title case headline capitalises are not subjects',
+  queriesFor('Stock Market Holiday On 20 Oct: NSE, BSE Closed For Dussehra?', 'markets-india')[0]
+    === 'Dussehra',
+  JSON.stringify(queriesFor('Stock Market Holiday On 20 Oct: NSE, BSE Closed For Dussehra?',
+                            'markets-india')));
+ok('a date is never the subject',
+  !queriesFor('India-New Zealand FTA Effective From Oct 20; Targets Double Trade', 'india')
+    .some(q => /^(Oct|Monday|January)$/.test(q)),
+  JSON.stringify(queriesFor('India-New Zealand FTA Effective From Oct 20; Targets Double Trade',
+                            'india')));
+ok('a match made only of generic words is no match', (() => {
+  const hl = 'Stock Market Holiday On 20 Oct: NSE, BSE Closed For Dussehra?';
+  const fish = { title: 'Fish market on a holiday', tags: [{name:'market'},{name:'fish'}] };
+  const real = { title: 'Dussehra effigy burning', tags: [{name:'dussehra'}] };
+  return relevance(fish, hl) === 0 && relevance(real, hl) > 0.2;
+})());
+
 /* ── What goes behind a card with no photograph ───────────────── */
 /* The chart used to go behind everything, which made a claim the story did
    not: a card about a legal-metrology conference went out over a falling
@@ -376,8 +395,12 @@ ok('world, India and tech stories do not get the chart',
   backdropFor('Ceasefire talks resume in Geneva', 'world') === 'editorial'
   && backdropFor('Heavy rain shuts schools across Kerala', 'india') === 'editorial'
   && backdropFor('New AI model released by startup', 'tech') === 'editorial');
-ok('a money figure in a general headline earns the chart',
-  backdropFor('Government approves ₹12,000 crore package', 'india') === 'chart');
+/* A sum of money is not market data. A trade agreement "targeting $7bn by
+   2030" went out over a price chart, which is a different kind of story. */
+ok('a sum of money alone does not earn the chart',
+  backdropFor('India-New Zealand FTA effective from Oct 20; targets double trade to $7bn by 2030',
+              'india') === 'editorial'
+  && backdropFor('Government approves ₹12,000 crore package', 'india') === 'editorial');
 ok('the markets beat earns the chart even without market words',
   backdropFor('Regulator names new chief', 'markets-india') === 'chart');
 

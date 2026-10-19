@@ -95,7 +95,10 @@ const MONEY_IN_HEADLINE = [
   /\b(bitcoin|btc|ethereum|eth|crypto|stablecoin)\b/i,
   /\b(rupee|dollar|euro|yen|forex|currency|bullion|crude|oil prices?)\b/i,
   /\b(earnings|revenue|profits?|ipo|valuation|investors?|inflation|rate (cut|hike)s?)\b/i,
-  /[$€£₹]\s?\d/,
+  // Deliberately NOT a bare currency figure. "India-New Zealand FTA … targets
+  // double trade to $7bn by 2030" is a treaty with a target in it, and it went
+  // out over a price chart; the chart has to mean market data or it means
+  // nothing.
 ];
 
 export function backdropFor(headline, topic) {
@@ -118,7 +121,19 @@ const NOT_ENTITIES = new Set(('the a an and or but of for to in on at by with fr
   + 'before over under amid despite into out up down here now today yesterday report '
   + 'reports results result net profit loss revenue earnings quarter q1 q2 q3 q4 yoy '
   + 'crore lakh million billion trillion percent pct week weekly month monthly day daily '
-  + 'year high low first second third last next').split(' '));
+  + 'year high low first second third last next '
+  // Dates. "India-New Zealand FTA Effective From Oct 20" was searched as "Oct".
+  + 'jan feb mar apr may jun jul aug sep sept oct nov dec january february march april '
+  + 'june july august september october november december monday tuesday wednesday '
+  + 'thursday friday saturday sunday '
+  // Common nouns a title-case headline capitalises like a name. "Stock Market
+  // Holiday On 20 Oct" was searched as "Stock Market Holiday", which found a
+  // photograph of a fish market — it shares two words with the query and
+  // nothing at all with the story.
+  + 'stock stocks share shares market markets holiday holidays trading trade price '
+  + 'prices index rate rates news deal deals meet meeting talks plan plans rule rules '
+  + 'government police court man woman men women people top full big major global '
+  + 'national state central public private closed open shut ahead due set').split(' '));
 
 /* Title Case Headlines Capitalise Everything, which makes capitalisation
    useless as a signal. Detect that rather than extracting nonsense. */
@@ -129,9 +144,12 @@ export function isTitleCase(headline) {
   return caps / words.length > 0.65;
 }
 
-/* Named things in a headline: runs of capitalised words, longest first. */
-export function entitiesFrom(headline) {
-  if (isTitleCase(headline)) return [];
+/* Named things in a headline: runs of capitalised words, longest first.
+   `force` runs it on a Title Case headline too, where capitalisation means
+   nothing — useful only once the generic words are stripped, and only when
+   nothing else has produced a subject. */
+export function entitiesFrom(headline, { force = false } = {}) {
+  if (!force && isTitleCase(headline)) return [];
   // Keep punctuation as a boundary: "Coforge, Lalithaa Jewellery" is two
   // companies, and merging them searches for a thing that does not exist.
   const text = String(headline).replace(/[^\w\s'’&.-]/g, ' | ');
@@ -182,6 +200,11 @@ export function queriesFor(headline, topic) {
   const lead = isTitleCase(headline) ? leadEntity(headline) : null;
   if (lead) out.push(lead);
   for (const e of entitiesFrom(headline)) if (!out.includes(e)) out.push(e);
+  // A title-case headline whose opening words are all generic yields nothing
+  // above, and then the only query left is the category — which is how a
+  // Dussehra market-holiday story came to be searched as "stock market". What
+  // is distinctive is still in there; it is just not at the front.
+  if (!out.length) for (const e of entitiesFrom(headline, { force: true })) out.push(e);
   const subject = subjectFor(headline, topic);
   if (!out.includes(subject)) out.push(subject);
   return out;
@@ -189,10 +212,17 @@ export function queriesFor(headline, topic) {
 
 /* How well a result actually matches the story. Openverse gives a title and
    tags; an image whose own words overlap the headline is far more likely to
-   be a picture OF the story than the biggest file the search returned. */
+   be a picture OF the story than the biggest file the search returned.
+ *
+ * Only distinctive words count. A photograph of a Taiwanese fish shop was put
+ * behind "Stock Market Holiday On 20 Oct: NSE, BSE Closed For Dussehra?"
+ * because its tags said "market" and "holiday" — it shared two words with the
+ * headline and nothing whatever with the story. An overlap made entirely of
+ * words like those is not an overlap. */
 export function relevance(item, headline) {
   const words = new Set(String(headline).toLowerCase()
-    .replace(/[^a-z0-9 ]/g, ' ').split(/\s+/).filter(w => w.length > 3));
+    .replace(/[^a-z0-9 ]/g, ' ').split(/\s+/)
+    .filter(w => w.length > 3 && !NOT_ENTITIES.has(w)));
   if (!words.size) return 0;
 
   const hay = [item.title || '', ...(item.tags || []).map(t => t.name || t)]
