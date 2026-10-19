@@ -824,11 +824,15 @@ body.headless main{padding:0!important}
     <button class="ratio-btn" data-ratio="1:1">1:1<br><span style="font-weight:400;font-size:.6rem">Square</span></button>
   </div>
 
-  <div class="toggle-row">
-    <span class="toggle-label">Market chart backdrop
-      <span class="toggle-sub">A generated chart behind the text, when there is no video</span></span>
-    <label class="sw"><input type="checkbox" id="backdropToggle"><span class="sw-track"></span></label>
+  <div class="sl">Backdrop</div>
+  <div class="ratio-group" id="backdropGroup">
+    <button class="ratio-btn active" data-backdrop="particles">Particles</button>
+    <button class="ratio-btn" data-backdrop="chart">Chart</button>
+    <button class="ratio-btn" data-backdrop="editorial">Editorial</button>
   </div>
+  <span class="toggle-sub" style="margin-top:.4rem;line-height:1.4">Behind the text when there is no
+    video or photo. The chart suits a markets story — behind anything else it reads as a claim the
+    story does not make.</span>
 
   <div class="toggle-row">
     <span class="toggle-label">Safe area
@@ -1420,6 +1424,90 @@ function drawMarketBackdrop(theme, seedText) {
   ctx.fillStyle = vig; ctx.fillRect(0, 0, W, H);
 }
 
+/* The backdrop for a story that is not about markets.
+ *
+ * The market chart used to go behind everything, which quietly made a claim:
+ * a card reading "India to host global legal metrology meet" sat over a
+ * falling price line, and a chart behind a headline reads as "this is a
+ * markets story". This one says nothing about the content — printed-page
+ * language instead: concentric rings cropped by the frame, a halftone field
+ * that echoes them, and the channel's own rule device enlarged. Everything is
+ * seeded from the headline, so each card differs and the same card is
+ * identical every time it is rendered.
+ */
+function drawEditorialBackdrop(theme, seedText) {
+  const W = cv.width, H = cv.height;
+  const rnd = seededRandom(seedFrom(seedText || 'dailyvolex'));
+  const busy = S.layout === 'stories' || S.layout === 'facts';
+  const strength = busy ? 0.5 : 1;
+
+  // Everything hangs off one corner, so the frame has a direction rather than
+  // a scattering of marks. Which corner, and how far out, comes from the seed.
+  const right = rnd() < 0.5;
+  const cx = right ? W * (1.04 + rnd() * 0.1) : -W * (0.04 + rnd() * 0.1);
+  const cy = -H * (0.02 + rnd() * 0.14);
+
+  // Brand light from that corner.
+  const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, H * 0.85);
+  glow.addColorStop(0,  `rgba(${theme.pr},${0.34 * strength})`);
+  glow.addColorStop(.5, `rgba(${theme.pr},${0.1 * strength})`);
+  glow.addColorStop(1,  `rgba(${theme.pr},0)`);
+  ctx.fillStyle = glow; ctx.fillRect(0, 0, W, H);
+
+  // Concentric rings cropped by the frame — standard graphic furniture on a
+  // news card, and the opposite of a data claim.
+  ctx.save();
+  const base = W * 0.3;
+  for (let i = 0; i < 5; i++) {
+    const r = base + i * W * 0.17;
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.strokeStyle = `rgba(${theme.pr},${(0.4 - i * 0.065) * strength})`;
+    ctx.lineWidth = 6 - i;
+    ctx.stroke();
+  }
+  ctx.restore();
+
+  // Halftone, the way newsprint reproduces a photograph. The dot size follows
+  // the same rings, so the field has structure instead of being noise, and it
+  // fades out well above where the headline sits.
+  ctx.save();
+  const step = 24, top = -step, limit = H * 0.6;
+  for (let y = top; y < limit; y += step) {
+    const fade = Math.min(1, 1.15 - Math.max(0, y) / limit);
+    for (let x = step / 2; x < W; x += step) {
+      const d = Math.hypot(x - cx, y - cy);
+      const band = 0.5 + 0.5 * Math.sin(d / (W * 0.055));
+      const r = (0.5 + band * 3.1) * fade;
+      if (r < 0.5) continue;
+      ctx.beginPath();
+      ctx.arc(x, y, r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${0.2 * fade * fade * strength})`;
+      ctx.fill();
+    }
+  }
+  ctx.restore();
+
+  // Two brand rules high in the frame, on the headline's own left margin —
+  // the same device as the rule under the category label, enlarged. A long
+  // diagonal was tried here and read as a trend line, which is the one thing
+  // this backdrop exists to avoid.
+  ctx.save();
+  const mx = W * 0.067;
+  for (const [w, h, y, a] of [[W * 0.2, 11, 0.135, 0.85], [W * 0.1, 5, 0.172, 0.45]]) {
+    ctx.fillStyle = `rgba(${theme.pr},${a * strength})`;
+    ctx.fillRect(mx, H * y, w, h);
+  }
+  ctx.restore();
+
+  // Same vignette as the chart backdrop, so the headline reads the same way
+  // whichever backdrop it is sitting on.
+  const vig = ctx.createRadialGradient(W/2, H*0.38, H*0.15, W/2, H*0.45, H*0.75);
+  vig.addColorStop(0, 'rgba(0,0,0,0)');
+  vig.addColorStop(1, 'rgba(0,0,0,.55)');
+  ctx.fillStyle = vig; ctx.fillRect(0, 0, W, H);
+}
+
 /* A licensed photograph behind the text. Graded down hard so the headline
    stays the thing you read, and never drawn without its credit — the licences
    that make free reuse possible all require attribution. */
@@ -1504,12 +1592,14 @@ function drawBG(theme) {
     const gs=110;
     for(let x=0;x<cv.width;x+=gs){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,cv.height);ctx.stroke();}
     for(let y=0;y<cv.height;y+=gs){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(cv.width,y);ctx.stroke();}
-    if (S.backdrop === 'chart') {
-      drawMarketBackdrop(theme,
+    if (S.backdrop === 'chart' || S.backdrop === 'editorial') {
+      const seed =
         S.layout === 'stories' ? (S.stories.items[0] || S.stories.label)
         : S.layout === 'facts' ? (S.facts.title)
         : S.layout === 'quote' ? (S.quote.stat + S.quote.label)
-        : (S.breaking.headline || S.brand.handle));
+        : (S.breaking.headline || S.brand.handle);
+      if (S.backdrop === 'chart') drawMarketBackdrop(theme, seed);
+      else                        drawEditorialBackdrop(theme, seed);
       return;
     }
     updateParticles();
@@ -3550,7 +3640,7 @@ function loadState() {
     if(snap.recordDuration) S.recordDuration=snap.recordDuration;
     S.showClock=!!snap.showClock;
     if(typeof snap.sound==='boolean') S.sound=snap.sound;
-    if(snap.backdrop==='chart'||snap.backdrop==='particles') S.backdrop=snap.backdrop;
+    if(BACKDROP_NAMES[snap.backdrop]) S.backdrop=snap.backdrop;
     S.avSyncMs = (typeof snap.avSyncMs==='number') ? snap.avSyncMs : null;
     if(snap.pos) { S.pos.x=+snap.pos.x||0; S.pos.y=+snap.pos.y||0; }
     if(Array.isArray(snap.tickerFeeds)) {
@@ -3560,7 +3650,7 @@ function loadState() {
       });
     }
     const sd=document.getElementById('soundToggle'); if(sd) sd.checked=S.sound;
-    const bd=document.getElementById('backdropToggle'); if(bd) bd.checked=S.backdrop==='chart';
+    setBackdrop(S.backdrop, { quiet:true });
     applyPreviewVolume();
     const ck=document.getElementById('clockToggle'); if(ck) ck.checked=S.showClock;
     setLayout(snap.layout||'breaking');
@@ -3613,11 +3703,23 @@ function setTheme(theme) {
 
 function setRatio(ratio) {
   S.ratio=ratio;
-  document.querySelectorAll('.ratio-btn').forEach(b=>{
+  document.querySelectorAll('.ratio-btn[data-ratio]').forEach(b=>{
     b.classList.toggle('active', b.dataset.ratio===ratio);
   });
   applyRatio(ratio);
   initParticles();
+}
+
+const BACKDROP_NAMES = { particles:'Particle background', chart:'Market chart backdrop',
+                         editorial:'Editorial backdrop' };
+
+function setBackdrop(kind, { quiet=false }={}) {
+  if (!BACKDROP_NAMES[kind]) return;
+  S.backdrop=kind;
+  document.querySelectorAll('.ratio-btn[data-backdrop]').forEach(b=>{
+    b.classList.toggle('active', b.dataset.backdrop===kind);
+  });
+  if (!quiet) showToast(BACKDROP_NAMES[kind]);
 }
 
 /* ═══════════════════════════════════════════════
@@ -3680,12 +3782,8 @@ function initEvents() {
   document.getElementById('brandName').addEventListener('input', e=>{ S.brand.name=e.target.value; });
   document.getElementById('brandHandle').addEventListener('input', e=>{ S.brand.handle=e.target.value; });
 
-  const bdToggle=document.getElementById('backdropToggle');
-  if(bdToggle) bdToggle.addEventListener('change', e=>{
-    S.backdrop = e.target.checked ? 'chart' : 'particles';
-    showToast(e.target.checked
-      ? 'Market chart backdrop on'
-      : 'Back to the particle background');
+  document.querySelectorAll('#backdropGroup .ratio-btn').forEach(b=>{
+    b.addEventListener('click', ()=>setBackdrop(b.dataset.backdrop));
   });
 
   // Clock (off by default — the graphic carries the handle instead)
@@ -3768,7 +3866,7 @@ function applyUrlStory() {
   set('ratio',  v => { if (['9:16','4:5','1:1'].includes(v)) S.ratio = v; });
   set('layout', v => { if (['breaking','stories','facts','quote'].includes(v)) S.layout = v; });
   set('handle', v => S.brand.handle = v.slice(0,40));
-  set('bg', v => { if (['particles','chart'].includes(v)) S.backdrop = v; });
+  set('bg', v => { if (['particles','chart','editorial'].includes(v)) S.backdrop = v; });
 
   // A photograph, with the credit it must carry. Same-origin paths only: this
   // page is rendered headlessly and must not be made to fetch arbitrary hosts.
@@ -3848,6 +3946,7 @@ applyRatio(S.ratio || '9:16');
 applyThemeCSS(S.theme || 'bbc');
 initParticles();
 initEvents();
+setBackdrop(S.backdrop, { quiet:true });   // keep the buttons honest about ?bg=
 renderPanel();
 render();
 

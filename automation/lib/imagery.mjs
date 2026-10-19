@@ -59,9 +59,50 @@ export function prefersChart(headline) {
   return CHART_IS_BETTER.some(re => re.test(String(headline)));
 }
 
-export function subjectFor(headline) {
+/* The last-resort query, when the headline names nothing searchable. It has
+   to follow the beat: a story about a conference in India was falling back to
+   "stock market trading screen", which is not a worse picture of the story so
+   much as a picture of a different story. */
+const FALLBACK_BY_TOPIC = {
+  crypto:          'cryptocurrency',
+  'markets-india': 'mumbai stock exchange',
+  'markets-world': 'stock market trading screen',
+  business:        'office towers business district',
+  india:           'india',
+  world:           'international summit flags',
+  tech:            'technology data centre',
+};
+
+export function subjectFor(headline, topic) {
   for (const [re, query] of SUBJECTS) if (re.test(headline)) return query;
-  return 'stock market trading screen';      // always something sensible
+  return FALLBACK_BY_TOPIC[topic] || 'newspapers';
+}
+
+/* When no photograph can be used, something still has to sit behind the
+   headline — and the choice is editorial, not decorative. The generated price
+   chart was being used for everything, so a card reading "India to host global
+   legal metrology meet" went out over a falling market line. To anyone
+   scrolling, that chart IS a claim: it says the story is about markets.
+   A chart belongs behind a story about money moving; everything else gets the
+   neutral editorial backdrop. */
+const MARKET_BEATS = new Set(['crypto', 'markets-india', 'markets-world']);
+/* Deliberately the plural or financial forms only. "Leaders share a stage" and
+   "the scheme funds new hospitals" are not markets stories, and a chart behind
+   either would be the exact mistake this is here to prevent. */
+const MONEY_IN_HEADLINE = [
+  /\b(stocks?|shares|market|markets|indices|bonds?|yields|equity|equities)\b/i,
+  /\b(sensex|nifty|dow|nasdaq|s&p|ftse|nikkei|bse|nse)\b/i,
+  /\b(bitcoin|btc|ethereum|eth|crypto|stablecoin)\b/i,
+  /\b(rupee|dollar|euro|yen|forex|currency|bullion|crude|oil prices?)\b/i,
+  /\b(earnings|revenue|profits?|ipo|valuation|investors?|inflation|rate (cut|hike)s?)\b/i,
+  /[$€£₹]\s?\d/,
+];
+
+export function backdropFor(headline, topic) {
+  if (prefersChart(headline)) return 'chart';
+  if (MONEY_IN_HEADLINE.some(re => re.test(String(headline)))) return 'chart';
+  if (MARKET_BEATS.has(topic)) return 'chart';
+  return 'editorial';
 }
 
 /* ── Matching the picture to the actual story ──────────────────
@@ -129,16 +170,19 @@ function leadEntity(headline) {
     else break;
     if (run.length === 3) break;          // a name, not an opening clause
   }
+  // One substantial word is still a usable subject — "India To Host Global
+  // Legal Metrology Meet" yielded nothing, and fell back to a finance query.
+  if (run.length === 1 && run[0].length > 3) return run[0];
   return run.length >= 2 ? run.join(' ') : null;
 }
 
 /* Queries to try, most specific first. */
-export function queriesFor(headline) {
+export function queriesFor(headline, topic) {
   const out = [];
   const lead = isTitleCase(headline) ? leadEntity(headline) : null;
   if (lead) out.push(lead);
   for (const e of entitiesFrom(headline)) if (!out.includes(e)) out.push(e);
-  const subject = subjectFor(headline);
+  const subject = subjectFor(headline, topic);
   if (!out.includes(subject)) out.push(subject);
   return out;
 }
@@ -219,14 +263,14 @@ async function searchOnce(q, { fetchImpl, timeoutMs, exclude }) {
    and prefer a result whose own title and tags echo the story. The point is a
    picture OF the story, not a picture of its genre. */
 export async function findImage(headline, { fetchImpl = fetch, timeoutMs = 20000, exclude,
-                                            minRelevance = 0.12, maxQueries = 2 } = {}) {
+                                            minRelevance = 0.12, maxQueries = 2, topic } = {}) {
   if (prefersChart(headline))
     return { image: null, query: '(chart)', error: 'a chart illustrates this better than a photo' };
 
   // Each query is an API call, and the search is rate limited. Two per story —
   // the named subject and the category — is the useful part of the list; going
   // deeper mostly spends quota to arrive at the same fallback.
-  const queries = queriesFor(headline).slice(0, maxQueries);
+  const queries = queriesFor(headline, topic).slice(0, maxQueries);
   let fallback = null, lastError = null;
 
   for (const q of queries) {

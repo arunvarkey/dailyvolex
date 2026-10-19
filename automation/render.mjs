@@ -14,7 +14,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join, extname, normalize } from 'node:path';
 import { launchChrome, closeChrome, openPage } from './lib/cdp.mjs';
 import { readJson, writeJson } from './lib/store.mjs';
-import { findImage, downloadImage } from './lib/imagery.mjs';
+import { findImage, downloadImage, backdropFor } from './lib/imagery.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(HERE, '..');
@@ -60,18 +60,29 @@ function digestUrl(port, stories, opts) {
   return `http://127.0.0.1:${port}/index.html?${q}`;
 }
 
-/* Try for a photograph; fall back to the generated chart. Never let this stop
-   a run — a post with a chart behind it is fine, a failed run is not. */
+/* Try for a photograph; fall back to a generated backdrop. Never let this stop
+   a run — a post with a backdrop behind it is fine, a failed run is not. */
 const usedPhotos = new Set();       // one picture must not appear twice in a post
+
+/* What goes behind this card when there is no photograph. Named here so the
+   log line and the URL cannot disagree about it. */
+function backdropOf(story, opts) {
+  if (opts.bgExplicit) return opts.bg;
+  return backdropFor(story.display || story.headline, story.topic);
+}
 
 async function imageFor(story, index, opts) {
   if (opts.noPhotos) return null;
-  const found = await findImage(story.display || story.headline, { exclude: usedPhotos });
+  // The topic steers the last-resort query. Without it, every story that named
+  // nothing searchable fell back to a markets photo, so a standards conference
+  // in Delhi was being illustrated with a trading screen.
+  const found = await findImage(story.display || story.headline,
+                               { exclude: usedPhotos, topic: story.topic });
   if (!found.image) {
     // Record the reason on the story: without it, "no picture" is impossible to
     // tell apart from "rate limited" or "the API is down" after the fact.
     story.photoError = `${found.error} (searched "${found.query}")`;
-    console.log(`  no photo: ${story.photoError} — using the chart`);
+    console.log(`  no photo: ${story.photoError} — using the ${backdropOf(story, opts)} backdrop`);
     return null;
   }
   const name = `photo-${index}.jpg`;
@@ -99,7 +110,7 @@ async function imageFor(story, index, opts) {
   }
 
   story.photoError = `every candidate failed to download (${failures.join('; ')})`;
-  console.log(`  no photo: ${story.photoError} — using the chart`);
+  console.log(`  no photo: ${story.photoError} — using the ${backdropOf(story, opts)} backdrop`);
   return null;
 }
 
@@ -113,7 +124,10 @@ function storyUrl(port, story, opts) {
     headline: story.headline,
     source: story.source,
     ticker: opts.ticker,
-    bg: opts.bg,
+    // A photograph covers the whole frame, so the backdrop behind it never
+    // shows; without one, the choice of backdrop is part of what the card
+    // says, and is made per story rather than once for the whole run.
+    bg: story.photo ? opts.bg : backdropOf(story, opts),
   });
   if (opts.posy != null) q.set('posy', String(opts.posy));
   if (story.photo) { q.set('img', story.photo.path); q.set('credit', story.photo.credit); }
@@ -169,6 +183,9 @@ async function main() {
     // its normal place rather than being lifted to fill emptiness.
     posy: arg('posy', '0'),
     bg:   arg('bg', 'chart'),
+    // An explicit --bg is an instruction and overrides the per-story choice;
+    // the default must not, or every card gets the chart again.
+    bgExplicit: process.argv.includes('--bg'),
     noPhotos: process.argv.includes('--no-photos'),
   };
 
