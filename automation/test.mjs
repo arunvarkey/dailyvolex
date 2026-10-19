@@ -372,6 +372,20 @@ ok('a date is never the subject',
     .some(q => /^(Oct|Monday|January)$/.test(q)),
   JSON.stringify(queriesFor('India-New Zealand FTA Effective From Oct 20; Targets Double Trade',
                             'india')));
+/* "Neha Bora moves Delhi High Court against peace bond notice" was searched by
+   her name. A photograph of a stranger who shares it, under that headline,
+   says that stranger is the subject of a legal proceeding. */
+ok('a legal matter is never searched by the name in it',
+  queriesFor('Neha Bora moves Delhi High Court against peace bond notice', 'india')
+    .every(q => !/Neha|Bora/.test(q)),
+  JSON.stringify(queriesFor('Neha Bora moves Delhi High Court against peace bond notice', 'india')));
+ok('a legal matter gets a generic subject instead',
+  queriesFor('Neha Bora moves Delhi High Court against peace bond notice', 'india')
+    .length === 1);
+ok('ordinary stories still get their named subject',
+  queriesFor('Deutsche Bank Is Weeks From Holding Bitcoin for Clients', 'crypto')[0]
+    === 'Deutsche Bank');
+
 ok('a match made only of generic words is no match', (() => {
   const hl = 'Stock Market Holiday On 20 Oct: NSE, BSE Closed For Dussehra?';
   const fish = { title: 'Fish market on a holiday', tags: [{name:'market'},{name:'fish'}] };
