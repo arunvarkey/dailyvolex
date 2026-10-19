@@ -155,7 +155,7 @@ async function main() {
     layout: arg('layout', 'breaking'),
     theme:  arg('theme', 'bbc'),
     ratio:  arg('ratio', '4:5'),       // 4:5 is the largest Instagram feed size
-    ticker: arg('ticker', 'DAILYVOLEX  ···  CRYPTO & FINANCE NEWS  ···  '),
+    ticker: arg('ticker', 'DAILYVOLEX  ···  TODAY\u2019S NEWS  ···  '),
     label:  arg('label', 'TOP STORIES'),
     date:   arg('date', today),
     digest: process.argv.includes('--digest'),

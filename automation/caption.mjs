@@ -16,11 +16,15 @@ const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(HERE, '..');
 
 const TAGS = {
-  crypto: '#crypto #bitcoin #ethereum #cryptonews #blockchain',
-  india:  '#sensex #nifty #indianstockmarket #stockmarketindia #investing',
-  world:  '#stockmarket #finance #markets #economy #business',
+  crypto:        '#crypto #bitcoin #ethereum #cryptonews #blockchain',
+  'markets-india':'#sensex #nifty #indianstockmarket #stockmarketindia #investing',
+  'markets-world':'#stockmarket #markets #economy #investing',
+  business:      '#business #economy #finance #markets',
+  india:         '#india #indianews #bharat',
+  world:         '#worldnews #globalnews #international',
+  tech:          '#tech #technology #ai #innovation',
 };
-const BASE_TAGS = '#dailyvolex #financenews #marketnews';
+const BASE_TAGS = '#dailyvolex #news #dailynews #breakingnews';
 
 function arg(name, fallback) {
   const i = process.argv.indexOf(`--${name}`);
@@ -42,7 +46,7 @@ export function buildCaption(entry, { handle = '@dailyvolex' } = {}) {
     lines.push(entry.display || entry.headline, '', `Source: ${entry.source}`);
   }
 
-  lines.push('', `Follow ${handle} for daily crypto and finance news.`, '');
+  lines.push('', `Follow ${handle} for the day's news.`, '');
 
   const topics = new Set(
     (entry.stories || [entry]).map(s => s.topic).filter(Boolean)

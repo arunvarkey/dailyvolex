@@ -86,6 +86,24 @@ export function isAdvice(title) {
   return TIPS.test(String(title)) || isSpeculation(title);
 }
 
+/* Not news, whatever section it came from. Broadening the feeds means taking
+   whatever a front page carries, and a front page carries a lot of this. */
+const JUNK = [
+  /\bhoroscope|astrology|zodiac|rashifal\b/i,
+  /\brecipe|how to (cook|make)\b/i,
+  /\b(deals?|offers?|discount|sale) (on|of|live|today)\b/i,
+  /\bbest \d+ (phones?|laptops?|gadgets?|gifts?)\b/i,
+  /\b(photos?|pics?|images?|in pictures)\s*[:|]/i,
+  /\bviral video|watch:|caught on camera\b/i,
+  /\b(wedding|birthday|dating|girlfriend|boyfriend|divorce) (photos?|pics?|rumou?rs?)\b/i,
+  /\bquiz|crossword|puzzle\b/i,
+  /\bdaily (digest|briefing) for\b/i,
+];
+
+export function isJunk(title) {
+  return JUNK.some(re => re.test(String(title)));
+}
+
 export function isTopical(title) {
   const t = ' ' + String(title).toLowerCase().replace(/[^a-z0-9$&. ]/g, ' ').replace(/\s+/g, ' ') + ' ';
   // A currency amount is itself a strong signal: "$5M settlement", "₹2,000 crore".
@@ -182,8 +200,13 @@ export function selectStories(items, { history = [], count = 3, now = Date.now()
   const cutoff = now - maxAgeHours * 3600000;
   const fresh = items
     .filter(i => !i.published || i.published >= cutoff)
-    .filter(i => isTopical(i.title))
-    .filter(i => !isAdvice(i.title));
+    // The finance gate belongs only on finance feeds, whose tech and lifestyle
+    // sections would otherwise leak in. A general news feed carries general
+    // news by definition, and gating it on market words would throw away most
+    // of what it is there for.
+    .filter(i => (i.requireTopical ? isTopical(i.title) : true))
+    .filter(i => !isAdvice(i.title))
+    .filter(i => !isJunk(i.title));
 
   const ranked = rankClusters(cluster(fresh), { now });
   const chosen = [];
