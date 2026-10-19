@@ -72,6 +72,7 @@ const SPECULATION = [
   /\bwhat'?s next for\b/i,
   /\bwhere (is|will) \w+ (headed|head|go)\b/i,
   /\bhow (high|low) (can|will|could)\b/i,
+  /\bwhy (is|are|did|has) \w+ (stock|share|price)?\s*(gaining|falling|rising|dropping|surging|crashing)\b/i,
   /\bby (the end of )?20\d\d\?/i,
   // Not "outlook for 2027": an institution revising its outlook is news, and
   // "IMF cuts global growth outlook for 2027" is exactly the kind of story
