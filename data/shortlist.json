@@ -1,180 +1,166 @@
 {
-  "generated": "2026-10-19T12:03:13.644Z",
+  "generated": "2026-10-19T12:48:50.040Z",
   "pool": 579,
   "feedErrors": [],
+  "breaking": false,
   "stories": [
     {
-      "headline": "STOCK MARKET HOLIDAY ON 20 OCT: NSE, BSE CLOSED FOR DUSSEHRA?",
-      "display": "Stock Market Holiday on 20 Oct: NSE, BSE Closed for Dussehra?",
-      "original": "Stock Market Holiday on 20 Oct: NSE, BSE Closed for Dussehra?",
+      "headline": "JPMORGAN IS BRINGING ITS DOLLAR DEPOSIT TOKEN TO ETHEREUM FOR INSTITUTIONAL CLIENTS",
+      "display": "JPMorgan is bringing its dollar deposit token to Ethereum for institutional clients",
+      "original": "JPMorgan is bringing its dollar deposit token to Ethereum for institutional clients",
       "truncated": false,
       "usable": true,
-      "category": "INDIA MARKETS",
-      "source": "Economic Times · Mint · Moneycontrol.com",
+      "category": "CRYPTO NEWS",
+      "source": "The Block · Bloomberg.com · Quartz",
       "sourceNames": [
-        "Economic Times",
-        "Mint",
-        "Moneycontrol.com",
-        "Livemint",
-        "Yahoo Finance",
-        "Univest"
+        "The Block",
+        "Bloomberg.com",
+        "Quartz",
+        "BusinessLine"
       ],
-      "corroboration": 6,
-      "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNWnZETEJOdVlxN0dONWRZS0hQMmlpanpZQmY0cWpwOUZBeTNPRXBCWUZUYTRLVDBDYm9EcHdORVNoc1l4d19NV3dIV1hYN09JTVJ1bkw5dHB0MmJsQ2JjTkZwcVc1OXRmZnlVX2p4NXMtcHRNRjV3cmNlN2M1SjVtbFAxZW9VN3h0dGNrcG1mUDg4X1VkT3pzbXlWNW9FOU11U2llc3RfRzRHcmZoZmxFNEsybG1VaG9GemppdTQ2MFVmbXBLSzZrU29uNEtzWjA3em85MA?oc=5",
-      "published": "2026-10-19T10:08:10.000Z",
-      "topic": "markets-world",
-      "score": 13.7,
-      "photo": {
-        "path": "data/pending/photo-2.jpg",
-        "credit": "File photo: Gopal Aggarwal from India / CC BY 2.0",
-        "license": "by",
-        "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=5086514",
-        "query": "Dussehra",
-        "relevance": 1,
-        "title": "TYPICAL Dussehra Celebrations 02 Oct 2006"
-      }
+      "corroboration": 4,
+      "republishers": [
+        "Yahoo Finance"
+      ],
+      "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBRMFZCV1dQcFJ5TzlJcEZzSGdvTlVxVC1sU1NVbTl1UkhONUlkZF96Y3cyV3dtNTVyWHJSR2lzZWVISWJ6bkFpbnNBSjJmaWpzNnZBLThNOTRmbi1KSk54Z0VDbWozeTRZRl84aG1XNA?oc=5",
+      "published": "2026-10-19T12:23:45.000Z",
+      "topic": "crypto",
+      "section": "business",
+      "score": 9.7
     },
     {
-      "headline": "SENSEX TUMBLES 876 POINTS; NIFTY DROPS BELOW 22,900 DRAGGED BY PRIVATE BANKS",
-      "display": "Sensex tumbles 876 points; Nifty drops below 22,900 dragged by private banks",
-      "original": "Sensex tumbles 876 points; Nifty drops below 22,900 dragged by private banks",
-      "truncated": false,
+      "headline": "STOCK MARKET CRASH TODAY: SENSEX PLUNGES OVER 900 POINTS",
+      "display": "Stock market crash today: Sensex plunges over 900 points",
+      "original": "Stock market crash today: Sensex plunges over 900 points, Nifty50 below 22,900 - top reasons for fall",
+      "truncated": true,
       "usable": true,
       "category": "INDIA MARKETS",
-      "source": "Economic Times · The Times of India · NDTV",
+      "source": "Mint · The Times of India · NDTV",
       "sourceNames": [
-        "Economic Times",
+        "Mint",
         "The Times of India",
         "NDTV",
-        "Deccan Herald",
-        "Times of India"
+        "India Today"
       ],
-      "corroboration": 5,
-      "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPQWE0aTRSZUhsalROcDlFUlhpeHBPN2ZEOUxuSGtSZllFRVJmcXBJUFhYWUxaYjdTRUVXamEyemNHck1mcUJ1ZHRoWVViV01pQUUxWl90Z00wZVZmUlBObHUtQl9nbFVkdFJrN21PTXltTHFESnhuRUZaZU5vQW84M3dzM0tvaGp6YUlYTUUxVWpCeHpDTHRXanYzbWFhdGJZSWJFOXg4el91VXgtRTFPZmxGMjNnVFRDYUZqOERJbGVfZVlnSDRj?oc=5",
-      "published": "2026-10-19T11:00:46.000Z",
+      "corroboration": 4,
+      "republishers": [],
+      "link": "https://news.google.com/rss/articles/CBMi0AJBVV95cUxQWkZVTHdkeGI4ek1UVHR2Nnd5d0ZMVDZGQVhteW1LcnBaVl8zVDNhcmhodjI2elk2VnlEOWlYc29WdWdpUGd1NWpkOUVoVU9WOEhoYlJ4S3pZaFNWaXhzdmRGam1oYjMyYUJ5eFIxYnZ6YlhBSVpua2R1dnZ0bUk1R3MzLXVsazZVbVROUXIyaU5ONWQ2OTBsN3ptamk1eGpjaF9wcXNvUEpULWIzQWpSTVBJVThqNTR3NzU3b0FSUUdKaHRIeE9DZ2RodFdCVEFDeVZEUVhLRFR0SkxFUEcxbHJwOU1VVVZJbEpSa1NuTy1NWkMyY1ZrSnhQRjdxdW5KUzNBc2NPVlNURF9",
+      "published": "2026-10-19T08:34:00.000Z",
       "topic": "markets-world",
-      "score": 12.1,
-      "photoError": "a chart illustrates this better than a photo (searched \"(chart)\")",
-      "photo": null
+      "section": "business",
+      "score": 9.2
     },
     {
-      "headline": "NEHA BORA MOVES DELHI HIGH COURT AGAINST PEACE BOND NOTICE",
-      "display": "Neha Bora moves Delhi High Court against peace bond notice",
-      "original": "Neha Bora moves Delhi High Court against peace bond notice",
+      "headline": "CUTS FORCE WORLD FOOD PROGRAMME TO END SUPPORT FOR HALF A MILLION PALESTINIANS IN GAZA",
+      "display": "Cuts force World Food Programme to end support for half a million Palestinians in Gaza",
+      "original": "Cuts force World Food Programme to end support for half a million Palestinians in Gaza",
       "truncated": false,
       "usable": true,
-      "category": "INDIA",
-      "source": "The Hindu · LawBeat",
+      "category": "WORLD NEWS",
+      "source": "BBC News · The Guardian",
       "sourceNames": [
-        "The Hindu",
-        "LawBeat"
+        "BBC News",
+        "The Guardian"
       ],
       "corroboration": 2,
-      "link": "https://www.thehindu.com/news/cities/Delhi/neha-bora-moves-delhi-high-court-against-peace-bond-notice/article71602486.ece",
-      "published": "2026-10-19T11:44:24.000Z",
-      "topic": "india",
-      "score": 6.7,
-      "photoError": "timed out (searched \"Neha Bora\")",
-      "photo": null
+      "republishers": [],
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNdVhuUVF4NlNKTWQxblBEVk1DZklMS1Z0RVhJV09LTFp0endvd2s3ZVN3TjIzbFRLdk01X01KOTVDdzhtYjJlQjNXcXFUOFhiYmFrNXIyeVlieF9QVV9xbU5MaWpGSzl4dHVRdGZYby01MGpwbnc1bE45a21pWXBiTG01cERyMjZ1Q1JXSGVReTZ0SGxKUzdFR09ocHZINmczcTNF?oc=5",
+      "published": "2026-10-19T11:17:00.000Z",
+      "topic": "world",
+      "section": "world",
+      "score": 7.1
     }
   ],
-  "rendered": "2026-10-19T12:03:46.948Z",
-  "options": {
-    "layout": "breaking",
-    "theme": "bbc",
-    "ratio": "4:5",
-    "ticker": "DAILYVOLEX  ···  TODAY’S NEWS  ···  ",
-    "label": "TOP STORIES",
-    "date": "19 October 2026",
-    "digest": false,
-    "carousel": true,
-    "posy": "0",
-    "bg": "chart",
-    "bgExplicit": false,
-    "noPhotos": false
-  },
-  "output": [
+  "sections": [
     {
-      "kind": "carousel",
-      "headline": "3 stories",
-      "images": [
-        "data/pending/slide-1.png",
-        "data/pending/slide-2.png",
-        "data/pending/slide-3.png",
-        "data/pending/slide-4.png"
-      ],
-      "image": "data/pending/slide-1.png",
-      "width": 1080,
-      "height": 1350,
-      "sourceNames": [
-        "Economic Times",
-        "Mint",
-        "Moneycontrol.com",
-        "Livemint",
-        "Yahoo Finance",
-        "Univest",
-        "The Times of India",
-        "NDTV",
-        "Deccan Herald",
-        "Times of India",
-        "The Hindu",
-        "LawBeat"
-      ],
+      "id": "top",
+      "label": "TOP STORIES",
       "stories": [
         {
-          "headline": "STOCK MARKET HOLIDAY ON 20 OCT: NSE, BSE CLOSED FOR DUSSEHRA?",
-          "display": "Stock Market Holiday on 20 Oct: NSE, BSE Closed for Dussehra?",
-          "original": "Stock Market Holiday on 20 Oct: NSE, BSE Closed for Dussehra?",
+          "headline": "JPMORGAN IS BRINGING ITS DOLLAR DEPOSIT TOKEN TO ETHEREUM FOR INSTITUTIONAL CLIENTS",
+          "display": "JPMorgan is bringing its dollar deposit token to Ethereum for institutional clients",
+          "original": "JPMorgan is bringing its dollar deposit token to Ethereum for institutional clients",
           "truncated": false,
           "usable": true,
-          "category": "INDIA MARKETS",
-          "source": "Economic Times · Mint · Moneycontrol.com",
+          "category": "CRYPTO NEWS",
+          "source": "The Block · Bloomberg.com · Quartz",
           "sourceNames": [
-            "Economic Times",
-            "Mint",
-            "Moneycontrol.com",
-            "Livemint",
-            "Yahoo Finance",
-            "Univest"
+            "The Block",
+            "Bloomberg.com",
+            "Quartz",
+            "BusinessLine"
           ],
-          "corroboration": 6,
-          "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNWnZETEJOdVlxN0dONWRZS0hQMmlpanpZQmY0cWpwOUZBeTNPRXBCWUZUYTRLVDBDYm9EcHdORVNoc1l4d19NV3dIV1hYN09JTVJ1bkw5dHB0MmJsQ2JjTkZwcVc1OXRmZnlVX2p4NXMtcHRNRjV3cmNlN2M1SjVtbFAxZW9VN3h0dGNrcG1mUDg4X1VkT3pzbXlWNW9FOU11U2llc3RfRzRHcmZoZmxFNEsybG1VaG9GemppdTQ2MFVmbXBLSzZrU29uNEtzWjA3em85MA?oc=5",
-          "published": "2026-10-19T10:08:10.000Z",
-          "topic": "markets-world",
-          "score": 13.7,
+          "corroboration": 4,
+          "republishers": [
+            "Yahoo Finance"
+          ],
+          "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBRMFZCV1dQcFJ5TzlJcEZzSGdvTlVxVC1sU1NVbTl1UkhONUlkZF96Y3cyV3dtNTVyWHJSR2lzZWVISWJ6bkFpbnNBSjJmaWpzNnZBLThNOTRmbi1KSk54Z0VDbWozeTRZRl84aG1XNA?oc=5",
+          "published": "2026-10-19T12:23:45.000Z",
+          "topic": "crypto",
+          "section": "business",
+          "score": 9.7,
           "photo": {
-            "path": "data/pending/photo-2.jpg",
-            "credit": "File photo: Gopal Aggarwal from India / CC BY 2.0",
+            "path": "data/pending/top/photo-top-2.jpg",
+            "credit": "File photo: Steve Jurvetson / CC BY 2.0",
             "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=5086514",
-            "query": "Dussehra",
-            "relevance": 1,
-            "title": "TYPICAL Dussehra Celebrations 02 Oct 2006"
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=23967924",
+            "query": "JPMorgan",
+            "relevance": 0.13,
+            "title": "File:Jamie Dimon, CEO of JPMorgan Chase.jpg"
           }
         },
         {
-          "headline": "SENSEX TUMBLES 876 POINTS; NIFTY DROPS BELOW 22,900 DRAGGED BY PRIVATE BANKS",
-          "display": "Sensex tumbles 876 points; Nifty drops below 22,900 dragged by private banks",
-          "original": "Sensex tumbles 876 points; Nifty drops below 22,900 dragged by private banks",
-          "truncated": false,
+          "headline": "STOCK MARKET CRASH TODAY: SENSEX PLUNGES OVER 900 POINTS",
+          "display": "Stock market crash today: Sensex plunges over 900 points",
+          "original": "Stock market crash today: Sensex plunges over 900 points, Nifty50 below 22,900 - top reasons for fall",
+          "truncated": true,
           "usable": true,
           "category": "INDIA MARKETS",
-          "source": "Economic Times · The Times of India · NDTV",
+          "source": "Mint · The Times of India · NDTV",
           "sourceNames": [
-            "Economic Times",
+            "Mint",
             "The Times of India",
             "NDTV",
-            "Deccan Herald",
-            "Times of India"
+            "India Today"
           ],
-          "corroboration": 5,
-          "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPQWE0aTRSZUhsalROcDlFUlhpeHBPN2ZEOUxuSGtSZllFRVJmcXBJUFhYWUxaYjdTRUVXamEyemNHck1mcUJ1ZHRoWVViV01pQUUxWl90Z00wZVZmUlBObHUtQl9nbFVkdFJrN21PTXltTHFESnhuRUZaZU5vQW84M3dzM0tvaGp6YUlYTUUxVWpCeHpDTHRXanYzbWFhdGJZSWJFOXg4el91VXgtRTFPZmxGMjNnVFRDYUZqOERJbGVfZVlnSDRj?oc=5",
-          "published": "2026-10-19T11:00:46.000Z",
+          "corroboration": 4,
+          "republishers": [],
+          "link": "https://news.google.com/rss/articles/CBMi0AJBVV95cUxQWkZVTHdkeGI4ek1UVHR2Nnd5d0ZMVDZGQVhteW1LcnBaVl8zVDNhcmhodjI2elk2VnlEOWlYc29WdWdpUGd1NWpkOUVoVU9WOEhoYlJ4S3pZaFNWaXhzdmRGam1oYjMyYUJ5eFIxYnZ6YlhBSVpua2R1dnZ0bUk1R3MzLXVsazZVbVROUXIyaU5ONWQ2OTBsN3ptamk1eGpjaF9wcXNvUEpULWIzQWpSTVBJVThqNTR3NzU3b0FSUUdKaHRIeE9DZ2RodFdCVEFDeVZEUVhLRFR0SkxFUEcxbHJwOU1VVVZJbEpSa1NuTy1NWkMyY1ZrSnhQRjdxdW5KUzNBc2NPVlNURF9",
+          "published": "2026-10-19T08:34:00.000Z",
           "topic": "markets-world",
-          "score": 12.1,
+          "section": "business",
+          "score": 9.2,
           "photoError": "a chart illustrates this better than a photo (searched \"(chart)\")",
           "photo": null
         },
+        {
+          "headline": "CUTS FORCE WORLD FOOD PROGRAMME TO END SUPPORT FOR HALF A MILLION PALESTINIANS IN GAZA",
+          "display": "Cuts force World Food Programme to end support for half a million Palestinians in Gaza",
+          "original": "Cuts force World Food Programme to end support for half a million Palestinians in Gaza",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "BBC News · The Guardian",
+          "sourceNames": [
+            "BBC News",
+            "The Guardian"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNdVhuUVF4NlNKTWQxblBEVk1DZklMS1Z0RVhJV09LTFp0endvd2s3ZVN3TjIzbFRLdk01X01KOTVDdzhtYjJlQjNXcXFUOFhiYmFrNXIyeVlieF9QVV9xbU5MaWpGSzl4dHVRdGZYby01MGpwbnc1bE45a21pWXBiTG01cERyMjZ1Q1JXSGVReTZ0SGxKUzdFR09ocHZINmczcTNF?oc=5",
+          "published": "2026-10-19T11:17:00.000Z",
+          "topic": "world",
+          "section": "world",
+          "score": 7.1,
+          "photoError": "a library photograph would misrepresent a story about people in harm (searched \"(none)\")",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "india",
+      "label": "INDIA",
+      "stories": [
         {
           "headline": "NEHA BORA MOVES DELHI HIGH COURT AGAINST PEACE BOND NOTICE",
           "display": "Neha Bora moves Delhi High Court against peace bond notice",
@@ -188,15 +174,882 @@
             "LawBeat"
           ],
           "corroboration": 2,
+          "republishers": [],
           "link": "https://www.thehindu.com/news/cities/Delhi/neha-bora-moves-delhi-high-court-against-peace-bond-notice/article71602486.ece",
           "published": "2026-10-19T11:44:24.000Z",
           "topic": "india",
+          "section": "india",
           "score": 6.7,
-          "photoError": "timed out (searched \"Neha Bora\")",
+          "photoError": "no image matched the story closely enough (searched \"courthouse columns\")",
+          "photo": null
+        },
+        {
+          "headline": "MEA REJECTS OIC’S ‘ANTI-INDIA’ REFERENCES, ACCUSES PAKISTAN OF ORCHESTRATING THEM",
+          "display": "MEA rejects OIC’s ‘anti-India’ references, accuses Pakistan of orchestrating them",
+          "original": "MEA rejects OIC’s ‘anti-India’ references, accuses Pakistan of orchestrating them",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "The Hindu · The Economic Times",
+          "sourceNames": [
+            "The Hindu",
+            "The Economic Times"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "link": "https://www.thehindu.com/news/national/mea-rejects-oics-anti-india-references-accuses-pakistan-of-orchestrating-them/article71602533.ece",
+          "published": "2026-10-19T11:08:16.000Z",
+          "topic": "india",
+          "section": "india",
+          "score": 6.7,
+          "photo": {
+            "path": "data/pending/india/photo-india-3.jpg",
+            "credit": "File photo: Titan2456 / CC0",
+            "license": "cc0",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=150304642",
+            "query": "Pakistan",
+            "relevance": 0.13,
+            "title": "Senate of Pakistan, 2024"
+          }
+        },
+        {
+          "headline": "CHINA IMPOSES EXPORT CONTROLS ON TUNNEL-BORING MACHINES SOUGHT BY INDIA",
+          "display": "China imposes export controls on tunnel-boring machines sought by India",
+          "original": "China imposes export controls on tunnel-boring machines sought by India, citing ‘national security’",
+          "truncated": true,
+          "usable": true,
+          "category": "INDIA",
+          "source": "The Hindu · People's Archive of Rural India",
+          "sourceNames": [
+            "The Hindu",
+            "People's Archive of Rural India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "link": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxQa3pjN3pMYlhxc0h0WTVaeVRERzdoRmRWekx2dzB2bVhySmtwaHRfaTV5Sm5nSkIyT0dXOUNQY0RXeWZIektvd1QzbFlObG05Q0ZhZ2RNTnNtOWNfbUQ2dFNKOUk5eldIWG1XRFhPX0dtUUN3Z2txTWd5bVJNbzlXRlV1NFhiSlFxd0RZMDBtZFdXWlByaktRYmpidEFUWkFjTC1YdWNVUzVVZUVfYW9tZnVJbmlpaGNUYURPem5jeDRhYVlzbDJ6SmZrQkJ4ekk5bnZCRkhkOF9uRzVBdlhpaXUxNEFydGpxZURVQmZSTnhrd9IB-AFBVV95cUxQYi0ydG40czM1c09nOUZ",
+          "published": "2026-10-19T10:23:02.000Z",
+          "topic": "india",
+          "section": "india",
+          "score": 5.6,
+          "photo": {
+            "path": "data/pending/india/photo-india-4.jpg",
+            "credit": "File photo: Dagvadorj derivative work: Dagvadorj / CC BY 3.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=11087234",
+            "query": "China",
+            "relevance": 0.11,
+            "title": "Map of National central cities in the People's Republic of China"
+          }
+        }
+      ]
+    },
+    {
+      "id": "world",
+      "label": "WORLD",
+      "stories": [
+        {
+          "headline": "PODCAST: UKRAINE INTELLIGENCE SHARING, FRANCE REELS AND ALBERTA’S VOTE ON SECESSION",
+          "display": "PODCAST: Ukraine intelligence sharing, France reels and Alberta’s vote on secession",
+          "original": "PODCAST: Ukraine intelligence sharing, France reels and Alberta’s vote on secession",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "Al Jazeera · Reuters",
+          "sourceNames": [
+            "Al Jazeera",
+            "Reuters"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPZV93UjZCREtqSVh2TGxNaXNjR2J0WG53OFdqeDRuMTNzYkVFVWo3NFU3MWY2dWc0dXZFTjVKek1GOV9fVUNQWmZRTmVpQkZWX0hUV2pybWFPSzFKbEhzWFB2ajkyOVdxYTNxNTBXajFxZGFXNjVnbEVIUWd1T0k2cWxER29ZVzY1VjlXTzFMTHp6Z3JkQk92LV9BTHRiTERlTk1UaDBvbVU5Wk9uWWY4?oc=5",
+          "published": "2026-10-19T12:18:06.000Z",
+          "topic": "world",
+          "section": "world",
+          "score": 6.5,
+          "photo": {
+            "path": "data/pending/world/photo-world-2.jpg",
+            "credit": "File photo: Casey Fiesler from Atlanta / CC BY 2.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=48187362",
+            "query": "PODCAST",
+            "relevance": 0.11,
+            "title": "Serial Podcast"
+          }
+        },
+        {
+          "headline": "NO ‘TURMOIL’ AT THE WHITE HOUSE",
+          "display": "No ‘turmoil’ at the White House",
+          "original": "No ‘turmoil’ at the White House",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "CoinDesk · Al Jazeera",
+          "sourceNames": [
+            "CoinDesk",
+            "Al Jazeera"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "link": "https://www.aljazeera.com/opinions/2026/10/19/no-turmoil-at-the-white-house?traffic_source=rss",
+          "published": "2026-10-19T06:50:43.000Z",
+          "topic": "world",
+          "section": "world",
+          "score": 6.2,
+          "photo": {
+            "path": "data/pending/world/photo-world-3.jpg",
+            "credit": "File photo: David Broad / CC BY 3.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=52232654",
+            "query": "White House",
+            "relevance": 0.67,
+            "title": "August 1991 coup - awaiting the counterattack outside the White House Moscow - panoramio"
+          }
+        },
+        {
+          "headline": "HOW A GRASS FIRE AT A CANADIAN MILITARY BASE KILLED FOUR SOLDIERS",
+          "display": "How a grass fire at a Canadian military base killed four soldiers",
+          "original": "How a grass fire at a Canadian military base killed four soldiers",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "Al Jazeera · NDTV",
+          "sourceNames": [
+            "Al Jazeera",
+            "NDTV"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "link": "https://www.aljazeera.com/news/2026/10/19/how-a-grass-fire-at-a-canadian-military-base-killed-four-soldiers?traffic_source=rss",
+          "published": "2026-10-19T09:12:31.000Z",
+          "topic": "world",
+          "section": "world",
+          "score": 6.2,
+          "photoError": "a library photograph would misrepresent a story about people in harm (searched \"(none)\")",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "business",
+      "label": "BUSINESS",
+      "stories": [
+        {
+          "headline": "$10.5 BILLION WORTH OF SHARES! SPACEX BOSS ELON MUSK TO GIVE ONE SHARE TO EVERY US CHILD",
+          "display": "$10.5 billion worth of shares! SpaceX boss Elon Musk to give one share to every US child",
+          "original": "$10.5 billion worth of shares! SpaceX boss Elon Musk to give one share to every US child — how many shares does he own?",
+          "truncated": true,
+          "usable": true,
+          "category": "INDIA MARKETS",
+          "source": "Economic Times · Mint · NDTV",
+          "sourceNames": [
+            "Economic Times",
+            "Mint",
+            "NDTV"
+          ],
+          "corroboration": 3,
+          "republishers": [],
+          "link": "https://www.livemint.com/market/stock-market-news/105-billion-worth-of-shares-spacex-boss-elon-musk-to-give-one-share-to-every-us-child-how-many-shares-does-he-own-11792411456791.html",
+          "published": "2026-10-19T12:26:48.000Z",
+          "topic": "markets-india",
+          "section": "business",
+          "score": 8.1,
+          "photo": {
+            "path": "data/pending/business/photo-business-2.jpg",
+            "credit": "File photo: Steve Jurvetson from Los Altos, USA / CC BY 2.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=118535315",
+            "query": "Elon Musk",
+            "relevance": 0.38,
+            "title": "Meet the new boss... Same as the News boss... The Elon Musk Twitter Interview at TED 2022 (52004185747)"
+          }
+        },
+        {
+          "headline": "BITCOIN REBOUNDS ABOVE $82,000 AS OIL PRICES FALL AND RISK APPETITE IMPROVES | HINDUSTAN",
+          "display": "Bitcoin rebounds above $82,000 as oil prices fall and risk appetite improves | Hindustan",
+          "original": "Bitcoin rebounds above $82,000 as oil prices fall and risk appetite improves | Hindustan Times",
+          "truncated": true,
+          "usable": true,
+          "category": "CRYPTO NEWS",
+          "source": "Hindustan Times · Bloomberg.com · BusinessLine",
+          "sourceNames": [
+            "Hindustan Times",
+            "Bloomberg.com",
+            "BusinessLine"
+          ],
+          "corroboration": 3,
+          "republishers": [
+            "Yahoo Finance"
+          ],
+          "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxOVFRIWXRmZko1b0swQWdJTkxOdTNXOUtWNnFCMmRnM1B1dzJVaFVRbzA2YmRId2JUU1kyel9Kb2JpZkp5ODJxRk5PZDg3MlJHWlVZWWx3V2MyMmJYWmYwdHJXNHRQZG9Eb2ZuS054QUpuS2dnMFVDazdIakJuN2dieXlJREl5ZDNGcE5oajkwTk1mdGdldEFIbUJkUWVpcW9fSDVsZzlHMUdfdmdpVFBUNklVMzhNNmw0bXF5LUE2d1d5SjU0YnAwZ1A0ZmxZRmNrdEdmQW5USks1T0M3dWFv0gHkAUFVX3lxTE8wT040RGdHZHhXblB0UjM0dHR2eS1qSFZYclNlUXpQbk9",
+          "published": "2026-10-19T11:55:20.000Z",
+          "topic": "crypto",
+          "section": "business",
+          "score": 7.1,
+          "photo": {
+            "path": "data/pending/business/photo-business-3.jpg",
+            "credit": "File photo: Andrew Bone from Weymouth, England / CC BY 2.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=48384759",
+            "query": "Hindustan",
+            "relevance": 0.13,
+            "title": "Hindustan Ambassador Taxi in Goa India, October 1994 (16668303387)"
+          }
+        },
+        {
+          "headline": "MANIC MONDAY AT INDIAN STOCK MARKET: SENSEX, NIFTY BLEED",
+          "display": "Manic Monday at Indian stock market: Sensex, Nifty bleed",
+          "original": "Manic Monday at Indian stock market: Sensex, Nifty bleed - ₹3.6 lakh cr gone in 6 hours | What went wrong? Big reasons",
+          "truncated": true,
+          "usable": true,
+          "category": "INDIA MARKETS",
+          "source": "Mint · Al Jazeera",
+          "sourceNames": [
+            "Mint",
+            "Al Jazeera"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "link": "https://www.livemint.com/market/stock-market-news/manic-monday-at-indian-stock-market-sensex-nifty-bleed-rs-3-6-lakh-cr-gone-in-6-hours-what-went-wrong-big-reasons-11792405459477.html",
+          "published": "2026-10-19T11:35:01.000Z",
+          "topic": "markets-india",
+          "section": "business",
+          "score": 6.5,
+          "photoError": "a chart illustrates this better than a photo (searched \"(chart)\")",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "tech",
+      "label": "TECHNOLOGY",
+      "stories": [
+        {
+          "headline": "MICROSOFT EXITS UK’S LARGEST AI DATA CENTRE PROJECT OVER POWER SUPPLY CONCERNS",
+          "display": "Microsoft exits UK’s largest AI data centre project over power supply concerns",
+          "original": "Microsoft exits UK’s largest AI data centre project over power supply concerns",
+          "truncated": false,
+          "usable": true,
+          "category": "TECHNOLOGY",
+          "source": "BBC News · The Times of India",
+          "sourceNames": [
+            "BBC News",
+            "The Times of India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "link": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxNS1p1SVFPTWRvU3YxRzNMTnY3Y2ZlSTB2TWx3a3FKLXBYc01Xd1dwbmdHQXZPUEtUQ2k1cWNYdDNWRXZBRURKSGRqU0pHT25YYXMyanppSnlfaVowM1dPXzZhRnRvcE1XNU9qS0wzaGlQaFo4VXZnU3FLSGhUa1NHaWtyaDdYb3hCTFEwcVhWcjNaQ3pMV3dZb04yeldranpkcDRKdnRtYXBlamttNGhQSHUwejlQekpLN1hGQV9vdDVBdGpJZGxJNDJyeHpHd2pSYk5SQ3I3ZUJRWUgxTmNaZVRINnJGZlkwaUktMEpOY25Bd9IB9wFBVV95cUxNZ3pUcW9MZFdyMm9uQ2p",
+          "published": "2026-10-19T12:17:00.000Z",
+          "topic": "tech",
+          "section": "tech",
+          "score": 6.7,
+          "photo": {
+            "path": "data/pending/tech/photo-tech-2.jpg",
+            "credit": "File photo: pop culture geek / CC BY 2.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=22332962",
+            "query": "Microsoft",
+            "relevance": 0.11,
+            "title": "File:E3 Expo 2012 - Microsoft booth - Halo 4 warthog.jpg"
+          }
+        },
+        {
+          "headline": "INTRODUCING BULBUL V4 FLASH TEXT-TO-SPEECH FOR INDIA",
+          "display": "Introducing Bulbul V4 Flash text-to-speech for India",
+          "original": "Introducing Bulbul V4 Flash text-to-speech for India",
+          "truncated": false,
+          "usable": true,
+          "category": "TECHNOLOGY",
+          "source": "Sarvam AI",
+          "sourceNames": [
+            "Sarvam AI"
+          ],
+          "corroboration": 1,
+          "republishers": [],
+          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBaMWlnenc3Qm5vOVppYWxDV1AyVng4WWROSmZQSUYtX0VnTVpoYndNM2JPemZDZ2owWmdHU00zNUJ1d05UZkQ1WjBOZTZSYkhJR1duX21R?oc=5",
+          "published": "2026-10-19T11:37:02.000Z",
+          "topic": "tech",
+          "section": "tech",
+          "score": 3.7,
+          "photoError": "no image matched the story closely enough (searched \"technology data centre\")",
+          "photo": null
+        },
+        {
+          "headline": "SIEMENS PARTNERS WITH NVIDIA TO ADVANCE AI-DRIVEN, AUTONOMOUS FACT...",
+          "display": "Siemens partners with NVIDIA to advance AI-driven, autonomous fact...",
+          "original": "Siemens partners with NVIDIA to advance AI-driven, autonomous fact ...",
+          "truncated": false,
+          "usable": true,
+          "category": "TECHNOLOGY",
+          "source": "Siemens press",
+          "sourceNames": [
+            "Siemens press"
+          ],
+          "corroboration": 1,
+          "republishers": [],
+          "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPRlpjNDhhNElaeVYxT1JuVXY5MWVvYUlOaWpNanllTklOZVF0Qllpcm5zTDliZnVjZENvZUsxNWZSZjl5T2lWcjlnOXhlUUtDUHZaYzhWRGlnYmJxSWllRjBwblRVUEJUZVFJLXFQWXJfOUJkV200NGxRQUpvdzRTUEctVjNOY293MG1WNzJzLUotSmk3Mmx5WGxsM00wV1UteEd2RF95V1FwcDM3TzI5Qg?oc=5",
+          "published": "2026-10-19T11:59:31.000Z",
+          "topic": "tech",
+          "section": "tech",
+          "score": 3.7,
+          "photo": {
+            "path": "data/pending/tech/photo-tech-4.jpg",
+            "credit": "File photo: Oronbb / CC BY 4.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=149580510",
+            "query": "AI-driven",
+            "relevance": 0.14,
+            "title": "Skydio 10 AI-Driven drone"
+          }
+        }
+      ]
+    }
+  ],
+  "rendered": "2026-10-19T12:51:32.890Z",
+  "options": {
+    "layout": "breaking",
+    "theme": "bbc",
+    "ratio": "4:5",
+    "ticker": "DAILYVOLEX  ···  TODAY’S NEWS  ···  ",
+    "label": "TOP STORIES",
+    "date": "19 October 2026",
+    "digest": false,
+    "carousel": false,
+    "sections": true,
+    "posy": "0",
+    "bg": "chart",
+    "bgExplicit": false,
+    "noPhotos": false
+  },
+  "output": [
+    {
+      "kind": "carousel",
+      "headline": "3 stories",
+      "images": [
+        "data/pending/top/slide-1.png",
+        "data/pending/top/slide-2.png",
+        "data/pending/top/slide-3.png",
+        "data/pending/top/slide-4.png"
+      ],
+      "image": "data/pending/top/slide-1.png",
+      "width": 1080,
+      "height": 1350,
+      "sourceNames": [
+        "The Block",
+        "Bloomberg.com",
+        "Quartz",
+        "BusinessLine",
+        "Mint",
+        "The Times of India",
+        "NDTV",
+        "India Today",
+        "BBC News",
+        "The Guardian"
+      ],
+      "stories": [
+        {
+          "headline": "JPMORGAN IS BRINGING ITS DOLLAR DEPOSIT TOKEN TO ETHEREUM FOR INSTITUTIONAL CLIENTS",
+          "display": "JPMorgan is bringing its dollar deposit token to Ethereum for institutional clients",
+          "original": "JPMorgan is bringing its dollar deposit token to Ethereum for institutional clients",
+          "truncated": false,
+          "usable": true,
+          "category": "CRYPTO NEWS",
+          "source": "The Block · Bloomberg.com · Quartz",
+          "sourceNames": [
+            "The Block",
+            "Bloomberg.com",
+            "Quartz",
+            "BusinessLine"
+          ],
+          "corroboration": 4,
+          "republishers": [
+            "Yahoo Finance"
+          ],
+          "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBRMFZCV1dQcFJ5TzlJcEZzSGdvTlVxVC1sU1NVbTl1UkhONUlkZF96Y3cyV3dtNTVyWHJSR2lzZWVISWJ6bkFpbnNBSjJmaWpzNnZBLThNOTRmbi1KSk54Z0VDbWozeTRZRl84aG1XNA?oc=5",
+          "published": "2026-10-19T12:23:45.000Z",
+          "topic": "crypto",
+          "section": "business",
+          "score": 9.7,
+          "photo": {
+            "path": "data/pending/top/photo-top-2.jpg",
+            "credit": "File photo: Steve Jurvetson / CC BY 2.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=23967924",
+            "query": "JPMorgan",
+            "relevance": 0.13,
+            "title": "File:Jamie Dimon, CEO of JPMorgan Chase.jpg"
+          }
+        },
+        {
+          "headline": "STOCK MARKET CRASH TODAY: SENSEX PLUNGES OVER 900 POINTS",
+          "display": "Stock market crash today: Sensex plunges over 900 points",
+          "original": "Stock market crash today: Sensex plunges over 900 points, Nifty50 below 22,900 - top reasons for fall",
+          "truncated": true,
+          "usable": true,
+          "category": "INDIA MARKETS",
+          "source": "Mint · The Times of India · NDTV",
+          "sourceNames": [
+            "Mint",
+            "The Times of India",
+            "NDTV",
+            "India Today"
+          ],
+          "corroboration": 4,
+          "republishers": [],
+          "link": "https://news.google.com/rss/articles/CBMi0AJBVV95cUxQWkZVTHdkeGI4ek1UVHR2Nnd5d0ZMVDZGQVhteW1LcnBaVl8zVDNhcmhodjI2elk2VnlEOWlYc29WdWdpUGd1NWpkOUVoVU9WOEhoYlJ4S3pZaFNWaXhzdmRGam1oYjMyYUJ5eFIxYnZ6YlhBSVpua2R1dnZ0bUk1R3MzLXVsazZVbVROUXIyaU5ONWQ2OTBsN3ptamk1eGpjaF9wcXNvUEpULWIzQWpSTVBJVThqNTR3NzU3b0FSUUdKaHRIeE9DZ2RodFdCVEFDeVZEUVhLRFR0SkxFUEcxbHJwOU1VVVZJbEpSa1NuTy1NWkMyY1ZrSnhQRjdxdW5KUzNBc2NPVlNURF9",
+          "published": "2026-10-19T08:34:00.000Z",
+          "topic": "markets-world",
+          "section": "business",
+          "score": 9.2,
+          "photoError": "a chart illustrates this better than a photo (searched \"(chart)\")",
+          "photo": null
+        },
+        {
+          "headline": "CUTS FORCE WORLD FOOD PROGRAMME TO END SUPPORT FOR HALF A MILLION PALESTINIANS IN GAZA",
+          "display": "Cuts force World Food Programme to end support for half a million Palestinians in Gaza",
+          "original": "Cuts force World Food Programme to end support for half a million Palestinians in Gaza",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "BBC News · The Guardian",
+          "sourceNames": [
+            "BBC News",
+            "The Guardian"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNdVhuUVF4NlNKTWQxblBEVk1DZklMS1Z0RVhJV09LTFp0endvd2s3ZVN3TjIzbFRLdk01X01KOTVDdzhtYjJlQjNXcXFUOFhiYmFrNXIyeVlieF9QVV9xbU5MaWpGSzl4dHVRdGZYby01MGpwbnc1bE45a21pWXBiTG01cERyMjZ1Q1JXSGVReTZ0SGxKUzdFR09ocHZINmczcTNF?oc=5",
+          "published": "2026-10-19T11:17:00.000Z",
+          "topic": "world",
+          "section": "world",
+          "score": 7.1,
+          "photoError": "a library photograph would misrepresent a story about people in harm (searched \"(none)\")",
           "photo": null
         }
       ],
-      "usable": true
+      "usable": true,
+      "section": "top",
+      "sectionLabel": "TOP STORIES"
+    },
+    {
+      "kind": "carousel",
+      "headline": "3 stories",
+      "images": [
+        "data/pending/india/slide-1.png",
+        "data/pending/india/slide-2.png",
+        "data/pending/india/slide-3.png",
+        "data/pending/india/slide-4.png"
+      ],
+      "image": "data/pending/india/slide-1.png",
+      "width": 1080,
+      "height": 1350,
+      "sourceNames": [
+        "The Hindu",
+        "LawBeat",
+        "The Economic Times",
+        "People's Archive of Rural India"
+      ],
+      "stories": [
+        {
+          "headline": "NEHA BORA MOVES DELHI HIGH COURT AGAINST PEACE BOND NOTICE",
+          "display": "Neha Bora moves Delhi High Court against peace bond notice",
+          "original": "Neha Bora moves Delhi High Court against peace bond notice",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "The Hindu · LawBeat",
+          "sourceNames": [
+            "The Hindu",
+            "LawBeat"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "link": "https://www.thehindu.com/news/cities/Delhi/neha-bora-moves-delhi-high-court-against-peace-bond-notice/article71602486.ece",
+          "published": "2026-10-19T11:44:24.000Z",
+          "topic": "india",
+          "section": "india",
+          "score": 6.7,
+          "photoError": "no image matched the story closely enough (searched \"courthouse columns\")",
+          "photo": null
+        },
+        {
+          "headline": "MEA REJECTS OIC’S ‘ANTI-INDIA’ REFERENCES, ACCUSES PAKISTAN OF ORCHESTRATING THEM",
+          "display": "MEA rejects OIC’s ‘anti-India’ references, accuses Pakistan of orchestrating them",
+          "original": "MEA rejects OIC’s ‘anti-India’ references, accuses Pakistan of orchestrating them",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "The Hindu · The Economic Times",
+          "sourceNames": [
+            "The Hindu",
+            "The Economic Times"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "link": "https://www.thehindu.com/news/national/mea-rejects-oics-anti-india-references-accuses-pakistan-of-orchestrating-them/article71602533.ece",
+          "published": "2026-10-19T11:08:16.000Z",
+          "topic": "india",
+          "section": "india",
+          "score": 6.7,
+          "photo": {
+            "path": "data/pending/india/photo-india-3.jpg",
+            "credit": "File photo: Titan2456 / CC0",
+            "license": "cc0",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=150304642",
+            "query": "Pakistan",
+            "relevance": 0.13,
+            "title": "Senate of Pakistan, 2024"
+          }
+        },
+        {
+          "headline": "CHINA IMPOSES EXPORT CONTROLS ON TUNNEL-BORING MACHINES SOUGHT BY INDIA",
+          "display": "China imposes export controls on tunnel-boring machines sought by India",
+          "original": "China imposes export controls on tunnel-boring machines sought by India, citing ‘national security’",
+          "truncated": true,
+          "usable": true,
+          "category": "INDIA",
+          "source": "The Hindu · People's Archive of Rural India",
+          "sourceNames": [
+            "The Hindu",
+            "People's Archive of Rural India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "link": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxQa3pjN3pMYlhxc0h0WTVaeVRERzdoRmRWekx2dzB2bVhySmtwaHRfaTV5Sm5nSkIyT0dXOUNQY0RXeWZIektvd1QzbFlObG05Q0ZhZ2RNTnNtOWNfbUQ2dFNKOUk5eldIWG1XRFhPX0dtUUN3Z2txTWd5bVJNbzlXRlV1NFhiSlFxd0RZMDBtZFdXWlByaktRYmpidEFUWkFjTC1YdWNVUzVVZUVfYW9tZnVJbmlpaGNUYURPem5jeDRhYVlzbDJ6SmZrQkJ4ekk5bnZCRkhkOF9uRzVBdlhpaXUxNEFydGpxZURVQmZSTnhrd9IB-AFBVV95cUxQYi0ydG40czM1c09nOUZ",
+          "published": "2026-10-19T10:23:02.000Z",
+          "topic": "india",
+          "section": "india",
+          "score": 5.6,
+          "photo": {
+            "path": "data/pending/india/photo-india-4.jpg",
+            "credit": "File photo: Dagvadorj derivative work: Dagvadorj / CC BY 3.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=11087234",
+            "query": "China",
+            "relevance": 0.11,
+            "title": "Map of National central cities in the People's Republic of China"
+          }
+        }
+      ],
+      "usable": true,
+      "section": "india",
+      "sectionLabel": "INDIA"
+    },
+    {
+      "kind": "carousel",
+      "headline": "3 stories",
+      "images": [
+        "data/pending/world/slide-1.png",
+        "data/pending/world/slide-2.png",
+        "data/pending/world/slide-3.png",
+        "data/pending/world/slide-4.png"
+      ],
+      "image": "data/pending/world/slide-1.png",
+      "width": 1080,
+      "height": 1350,
+      "sourceNames": [
+        "Al Jazeera",
+        "Reuters",
+        "CoinDesk",
+        "NDTV"
+      ],
+      "stories": [
+        {
+          "headline": "PODCAST: UKRAINE INTELLIGENCE SHARING, FRANCE REELS AND ALBERTA’S VOTE ON SECESSION",
+          "display": "PODCAST: Ukraine intelligence sharing, France reels and Alberta’s vote on secession",
+          "original": "PODCAST: Ukraine intelligence sharing, France reels and Alberta’s vote on secession",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "Al Jazeera · Reuters",
+          "sourceNames": [
+            "Al Jazeera",
+            "Reuters"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPZV93UjZCREtqSVh2TGxNaXNjR2J0WG53OFdqeDRuMTNzYkVFVWo3NFU3MWY2dWc0dXZFTjVKek1GOV9fVUNQWmZRTmVpQkZWX0hUV2pybWFPSzFKbEhzWFB2ajkyOVdxYTNxNTBXajFxZGFXNjVnbEVIUWd1T0k2cWxER29ZVzY1VjlXTzFMTHp6Z3JkQk92LV9BTHRiTERlTk1UaDBvbVU5Wk9uWWY4?oc=5",
+          "published": "2026-10-19T12:18:06.000Z",
+          "topic": "world",
+          "section": "world",
+          "score": 6.5,
+          "photo": {
+            "path": "data/pending/world/photo-world-2.jpg",
+            "credit": "File photo: Casey Fiesler from Atlanta / CC BY 2.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=48187362",
+            "query": "PODCAST",
+            "relevance": 0.11,
+            "title": "Serial Podcast"
+          }
+        },
+        {
+          "headline": "NO ‘TURMOIL’ AT THE WHITE HOUSE",
+          "display": "No ‘turmoil’ at the White House",
+          "original": "No ‘turmoil’ at the White House",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "CoinDesk · Al Jazeera",
+          "sourceNames": [
+            "CoinDesk",
+            "Al Jazeera"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "link": "https://www.aljazeera.com/opinions/2026/10/19/no-turmoil-at-the-white-house?traffic_source=rss",
+          "published": "2026-10-19T06:50:43.000Z",
+          "topic": "world",
+          "section": "world",
+          "score": 6.2,
+          "photo": {
+            "path": "data/pending/world/photo-world-3.jpg",
+            "credit": "File photo: David Broad / CC BY 3.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=52232654",
+            "query": "White House",
+            "relevance": 0.67,
+            "title": "August 1991 coup - awaiting the counterattack outside the White House Moscow - panoramio"
+          }
+        },
+        {
+          "headline": "HOW A GRASS FIRE AT A CANADIAN MILITARY BASE KILLED FOUR SOLDIERS",
+          "display": "How a grass fire at a Canadian military base killed four soldiers",
+          "original": "How a grass fire at a Canadian military base killed four soldiers",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "Al Jazeera · NDTV",
+          "sourceNames": [
+            "Al Jazeera",
+            "NDTV"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "link": "https://www.aljazeera.com/news/2026/10/19/how-a-grass-fire-at-a-canadian-military-base-killed-four-soldiers?traffic_source=rss",
+          "published": "2026-10-19T09:12:31.000Z",
+          "topic": "world",
+          "section": "world",
+          "score": 6.2,
+          "photoError": "a library photograph would misrepresent a story about people in harm (searched \"(none)\")",
+          "photo": null
+        }
+      ],
+      "usable": true,
+      "section": "world",
+      "sectionLabel": "WORLD"
+    },
+    {
+      "kind": "carousel",
+      "headline": "3 stories",
+      "images": [
+        "data/pending/business/slide-1.png",
+        "data/pending/business/slide-2.png",
+        "data/pending/business/slide-3.png",
+        "data/pending/business/slide-4.png"
+      ],
+      "image": "data/pending/business/slide-1.png",
+      "width": 1080,
+      "height": 1350,
+      "sourceNames": [
+        "Economic Times",
+        "Mint",
+        "NDTV",
+        "Hindustan Times",
+        "Bloomberg.com",
+        "BusinessLine",
+        "Al Jazeera"
+      ],
+      "stories": [
+        {
+          "headline": "$10.5 BILLION WORTH OF SHARES! SPACEX BOSS ELON MUSK TO GIVE ONE SHARE TO EVERY US CHILD",
+          "display": "$10.5 billion worth of shares! SpaceX boss Elon Musk to give one share to every US child",
+          "original": "$10.5 billion worth of shares! SpaceX boss Elon Musk to give one share to every US child — how many shares does he own?",
+          "truncated": true,
+          "usable": true,
+          "category": "INDIA MARKETS",
+          "source": "Economic Times · Mint · NDTV",
+          "sourceNames": [
+            "Economic Times",
+            "Mint",
+            "NDTV"
+          ],
+          "corroboration": 3,
+          "republishers": [],
+          "link": "https://www.livemint.com/market/stock-market-news/105-billion-worth-of-shares-spacex-boss-elon-musk-to-give-one-share-to-every-us-child-how-many-shares-does-he-own-11792411456791.html",
+          "published": "2026-10-19T12:26:48.000Z",
+          "topic": "markets-india",
+          "section": "business",
+          "score": 8.1,
+          "photo": {
+            "path": "data/pending/business/photo-business-2.jpg",
+            "credit": "File photo: Steve Jurvetson from Los Altos, USA / CC BY 2.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=118535315",
+            "query": "Elon Musk",
+            "relevance": 0.38,
+            "title": "Meet the new boss... Same as the News boss... The Elon Musk Twitter Interview at TED 2022 (52004185747)"
+          }
+        },
+        {
+          "headline": "BITCOIN REBOUNDS ABOVE $82,000 AS OIL PRICES FALL AND RISK APPETITE IMPROVES | HINDUSTAN",
+          "display": "Bitcoin rebounds above $82,000 as oil prices fall and risk appetite improves | Hindustan",
+          "original": "Bitcoin rebounds above $82,000 as oil prices fall and risk appetite improves | Hindustan Times",
+          "truncated": true,
+          "usable": true,
+          "category": "CRYPTO NEWS",
+          "source": "Hindustan Times · Bloomberg.com · BusinessLine",
+          "sourceNames": [
+            "Hindustan Times",
+            "Bloomberg.com",
+            "BusinessLine"
+          ],
+          "corroboration": 3,
+          "republishers": [
+            "Yahoo Finance"
+          ],
+          "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxOVFRIWXRmZko1b0swQWdJTkxOdTNXOUtWNnFCMmRnM1B1dzJVaFVRbzA2YmRId2JUU1kyel9Kb2JpZkp5ODJxRk5PZDg3MlJHWlVZWWx3V2MyMmJYWmYwdHJXNHRQZG9Eb2ZuS054QUpuS2dnMFVDazdIakJuN2dieXlJREl5ZDNGcE5oajkwTk1mdGdldEFIbUJkUWVpcW9fSDVsZzlHMUdfdmdpVFBUNklVMzhNNmw0bXF5LUE2d1d5SjU0YnAwZ1A0ZmxZRmNrdEdmQW5USks1T0M3dWFv0gHkAUFVX3lxTE8wT040RGdHZHhXblB0UjM0dHR2eS1qSFZYclNlUXpQbk9",
+          "published": "2026-10-19T11:55:20.000Z",
+          "topic": "crypto",
+          "section": "business",
+          "score": 7.1,
+          "photo": {
+            "path": "data/pending/business/photo-business-3.jpg",
+            "credit": "File photo: Andrew Bone from Weymouth, England / CC BY 2.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=48384759",
+            "query": "Hindustan",
+            "relevance": 0.13,
+            "title": "Hindustan Ambassador Taxi in Goa India, October 1994 (16668303387)"
+          }
+        },
+        {
+          "headline": "MANIC MONDAY AT INDIAN STOCK MARKET: SENSEX, NIFTY BLEED",
+          "display": "Manic Monday at Indian stock market: Sensex, Nifty bleed",
+          "original": "Manic Monday at Indian stock market: Sensex, Nifty bleed - ₹3.6 lakh cr gone in 6 hours | What went wrong? Big reasons",
+          "truncated": true,
+          "usable": true,
+          "category": "INDIA MARKETS",
+          "source": "Mint · Al Jazeera",
+          "sourceNames": [
+            "Mint",
+            "Al Jazeera"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "link": "https://www.livemint.com/market/stock-market-news/manic-monday-at-indian-stock-market-sensex-nifty-bleed-rs-3-6-lakh-cr-gone-in-6-hours-what-went-wrong-big-reasons-11792405459477.html",
+          "published": "2026-10-19T11:35:01.000Z",
+          "topic": "markets-india",
+          "section": "business",
+          "score": 6.5,
+          "photoError": "a chart illustrates this better than a photo (searched \"(chart)\")",
+          "photo": null
+        }
+      ],
+      "usable": true,
+      "section": "business",
+      "sectionLabel": "BUSINESS"
+    },
+    {
+      "kind": "carousel",
+      "headline": "3 stories",
+      "images": [
+        "data/pending/tech/slide-1.png",
+        "data/pending/tech/slide-2.png",
+        "data/pending/tech/slide-3.png",
+        "data/pending/tech/slide-4.png"
+      ],
+      "image": "data/pending/tech/slide-1.png",
+      "width": 1080,
+      "height": 1350,
+      "sourceNames": [
+        "BBC News",
+        "The Times of India",
+        "Sarvam AI",
+        "Siemens press"
+      ],
+      "stories": [
+        {
+          "headline": "MICROSOFT EXITS UK’S LARGEST AI DATA CENTRE PROJECT OVER POWER SUPPLY CONCERNS",
+          "display": "Microsoft exits UK’s largest AI data centre project over power supply concerns",
+          "original": "Microsoft exits UK’s largest AI data centre project over power supply concerns",
+          "truncated": false,
+          "usable": true,
+          "category": "TECHNOLOGY",
+          "source": "BBC News · The Times of India",
+          "sourceNames": [
+            "BBC News",
+            "The Times of India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "link": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxNS1p1SVFPTWRvU3YxRzNMTnY3Y2ZlSTB2TWx3a3FKLXBYc01Xd1dwbmdHQXZPUEtUQ2k1cWNYdDNWRXZBRURKSGRqU0pHT25YYXMyanppSnlfaVowM1dPXzZhRnRvcE1XNU9qS0wzaGlQaFo4VXZnU3FLSGhUa1NHaWtyaDdYb3hCTFEwcVhWcjNaQ3pMV3dZb04yeldranpkcDRKdnRtYXBlamttNGhQSHUwejlQekpLN1hGQV9vdDVBdGpJZGxJNDJyeHpHd2pSYk5SQ3I3ZUJRWUgxTmNaZVRINnJGZlkwaUktMEpOY25Bd9IB9wFBVV95cUxNZ3pUcW9MZFdyMm9uQ2p",
+          "published": "2026-10-19T12:17:00.000Z",
+          "topic": "tech",
+          "section": "tech",
+          "score": 6.7,
+          "photo": {
+            "path": "data/pending/tech/photo-tech-2.jpg",
+            "credit": "File photo: pop culture geek / CC BY 2.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=22332962",
+            "query": "Microsoft",
+            "relevance": 0.11,
+            "title": "File:E3 Expo 2012 - Microsoft booth - Halo 4 warthog.jpg"
+          }
+        },
+        {
+          "headline": "INTRODUCING BULBUL V4 FLASH TEXT-TO-SPEECH FOR INDIA",
+          "display": "Introducing Bulbul V4 Flash text-to-speech for India",
+          "original": "Introducing Bulbul V4 Flash text-to-speech for India",
+          "truncated": false,
+          "usable": true,
+          "category": "TECHNOLOGY",
+          "source": "Sarvam AI",
+          "sourceNames": [
+            "Sarvam AI"
+          ],
+          "corroboration": 1,
+          "republishers": [],
+          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBaMWlnenc3Qm5vOVppYWxDV1AyVng4WWROSmZQSUYtX0VnTVpoYndNM2JPemZDZ2owWmdHU00zNUJ1d05UZkQ1WjBOZTZSYkhJR1duX21R?oc=5",
+          "published": "2026-10-19T11:37:02.000Z",
+          "topic": "tech",
+          "section": "tech",
+          "score": 3.7,
+          "photoError": "no image matched the story closely enough (searched \"technology data centre\")",
+          "photo": null
+        },
+        {
+          "headline": "SIEMENS PARTNERS WITH NVIDIA TO ADVANCE AI-DRIVEN, AUTONOMOUS FACT...",
+          "display": "Siemens partners with NVIDIA to advance AI-driven, autonomous fact...",
+          "original": "Siemens partners with NVIDIA to advance AI-driven, autonomous fact ...",
+          "truncated": false,
+          "usable": true,
+          "category": "TECHNOLOGY",
+          "source": "Siemens press",
+          "sourceNames": [
+            "Siemens press"
+          ],
+          "corroboration": 1,
+          "republishers": [],
+          "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPRlpjNDhhNElaeVYxT1JuVXY5MWVvYUlOaWpNanllTklOZVF0Qllpcm5zTDliZnVjZENvZUsxNWZSZjl5T2lWcjlnOXhlUUtDUHZaYzhWRGlnYmJxSWllRjBwblRVUEJUZVFJLXFQWXJfOUJkV200NGxRQUpvdzRTUEctVjNOY293MG1WNzJzLUotSmk3Mmx5WGxsM00wV1UteEd2RF95V1FwcDM3TzI5Qg?oc=5",
+          "published": "2026-10-19T11:59:31.000Z",
+          "topic": "tech",
+          "section": "tech",
+          "score": 3.7,
+          "photo": {
+            "path": "data/pending/tech/photo-tech-4.jpg",
+            "credit": "File photo: Oronbb / CC BY 4.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=149580510",
+            "query": "AI-driven",
+            "relevance": 0.14,
+            "title": "Skydio 10 AI-Driven drone"
+          }
+        }
+      ],
+      "usable": true,
+      "section": "tech",
+      "sectionLabel": "TECHNOLOGY"
     }
   ]
 }
