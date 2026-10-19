@@ -7,6 +7,7 @@
  */
 
 import { independentSources } from './outlets.mjs';
+import { sortIntoSections } from './sections.mjs';
 
 const STOP = new Set(('a an the and or but of for to in on at by with from as is are was were be been '
   + 'has have had will would could should may might can says said after before over under new '
@@ -215,9 +216,11 @@ const BEATS = {
 };
 const beatOf = topic => BEATS[topic] || 'general';
 
-export function selectStories(items, { history = [], count = 3, now = Date.now(),
-                                       minSources = 1, maxAgeHours = 24,
-                                       maxPerTopic = 2, maxPerBeat = 2 } = {}) {
+/* Everything that survives the editorial filters, clustered and ranked.
+   Shared so that Top stories and the sections are chosen from one list by one
+   set of rules — two code paths deciding what may be published is how one of
+   them ends up more permissive than the other. */
+export function rankEligible(items, { now = Date.now(), maxAgeHours = 24 } = {}) {
   const cutoff = now - maxAgeHours * 3600000;
   const fresh = items
     .filter(i => !i.published || i.published >= cutoff)
@@ -229,7 +232,13 @@ export function selectStories(items, { history = [], count = 3, now = Date.now()
     .filter(i => !isAdvice(i.title))
     .filter(i => !isJunk(i.title));
 
-  const ranked = rankClusters(cluster(fresh), { now });
+  return rankClusters(cluster(fresh), { now });
+}
+
+export function selectStories(items, { history = [], count = 3, now = Date.now(),
+                                       minSources = 1, maxAgeHours = 24,
+                                       maxPerTopic = 2, maxPerBeat = 2 } = {}) {
+  const ranked = rankEligible(items, { now, maxAgeHours });
   const chosen = [];
   const takenTitles = [];
   const perTopic = new Map();
@@ -267,4 +276,26 @@ export function selectStories(items, { history = [], count = 3, now = Date.now()
   }
 
   return chosen;
+}
+
+/* The whole day, sorted: Top stories, then India, World, Business,
+   Technology. Top is picked first by exactly the rules it always used, and
+   what it takes is then held back from the sections, so no story appears in
+   two posts. */
+export function selectSections(items, { history = [], count = 3, perSection = 3,
+                                        now = Date.now(), minSources = 1,
+                                        maxAgeHours = 24, maxPerTopic = 2,
+                                        maxPerBeat = 2,
+                                        allowRepeatsInSections = false } = {}) {
+  const ranked = rankEligible(items, { now, maxAgeHours });
+  const top = selectStories(items, { history, count, now, minSources,
+                                     maxAgeHours, maxPerTopic, maxPerBeat });
+
+  const eligible = (c, chosenHere, titlesInTop) =>
+    c.sources >= minSources
+    && !isRepeat(c.lead.title, history)
+    && !isRepeat(c.lead.title, titlesInTop.map(t => ({ title: t })))
+    && !isRepeat(c.lead.title, chosenHere.map(x => ({ title: x.lead.title })));
+
+  return sortIntoSections(ranked, { top, perSection, eligible, allowRepeatsInSections });
 }
