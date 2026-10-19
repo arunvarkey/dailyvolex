@@ -1,70 +1,92 @@
 {
-  "generated": "2026-10-19T11:18:01.452Z",
-  "pool": 12,
+  "generated": "2026-10-19T11:18:36.084Z",
+  "pool": 582,
   "feedErrors": [],
   "stories": [
     {
-      "headline": "FEDERAL RESERVE CUTS INTEREST RATES BY 25 BASIS POINTS, CITING COOLING INFLATION",
-      "display": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
-      "original": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
-      "truncated": false,
-      "usable": true,
-      "category": "CRYPTO NEWS",
-      "source": "CoinDesk · Cointelegraph · Reuters",
-      "sourceNames": [
-        "CoinDesk",
-        "Cointelegraph",
-        "Reuters"
-      ],
-      "corroboration": 3,
-      "link": "https://coindesk.com/1",
-      "published": "2026-10-19T10:48:01.442Z",
-      "topic": "crypto",
-      "score": 7.8,
-      "photoError": "fetch failed (searched \"Federal Reserve\")",
-      "photo": null
-    },
-    {
-      "headline": "SEC APPROVES SPOT SOLANA ETF APPLICATIONS FROM THREE ISSUERS",
-      "display": "SEC approves spot Solana ETF applications from three issuers",
-      "original": "SEC approves spot Solana ETF applications from three issuers",
-      "truncated": false,
-      "usable": true,
-      "category": "CRYPTO NEWS",
-      "source": "CoinDesk · Cointelegraph",
-      "sourceNames": [
-        "CoinDesk",
-        "Cointelegraph"
-      ],
-      "corroboration": 2,
-      "link": "https://coindesk.com/3",
-      "published": "2026-10-19T09:48:01.442Z",
-      "topic": "crypto",
-      "score": 5.7,
-      "photoError": "fetch failed (searched \"Solana ETF\")",
-      "photo": null
-    },
-    {
-      "headline": "SENSEX CLIMBS 540 POINTS TO CLOSE AT RECORD HIGH, NIFTY TOPS 26,000",
-      "display": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
-      "original": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
+      "headline": "STOCK MARKET HOLIDAY TOMORROW ON DUSSEHRA: ARE BSE",
+      "display": "Stock market holiday tomorrow on Dussehra: Are BSE",
+      "original": "Stock market holiday tomorrow on Dussehra: Are BSE, NSE open or closed for trading on Tuesday 20 Oct? Check calendar",
       "truncated": false,
       "usable": true,
       "category": "INDIA MARKETS",
-      "source": "Economic Times",
+      "source": "Economic Times · Mint · Moneycontrol.com",
       "sourceNames": [
-        "Economic Times"
+        "Economic Times",
+        "Mint",
+        "Moneycontrol.com",
+        "Livemint",
+        "Yahoo Finance"
       ],
-      "corroboration": 1,
-      "link": "https://et.com/1",
-      "published": "2026-10-19T09:48:01.442Z",
+      "corroboration": 5,
+      "link": "https://www.livemint.com/market/stock-market-news/stock-market-holiday-tomorrow-on-dussehra-are-bse-nse-open-or-closed-for-trading-on-tuesday-20-oct-check-calendar-11792400130338.html",
+      "published": "2026-10-19T09:26:07.000Z",
       "topic": "markets-india",
-      "score": 3.6,
+      "score": 11.6,
+      "photo": {
+        "path": "data/pending/photo-2.jpg",
+        "credit": "Photo: Gopal Aggarwal from India / CC BY 2.0",
+        "license": "by",
+        "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=5086514",
+        "query": "Dussehra",
+        "relevance": 0.2,
+        "title": "TYPICAL Dussehra Celebrations 02 Oct 2006"
+      }
+    },
+    {
+      "headline": "SENSEX TUMBLES 876 POINTS; NIFTY DROPS BELOW 22,900 DRAGGED BY PRIVATE BANKS",
+      "display": "Sensex tumbles 876 points; Nifty drops below 22,900 dragged by private banks",
+      "original": "Sensex tumbles 876 points; Nifty drops below 22,900 dragged by private banks",
+      "truncated": false,
+      "usable": true,
+      "category": "INDIA MARKETS",
+      "source": "Economic Times · The Times of India · NDTV",
+      "sourceNames": [
+        "Economic Times",
+        "The Times of India",
+        "NDTV",
+        "The Hindu",
+        "Times of India"
+      ],
+      "corroboration": 5,
+      "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNWDVXcGRpN296N0p1Mk1HVlRhTWRyR1pZZGgzM2YxeExmZUJpS055WU9lUEZPU1ptYktRZDVHc3lfREZldTdRSXQ4YzFtVWZFWGFKcWRmTnMtanhLcnJNRC1OVE1TUlA3Uk5jeVV0UDF5OFN1b05QWXFKUkEyZDQwZDNGQ3JQVlF0cG55eWljMzE0X0VVS2N5U2ZTV0RNQ0xCaWpZVU14NnRNcmdVemxVUFZKY1BUU0YxTjB5YkVYaUVlZG5yNklvMU5XVGFETG9ueWfSAdgBQVVfeXFMTmpmSS1iNXIzYnNwT3NxcGlnOXpJZDFJcU43ZnZPZXFBeG1XaXlGUkt1ZFdWVDM",
+      "published": "2026-10-19T11:00:26.000Z",
+      "topic": "markets-world",
+      "score": 11.6,
       "photoError": "a chart illustrates this better than a photo (searched \"(chart)\")",
       "photo": null
+    },
+    {
+      "headline": "JPMORGAN BRINGS DEPOSIT TOKEN TO ETHEREUM FOR INSTITUTIONAL CLIENTS",
+      "display": "JPMorgan brings deposit token to Ethereum for institutional clients",
+      "original": "JPMorgan brings deposit token to Ethereum for institutional clients",
+      "truncated": false,
+      "usable": true,
+      "category": "CRYPTO NEWS",
+      "source": "The Block · Bloomberg.com · BusinessLine",
+      "sourceNames": [
+        "The Block",
+        "Bloomberg.com",
+        "BusinessLine",
+        "Yahoo Finance"
+      ],
+      "corroboration": 4,
+      "link": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxNaFZTSDFCTF9NQnJ3UDhUNFFXdzZLaEtZZkRFNHJCSG9qR2d1eG1FVllvUW53aGJzUERyLW5wYWk4cVM0NWNmTFpDY2V2a3R3TVJRZzBEMm12Y3BsRGdsZnBrS2xvcGY2cm51T3Z4SFZoUWpzUEJ6N1lWVFpjOF96dTdfSkJQNFlUQnY4SV82b3hYc1VHTFVLR1VucFp0cjVyZFVqLWZnaDgtV0dsbnMtWVI0ZVBZakFOU3hoeU5tT1V6Skt6N215TzVwWXR4aC01ZVZoRzFJOWt6cU1UZDBPU3d6M19GTnE1UHRDWHF30gH0AUFVX3lxTFBVbDVFcjMwWE9OUHRrS2sxY3V",
+      "published": "2026-10-19T09:40:26.000Z",
+      "topic": "crypto",
+      "score": 9.6,
+      "photo": {
+        "path": "data/pending/photo-4.jpg",
+        "credit": "Photo: Steve Jurvetson / CC BY 2.0",
+        "license": "by",
+        "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=23967924",
+        "query": "JPMorgan",
+        "relevance": 0.14,
+        "title": "File:Jamie Dimon, CEO of JPMorgan Chase.jpg"
+      }
     }
   ],
-  "rendered": "2026-10-19T11:18:19.246Z",
+  "rendered": "2026-10-19T11:19:06.794Z",
   "options": {
     "layout": "breaking",
     "theme": "bbc",
@@ -92,71 +114,101 @@
       "width": 1080,
       "height": 1350,
       "sourceNames": [
-        "CoinDesk",
-        "Cointelegraph",
-        "Reuters",
-        "Economic Times"
+        "Economic Times",
+        "Mint",
+        "Moneycontrol.com",
+        "Livemint",
+        "Yahoo Finance",
+        "The Times of India",
+        "NDTV",
+        "The Hindu",
+        "Times of India",
+        "The Block",
+        "Bloomberg.com",
+        "BusinessLine"
       ],
       "stories": [
         {
-          "headline": "FEDERAL RESERVE CUTS INTEREST RATES BY 25 BASIS POINTS, CITING COOLING INFLATION",
-          "display": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
-          "original": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
-          "truncated": false,
-          "usable": true,
-          "category": "CRYPTO NEWS",
-          "source": "CoinDesk · Cointelegraph · Reuters",
-          "sourceNames": [
-            "CoinDesk",
-            "Cointelegraph",
-            "Reuters"
-          ],
-          "corroboration": 3,
-          "link": "https://coindesk.com/1",
-          "published": "2026-10-19T10:48:01.442Z",
-          "topic": "crypto",
-          "score": 7.8,
-          "photoError": "fetch failed (searched \"Federal Reserve\")",
-          "photo": null
-        },
-        {
-          "headline": "SEC APPROVES SPOT SOLANA ETF APPLICATIONS FROM THREE ISSUERS",
-          "display": "SEC approves spot Solana ETF applications from three issuers",
-          "original": "SEC approves spot Solana ETF applications from three issuers",
-          "truncated": false,
-          "usable": true,
-          "category": "CRYPTO NEWS",
-          "source": "CoinDesk · Cointelegraph",
-          "sourceNames": [
-            "CoinDesk",
-            "Cointelegraph"
-          ],
-          "corroboration": 2,
-          "link": "https://coindesk.com/3",
-          "published": "2026-10-19T09:48:01.442Z",
-          "topic": "crypto",
-          "score": 5.7,
-          "photoError": "fetch failed (searched \"Solana ETF\")",
-          "photo": null
-        },
-        {
-          "headline": "SENSEX CLIMBS 540 POINTS TO CLOSE AT RECORD HIGH, NIFTY TOPS 26,000",
-          "display": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
-          "original": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
+          "headline": "STOCK MARKET HOLIDAY TOMORROW ON DUSSEHRA: ARE BSE",
+          "display": "Stock market holiday tomorrow on Dussehra: Are BSE",
+          "original": "Stock market holiday tomorrow on Dussehra: Are BSE, NSE open or closed for trading on Tuesday 20 Oct? Check calendar",
           "truncated": false,
           "usable": true,
           "category": "INDIA MARKETS",
-          "source": "Economic Times",
+          "source": "Economic Times · Mint · Moneycontrol.com",
           "sourceNames": [
-            "Economic Times"
+            "Economic Times",
+            "Mint",
+            "Moneycontrol.com",
+            "Livemint",
+            "Yahoo Finance"
           ],
-          "corroboration": 1,
-          "link": "https://et.com/1",
-          "published": "2026-10-19T09:48:01.442Z",
+          "corroboration": 5,
+          "link": "https://www.livemint.com/market/stock-market-news/stock-market-holiday-tomorrow-on-dussehra-are-bse-nse-open-or-closed-for-trading-on-tuesday-20-oct-check-calendar-11792400130338.html",
+          "published": "2026-10-19T09:26:07.000Z",
           "topic": "markets-india",
-          "score": 3.6,
+          "score": 11.6,
+          "photo": {
+            "path": "data/pending/photo-2.jpg",
+            "credit": "Photo: Gopal Aggarwal from India / CC BY 2.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=5086514",
+            "query": "Dussehra",
+            "relevance": 0.2,
+            "title": "TYPICAL Dussehra Celebrations 02 Oct 2006"
+          }
+        },
+        {
+          "headline": "SENSEX TUMBLES 876 POINTS; NIFTY DROPS BELOW 22,900 DRAGGED BY PRIVATE BANKS",
+          "display": "Sensex tumbles 876 points; Nifty drops below 22,900 dragged by private banks",
+          "original": "Sensex tumbles 876 points; Nifty drops below 22,900 dragged by private banks",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA MARKETS",
+          "source": "Economic Times · The Times of India · NDTV",
+          "sourceNames": [
+            "Economic Times",
+            "The Times of India",
+            "NDTV",
+            "The Hindu",
+            "Times of India"
+          ],
+          "corroboration": 5,
+          "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNWDVXcGRpN296N0p1Mk1HVlRhTWRyR1pZZGgzM2YxeExmZUJpS055WU9lUEZPU1ptYktRZDVHc3lfREZldTdRSXQ4YzFtVWZFWGFKcWRmTnMtanhLcnJNRC1OVE1TUlA3Uk5jeVV0UDF5OFN1b05QWXFKUkEyZDQwZDNGQ3JQVlF0cG55eWljMzE0X0VVS2N5U2ZTV0RNQ0xCaWpZVU14NnRNcmdVemxVUFZKY1BUU0YxTjB5YkVYaUVlZG5yNklvMU5XVGFETG9ueWfSAdgBQVVfeXFMTmpmSS1iNXIzYnNwT3NxcGlnOXpJZDFJcU43ZnZPZXFBeG1XaXlGUkt1ZFdWVDM",
+          "published": "2026-10-19T11:00:26.000Z",
+          "topic": "markets-world",
+          "score": 11.6,
           "photoError": "a chart illustrates this better than a photo (searched \"(chart)\")",
           "photo": null
+        },
+        {
+          "headline": "JPMORGAN BRINGS DEPOSIT TOKEN TO ETHEREUM FOR INSTITUTIONAL CLIENTS",
+          "display": "JPMorgan brings deposit token to Ethereum for institutional clients",
+          "original": "JPMorgan brings deposit token to Ethereum for institutional clients",
+          "truncated": false,
+          "usable": true,
+          "category": "CRYPTO NEWS",
+          "source": "The Block · Bloomberg.com · BusinessLine",
+          "sourceNames": [
+            "The Block",
+            "Bloomberg.com",
+            "BusinessLine",
+            "Yahoo Finance"
+          ],
+          "corroboration": 4,
+          "link": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxNaFZTSDFCTF9NQnJ3UDhUNFFXdzZLaEtZZkRFNHJCSG9qR2d1eG1FVllvUW53aGJzUERyLW5wYWk4cVM0NWNmTFpDY2V2a3R3TVJRZzBEMm12Y3BsRGdsZnBrS2xvcGY2cm51T3Z4SFZoUWpzUEJ6N1lWVFpjOF96dTdfSkJQNFlUQnY4SV82b3hYc1VHTFVLR1VucFp0cjVyZFVqLWZnaDgtV0dsbnMtWVI0ZVBZakFOU3hoeU5tT1V6Skt6N215TzVwWXR4aC01ZVZoRzFJOWt6cU1UZDBPU3d6M19GTnE1UHRDWHF30gH0AUFVX3lxTFBVbDVFcjMwWE9OUHRrS2sxY3V",
+          "published": "2026-10-19T09:40:26.000Z",
+          "topic": "crypto",
+          "score": 9.6,
+          "photo": {
+            "path": "data/pending/photo-4.jpg",
+            "credit": "Photo: Steve Jurvetson / CC BY 2.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=23967924",
+            "query": "JPMorgan",
+            "relevance": 0.14,
+            "title": "File:Jamie Dimon, CEO of JPMorgan Chase.jpg"
+          }
         }
       ],
       "usable": true
