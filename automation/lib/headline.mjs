@@ -86,10 +86,14 @@ export function makeHeadline(raw, { max = MAX } = {}) {
    from the story's content. */
 export function categoryFor(topic) {
   switch (topic) {
-    case 'crypto': return 'CRYPTO NEWS';
-    case 'india':  return 'INDIA MARKETS';
-    case 'world':  return 'WORLD MARKETS';
-    default:       return 'BREAKING NEWS';
+    case 'crypto':        return 'CRYPTO NEWS';
+    case 'markets-india': return 'INDIA MARKETS';
+    case 'markets-world': return 'WORLD MARKETS';
+    case 'business':      return 'BUSINESS';
+    case 'india':         return 'INDIA';
+    case 'world':         return 'WORLD NEWS';
+    case 'tech':          return 'TECHNOLOGY';
+    default:              return 'BREAKING NEWS';
   }
 }
 

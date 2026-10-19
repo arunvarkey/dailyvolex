@@ -102,6 +102,7 @@ export function parseFeed(xml, feed) {
       source,
       feedId: feed.id,
       topic: feed.topic,
+      requireTopical: !!feed.requireTopical,
       weight: typeof feed.weight === 'number' ? feed.weight : 1,
     });
   }

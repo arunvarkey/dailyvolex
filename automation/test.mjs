@@ -5,7 +5,7 @@
 
 import { parseFeed } from './lib/rss.mjs';
 import { similarity, cluster, selectStories, isRepeat, isTopical, isAdvice,
-         isSpeculation, rankClusters } from './lib/select.mjs';
+         isSpeculation, isJunk, rankClusters } from './lib/select.mjs';
 import { makeHeadline, tidy, sourceLine, categoryFor } from './lib/headline.mjs';
 import { buildCaption } from './caption.mjs';
 import { isUsable, pickBest, creditFor, subjectFor, findImage,
@@ -75,10 +75,22 @@ ok('a tech story in a crypto feed is not',
   !isTopical('\u2018Wow, it\u2019s a real discovery\u2019: Claude cracks a 25-year NSA number mystery'));
 ok('entertainment is not', !isTopical('Taylor Swift announces new album tour dates'));
 ok('a currency amount alone is enough', isTopical('Startup raises \u20b92,000 crore in fresh round'));
-ok('off-topic items never reach the shortlist',
+// The finance gate applies to finance feeds, which is where off-topic leaks in.
+ok('a finance feed cannot leak an off-topic story',
   !selectStories([
-    { title: 'Claude cracks a 25-year NSA number mystery', source:'A', published: Date.now(), weight:1, topic:'crypto' },
-    { title: 'Claude cracks a 25-year NSA number mystery, say researchers', source:'B', published: Date.now(), weight:1, topic:'crypto' },
+    { title: 'Claude cracks a 25-year NSA number mystery', source:'A', published: Date.now(), weight:1, topic:'crypto', requireTopical:true },
+    { title: 'Claude cracks a 25-year NSA number mystery, say researchers', source:'B', published: Date.now(), weight:1, topic:'crypto', requireTopical:true },
+  ], { count: 3, now: Date.now() }).length);
+// A general news feed is not gated on market words — that is the point of it.
+ok('a general feed may carry general news',
+  selectStories([
+    { title: 'Prime Minister announces new education policy', source:'A', published: Date.now(), weight:1, topic:'india' },
+    { title: 'Prime Minister unveils education policy reforms', source:'B', published: Date.now(), weight:1, topic:'india' },
+  ], { count: 3, now: Date.now() }).length === 1);
+ok('junk never reaches the shortlist, whatever the feed',
+  !selectStories([
+    { title: 'Horoscope today: what the stars say for your sign', source:'A', published: Date.now(), weight:1, topic:'india' },
+    { title: 'Horoscope today: what the stars hold for your sign', source:'B', published: Date.now(), weight:1, topic:'india' },
   ], { count: 3, now: Date.now() }).length);
 
 /* ── Stock tips are not news ──────────────────────────────────── */
@@ -210,7 +222,11 @@ ok('a headline only ever loses words, never gains them', (() => {
 })());
 
 ok('sources are named', sourceLine(['CoinDesk', 'Reuters']) === 'CoinDesk · Reuters');
-ok('category comes from the topic', categoryFor('india') === 'INDIA MARKETS');
+ok('category comes from the topic',
+  categoryFor('markets-india') === 'INDIA MARKETS'
+  && categoryFor('india') === 'INDIA'
+  && categoryFor('world') === 'WORLD NEWS'
+  && categoryFor('tech') === 'TECHNOLOGY');
 
 /* ── Imagery: only what may legally be reused ─────────────────── */
 
