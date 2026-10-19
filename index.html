@@ -1547,9 +1547,12 @@ function drawPhotoCredit(theme) {
   ctx.font = `400 20px 'JetBrains Mono'`;
   ctx.textAlign = 'right';
   ctx.textBaseline = 'bottom';
-  ctx.fillStyle = 'rgba(255,255,255,.62)';
+  // Legible, not decorative: this line is the licence condition that makes the
+  // photograph usable, and it also tells the reader the picture is from a
+  // library rather than from the story.
+  ctx.fillStyle = 'rgba(255,255,255,.8)';
   ctx.shadowColor = 'rgba(0,0,0,.95)';
-  ctx.shadowBlur = 10;
+  ctx.shadowBlur = 12;
   ctx.fillText(S.bgCredit.slice(0, 90), W - 40, H - tickerH - 18);
   ctx.restore();
 }

@@ -8,7 +8,7 @@ import { similarity, cluster, selectStories, isRepeat, isTopical, isAdvice,
          isSpeculation, isJunk, rankClusters } from './lib/select.mjs';
 import { makeHeadline, tidy, sourceLine, categoryFor } from './lib/headline.mjs';
 import { buildCaption } from './caption.mjs';
-import { isUsable, pickBest, creditFor, subjectFor, findImage, backdropFor,
+import { isUsable, pickBest, creditFor, subjectFor, findImage, backdropFor, isSensitive,
          queriesFor, entitiesFrom, isTitleCase, relevance, prefersChart } from './lib/imagery.mjs';
 
 let passed = 0, failed = 0;
@@ -229,6 +229,26 @@ ok('shortening does not cut mid-word', !/\s\S{1,2}$/.test(long.headline), long.h
 const short = makeHeadline('Bitcoin up');
 ok('a fragment is flagged unusable', short.usable === false);
 
+/* A card went out reading "Stock market holiday tomorrow on Dussehra: Are BSE"
+   — the cut landed inside the question, and the shortlist reported it as
+   untouched. */
+const dussehra = makeHeadline('Stock market holiday tomorrow on Dussehra: Are BSE, NSE open or '
+  + 'closed for trading on Tuesday 20 Oct? Check calendar');
+ok('a colon is preferred to a comma inside a list',
+  dussehra.display === 'Stock market holiday tomorrow on Dussehra', dussehra.display);
+ok('shortening at a clause is reported as shortened', dussehra.truncated === true);
+ok('an untouched headline is not reported as shortened',
+  makeHeadline('Ceasefire talks resume in Geneva').truncated === false);
+ok('a headline never ends on a dangling word', (() => {
+  const cases = [
+    'Government to announce a new policy on digital payments and the rules that will apply to it',
+    'Officials say the inquiry will look into the conduct of several senior managers and others',
+    'Regulator opens a review of listing rules, of fees, and of the disclosure regime in general',
+  ];
+  return cases.every(c => !/\b(to|and|of|the|a|an|in|on|for|by|with|is|are)$/i
+    .test(makeHeadline(c).display));
+})());
+
 const cased = makeHeadline('SEC approves spot Solana ETF applications');
 ok('display keeps the outlet\'s capitalisation',
   cased.display === 'SEC approves spot Solana ETF applications', cased.display);
@@ -305,10 +325,14 @@ ok('an empty result is handled', pickBest([]) === null && pickBest(undefined) ==
 
 ok('CC-BY credit names the creator and licence',
   creditFor({ creator:'Jane Doe', license:'by', license_version:'4.0' })
-    === 'Photo: Jane Doe / CC BY 4.0',
+    === 'File photo: Jane Doe / CC BY 4.0',
   creditFor({ creator:'Jane Doe', license:'by', license_version:'4.0' }));
 ok('CC0 credit still names the creator',
-  creditFor({ creator:'Jane Doe', license:'cc0' }) === 'Photo: Jane Doe / CC0');
+  creditFor({ creator:'Jane Doe', license:'cc0' }) === 'File photo: Jane Doe / CC0');
+/* A library photograph of an identifiable person ran under a Gaza headline.
+   Nothing here is a picture of what was reported, and the card has to say so. */
+ok('every credit says the picture is a file photo',
+  ['cc0','pdm','by'].every(l => /^File photo: /.test(creditFor({ creator:'A', license:l }))));
 ok('a missing creator does not produce "undefined"',
   !/undefined/.test(creditFor({ license:'cc0' })), creditFor({ license:'cc0' }));
 
@@ -356,6 +380,29 @@ ok('a money figure in a general headline earns the chart',
   backdropFor('Government approves ₹12,000 crore package', 'india') === 'chart');
 ok('the markets beat earns the chart even without market words',
   backdropFor('Regulator names new chief', 'markets-india') === 'chart');
+
+/* ── No stock photograph on a story about people in harm ──────── */
+/* An aid photograph of an identifiable woman ran under a headline about
+   cutting aid to Gaza; she was photographed somewhere else entirely. */
+
+ok('a war or humanitarian story is treated as sensitive',
+  isSensitive('Funding shortages force World Food Programme to cut aid to Gaza')
+  && isSensitive('Air strikes kill at least 12 in northern province')
+  && isSensitive('Earthquake survivors still without shelter'));
+ok('ordinary news is not treated as sensitive',
+  !isSensitive('India To Host Global Legal Metrology Meet For First Time')
+  && !isSensitive('Sensex climbs 540 points to a record high')
+  && !isSensitive('Researchers release an open model that runs on a laptop'));
+ok('a sensitive story never reaches the image search', (() => {
+  let called = false;
+  const spy = async () => { called = true; return { ok:true, json: async () => ({ results: [] }) }; };
+  return findImage('Funding shortages force World Food Programme to cut aid to Gaza',
+                   { fetchImpl: spy, topic: 'world' })
+    .then(r => r.image === null && !called && /misrepresent/.test(r.error));
+})());
+ok('and it falls back to the editorial backdrop, not the chart',
+  backdropFor('Funding shortages force World Food Programme to cut aid to Gaza', 'world')
+    === 'editorial');
 
 /* The picture should be of the story, not of its genre. */
 

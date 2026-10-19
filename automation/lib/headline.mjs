@@ -35,29 +35,54 @@ export function tidy(raw) {
   return t.replace(/\s+/g, ' ').replace(/\s+([,.;:])/g, '$1').trim();
 }
 
-/* Drop a trailing subordinate clause when that alone gets it under the cap.
-   Only at a comma or a dash, and only if what remains still reads as a
-   complete statement of reasonable length. */
+/* Words a headline must not end on. "Stock market holiday tomorrow on
+   Dussehra: Are BSE" is not a shorter headline, it is half of one — and it
+   went out on a card. */
+const DANGLING = new Set(('a an the and or but of for to in on at by with from as is are was were '
+  + 'be been has have had will would could should may might can could its his her their our your '
+  + 'this that these those into onto over under after before between about than then').split(' '));
+
+function endsWell(head) {
+  const last = head.split(' ').pop().toLowerCase().replace(/[^a-z']/g, '');
+  return !!last && !DANGLING.has(last);
+}
+
+/* Drop a trailing clause when that alone gets it under the cap, and only if
+   what remains still reads as a complete statement of reasonable length. */
 function trimClause(t, max) {
   if (t.length <= max) return t;
-  const cuts = [];
+
+  // A colon, semicolon or full stop closes a thought; a comma is as likely to
+  // be sitting in the middle of a list. Strong boundaries are tried first, so
+  // the Dussehra headline loses its whole question rather than half of it.
+  const strong = [], weak = [];
   for (let i = 0; i < t.length; i++) {
     const c = t[i];
-    if (c === ',' || c === '—' || c === '–' || (c === '-' && t[i-1] === ' ')) cuts.push(i);
+    if (c === ':' || c === ';' || c === '?' || c === '!' || (c === '.' && t[i+1] === ' ')) strong.push(i);
+    else if (c === ',' || c === '—' || c === '–' || (c === '-' && t[i-1] === ' ')) weak.push(i);
   }
-  for (let i = cuts.length - 1; i >= 0; i--) {
-    const head = t.slice(0, cuts[i]).trim();
-    if (head.length <= max && head.length >= max * 0.45 && head.split(' ').length >= 4) return head;
+
+  for (const cuts of [strong, weak]) {
+    for (let i = cuts.length - 1; i >= 0; i--) {
+      const head = t.slice(0, cuts[i]).trim();
+      if (head.length <= max && head.length >= max * 0.45
+          && head.split(' ').length >= 4 && endsWell(head)) return head;
+    }
   }
   return t;
 }
 
-/* Last resort: cut at a word boundary. Never mid-word, never mid-number. */
+/* Last resort: cut at a word boundary. Never mid-word, never mid-number, and
+   never leaving the headline hanging on "to" or "and". */
 function hardTrim(t, max) {
   if (t.length <= max) return t;
   const cut = t.slice(0, max);
   const sp = cut.lastIndexOf(' ');
-  return (sp > max * 0.5 ? cut.slice(0, sp) : cut).replace(/[\s,;:.–—-]+$/, '');
+  let out = (sp > max * 0.5 ? cut.slice(0, sp) : cut).replace(/[\s,;:.–—-]+$/, '');
+  while (out.includes(' ') && !endsWell(out)) {
+    out = out.slice(0, out.lastIndexOf(' ')).replace(/[\s,;:.–—-]+$/, '');
+  }
+  return out;
 }
 
 export function makeHeadline(raw, { max = MAX } = {}) {
@@ -65,12 +90,15 @@ export function makeHeadline(raw, { max = MAX } = {}) {
   if (!tidied) return { headline: '', truncated: false, usable: false };
 
   let out = tidied;
-  let truncated = false;
 
   if (out.length > max) {
     out = trimClause(out, max);
-    if (out.length > max) { out = hardTrim(out, max); truncated = true; }
+    if (out.length > max) out = hardTrim(out, max);
   }
+  // Anything shorter than what the outlet wrote has been shortened, clause cut
+  // or not. Reporting only hard trims meant a card that had lost a whole
+  // question was listed for approval as untouched.
+  const truncated = out !== tidied;
 
   return {
     headline: out.toUpperCase(),     // Breaking layout sets headlines in caps
