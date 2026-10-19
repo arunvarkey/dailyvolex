@@ -202,14 +202,21 @@ export function relevance(item, headline) {
   return hits / words.size;
 }
 
-/* Credit line, in the form the licence expects: who made it, under what. */
+/* Credit line, in the form the licence expects: who made it, under what.
+ *
+ * "File photo", not "Photo", and not as hedging. Nothing in an openly licensed
+ * library is a picture of what was reported this morning, and a card can imply
+ * otherwise without saying a word: a World Food Programme aid photograph ran
+ * under a headline about Gaza, so an identifiable woman photographed somewhere
+ * else entirely was presented as being there. Every newsroom labels a library
+ * image, and this one has to as well. */
 export function creditFor(item) {
   const who = (item.creator || 'Unknown').toString().slice(0, 40);
   const lic = String(item.license || '').toUpperCase();
   const ver = item.license_version ? ' ' + item.license_version : '';
-  if (item.license === 'cc0')  return `Photo: ${who} / CC0`;
-  if (item.license === 'pdm')  return `Photo: ${who} / Public Domain`;
-  return `Photo: ${who} / CC ${lic}${ver}`;
+  if (item.license === 'cc0')  return `File photo: ${who} / CC0`;
+  if (item.license === 'pdm')  return `File photo: ${who} / Public Domain`;
+  return `File photo: ${who} / CC ${lic}${ver}`;
 }
 
 /* Is this safe to put on a commercial-ish account, and worth using? */
@@ -259,6 +266,35 @@ async function searchOnce(q, { fetchImpl, timeoutMs, exclude }) {
   }
 }
 
+/* Stories where a library photograph is not an illustration but a claim about
+   real people.
+ *
+ * A World Food Programme aid photograph ran under a headline about cutting aid
+ * to Gaza. The woman in it was photographed somewhere else entirely, and the
+ * card presented her as being there. The credit line helps, but it is small
+ * and it is read after the picture. There is no openly licensed photograph of
+ * what happened this morning, and on a story about people in harm the gap
+ * between "a picture of this kind of thing" and "a picture of this" is a gap
+ * nobody should be invited to fall into. These get the editorial backdrop. */
+const PEOPLE_IN_HARM = [
+  /\b(war|warfare|conflict|ceasefire|truce|airstrike|air strikes?|shelling|bombing|bombed)\b/i,
+  /\b(killed|dead|deaths?|casualties|wounded|injured|massacre|genocide|atrocit(y|ies))\b/i,
+  /\b(famine|starvation|malnutrition|refugees?|displaced|evacuat\w+|humanitarian)\b/i,
+  // Relief work and the bodies that do it. "Funding shortages force the World
+  // Food Programme to cut aid to Gaza" named none of the words above, and that
+  // is the headline the misplaced photograph ran under.
+  /\b(aid|relief|hunger|siege|blockade|shelters?|camps?|asylum)\b/i,
+  /\b(world food programme|wfp|unhcr|unicef|red cross|red crescent|oxfam|unrwa|m[ée]decins)\b/i,
+  /\b(earthquake|quake|tsunami|flood(s|ing|ed)?|cyclone|hurricane|typhoon|wildfires?|landslide)\b/i,
+  /\b(shooting|gunman|hostages?|abduct\w*|kidnap\w*|terror\w*|militants?|insurgen\w+)\b/i,
+  /\b(crash|derail\w*|collapse[sd]?|explosion|blast|fire kills|outbreak|epidemic|cholera)\b/i,
+  /\b(rape|assault|abuse|trafficking|funerals?|mourning|victims?|survivors?)\b/i,
+];
+
+export function isSensitive(headline) {
+  return PEOPLE_IN_HARM.some(re => re.test(String(headline)));
+}
+
 /* Work from the most specific subject in the headline down to its category,
    and prefer a result whose own title and tags echo the story. The point is a
    picture OF the story, not a picture of its genre. */
@@ -266,6 +302,9 @@ export async function findImage(headline, { fetchImpl = fetch, timeoutMs = 20000
                                             minRelevance = 0.12, maxQueries = 2, topic } = {}) {
   if (prefersChart(headline))
     return { image: null, query: '(chart)', error: 'a chart illustrates this better than a photo' };
+  if (isSensitive(headline))
+    return { image: null, query: '(none)',
+             error: 'a library photograph would misrepresent a story about people in harm' };
 
   // Each query is an API call, and the search is rate limited. Two per story —
   // the named subject and the category — is the useful part of the list; going
