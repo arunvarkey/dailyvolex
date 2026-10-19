@@ -1,8 +1,39 @@
 {
-  "generated": "2026-10-19T11:53:29.279Z",
+  "generated": "2026-10-19T11:59:16.991Z",
   "pool": 581,
   "feedErrors": [],
   "stories": [
+    {
+      "headline": "STOCK MARKET HOLIDAY ON 20 OCT: NSE, BSE CLOSED FOR DUSSEHRA?",
+      "display": "Stock Market Holiday on 20 Oct: NSE, BSE Closed for Dussehra?",
+      "original": "Stock Market Holiday on 20 Oct: NSE, BSE Closed for Dussehra?",
+      "truncated": false,
+      "usable": true,
+      "category": "INDIA MARKETS",
+      "source": "Economic Times · Mint · Moneycontrol.com",
+      "sourceNames": [
+        "Economic Times",
+        "Mint",
+        "Moneycontrol.com",
+        "Livemint",
+        "Yahoo Finance",
+        "Univest"
+      ],
+      "corroboration": 6,
+      "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNWnZETEJOdVlxN0dONWRZS0hQMmlpanpZQmY0cWpwOUZBeTNPRXBCWUZUYTRLVDBDYm9EcHdORVNoc1l4d19NV3dIV1hYN09JTVJ1bkw5dHB0MmJsQ2JjTkZwcVc1OXRmZnlVX2p4NXMtcHRNRjV3cmNlN2M1SjVtbFAxZW9VN3h0dGNrcG1mUDg4X1VkT3pzbXlWNW9FOU11U2llc3RfRzRHcmZoZmxFNEsybG1VaG9GemppdTQ2MFVmbXBLSzZrU29uNEtzWjA3em85MA?oc=5",
+      "published": "2026-10-19T10:08:10.000Z",
+      "topic": "markets-world",
+      "score": 13.7,
+      "photo": {
+        "path": "data/pending/photo-2.jpg",
+        "credit": "File photo: shankar s. from Poona (pune), India, Ind / CC BY 2.0",
+        "license": "by",
+        "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=175517639",
+        "query": "Stock Market Holiday",
+        "relevance": 0.2,
+        "title": "Goldfish market, Kowloon (7937836722)"
+      }
+    },
     {
       "headline": "SENSEX TUMBLES 876 POINTS; NIFTY DROPS BELOW 22,900 DRAGGED BY PRIVATE BANKS",
       "display": "Sensex tumbles 876 points; Nifty drops below 22,900 dragged by private banks",
@@ -15,76 +46,40 @@
         "Economic Times",
         "The Times of India",
         "NDTV",
-        "The Hindu",
+        "Deccan Herald",
         "Times of India"
       ],
       "corroboration": 5,
-      "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxOamZJLWI1cjNic3BPc3FwaWc5eklkMUlxTjdmdk9lcUF4bVdpeUZSS3VkV1ZUMzNCRWtBc0ZfX0N2dDk0eTNkRFBqRFRVY0xPZzd3REdzS2JrLUszQnh6NHozN0toc0tvczIxamhBcUUxRC1Kak9JamJ5akoxcGg0dnhRQWpKdG9LOVhEUlNiOU9MaHpkVENYaUFQc2JpUFhmcGp1b3dSY2s3bUQ3YmlDVDRxS3E5R3ZMUzdXRUhOc3NVdW1veERlbEExNlhYcG5tLXBhd2FhOUfSAdgBQVVfeXFMTmpmSS1iNXIzYnNwT3NxcGlnOXpJZDFJcU43ZnZPZXFBeG1XaXlGUkt",
-      "published": "2026-10-19T11:00:26.000Z",
+      "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPQWE0aTRSZUhsalROcDlFUlhpeHBPN2ZEOUxuSGtSZllFRVJmcXBJUFhYWUxaYjdTRUVXamEyemNHck1mcUJ1ZHRoWVViV01pQUUxWl90Z00wZVZmUlBObHUtQl9nbFVkdFJrN21PTXltTHFESnhuRUZaZU5vQW84M3dzM0tvaGp6YUlYTUUxVWpCeHpDTHRXanYzbWFhdGJZSWJFOXg4el91VXgtRTFPZmxGMjNnVFRDYUZqOERJbGVfZVlnSDRj?oc=5",
+      "published": "2026-10-19T11:00:46.000Z",
       "topic": "markets-world",
       "score": 12.1,
       "photoError": "a chart illustrates this better than a photo (searched \"(chart)\")",
       "photo": null
     },
     {
-      "headline": "STOCK MARKET HOLIDAY TOMORROW ON DUSSEHRA: ARE BSE",
-      "display": "Stock market holiday tomorrow on Dussehra: Are BSE",
-      "original": "Stock market holiday tomorrow on Dussehra: Are BSE, NSE open or closed for trading on Tuesday 20 Oct? Check calendar",
+      "headline": "INDIA-NEW ZEALAND FTA EFFECTIVE FROM OCT 20; TARGETS DOUBLE TRADE TO $7BN BY 2030",
+      "display": "India-New Zealand FTA effective from Oct 20; targets double trade to $7bn by 2030",
+      "original": "India-New Zealand FTA effective from Oct 20; targets double trade to $7bn by 2030",
       "truncated": false,
       "usable": true,
-      "category": "INDIA MARKETS",
-      "source": "Economic Times · Mint · Moneycontrol.com",
+      "category": "INDIA",
+      "source": "Times of India · Sarkaritel.com · The Times of India",
       "sourceNames": [
-        "Economic Times",
-        "Mint",
-        "Moneycontrol.com",
-        "Livemint",
-        "Yahoo Finance"
+        "Times of India",
+        "Sarkaritel.com",
+        "The Times of India"
       ],
-      "corroboration": 5,
-      "link": "https://www.livemint.com/market/stock-market-news/stock-market-holiday-tomorrow-on-dussehra-are-bse-nse-open-or-closed-for-trading-on-tuesday-20-oct-check-calendar-11792400130338.html",
-      "published": "2026-10-19T09:26:07.000Z",
-      "topic": "markets-india",
-      "score": 11.4,
-      "photo": {
-        "path": "data/pending/photo-3.jpg",
-        "credit": "Photo: Gopal Aggarwal from India / CC BY 2.0",
-        "license": "by",
-        "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=5086514",
-        "query": "Dussehra",
-        "relevance": 0.2,
-        "title": "TYPICAL Dussehra Celebrations 02 Oct 2006"
-      }
-    },
-    {
-      "headline": "FUNDING SHORTAGES FORCE WORLD FOOD PROGRAMME TO CUT AID TO GAZA",
-      "display": "Funding shortages force World Food Programme to cut aid to Gaza",
-      "original": "Funding shortages force World Food Programme to cut aid to Gaza",
-      "truncated": false,
-      "usable": true,
-      "category": "WORLD NEWS",
-      "source": "BBC News · BBC",
-      "sourceNames": [
-        "BBC News",
-        "BBC"
-      ],
-      "corroboration": 2,
-      "link": "https://www.bbc.co.uk/news/articles/cm79plrvpl4vo?at_medium=RSS&at_campaign=rss",
-      "published": "2026-10-19T06:00:18.000Z",
-      "topic": "world",
-      "score": 6.8,
-      "photo": {
-        "path": "data/pending/photo-4.jpg",
-        "credit": "Photo: DFID - UK Department for International D / CC BY 2.0",
-        "license": "by",
-        "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=138125715",
-        "query": "World Food Programme",
-        "relevance": 0.43,
-        "title": "A Rohingya woman pictured at a World Food Programme food distribution supported by UK aid in Cox's Bazar, Bangladesh, October 2017"
-      }
+      "corroboration": 3,
+      "link": "https://timesofindia.indiatimes.com/business/india-business/india-new-zealand-fta-to-take-effect-from-oct-20-target-to-double-trade-to-7bn-by-2030/articleshow/135047532.cms",
+      "published": "2026-10-19T11:20:35.000Z",
+      "topic": "india",
+      "score": 8.1,
+      "photoError": "no image matched the story closely enough (searched \"Oct\")",
+      "photo": null
     }
   ],
-  "rendered": "2026-10-19T11:54:04.543Z",
+  "rendered": "2026-10-19T11:59:49.928Z",
   "options": {
     "layout": "breaking",
     "theme": "bbc",
@@ -114,18 +109,49 @@
       "height": 1350,
       "sourceNames": [
         "Economic Times",
-        "The Times of India",
-        "NDTV",
-        "The Hindu",
-        "Times of India",
         "Mint",
         "Moneycontrol.com",
         "Livemint",
         "Yahoo Finance",
-        "BBC News",
-        "BBC"
+        "Univest",
+        "The Times of India",
+        "NDTV",
+        "Deccan Herald",
+        "Times of India",
+        "Sarkaritel.com"
       ],
       "stories": [
+        {
+          "headline": "STOCK MARKET HOLIDAY ON 20 OCT: NSE, BSE CLOSED FOR DUSSEHRA?",
+          "display": "Stock Market Holiday on 20 Oct: NSE, BSE Closed for Dussehra?",
+          "original": "Stock Market Holiday on 20 Oct: NSE, BSE Closed for Dussehra?",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA MARKETS",
+          "source": "Economic Times · Mint · Moneycontrol.com",
+          "sourceNames": [
+            "Economic Times",
+            "Mint",
+            "Moneycontrol.com",
+            "Livemint",
+            "Yahoo Finance",
+            "Univest"
+          ],
+          "corroboration": 6,
+          "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNWnZETEJOdVlxN0dONWRZS0hQMmlpanpZQmY0cWpwOUZBeTNPRXBCWUZUYTRLVDBDYm9EcHdORVNoc1l4d19NV3dIV1hYN09JTVJ1bkw5dHB0MmJsQ2JjTkZwcVc1OXRmZnlVX2p4NXMtcHRNRjV3cmNlN2M1SjVtbFAxZW9VN3h0dGNrcG1mUDg4X1VkT3pzbXlWNW9FOU11U2llc3RfRzRHcmZoZmxFNEsybG1VaG9GemppdTQ2MFVmbXBLSzZrU29uNEtzWjA3em85MA?oc=5",
+          "published": "2026-10-19T10:08:10.000Z",
+          "topic": "markets-world",
+          "score": 13.7,
+          "photo": {
+            "path": "data/pending/photo-2.jpg",
+            "credit": "File photo: shankar s. from Poona (pune), India, Ind / CC BY 2.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=175517639",
+            "query": "Stock Market Holiday",
+            "relevance": 0.2,
+            "title": "Goldfish market, Kowloon (7937836722)"
+          }
+        },
         {
           "headline": "SENSEX TUMBLES 876 POINTS; NIFTY DROPS BELOW 22,900 DRAGGED BY PRIVATE BANKS",
           "display": "Sensex tumbles 876 points; Nifty drops below 22,900 dragged by private banks",
@@ -138,73 +164,37 @@
             "Economic Times",
             "The Times of India",
             "NDTV",
-            "The Hindu",
+            "Deccan Herald",
             "Times of India"
           ],
           "corroboration": 5,
-          "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxOamZJLWI1cjNic3BPc3FwaWc5eklkMUlxTjdmdk9lcUF4bVdpeUZSS3VkV1ZUMzNCRWtBc0ZfX0N2dDk0eTNkRFBqRFRVY0xPZzd3REdzS2JrLUszQnh6NHozN0toc0tvczIxamhBcUUxRC1Kak9JamJ5akoxcGg0dnhRQWpKdG9LOVhEUlNiOU9MaHpkVENYaUFQc2JpUFhmcGp1b3dSY2s3bUQ3YmlDVDRxS3E5R3ZMUzdXRUhOc3NVdW1veERlbEExNlhYcG5tLXBhd2FhOUfSAdgBQVVfeXFMTmpmSS1iNXIzYnNwT3NxcGlnOXpJZDFJcU43ZnZPZXFBeG1XaXlGUkt",
-          "published": "2026-10-19T11:00:26.000Z",
+          "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPQWE0aTRSZUhsalROcDlFUlhpeHBPN2ZEOUxuSGtSZllFRVJmcXBJUFhYWUxaYjdTRUVXamEyemNHck1mcUJ1ZHRoWVViV01pQUUxWl90Z00wZVZmUlBObHUtQl9nbFVkdFJrN21PTXltTHFESnhuRUZaZU5vQW84M3dzM0tvaGp6YUlYTUUxVWpCeHpDTHRXanYzbWFhdGJZSWJFOXg4el91VXgtRTFPZmxGMjNnVFRDYUZqOERJbGVfZVlnSDRj?oc=5",
+          "published": "2026-10-19T11:00:46.000Z",
           "topic": "markets-world",
           "score": 12.1,
           "photoError": "a chart illustrates this better than a photo (searched \"(chart)\")",
           "photo": null
         },
         {
-          "headline": "STOCK MARKET HOLIDAY TOMORROW ON DUSSEHRA: ARE BSE",
-          "display": "Stock market holiday tomorrow on Dussehra: Are BSE",
-          "original": "Stock market holiday tomorrow on Dussehra: Are BSE, NSE open or closed for trading on Tuesday 20 Oct? Check calendar",
+          "headline": "INDIA-NEW ZEALAND FTA EFFECTIVE FROM OCT 20; TARGETS DOUBLE TRADE TO $7BN BY 2030",
+          "display": "India-New Zealand FTA effective from Oct 20; targets double trade to $7bn by 2030",
+          "original": "India-New Zealand FTA effective from Oct 20; targets double trade to $7bn by 2030",
           "truncated": false,
           "usable": true,
-          "category": "INDIA MARKETS",
-          "source": "Economic Times · Mint · Moneycontrol.com",
+          "category": "INDIA",
+          "source": "Times of India · Sarkaritel.com · The Times of India",
           "sourceNames": [
-            "Economic Times",
-            "Mint",
-            "Moneycontrol.com",
-            "Livemint",
-            "Yahoo Finance"
+            "Times of India",
+            "Sarkaritel.com",
+            "The Times of India"
           ],
-          "corroboration": 5,
-          "link": "https://www.livemint.com/market/stock-market-news/stock-market-holiday-tomorrow-on-dussehra-are-bse-nse-open-or-closed-for-trading-on-tuesday-20-oct-check-calendar-11792400130338.html",
-          "published": "2026-10-19T09:26:07.000Z",
-          "topic": "markets-india",
-          "score": 11.4,
-          "photo": {
-            "path": "data/pending/photo-3.jpg",
-            "credit": "Photo: Gopal Aggarwal from India / CC BY 2.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=5086514",
-            "query": "Dussehra",
-            "relevance": 0.2,
-            "title": "TYPICAL Dussehra Celebrations 02 Oct 2006"
-          }
-        },
-        {
-          "headline": "FUNDING SHORTAGES FORCE WORLD FOOD PROGRAMME TO CUT AID TO GAZA",
-          "display": "Funding shortages force World Food Programme to cut aid to Gaza",
-          "original": "Funding shortages force World Food Programme to cut aid to Gaza",
-          "truncated": false,
-          "usable": true,
-          "category": "WORLD NEWS",
-          "source": "BBC News · BBC",
-          "sourceNames": [
-            "BBC News",
-            "BBC"
-          ],
-          "corroboration": 2,
-          "link": "https://www.bbc.co.uk/news/articles/cm79plrvpl4vo?at_medium=RSS&at_campaign=rss",
-          "published": "2026-10-19T06:00:18.000Z",
-          "topic": "world",
-          "score": 6.8,
-          "photo": {
-            "path": "data/pending/photo-4.jpg",
-            "credit": "Photo: DFID - UK Department for International D / CC BY 2.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=138125715",
-            "query": "World Food Programme",
-            "relevance": 0.43,
-            "title": "A Rohingya woman pictured at a World Food Programme food distribution supported by UK aid in Cox's Bazar, Bangladesh, October 2017"
-          }
+          "corroboration": 3,
+          "link": "https://timesofindia.indiatimes.com/business/india-business/india-new-zealand-fta-to-take-effect-from-oct-20-target-to-double-trade-to-7bn-by-2030/articleshow/135047532.cms",
+          "published": "2026-10-19T11:20:35.000Z",
+          "topic": "india",
+          "score": 8.1,
+          "photoError": "no image matched the story closely enough (searched \"Oct\")",
+          "photo": null
         }
       ],
       "usable": true
