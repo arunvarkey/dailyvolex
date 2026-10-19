@@ -268,8 +268,12 @@ canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
 .today-cap{background:var(--ui-card);border:1px solid var(--ui-border);border-radius:10px;
   padding:.55rem .6rem;font-size:.7rem;line-height:1.55;white-space:pre-wrap;
   word-break:break-word;color:var(--ui-muted);max-height:190px;overflow:auto}
-.today-btn{display:block;text-align:center;text-decoration:none;font-weight:700;
-  padding:.62rem;border-radius:9px;font-size:.76rem;background:var(--tp);color:#fff}
+.today-btn{display:block;width:100%;box-sizing:border-box;text-align:center;
+  text-decoration:none;font-weight:700;font-family:inherit;cursor:pointer;
+  padding:.72rem;border-radius:9px;font-size:.78rem;border:0;
+  background:var(--tp);color:#fff}
+.today-btn+.today-btn{margin-top:.4rem}
+.today-btn:disabled{opacity:.55}
 .today-btn.ghost{background:transparent;border:1px solid var(--ui-border);color:var(--ui-text)}
 .today-empty{color:var(--ui-muted);font-size:.76rem;text-align:center;padding:1.6rem .6rem;line-height:1.6}
 
