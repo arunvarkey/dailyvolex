@@ -18,8 +18,8 @@ on:
       format:
         description: 'What to make'
         type: choice
-        default: carousel
-        options: [carousel, digest, cards]
+        default: sections
+        options: [sections, carousel, digest, cards]
       count:
         description: 'How many stories to shortlist'
         default: '3'
@@ -47,19 +47,20 @@ jobs:
       - name: Pick today's stories
         run: node automation/shortlist.mjs --count "${{ inputs.count || '3' }}"
 
-      - name: Render the graphic
+      - name: Render a post per section
         env:
-          FORMAT: ${{ inputs.format || 'carousel' }}
+          FORMAT: ${{ inputs.format || 'sections' }}
         run: |
           case "$FORMAT" in
-            digest) FLAG=--digest ;;
-            cards)  FLAG= ;;
-            *)      FLAG=--carousel ;;
+            digest)   FLAG=--digest ;;
+            cards)    FLAG= ;;
+            carousel) FLAG=--carousel ;;
+            *)        FLAG=--sections ;;
           esac
           node automation/render.mjs $FLAG --ratio 4:5
 
-      - name: Write the caption
-        run: node automation/caption.mjs --index 0
+      - name: Write a caption for every section
+        run: node automation/caption.mjs --all
 
       - name: Publish the graphic so Instagram can fetch it
         # Instagram pulls the image from a public URL rather than accepting an
@@ -77,38 +78,69 @@ jobs:
           script: |
             const fs = require('fs');
             const sl = JSON.parse(fs.readFileSync('data/shortlist.json', 'utf8'));
-            const caption = fs.readFileSync('data/pending/caption-1.txt', 'utf8');
-            const entry = (sl.output || sl.stories)[0];
+            const out = sl.output || sl.stories || [];
             const sha = process.env.GITHUB_SHA;
             const raw = p => `https://raw.githubusercontent.com/${context.repo.owner}/${context.repo.repo}/${sha}/${p}`;
-            const slides = entry.images || [entry.image];
-            const img = slides.map((p, i) =>
-              `![slide ${i + 1}](${raw(p)})`).join('\n');
-
-            const stories = (entry.stories || [entry]).map(s =>
-              `- **${s.display || s.headline}**\n  _${s.source}_ · ${s.corroboration} source${s.corroboration > 1 ? 's' : ''}` +
-              (s.truncated ? ' · shortened to fit' : '') +
-              (s.link ? `\n  ${s.link}` : '')).join('\n');
 
             const warnings = [];
             if (sl.feedErrors?.length) warnings.push(`Feeds that failed: ${sl.feedErrors.join('; ')}`);
-            if ((entry.stories || [entry]).some(s => s.corroboration < 2))
-              warnings.push('Some stories are carried by only ONE outlet — check them before approving.');
-            for (const s of (entry.stories || [entry]))
-              if (s.photoError) warnings.push(`No photo for "${(s.display||'').slice(0,40)}…": ${s.photoError}`);
+
+            // One block per section. Each is a separate post, and each is
+            // posted only if named — so the summary has to make it obvious
+            // what the words after /approve do.
+            const blocks = out.map(entry => {
+              const id = entry.section || 'post';
+              const label = entry.sectionLabel || 'POST';
+              const slides = (entry.images || [entry.image]).filter(Boolean);
+              const stories = (entry.stories || [entry]);
+              const captionFile = entry.section
+                ? `data/pending/caption-${entry.section}.txt`
+                : 'data/pending/caption-1.txt';
+              const caption = fs.existsSync(captionFile)
+                ? fs.readFileSync(captionFile, 'utf8').trim() : '(no caption)';
+
+              for (const s of stories) {
+                if (s.corroboration < 2)
+                  warnings.push(`${label}: "${(s.display || '').slice(0, 44)}…" has only ONE newsroom behind it.`);
+                if (s.republishers?.length)
+                  warnings.push(`${label}: also carried by ${s.republishers.join(', ')} — not counted as corroboration.`);
+                if (s.photoError)
+                  warnings.push(`${label}: no photo for "${(s.display || '').slice(0, 36)}…" — ${s.photoError}`);
+              }
+
+              return [
+                `<details${id === 'top' ? ' open' : ''}>`,
+                `<summary><b>${label}</b> — ${stories.length} stor${stories.length === 1 ? 'y' : 'ies'},`
+                  + ` ${slides.length} slides · post with <code>/approve ${id}</code></summary>`,
+                '',
+                slides.map((p, i) => `![${id} slide ${i + 1}](${raw(p)})`).join('\n'),
+                '',
+                stories.map(s =>
+                  `- **${s.display || s.headline}**\n  _${s.source}_ · `
+                  + `${s.corroboration} independent newsroom${s.corroboration > 1 ? 's' : ''}`
+                  + (s.truncated ? ' · shortened to fit' : '')
+                  + (s.link ? `\n  ${s.link}` : '')).join('\n'),
+                '',
+                '**Caption**', '```', caption, '```',
+                '</details>',
+              ].join('\n');
+            });
+
+            const menu = out.map(e =>
+              `- \`${e.section || 'post'}\` — **${e.sectionLabel || 'POST'}**`
+              + ` (${(e.stories || [e]).length} stories)`).join('\n');
 
             const body = [
-              slides.length > 1 ? `**Carousel — ${slides.length} slides**\n` : '',
-              img,
-              '',
-              '### Stories', stories,
-              '',
-              '### Caption', '```', caption.trim(), '```',
+              `**${out.length} post${out.length === 1 ? '' : 's'} ready.** Nothing goes out unless you name it.`,
+              '', menu, '',
+              '---', '',
+              blocks.join('\n\n'),
               warnings.length ? `\n### ⚠️ Check\n${warnings.map(w => `- ${w}`).join('\n')}` : '',
               '',
               '---',
-              '**Comment `/approve` to post this to Instagram.** Anything else, or no reply, and it is never posted.',
-              'Close this issue to discard it.',
+              '**To post, comment** `/approve <section> <section>` — for example `/approve top business`.',
+              '`/approve all` posts every section. A bare `/approve` posts Top stories only.',
+              'Anything else, or no reply, and nothing is posted. Close this issue to discard it.',
             ].join('\n');
 
             await github.rest.issues.create({

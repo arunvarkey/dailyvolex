@@ -101,10 +101,34 @@ function runScript(doc, stepName, { github, context, env = {} }) {
 const context = { repo: { owner: 'arunvarkey', repo: 'dailyvolex' }, issue: { number: 7 },
                   serverUrl: 'https://github.com', runId: 1 };
 
+
+/* Drives approve.yml's planning step and captures what it decided. */
+let planOut = null, planFailed = null;
+async function runPlan(comment) {
+  planOut = null; planFailed = null;
+  const core = {
+    info() {}, warning() {}, notice() {},
+    setFailed(m) { planFailed = m; },
+    setOutput(k, v) { if (k === 'plan') planOut = JSON.parse(v); },
+  };
+  const step = Object.values(docs['approve.yml'].jobs)
+    .flatMap(j => j.steps || [])
+    .find(s => s.name === 'Work out which sections were approved');
+  if (!step?.with?.script) throw new Error('no planning step in approve.yml');
+  process.env.SHA = 'testsha';
+  const fn = new Function('github', 'context', 'core', 'require', 'process',
+    `return (async () => { ${step.with.script} })()`);
+  try {
+    await fn({}, { ...context, payload: { comment: { body: comment } } }, core, require, process);
+  } catch (e) { planFailed = e.message; }
+  return planFailed ? null : planOut;
+}
+
 // The approval issue — the one that does real work.
 let created = null;
 const hasRender = fs.existsSync(join(ROOT, 'data/shortlist.json'))
-               && fs.existsSync(join(ROOT, 'data/pending/caption-1.txt'));
+               && (fs.existsSync(join(ROOT, 'data/pending/caption-1.txt'))
+                || fs.existsSync(join(ROOT, 'data/pending/caption-top.txt')));
 
 if (!hasRender) {
   console.log('SKIP  no rendered shortlist — run shortlist/render/caption first');
@@ -124,12 +148,57 @@ if (!hasRender) {
   if (created) {
     const b = created.body;
     ok('the issue is labelled for approval', created.labels?.includes('awaiting-approval'));
-    ok('every slide is embedded', (b.match(/!\[slide/g) || []).length >= 1);
+    // Every slide of every section has to be visible in the issue: the owner
+    // is approving what they can see, and a slide that is not shown is a
+    // slide nobody checked.
+    const sl = JSON.parse(fs.readFileSync(join(ROOT, 'data/shortlist.json'), 'utf8'));
+    const out = sl.output || sl.stories || [];
+    const totalSlides = out.reduce(
+      (n, e) => n + (e.images || [e.image]).filter(Boolean).length, 0);
+    ok('every slide of every section is embedded',
+      (b.match(/!\[[^\]]*slide [0-9]+\]/g) || []).length === totalSlides,
+      `${(b.match(/!\[[^\]]*slide [0-9]+\]/g) || []).length} of ${totalSlides}`);
     ok('image links are absolute', /https:\/\/raw\.githubusercontent\.com\//.test(b));
-    ok('the caption is shown in full', /### Caption/.test(b));
-    ok('sources are named per story', /source/.test(b));
-    ok('it says how to approve', /\/approve/.test(b));
+    ok('every section shows its caption',
+      (b.match(/\*\*Caption\*\*/g) || []).length === out.length,
+      `${(b.match(/\*\*Caption\*\*/g) || []).length} of ${out.length}`);
+    ok('corroboration is stated per story in newsrooms, not bylines',
+      /independent newsroom/.test(b));
+    ok('each section says the words that post it',
+      out.every(e => b.includes(`/approve ${e.section || 'post'}`)),
+      out.map(e => e.section).join(','));
+    ok('it says a bare approval posts only the top section',
+      /bare `\/approve` posts Top stories only/i.test(b));
     ok('the body is within GitHub limits', b.length < 65536, `${b.length} chars`);
+
+    /* ── What /approve actually publishes ───────────────────────
+       This step decides which posts go to the account. A bug here does not
+       fail loudly; it posts the wrong thing under the channel's name. */
+    ok('naming sections posts exactly those', await (async () => {
+      const r = await runPlan('/approve top business');
+      return r && r.map(p => p.section).join(',') === 'top,business';
+    })());
+    ok('a bare approval posts only the top section', await (async () => {
+      const r = await runPlan('/approve');
+      return r && r.length === 1 && r[0].section === 'top';
+    })());
+    ok('/approve all posts every section', await (async () => {
+      const r = await runPlan('/approve all');
+      return r && r.length === out.length;
+    })());
+    ok('an unknown section name is refused, not guessed', await (async () => {
+      const r = await runPlan('/approve sport');
+      return r === null;
+    })(), 'must fail rather than post something else');
+    ok('each planned post carries its own caption file', await (async () => {
+      const r = await runPlan('/approve all');
+      return r && r.every(p => p.caption.includes(p.section))
+        && new Set(r.map(p => p.caption)).size === r.length;
+    })());
+    ok('planned image urls are pinned to the approved commit', await (async () => {
+      const r = await runPlan('/approve top');
+      return r && r[0].urls.split(',').every(u => u.includes('/testsha/'));
+    })());
   }
 }
 
