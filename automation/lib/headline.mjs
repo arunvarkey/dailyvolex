@@ -10,7 +10,10 @@
 const MAX = 90;        // comfortable for three lines in the Breaking layout
 
 /* Outlet furniture that carries no information. */
-const TRAILING_SOURCE = /\s*[|–—-]\s*(reuters|bloomberg|cnbc|coindesk|cointelegraph|decrypt|the block|economic times|moneycontrol|mint|livemint|business standard|ndtv profit|et now|the hindu|times of india)\s*$/i;
+const TRAILING_SOURCE = /\s*[|–—-]\s*(reuters|bloomberg|cnbc|coindesk|cointelegraph|decrypt|the block|economic times|moneycontrol|mint|livemint|business standard|ndtv profit|et now|the hindu|times of india|investing\.com|cryptoticker|yahoo finance|bbc news|al jazeera|ndtv)\s*$/i;
+
+/* Some outlets append their own byline: "… today? By Investing.com". */
+const TRAILING_BYLINE = /\s+[Bb]y\s+[A-Z][\w.&' -]{2,30}\s*$/;
 
 const PREFIXES = [
   /^(breaking|exclusive|just in|update|live|watch|explained|analysis|opinion)\s*[:–—-]\s*/i,
@@ -26,6 +29,7 @@ const FILLER = [
 export function tidy(raw) {
   let t = String(raw || '').replace(/\s+/g, ' ').trim();
   t = t.replace(TRAILING_SOURCE, '');
+  t = t.replace(TRAILING_BYLINE, '');
   for (const p of PREFIXES) t = t.replace(p, '');
   for (const f of FILLER) t = t.replace(f, ' ');
   return t.replace(/\s+/g, ' ').replace(/\s+([,.;:])/g, '$1').trim();

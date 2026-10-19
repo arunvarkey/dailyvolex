@@ -1,93 +1,70 @@
 {
-  "generated": "2026-10-19T11:14:52.673Z",
-  "pool": 582,
+  "generated": "2026-10-19T11:18:01.452Z",
+  "pool": 12,
   "feedErrors": [],
   "stories": [
     {
-      "headline": "STOCK MARKET HOLIDAY TOMORROW ON DUSSEHRA: ARE BSE",
-      "display": "Stock market holiday tomorrow on Dussehra: Are BSE",
-      "original": "Stock market holiday tomorrow on Dussehra: Are BSE, NSE open or closed for trading on Tuesday 20 Oct? Check calendar",
+      "headline": "FEDERAL RESERVE CUTS INTEREST RATES BY 25 BASIS POINTS, CITING COOLING INFLATION",
+      "display": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
+      "original": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
+      "truncated": false,
+      "usable": true,
+      "category": "CRYPTO NEWS",
+      "source": "CoinDesk · Cointelegraph · Reuters",
+      "sourceNames": [
+        "CoinDesk",
+        "Cointelegraph",
+        "Reuters"
+      ],
+      "corroboration": 3,
+      "link": "https://coindesk.com/1",
+      "published": "2026-10-19T10:48:01.442Z",
+      "topic": "crypto",
+      "score": 7.8,
+      "photoError": "fetch failed (searched \"Federal Reserve\")",
+      "photo": null
+    },
+    {
+      "headline": "SEC APPROVES SPOT SOLANA ETF APPLICATIONS FROM THREE ISSUERS",
+      "display": "SEC approves spot Solana ETF applications from three issuers",
+      "original": "SEC approves spot Solana ETF applications from three issuers",
+      "truncated": false,
+      "usable": true,
+      "category": "CRYPTO NEWS",
+      "source": "CoinDesk · Cointelegraph",
+      "sourceNames": [
+        "CoinDesk",
+        "Cointelegraph"
+      ],
+      "corroboration": 2,
+      "link": "https://coindesk.com/3",
+      "published": "2026-10-19T09:48:01.442Z",
+      "topic": "crypto",
+      "score": 5.7,
+      "photoError": "fetch failed (searched \"Solana ETF\")",
+      "photo": null
+    },
+    {
+      "headline": "SENSEX CLIMBS 540 POINTS TO CLOSE AT RECORD HIGH, NIFTY TOPS 26,000",
+      "display": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
+      "original": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
       "truncated": false,
       "usable": true,
       "category": "INDIA MARKETS",
-      "source": "Economic Times · Mint · Moneycontrol.com",
+      "source": "Economic Times",
       "sourceNames": [
-        "Economic Times",
-        "Mint",
-        "Moneycontrol.com",
-        "Livemint",
-        "Yahoo Finance"
+        "Economic Times"
       ],
-      "corroboration": 5,
-      "link": "https://www.livemint.com/market/stock-market-news/stock-market-holiday-tomorrow-on-dussehra-are-bse-nse-open-or-closed-for-trading-on-tuesday-20-oct-check-calendar-11792400130338.html",
-      "published": "2026-10-19T09:26:07.000Z",
+      "corroboration": 1,
+      "link": "https://et.com/1",
+      "published": "2026-10-19T09:48:01.442Z",
       "topic": "markets-india",
-      "score": 11.6,
-      "photo": {
-        "path": "data/pending/photo-2.jpg",
-        "credit": "Photo: Gopal Aggarwal from India / CC BY 2.0",
-        "license": "by",
-        "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=5086514",
-        "query": "Dussehra",
-        "relevance": 0.2,
-        "title": "TYPICAL Dussehra Celebrations 02 Oct 2006"
-      }
-    },
-    {
-      "headline": "SENSEX TUMBLES 876 POINTS; NIFTY DROPS BELOW 22,900 DRAGGED BY PRIVATE BANKS",
-      "display": "Sensex tumbles 876 points; Nifty drops below 22,900 dragged by private banks",
-      "original": "Sensex tumbles 876 points; Nifty drops below 22,900 dragged by private banks",
-      "truncated": false,
-      "usable": true,
-      "category": "INDIA MARKETS",
-      "source": "Economic Times · The Times of India · NDTV",
-      "sourceNames": [
-        "Economic Times",
-        "The Times of India",
-        "NDTV",
-        "Deccan Herald",
-        "Times of India"
-      ],
-      "corroboration": 5,
-      "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPQWE0aTRSZUhsalROcDlFUlhpeHBPN2ZEOUxuSGtSZllFRVJmcXBJUFhYWUxaYjdTRUVXamEyemNHck1mcUJ1ZHRoWVViV01pQUUxWl90Z00wZVZmUlBObHUtQl9nbFVkdFJrN21PTXltTHFESnhuRUZaZU5vQW84M3dzM0tvaGp6YUlYTUUxVWpCeHpDTHRXanYzbWFhdGJZSWJFOXg4el91VXgtRTFPZmxGMjNnVFRDYUZqOERJbGVfZVlnSDRj?oc=5",
-      "published": "2026-10-19T11:00:46.000Z",
-      "topic": "markets-world",
-      "score": 11.6,
-      "photo": {
-        "path": "data/pending/photo-3.jpg",
-        "credit": "Photo: James St. John / CC BY 2.0",
-        "license": "by",
-        "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=126632581",
-        "query": "Nifty",
-        "relevance": 0.11,
-        "title": "Nifty Geyser (late morning, 2 June 2013) 2"
-      }
-    },
-    {
-      "headline": "WHY IS SES STOCK GAINING TODAY? BY INVESTING.COM",
-      "display": "Why is SES stock gaining today? By Investing.com",
-      "original": "Why is SES stock gaining today? By Investing.com",
-      "truncated": false,
-      "usable": true,
-      "category": "WORLD MARKETS",
-      "source": "Mint · India Today · Yahoo Finance",
-      "sourceNames": [
-        "Mint",
-        "India Today",
-        "Yahoo Finance",
-        "Livemint",
-        "Investing.com India"
-      ],
-      "corroboration": 5,
-      "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOWkpIUHl3YmRoWGF6eGZVNHpEZ1QyanpJTjNJN29WbFpnN1BqOUN2N3kyMm1pUHZIdl8wT0s1VmVIUWxzMG1hYVg0VnlYcWxUNVFuYWdDUEFOZTJ2U0x6eUpfMEczUjVpTmRSNUtmU2N3Y0wyMUFHeWtrWXZJMklWMEZLSG81QzhXOEFqSkN5bDdzV19KX2c?oc=5",
-      "published": "2026-10-19T10:24:21.000Z",
-      "topic": "markets-world",
-      "score": 11.5,
-      "photoError": "no image matched the story closely enough (searched \"SES\")",
+      "score": 3.6,
+      "photoError": "a chart illustrates this better than a photo (searched \"(chart)\")",
       "photo": null
     }
   ],
-  "rendered": "2026-10-19T11:16:08.803Z",
+  "rendered": "2026-10-19T11:18:19.246Z",
   "options": {
     "layout": "breaking",
     "theme": "bbc",
@@ -115,100 +92,70 @@
       "width": 1080,
       "height": 1350,
       "sourceNames": [
-        "Economic Times",
-        "Mint",
-        "Moneycontrol.com",
-        "Livemint",
-        "Yahoo Finance",
-        "The Times of India",
-        "NDTV",
-        "Deccan Herald",
-        "Times of India",
-        "India Today",
-        "Investing.com India"
+        "CoinDesk",
+        "Cointelegraph",
+        "Reuters",
+        "Economic Times"
       ],
       "stories": [
         {
-          "headline": "STOCK MARKET HOLIDAY TOMORROW ON DUSSEHRA: ARE BSE",
-          "display": "Stock market holiday tomorrow on Dussehra: Are BSE",
-          "original": "Stock market holiday tomorrow on Dussehra: Are BSE, NSE open or closed for trading on Tuesday 20 Oct? Check calendar",
+          "headline": "FEDERAL RESERVE CUTS INTEREST RATES BY 25 BASIS POINTS, CITING COOLING INFLATION",
+          "display": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
+          "original": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
+          "truncated": false,
+          "usable": true,
+          "category": "CRYPTO NEWS",
+          "source": "CoinDesk · Cointelegraph · Reuters",
+          "sourceNames": [
+            "CoinDesk",
+            "Cointelegraph",
+            "Reuters"
+          ],
+          "corroboration": 3,
+          "link": "https://coindesk.com/1",
+          "published": "2026-10-19T10:48:01.442Z",
+          "topic": "crypto",
+          "score": 7.8,
+          "photoError": "fetch failed (searched \"Federal Reserve\")",
+          "photo": null
+        },
+        {
+          "headline": "SEC APPROVES SPOT SOLANA ETF APPLICATIONS FROM THREE ISSUERS",
+          "display": "SEC approves spot Solana ETF applications from three issuers",
+          "original": "SEC approves spot Solana ETF applications from three issuers",
+          "truncated": false,
+          "usable": true,
+          "category": "CRYPTO NEWS",
+          "source": "CoinDesk · Cointelegraph",
+          "sourceNames": [
+            "CoinDesk",
+            "Cointelegraph"
+          ],
+          "corroboration": 2,
+          "link": "https://coindesk.com/3",
+          "published": "2026-10-19T09:48:01.442Z",
+          "topic": "crypto",
+          "score": 5.7,
+          "photoError": "fetch failed (searched \"Solana ETF\")",
+          "photo": null
+        },
+        {
+          "headline": "SENSEX CLIMBS 540 POINTS TO CLOSE AT RECORD HIGH, NIFTY TOPS 26,000",
+          "display": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
+          "original": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
           "truncated": false,
           "usable": true,
           "category": "INDIA MARKETS",
-          "source": "Economic Times · Mint · Moneycontrol.com",
+          "source": "Economic Times",
           "sourceNames": [
-            "Economic Times",
-            "Mint",
-            "Moneycontrol.com",
-            "Livemint",
-            "Yahoo Finance"
+            "Economic Times"
           ],
-          "corroboration": 5,
-          "link": "https://www.livemint.com/market/stock-market-news/stock-market-holiday-tomorrow-on-dussehra-are-bse-nse-open-or-closed-for-trading-on-tuesday-20-oct-check-calendar-11792400130338.html",
-          "published": "2026-10-19T09:26:07.000Z",
+          "corroboration": 1,
+          "link": "https://et.com/1",
+          "published": "2026-10-19T09:48:01.442Z",
           "topic": "markets-india",
-          "score": 11.6,
-          "photo": {
-            "path": "data/pending/photo-2.jpg",
-            "credit": "Photo: Gopal Aggarwal from India / CC BY 2.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=5086514",
-            "query": "Dussehra",
-            "relevance": 0.2,
-            "title": "TYPICAL Dussehra Celebrations 02 Oct 2006"
-          }
-        },
-        {
-          "headline": "SENSEX TUMBLES 876 POINTS; NIFTY DROPS BELOW 22,900 DRAGGED BY PRIVATE BANKS",
-          "display": "Sensex tumbles 876 points; Nifty drops below 22,900 dragged by private banks",
-          "original": "Sensex tumbles 876 points; Nifty drops below 22,900 dragged by private banks",
-          "truncated": false,
-          "usable": true,
-          "category": "INDIA MARKETS",
-          "source": "Economic Times · The Times of India · NDTV",
-          "sourceNames": [
-            "Economic Times",
-            "The Times of India",
-            "NDTV",
-            "Deccan Herald",
-            "Times of India"
-          ],
-          "corroboration": 5,
-          "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPQWE0aTRSZUhsalROcDlFUlhpeHBPN2ZEOUxuSGtSZllFRVJmcXBJUFhYWUxaYjdTRUVXamEyemNHck1mcUJ1ZHRoWVViV01pQUUxWl90Z00wZVZmUlBObHUtQl9nbFVkdFJrN21PTXltTHFESnhuRUZaZU5vQW84M3dzM0tvaGp6YUlYTUUxVWpCeHpDTHRXanYzbWFhdGJZSWJFOXg4el91VXgtRTFPZmxGMjNnVFRDYUZqOERJbGVfZVlnSDRj?oc=5",
-          "published": "2026-10-19T11:00:46.000Z",
-          "topic": "markets-world",
-          "score": 11.6,
-          "photo": {
-            "path": "data/pending/photo-3.jpg",
-            "credit": "Photo: James St. John / CC BY 2.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=126632581",
-            "query": "Nifty",
-            "relevance": 0.11,
-            "title": "Nifty Geyser (late morning, 2 June 2013) 2"
-          }
-        },
-        {
-          "headline": "WHY IS SES STOCK GAINING TODAY? BY INVESTING.COM",
-          "display": "Why is SES stock gaining today? By Investing.com",
-          "original": "Why is SES stock gaining today? By Investing.com",
-          "truncated": false,
-          "usable": true,
-          "category": "WORLD MARKETS",
-          "source": "Mint · India Today · Yahoo Finance",
-          "sourceNames": [
-            "Mint",
-            "India Today",
-            "Yahoo Finance",
-            "Livemint",
-            "Investing.com India"
-          ],
-          "corroboration": 5,
-          "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOWkpIUHl3YmRoWGF6eGZVNHpEZ1QyanpJTjNJN29WbFpnN1BqOUN2N3kyMm1pUHZIdl8wT0s1VmVIUWxzMG1hYVg0VnlYcWxUNVFuYWdDUEFOZTJ2U0x6eUpfMEczUjVpTmRSNUtmU2N3Y0wyMUFHeWtrWXZJMklWMEZLSG81QzhXOEFqSkN5bDdzV19KX2c?oc=5",
-          "published": "2026-10-19T10:24:21.000Z",
-          "topic": "markets-world",
-          "score": 11.5,
-          "photoError": "no image matched the story closely enough (searched \"SES\")",
+          "score": 3.6,
+          "photoError": "a chart illustrates this better than a photo (searched \"(chart)\")",
           "photo": null
         }
       ],

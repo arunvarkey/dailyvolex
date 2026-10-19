@@ -40,6 +40,25 @@ const SUBJECTS = [
   [/\b(mining|miner)\b/i,                          'data centre servers'],
 ];
 
+/* Some stories have no photographic subject at all. A market-index move is
+   about a number going down; the honest illustration is the chart, and a
+   photograph found by searching "Nifty" is a picture of something else — one
+   run returned a close-up of gravel, because the photographer had used the
+   word. For these the chart is not a fallback, it is the right answer. */
+const CHART_IS_BETTER = [
+  /\b(sensex|nifty|dow|nasdaq|s&p|ftse|nikkei|moex|hang seng)\b/i,
+  // Not "holiday" or "today": a market holiday is about a date, and a picture
+  // of the festival behind it is a better card than a chart of nothing.
+  /\bstock market (crash|rally|close|open)\b/i,
+  /\b(index|indices|benchmark)\b.*\b(up|down|gain|lose|rise|fall|close)\b/i,
+  /\b(points?|pct|%)\b.*\b(up|down|gain|lost|rise|fall|tumble|plunge|surge|climb)\b/i,
+  /\b(tumbles?|plunges?|surges?|climbs?|slips?|rallies)\b.*\b\d/i,
+];
+
+export function prefersChart(headline) {
+  return CHART_IS_BETTER.some(re => re.test(String(headline)));
+}
+
 export function subjectFor(headline) {
   for (const [re, query] of SUBJECTS) if (re.test(headline)) return query;
   return 'stock market trading screen';      // always something sensible
@@ -201,6 +220,9 @@ async function searchOnce(q, { fetchImpl, timeoutMs, exclude }) {
    picture OF the story, not a picture of its genre. */
 export async function findImage(headline, { fetchImpl = fetch, timeoutMs = 20000, exclude,
                                             minRelevance = 0.12, maxQueries = 2 } = {}) {
+  if (prefersChart(headline))
+    return { image: null, query: '(chart)', error: 'a chart illustrates this better than a photo' };
+
   // Each query is an API call, and the search is rate limited. Two per story —
   // the named subject and the category — is the useful part of the list; going
   // deeper mostly spends quota to arrive at the same fallback.

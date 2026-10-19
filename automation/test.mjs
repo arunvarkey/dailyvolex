@@ -9,7 +9,7 @@ import { similarity, cluster, selectStories, isRepeat, isTopical, isAdvice,
 import { makeHeadline, tidy, sourceLine, categoryFor } from './lib/headline.mjs';
 import { buildCaption } from './caption.mjs';
 import { isUsable, pickBest, creditFor, subjectFor, findImage,
-         queriesFor, entitiesFrom, isTitleCase, relevance } from './lib/imagery.mjs';
+         queriesFor, entitiesFrom, isTitleCase, relevance, prefersChart } from './lib/imagery.mjs';
 
 let passed = 0, failed = 0;
 const ok = (name, cond, detail = '') => {
@@ -234,6 +234,31 @@ ok('category comes from the topic',
   && categoryFor('india') === 'INDIA'
   && categoryFor('world') === 'WORLD NEWS'
   && categoryFor('tech') === 'TECHNOLOGY');
+
+/* ── Some stories are better illustrated by the chart ─────────── */
+
+ok('an index move prefers the chart',
+  prefersChart('Sensex tumbles 876 points; Nifty drops below 22,900')
+  && prefersChart('Dow closes 500 points lower'));
+ok('a market holiday does not — a photo suits it',
+  !prefersChart('Stock market holiday tomorrow on Dussehra: Are BSE, NSE closed?'));
+ok('ordinary news still wants a photo',
+  !prefersChart('Ceasefire talks resume in Geneva')
+  && !prefersChart('JPMorgan expands JPM Coin deposit token to Ethereum'));
+ok('the chart preference short-circuits the search', (() => {
+  let called = false;
+  const spy = async () => { called = true; return { ok:true, json: async () => ({ results: [] }) }; };
+  return findImage('Sensex tumbles 876 points', { fetchImpl: spy })
+    .then(r => r.image === null && !called);
+})());
+
+ok('an outlet byline is stripped',
+  tidy('Why is SES stock gaining today? By Investing.com') === 'Why is SES stock gaining today?',
+  tidy('Why is SES stock gaining today? By Investing.com'));
+ok('an ordinary "by" is left alone',
+  tidy('Report by committee finds no wrongdoing') === 'Report by committee finds no wrongdoing');
+ok('an explainer about a price move is refused',
+  isAdvice('Why is SES stock gaining today?'));
 
 /* ── Imagery: only what may legally be reused ─────────────────── */
 
