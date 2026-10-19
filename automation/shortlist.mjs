@@ -94,7 +94,7 @@ async function main() {
       original: c.lead.title,
       truncated: h.truncated,
       usable: h.usable,
-      category: categoryFor(c.lead.topic),
+      category: categoryFor(c.lead.topic, c.lead.title),
       source: sourceLine(c.sourceNames),
       sourceNames: c.sourceNames,
       corroboration: c.sources,

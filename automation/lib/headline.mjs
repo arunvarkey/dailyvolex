@@ -84,7 +84,20 @@ export function makeHeadline(raw, { max = MAX } = {}) {
 
 /* The small label above the headline. Derived from the topic, never invented
    from the story's content. */
-export function categoryFor(topic) {
+/* The feed a story arrived through is not always what it is about: a Google
+   News markets search carried an NSE/BSE story, which printed WORLD MARKETS on
+   the card. Where the headline plainly says otherwise, it wins. */
+const BY_CONTENT = [
+  [/\b(sensex|nifty|nse|bse|rupee|rbi|dalal street)\b/i, 'INDIA MARKETS'],
+  [/\b(bitcoin|btc|ethereum|eth|crypto|blockchain|stablecoin|solana|xrp)\b/i, 'CRYPTO NEWS'],
+];
+
+export function categoryFor(topic, headline) {
+  if (headline) for (const [re, label] of BY_CONTENT) if (re.test(headline)) return label;
+  return categoryForTopic(topic);
+}
+
+function categoryForTopic(topic) {
   switch (topic) {
     case 'crypto':        return 'CRYPTO NEWS';
     case 'markets-india': return 'INDIA MARKETS';
