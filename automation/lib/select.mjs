@@ -174,8 +174,10 @@ export function rankClusters(clusters, { now = Date.now() } = {}) {
     const weight = Math.max(...c.items.map(i => i.weight || 1));
     const lead = c.items.slice().sort((a, b) => (b.published || 0) - (a.published || 0))[0];
 
-    // Corroboration dominates; freshness and outlet weight only break ties.
-    const score = (sources * 2) + (freshnessScore(newest, now) * 1.5) + (weight - 1);
+    // Corroboration still dominates — it is the safety check, not a taste
+    // setting — but outlet weight now carries enough to separate stories that
+    // are otherwise level.
+    const score = (sources * 2) + (freshnessScore(newest, now) * 1.5) + ((weight - 1) * 2);
 
     return {
       ...c,
@@ -195,9 +197,19 @@ export function isRepeat(title, history, threshold = 0.6) {
   return history.some(h => similarity(title, h.title) >= threshold);
 }
 
+/* Crypto, India markets and world markets are three topics but one beat: to
+   anyone scrolling, a post made of all three is a finance post. Capping by
+   topic alone let that happen — INDIA MARKETS, INDIA MARKETS, CRYPTO NEWS —
+   so beats are capped too. */
+const BEATS = {
+  crypto: 'markets', 'markets-india': 'markets', 'markets-world': 'markets',
+  business: 'general', india: 'general', world: 'general', tech: 'general',
+};
+const beatOf = topic => BEATS[topic] || 'general';
+
 export function selectStories(items, { history = [], count = 3, now = Date.now(),
                                        minSources = 1, maxAgeHours = 24,
-                                       maxPerTopic = 2 } = {}) {
+                                       maxPerTopic = 2, maxPerBeat = 2 } = {}) {
   const cutoff = now - maxAgeHours * 3600000;
   const fresh = items
     .filter(i => !i.published || i.published >= cutoff)
@@ -213,6 +225,7 @@ export function selectStories(items, { history = [], count = 3, now = Date.now()
   const chosen = [];
   const takenTitles = [];
   const perTopic = new Map();
+  const perBeat = new Map();
 
   const eligible = c =>
     c.sources >= minSources
@@ -223,6 +236,8 @@ export function selectStories(items, { history = [], count = 3, now = Date.now()
     chosen.push(c);
     takenTitles.push(c.lead.title);
     perTopic.set(c.lead.topic, (perTopic.get(c.lead.topic) || 0) + 1);
+    const b = beatOf(c.lead.topic);
+    perBeat.set(b, (perBeat.get(b) || 0) + 1);
   };
 
   // First pass caps each topic, so a busy day in crypto does not push India
@@ -231,6 +246,7 @@ export function selectStories(items, { history = [], count = 3, now = Date.now()
   for (const c of ranked) {
     if (chosen.length >= count) break;
     if ((perTopic.get(c.lead.topic) || 0) >= maxPerTopic) continue;
+    if ((perBeat.get(beatOf(c.lead.topic)) || 0) >= maxPerBeat) continue;
     if (eligible(c)) take(c);
   }
 

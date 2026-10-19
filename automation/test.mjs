@@ -188,11 +188,32 @@ ok('another topic gets in',
   spread.some(c => c.lead.topic === 'india'),
   spread.map(c => c.lead.topic).join(','));
 
+// Crypto, India markets and world markets are one beat to a reader.
+const allFinance = [
+  { title:'Sensex tumbles 876 points as banks drag',   source:'A', published:now, weight:1.1, topic:'markets-india' },
+  { title:'Sensex falls 876 points dragged by lenders', source:'B', published:now, weight:1,   topic:'markets-india' },
+  { title:'Sensex drops 876 points on bank selling',    source:'C', published:now, weight:1,   topic:'markets-india' },
+  { title:'Bitcoin ETFs see heavy weekly outflows',     source:'D', published:now, weight:1.2, topic:'crypto' },
+  { title:'Bitcoin ETF outflows run for a second week', source:'E', published:now, weight:1,   topic:'crypto' },
+  { title:'Wall Street closes lower for a third day',   source:'F', published:now, weight:1.3, topic:'markets-world' },
+  { title:'Wall Street ends lower for a third session', source:'G', published:now, weight:1,   topic:'markets-world' },
+  { title:'Ceasefire talks resume in Geneva',           source:'H', published:now, weight:1.8, topic:'world' },
+];
+const balanced = selectStories(allFinance, { count: 3, now });
+ok('markets cannot take every slot, even across three topics',
+  balanced.filter(c => ['crypto','markets-india','markets-world'].includes(c.lead.topic)).length <= 2,
+  balanced.map(c => c.lead.topic).join(','));
+ok('a general story gets in even with less corroboration',
+  balanced.some(c => c.lead.topic === 'world'),
+  balanced.map(c => c.lead.topic).join(','));
+
 // On a quiet day the cap must not leave the post short.
 const onlyCrypto = lopsided.slice(0, 3);
 ok('the cap still fills the post when there is nothing else',
   selectStories(onlyCrypto, { count: 3, now }).length === 3,
   `${selectStories(onlyCrypto, { count: 3, now }).length} picked`);
+ok('a markets-only day still produces a full post',
+  selectStories(allFinance.filter(i => i.topic !== 'world'), { count: 3, now }).length === 3);
 
 /* ── Headlines ────────────────────────────────────────────────── */
 
