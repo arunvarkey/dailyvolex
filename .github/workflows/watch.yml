@@ -1,0 +1,157 @@
+name: Breaking news watch
+
+# The daily run is a 08:00 digest. This is the other half: a check every
+# fifteen minutes for a story that has just broken and is already carried by
+# several independent newsrooms.
+#
+# It posts NOTHING, exactly like the daily run. It renders a card and opens an
+# approval issue, and the owner's /approve is still the only thing that puts
+# anything on the account.
+#
+# Nearly every run finds nothing and stops after fetching the feeds, which
+# takes about fifteen seconds. On a public repository GitHub Actions minutes
+# are free and unmetered, so the cost of watching all day is nil.
+
+on:
+  schedule:
+    # Every 15 minutes. GitHub delays scheduled runs under load, so treat this
+    # as "about four times an hour", not as a clock.
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+    inputs:
+      min_sources:
+        description: 'Independent newsrooms required'
+        default: '3'
+      max_age:
+        description: 'How old the story may be, in hours'
+        default: '2'
+
+permissions:
+  contents: write
+  issues: write
+
+# Never let two watches, or a watch and the daily run, write data/ at once.
+concurrency:
+  group: dailyvolex-daily
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # Stop before doing anything expensive if the owner has not dealt with
+      # the last one. A queue of unanswered approval issues is not a feed, and
+      # opening more of them does not make the news more likely to be read.
+      - name: Stop if something is already waiting for approval
+        id: pending
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo,
+              state: 'open', labels: 'awaiting-approval', per_page: 1,
+            });
+            core.setOutput('busy', data.length ? 'yes' : 'no');
+            if (data.length) core.notice(`#${data[0].number} is still open — not looking for more`);
+
+      - name: Look for a breaking story
+        id: look
+        if: steps.pending.outputs.busy == 'no'
+        run: |
+          if node automation/shortlist.mjs --breaking \
+               --min-sources "${{ inputs.min_sources || '3' }}" \
+               --max-age "${{ inputs.max_age || '2' }}" | tee out.txt; then
+            if grep -q '::notice::no breaking story' out.txt; then
+              echo "found=no" >> "$GITHUB_OUTPUT"
+            else
+              echo "found=yes" >> "$GITHUB_OUTPUT"
+            fi
+          else
+            echo "found=no" >> "$GITHUB_OUTPUT"
+            exit 1
+          fi
+
+      # Everything below runs only when something actually broke.
+      - name: Render the card
+        if: steps.look.outputs.found == 'yes'
+        run: node automation/render.mjs --ratio 4:5
+
+      - name: Write the caption
+        if: steps.look.outputs.found == 'yes'
+        run: node automation/caption.mjs --index 0
+
+      - name: Publish the graphic so Instagram can fetch it
+        if: steps.look.outputs.found == 'yes'
+        run: |
+          git config user.name  "dailyvolex-bot"
+          git config user.email "noreply@github.com"
+          git add data/
+          git commit -m "Breaking story for $(date -u +'%Y-%m-%d %H:%M') UTC" || echo "nothing changed"
+          git push
+
+      - name: Remember what was offered, even when nothing broke
+        # offered.json is what stops the next watch offering the same story
+        # again fifteen minutes later, so it has to be committed either way.
+        if: steps.look.outputs.found == 'no'
+        run: |
+          git config user.name  "dailyvolex-bot"
+          git config user.email "noreply@github.com"
+          git add data/offered.json 2>/dev/null || true
+          git diff --cached --quiet || { git commit -m "Watch: nothing new"; git push; }
+
+      - name: Ask for approval
+        if: steps.look.outputs.found == 'yes'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const sl = JSON.parse(fs.readFileSync('data/shortlist.json', 'utf8'));
+            const caption = fs.readFileSync('data/pending/caption-1.txt', 'utf8');
+            const entry = (sl.output || sl.stories)[0];
+            const sha = process.env.GITHUB_SHA;
+            const raw = p => `https://raw.githubusercontent.com/${context.repo.owner}/${context.repo.repo}/${sha}/${p}`;
+            const slides = entry.images || [entry.image];
+            const img = slides.map((p, i) => `![slide ${i + 1}](${raw(p)})`).join('\n');
+
+            const s = entry.stories ? entry.stories[0] : entry;
+            const age = s.published
+              ? Math.round((Date.now() - Date.parse(s.published)) / 60000) + ' minutes old'
+              : 'age unknown';
+
+            const warnings = [];
+            if (sl.feedErrors?.length) warnings.push(`Feeds that failed: ${sl.feedErrors.join('; ')}`);
+            if (s.republishers?.length)
+              warnings.push(`Also carried by, but not counted as corroboration: ${s.republishers.join(', ')}`);
+            if (s.truncated) warnings.push('The headline was shortened to fit the card.');
+            if (s.photoError) warnings.push(`No photo: ${s.photoError}`);
+
+            const body = [
+              '**Breaking — caught by the watch, not the daily run.**', '',
+              img, '',
+              `**${s.display || s.headline}**`,
+              `_${s.source}_ · ${s.corroboration} independent newsroom${s.corroboration > 1 ? 's' : ''} · ${age}`,
+              s.link ? `\n${s.link}` : '',
+              '',
+              '### Caption', '```', caption.trim(), '```',
+              warnings.length ? `\n### ⚠️ Check\n${warnings.map(w => `- ${w}`).join('\n')}` : '',
+              '',
+              '---',
+              '**Comment `/approve` to post this to Instagram.** Anything else, or no reply, and it is never posted.',
+              'Close this issue to discard it — the watch stays quiet until you do.',
+            ].join('\n');
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Breaking — ${(entry.stories ? entry.stories[0] : entry).display?.slice(0, 60) || 'story'}`,
+              body,
+              labels: ['awaiting-approval', 'breaking'],
+            });

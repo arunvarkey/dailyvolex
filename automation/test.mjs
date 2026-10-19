@@ -7,6 +7,7 @@ import { parseFeed } from './lib/rss.mjs';
 import { similarity, cluster, selectStories, isRepeat, isTopical, isAdvice,
          isSpeculation, isJunk, rankClusters } from './lib/select.mjs';
 import { makeHeadline, tidy, sourceLine, categoryFor } from './lib/headline.mjs';
+import { canonicalSource, isRepublisher, independentSources } from './lib/outlets.mjs';
 import { buildCaption } from './caption.mjs';
 import { isUsable, pickBest, creditFor, subjectFor, findImage, backdropFor, isSensitive,
          queriesFor, entitiesFrom, isTitleCase, relevance, prefersChart } from './lib/imagery.mjs';
@@ -261,6 +262,80 @@ ok('a headline only ever loses words, never gains them', (() => {
   const srcWords = new Set(src.toLowerCase().split(/\s+/));
   return outWords.every(w => srcWords.has(w));
 })());
+
+/* ── Corroboration has to be an honest number ─────────────────── */
+/* These are real source lists from live runs. The count on the card is the
+   reader's only reason to believe a headline from an account that does no
+   reporting of its own, and it was being inflated three different ways. */
+
+ok('a spelling variant is not a second outlet',
+  canonicalSource('The Times of India') === canonicalSource('Times of India')
+  && canonicalSource('BBC News') === canonicalSource('BBC')
+  && canonicalSource('Moneycontrol.com') === canonicalSource('Moneycontrol'));
+ok('two mastheads of one newsroom are one source',
+  canonicalSource('Mint') === canonicalSource('Livemint')
+  && canonicalSource('Economic Times') === canonicalSource('Times of India')
+  && canonicalSource('News On AIR') === canonicalSource('DD India'));
+ok('genuinely different outlets stay different',
+  new Set(['CoinDesk','Cointelegraph','Reuters','The Hindu','NDTV'].map(canonicalSource)).size === 5);
+ok('a republisher is recognised',
+  isRepublisher('Yahoo Finance') && isRepublisher('MSN') && isRepublisher('Sarkaritel.com')
+  && !isRepublisher('Reuters') && !isRepublisher('The Hindu'));
+
+ok('["BBC News","BBC"] is ONE source, not two',
+  independentSources(['BBC News', 'BBC']).count === 1);
+ok('["Times of India","Sarkaritel.com","The Times of India"] is ONE source',
+  independentSources(['Times of India', 'Sarkaritel.com', 'The Times of India']).count === 1,
+  JSON.stringify(independentSources(['Times of India','Sarkaritel.com','The Times of India'])));
+ok('a six-name list of three newsrooms counts three',
+  independentSources(['Economic Times','Mint','Moneycontrol.com','Livemint',
+                      'Yahoo Finance','Univest']).count === 3);
+ok('republishers are still named, just not counted', (() => {
+  const r = independentSources(['Times of India', 'Yahoo Finance']);
+  return r.count === 1 && r.republishers.includes('Yahoo Finance');
+})());
+ok('the attribution line carries one name per newsroom',
+  independentSources(['Economic Times','The Times of India','NDTV','Deccan Herald',
+                      'Times of India']).names.length === 3);
+ok('an honest count is what reaches the card', (() => {
+  const items = [
+    { title: 'Rupee steadies against the dollar', source: 'Times of India', published: Date.now(), topic: 'markets-india' },
+    { title: 'Rupee steadies against the dollar today', source: 'The Times of India', published: Date.now(), topic: 'markets-india' },
+    { title: 'Rupee steadies against the dollar in trade', source: 'Yahoo Finance', published: Date.now(), topic: 'markets-india' },
+  ];
+  const [chosen] = selectStories(items, { count: 1 });
+  return chosen && chosen.sources === 1;
+})());
+
+/* ── The breaking bar ─────────────────────────────────────────── */
+/* A watch that runs every fifteen minutes has to find nothing almost every
+   time, or it becomes a machine for manufacturing urgency. */
+
+const breakingItems = (hoursOld, sources) => sources.map((s, i) => ({
+  title: 'Central bank governor resigns without notice',
+  source: s, published: Date.now() - hoursOld * 3600000, topic: 'world', weight: 1,
+}));
+
+ok('three independent newsrooms within the hour clears the bar',
+  selectStories(breakingItems(0.5, ['Reuters', 'BBC News', 'The Hindu']),
+                { count: 1, minSources: 3, maxAgeHours: 2 }).length === 1);
+ok('two newsrooms does not clear it',
+  selectStories(breakingItems(0.5, ['Reuters', 'BBC News']),
+                { count: 1, minSources: 3, maxAgeHours: 2 }).length === 0);
+ok('three names for two newsrooms does not clear it',
+  selectStories(breakingItems(0.5, ['Times of India', 'The Times of India', 'NDTV']),
+                { count: 1, minSources: 3, maxAgeHours: 2 }).length === 0,
+  'spelling variants must not pass the breaking bar');
+ok('a story with republishers padding it does not clear it',
+  selectStories(breakingItems(0.5, ['Reuters', 'Yahoo Finance', 'MSN']),
+                { count: 1, minSources: 3, maxAgeHours: 2 }).length === 0);
+ok('an old story does not clear it however well corroborated',
+  selectStories(breakingItems(9, ['Reuters', 'BBC News', 'The Hindu', 'NDTV']),
+                { count: 1, minSources: 3, maxAgeHours: 2 }).length === 0);
+ok('a story already offered for approval does not come back',
+  selectStories(breakingItems(0.5, ['Reuters', 'BBC News', 'The Hindu']),
+                { count: 1, minSources: 3, maxAgeHours: 2,
+                  history: [{ title: 'Central bank governor resigns without notice' }] }).length === 0);
 
 ok('sources are named', sourceLine(['CoinDesk', 'Reuters']) === 'CoinDesk · Reuters');
 ok('the headline overrides the feed when it plainly disagrees',

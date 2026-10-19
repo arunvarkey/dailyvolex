@@ -5,6 +5,13 @@
  * stages read. Safe to run as often as you like.
  *
  *   node automation/shortlist.mjs [--count 3] [--fixtures] [--quiet]
+ *                                 [--breaking] [--min-sources 3] [--max-age 1.5]
+ *
+ * --breaking is the watch mode: it looks only for a story that several
+ * independent newsrooms have carried in the last hour or two, and exits
+ * without writing a shortlist when there is none. That is the normal outcome,
+ * and it has to be, or a watch that runs every fifteen minutes becomes a
+ * machine for manufacturing urgency.
  */
 
 import { readFile } from 'node:fs/promises';
@@ -13,12 +20,19 @@ import { dirname, join } from 'node:path';
 import { fetchFeed, parseFeed } from './lib/rss.mjs';
 import { selectStories } from './lib/select.mjs';
 import { makeHeadline, categoryFor, sourceLine } from './lib/headline.mjs';
-import { readJson, writeJson, loadHistory } from './lib/store.mjs';
+import { readJson, writeJson, loadHistory, recordPosted } from './lib/store.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(HERE, '..');
 const SHORTLIST = join(ROOT, 'data', 'shortlist.json');
 const HISTORY   = join(ROOT, 'data', 'posted.json');
+/* What has already been put in front of the owner for approval. Without this,
+   a watch running every fifteen minutes offers the same story every fifteen
+   minutes; posted.json alone cannot help, because a story that was offered and
+   not approved was never posted. Entries age out, so a story missed once can
+   come back tomorrow rather than being silently buried for good. */
+const OFFERED   = join(ROOT, 'data', 'offered.json');
+const OFFER_TTL_HOURS = 36;
 
 function arg(name, fallback) {
   const i = process.argv.indexOf(`--${name}`);
@@ -66,7 +80,14 @@ async function loadFromNetwork(feeds) {
 async function main() {
   const quiet = FLAG('quiet');
   const log = (...a) => { if (!quiet) console.log(...a); };
-  const count = Math.max(1, Math.min(5, parseInt(arg('count', '3'), 10) || 3));
+  const breaking = FLAG('breaking');
+  // Watch mode is one story, and only one that is both very fresh and carried
+  // by several independent newsrooms. A lower bar on a fifteen-minute loop is
+  // how an account ends up shouting about nothing several times an hour.
+  const count = breaking ? 1
+    : Math.max(1, Math.min(5, parseInt(arg('count', '3'), 10) || 3));
+  const minSources = Math.max(1, parseInt(arg('min-sources', breaking ? '3' : '1'), 10) || 1);
+  const maxAgeHours = Math.max(0.25, parseFloat(arg('max-age', breaking ? '2' : '24')) || 24);
 
   const { feeds } = await readJson(join(HERE, 'feeds.json'), { feeds: [] });
   if (!feeds.length) throw new Error('no feeds configured');
@@ -83,8 +104,23 @@ async function main() {
     throw new Error(`no items from any feed${errors.length ? ': ' + errors.join('; ') : ''}`);
   }
 
-  const history = await loadHistory(HISTORY);
-  const chosen = selectStories(items, { history, count });
+  // Everything already posted, plus everything already put up for approval in
+  // the last day and a half.
+  const cutoff = Date.now() - OFFER_TTL_HOURS * 3600000;
+  const offered = (await loadHistory(OFFERED))
+    .filter(o => !o.offeredAt || Date.parse(o.offeredAt) >= cutoff);
+  const history = [...await loadHistory(HISTORY), ...offered];
+
+  const chosen = selectStories(items, { history, count, minSources, maxAgeHours });
+
+  if (breaking && !chosen.length) {
+    // The ordinary result. Say so plainly and leave the shortlist alone, so
+    // nothing downstream mistakes "nothing broke" for "the run failed".
+    log('nothing meets the breaking bar'
+      + ` (needs ${minSources} independent newsrooms within ${maxAgeHours}h)`);
+    console.log('::notice::no breaking story');
+    process.exit(0);
+  }
 
   const stories = chosen.map(c => {
     const h = makeHeadline(c.lead.title);
@@ -98,6 +134,10 @@ async function main() {
       source: sourceLine(c.sourceNames),
       sourceNames: c.sourceNames,
       corroboration: c.sources,
+      // Named, but not counted: sites that carried the story rather than
+      // reporting it. Hiding them would overstate the attribution; counting
+      // them would overstate the corroboration.
+      republishers: c.republishers || [],
       link: c.lead.link,
       published: c.newest ? new Date(c.newest).toISOString() : null,
       topic: c.lead.topic,
@@ -109,9 +149,20 @@ async function main() {
     generated: new Date().toISOString(),
     pool: items.length,
     feedErrors: errors,
+    breaking,
     stories,
   };
   await writeJson(SHORTLIST, payload);
+
+  // Remember what was offered, so the next run does not offer it again.
+  // Never from fixtures: the sample build runs repeatedly, and a second run
+  // that suppressed its own fixtures as "already offered" would render
+  // nothing and fail CI for a reason that has nothing to do with the code.
+  if (!FLAG('fixtures')) {
+    await recordPosted(OFFERED, stories.map(s => ({
+      title: s.display || s.headline, offeredAt: new Date().toISOString(),
+    })));
+  }
 
   log(`\nshortlist (${stories.length}):`);
   for (const s of stories) {
