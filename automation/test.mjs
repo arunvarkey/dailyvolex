@@ -4,8 +4,9 @@
  */
 
 import { parseFeed } from './lib/rss.mjs';
-import { similarity, cluster, selectStories, isRepeat, isTopical, isAdvice,
+import { similarity, cluster, selectStories, selectSections, isRepeat, isTopical, isAdvice,
          isSpeculation, isJunk, rankClusters } from './lib/select.mjs';
+import { sectionOf, sectionLabel, SECTIONS } from './lib/sections.mjs';
 import { makeHeadline, tidy, sourceLine, categoryFor } from './lib/headline.mjs';
 import { canonicalSource, isRepublisher, independentSources } from './lib/outlets.mjs';
 import { buildCaption } from './caption.mjs';
@@ -336,6 +337,65 @@ ok('a story already offered for approval does not come back',
   selectStories(breakingItems(0.5, ['Reuters', 'BBC News', 'The Hindu']),
                 { count: 1, minSources: 3, maxAgeHours: 2,
                   history: [{ title: 'Central bank governor resigns without notice' }] }).length === 0);
+
+/* ── Sorting the day into sections ────────────────────────────── */
+
+const sectionItems = () => {
+  const now = Date.now();
+  const mk = (title, source, topic) => ({ title, source, topic, published: now - 600000, weight: 1 });
+  return [
+    mk('Prime minister announces new housing scheme', 'NDTV', 'india'),
+    mk('Prime minister announces housing scheme for cities', 'The Hindu', 'india'),
+    mk('Heavy rain shuts schools across Kerala', 'NDTV', 'india'),
+    mk('Summit ends without agreement on emissions', 'BBC News', 'world'),
+    mk('Emissions summit ends with no agreement', 'Reuters', 'world'),
+    mk('Sensex climbs 540 points to a record high', 'Economic Times', 'markets-india'),
+    mk('Bitcoin holds above $90,000', 'CoinDesk', 'crypto'),
+    mk('Chipmaker unveils a smaller process node', 'Reuters', 'tech'),
+  ];
+};
+
+ok('the day comes back sorted into sections', (() => {
+  const secs = selectSections(sectionItems(), { count: 3, perSection: 3 });
+  return secs[0].id === 'top' && secs.some(s => s.id === 'india')
+    && secs.some(s => s.id === 'business');
+})(), JSON.stringify(selectSections(sectionItems(), { count: 3 }).map(s => s.id)));
+
+ok('top stories come first, so output[0] is still the top post',
+  selectSections(sectionItems(), { count: 3 })[0].label === 'TOP STORIES');
+
+ok('every market topic lands in Business', (() => {
+  const secs = selectSections(sectionItems(), { count: 1, perSection: 5 });
+  const biz = secs.find(s => s.id === 'business');
+  return biz && biz.clusters.every(c =>
+    ['markets-india','markets-world','crypto','business'].includes(c.lead.topic));
+})());
+
+ok('a story in Top does not appear again in its section', (() => {
+  const secs = selectSections(sectionItems(), { count: 3, perSection: 5 });
+  const top = secs.find(s => s.id === 'top').clusters.map(c => c.lead.title);
+  const rest = secs.filter(s => s.id !== 'top').flatMap(s => s.clusters.map(c => c.lead.title));
+  return top.every(t => !rest.includes(t));
+})(), 'no story may be posted twice in one morning');
+
+ok('an empty section is not offered as a post', (() => {
+  const secs = selectSections(sectionItems(), { count: 3, perSection: 3 });
+  return secs.every(s => s.id === 'top' || s.clusters.length > 0);
+})());
+
+ok('sections respect the no-repeats history', (() => {
+  const secs = selectSections(sectionItems(), {
+    count: 1, perSection: 5,
+    history: [{ title: 'Heavy rain shuts schools across Kerala' }],
+  });
+  return secs.filter(s => s.id !== 'top')
+    .flatMap(s => s.clusters.map(c => c.lead.title))
+    .every(t => !/Heavy rain/.test(t));
+})());
+
+ok('a topic with no section of its own is still reachable',
+  sectionOf('india') === 'india' && sectionOf('crypto') === 'business'
+  && sectionOf('something-new') === 'top');
 
 ok('sources are named', sourceLine(['CoinDesk', 'Reuters']) === 'CoinDesk · Reuters');
 ok('the headline overrides the feed when it plainly disagrees',

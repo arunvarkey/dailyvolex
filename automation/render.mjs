@@ -71,7 +71,7 @@ function backdropOf(story, opts) {
   return backdropFor(story.display || story.headline, story.topic);
 }
 
-async function imageFor(story, index, opts) {
+async function imageFor(story, index, opts, dir = '') {
   if (opts.noPhotos) return null;
   // The topic steers the last-resort query. Without it, every story that named
   // nothing searchable fell back to a markets photo, so a standards conference
@@ -86,6 +86,9 @@ async function imageFor(story, index, opts) {
     return null;
   }
   const name = `photo-${index}.jpg`;
+  // Each section writes into its own folder, so photo-2.jpg in BUSINESS does
+  // not overwrite photo-2.jpg in WORLD.
+  const relDir = dir ? `${dir}/` : '';
   // Openverse indexes links that have since died, so a 404 on the best match
   // should move to the next one rather than cost the story its picture.
   const candidates = [found.image, ...(found.image.alternatives || [])];
@@ -94,12 +97,12 @@ async function imageFor(story, index, opts) {
   for (const cand of candidates) {
     for (const url of [cand.url, cand.smallerUrl].filter(Boolean)) {
     try {
-      const { bytes } = await downloadImage(url, join(OUT_DIR, name));
+      const { bytes } = await downloadImage(url, join(OUT_DIR, dir, name));
       usedPhotos.add(cand.url);
       console.log(`  photo: "${found.query}" · match ${cand.relevance ?? '?'}`
         + ` · ${cand.credit} · ${(bytes/1024).toFixed(0)} KB`
         + (failures.length ? `  (after ${failures.length} dead link${failures.length>1?'s':''})` : ''));
-      return { path: `data/pending/${name}`, credit: cand.credit,
+      return { path: `data/pending/${relDir}${name}`, credit: cand.credit,
                license: cand.license, pageUrl: cand.pageUrl,
                query: found.query, relevance: cand.relevance, title: cand.title };
     } catch (e) {
@@ -177,6 +180,8 @@ async function main() {
     // earns the tap, each story gets a readable card of its own, and people
     // save and share multi-slide posts far more than single images.
     carousel: process.argv.includes('--carousel'),
+    // A post per section — Top stories, India, World, Business, Technology.
+    sections: process.argv.includes('--sections'),
     // Lifts the headline block off the bottom edge. Without it the card is
     // weighted right at the base of an otherwise empty frame.
     // With a chart behind the text the frame is full, so the headline sits in
@@ -201,43 +206,69 @@ async function main() {
   try {
     const usable = shortlist.stories.filter(s => s.usable);
 
-    if (opts.carousel) {
-      if (!usable.length) throw new Error('no usable headlines for a carousel');
-
+    /* One carousel: a cover listing what is inside, then a card per story.
+       Parameterised by output folder so a sectioned run can put each
+       section's post in its own, rather than four sections overwriting one
+       another's slide-1.png. */
+    const renderCarousel = async (stories, carouselOpts, dir, label) => {
+      await mkdir(join(OUT_DIR, dir), { recursive: true });
+      const rel = f => `data/pending/${dir ? dir + '/' : ''}${f}`;
       const slides = [];
-      // Slide 1: the cover, listing everything inside.
-      const cover = await renderUrl(digestUrl(port, usable, opts), 0);
-      await writeFile(join(OUT_DIR, 'slide-1.png'), cover.png);
+
+      const cover = await renderUrl(digestUrl(port, stories, carouselOpts), 0);
+      await writeFile(join(OUT_DIR, dir, 'slide-1.png'), cover.png);
       slides.push({ file: 'slide-1.png', kind: 'cover', ...cover });
 
-      // Then one card per story, each with its own photograph where one can
-      // be used legally.
-      for (const [i, story] of usable.entries()) {
-        story.photo = await imageFor(story, i + 2, opts);
+      for (const [i, story] of stories.entries()) {
+        story.photo = await imageFor(story, `${dir || 'top'}-${i + 2}`, carouselOpts, dir);
         const slide = await renderUrl(
-          storyUrl(port, story, { ...opts, layout: 'breaking', posy: opts.posy }), i + 1);
+          storyUrl(port, story, { ...carouselOpts, layout: 'breaking', posy: carouselOpts.posy }), i + 1);
         const name = `slide-${i + 2}.png`;
-        await writeFile(join(OUT_DIR, name), slide.png);
+        await writeFile(join(OUT_DIR, dir, name), slide.png);
         slides.push({ file: name, kind: 'story', story, ...slide });
       }
 
       for (const s of slides) {
-        console.log(`rendered ${s.file}  ${s.dims.w}x${s.dims.h}  ${(s.png.length / 1024).toFixed(0)} KB`
+        console.log(`rendered ${label ? label + '/' : ''}${s.file}  ${s.dims.w}x${s.dims.h}`
+          + `  ${(s.png.length / 1024).toFixed(0)} KB`
           + (s.fontsOk === false ? '  !! WEB FONTS DID NOT LOAD' : '')
           + (s.jsErrors.length ? `  (page errors: ${s.jsErrors.join(' | ')})` : ''));
         if (s.fontsOk === false) fontWarnings++;
       }
 
-      rendered.push({
+      return {
         kind: 'carousel',
-        headline: `${usable.length} stories`,
-        images: slides.map(s => `data/pending/${s.file}`),
-        image: 'data/pending/slide-1.png',          // the cover, for previews
+        headline: `${stories.length} stories`,
+        images: slides.map(s => rel(s.file)),
+        image: rel('slide-1.png'),                  // the cover, for previews
         width: slides[0].dims.w, height: slides[0].dims.h,
-        sourceNames: [...new Set(usable.flatMap(s => s.sourceNames))],
-        stories: usable,
+        sourceNames: [...new Set(stories.flatMap(s => s.sourceNames))],
+        stories,
         usable: true,
-      });
+      };
+    };
+
+    /* A post per section. Top stories first, so it is always output[0] and
+       everything that reads output[0] keeps working unchanged. */
+    if (opts.sections) {
+      const sections = (shortlist.sections || []).filter(s => s.stories?.some(x => x.usable));
+      if (!sections.length) throw new Error('no usable headlines in any section');
+
+      for (const section of sections) {
+        const stories = section.stories.filter(s => s.usable);
+        console.log(`\n── ${section.label} (${stories.length}) ──`);
+        const entry = await renderCarousel(
+          stories,
+          { ...opts, label: section.label },
+          section.id,
+          section.id);
+        rendered.push({ ...entry, section: section.id, sectionLabel: section.label });
+      }
+    }
+
+    else if (opts.carousel) {
+      if (!usable.length) throw new Error('no usable headlines for a carousel');
+      rendered.push(await renderCarousel(usable, opts, '', ''));
     }
 
     else if (opts.digest) {
@@ -258,7 +289,8 @@ async function main() {
       });
     }
 
-    for (const [i, story] of ((opts.digest || opts.carousel) ? [] : shortlist.stories).entries()) {
+    const singleCards = (opts.digest || opts.carousel || opts.sections) ? [] : shortlist.stories;
+    for (const [i, story] of singleCards.entries()) {
       if (!story.usable) { console.log(`skipped (headline too short): ${story.headline}`); continue; }
       const { png, dims, fontsOk, jsErrors } = await renderUrl(storyUrl(port, story, opts), i);
       const name = `story-${i + 1}.png`;

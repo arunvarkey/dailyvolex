@@ -18,7 +18,8 @@ import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { fetchFeed, parseFeed } from './lib/rss.mjs';
-import { selectStories } from './lib/select.mjs';
+import { selectStories, selectSections } from './lib/select.mjs';
+import { sectionOf } from './lib/sections.mjs';
 import { makeHeadline, categoryFor, sourceLine } from './lib/headline.mjs';
 import { readJson, writeJson, loadHistory, recordPosted } from './lib/store.mjs';
 
@@ -111,7 +112,18 @@ async function main() {
     .filter(o => !o.offeredAt || Date.parse(o.offeredAt) >= cutoff);
   const history = [...await loadHistory(HISTORY), ...offered];
 
-  const chosen = selectStories(items, { history, count, minSources, maxAgeHours });
+  // Sections are the default shape now: Top stories, then India, World,
+  // Business, Technology. Watch mode stays a single story — a breaking alert
+  // sorted into a section is not a breaking alert.
+  const sectioned = !breaking && !FLAG('no-sections');
+  const perSection = Math.max(1, Math.min(5, parseInt(arg('per-section', '3'), 10) || 3));
+
+  const sections = sectioned
+    ? selectSections(items, { history, count, perSection, minSources, maxAgeHours })
+    : null;
+  const chosen = sections
+    ? sections.find(s => s.id === 'top').clusters
+    : selectStories(items, { history, count, minSources, maxAgeHours });
 
   if (breaking && !chosen.length) {
     // The ordinary result. Say so plainly and leave the shortlist alone, so
@@ -122,7 +134,7 @@ async function main() {
     process.exit(0);
   }
 
-  const stories = chosen.map(c => {
+  const toStory = c => {
     const h = makeHeadline(c.lead.title);
     return {
       headline: h.headline,
@@ -141,16 +153,26 @@ async function main() {
       link: c.lead.link,
       published: c.newest ? new Date(c.newest).toISOString() : null,
       topic: c.lead.topic,
+      section: sectionOf(c.lead.topic),
       score: c.score,
     };
-  });
+  };
+
+  const stories = chosen.map(toStory);
 
   const payload = {
     generated: new Date().toISOString(),
     pool: items.length,
     feedErrors: errors,
     breaking,
+    // Top stories stay under `stories`, where every later stage already looks
+    // for them. Sections are additional, not a replacement — renaming the key
+    // would have broken the render, the caption, the approval issue and the
+    // phone's Today tab all at once, for no gain.
     stories,
+    sections: sections
+      ? sections.map(s => ({ id: s.id, label: s.label, stories: s.clusters.map(toStory) }))
+      : undefined,
   };
   await writeJson(SHORTLIST, payload);
 

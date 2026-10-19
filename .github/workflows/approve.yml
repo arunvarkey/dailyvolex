@@ -37,8 +37,32 @@ jobs:
         with:
           node-version: '22'
 
+      # What posts has to be what the issue showed, not whatever happens to be
+      # in data/ when the approval arrives. The two are not the same thing:
+      # the breaking watch rewrites data/ every fifteen minutes, so approving
+      # an issue from an hour ago used to publish a different post entirely.
+      # The images in the issue body are pinned to the commit they were
+      # rendered at, so that commit is the one to read.
+      - name: Find the commit this issue is showing
+        id: pin
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = context.payload.issue.body || '';
+            const m = body.match(
+              new RegExp(`raw\\.githubusercontent\\.com/${context.repo.owner}/${context.repo.repo}/([0-9a-f]{40})/`, 'i'));
+            if (!m) core.setFailed('this issue does not pin a commit — refusing to guess what it meant');
+            else { core.setOutput('sha', m[1]); core.notice(`approving the post rendered at ${m[1]}`); }
+
+      - name: Check out exactly what was approved
+        run: |
+          git fetch --depth=1 origin "${{ steps.pin.outputs.sha }}"
+          git checkout "${{ steps.pin.outputs.sha }}" -- data/
+
       - name: Confirm there is something approved to post
         id: find
+        env:
+          SHA: ${{ steps.pin.outputs.sha }}
         run: |
           test -f data/shortlist.json || { echo "no shortlist"; exit 1; }
           IMAGES=$(node -e "
@@ -49,7 +73,7 @@ jobs:
           for f in ${IMAGES//,/ }; do test -f "$f" || { echo "$f missing"; exit 1; }; done
           URLS=""
           for f in ${IMAGES//,/ }; do
-            URLS="${URLS:+$URLS,}https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${GITHUB_SHA}/${f}"
+            URLS="${URLS:+$URLS,}https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${SHA}/${f}"
           done
           echo "urls=$URLS" >> "$GITHUB_OUTPUT"
 

@@ -39,7 +39,13 @@ export function buildCaption(entry, { handle = '@dailyvolex' } = {}) {
   // the image differs. Without this it fell through to the single-story branch
   // and the caption read "3 stories" instead of naming them.
   if (entry.kind === 'digest' || entry.kind === 'carousel') {
-    lines.push(`Today's top stories`, '');
+    // A section post says which section it is. "Today's top stories" over a
+    // BUSINESS card claims a prominence those stories were not given — they
+    // are the day's business news, which is a different statement.
+    const label = entry.sectionLabel;
+    lines.push(label && entry.section !== 'top'
+      ? label[0] + label.slice(1).toLowerCase() + ' today'
+      : `Today's top stories`, '');
     for (const s of entry.stories) lines.push(`• ${s.display || s.headline}`);
     lines.push('', `Sources: ${[...new Set(entry.sourceNames)].join(', ')}`);
   } else {
