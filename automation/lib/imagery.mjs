@@ -194,8 +194,18 @@ function leadEntity(headline) {
   return run.length >= 2 ? run.join(' ') : null;
 }
 
+/* Legal and criminal matters, where searching a name is the whole danger.
+   "Neha Bora moves Delhi High Court against peace bond notice" would have been
+   searched as "Neha Bora" — and an openly licensed photograph of somebody
+   else of that name, put under that headline, says a stranger is the subject
+   of a legal proceeding. On these stories the generic subject is the only
+   honest option. */
+const LEGAL_MATTER = /\b(court|courts|lawsuit|sues?|sued|suing|charged|charges|arrest(ed)?|convict(ed|ion)?|acquitt\w+|bail|verdict|sentenc(ed|ing)|jail(ed)?|accused|alleged\w*|fir|summons|tribunal|plea|petition|injunction|indict\w+|prosecut\w+)\b/i;
+
 /* Queries to try, most specific first. */
 export function queriesFor(headline, topic) {
+  if (LEGAL_MATTER.test(String(headline))) return [subjectFor(headline, topic)];
+
   const out = [];
   const lead = isTitleCase(headline) ? leadEntity(headline) : null;
   if (lead) out.push(lead);

@@ -1523,17 +1523,24 @@ function drawPhotoBackdrop(theme) {
 
   ctx.imageSmoothingEnabled = true;
   ctx.imageSmoothingQuality = 'high';
-  ctx.filter = 'grayscale(55%) contrast(118%) brightness(60%)';
+  // Graded down, not put out. At brightness 60% across the whole frame a
+  // Dussehra effigy scene came out as grey haze with the subject invisible,
+  // which is no better than having found no picture at all. The darkening the
+  // headline needs is done by the gradient below, where it is needed.
+  ctx.filter = 'grayscale(38%) contrast(128%) brightness(80%)';
   ctx.drawImage(img, sx, sy, sw, sh, 0, 0, W, H);
   ctx.filter = 'none';
 
   // Brand wash, so a photograph from anywhere still looks like this channel.
+  // Light across the top half, where the picture is, and heavy from the point
+  // the headline block starts.
   ctx.save();
   ctx.globalCompositeOperation = 'multiply';
   const wash = ctx.createLinearGradient(0, 0, 0, H);
-  wash.addColorStop(0, `rgba(${theme.pr},.26)`);
-  wash.addColorStop(.5, 'rgba(12,12,16,.62)');
-  wash.addColorStop(1, 'rgba(10,10,14,.97)');
+  wash.addColorStop(0,   `rgba(${theme.pr},.22)`);
+  wash.addColorStop(.42, 'rgba(14,14,18,.4)');
+  wash.addColorStop(.72, 'rgba(11,11,15,.88)');
+  wash.addColorStop(1,   'rgba(10,10,14,.97)');
   ctx.fillStyle = wash; ctx.fillRect(0, 0, W, H);
   ctx.restore();
   return true;
