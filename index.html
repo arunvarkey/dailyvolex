@@ -3853,6 +3853,19 @@ render();
    home screen answers "is there a post?" and leads either to approving it or
    to editing it by hand.
    ═══════════════════════════════════════════════ */
+/* "3 hours ago" says more than a date, and makes a stale post obvious. */
+function freshness(iso) {
+  if (!iso) return '';
+  const mins = Math.round((Date.now() - new Date(iso).getTime()) / 60000);
+  if (!isFinite(mins)) return '';
+  if (mins < 2)    return 'just now';
+  if (mins < 60)   return mins + ' min ago';
+  const hrs = Math.round(mins / 60);
+  if (hrs < 24)    return hrs + (hrs === 1 ? ' hour ago' : ' hours ago');
+  const days = Math.round(hrs / 24);
+  return days === 1 ? 'yesterday' : days + ' days ago';
+}
+
 async function loadToday() {
   const body = document.getElementById('todayBody');
   if (!body || HEADLESS) return;
@@ -3867,9 +3880,16 @@ async function loadToday() {
     if (!res.ok) throw new Error('HTTP ' + res.status);
     data = await res.json();
   } catch (e) {
-    body.innerHTML = `<div class="today-empty">No post yet.<br>The next one is made at 08:00.</div>
-      <a class="today-btn ghost" href="https://github.com/${REPO}/actions/workflows/daily.yml"
-         target="_blank" rel="noopener">Make one now</a>`;
+    const offline = !navigator.onLine;
+    body.innerHTML = `<div class="today-empty">
+        ${offline ? 'No connection, and nothing saved yet.<br>It will be here once you are back online.'
+                  : 'No post yet.<br>The next one is made at 08:00.'}
+      </div>
+      <button class="today-btn ghost" id="refreshToday">Try again</button>
+      ${offline ? '' : `<a class="today-btn ghost" target="_blank" rel="noopener"
+         href="https://github.com/${REPO}/actions/workflows/daily.yml">Make one now</a>`}`;
+    const again = document.getElementById('refreshToday');
+    if (again) again.addEventListener('click', () => { again.textContent = 'Checking…'; loadToday(); });
     return;
   }
 
@@ -3889,8 +3909,7 @@ async function loadToday() {
   body.innerHTML = `
     <div class="today-head">
       <h2>Today's post</h2>
-      <span class="today-when">${when ? esc(new Date(when).toLocaleDateString('en-GB',
-        { day:'numeric', month:'short' })) : ''}</span>
+      <span class="today-when">${esc(freshness(when))}</span>
     </div>
     ${slides && slides.length ? `<div class="today-slides">${slides.map((p,i)=>
       `<img src="${esc(p)}${bust}" alt="Slide ${i+1}" loading="lazy">`).join('')}</div>` : ''}
@@ -3905,11 +3924,66 @@ async function loadToday() {
         <button class="today-use" data-story="${i}">Edit this one</button>
       </div>`;
     }).join('')}
-    ${caption ? `<div class="today-cap">${esc(caption)}</div>` : ''}
-    <a class="today-btn" target="_blank" rel="noopener"
-       href="https://github.com/${REPO}/issues?q=is%3Aopen+label%3Aawaiting-approval">Approve &amp; post</a>
+    ${caption ? `<div class="today-cap">${esc(caption)}</div>
+      <button class="today-btn ghost" id="copyCap">Copy caption</button>` : ''}
+    ${slides && slides.length ? `
+      <button class="today-btn" id="saveAll">Save ${slides.length > 1
+        ? `all ${slides.length} slides` : 'the image'} to Photos</button>` : ''}
     <a class="today-btn ghost" target="_blank" rel="noopener"
-       href="https://github.com/${REPO}/actions/workflows/daily.yml">Make a new one</a>`;
+       href="https://github.com/${REPO}/issues?q=is%3Aopen+label%3Aawaiting-approval">Approve &amp; post from GitHub</a>
+    <button class="today-btn ghost" id="refreshToday">Check for a newer post</button>`;
+
+  // Saving to Photos and pasting the caption is the whole manual route: it
+  // needs no Instagram API, no GitHub, and no approval — open the app, save,
+  // post. Worth having even once publishing works.
+  const saveBtn = document.getElementById('saveAll');
+  if (saveBtn) saveBtn.addEventListener('click', async () => {
+    saveBtn.disabled = true;
+    const original = saveBtn.textContent;
+    saveBtn.textContent = 'Preparing…';
+    try {
+      const files = [];
+      for (const [i, p] of slides.entries()) {
+        const r = await fetch(p + bust, { cache:'no-store' });
+        if (!r.ok) throw new Error('could not read slide ' + (i + 1));
+        files.push(new File([await r.blob()], `dailyvolex-${i + 1}.png`, { type:'image/png' }));
+      }
+      if (navigator.canShare && navigator.canShare({ files })) {
+        await navigator.share({ files, title: "DailyVolex" });
+        showToast('Saved. Open Instagram and post them in order.', 5000);
+      } else {
+        // No share sheet: hand them over one at a time instead of failing.
+        for (const f of files) {
+          const url = URL.createObjectURL(f);
+          const a = document.createElement('a');
+          a.href = url; a.download = f.name;
+          document.body.appendChild(a); a.click(); a.remove();
+          setTimeout(() => URL.revokeObjectURL(url), 60000);
+        }
+        showToast('Downloaded ' + files.length + ' image(s).', 4000);
+      }
+    } catch (e) {
+      // AbortError is the user closing the share sheet, which is not a fault.
+      if (!e || e.name !== 'AbortError') showToast('Could not save: ' + (e && e.message), 6000);
+    } finally {
+      saveBtn.disabled = false; saveBtn.textContent = original;
+    }
+  });
+
+  const copyBtn = document.getElementById('copyCap');
+  if (copyBtn) copyBtn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(caption);
+      copyBtn.textContent = 'Caption copied';
+      setTimeout(() => { copyBtn.textContent = 'Copy caption'; }, 2500);
+    } catch (e) { showToast('Could not copy — select it by hand', 4000); }
+  });
+
+  const refreshBtn = document.getElementById('refreshToday');
+  if (refreshBtn) refreshBtn.addEventListener('click', () => {
+    refreshBtn.textContent = 'Checking…';
+    loadToday();
+  });
 
   // Load a story into the editor, so a card can be adjusted by hand.
   body.querySelectorAll('.today-use').forEach(btn => {
@@ -3952,6 +4026,25 @@ if (HEADLESS) {
   else setTimeout(ready, 1500);
 } else {
   loadToday();          // the tab is opened by initMobileTabs, once bound
+
+  // Offline support. Not registered for the headless renderer: a cached shell
+  // there would quietly start rendering yesterday's build.
+  if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js').catch(() => {
+        /* no offline support is a degradation, not a failure */
+      });
+    });
+  }
+
+  // Coming back to the app after a while should not show a stale post.
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible'
+        && document.querySelector('.mob-tab.active')?.dataset.panel === 'today') {
+      loadToday();
+    }
+  });
+  window.addEventListener('online', () => loadToday());
 }
 
 // Ask the device what it can encode, once, so the Export panel can say which
