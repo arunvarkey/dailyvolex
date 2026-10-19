@@ -6,6 +6,8 @@
  * putting something false out under the channel's name.
  */
 
+import { independentSources } from './outlets.mjs';
+
 const STOP = new Set(('a an the and or but of for to in on at by with from as is are was were be been '
   + 'has have had will would could should may might can says said after before over under new '
   + 'this that these those it its his her their our your up down out off than then now').split(' '));
@@ -149,11 +151,12 @@ export function cluster(items, threshold = 0.5) {
   return clusters;
 }
 
-/* How many genuinely different outlets carry a story. Two feeds owned by the
-   same publisher, or the same story twice from Google News, are not
-   corroboration, so count distinct source names. */
+/* How many genuinely different newsrooms carry a story. Counting distinct
+   source strings was not enough: "Times of India" and "The Times of India"
+   counted as two, Mint and Livemint are one newsroom, and Yahoo Finance
+   carrying a wire story is not a second outlet standing behind it. */
 function distinctSources(cluster) {
-  return new Set(cluster.items.map(i => i.source)).size;
+  return independentSources(cluster.items.map(i => i.source)).count;
 }
 
 function freshnessScore(ts, now) {
@@ -170,7 +173,8 @@ function freshnessScore(ts, now) {
 export function rankClusters(clusters, { now = Date.now() } = {}) {
   return clusters.map(c => {
     const newest = Math.max(...c.items.map(i => i.published || 0));
-    const sources = distinctSources(c);
+    const outlets = independentSources(c.items.map(i => i.source));
+    const sources = outlets.count;
     const weight = Math.max(...c.items.map(i => i.weight || 1));
     const lead = c.items.slice().sort((a, b) => (b.published || 0) - (a.published || 0))[0];
 
@@ -183,7 +187,11 @@ export function rankClusters(clusters, { now = Date.now() } = {}) {
       ...c,
       lead,
       sources,
-      sourceNames: [...new Set(c.items.map(i => i.source))],
+      // One name per newsroom. Printing both "Times of India" and "The Times
+      // of India" on a card does not just look careless, it is the inflated
+      // count written out in words.
+      sourceNames: outlets.names,
+      republishers: outlets.republishers,
       newest,
       score: Math.round(score * 1000) / 1000,
     };

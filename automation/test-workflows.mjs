@@ -36,7 +36,7 @@ const ok = (name, cond, detail = '') => {
 
 const load = f => yaml.load(fs.readFileSync(join(ROOT, '.github/workflows', f), 'utf8'));
 const docs = {};
-for (const f of ['daily.yml', 'approve.yml', 'token-check.yml']) {
+for (const f of ['daily.yml', 'approve.yml', 'token-check.yml', 'watch.yml']) {
   try { docs[f] = load(f); ok(`${f} parses`, true); }
   catch (e) { ok(`${f} parses`, false, e.message); }
 }
@@ -61,6 +61,19 @@ const secretSteps = (a?.jobs?.publish?.steps || [])
 ok('exactly one step is given the Instagram secrets', secretSteps.length === 1, `${secretSteps.length}`);
 ok('the daily job is never given the Instagram secrets',
   !JSON.stringify(docs['daily.yml']).includes('IG_'));
+/* The watch runs every fifteen minutes. If it could reach the account
+   directly, a bad rule would post ninety-six times a day. */
+ok('the breaking watch is never given the Instagram secrets',
+  !JSON.stringify(docs['watch.yml']).includes('IG_'));
+ok('the breaking watch only renders and opens an issue',
+  !JSON.stringify(docs['watch.yml']).includes('publish.mjs'));
+ok('the breaking watch backs off while an approval is open',
+  JSON.stringify(docs['watch.yml']).includes('awaiting-approval')
+  && (docs['watch.yml']?.jobs?.watch?.steps || [])
+       .some(st => /busy == 'no'/.test(st.if || '')));
+ok('the watch and the daily run cannot write data at the same time',
+  docs['watch.yml']?.concurrency?.group === docs['daily.yml']?.concurrency?.group,
+  `${docs['watch.yml']?.concurrency?.group} vs ${docs['daily.yml']?.concurrency?.group}`);
 ok('the token check cannot push code',
   docs['token-check.yml']?.permissions?.contents === undefined,
   JSON.stringify(docs['token-check.yml']?.permissions));
