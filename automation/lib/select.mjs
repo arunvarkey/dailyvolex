@@ -56,8 +56,34 @@ const TOPICAL = [
    on financial advice. */
 const TIPS = /\b(recommends?|top picks?|stocks? to (buy|watch|sell)|buy or sell|target price|should you (buy|invest)|multibagger|best stocks?|these \d+ stocks?)\b/i;
 
+/* Price speculation is not news either. "Can ETH get back to $3,000?" reports
+   nothing that happened — it is a guess with a question mark, and a news
+   channel that runs guesses starts being read as one.
+
+   Deliberately narrow: an institution forecasting something IS news ("Fed
+   forecasts two more cuts"), so only speculative framing is caught, not the
+   word "forecast". */
+const SPECULATION = [
+  /\bprice prediction\b/i,
+  /\bprediction[s]?\s*[:?]/i,
+  /\bcan \w+ (hit|reach|get back to|break|top|return to)\b/i,
+  /\bwill \w+ (hit|reach|crash|soar|rally|double|plunge|moon)\b/i,
+  /\b(could|might|may) (hit|reach|soar|crash|plunge|double|rally to)\b/i,
+  /\bwhat'?s next for\b/i,
+  /\bwhere (is|will) \w+ (headed|head|go)\b/i,
+  /\bhow (high|low) (can|will|could)\b/i,
+  /\bby (the end of )?20\d\d\?/i,
+  // Not "outlook for 2027": an institution revising its outlook is news, and
+  // "IMF cuts global growth outlook for 2027" is exactly the kind of story
+  // this channel exists to carry.
+];
+
+export function isSpeculation(title) {
+  return SPECULATION.some(re => re.test(String(title)));
+}
+
 export function isAdvice(title) {
-  return TIPS.test(String(title));
+  return TIPS.test(String(title)) || isSpeculation(title);
 }
 
 export function isTopical(title) {

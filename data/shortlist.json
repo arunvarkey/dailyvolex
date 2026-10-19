@@ -1,96 +1,70 @@
 {
-  "generated": "2026-10-19T08:00:51.332Z",
-  "pool": 271,
+  "generated": "2026-10-19T08:50:56.302Z",
+  "pool": 12,
   "feedErrors": [],
   "stories": [
     {
-      "headline": "STOCK MARKET HOLIDAY TOMORROW: NSE, BSE TO REMAIN CLOSED ON OCTOBER 20 FOR DUSSEHRA",
-      "display": "Stock market holiday tomorrow: NSE, BSE to remain closed on October 20 for Dussehra",
-      "original": "Stock market holiday tomorrow: NSE, BSE to remain closed on October 20 for Dussehra",
+      "headline": "FEDERAL RESERVE CUTS INTEREST RATES BY 25 BASIS POINTS, CITING COOLING INFLATION",
+      "display": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
+      "original": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
       "truncated": false,
       "usable": true,
-      "category": "WORLD MARKETS",
-      "source": "Economic Times · Moneycontrol.com · Upstox",
+      "category": "CRYPTO NEWS",
+      "source": "CoinDesk · Cointelegraph · Reuters",
       "sourceNames": [
-        "Economic Times",
-        "Moneycontrol.com",
-        "Upstox",
-        "CNBC TV18",
-        "The Economic Times"
+        "CoinDesk",
+        "Cointelegraph",
+        "Reuters"
       ],
-      "corroboration": 5,
-      "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOQWZ4QV9jMjc5ZXU3ZXpNS1pGcTZCNC05bEFTeUNhUzYtMUpmWHRLNGNRTTJXS19qemI2RW81aUtTVUZERlFka3dNLVRjWTZwdktKck1rZkcwOWYtVlFqdW1RVF9qT2ZMdTZDV2ZXVEtaQVpPNXhQN0R2a21PMG9fUzBDdlNJVlZicTBtRjh4ZDhtX2tkLU9XTUJ0RWFDSW5HRUJXcC0zS21nd2w4UE1VZlZMNTl4Tk9JaW85MHJBSHZYS1ZJ0gHKAUFVX3lxTE5DRmN2X0s0YkJrZXMzMjllWndHRTl3TWpEem82a1E2Z3BsSnZCUG9QbHpVMEQ0Wm5jdEo4TGtWcWl2TG1",
-      "published": "2026-10-19T06:46:34.000Z",
-      "topic": "world",
-      "score": 11.6,
-      "photo": {
-        "path": "data/pending/photo-2.jpg",
-        "credit": "Photo: Abhishek Shirali / CC BY 2.0",
-        "license": "by",
-        "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=29532285",
-        "query": "Dussehra",
-        "relevance": 0.25,
-        "title": "Vijayadashami Dasara Dussehra Durga Pooja India October 2013"
-      }
+      "corroboration": 3,
+      "link": "https://coindesk.com/1",
+      "published": "2026-10-19T08:20:56.284Z",
+      "topic": "crypto",
+      "score": 7.8,
+      "photoError": "fetch failed (searched \"Federal Reserve\")",
+      "photo": null
     },
     {
-      "headline": "GLOBAL MARKET: INDONESIA STOCK EXCHANGE TO MEET MSCI AFTER DOWNGRADE WARNING TRIGGERS",
-      "display": "Global Market: Indonesia stock exchange to meet MSCI after downgrade warning triggers",
-      "original": "Global Market: Indonesia stock exchange to meet MSCI after downgrade warning triggers market rout",
-      "truncated": true,
+      "headline": "SEC APPROVES SPOT SOLANA ETF APPLICATIONS FROM THREE ISSUERS",
+      "display": "SEC approves spot Solana ETF applications from three issuers",
+      "original": "SEC approves spot Solana ETF applications from three issuers",
+      "truncated": false,
+      "usable": true,
+      "category": "CRYPTO NEWS",
+      "source": "CoinDesk · Cointelegraph",
+      "sourceNames": [
+        "CoinDesk",
+        "Cointelegraph"
+      ],
+      "corroboration": 2,
+      "link": "https://coindesk.com/3",
+      "published": "2026-10-19T07:20:56.284Z",
+      "topic": "crypto",
+      "score": 5.7,
+      "photoError": "fetch failed (searched \"Solana ETF\")",
+      "photo": null
+    },
+    {
+      "headline": "SENSEX CLIMBS 540 POINTS TO CLOSE AT RECORD HIGH, NIFTY TOPS 26,000",
+      "display": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
+      "original": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
+      "truncated": false,
       "usable": true,
       "category": "INDIA MARKETS",
-      "source": "Economic Times · Reuters · The Economic Times",
+      "source": "Economic Times",
       "sourceNames": [
-        "Economic Times",
-        "Reuters",
-        "The Economic Times"
+        "Economic Times"
       ],
-      "corroboration": 3,
-      "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/global-market-indonesia-stock-exchange-to-meet-msci-after-downgrade-warning-triggers-market-rout/articleshow/135043186.cms",
-      "published": "2026-10-19T07:45:06.000Z",
+      "corroboration": 1,
+      "link": "https://et.com/1",
+      "published": "2026-10-19T07:20:56.284Z",
       "topic": "india",
-      "score": 7.6,
-      "photo": {
-        "path": "data/pending/photo-3.jpg",
-        "credit": "Photo: Taylor Dahlin / CC BY 4.0",
-        "license": "by",
-        "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=182511467",
-        "query": "Global Market",
-        "relevance": 0.18,
-        "title": "Omar Fateh in a barber shop at Midtown Global Market on election day, Minneapolis"
-      }
-    },
-    {
-      "headline": "STOCK MARKET: WILL S&P 500 OPEN UP OR DOWN TODAY?",
-      "display": "Stock Market: Will S&P 500 Open Up or Down Today?",
-      "original": "Stock Market: Will S&P 500 Open Up or Down Today?",
-      "truncated": false,
-      "usable": true,
-      "category": "WORLD MARKETS",
-      "source": "Mint · TradingView · Yahoo Finance",
-      "sourceNames": [
-        "Mint",
-        "TradingView",
-        "Yahoo Finance"
-      ],
-      "corroboration": 3,
-      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQdmhWOHBPbmpydVMwNlBNb2JjeHJCMndndGp5Vl9HcVB5bWZxWU1xT1NhczBJelduZ0JUSnZ5S3lTNWZXYjFhUG9qZEhlWENybUN2TGlhMVNTbml6bVFZem9Kb2dCeWhuZ2I2VU42UkNRSlViLWs2d0pwWUU3UXN3dVI2bXBDVHYtRlRQR1g3clNyUQ?oc=5",
-      "published": "2026-10-19T06:36:00.000Z",
-      "topic": "world",
-      "score": 7.5,
-      "photo": {
-        "path": "data/pending/photo-4.jpg",
-        "credit": "Photo: Altered Reality / CC0",
-        "license": "cc0",
-        "pageUrl": "https://stocksnap.io/photo/stock-market-BI0OXVDDLY",
-        "query": "Stock Market",
-        "relevance": 0.5,
-        "title": "Stock Market"
-      }
+      "score": 3.6,
+      "photoError": "fetch failed (searched \"Sensex\")",
+      "photo": null
     }
   ],
-  "rendered": "2026-10-19T08:01:45.620Z",
+  "rendered": "2026-10-19T08:51:17.369Z",
   "options": {
     "layout": "breaking",
     "theme": "bbc",
@@ -118,102 +92,71 @@
       "width": 1080,
       "height": 1350,
       "sourceNames": [
-        "Economic Times",
-        "Moneycontrol.com",
-        "Upstox",
-        "CNBC TV18",
-        "The Economic Times",
+        "CoinDesk",
+        "Cointelegraph",
         "Reuters",
-        "Mint",
-        "TradingView",
-        "Yahoo Finance"
+        "Economic Times"
       ],
       "stories": [
         {
-          "headline": "STOCK MARKET HOLIDAY TOMORROW: NSE, BSE TO REMAIN CLOSED ON OCTOBER 20 FOR DUSSEHRA",
-          "display": "Stock market holiday tomorrow: NSE, BSE to remain closed on October 20 for Dussehra",
-          "original": "Stock market holiday tomorrow: NSE, BSE to remain closed on October 20 for Dussehra",
+          "headline": "FEDERAL RESERVE CUTS INTEREST RATES BY 25 BASIS POINTS, CITING COOLING INFLATION",
+          "display": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
+          "original": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
           "truncated": false,
           "usable": true,
-          "category": "WORLD MARKETS",
-          "source": "Economic Times · Moneycontrol.com · Upstox",
+          "category": "CRYPTO NEWS",
+          "source": "CoinDesk · Cointelegraph · Reuters",
           "sourceNames": [
-            "Economic Times",
-            "Moneycontrol.com",
-            "Upstox",
-            "CNBC TV18",
-            "The Economic Times"
+            "CoinDesk",
+            "Cointelegraph",
+            "Reuters"
           ],
-          "corroboration": 5,
-          "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOQWZ4QV9jMjc5ZXU3ZXpNS1pGcTZCNC05bEFTeUNhUzYtMUpmWHRLNGNRTTJXS19qemI2RW81aUtTVUZERlFka3dNLVRjWTZwdktKck1rZkcwOWYtVlFqdW1RVF9qT2ZMdTZDV2ZXVEtaQVpPNXhQN0R2a21PMG9fUzBDdlNJVlZicTBtRjh4ZDhtX2tkLU9XTUJ0RWFDSW5HRUJXcC0zS21nd2w4UE1VZlZMNTl4Tk9JaW85MHJBSHZYS1ZJ0gHKAUFVX3lxTE5DRmN2X0s0YkJrZXMzMjllWndHRTl3TWpEem82a1E2Z3BsSnZCUG9QbHpVMEQ0Wm5jdEo4TGtWcWl2TG1",
-          "published": "2026-10-19T06:46:34.000Z",
-          "topic": "world",
-          "score": 11.6,
-          "photo": {
-            "path": "data/pending/photo-2.jpg",
-            "credit": "Photo: Abhishek Shirali / CC BY 2.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=29532285",
-            "query": "Dussehra",
-            "relevance": 0.25,
-            "title": "Vijayadashami Dasara Dussehra Durga Pooja India October 2013"
-          }
+          "corroboration": 3,
+          "link": "https://coindesk.com/1",
+          "published": "2026-10-19T08:20:56.284Z",
+          "topic": "crypto",
+          "score": 7.8,
+          "photoError": "fetch failed (searched \"Federal Reserve\")",
+          "photo": null
         },
         {
-          "headline": "GLOBAL MARKET: INDONESIA STOCK EXCHANGE TO MEET MSCI AFTER DOWNGRADE WARNING TRIGGERS",
-          "display": "Global Market: Indonesia stock exchange to meet MSCI after downgrade warning triggers",
-          "original": "Global Market: Indonesia stock exchange to meet MSCI after downgrade warning triggers market rout",
-          "truncated": true,
+          "headline": "SEC APPROVES SPOT SOLANA ETF APPLICATIONS FROM THREE ISSUERS",
+          "display": "SEC approves spot Solana ETF applications from three issuers",
+          "original": "SEC approves spot Solana ETF applications from three issuers",
+          "truncated": false,
+          "usable": true,
+          "category": "CRYPTO NEWS",
+          "source": "CoinDesk · Cointelegraph",
+          "sourceNames": [
+            "CoinDesk",
+            "Cointelegraph"
+          ],
+          "corroboration": 2,
+          "link": "https://coindesk.com/3",
+          "published": "2026-10-19T07:20:56.284Z",
+          "topic": "crypto",
+          "score": 5.7,
+          "photoError": "fetch failed (searched \"Solana ETF\")",
+          "photo": null
+        },
+        {
+          "headline": "SENSEX CLIMBS 540 POINTS TO CLOSE AT RECORD HIGH, NIFTY TOPS 26,000",
+          "display": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
+          "original": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
+          "truncated": false,
           "usable": true,
           "category": "INDIA MARKETS",
-          "source": "Economic Times · Reuters · The Economic Times",
+          "source": "Economic Times",
           "sourceNames": [
-            "Economic Times",
-            "Reuters",
-            "The Economic Times"
+            "Economic Times"
           ],
-          "corroboration": 3,
-          "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/global-market-indonesia-stock-exchange-to-meet-msci-after-downgrade-warning-triggers-market-rout/articleshow/135043186.cms",
-          "published": "2026-10-19T07:45:06.000Z",
+          "corroboration": 1,
+          "link": "https://et.com/1",
+          "published": "2026-10-19T07:20:56.284Z",
           "topic": "india",
-          "score": 7.6,
-          "photo": {
-            "path": "data/pending/photo-3.jpg",
-            "credit": "Photo: Taylor Dahlin / CC BY 4.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=182511467",
-            "query": "Global Market",
-            "relevance": 0.18,
-            "title": "Omar Fateh in a barber shop at Midtown Global Market on election day, Minneapolis"
-          }
-        },
-        {
-          "headline": "STOCK MARKET: WILL S&P 500 OPEN UP OR DOWN TODAY?",
-          "display": "Stock Market: Will S&P 500 Open Up or Down Today?",
-          "original": "Stock Market: Will S&P 500 Open Up or Down Today?",
-          "truncated": false,
-          "usable": true,
-          "category": "WORLD MARKETS",
-          "source": "Mint · TradingView · Yahoo Finance",
-          "sourceNames": [
-            "Mint",
-            "TradingView",
-            "Yahoo Finance"
-          ],
-          "corroboration": 3,
-          "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQdmhWOHBPbmpydVMwNlBNb2JjeHJCMndndGp5Vl9HcVB5bWZxWU1xT1NhczBJelduZ0JUSnZ5S3lTNWZXYjFhUG9qZEhlWENybUN2TGlhMVNTbml6bVFZem9Kb2dCeWhuZ2I2VU42UkNRSlViLWs2d0pwWUU3UXN3dVI2bXBDVHYtRlRQR1g3clNyUQ?oc=5",
-          "published": "2026-10-19T06:36:00.000Z",
-          "topic": "world",
-          "score": 7.5,
-          "photo": {
-            "path": "data/pending/photo-4.jpg",
-            "credit": "Photo: Altered Reality / CC0",
-            "license": "cc0",
-            "pageUrl": "https://stocksnap.io/photo/stock-market-BI0OXVDDLY",
-            "query": "Stock Market",
-            "relevance": 0.5,
-            "title": "Stock Market"
-          }
+          "score": 3.6,
+          "photoError": "fetch failed (searched \"Sensex\")",
+          "photo": null
         }
       ],
       "usable": true

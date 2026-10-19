@@ -5,7 +5,7 @@
 
 import { parseFeed } from './lib/rss.mjs';
 import { similarity, cluster, selectStories, isRepeat, isTopical, isAdvice,
-         rankClusters } from './lib/select.mjs';
+         isSpeculation, rankClusters } from './lib/select.mjs';
 import { makeHeadline, tidy, sourceLine, categoryFor } from './lib/headline.mjs';
 import { buildCaption } from './caption.mjs';
 import { isUsable, pickBest, creditFor, subjectFor, findImage,
@@ -87,6 +87,16 @@ ok('an analyst recommendation is refused',
   isAdvice('Vaishali Parekh recommends 3 stocks to buy today'));
 ok('a target-price piece is refused', isAdvice('HDFC Bank target price raised to Rs 2,000'));
 ok('a multibagger piece is refused', isAdvice('This multibagger stock gained 300% in a year'));
+ok('a price prediction is refused',
+  isAdvice('Ethereum Price Prediction: Can ETH Get Back to $3,000 Before the End of 2026?'));
+ok('a "will it hit" piece is refused', isAdvice('Will Bitcoin hit $150,000 this cycle?'));
+ok('a "what next for" piece is refused',
+  isAdvice("What's next for IDBI Bank stock after Q2 net profit jumps"));
+ok('a "how high can it go" piece is refused', isAdvice('How high can gold go from here?'));
+// An institution revising its forecast IS news, and must survive the filter.
+ok('an institutional forecast is kept', !isAdvice('Fed forecasts two more rate cuts this year'));
+ok('an outlook revision is kept', !isAdvice('IMF cuts global growth outlook for 2027'));
+
 ok('actual news is not refused',
   !isAdvice('ICICI Bank Q2 profit jumps 20% to Rs 14,800 crore')
   && !isAdvice('Federal Reserve cuts interest rates'));
