@@ -1,6 +1,6 @@
 {
-  "generated": "2026-10-19T11:59:16.991Z",
-  "pool": 581,
+  "generated": "2026-10-19T12:03:13.644Z",
+  "pool": 579,
   "feedErrors": [],
   "stories": [
     {
@@ -26,12 +26,12 @@
       "score": 13.7,
       "photo": {
         "path": "data/pending/photo-2.jpg",
-        "credit": "File photo: shankar s. from Poona (pune), India, Ind / CC BY 2.0",
+        "credit": "File photo: Gopal Aggarwal from India / CC BY 2.0",
         "license": "by",
-        "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=175517639",
-        "query": "Stock Market Holiday",
-        "relevance": 0.2,
-        "title": "Goldfish market, Kowloon (7937836722)"
+        "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=5086514",
+        "query": "Dussehra",
+        "relevance": 1,
+        "title": "TYPICAL Dussehra Celebrations 02 Oct 2006"
       }
     },
     {
@@ -58,28 +58,27 @@
       "photo": null
     },
     {
-      "headline": "INDIA-NEW ZEALAND FTA EFFECTIVE FROM OCT 20; TARGETS DOUBLE TRADE TO $7BN BY 2030",
-      "display": "India-New Zealand FTA effective from Oct 20; targets double trade to $7bn by 2030",
-      "original": "India-New Zealand FTA effective from Oct 20; targets double trade to $7bn by 2030",
+      "headline": "NEHA BORA MOVES DELHI HIGH COURT AGAINST PEACE BOND NOTICE",
+      "display": "Neha Bora moves Delhi High Court against peace bond notice",
+      "original": "Neha Bora moves Delhi High Court against peace bond notice",
       "truncated": false,
       "usable": true,
       "category": "INDIA",
-      "source": "Times of India · Sarkaritel.com · The Times of India",
+      "source": "The Hindu · LawBeat",
       "sourceNames": [
-        "Times of India",
-        "Sarkaritel.com",
-        "The Times of India"
+        "The Hindu",
+        "LawBeat"
       ],
-      "corroboration": 3,
-      "link": "https://timesofindia.indiatimes.com/business/india-business/india-new-zealand-fta-to-take-effect-from-oct-20-target-to-double-trade-to-7bn-by-2030/articleshow/135047532.cms",
-      "published": "2026-10-19T11:20:35.000Z",
+      "corroboration": 2,
+      "link": "https://www.thehindu.com/news/cities/Delhi/neha-bora-moves-delhi-high-court-against-peace-bond-notice/article71602486.ece",
+      "published": "2026-10-19T11:44:24.000Z",
       "topic": "india",
-      "score": 8.1,
-      "photoError": "no image matched the story closely enough (searched \"Oct\")",
+      "score": 6.7,
+      "photoError": "timed out (searched \"Neha Bora\")",
       "photo": null
     }
   ],
-  "rendered": "2026-10-19T11:59:49.928Z",
+  "rendered": "2026-10-19T12:03:46.948Z",
   "options": {
     "layout": "breaking",
     "theme": "bbc",
@@ -118,7 +117,8 @@
         "NDTV",
         "Deccan Herald",
         "Times of India",
-        "Sarkaritel.com"
+        "The Hindu",
+        "LawBeat"
       ],
       "stories": [
         {
@@ -144,12 +144,12 @@
           "score": 13.7,
           "photo": {
             "path": "data/pending/photo-2.jpg",
-            "credit": "File photo: shankar s. from Poona (pune), India, Ind / CC BY 2.0",
+            "credit": "File photo: Gopal Aggarwal from India / CC BY 2.0",
             "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=175517639",
-            "query": "Stock Market Holiday",
-            "relevance": 0.2,
-            "title": "Goldfish market, Kowloon (7937836722)"
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=5086514",
+            "query": "Dussehra",
+            "relevance": 1,
+            "title": "TYPICAL Dussehra Celebrations 02 Oct 2006"
           }
         },
         {
@@ -176,24 +176,23 @@
           "photo": null
         },
         {
-          "headline": "INDIA-NEW ZEALAND FTA EFFECTIVE FROM OCT 20; TARGETS DOUBLE TRADE TO $7BN BY 2030",
-          "display": "India-New Zealand FTA effective from Oct 20; targets double trade to $7bn by 2030",
-          "original": "India-New Zealand FTA effective from Oct 20; targets double trade to $7bn by 2030",
+          "headline": "NEHA BORA MOVES DELHI HIGH COURT AGAINST PEACE BOND NOTICE",
+          "display": "Neha Bora moves Delhi High Court against peace bond notice",
+          "original": "Neha Bora moves Delhi High Court against peace bond notice",
           "truncated": false,
           "usable": true,
           "category": "INDIA",
-          "source": "Times of India · Sarkaritel.com · The Times of India",
+          "source": "The Hindu · LawBeat",
           "sourceNames": [
-            "Times of India",
-            "Sarkaritel.com",
-            "The Times of India"
+            "The Hindu",
+            "LawBeat"
           ],
-          "corroboration": 3,
-          "link": "https://timesofindia.indiatimes.com/business/india-business/india-new-zealand-fta-to-take-effect-from-oct-20-target-to-double-trade-to-7bn-by-2030/articleshow/135047532.cms",
-          "published": "2026-10-19T11:20:35.000Z",
+          "corroboration": 2,
+          "link": "https://www.thehindu.com/news/cities/Delhi/neha-bora-moves-delhi-high-court-against-peace-bond-notice/article71602486.ece",
+          "published": "2026-10-19T11:44:24.000Z",
           "topic": "india",
-          "score": 8.1,
-          "photoError": "no image matched the story closely enough (searched \"Oct\")",
+          "score": 6.7,
+          "photoError": "timed out (searched \"Neha Bora\")",
           "photo": null
         }
       ],
