@@ -5,7 +5,7 @@
 
 import { parseFeed } from './lib/rss.mjs';
 import { similarity, cluster, selectStories, selectSections, isRepeat, isTopical, isAdvice,
-         isSpeculation, isJunk, rankClusters } from './lib/select.mjs';
+         isSpeculation, isJunk, isPressRelease, rankClusters } from './lib/select.mjs';
 import { sectionOf, sectionLabel, SECTIONS } from './lib/sections.mjs';
 import { makeHeadline, tidy, sourceLine, categoryFor } from './lib/headline.mjs';
 import { canonicalSource, isRepublisher, independentSources } from './lib/outlets.mjs';
@@ -338,27 +338,77 @@ ok('a story already offered for approval does not come back',
                 { count: 1, minSources: 3, maxAgeHours: 2,
                   history: [{ title: 'Central bank governor resigns without notice' }] }).length === 0);
 
+/* ── Not news, found by widening to five sections ─────────────── */
+/* Top stories is three slots with heavy competition. Sections are a dozen
+   more, and the first live sectioned run filled them with a podcast running
+   order and two vendor press releases. */
+
+ok('a podcast running order is not a story',
+  isJunk('PODCAST: Ukraine intelligence sharing, France reels and Alberta’s vote')
+  && isJunk('WATCH: Protesters gather outside parliament'));
+ok('a product launch notice is a press release, not news',
+  isPressRelease('Introducing Bulbul V4 Flash text-to-speech for India')
+  && isPressRelease('Siemens partners with NVIDIA to advance AI-driven factories')
+  && isPressRelease('Announcing the general availability of our new platform'));
+ok('real corporate news is not mistaken for marketing',
+  !isJunk('Microsoft exits UK’s largest AI data centre project over power supply')
+  && !isJunk('Reliance partners with Google to build data centres in Gujarat')
+  && !isJunk('Apple launches iPhone 18 with satellite messaging'),
+  'a company doing something newsworthy is still news');
+
+ok('a section will not carry a single-outlet story', (() => {
+  const now = Date.now();
+  const mk = (title, source, topic) => ({ title, source, topic, published: now - 600000, weight: 1 });
+  const items = [
+    mk('Alpha reshuffles its cabinet', 'NDTV', 'india'),
+    mk('Alpha reshuffles cabinet in surprise move', 'The Hindu', 'india'),
+    mk('Beta signs a quiet memorandum', 'OnlyOutlet', 'india'),   // one newsroom
+  ];
+  const secs = selectSections(items, { count: 1, perSection: 5 });
+  const india = secs.find(s => s.id === 'india');
+  return !india || india.clusters.every(c => c.sources >= 2);
+})(), 'nobody scrutinises fifteen headlines every morning');
+
 /* ── Sorting the day into sections ────────────────────────────── */
 
+/* Every story here is carried by two independent newsrooms, because that is
+   now the bar for a section. A fixture of single-outlet pieces would test the
+   sorting against material the real pipeline would never offer. */
 const sectionItems = () => {
   const now = Date.now();
   const mk = (title, source, topic) => ({ title, source, topic, published: now - 600000, weight: 1 });
+  const pair = (a, b, topic, s1, s2) => [mk(a, s1, topic), mk(b, s2, topic)];
   return [
-    mk('Prime minister announces new housing scheme', 'NDTV', 'india'),
-    mk('Prime minister announces housing scheme for cities', 'The Hindu', 'india'),
-    mk('Heavy rain shuts schools across Kerala', 'NDTV', 'india'),
-    mk('Summit ends without agreement on emissions', 'BBC News', 'world'),
-    mk('Emissions summit ends with no agreement', 'Reuters', 'world'),
-    mk('Sensex climbs 540 points to a record high', 'Economic Times', 'markets-india'),
-    mk('Bitcoin holds above $90,000', 'CoinDesk', 'crypto'),
-    mk('Chipmaker unveils a smaller process node', 'Reuters', 'tech'),
+    ...pair('Prime minister announces new housing scheme',
+            'Prime minister announces housing scheme for cities', 'india', 'NDTV', 'The Hindu'),
+    ...pair('Heavy rain shuts schools across Kerala',
+            'Heavy rain closes schools across Kerala', 'india', 'NDTV', 'Deccan Herald'),
+    ...pair('Summit ends without agreement on emissions',
+            'Emissions summit ends with no agreement', 'world', 'BBC News', 'Reuters'),
+    ...pair('Border talks adjourned for a second week',
+            'Border talks adjourned again for a second week', 'world', 'Al Jazeera', 'Reuters'),
+    ...pair('Sensex climbs 540 points to a record high',
+            'Sensex climbs 540 points to record high', 'markets-india', 'Economic Times', 'NDTV'),
+    ...pair('Bitcoin holds above $90,000',
+            'Bitcoin holds above $90,000 in quiet trade', 'crypto', 'CoinDesk', 'Cointelegraph'),
+    ...pair('Chipmaker ships a smaller process node',
+            'Chipmaker starts shipping a smaller process node', 'tech', 'Reuters', 'The Hindu'),
+    ...pair('Regulator opens a review of app store fees',
+            'Regulator reviews app store fees', 'tech', 'BBC News', 'Reuters'),
   ];
 };
 
 ok('the day comes back sorted into sections', (() => {
   const secs = selectSections(sectionItems(), { count: 3, perSection: 3 });
-  return secs[0].id === 'top' && secs.some(s => s.id === 'india')
-    && secs.some(s => s.id === 'business');
+  const known = new Set(SECTIONS.map(s => s.id));
+  // Which sections survive depends on what Top took first, so assert the
+  // contract rather than a particular morning: Top leads, the ids are real,
+  // and every story sits in the section it belongs to.
+  return secs[0].id === 'top'
+    && secs.length >= 3
+    && secs.every(s => known.has(s.id))
+    && secs.filter(s => s.id !== 'top')
+           .every(s => s.clusters.every(c => sectionOf(c.lead.topic) === s.id));
 })(), JSON.stringify(selectSections(sectionItems(), { count: 3 }).map(s => s.id)));
 
 ok('top stories come first, so output[0] is still the top post',

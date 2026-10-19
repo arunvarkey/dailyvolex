@@ -8,4 +8,12 @@
     <description><![CDATA[Both delegations arrived in the city.]]></description>
     <pubDate>Fri, 16 Oct 2026 16:10:00 +0000</pubDate>
   </item>
+  <!-- Corroborates the BBC's Spain flooding item, so the WORLD section has a
+       story that two newsrooms carried rather than one. -->
+  <item>
+    <title><![CDATA[Flooding forces thousands from their homes in southern Spain]]></title>
+    <link>https://aljazeera.com/2</link>
+    <description><![CDATA[Emergency services worked overnight.]]></description>
+    <pubDate>Fri, 16 Oct 2026 13:15:00 +0000</pubDate>
+  </item>
 </channel></rss>

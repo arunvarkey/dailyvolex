@@ -102,10 +102,36 @@ const JUNK = [
   /\b(wedding|birthday|dating|girlfriend|boyfriend|divorce) (photos?|pics?|rumou?rs?)\b/i,
   /\bquiz|crossword|puzzle\b/i,
   /\bdaily (digest|briefing) for\b/i,
+  // An episode listing is not a story. "PODCAST: Ukraine intelligence
+  // sharing, France reels and Alberta's vote" went out in a WORLD section —
+  // three unrelated subjects and a running order, which is a programme, not
+  // something that happened.
+  /^\s*(podcast|listen|watch|video|live blog|liveblog|in charts?|explained)\s*[:|-]/i,
+  /\b(episode \d+|full episode|catch up on)\b/i,
 ];
 
+/* Marketing written to look like news. A company announcing its own product
+   is a press release however many outlets reprint it, and a news channel that
+   carries them is doing the announcing for free. The tells are specific
+   enough to match without catching real corporate news: "Microsoft exits UK's
+   largest AI data centre project" is a story, "Introducing Bulbul V4 Flash"
+   is a launch notice. */
+const PRESS_RELEASE = [
+  /^\s*introducing\b/i,
+  /^\s*(meet|say hello to|announcing)\b/i,
+  /\bpartners? with\b[^.]*\bto (advance|accelerate|deliver|transform|drive|power|enable)\b/i,
+  /\b(is|are|now) (generally )?available (now|today)\b/i,
+  /\bannounces the (launch|availability|release|general availability)\b/i,
+  /\b(unveils|launches|debuts|rolls out) (its|their|the) new\b/i,
+  /\bpress release\b/i,
+];
+
+export function isPressRelease(title) {
+  return PRESS_RELEASE.some(re => re.test(String(title)));
+}
+
 export function isJunk(title) {
-  return JUNK.some(re => re.test(String(title)));
+  return JUNK.some(re => re.test(String(title))) || isPressRelease(title);
 }
 
 export function isTopical(title) {
@@ -284,6 +310,14 @@ export function selectStories(items, { history = [], count = 3, now = Date.now()
    two posts. */
 export function selectSections(items, { history = [], count = 3, perSection = 3,
                                         now = Date.now(), minSources = 1,
+                                        // Sections hold a higher bar than Top.
+                                        // Top is three stories somebody reads
+                                        // closely before approving; sections
+                                        // add a dozen more, and nobody
+                                        // scrutinises fifteen headlines every
+                                        // morning. A single outlet's piece
+                                        // should not ride along unexamined.
+                                        sectionMinSources = 2,
                                         maxAgeHours = 24, maxPerTopic = 2,
                                         maxPerBeat = 2,
                                         allowRepeatsInSections = false } = {}) {
@@ -292,7 +326,7 @@ export function selectSections(items, { history = [], count = 3, perSection = 3,
                                      maxAgeHours, maxPerTopic, maxPerBeat });
 
   const eligible = (c, chosenHere, titlesInTop) =>
-    c.sources >= minSources
+    c.sources >= Math.max(minSources, sectionMinSources)
     && !isRepeat(c.lead.title, history)
     && !isRepeat(c.lead.title, titlesInTop.map(t => ({ title: t })))
     && !isRepeat(c.lead.title, chosenHere.map(x => ({ title: x.lead.title })));
