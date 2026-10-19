@@ -1,101 +1,70 @@
 {
-  "generated": "2026-10-19T08:54:45.997Z",
-  "pool": 584,
+  "generated": "2026-10-19T08:55:59.261Z",
+  "pool": 12,
   "feedErrors": [],
   "stories": [
     {
-      "headline": "STOCK MARKET CRASH: INVESTORS LOSE RS 4 LAKH CRORE AS SENSEX",
-      "display": "Stock Market Crash: Investors Lose Rs 4 Lakh Crore As Sensex",
-      "original": "Stock Market Crash: Investors Lose Rs 4 Lakh Crore As Sensex, Nifty Tank. 3 Reasons Why Market Are Falling Today",
-      "truncated": false,
-      "usable": true,
-      "category": "INDIA",
-      "source": "Mint · NDTV · The Times of India",
-      "sourceNames": [
-        "Mint",
-        "NDTV",
-        "The Times of India",
-        "India Today",
-        "Yahoo Finance",
-        "Investing.com India",
-        "Times of India"
-      ],
-      "corroboration": 7,
-      "link": "https://www.ndtv.com/business-news/stock-market-crash-today-sensex-nifty-high-oil-prices-fii-foreign-investors-12205439#publisher=newsstand",
-      "published": "2026-10-19T08:38:00.000Z",
-      "topic": "india",
-      "score": 15.6,
-      "photo": {
-        "path": "data/pending/photo-2.jpg",
-        "credit": "Photo: Jim Linwood from London / CC BY 2.0",
-        "license": "by",
-        "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=92918243",
-        "query": "Stock Market Crash",
-        "relevance": 0.38,
-        "title": "Stock Market Crash In The Saatchi Gallery, Chelsea - London. - Flickr - Jim Linwood"
-      }
-    },
-    {
-      "headline": "JPMORGAN EXPANDS ‘JPM COIN’ DEPOSIT TOKEN TO ETHEREUM FOR INSTITUTIONAL CLIENTS",
-      "display": "JPMorgan expands ‘JPM Coin’ deposit token to Ethereum for institutional clients",
-      "original": "JPMorgan expands ‘JPM Coin’ deposit token to Ethereum for institutional clients",
+      "headline": "FEDERAL RESERVE CUTS INTEREST RATES BY 25 BASIS POINTS, CITING COOLING INFLATION",
+      "display": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
+      "original": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
       "truncated": false,
       "usable": true,
       "category": "CRYPTO NEWS",
-      "source": "The Block · Bloomberg.com · TradingView",
+      "source": "CoinDesk · Cointelegraph · Reuters",
       "sourceNames": [
-        "The Block",
-        "Bloomberg.com",
-        "TradingView",
-        "Pluang",
-        "The Edge Malaysia"
+        "CoinDesk",
+        "Cointelegraph",
+        "Reuters"
       ],
-      "corroboration": 5,
-      "link": "https://www.theblock.co/news/business/2026-10-19-jpmorgan-jpm-coin-deposit-token-ethereum-418874",
-      "published": "2026-10-19T08:31:31.000Z",
+      "corroboration": 3,
+      "link": "https://coindesk.com/1",
+      "published": "2026-10-19T08:25:59.250Z",
       "topic": "crypto",
-      "score": 11.6,
-      "photo": {
-        "path": "data/pending/photo-3.jpg",
-        "credit": "Photo: Steve Jurvetson / CC BY 2.0",
-        "license": "by",
-        "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=23967924",
-        "query": "JPMorgan",
-        "relevance": 0.13,
-        "title": "File:Jamie Dimon, CEO of JPMorgan Chase.jpg"
-      }
+      "score": 7.8,
+      "photoError": "fetch failed (searched \"Federal Reserve\")",
+      "photo": null
     },
     {
-      "headline": "STOCK MARKET HOLIDAY TOMORROW: NSE, BSE TO REMAIN CLOSED ON OCTOBER 20 FOR DUSSEHRA",
-      "display": "Stock market holiday tomorrow: NSE, BSE to remain closed on October 20 for Dussehra",
-      "original": "Stock market holiday tomorrow: NSE, BSE to remain closed on October 20 for Dussehra",
+      "headline": "SEC APPROVES SPOT SOLANA ETF APPLICATIONS FROM THREE ISSUERS",
+      "display": "SEC approves spot Solana ETF applications from three issuers",
+      "original": "SEC approves spot Solana ETF applications from three issuers",
       "truncated": false,
       "usable": true,
-      "category": "WORLD MARKETS",
-      "source": "Economic Times · Upstox · Moneycontrol.com",
+      "category": "CRYPTO NEWS",
+      "source": "CoinDesk · Cointelegraph",
       "sourceNames": [
-        "Economic Times",
-        "Upstox",
-        "Moneycontrol.com",
-        "CNBC TV18"
+        "CoinDesk",
+        "Cointelegraph"
       ],
-      "corroboration": 4,
-      "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOQWZ4QV9jMjc5ZXU3ZXpNS1pGcTZCNC05bEFTeUNhUzYtMUpmWHRLNGNRTTJXS19qemI2RW81aUtTVUZERlFka3dNLVRjWTZwdktKck1rZkcwOWYtVlFqdW1RVF9qT2ZMdTZDV2ZXVEtaQVpPNXhQN0R2a21PMG9fUzBDdlNJVlZicTBtRjh4ZDhtX2tkLU9XTUJ0RWFDSW5HRUJXcC0zS21nd2w4UE1VZlZMNTl4Tk9JaW85MHJBSHZYS1ZJ0gHKAUFVX3lxTE5DRmN2X0s0YkJrZXMzMjllWndHRTl3TWpEem82a1E2Z3BsSnZCUG9QbHpVMEQ0Wm5jdEo4TGtWcWl2TG1",
-      "published": "2026-10-19T06:46:34.000Z",
-      "topic": "markets-world",
-      "score": 9.3,
-      "photo": {
-        "path": "data/pending/photo-4.jpg",
-        "credit": "Photo: Abhishek Shirali / CC BY 2.0",
-        "license": "by",
-        "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=29532285",
-        "query": "Dussehra",
-        "relevance": 0.25,
-        "title": "Vijayadashami Dasara Dussehra Durga Pooja India October 2013"
-      }
+      "corroboration": 2,
+      "link": "https://coindesk.com/3",
+      "published": "2026-10-19T07:25:59.250Z",
+      "topic": "crypto",
+      "score": 5.7,
+      "photoError": "fetch failed (searched \"Solana ETF\")",
+      "photo": null
+    },
+    {
+      "headline": "SENSEX CLIMBS 540 POINTS TO CLOSE AT RECORD HIGH, NIFTY TOPS 26,000",
+      "display": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
+      "original": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
+      "truncated": false,
+      "usable": true,
+      "category": "INDIA MARKETS",
+      "source": "Economic Times",
+      "sourceNames": [
+        "Economic Times"
+      ],
+      "corroboration": 1,
+      "link": "https://et.com/1",
+      "published": "2026-10-19T07:25:59.250Z",
+      "topic": "markets-india",
+      "score": 3.6,
+      "photoError": "fetch failed (searched \"Sensex\")",
+      "photo": null
     }
   ],
-  "rendered": "2026-10-19T08:55:10.677Z",
+  "rendered": "2026-10-19T08:56:08.283Z",
   "options": {
     "layout": "breaking",
     "theme": "bbc",
@@ -123,114 +92,71 @@
       "width": 1080,
       "height": 1350,
       "sourceNames": [
-        "Mint",
-        "NDTV",
-        "The Times of India",
-        "India Today",
-        "Yahoo Finance",
-        "Investing.com India",
-        "Times of India",
-        "The Block",
-        "Bloomberg.com",
-        "TradingView",
-        "Pluang",
-        "The Edge Malaysia",
-        "Economic Times",
-        "Upstox",
-        "Moneycontrol.com",
-        "CNBC TV18"
+        "CoinDesk",
+        "Cointelegraph",
+        "Reuters",
+        "Economic Times"
       ],
       "stories": [
         {
-          "headline": "STOCK MARKET CRASH: INVESTORS LOSE RS 4 LAKH CRORE AS SENSEX",
-          "display": "Stock Market Crash: Investors Lose Rs 4 Lakh Crore As Sensex",
-          "original": "Stock Market Crash: Investors Lose Rs 4 Lakh Crore As Sensex, Nifty Tank. 3 Reasons Why Market Are Falling Today",
-          "truncated": false,
-          "usable": true,
-          "category": "INDIA",
-          "source": "Mint · NDTV · The Times of India",
-          "sourceNames": [
-            "Mint",
-            "NDTV",
-            "The Times of India",
-            "India Today",
-            "Yahoo Finance",
-            "Investing.com India",
-            "Times of India"
-          ],
-          "corroboration": 7,
-          "link": "https://www.ndtv.com/business-news/stock-market-crash-today-sensex-nifty-high-oil-prices-fii-foreign-investors-12205439#publisher=newsstand",
-          "published": "2026-10-19T08:38:00.000Z",
-          "topic": "india",
-          "score": 15.6,
-          "photo": {
-            "path": "data/pending/photo-2.jpg",
-            "credit": "Photo: Jim Linwood from London / CC BY 2.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=92918243",
-            "query": "Stock Market Crash",
-            "relevance": 0.38,
-            "title": "Stock Market Crash In The Saatchi Gallery, Chelsea - London. - Flickr - Jim Linwood"
-          }
-        },
-        {
-          "headline": "JPMORGAN EXPANDS ‘JPM COIN’ DEPOSIT TOKEN TO ETHEREUM FOR INSTITUTIONAL CLIENTS",
-          "display": "JPMorgan expands ‘JPM Coin’ deposit token to Ethereum for institutional clients",
-          "original": "JPMorgan expands ‘JPM Coin’ deposit token to Ethereum for institutional clients",
+          "headline": "FEDERAL RESERVE CUTS INTEREST RATES BY 25 BASIS POINTS, CITING COOLING INFLATION",
+          "display": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
+          "original": "Federal Reserve cuts interest rates by 25 basis points, citing cooling inflation",
           "truncated": false,
           "usable": true,
           "category": "CRYPTO NEWS",
-          "source": "The Block · Bloomberg.com · TradingView",
+          "source": "CoinDesk · Cointelegraph · Reuters",
           "sourceNames": [
-            "The Block",
-            "Bloomberg.com",
-            "TradingView",
-            "Pluang",
-            "The Edge Malaysia"
+            "CoinDesk",
+            "Cointelegraph",
+            "Reuters"
           ],
-          "corroboration": 5,
-          "link": "https://www.theblock.co/news/business/2026-10-19-jpmorgan-jpm-coin-deposit-token-ethereum-418874",
-          "published": "2026-10-19T08:31:31.000Z",
+          "corroboration": 3,
+          "link": "https://coindesk.com/1",
+          "published": "2026-10-19T08:25:59.250Z",
           "topic": "crypto",
-          "score": 11.6,
-          "photo": {
-            "path": "data/pending/photo-3.jpg",
-            "credit": "Photo: Steve Jurvetson / CC BY 2.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=23967924",
-            "query": "JPMorgan",
-            "relevance": 0.13,
-            "title": "File:Jamie Dimon, CEO of JPMorgan Chase.jpg"
-          }
+          "score": 7.8,
+          "photoError": "fetch failed (searched \"Federal Reserve\")",
+          "photo": null
         },
         {
-          "headline": "STOCK MARKET HOLIDAY TOMORROW: NSE, BSE TO REMAIN CLOSED ON OCTOBER 20 FOR DUSSEHRA",
-          "display": "Stock market holiday tomorrow: NSE, BSE to remain closed on October 20 for Dussehra",
-          "original": "Stock market holiday tomorrow: NSE, BSE to remain closed on October 20 for Dussehra",
+          "headline": "SEC APPROVES SPOT SOLANA ETF APPLICATIONS FROM THREE ISSUERS",
+          "display": "SEC approves spot Solana ETF applications from three issuers",
+          "original": "SEC approves spot Solana ETF applications from three issuers",
           "truncated": false,
           "usable": true,
-          "category": "WORLD MARKETS",
-          "source": "Economic Times · Upstox · Moneycontrol.com",
+          "category": "CRYPTO NEWS",
+          "source": "CoinDesk · Cointelegraph",
           "sourceNames": [
-            "Economic Times",
-            "Upstox",
-            "Moneycontrol.com",
-            "CNBC TV18"
+            "CoinDesk",
+            "Cointelegraph"
           ],
-          "corroboration": 4,
-          "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOQWZ4QV9jMjc5ZXU3ZXpNS1pGcTZCNC05bEFTeUNhUzYtMUpmWHRLNGNRTTJXS19qemI2RW81aUtTVUZERlFka3dNLVRjWTZwdktKck1rZkcwOWYtVlFqdW1RVF9qT2ZMdTZDV2ZXVEtaQVpPNXhQN0R2a21PMG9fUzBDdlNJVlZicTBtRjh4ZDhtX2tkLU9XTUJ0RWFDSW5HRUJXcC0zS21nd2w4UE1VZlZMNTl4Tk9JaW85MHJBSHZYS1ZJ0gHKAUFVX3lxTE5DRmN2X0s0YkJrZXMzMjllWndHRTl3TWpEem82a1E2Z3BsSnZCUG9QbHpVMEQ0Wm5jdEo4TGtWcWl2TG1",
-          "published": "2026-10-19T06:46:34.000Z",
-          "topic": "markets-world",
-          "score": 9.3,
-          "photo": {
-            "path": "data/pending/photo-4.jpg",
-            "credit": "Photo: Abhishek Shirali / CC BY 2.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=29532285",
-            "query": "Dussehra",
-            "relevance": 0.25,
-            "title": "Vijayadashami Dasara Dussehra Durga Pooja India October 2013"
-          }
+          "corroboration": 2,
+          "link": "https://coindesk.com/3",
+          "published": "2026-10-19T07:25:59.250Z",
+          "topic": "crypto",
+          "score": 5.7,
+          "photoError": "fetch failed (searched \"Solana ETF\")",
+          "photo": null
+        },
+        {
+          "headline": "SENSEX CLIMBS 540 POINTS TO CLOSE AT RECORD HIGH, NIFTY TOPS 26,000",
+          "display": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
+          "original": "Sensex climbs 540 points to close at record high, Nifty tops 26,000",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA MARKETS",
+          "source": "Economic Times",
+          "sourceNames": [
+            "Economic Times"
+          ],
+          "corroboration": 1,
+          "link": "https://et.com/1",
+          "published": "2026-10-19T07:25:59.250Z",
+          "topic": "markets-india",
+          "score": 3.6,
+          "photoError": "fetch failed (searched \"Sensex\")",
+          "photo": null
         }
       ],
       "usable": true

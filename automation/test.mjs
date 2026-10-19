@@ -222,6 +222,13 @@ ok('a headline only ever loses words, never gains them', (() => {
 })());
 
 ok('sources are named', sourceLine(['CoinDesk', 'Reuters']) === 'CoinDesk · Reuters');
+ok('the headline overrides the feed when it plainly disagrees',
+  categoryFor('markets-world', 'NSE, BSE to remain closed tomorrow') === 'INDIA MARKETS'
+  && categoryFor('world', 'Bitcoin tops $90,000') === 'CRYPTO NEWS',
+  categoryFor('markets-world', 'NSE, BSE to remain closed tomorrow'));
+ok('an ordinary world story keeps its feed category',
+  categoryFor('world', 'Ceasefire talks resume in Geneva') === 'WORLD NEWS');
+
 ok('category comes from the topic',
   categoryFor('markets-india') === 'INDIA MARKETS'
   && categoryFor('india') === 'INDIA'
