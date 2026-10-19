@@ -6,12 +6,12 @@
   "scripts": {
     "test": "node automation/test.mjs && node automation/test-token.mjs",
     "test:all": "npm test && npm run build:sample && node automation/test-workflows.mjs",
-    "build:sample": "node automation/shortlist.mjs --fixtures --quiet && node automation/render.mjs --carousel --ratio 4:5 && node automation/caption.mjs --index 0",
+    "build:sample": "node automation/shortlist.mjs --fixtures --quiet && node automation/render.mjs --sections --ratio 4:5 && node automation/caption.mjs --all",
     "shortlist": "node automation/shortlist.mjs",
-    "render": "node automation/render.mjs --carousel --ratio 4:5",
-    "caption": "node automation/caption.mjs --index 0",
+    "render": "node automation/render.mjs --sections --ratio 4:5",
+    "caption": "node automation/caption.mjs --all",
     "token": "node automation/token-check.mjs",
-    "build:sample:strict": "node automation/shortlist.mjs --fixtures --quiet && node automation/render.mjs --carousel --ratio 4:5 --require-fonts && node automation/caption.mjs --index 0"
+    "build:sample:strict": "node automation/shortlist.mjs --fixtures --quiet && node automation/render.mjs --sections --ratio 4:5 --require-fonts && node automation/caption.mjs --all"
   },
   "devDependencies": {
     "js-yaml": "^4.1.0"

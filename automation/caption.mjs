@@ -31,6 +31,7 @@ function arg(name, fallback) {
   return i >= 0 && process.argv[i + 1] && !process.argv[i + 1].startsWith('--')
     ? process.argv[i + 1] : fallback;
 }
+const FLAG = n => process.argv.includes(`--${n}`);
 
 export function buildCaption(entry, { handle = '@dailyvolex' } = {}) {
   const lines = [];
@@ -63,18 +64,36 @@ export function buildCaption(entry, { handle = '@dailyvolex' } = {}) {
   return lines.join('\n').slice(0, 2200);
 }
 
+/* Each post needs its own caption file for the publish step to pick up. A
+   sectioned post is named by its section, because the publish step is told
+   which sections to post by name and matching that to an index would be one
+   more place for the wrong caption to end up on the right picture. */
+async function writeCaption(entry, index) {
+  const name = entry.section ? `caption-${entry.section}.txt` : `caption-${index + 1}.txt`;
+  const file = join(ROOT, 'data', 'pending', name);
+  const caption = buildCaption(entry);
+  await writeFile(file, caption, 'utf8');
+  return { file, caption };
+}
+
 async function main() {
   const shortlist = await readJson(join(ROOT, 'data', 'shortlist.json'), null);
   const out = shortlist?.output || shortlist?.stories;
   if (!out?.length) throw new Error('nothing rendered yet — run render.mjs first');
 
+  if (FLAG('all')) {
+    for (const [i, entry] of out.entries()) {
+      const { file } = await writeCaption(entry, i);
+      console.log(`${(entry.sectionLabel || 'POST').padEnd(12)} -> ${file}`);
+    }
+    return;
+  }
+
   const index = Math.max(0, parseInt(arg('index', '0'), 10) || 0);
   const entry = out[index];
   if (!entry) throw new Error(`no entry at index ${index}`);
 
-  const caption = buildCaption(entry);
-  const file = join(ROOT, 'data', 'pending', `caption-${index + 1}.txt`);
-  await writeFile(file, caption, 'utf8');
+  const { file, caption } = await writeCaption(entry, index);
   console.log(caption);
   console.log(`\nwritten to ${file}`);
 }

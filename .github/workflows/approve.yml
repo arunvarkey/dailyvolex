@@ -59,46 +59,110 @@ jobs:
           git fetch --depth=1 origin "${{ steps.pin.outputs.sha }}"
           git checkout "${{ steps.pin.outputs.sha }}" -- data/
 
-      - name: Confirm there is something approved to post
-        id: find
+      # "/approve top business" posts those two sections and nothing else.
+      # Naming nothing posts Top stories only — the conservative reading of an
+      # ambiguous approval, and what the command used to mean.
+      - name: Work out which sections were approved
+        id: plan
         env:
           SHA: ${{ steps.pin.outputs.sha }}
-        run: |
-          test -f data/shortlist.json || { echo "no shortlist"; exit 1; }
-          IMAGES=$(node -e "
-            const s=require('./data/shortlist.json');
-            const e=(s.output||s.stories)[0];
-            process.stdout.write((e.images||[e.image]).filter(Boolean).join(','))")
-          test -n "$IMAGES" || { echo "no rendered image"; exit 1; }
-          for f in ${IMAGES//,/ }; do test -f "$f" || { echo "$f missing"; exit 1; }; done
-          URLS=""
-          for f in ${IMAGES//,/ }; do
-            URLS="${URLS:+$URLS,}https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${SHA}/${f}"
-          done
-          echo "urls=$URLS" >> "$GITHUB_OUTPUT"
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const sl = JSON.parse(fs.readFileSync('data/shortlist.json', 'utf8'));
+            const out = sl.output || sl.stories || [];
+            if (!out.length) return core.setFailed('nothing rendered to post');
+
+            const asked = (context.payload.comment.body || '')
+              .replace(/^\s*\/approve/i, '').trim().toLowerCase()
+              .split(/[\s,]+/).filter(Boolean);
+
+            const sectioned = out.some(e => e.section);
+            let chosen;
+            if (!sectioned)                chosen = [out[0]];
+            else if (asked.includes('all')) chosen = out;
+            else if (!asked.length)         chosen = out.filter(e => e.section === 'top');
+            else {
+              const unknown = asked.filter(a => !out.some(e => e.section === a));
+              if (unknown.length) return core.setFailed(
+                `no such section: ${unknown.join(', ')} — this post has `
+                + out.map(e => e.section).join(', '));
+              chosen = asked.map(a => out.find(e => e.section === a));
+            }
+            if (!chosen.length) return core.setFailed('nothing matched that approval');
+
+            const sha = process.env.SHA;
+            const plan = chosen.map(e => {
+              const files = (e.images || [e.image]).filter(Boolean);
+              for (const f of files)
+                if (!fs.existsSync(f)) throw new Error(`${f} is missing at ${sha}`);
+              const caption = e.section
+                ? `data/pending/caption-${e.section}.txt`
+                : 'data/pending/caption-1.txt';
+              if (!fs.existsSync(caption)) throw new Error(`${caption} is missing at ${sha}`);
+              return {
+                section: e.section || 'post',
+                label: e.sectionLabel || 'Post',
+                caption,
+                urls: files.map(f =>
+                  `https://raw.githubusercontent.com/${context.repo.owner}/${context.repo.repo}/${sha}/${f}`).join(','),
+              };
+            });
+            core.notice(`posting: ${plan.map(p => p.label).join(', ')}`);
+            core.setOutput('plan', JSON.stringify(plan));
+            core.setOutput('labels', plan.map(p => p.label).join(', '));
 
       - name: Post to Instagram
         env:
           IG_USER_ID:      ${{ secrets.IG_USER_ID }}
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          PLAN:            ${{ steps.plan.outputs.plan }}
         run: |
-          node automation/publish.mjs \
-            --images "${{ steps.find.outputs.urls }}" \
-            --caption-file data/pending/caption-1.txt
+          # One Instagram post per approved section, in the order asked for.
+          # A failure part-way through stops the rest: half a morning posted is
+          # recoverable, but carrying on past an error is how the same post
+          # goes out twice.
+          echo "$PLAN" | node -e "
+            let d=''; process.stdin.on('data',c=>d+=c).on('end',()=>{
+              const plan=JSON.parse(d);
+              console.log(plan.map(p=>p.section+'\t'+p.urls+'\t'+p.caption).join('\n'));
+            })" > plan.tsv
+          while IFS=$'\t' read -r SECTION URLS CAPTION; do
+            [ -n "$SECTION" ] || continue
+            echo "── posting $SECTION ──"
+            node automation/publish.mjs --images "$URLS" --caption-file "$CAPTION"
+          done < plan.tsv
+          rm -f plan.tsv
 
       - name: Remember what was posted, so it never comes round again
+        env:
+          PLAN: ${{ steps.plan.outputs.plan }}
+          ISSUE: ${{ github.event.issue.number }}
         run: |
+          # The pinned checkout replaced data/ wholesale, posted.json included.
+          # That file is the running record and may have gained entries since,
+          # so take the current one back before adding to it.
+          git checkout HEAD -- data/posted.json 2>/dev/null || true
+          # Only the sections that were actually approved. Recording the whole
+          # shortlist would bury the sections the owner chose NOT to post, and
+          # they should be free to come back tomorrow.
           node -e "
             const fs=require('fs');
             const s=JSON.parse(fs.readFileSync('data/shortlist.json','utf8'));
-            const e=(s.output||s.stories)[0];
-            const items=(e.stories||[e]).map(x=>({
-              title:x.original||x.headline, link:x.link||null, posted:new Date().toISOString() }));
+            const out=s.output||s.stories||[];
+            const wanted=new Set(JSON.parse(process.env.PLAN).map(p=>p.section));
+            const chosen=out.filter(e=>wanted.has(e.section||'post'));
+            const now=new Date().toISOString();
+            const items=chosen.flatMap(e=>(e.stories||[e]).map(x=>({
+              title:x.original||x.headline, link:x.link||null,
+              section:e.section||null, issue:Number(process.env.ISSUE), posted:now })));
             const p=fs.existsSync('data/posted.json')
               ? JSON.parse(fs.readFileSync('data/posted.json','utf8')) : {posted:[]};
             p.posted=[...items,...(p.posted||[])].slice(0,400);
-            p.updated=new Date().toISOString();
+            p.updated=now;
             fs.writeFileSync('data/posted.json', JSON.stringify(p,null,2)+'\n');
+            console.log('recorded '+items.length+' story/stories');
           "
           git config user.name  "dailyvolex-bot"
           git config user.email "noreply@github.com"
@@ -112,12 +176,14 @@ jobs:
         with:
           script: |
             const ok = '${{ job.status }}' === 'success';
+            const what = `${{ steps.plan.outputs.labels }}` || 'the post';
             await github.rest.issues.createComment({
               owner: context.repo.owner, repo: context.repo.repo,
               issue_number: context.issue.number,
               body: ok
-                ? '✅ Posted to Instagram.'
-                : `❌ Publishing failed — see [the run](${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}). Nothing was posted.`,
+                ? `✅ Posted to Instagram: **${what}**.`
+                : `❌ Publishing failed — see [the run](${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}).`
+                  + ` Any section already posted before the failure stayed posted; the rest did not go out.`,
             });
             if (ok) {
               await github.rest.issues.update({
