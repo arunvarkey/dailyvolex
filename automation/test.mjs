@@ -8,7 +8,7 @@ import { similarity, cluster, selectStories, isRepeat, isTopical, isAdvice,
          isSpeculation, isJunk, rankClusters } from './lib/select.mjs';
 import { makeHeadline, tidy, sourceLine, categoryFor } from './lib/headline.mjs';
 import { buildCaption } from './caption.mjs';
-import { isUsable, pickBest, creditFor, subjectFor, findImage,
+import { isUsable, pickBest, creditFor, subjectFor, findImage, backdropFor,
          queriesFor, entitiesFrom, isTitleCase, relevance, prefersChart } from './lib/imagery.mjs';
 
 let passed = 0, failed = 0;
@@ -319,6 +319,43 @@ ok('Sensex maps to an Indian subject',
   /mumbai/.test(subjectFor('Sensex climbs 540 points to a record high')));
 ok('there is always a subject',
   subjectFor('Something entirely unexpected happens').length > 0);
+
+/* The last-resort query has to follow the beat. A conference in Delhi was
+   falling back to "stock market trading screen" — a picture of a different
+   story, not a weaker picture of this one. */
+ok('the fallback follows the topic, not finance',
+  subjectFor('Something entirely unexpected happens', 'india') === 'india'
+  && subjectFor('Something entirely unexpected happens', 'world') === 'international summit flags'
+  && subjectFor('Something entirely unexpected happens', 'tech') === 'technology data centre');
+ok('a markets topic still falls back to a markets picture',
+  /market/.test(subjectFor('Something unexpected happens', 'markets-world')));
+ok('an unknown topic falls back to something neutral',
+  subjectFor('Something unexpected happens', 'nonsense') === 'newspapers',
+  subjectFor('Something unexpected happens', 'nonsense'));
+ok('one substantial opening word is enough of a subject',
+  queriesFor('India To Host Global Legal Metrology Meet For First Time', 'india')[0] === 'India',
+  JSON.stringify(queriesFor('India To Host Global Legal Metrology Meet For First Time', 'india')));
+
+/* ── What goes behind a card with no photograph ───────────────── */
+/* The chart used to go behind everything, which made a claim the story did
+   not: a card about a legal-metrology conference went out over a falling
+   price line, which reads as "this is a markets story". */
+
+ok('a markets story gets the chart',
+  backdropFor('Sensex tumbles 876 points; Nifty drops below 22,900', 'markets-world') === 'chart'
+  && backdropFor('Reliance Q2 profit rises 12% on retail strength', 'business') === 'chart'
+  && backdropFor('JPMorgan expands JPM Coin deposit token to Ethereum', 'crypto') === 'chart');
+ok('a general-news story does NOT get the chart',
+  backdropFor('India To Host Global Legal Metrology Meet For First Time', 'india') === 'editorial',
+  backdropFor('India To Host Global Legal Metrology Meet For First Time', 'india'));
+ok('world, India and tech stories do not get the chart',
+  backdropFor('Ceasefire talks resume in Geneva', 'world') === 'editorial'
+  && backdropFor('Heavy rain shuts schools across Kerala', 'india') === 'editorial'
+  && backdropFor('New AI model released by startup', 'tech') === 'editorial');
+ok('a money figure in a general headline earns the chart',
+  backdropFor('Government approves ₹12,000 crore package', 'india') === 'chart');
+ok('the markets beat earns the chart even without market words',
+  backdropFor('Regulator names new chief', 'markets-india') === 'chart');
 
 /* The picture should be of the story, not of its genre. */
 

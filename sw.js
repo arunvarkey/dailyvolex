@@ -9,7 +9,7 @@
  * again" is not a workflow.
  */
 
-const VERSION = 'dv-4';
+const VERSION = 'dv-5';
 const SHELL = `shell-${VERSION}`;
 const DATA  = `data-${VERSION}`;
 
