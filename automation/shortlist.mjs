@@ -150,6 +150,15 @@ async function main() {
       // reporting it. Hiding them would overstate the attribution; counting
       // them would overstate the corroboration.
       republishers: c.republishers || [],
+      // Ownership of the newsrooms behind the story. Stated as fact, never as
+      // a verdict: a state broadcaster can be excellent and a reader-funded
+      // site careless. It is here so that agreement between outlets with one
+      // owner, or one government, is visible as what it is.
+      owners: c.owners || [],
+      ownerCount: c.ownerCount ?? null,
+      countries: c.countries || [],
+      fundings: c.fundings || [],
+      concentration: c.concentration || [],
       link: c.lead.link,
       published: c.newest ? new Date(c.newest).toISOString() : null,
       topic: c.lead.topic,
@@ -194,6 +203,11 @@ async function main() {
   for (const s of stories) {
     log(`  [${s.tier}] [${s.corroboration} source${s.corroboration > 1 ? 's' : ''}] ${s.headline}`);
     log(`     ${s.source}${s.truncated ? '  (shortened)' : ''}${s.usable ? '' : '  !! too short to use'}`);
+    if (s.ownerCount != null)
+      log(`     ${s.ownerCount} owner${s.ownerCount === 1 ? '' : 's'}`
+        + `${s.countries.length ? ' · ' + s.countries.join('/') : ''}`
+        + `${s.fundings.length ? ' · ' + s.fundings.join(', ') : ''}`);
+    for (const w of s.concentration || []) log(`     !! ${w}`);
   }
   log(`\nwritten to ${SHORTLIST}`);
 }
