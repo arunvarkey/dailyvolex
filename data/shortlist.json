@@ -1,28 +1,64 @@
 {
-  "generated": "2026-10-20T09:16:13.346Z",
-  "pool": 582,
+  "generated": "2026-10-20T13:18:26.814Z",
+  "pool": 584,
   "feedErrors": [
     "indian-express: HTTP 403"
   ],
   "breaking": false,
   "stories": [
     {
-      "headline": "KENYA CULT LEADER, WHO CONVINCED FOLLOWERS TO STARVE, FOUND GUILTY OF 191 MURDERS",
-      "display": "Kenya Cult Leader, Who Convinced Followers To Starve, Found Guilty Of 191 Murders",
-      "original": "Kenya Cult Leader, Who Convinced Followers To Starve, Found Guilty Of 191 Murders",
+      "headline": "RUBIO, JAISHANKAR MEET IN MUMBAI AS U.S. AND INDIA AIM TO FINALISE TRADE DEAL",
+      "display": "Rubio, Jaishankar meet in Mumbai as U.S. and India aim to finalise trade deal",
+      "original": "Rubio, Jaishankar meet in Mumbai as U.S. and India aim to finalise trade deal",
       "truncated": false,
       "usable": true,
       "category": "INDIA",
-      "source": "BBC News · NDTV",
+      "source": "The Hindu · NDTV · Google News",
+      "sourceNames": [
+        "The Hindu",
+        "NDTV",
+        "Google News"
+      ],
+      "corroboration": 3,
+      "republishers": [],
+      "owners": [
+        "The Hindu Group (family-held)",
+        "Adani Group"
+      ],
+      "ownerCount": 2,
+      "countries": [
+        "IN"
+      ],
+      "fundings": [
+        "commercial",
+        "conglomerate"
+      ],
+      "unknownOwners": 1,
+      "concentration": [],
+      "link": "https://www.thehindu.com/news/national/marco-rubio-mumbai-visit-october-20-2026/article71603994.ece",
+      "published": "2026-10-20T12:30:58.000Z",
+      "topic": "india",
+      "section": "india",
+      "tier": "significant",
+      "score": 13.2
+    },
+    {
+      "headline": "JAPAN LAUNCHES FIRST-OF-ITS-KIND MISSION TO BRING BACK ROCKS FROM MARS’S MOON PHOBOS",
+      "display": "Japan launches first-of-its-kind mission to bring back rocks from Mars’s moon Phobos",
+      "original": "Japan launches first-of-its-kind mission to bring back rocks from Mars’s moon Phobos",
+      "truncated": false,
+      "usable": true,
+      "category": "INDIA",
+      "source": "BBC News · Times of India",
       "sourceNames": [
         "BBC News",
-        "NDTV"
+        "Times of India"
       ],
       "corroboration": 2,
       "republishers": [],
       "owners": [
         "BBC (licence fee)",
-        "Adani Group"
+        "Bennett, Coleman & Co"
       ],
       "ownerCount": 2,
       "countries": [
@@ -33,70 +69,48 @@
         "state",
         "conglomerate"
       ],
+      "unknownOwners": 0,
       "concentration": [],
-      "link": "https://www.ndtv.com/world-news/kenya-cult-leader-who-convinced-followers-to-starve-guilty-of-191-murders-12209556#publisher=newsstand",
-      "published": "2026-10-20T06:17:22.000Z",
+      "link": "https://timesofindia.indiatimes.com/science/japan-launches-first-of-its-kind-mission-to-bring-back-rocks-from-marss-moon-phobos/articleshow/135069240.cms",
+      "published": "2026-10-20T11:48:42.000Z",
       "topic": "india",
-      "section": "india",
-      "tier": "lead",
-      "score": 15.55
+      "section": "world",
+      "tier": "significant",
+      "score": 11.85
     },
     {
-      "headline": "NORTH KOREA'S 'PROOF OF LIFE' AMID KIM JONG UN 'BRAIN HAEMORRHAGE DEATH' RUMOUR",
-      "display": "North Korea's 'Proof Of Life' Amid Kim Jong Un 'Brain Haemorrhage Death' Rumour",
-      "original": "North Korea's 'Proof Of Life' Amid Kim Jong Un 'Brain Haemorrhage Death' Rumour",
+      "headline": "INDIA IS A REFINING SUPERPOWER, CAN PROCESS VENEZUELAN OIL: MARCO RUBIO",
+      "display": "India is a refining superpower, can process Venezuelan oil: Marco Rubio",
+      "original": "India is a refining superpower, can process Venezuelan oil: Marco Rubio",
       "truncated": false,
       "usable": true,
-      "category": "INDIA",
-      "source": "NDTV · Open Magazine",
+      "category": "BUSINESS",
+      "source": "The Hindu · Business Standard",
       "sourceNames": [
-        "NDTV",
-        "Open Magazine"
+        "The Hindu",
+        "Business Standard"
       ],
       "corroboration": 2,
       "republishers": [],
       "owners": [
-        "Adani Group"
+        "The Hindu Group (family-held)",
+        "Business Standard Pvt Ltd"
       ],
-      "ownerCount": 1,
+      "ownerCount": 2,
       "countries": [
         "IN"
       ],
       "fundings": [
-        "conglomerate"
+        "commercial"
       ],
+      "unknownOwners": 0,
       "concentration": [],
-      "link": "https://www.ndtv.com/world-news/north-koreas-proof-of-life-amid-kim-jong-un-brain-haemorrhage-death-rumour-12209855#publisher=newsstand",
-      "published": "2026-10-20T07:44:14.000Z",
-      "topic": "india",
-      "section": "india",
-      "tier": "lead",
-      "score": 15.4
-    },
-    {
-      "headline": "SILGAN TO ACQUIRE TRIVIUM AND FORM $7.3 BILLION METAL PACKAGING BUSINESS",
-      "display": "Silgan to acquire Trivium and form $7.3 billion metal packaging business",
-      "original": "Silgan to acquire Trivium and form $7.3 billion metal packaging business",
-      "truncated": false,
-      "usable": true,
-      "category": "BUSINESS",
-      "source": "Packaging Europe",
-      "sourceNames": [
-        "Packaging Europe"
-      ],
-      "corroboration": 1,
-      "republishers": [],
-      "owners": [],
-      "ownerCount": 0,
-      "countries": [],
-      "fundings": [],
-      "concentration": [],
-      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOUExucWlWTDNpQnh4aUt3NGhRcG15SFpqRG9qRktHal9xOVQ4blVlSjNtU1NqVGNrajJTU2ZrNnR0V1FZOHhoWFhJV0hxWGVCbWpsNElxbjdGczIyQ1llcE9JX3VYU3NpLXNjcFpVbEJzY3JmdlY4UGdqNkw2Ykg3TjU5c0RyWnVyNDdBNGFrOHRGWW9GQVl0aVJqc3NfNTFzNmNBRFZvTQ?oc=5",
-      "published": "2026-10-20T09:01:15.000Z",
+      "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxONElCTF9NV1RIbTN2TENySUhYMnlCcnZadl9lWmlBX2NyaXlpdHIyMy1BY0JNMUprRGpXM2ZoLTEtZ0tWWkM1bG5nTzNqSGp4Ul9mSnlTMG90MUE2VngyektQV2Q0SGplUXZaQWtZYmhsQ1ZKdEp4YUx5eDRNdXk5eTY4Uk85QzNQak9JN2ttZkpkZEsyd2JmZy1KM2x2R2k4Qm9EUUlQLVB6VFhxZ1pVVGZoSUZTNkh2dXJrSzRGSUNtcnhZZEE2MXFTaU52ekx5bVHSAdcBQVVfeXFMTVRhbFZMMDZvWFZPSk1wckRrTTJOQWNXZWtmM2dqaFFJODlrMGdLLUx6aURyMW9",
+      "published": "2026-10-20T12:00:54.000Z",
       "topic": "business",
       "section": "business",
-      "tier": "significant",
-      "score": 9.3
+      "tier": "notable",
+      "score": 8.7
     }
   ],
   "sections": [
@@ -105,22 +119,60 @@
       "label": "TOP STORIES",
       "stories": [
         {
-          "headline": "KENYA CULT LEADER, WHO CONVINCED FOLLOWERS TO STARVE, FOUND GUILTY OF 191 MURDERS",
-          "display": "Kenya Cult Leader, Who Convinced Followers To Starve, Found Guilty Of 191 Murders",
-          "original": "Kenya Cult Leader, Who Convinced Followers To Starve, Found Guilty Of 191 Murders",
+          "headline": "RUBIO, JAISHANKAR MEET IN MUMBAI AS U.S. AND INDIA AIM TO FINALISE TRADE DEAL",
+          "display": "Rubio, Jaishankar meet in Mumbai as U.S. and India aim to finalise trade deal",
+          "original": "Rubio, Jaishankar meet in Mumbai as U.S. and India aim to finalise trade deal",
           "truncated": false,
           "usable": true,
           "category": "INDIA",
-          "source": "BBC News · NDTV",
+          "source": "The Hindu · NDTV · Google News",
+          "sourceNames": [
+            "The Hindu",
+            "NDTV",
+            "Google News"
+          ],
+          "corroboration": 3,
+          "republishers": [],
+          "owners": [
+            "The Hindu Group (family-held)",
+            "Adani Group"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial",
+            "conglomerate"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://www.thehindu.com/news/national/marco-rubio-mumbai-visit-october-20-2026/article71603994.ece",
+          "published": "2026-10-20T12:30:58.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "significant",
+          "score": 13.2,
+          "photoError": "timed out (searched \"Jaishankar\")",
+          "photo": null
+        },
+        {
+          "headline": "JAPAN LAUNCHES FIRST-OF-ITS-KIND MISSION TO BRING BACK ROCKS FROM MARS’S MOON PHOBOS",
+          "display": "Japan launches first-of-its-kind mission to bring back rocks from Mars’s moon Phobos",
+          "original": "Japan launches first-of-its-kind mission to bring back rocks from Mars’s moon Phobos",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "BBC News · Times of India",
           "sourceNames": [
             "BBC News",
-            "NDTV"
+            "Times of India"
           ],
           "corroboration": 2,
           "republishers": [],
           "owners": [
             "BBC (licence fee)",
-            "Adani Group"
+            "Bennett, Coleman & Co"
           ],
           "ownerCount": 2,
           "countries": [
@@ -131,75 +183,58 @@
             "state",
             "conglomerate"
           ],
+          "unknownOwners": 0,
           "concentration": [],
-          "link": "https://www.ndtv.com/world-news/kenya-cult-leader-who-convinced-followers-to-starve-guilty-of-191-murders-12209556#publisher=newsstand",
-          "published": "2026-10-20T06:17:22.000Z",
+          "link": "https://timesofindia.indiatimes.com/science/japan-launches-first-of-its-kind-mission-to-bring-back-rocks-from-marss-moon-phobos/articleshow/135069240.cms",
+          "published": "2026-10-20T11:48:42.000Z",
           "topic": "india",
-          "section": "india",
-          "tier": "lead",
-          "score": 15.55,
-          "photoError": "timed out (searched \"Kenya Cult Leader\")",
-          "photo": null
+          "section": "world",
+          "tier": "significant",
+          "score": 11.85,
+          "photo": {
+            "path": "data/pending/top/photo-top-3.jpg",
+            "credit": "File photo: Soren Bradley / CC BY 4.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=166276509",
+            "query": "Japan",
+            "relevance": 0.1,
+            "title": "Topographic map of Chubu, Japan"
+          }
         },
         {
-          "headline": "NORTH KOREA'S 'PROOF OF LIFE' AMID KIM JONG UN 'BRAIN HAEMORRHAGE DEATH' RUMOUR",
-          "display": "North Korea's 'Proof Of Life' Amid Kim Jong Un 'Brain Haemorrhage Death' Rumour",
-          "original": "North Korea's 'Proof Of Life' Amid Kim Jong Un 'Brain Haemorrhage Death' Rumour",
+          "headline": "INDIA IS A REFINING SUPERPOWER, CAN PROCESS VENEZUELAN OIL: MARCO RUBIO",
+          "display": "India is a refining superpower, can process Venezuelan oil: Marco Rubio",
+          "original": "India is a refining superpower, can process Venezuelan oil: Marco Rubio",
           "truncated": false,
           "usable": true,
-          "category": "INDIA",
-          "source": "NDTV · Open Magazine",
+          "category": "BUSINESS",
+          "source": "The Hindu · Business Standard",
           "sourceNames": [
-            "NDTV",
-            "Open Magazine"
+            "The Hindu",
+            "Business Standard"
           ],
           "corroboration": 2,
           "republishers": [],
           "owners": [
-            "Adani Group"
+            "The Hindu Group (family-held)",
+            "Business Standard Pvt Ltd"
           ],
-          "ownerCount": 1,
+          "ownerCount": 2,
           "countries": [
             "IN"
           ],
           "fundings": [
-            "conglomerate"
+            "commercial"
           ],
+          "unknownOwners": 0,
           "concentration": [],
-          "link": "https://www.ndtv.com/world-news/north-koreas-proof-of-life-amid-kim-jong-un-brain-haemorrhage-death-rumour-12209855#publisher=newsstand",
-          "published": "2026-10-20T07:44:14.000Z",
-          "topic": "india",
-          "section": "india",
-          "tier": "lead",
-          "score": 15.4,
-          "photoError": "a library photograph would misrepresent a story about people in harm (searched \"(none)\")",
-          "photo": null
-        },
-        {
-          "headline": "SILGAN TO ACQUIRE TRIVIUM AND FORM $7.3 BILLION METAL PACKAGING BUSINESS",
-          "display": "Silgan to acquire Trivium and form $7.3 billion metal packaging business",
-          "original": "Silgan to acquire Trivium and form $7.3 billion metal packaging business",
-          "truncated": false,
-          "usable": true,
-          "category": "BUSINESS",
-          "source": "Packaging Europe",
-          "sourceNames": [
-            "Packaging Europe"
-          ],
-          "corroboration": 1,
-          "republishers": [],
-          "owners": [],
-          "ownerCount": 0,
-          "countries": [],
-          "fundings": [],
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOUExucWlWTDNpQnh4aUt3NGhRcG15SFpqRG9qRktHal9xOVQ4blVlSjNtU1NqVGNrajJTU2ZrNnR0V1FZOHhoWFhJV0hxWGVCbWpsNElxbjdGczIyQ1llcE9JX3VYU3NpLXNjcFpVbEJzY3JmdlY4UGdqNkw2Ykg3TjU5c0RyWnVyNDdBNGFrOHRGWW9GQVl0aVJqc3NfNTFzNmNBRFZvTQ?oc=5",
-          "published": "2026-10-20T09:01:15.000Z",
+          "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxONElCTF9NV1RIbTN2TENySUhYMnlCcnZadl9lWmlBX2NyaXlpdHIyMy1BY0JNMUprRGpXM2ZoLTEtZ0tWWkM1bG5nTzNqSGp4Ul9mSnlTMG90MUE2VngyektQV2Q0SGplUXZaQWtZYmhsQ1ZKdEp4YUx5eDRNdXk5eTY4Uk85QzNQak9JN2ttZkpkZEsyd2JmZy1KM2x2R2k4Qm9EUUlQLVB6VFhxZ1pVVGZoSUZTNkh2dXJrSzRGSUNtcnhZZEE2MXFTaU52ekx5bVHSAdcBQVVfeXFMTVRhbFZMMDZvWFZPSk1wckRrTTJOQWNXZWtmM2dqaFFJODlrMGdLLUx6aURyMW9",
+          "published": "2026-10-20T12:00:54.000Z",
           "topic": "business",
           "section": "business",
-          "tier": "significant",
-          "score": 9.3,
-          "photoError": "timed out (searched \"Trivium\")",
+          "tier": "notable",
+          "score": 8.7,
+          "photoError": "timed out (searched \"Marco Rubio\")",
           "photo": null
         }
       ]
@@ -209,112 +244,117 @@
       "label": "INDIA",
       "stories": [
         {
-          "headline": "KENYAN CULT LEADER CONVICTED OF KILLING 190 CHILDREN, TOLD THEM TO STARVE 'FOR HEAVEN'",
-          "display": "Kenyan cult leader convicted of killing 190 children, told them to starve 'for heaven'",
-          "original": "Kenyan cult leader convicted of killing 190 children, told them to starve 'for heaven'",
+          "headline": "REFORM OR REGIME CHANGE? WHAT GLOBAL MOVEMENTS TELL US ABOUT PROTEST GOALS",
+          "display": "Reform Or Regime Change? What Global Movements Tell Us About Protest Goals",
+          "original": "Reform Or Regime Change? What Global Movements Tell Us About Protest Goals",
           "truncated": false,
           "usable": true,
           "category": "INDIA",
-          "source": "The Guardian · Times of India",
+          "source": "NDTV · BBC News",
           "sourceNames": [
-            "The Guardian",
+            "NDTV",
+            "BBC News"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Adani Group",
+            "BBC (licence fee)"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN",
+            "GB"
+          ],
+          "fundings": [
+            "conglomerate",
+            "state"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.ndtv.com/world-news/reform-or-regime-change-what-global-movements-tell-us-about-protest-goals-12210700#publisher=newsstand",
+          "published": "2026-10-20T11:42:57.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "significant",
+          "score": 11.4,
+          "photoError": "no image matched the story closely enough (searched \"india\")",
+          "photo": null
+        },
+        {
+          "headline": "SHRADDHA DUBEY, LUCKNOW INFLUENCER ACCUSED OF KILLING LOVER, ARRESTED",
+          "display": "Shraddha Dubey, Lucknow Influencer Accused Of Killing Lover, Arrested",
+          "original": "Shraddha Dubey, Lucknow Influencer Accused Of Killing Lover, Arrested",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "NDTV · Times of India · India Today",
+          "sourceNames": [
+            "NDTV",
+            "Times of India",
+            "India Today"
+          ],
+          "corroboration": 3,
+          "republishers": [],
+          "owners": [
+            "Adani Group",
+            "Bennett, Coleman & Co",
+            "Living Media"
+          ],
+          "ownerCount": 3,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate",
+            "commercial"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.ndtv.com/india-news/shraddha-dubey-lucknow-influencer-accused-of-killing-lover-arrested-12211012#publisher=newsstand",
+          "published": "2026-10-20T12:29:49.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 9.9,
+          "photoError": "no image matched the story closely enough (searched \"india\")",
+          "photo": null
+        },
+        {
+          "headline": "CJP’S ABHIJEET DIPKE THANKS DELHI RAMLILA ORGANISERS FOR 'FREE PUBLICITY' OVER COCKROACH",
+          "display": "CJP’s Abhijeet Dipke thanks Delhi Ramlila organisers for 'free publicity' over cockroach",
+          "original": "CJP’s Abhijeet Dipke thanks Delhi Ramlila organisers for 'free publicity' over cockroach effigy",
+          "truncated": true,
+          "usable": true,
+          "category": "INDIA",
+          "source": "The Hindu · Times of India",
+          "sourceNames": [
+            "The Hindu",
             "Times of India"
           ],
           "corroboration": 2,
           "republishers": [],
           "owners": [
-            "Scott Trust",
+            "The Hindu Group (family-held)",
             "Bennett, Coleman & Co"
           ],
           "ownerCount": 2,
           "countries": [
-            "GB",
             "IN"
           ],
           "fundings": [
-            "trust",
+            "commercial",
             "conglomerate"
           ],
+          "unknownOwners": 0,
           "concentration": [],
-          "link": "https://timesofindia.indiatimes.com/world/rest-of-world/kenyan-doomsday-cult-leader-convicted-of-killing-190-children-ordered-followers-to-starve-for-heaven/articleshow/135061043.cms",
-          "published": "2026-10-20T05:26:14.000Z",
+          "link": "https://www.thehindu.com/news/national/cjps-abhijeet-dipke-thanks-delhi-ramlila-organisers-for-free-publicity-over-cockroach-effigy/article71603848.ece",
+          "published": "2026-10-20T12:52:04.000Z",
           "topic": "india",
           "section": "india",
-          "tier": "lead",
-          "score": 15.1,
-          "photoError": "timed out (searched \"india\")",
-          "photo": null
-        },
-        {
-          "headline": "MARCO RUBIO'S INDIA VISIT: TRADE DEAL, RUSSIAN OIL AND KEY MEETINGS ON AGENDA",
-          "display": "Marco Rubio's India visit: Trade deal, Russian oil and key meetings on agenda",
-          "original": "Marco Rubio's India visit: Trade deal, Russian oil and key meetings on agenda",
-          "truncated": false,
-          "usable": true,
-          "category": "INDIA",
-          "source": "Reuters · India Today · DW.com",
-          "sourceNames": [
-            "Reuters",
-            "India Today",
-            "DW.com"
-          ],
-          "corroboration": 3,
-          "republishers": [],
-          "owners": [
-            "Thomson Reuters (Trust Principles)",
-            "Living Media"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "GB",
-            "IN"
-          ],
-          "fundings": [
-            "trust",
-            "commercial"
-          ],
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOMUxJTUNBQ25qVl96MmZ3LWZ6TG5FNGlhZWNFQU1nMWltcU1BVS1wdkNzUWk2WTV3dzdXcjRvTkNxbkt6clpLc2FNTTQtSEd3eTdTQnR2WW1jNUU5Slp3VEtVRjlDVlFUbVlZZmxScDB1Z3BaSUdxNTRJbmtmZ1pwa3EzTUpVcTJlSFVaMW1rXzM2dTBiWEJMdER6UWxIdUJSOFBVNV9TUmQ0bUFHTXJ6ZWJjSVA1T2NZWEZ6bWoydEFfWjhhUHpveG9wSGsyc03SAdQBQVVfeXFMTTUtZGk1TnJVcHZxelpueUdSMks5a1RPVVV3TWpMQk81alZrSjVHM01NVUUyQ1M2SnN",
-          "published": "2026-10-20T06:40:58.000Z",
-          "topic": "india",
-          "section": "india",
-          "tier": "significant",
-          "score": 12,
-          "photoError": "timed out (searched \"Marco Rubio's India\")",
-          "photo": null
-        },
-        {
-          "headline": "INDIA-NEW ZEALAND TRADE PACT KICKS IN",
-          "display": "India-New Zealand trade pact kicks in",
-          "original": "India-New Zealand trade pact kicks in",
-          "truncated": false,
-          "usable": true,
-          "category": "INDIA",
-          "source": "NDTV · YourStory.com",
-          "sourceNames": [
-            "NDTV",
-            "YourStory.com"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "Adani Group"
-          ],
-          "ownerCount": 1,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "conglomerate"
-          ],
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE54d1RhU3VoMXNDeEoyUWhwWmVZQXdwZS1lUmVlY1k0QjJJQ0ZPRW03Q2UtZXZKNlp6R2Jpa29JQU9wbzFSSkI1TU5WcEhtTWdqNmlZZVNuc0Z0WGpyZnlJTXRCZDhLV1dqX2JFMFBRYVJGNHJyR2c?oc=5",
-          "published": "2026-10-20T09:01:48.000Z",
-          "topic": "india",
-          "section": "india",
-          "tier": "significant",
-          "score": 11.4,
-          "photoError": "timed out (searched \"India-New Zealand\")",
+          "tier": "notable",
+          "score": 8.7,
+          "photoError": "timed out (searched \"CJP’s Abhijeet Dipke\")",
           "photo": null
         }
       ]
@@ -324,39 +364,47 @@
       "label": "WORLD",
       "stories": [
         {
-          "headline": "JAPAN LAUNCHES HISTORIC MISSION TO BRING BACK MARS MOON SAMPLES",
-          "display": "Japan launches historic mission to bring back Mars moon samples",
-          "original": "Japan launches historic mission to bring back Mars moon samples",
+          "headline": "UK TO DEPLOY FIGHTER JETS TO SUPPORT SAUDI ARABIA AGAINST HOUTHI ATTACKS",
+          "display": "UK To Deploy Fighter Jets To Support Saudi Arabia Against Houthi Attacks",
+          "original": "UK To Deploy Fighter Jets To Support Saudi Arabia Against Houthi Attacks",
           "truncated": false,
           "usable": true,
           "category": "WORLD NEWS",
-          "source": "BBC News · Al Jazeera",
+          "source": "Al Jazeera · The Guardian · NDTV",
           "sourceNames": [
-            "BBC News",
-            "Al Jazeera"
+            "Al Jazeera",
+            "The Guardian",
+            "NDTV",
+            "Times of India"
           ],
-          "corroboration": 2,
+          "corroboration": 4,
           "republishers": [],
           "owners": [
-            "BBC (licence fee)",
-            "Government of Qatar"
+            "Government of Qatar",
+            "Scott Trust",
+            "Adani Group",
+            "Bennett, Coleman & Co"
           ],
-          "ownerCount": 2,
+          "ownerCount": 4,
           "countries": [
+            "QA",
             "GB",
-            "QA"
+            "IN"
           ],
           "fundings": [
-            "state"
+            "state",
+            "trust",
+            "conglomerate"
           ],
+          "unknownOwners": 0,
           "concentration": [],
-          "link": "https://www.aljazeera.com/video/newsfeed/2026/10/20/japan-launches-historic-mission-to-bring-back-mars-moon-samples?traffic_source=rss",
-          "published": "2026-10-20T04:08:33.000Z",
+          "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNNGFNUlo2TjEwU0ZuOUd1OHROaVR2MjhkSkJvWnh3T2J5ZU0zQkoxNkR6WHZBWVFNZjFJUldYbjcyeXNpanJNcWM5czZDRzBXdkpnRmwtMm4zNnczV3h3eUpVa055RFNYNHd0aEhrY1FsT19YTGZBcE1jcVB6TFpwNXVFUGZ2aG51dWZ3dWpMVDV0OUZDNUd6MHQtaHNNeUdwTDQxLUctNklBWFRkZFBIZlljd9IBuwFBVV95cUxQME51LWxuYkpvczV1eUYteVVMWURJNTh3UGMwNlI5RFA3cWZmTlhPSTMyczUyV0JiUnJLaWl3bmQ3N0h2QjROTnJObk0zbk1kRDJPSEd",
+          "published": "2026-10-20T12:34:48.000Z",
           "topic": "world",
           "section": "world",
-          "tier": "significant",
-          "score": 11.55,
-          "photoError": "timed out (searched \"Japan\")",
+          "tier": "notable",
+          "score": 11.4,
+          "photoError": "timed out (searched \"Support Saudi Arabia\")",
           "photo": null
         },
         {
@@ -386,55 +434,53 @@
             "conglomerate",
             "state"
           ],
+          "unknownOwners": 0,
           "concentration": [],
           "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNaUVKbkZkSVN4bmdzT1I0dzg4b2dRaHJtVEpPWXRTM0xLdTlxQ1lrUVB2RF9vQXdtMTBabXB5UWhGRGM3TzhIRTBYZmo3MDRyX0VJTHJQZnBvU1hyOHlzNmUwSS04a3BDZHVMdzNocXlBSUItbXJlZ0dCUEMzWDMtYV84Tng3OWx3RkhtWU9Kc0NQcEVlcnZ0MGJ4c9IBowFBVV95cUxNNWc0S0JMcTh6SkwxX2lvN211d2VMR3VSWVYtTjVVUjVxdW92a0VOQVlGZjROMG9GNTVQTkM4VlpxNG5rUWZSTElvcjVrY3h6MUdOSVdBYVRxelNSczRnd3B2X1VYa280ckd5ZHR",
           "published": "2026-10-20T04:31:33.000Z",
           "topic": "world",
           "section": "world",
           "tier": "significant",
-          "score": 11.1,
-          "photoError": "timed out (searched \"US Bars\")",
+          "score": 10.65,
+          "photoError": "no image matched the story closely enough (searched \"US Bars\")",
           "photo": null
         },
         {
-          "headline": "ALBERTA VOTERS REJECT PLAN FOR REFERENDUM TO LEAVE CANADA",
-          "display": "Alberta voters reject plan for referendum to leave Canada",
-          "original": "Alberta voters reject plan for referendum to leave Canada",
+          "headline": "MYANMAR’S DETAINED EX-LEADER SUU KYI RECEIVES PACKAGE FROM KING CHARLES III",
+          "display": "Myanmar’s detained ex-leader Suu Kyi receives package from King Charles III",
+          "original": "Myanmar’s detained ex-leader Suu Kyi receives package from King Charles III",
           "truncated": false,
           "usable": true,
           "category": "WORLD NEWS",
-          "source": "Al Jazeera · The Guardian · Hindustan Times",
+          "source": "Al Jazeera · The Guardian",
           "sourceNames": [
             "Al Jazeera",
-            "The Guardian",
-            "Hindustan Times"
+            "The Guardian"
           ],
-          "corroboration": 3,
+          "corroboration": 2,
           "republishers": [],
           "owners": [
             "Government of Qatar",
-            "Scott Trust",
-            "HT Media / KK Birla family"
+            "Scott Trust"
           ],
-          "ownerCount": 3,
+          "ownerCount": 2,
           "countries": [
             "QA",
-            "GB",
-            "IN"
+            "GB"
           ],
           "fundings": [
             "state",
-            "trust",
-            "conglomerate"
+            "trust"
           ],
+          "unknownOwners": 0,
           "concentration": [],
-          "link": "https://www.theguardian.com/world/2026/oct/20/canada-alberta-rejects-independence-succession-referendum",
-          "published": "2026-10-20T09:02:43.000Z",
+          "link": "https://www.aljazeera.com/news/2026/10/20/myanmars-detained-ex-leader-suu-kyi-receives-package-from-king-charles-iii?traffic_source=rss",
+          "published": "2026-10-20T11:07:55.000Z",
           "topic": "world",
           "section": "world",
           "tier": "notable",
-          "score": 9.9,
-          "photoError": "timed out (searched \"Alberta\")",
+          "score": 8.1,
+          "photoError": "timed out (searched \"King Charles III\")",
           "photo": null
         }
       ]
@@ -443,42 +489,6 @@
       "id": "business",
       "label": "BUSINESS",
       "stories": [
-        {
-          "headline": "CHANCELLOR REJECTS CALLS TO RAISE CAPITAL GAINS TAX IN BUDGET",
-          "display": "Chancellor rejects calls to raise Capital Gains Tax in Budget",
-          "original": "Chancellor rejects calls to raise Capital Gains Tax in Budget",
-          "truncated": false,
-          "usable": true,
-          "category": "BUSINESS",
-          "source": "The Guardian · BBC News",
-          "sourceNames": [
-            "The Guardian",
-            "BBC News"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "Scott Trust",
-            "BBC (licence fee)"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "GB"
-          ],
-          "fundings": [
-            "trust",
-            "state"
-          ],
-          "concentration": [],
-          "link": "https://www.bbc.co.uk/news/articles/c50me4w4x1vyo?at_medium=RSS&at_campaign=rss",
-          "published": "2026-10-20T08:44:56.000Z",
-          "topic": "business",
-          "section": "business",
-          "tier": "notable",
-          "score": 8.4,
-          "photoError": "timed out (searched \"Capital Gains Tax\")",
-          "photo": null
-        },
         {
           "headline": "BURNHAM VOWS END TO 'RIP-OFF PARKING CHARGES' UNDER NEW RULES",
           "display": "Burnham vows end to 'rip-off parking charges' under new rules",
@@ -505,14 +515,51 @@
             "state",
             "trust"
           ],
+          "unknownOwners": 0,
           "concentration": [],
           "link": "https://www.bbc.co.uk/news/articles/ck87ze7wl4qno?at_medium=RSS&at_campaign=rss",
           "published": "2026-10-20T08:55:02.000Z",
           "topic": "business",
           "section": "business",
           "tier": "notable",
-          "score": 8.4,
+          "score": 8.1,
           "photoError": "timed out (searched \"office towers business district\")",
+          "photo": null
+        },
+        {
+          "headline": "INDIA-NEW ZEALAND FTA COMES INTO FORCE: WHAT CHANGES FROM TODAY",
+          "display": "India-New Zealand FTA comes into force: What changes from today",
+          "original": "India-New Zealand FTA comes into force: What changes from today",
+          "truncated": false,
+          "usable": true,
+          "category": "BUSINESS",
+          "source": "The Hindu · Business Standard",
+          "sourceNames": [
+            "The Hindu",
+            "Business Standard"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "The Hindu Group (family-held)",
+            "Business Standard Pvt Ltd"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNNHdrQ2hIMTJXZWl6aFFfTnY5MTEzWGh2b21McUZCaHZFR0lqZ0p3N0lJUHRZS2ZzOWJPRlN0ZUdqcDVkV1VLMVRJWnpEWjU0WndpWkNYbFFmSXlkWUQ3UEdKWG9JM2QwdXlGV2t3YVlGTHlESGllOG82dzV4b1VTcTdaWDk5WWZwOHFEUzB0dnB1YnJvaXY2eE5qTHJkYk1NUTlYNWNGNFRJT2lDaWZsNWJBbDlWeXJmWVdmM3ZzSFlQV0ZzNmJpZtIBzgFBVV95cUxPcVBsdjVlSlBxRDlCeXZ4RjZUTXV5dFJvekNXQnpISWc5RGZZdk1fQUgzbktBUHR1Tng3OTZZWkp",
+          "published": "2026-10-20T09:34:23.000Z",
+          "topic": "business",
+          "section": "business",
+          "tier": "notable",
+          "score": 7.5,
+          "photoError": "timed out (searched \"India-New Zealand FTA\")",
           "photo": null
         }
       ]
@@ -522,140 +569,42 @@
       "label": "TECHNOLOGY",
       "stories": [
         {
-          "headline": "INDIA SEEKS GLOBAL VIGILANCE REGARDING TRANSFER OF SENSITIVE WEAPONS TECHNOLOGY",
-          "display": "India seeks global vigilance regarding transfer of sensitive weapons technology",
-          "original": "India seeks global vigilance regarding transfer of sensitive weapons technology to terror-linked actors",
-          "truncated": true,
+          "headline": "GOOGLE CLOUD SAYS 'POWER EVENT' BEHIND OUTAGE HITTING UK BANKS AND WEBSITES",
+          "display": "Google Cloud says 'power event' behind outage hitting UK banks and websites",
+          "original": "Google Cloud says 'power event' behind outage hitting UK banks and websites",
+          "truncated": false,
           "usable": true,
           "category": "TECHNOLOGY",
-          "source": "The New Indian Express · India Today · Greater Kashmir",
+          "source": "BBC News · The Indian Express",
           "sourceNames": [
-            "The New Indian Express",
-            "India Today",
-            "Greater Kashmir"
+            "BBC News",
+            "The Indian Express"
           ],
-          "corroboration": 3,
+          "corroboration": 2,
           "republishers": [],
           "owners": [
-            "Living Media"
+            "BBC (licence fee)",
+            "Indian Express Group"
           ],
-          "ownerCount": 1,
+          "ownerCount": 2,
           "countries": [
+            "GB",
             "IN"
           ],
           "fundings": [
+            "state",
             "commercial"
           ],
+          "unknownOwners": 0,
           "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxNUjN4VVp1a1dsa1daYUFJX193enlfeFFsS1lMTTUxNjNXXzI1MHIzcFRjQ25HY2tud1pyOUcxRmozVlhINTBQeDFBb0RuenJBdjlMVU1UaUctaXFMakMzSEgzY0JVS0lwRm5td1BUNXo4RGpDN1oybnNkZ1hOYmVMa1lhenZjcHgxR2p1R0tsT1I5dWRHeUpvU1ZhQllpb2pvcUdHamh6WkhScDNjY0k3RFR0N1VSaEo2X1hQYmxkT3E3S3ZKSTV4NXZCdVVFbWVaRE1JTi1mcFlJREhvS2hXTEQ3Mkt2ZG8x0gHoAUFVX3lxTE1SM3hVWnVrV2xrV1phQUlfX3d6eV94UWx",
-          "published": "2026-10-20T04:23:57.000Z",
+          "link": "https://www.bbc.co.uk/news/articles/cxdd8mm6qy4mo?at_medium=RSS&at_campaign=rss",
+          "published": "2026-10-20T12:09:25.000Z",
           "topic": "tech",
           "section": "tech",
           "tier": "significant",
-          "score": 12,
-          "photo": {
-            "path": "data/pending/tech/photo-tech-2.jpg",
-            "credit": "File photo: Pranav011 at en.wikipedia / CC BY 3.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=16992577",
-            "query": "India",
-            "relevance": 0.13,
-            "title": "An Unripe Mango Of Ratnagiri (India)"
-          }
-        },
-        {
-          "headline": "COGNIZANT TECHNOLOGY SOLUTIONS CHOSEN",
-          "display": "Cognizant Technology Solutions Chosen",
-          "original": "Cognizant Technology Solutions Chosen by Ingenico as Technology Partner",
-          "truncated": false,
-          "usable": true,
-          "category": "TECHNOLOGY",
-          "source": "PR Newswire · www.marketscreener.com",
-          "sourceNames": [
-            "PR Newswire",
-            "www.marketscreener.com"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [],
-          "ownerCount": 0,
-          "countries": [],
-          "fundings": [],
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQVmFoQzZYQjhnZnlLTFJxcVVmMVNjelFPQU1Eem5fRFpMcHRCVUFwWEhld0ZBbWtmR01NS3owOVpTUTZTRFd3LUJTSVZuSnpjZ0lsRlpGajhqYzFadFJkUERpYkt1UmNrZUFFQkFTR2NCdFV1X0VVTjRHYjhPbERDSHhJaGlCdlZzSnB1Y0V3QW1OeThfNkQyUC1YcWl5QmdadENBbkxhWVE4SmZaTzI5MjVNSnJXRDE3STNVV05LRkRaUQ?oc=5",
-          "published": "2026-10-20T09:09:24.000Z",
-          "topic": "tech",
-          "section": "tech",
-          "tier": "notable",
-          "score": 7.8,
-          "photoError": "timed out (searched \"Cognizant Technology Solutions\")",
+          "score": 11.25,
+          "photoError": "no image matched the story closely enough (searched \"technology data centre\")",
           "photo": null
-        }
-      ]
-    },
-    {
-      "id": "science",
-      "label": "SCIENCE",
-      "stories": [
-        {
-          "headline": "DIGITAL SCIENCE AND SUNMEDIA PARTNER ON RESEARCH IMPACT",
-          "display": "Digital Science and Sunmedia partner on research impact",
-          "original": "Digital Science and Sunmedia partner on research impact",
-          "truncated": false,
-          "usable": true,
-          "category": "SCIENCE",
-          "source": "Research Information · TheWire.in",
-          "sourceNames": [
-            "Research Information",
-            "TheWire.in"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [],
-          "ownerCount": 0,
-          "countries": [],
-          "fundings": [],
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNdldBaU0tZUc0UnNzUFJmS1otdFVYa1BmT1NFQXZySDNpQm82WnpvakJpdGhjRmRHRk5JQnFNSlFmc2o5M21MMUt5LU5QU2pjaWt3Ymh3ZGs1THBIZTYyVGlCdmswMEJYYUtrY1FtVGhrYXhOR21JcFAyUlYtcmJfMXRma3dXNEg3Q0RrV2RwampWakxPMUI2OW9VQ2ZwVzg?oc=5",
-          "published": "2026-10-20T08:47:19.000Z",
-          "topic": "science",
-          "section": "science",
-          "tier": "notable",
-          "score": 7.95,
-          "photoError": "timed out (searched \"Digital Science\")",
-          "photo": null
-        },
-        {
-          "headline": "MIDDLE EAST",
-          "display": "Middle East",
-          "original": "Middle East",
-          "truncated": false,
-          "usable": false,
-          "category": "SCIENCE",
-          "source": "MUFG Research · Economic Times",
-          "sourceNames": [
-            "MUFG Research",
-            "Economic Times"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "Bennett, Coleman & Co"
-          ],
-          "ownerCount": 1,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "conglomerate"
-          ],
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5pZzJtSDB6WDk2cXF2Q1hKOGU2Wl9vNGVqRGlXa3h6Si1Bd0FDSms0eF9NeVBvLXNlT0FieGstcnVaRmcwaUxVT2tKMUVod3pxSnhGSHgybEluRHFtMmhvR0RnUW5sandlaHJwZkZYbDFSb1JJTUh2SA?oc=5",
-          "published": "2026-10-20T07:14:06.000Z",
-          "topic": "science",
-          "section": "science",
-          "tier": "notable",
-          "score": 7.65
         }
       ]
     },
@@ -664,16 +613,16 @@
       "label": "HEALTH",
       "stories": [
         {
-          "headline": "GLOBAL HEALTH RESEARCH IN THE AMERICA FIRST ERA",
-          "display": "Global Health Research in the America First Era",
-          "original": "Global Health Research in the America First Era",
-          "truncated": false,
+          "headline": "HEALTH AND ECONOMIC BENEFITS ASSOCIATED WITH INCREASED KIDNEY TRANSPLANTATION FOLLOWING",
+          "display": "Health and Economic Benefits Associated with Increased Kidney Transplantation Following",
+          "original": "Health and Economic Benefits Associated with Increased Kidney Transplantation Following the Advancing American Kidney Health Initiative in 2019",
+          "truncated": true,
           "usable": true,
           "category": "HEALTH",
-          "source": "The Economist · Think Global Health",
+          "source": "HHS.gov · Hopkins Bloomberg Public Health Magazine",
           "sourceNames": [
-            "The Economist",
-            "Think Global Health"
+            "HHS.gov",
+            "Hopkins Bloomberg Public Health Magazine"
           ],
           "corroboration": 2,
           "republishers": [],
@@ -681,62 +630,21 @@
           "ownerCount": 0,
           "countries": [],
           "fundings": [],
+          "unknownOwners": 2,
           "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNbThrU0VFaHVVa2ZncWtnd0w1V1p2S1dnYTd2SHdYX1FadkdWTk1yQ3FSZWtodHo4WFlCSFZPNzVnNzhfVS1jQkZ6VlRjSFpISGFUMW01ckkyTDZsMXhLNU9TSWhESmh5bjZQOFZUWGtSVERBazNVNWI4VnV2RWxPdmlmbUN6S3h2cUk3NWs5a290WG8?oc=5",
-          "published": "2026-10-19T20:23:57.000Z",
-          "topic": "health",
-          "section": "health",
-          "tier": "significant",
-          "score": 9.825,
-          "photo": {
-            "path": "data/pending/health/photo-health-2.jpg",
-            "credit": "File photo: Phil Whitehouse from London, United King / CC BY 2.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=9523361",
-            "query": "America",
-            "relevance": 0.33,
-            "title": "Copa America-2004-02"
-          }
-        },
-        {
-          "headline": "TRUMP SIGNS ORDER TO BOOST WOMEN'S HEALTH",
-          "display": "Trump signs order to boost women's health",
-          "original": "Trump signs order to boost women's health",
-          "truncated": false,
-          "usable": true,
-          "category": "HEALTH",
-          "source": "MorungExpress · Reuters · American Hospital Association",
-          "sourceNames": [
-            "MorungExpress",
-            "Reuters",
-            "American Hospital Association"
-          ],
-          "corroboration": 3,
-          "republishers": [],
-          "owners": [
-            "Thomson Reuters (Trust Principles)"
-          ],
-          "ownerCount": 1,
-          "countries": [
-            "GB"
-          ],
-          "fundings": [
-            "trust"
-          ],
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9pcHRhN1FZQnVlWTJqNjJmVDJfUkd4MXNGaUYzY2l3TFRQMGxLbWVQc3FLd2lKSktKTlp1VTRxYzV0UFlkMmVXRGZyVzNNRjVIWHdkcW1TWG1ZYVJHNXFCWVE3T0V4Q3ZBdzZsZzBsUkZIcGF6?oc=5",
-          "published": "2026-10-20T06:21:25.000Z",
+          "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQaWZSSWVubGhkMHpmWUtZdDRXVktxX0kxUDNCV2wxWHBEWGgwdGxzUExRTUU5UmJoQkRrS25vLUlQQkxpU3VkTXUxV21WWnRfbWlLcWRQazJBenBqS2kxZW81NUpCbW51ZmFfWXdNX0k1cVc2LUlxZ3dNeGJCcGNsSlppSi1KVkZrUTUtbTZ2SzhWbk5MeS1yamlOa3IxQWNOb3NsMndXZk5jYTJkb1RTbWJfQlRxMm94cnpzUkpzcFcyVlN6?oc=5",
+          "published": "2026-10-20T11:38:07.000Z",
           "topic": "health",
           "section": "health",
           "tier": "notable",
-          "score": 9.15,
-          "photoError": "timed out (searched \"Trump\")",
+          "score": 7.95,
+          "photoError": "timed out (searched \"Health\")",
           "photo": null
         }
       ]
     }
   ],
-  "rendered": "2026-10-20T09:21:10.305Z",
+  "rendered": "2026-10-20T13:21:55.537Z",
   "options": {
     "layout": "breaking",
     "theme": "bbc",
@@ -766,29 +674,69 @@
       "width": 1080,
       "height": 1350,
       "sourceNames": [
-        "BBC News",
+        "The Hindu",
         "NDTV",
-        "Open Magazine",
-        "Packaging Europe"
+        "Google News",
+        "BBC News",
+        "Times of India",
+        "Business Standard"
       ],
       "stories": [
         {
-          "headline": "KENYA CULT LEADER, WHO CONVINCED FOLLOWERS TO STARVE, FOUND GUILTY OF 191 MURDERS",
-          "display": "Kenya Cult Leader, Who Convinced Followers To Starve, Found Guilty Of 191 Murders",
-          "original": "Kenya Cult Leader, Who Convinced Followers To Starve, Found Guilty Of 191 Murders",
+          "headline": "RUBIO, JAISHANKAR MEET IN MUMBAI AS U.S. AND INDIA AIM TO FINALISE TRADE DEAL",
+          "display": "Rubio, Jaishankar meet in Mumbai as U.S. and India aim to finalise trade deal",
+          "original": "Rubio, Jaishankar meet in Mumbai as U.S. and India aim to finalise trade deal",
           "truncated": false,
           "usable": true,
           "category": "INDIA",
-          "source": "BBC News · NDTV",
+          "source": "The Hindu · NDTV · Google News",
+          "sourceNames": [
+            "The Hindu",
+            "NDTV",
+            "Google News"
+          ],
+          "corroboration": 3,
+          "republishers": [],
+          "owners": [
+            "The Hindu Group (family-held)",
+            "Adani Group"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial",
+            "conglomerate"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://www.thehindu.com/news/national/marco-rubio-mumbai-visit-october-20-2026/article71603994.ece",
+          "published": "2026-10-20T12:30:58.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "significant",
+          "score": 13.2,
+          "photoError": "timed out (searched \"Jaishankar\")",
+          "photo": null
+        },
+        {
+          "headline": "JAPAN LAUNCHES FIRST-OF-ITS-KIND MISSION TO BRING BACK ROCKS FROM MARS’S MOON PHOBOS",
+          "display": "Japan launches first-of-its-kind mission to bring back rocks from Mars’s moon Phobos",
+          "original": "Japan launches first-of-its-kind mission to bring back rocks from Mars’s moon Phobos",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "BBC News · Times of India",
           "sourceNames": [
             "BBC News",
-            "NDTV"
+            "Times of India"
           ],
           "corroboration": 2,
           "republishers": [],
           "owners": [
             "BBC (licence fee)",
-            "Adani Group"
+            "Bennett, Coleman & Co"
           ],
           "ownerCount": 2,
           "countries": [
@@ -799,75 +747,58 @@
             "state",
             "conglomerate"
           ],
+          "unknownOwners": 0,
           "concentration": [],
-          "link": "https://www.ndtv.com/world-news/kenya-cult-leader-who-convinced-followers-to-starve-guilty-of-191-murders-12209556#publisher=newsstand",
-          "published": "2026-10-20T06:17:22.000Z",
+          "link": "https://timesofindia.indiatimes.com/science/japan-launches-first-of-its-kind-mission-to-bring-back-rocks-from-marss-moon-phobos/articleshow/135069240.cms",
+          "published": "2026-10-20T11:48:42.000Z",
           "topic": "india",
-          "section": "india",
-          "tier": "lead",
-          "score": 15.55,
-          "photoError": "timed out (searched \"Kenya Cult Leader\")",
-          "photo": null
+          "section": "world",
+          "tier": "significant",
+          "score": 11.85,
+          "photo": {
+            "path": "data/pending/top/photo-top-3.jpg",
+            "credit": "File photo: Soren Bradley / CC BY 4.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=166276509",
+            "query": "Japan",
+            "relevance": 0.1,
+            "title": "Topographic map of Chubu, Japan"
+          }
         },
         {
-          "headline": "NORTH KOREA'S 'PROOF OF LIFE' AMID KIM JONG UN 'BRAIN HAEMORRHAGE DEATH' RUMOUR",
-          "display": "North Korea's 'Proof Of Life' Amid Kim Jong Un 'Brain Haemorrhage Death' Rumour",
-          "original": "North Korea's 'Proof Of Life' Amid Kim Jong Un 'Brain Haemorrhage Death' Rumour",
+          "headline": "INDIA IS A REFINING SUPERPOWER, CAN PROCESS VENEZUELAN OIL: MARCO RUBIO",
+          "display": "India is a refining superpower, can process Venezuelan oil: Marco Rubio",
+          "original": "India is a refining superpower, can process Venezuelan oil: Marco Rubio",
           "truncated": false,
           "usable": true,
-          "category": "INDIA",
-          "source": "NDTV · Open Magazine",
+          "category": "BUSINESS",
+          "source": "The Hindu · Business Standard",
           "sourceNames": [
-            "NDTV",
-            "Open Magazine"
+            "The Hindu",
+            "Business Standard"
           ],
           "corroboration": 2,
           "republishers": [],
           "owners": [
-            "Adani Group"
+            "The Hindu Group (family-held)",
+            "Business Standard Pvt Ltd"
           ],
-          "ownerCount": 1,
+          "ownerCount": 2,
           "countries": [
             "IN"
           ],
           "fundings": [
-            "conglomerate"
+            "commercial"
           ],
+          "unknownOwners": 0,
           "concentration": [],
-          "link": "https://www.ndtv.com/world-news/north-koreas-proof-of-life-amid-kim-jong-un-brain-haemorrhage-death-rumour-12209855#publisher=newsstand",
-          "published": "2026-10-20T07:44:14.000Z",
-          "topic": "india",
-          "section": "india",
-          "tier": "lead",
-          "score": 15.4,
-          "photoError": "a library photograph would misrepresent a story about people in harm (searched \"(none)\")",
-          "photo": null
-        },
-        {
-          "headline": "SILGAN TO ACQUIRE TRIVIUM AND FORM $7.3 BILLION METAL PACKAGING BUSINESS",
-          "display": "Silgan to acquire Trivium and form $7.3 billion metal packaging business",
-          "original": "Silgan to acquire Trivium and form $7.3 billion metal packaging business",
-          "truncated": false,
-          "usable": true,
-          "category": "BUSINESS",
-          "source": "Packaging Europe",
-          "sourceNames": [
-            "Packaging Europe"
-          ],
-          "corroboration": 1,
-          "republishers": [],
-          "owners": [],
-          "ownerCount": 0,
-          "countries": [],
-          "fundings": [],
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOUExucWlWTDNpQnh4aUt3NGhRcG15SFpqRG9qRktHal9xOVQ4blVlSjNtU1NqVGNrajJTU2ZrNnR0V1FZOHhoWFhJV0hxWGVCbWpsNElxbjdGczIyQ1llcE9JX3VYU3NpLXNjcFpVbEJzY3JmdlY4UGdqNkw2Ykg3TjU5c0RyWnVyNDdBNGFrOHRGWW9GQVl0aVJqc3NfNTFzNmNBRFZvTQ?oc=5",
-          "published": "2026-10-20T09:01:15.000Z",
+          "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxONElCTF9NV1RIbTN2TENySUhYMnlCcnZadl9lWmlBX2NyaXlpdHIyMy1BY0JNMUprRGpXM2ZoLTEtZ0tWWkM1bG5nTzNqSGp4Ul9mSnlTMG90MUE2VngyektQV2Q0SGplUXZaQWtZYmhsQ1ZKdEp4YUx5eDRNdXk5eTY4Uk85QzNQak9JN2ttZkpkZEsyd2JmZy1KM2x2R2k4Qm9EUUlQLVB6VFhxZ1pVVGZoSUZTNkh2dXJrSzRGSUNtcnhZZEE2MXFTaU52ekx5bVHSAdcBQVVfeXFMTVRhbFZMMDZvWFZPSk1wckRrTTJOQWNXZWtmM2dqaFFJODlrMGdLLUx6aURyMW9",
+          "published": "2026-10-20T12:00:54.000Z",
           "topic": "business",
           "section": "business",
-          "tier": "significant",
-          "score": 9.3,
-          "photoError": "timed out (searched \"Trivium\")",
+          "tier": "notable",
+          "score": 8.7,
+          "photoError": "timed out (searched \"Marco Rubio\")",
           "photo": null
         }
       ],
@@ -888,122 +819,125 @@
       "width": 1080,
       "height": 1350,
       "sourceNames": [
-        "The Guardian",
-        "Times of India",
-        "Reuters",
-        "India Today",
-        "DW.com",
         "NDTV",
-        "YourStory.com"
+        "BBC News",
+        "Times of India",
+        "India Today",
+        "The Hindu"
       ],
       "stories": [
         {
-          "headline": "KENYAN CULT LEADER CONVICTED OF KILLING 190 CHILDREN, TOLD THEM TO STARVE 'FOR HEAVEN'",
-          "display": "Kenyan cult leader convicted of killing 190 children, told them to starve 'for heaven'",
-          "original": "Kenyan cult leader convicted of killing 190 children, told them to starve 'for heaven'",
+          "headline": "REFORM OR REGIME CHANGE? WHAT GLOBAL MOVEMENTS TELL US ABOUT PROTEST GOALS",
+          "display": "Reform Or Regime Change? What Global Movements Tell Us About Protest Goals",
+          "original": "Reform Or Regime Change? What Global Movements Tell Us About Protest Goals",
           "truncated": false,
           "usable": true,
           "category": "INDIA",
-          "source": "The Guardian · Times of India",
+          "source": "NDTV · BBC News",
           "sourceNames": [
-            "The Guardian",
+            "NDTV",
+            "BBC News"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Adani Group",
+            "BBC (licence fee)"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN",
+            "GB"
+          ],
+          "fundings": [
+            "conglomerate",
+            "state"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.ndtv.com/world-news/reform-or-regime-change-what-global-movements-tell-us-about-protest-goals-12210700#publisher=newsstand",
+          "published": "2026-10-20T11:42:57.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "significant",
+          "score": 11.4,
+          "photoError": "no image matched the story closely enough (searched \"india\")",
+          "photo": null
+        },
+        {
+          "headline": "SHRADDHA DUBEY, LUCKNOW INFLUENCER ACCUSED OF KILLING LOVER, ARRESTED",
+          "display": "Shraddha Dubey, Lucknow Influencer Accused Of Killing Lover, Arrested",
+          "original": "Shraddha Dubey, Lucknow Influencer Accused Of Killing Lover, Arrested",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "NDTV · Times of India · India Today",
+          "sourceNames": [
+            "NDTV",
+            "Times of India",
+            "India Today"
+          ],
+          "corroboration": 3,
+          "republishers": [],
+          "owners": [
+            "Adani Group",
+            "Bennett, Coleman & Co",
+            "Living Media"
+          ],
+          "ownerCount": 3,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate",
+            "commercial"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.ndtv.com/india-news/shraddha-dubey-lucknow-influencer-accused-of-killing-lover-arrested-12211012#publisher=newsstand",
+          "published": "2026-10-20T12:29:49.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 9.9,
+          "photoError": "no image matched the story closely enough (searched \"india\")",
+          "photo": null
+        },
+        {
+          "headline": "CJP’S ABHIJEET DIPKE THANKS DELHI RAMLILA ORGANISERS FOR 'FREE PUBLICITY' OVER COCKROACH",
+          "display": "CJP’s Abhijeet Dipke thanks Delhi Ramlila organisers for 'free publicity' over cockroach",
+          "original": "CJP’s Abhijeet Dipke thanks Delhi Ramlila organisers for 'free publicity' over cockroach effigy",
+          "truncated": true,
+          "usable": true,
+          "category": "INDIA",
+          "source": "The Hindu · Times of India",
+          "sourceNames": [
+            "The Hindu",
             "Times of India"
           ],
           "corroboration": 2,
           "republishers": [],
           "owners": [
-            "Scott Trust",
+            "The Hindu Group (family-held)",
             "Bennett, Coleman & Co"
           ],
           "ownerCount": 2,
           "countries": [
-            "GB",
             "IN"
           ],
           "fundings": [
-            "trust",
+            "commercial",
             "conglomerate"
           ],
+          "unknownOwners": 0,
           "concentration": [],
-          "link": "https://timesofindia.indiatimes.com/world/rest-of-world/kenyan-doomsday-cult-leader-convicted-of-killing-190-children-ordered-followers-to-starve-for-heaven/articleshow/135061043.cms",
-          "published": "2026-10-20T05:26:14.000Z",
+          "link": "https://www.thehindu.com/news/national/cjps-abhijeet-dipke-thanks-delhi-ramlila-organisers-for-free-publicity-over-cockroach-effigy/article71603848.ece",
+          "published": "2026-10-20T12:52:04.000Z",
           "topic": "india",
           "section": "india",
-          "tier": "lead",
-          "score": 15.1,
-          "photoError": "timed out (searched \"india\")",
-          "photo": null
-        },
-        {
-          "headline": "MARCO RUBIO'S INDIA VISIT: TRADE DEAL, RUSSIAN OIL AND KEY MEETINGS ON AGENDA",
-          "display": "Marco Rubio's India visit: Trade deal, Russian oil and key meetings on agenda",
-          "original": "Marco Rubio's India visit: Trade deal, Russian oil and key meetings on agenda",
-          "truncated": false,
-          "usable": true,
-          "category": "INDIA",
-          "source": "Reuters · India Today · DW.com",
-          "sourceNames": [
-            "Reuters",
-            "India Today",
-            "DW.com"
-          ],
-          "corroboration": 3,
-          "republishers": [],
-          "owners": [
-            "Thomson Reuters (Trust Principles)",
-            "Living Media"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "GB",
-            "IN"
-          ],
-          "fundings": [
-            "trust",
-            "commercial"
-          ],
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOMUxJTUNBQ25qVl96MmZ3LWZ6TG5FNGlhZWNFQU1nMWltcU1BVS1wdkNzUWk2WTV3dzdXcjRvTkNxbkt6clpLc2FNTTQtSEd3eTdTQnR2WW1jNUU5Slp3VEtVRjlDVlFUbVlZZmxScDB1Z3BaSUdxNTRJbmtmZ1pwa3EzTUpVcTJlSFVaMW1rXzM2dTBiWEJMdER6UWxIdUJSOFBVNV9TUmQ0bUFHTXJ6ZWJjSVA1T2NZWEZ6bWoydEFfWjhhUHpveG9wSGsyc03SAdQBQVVfeXFMTTUtZGk1TnJVcHZxelpueUdSMks5a1RPVVV3TWpMQk81alZrSjVHM01NVUUyQ1M2SnN",
-          "published": "2026-10-20T06:40:58.000Z",
-          "topic": "india",
-          "section": "india",
-          "tier": "significant",
-          "score": 12,
-          "photoError": "timed out (searched \"Marco Rubio's India\")",
-          "photo": null
-        },
-        {
-          "headline": "INDIA-NEW ZEALAND TRADE PACT KICKS IN",
-          "display": "India-New Zealand trade pact kicks in",
-          "original": "India-New Zealand trade pact kicks in",
-          "truncated": false,
-          "usable": true,
-          "category": "INDIA",
-          "source": "NDTV · YourStory.com",
-          "sourceNames": [
-            "NDTV",
-            "YourStory.com"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "Adani Group"
-          ],
-          "ownerCount": 1,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "conglomerate"
-          ],
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE54d1RhU3VoMXNDeEoyUWhwWmVZQXdwZS1lUmVlY1k0QjJJQ0ZPRW03Q2UtZXZKNlp6R2Jpa29JQU9wbzFSSkI1TU5WcEhtTWdqNmlZZVNuc0Z0WGpyZnlJTXRCZDhLV1dqX2JFMFBRYVJGNHJyR2c?oc=5",
-          "published": "2026-10-20T09:01:48.000Z",
-          "topic": "india",
-          "section": "india",
-          "tier": "significant",
-          "score": 11.4,
-          "photoError": "timed out (searched \"India-New Zealand\")",
+          "tier": "notable",
+          "score": 8.7,
+          "photoError": "timed out (searched \"CJP’s Abhijeet Dipke\")",
           "photo": null
         }
       ],
@@ -1024,47 +958,55 @@
       "width": 1080,
       "height": 1350,
       "sourceNames": [
-        "BBC News",
         "Al Jazeera",
-        "NDTV",
         "The Guardian",
-        "Hindustan Times"
+        "NDTV",
+        "Times of India",
+        "BBC News"
       ],
       "stories": [
         {
-          "headline": "JAPAN LAUNCHES HISTORIC MISSION TO BRING BACK MARS MOON SAMPLES",
-          "display": "Japan launches historic mission to bring back Mars moon samples",
-          "original": "Japan launches historic mission to bring back Mars moon samples",
+          "headline": "UK TO DEPLOY FIGHTER JETS TO SUPPORT SAUDI ARABIA AGAINST HOUTHI ATTACKS",
+          "display": "UK To Deploy Fighter Jets To Support Saudi Arabia Against Houthi Attacks",
+          "original": "UK To Deploy Fighter Jets To Support Saudi Arabia Against Houthi Attacks",
           "truncated": false,
           "usable": true,
           "category": "WORLD NEWS",
-          "source": "BBC News · Al Jazeera",
+          "source": "Al Jazeera · The Guardian · NDTV",
           "sourceNames": [
-            "BBC News",
-            "Al Jazeera"
+            "Al Jazeera",
+            "The Guardian",
+            "NDTV",
+            "Times of India"
           ],
-          "corroboration": 2,
+          "corroboration": 4,
           "republishers": [],
           "owners": [
-            "BBC (licence fee)",
-            "Government of Qatar"
+            "Government of Qatar",
+            "Scott Trust",
+            "Adani Group",
+            "Bennett, Coleman & Co"
           ],
-          "ownerCount": 2,
+          "ownerCount": 4,
           "countries": [
+            "QA",
             "GB",
-            "QA"
+            "IN"
           ],
           "fundings": [
-            "state"
+            "state",
+            "trust",
+            "conglomerate"
           ],
+          "unknownOwners": 0,
           "concentration": [],
-          "link": "https://www.aljazeera.com/video/newsfeed/2026/10/20/japan-launches-historic-mission-to-bring-back-mars-moon-samples?traffic_source=rss",
-          "published": "2026-10-20T04:08:33.000Z",
+          "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNNGFNUlo2TjEwU0ZuOUd1OHROaVR2MjhkSkJvWnh3T2J5ZU0zQkoxNkR6WHZBWVFNZjFJUldYbjcyeXNpanJNcWM5czZDRzBXdkpnRmwtMm4zNnczV3h3eUpVa055RFNYNHd0aEhrY1FsT19YTGZBcE1jcVB6TFpwNXVFUGZ2aG51dWZ3dWpMVDV0OUZDNUd6MHQtaHNNeUdwTDQxLUctNklBWFRkZFBIZlljd9IBuwFBVV95cUxQME51LWxuYkpvczV1eUYteVVMWURJNTh3UGMwNlI5RFA3cWZmTlhPSTMyczUyV0JiUnJLaWl3bmQ3N0h2QjROTnJObk0zbk1kRDJPSEd",
+          "published": "2026-10-20T12:34:48.000Z",
           "topic": "world",
           "section": "world",
-          "tier": "significant",
-          "score": 11.55,
-          "photoError": "timed out (searched \"Japan\")",
+          "tier": "notable",
+          "score": 11.4,
+          "photoError": "timed out (searched \"Support Saudi Arabia\")",
           "photo": null
         },
         {
@@ -1094,55 +1036,53 @@
             "conglomerate",
             "state"
           ],
+          "unknownOwners": 0,
           "concentration": [],
           "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNaUVKbkZkSVN4bmdzT1I0dzg4b2dRaHJtVEpPWXRTM0xLdTlxQ1lrUVB2RF9vQXdtMTBabXB5UWhGRGM3TzhIRTBYZmo3MDRyX0VJTHJQZnBvU1hyOHlzNmUwSS04a3BDZHVMdzNocXlBSUItbXJlZ0dCUEMzWDMtYV84Tng3OWx3RkhtWU9Kc0NQcEVlcnZ0MGJ4c9IBowFBVV95cUxNNWc0S0JMcTh6SkwxX2lvN211d2VMR3VSWVYtTjVVUjVxdW92a0VOQVlGZjROMG9GNTVQTkM4VlpxNG5rUWZSTElvcjVrY3h6MUdOSVdBYVRxelNSczRnd3B2X1VYa280ckd5ZHR",
           "published": "2026-10-20T04:31:33.000Z",
           "topic": "world",
           "section": "world",
           "tier": "significant",
-          "score": 11.1,
-          "photoError": "timed out (searched \"US Bars\")",
+          "score": 10.65,
+          "photoError": "no image matched the story closely enough (searched \"US Bars\")",
           "photo": null
         },
         {
-          "headline": "ALBERTA VOTERS REJECT PLAN FOR REFERENDUM TO LEAVE CANADA",
-          "display": "Alberta voters reject plan for referendum to leave Canada",
-          "original": "Alberta voters reject plan for referendum to leave Canada",
+          "headline": "MYANMAR’S DETAINED EX-LEADER SUU KYI RECEIVES PACKAGE FROM KING CHARLES III",
+          "display": "Myanmar’s detained ex-leader Suu Kyi receives package from King Charles III",
+          "original": "Myanmar’s detained ex-leader Suu Kyi receives package from King Charles III",
           "truncated": false,
           "usable": true,
           "category": "WORLD NEWS",
-          "source": "Al Jazeera · The Guardian · Hindustan Times",
+          "source": "Al Jazeera · The Guardian",
           "sourceNames": [
             "Al Jazeera",
-            "The Guardian",
-            "Hindustan Times"
+            "The Guardian"
           ],
-          "corroboration": 3,
+          "corroboration": 2,
           "republishers": [],
           "owners": [
             "Government of Qatar",
-            "Scott Trust",
-            "HT Media / KK Birla family"
+            "Scott Trust"
           ],
-          "ownerCount": 3,
+          "ownerCount": 2,
           "countries": [
             "QA",
-            "GB",
-            "IN"
+            "GB"
           ],
           "fundings": [
             "state",
-            "trust",
-            "conglomerate"
+            "trust"
           ],
+          "unknownOwners": 0,
           "concentration": [],
-          "link": "https://www.theguardian.com/world/2026/oct/20/canada-alberta-rejects-independence-succession-referendum",
-          "published": "2026-10-20T09:02:43.000Z",
+          "link": "https://www.aljazeera.com/news/2026/10/20/myanmars-detained-ex-leader-suu-kyi-receives-package-from-king-charles-iii?traffic_source=rss",
+          "published": "2026-10-20T11:07:55.000Z",
           "topic": "world",
           "section": "world",
           "tier": "notable",
-          "score": 9.9,
-          "photoError": "timed out (searched \"Alberta\")",
+          "score": 8.1,
+          "photoError": "timed out (searched \"King Charles III\")",
           "photo": null
         }
       ],
@@ -1162,46 +1102,12 @@
       "width": 1080,
       "height": 1350,
       "sourceNames": [
+        "BBC News",
         "The Guardian",
-        "BBC News"
+        "The Hindu",
+        "Business Standard"
       ],
       "stories": [
-        {
-          "headline": "CHANCELLOR REJECTS CALLS TO RAISE CAPITAL GAINS TAX IN BUDGET",
-          "display": "Chancellor rejects calls to raise Capital Gains Tax in Budget",
-          "original": "Chancellor rejects calls to raise Capital Gains Tax in Budget",
-          "truncated": false,
-          "usable": true,
-          "category": "BUSINESS",
-          "source": "The Guardian · BBC News",
-          "sourceNames": [
-            "The Guardian",
-            "BBC News"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "Scott Trust",
-            "BBC (licence fee)"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "GB"
-          ],
-          "fundings": [
-            "trust",
-            "state"
-          ],
-          "concentration": [],
-          "link": "https://www.bbc.co.uk/news/articles/c50me4w4x1vyo?at_medium=RSS&at_campaign=rss",
-          "published": "2026-10-20T08:44:56.000Z",
-          "topic": "business",
-          "section": "business",
-          "tier": "notable",
-          "score": 8.4,
-          "photoError": "timed out (searched \"Capital Gains Tax\")",
-          "photo": null
-        },
         {
           "headline": "BURNHAM VOWS END TO 'RIP-OFF PARKING CHARGES' UNDER NEW RULES",
           "display": "Burnham vows end to 'rip-off parking charges' under new rules",
@@ -1228,14 +1134,51 @@
             "state",
             "trust"
           ],
+          "unknownOwners": 0,
           "concentration": [],
           "link": "https://www.bbc.co.uk/news/articles/ck87ze7wl4qno?at_medium=RSS&at_campaign=rss",
           "published": "2026-10-20T08:55:02.000Z",
           "topic": "business",
           "section": "business",
           "tier": "notable",
-          "score": 8.4,
+          "score": 8.1,
           "photoError": "timed out (searched \"office towers business district\")",
+          "photo": null
+        },
+        {
+          "headline": "INDIA-NEW ZEALAND FTA COMES INTO FORCE: WHAT CHANGES FROM TODAY",
+          "display": "India-New Zealand FTA comes into force: What changes from today",
+          "original": "India-New Zealand FTA comes into force: What changes from today",
+          "truncated": false,
+          "usable": true,
+          "category": "BUSINESS",
+          "source": "The Hindu · Business Standard",
+          "sourceNames": [
+            "The Hindu",
+            "Business Standard"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "The Hindu Group (family-held)",
+            "Business Standard Pvt Ltd"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNNHdrQ2hIMTJXZWl6aFFfTnY5MTEzWGh2b21McUZCaHZFR0lqZ0p3N0lJUHRZS2ZzOWJPRlN0ZUdqcDVkV1VLMVRJWnpEWjU0WndpWkNYbFFmSXlkWUQ3UEdKWG9JM2QwdXlGV2t3YVlGTHlESGllOG82dzV4b1VTcTdaWDk5WWZwOHFEUzB0dnB1YnJvaXY2eE5qTHJkYk1NUTlYNWNGNFRJT2lDaWZsNWJBbDlWeXJmWVdmM3ZzSFlQV0ZzNmJpZtIBzgFBVV95cUxPcVBsdjVlSlBxRDlCeXZ4RjZUTXV5dFJvekNXQnpISWc5RGZZdk1fQUgzbktBUHR1Tng3OTZZWkp",
+          "published": "2026-10-20T09:34:23.000Z",
+          "topic": "business",
+          "section": "business",
+          "tier": "notable",
+          "score": 7.5,
+          "photoError": "timed out (searched \"India-New Zealand FTA\")",
           "photo": null
         }
       ],
@@ -1245,91 +1188,55 @@
     },
     {
       "kind": "carousel",
-      "headline": "2 stories",
+      "headline": "1 stories",
       "images": [
         "data/pending/tech/slide-1.png",
-        "data/pending/tech/slide-2.png",
-        "data/pending/tech/slide-3.png"
+        "data/pending/tech/slide-2.png"
       ],
       "image": "data/pending/tech/slide-1.png",
       "width": 1080,
       "height": 1350,
       "sourceNames": [
-        "The New Indian Express",
-        "India Today",
-        "Greater Kashmir",
-        "PR Newswire",
-        "www.marketscreener.com"
+        "BBC News",
+        "The Indian Express"
       ],
       "stories": [
         {
-          "headline": "INDIA SEEKS GLOBAL VIGILANCE REGARDING TRANSFER OF SENSITIVE WEAPONS TECHNOLOGY",
-          "display": "India seeks global vigilance regarding transfer of sensitive weapons technology",
-          "original": "India seeks global vigilance regarding transfer of sensitive weapons technology to terror-linked actors",
-          "truncated": true,
-          "usable": true,
-          "category": "TECHNOLOGY",
-          "source": "The New Indian Express · India Today · Greater Kashmir",
-          "sourceNames": [
-            "The New Indian Express",
-            "India Today",
-            "Greater Kashmir"
-          ],
-          "corroboration": 3,
-          "republishers": [],
-          "owners": [
-            "Living Media"
-          ],
-          "ownerCount": 1,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "commercial"
-          ],
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxNUjN4VVp1a1dsa1daYUFJX193enlfeFFsS1lMTTUxNjNXXzI1MHIzcFRjQ25HY2tud1pyOUcxRmozVlhINTBQeDFBb0RuenJBdjlMVU1UaUctaXFMakMzSEgzY0JVS0lwRm5td1BUNXo4RGpDN1oybnNkZ1hOYmVMa1lhenZjcHgxR2p1R0tsT1I5dWRHeUpvU1ZhQllpb2pvcUdHamh6WkhScDNjY0k3RFR0N1VSaEo2X1hQYmxkT3E3S3ZKSTV4NXZCdVVFbWVaRE1JTi1mcFlJREhvS2hXTEQ3Mkt2ZG8x0gHoAUFVX3lxTE1SM3hVWnVrV2xrV1phQUlfX3d6eV94UWx",
-          "published": "2026-10-20T04:23:57.000Z",
-          "topic": "tech",
-          "section": "tech",
-          "tier": "significant",
-          "score": 12,
-          "photo": {
-            "path": "data/pending/tech/photo-tech-2.jpg",
-            "credit": "File photo: Pranav011 at en.wikipedia / CC BY 3.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=16992577",
-            "query": "India",
-            "relevance": 0.13,
-            "title": "An Unripe Mango Of Ratnagiri (India)"
-          }
-        },
-        {
-          "headline": "COGNIZANT TECHNOLOGY SOLUTIONS CHOSEN",
-          "display": "Cognizant Technology Solutions Chosen",
-          "original": "Cognizant Technology Solutions Chosen by Ingenico as Technology Partner",
+          "headline": "GOOGLE CLOUD SAYS 'POWER EVENT' BEHIND OUTAGE HITTING UK BANKS AND WEBSITES",
+          "display": "Google Cloud says 'power event' behind outage hitting UK banks and websites",
+          "original": "Google Cloud says 'power event' behind outage hitting UK banks and websites",
           "truncated": false,
           "usable": true,
           "category": "TECHNOLOGY",
-          "source": "PR Newswire · www.marketscreener.com",
+          "source": "BBC News · The Indian Express",
           "sourceNames": [
-            "PR Newswire",
-            "www.marketscreener.com"
+            "BBC News",
+            "The Indian Express"
           ],
           "corroboration": 2,
           "republishers": [],
-          "owners": [],
-          "ownerCount": 0,
-          "countries": [],
-          "fundings": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Indian Express Group"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB",
+            "IN"
+          ],
+          "fundings": [
+            "state",
+            "commercial"
+          ],
+          "unknownOwners": 0,
           "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQVmFoQzZYQjhnZnlLTFJxcVVmMVNjelFPQU1Eem5fRFpMcHRCVUFwWEhld0ZBbWtmR01NS3owOVpTUTZTRFd3LUJTSVZuSnpjZ0lsRlpGajhqYzFadFJkUERpYkt1UmNrZUFFQkFTR2NCdFV1X0VVTjRHYjhPbERDSHhJaGlCdlZzSnB1Y0V3QW1OeThfNkQyUC1YcWl5QmdadENBbkxhWVE4SmZaTzI5MjVNSnJXRDE3STNVV05LRkRaUQ?oc=5",
-          "published": "2026-10-20T09:09:24.000Z",
+          "link": "https://www.bbc.co.uk/news/articles/cxdd8mm6qy4mo?at_medium=RSS&at_campaign=rss",
+          "published": "2026-10-20T12:09:25.000Z",
           "topic": "tech",
           "section": "tech",
-          "tier": "notable",
-          "score": 7.8,
-          "photoError": "timed out (searched \"Cognizant Technology Solutions\")",
+          "tier": "significant",
+          "score": 11.25,
+          "photoError": "no image matched the story closely enough (searched \"technology data centre\")",
           "photo": null
         }
       ],
@@ -1341,80 +1248,28 @@
       "kind": "carousel",
       "headline": "1 stories",
       "images": [
-        "data/pending/science/slide-1.png",
-        "data/pending/science/slide-2.png"
-      ],
-      "image": "data/pending/science/slide-1.png",
-      "width": 1080,
-      "height": 1350,
-      "sourceNames": [
-        "Research Information",
-        "TheWire.in"
-      ],
-      "stories": [
-        {
-          "headline": "DIGITAL SCIENCE AND SUNMEDIA PARTNER ON RESEARCH IMPACT",
-          "display": "Digital Science and Sunmedia partner on research impact",
-          "original": "Digital Science and Sunmedia partner on research impact",
-          "truncated": false,
-          "usable": true,
-          "category": "SCIENCE",
-          "source": "Research Information · TheWire.in",
-          "sourceNames": [
-            "Research Information",
-            "TheWire.in"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [],
-          "ownerCount": 0,
-          "countries": [],
-          "fundings": [],
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNdldBaU0tZUc0UnNzUFJmS1otdFVYa1BmT1NFQXZySDNpQm82WnpvakJpdGhjRmRHRk5JQnFNSlFmc2o5M21MMUt5LU5QU2pjaWt3Ymh3ZGs1THBIZTYyVGlCdmswMEJYYUtrY1FtVGhrYXhOR21JcFAyUlYtcmJfMXRma3dXNEg3Q0RrV2RwampWakxPMUI2OW9VQ2ZwVzg?oc=5",
-          "published": "2026-10-20T08:47:19.000Z",
-          "topic": "science",
-          "section": "science",
-          "tier": "notable",
-          "score": 7.95,
-          "photoError": "timed out (searched \"Digital Science\")",
-          "photo": null
-        }
-      ],
-      "usable": true,
-      "section": "science",
-      "sectionLabel": "SCIENCE"
-    },
-    {
-      "kind": "carousel",
-      "headline": "2 stories",
-      "images": [
         "data/pending/health/slide-1.png",
-        "data/pending/health/slide-2.png",
-        "data/pending/health/slide-3.png"
+        "data/pending/health/slide-2.png"
       ],
       "image": "data/pending/health/slide-1.png",
       "width": 1080,
       "height": 1350,
       "sourceNames": [
-        "The Economist",
-        "Think Global Health",
-        "MorungExpress",
-        "Reuters",
-        "American Hospital Association"
+        "HHS.gov",
+        "Hopkins Bloomberg Public Health Magazine"
       ],
       "stories": [
         {
-          "headline": "GLOBAL HEALTH RESEARCH IN THE AMERICA FIRST ERA",
-          "display": "Global Health Research in the America First Era",
-          "original": "Global Health Research in the America First Era",
-          "truncated": false,
+          "headline": "HEALTH AND ECONOMIC BENEFITS ASSOCIATED WITH INCREASED KIDNEY TRANSPLANTATION FOLLOWING",
+          "display": "Health and Economic Benefits Associated with Increased Kidney Transplantation Following",
+          "original": "Health and Economic Benefits Associated with Increased Kidney Transplantation Following the Advancing American Kidney Health Initiative in 2019",
+          "truncated": true,
           "usable": true,
           "category": "HEALTH",
-          "source": "The Economist · Think Global Health",
+          "source": "HHS.gov · Hopkins Bloomberg Public Health Magazine",
           "sourceNames": [
-            "The Economist",
-            "Think Global Health"
+            "HHS.gov",
+            "Hopkins Bloomberg Public Health Magazine"
           ],
           "corroboration": 2,
           "republishers": [],
@@ -1422,56 +1277,15 @@
           "ownerCount": 0,
           "countries": [],
           "fundings": [],
+          "unknownOwners": 2,
           "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNbThrU0VFaHVVa2ZncWtnd0w1V1p2S1dnYTd2SHdYX1FadkdWTk1yQ3FSZWtodHo4WFlCSFZPNzVnNzhfVS1jQkZ6VlRjSFpISGFUMW01ckkyTDZsMXhLNU9TSWhESmh5bjZQOFZUWGtSVERBazNVNWI4VnV2RWxPdmlmbUN6S3h2cUk3NWs5a290WG8?oc=5",
-          "published": "2026-10-19T20:23:57.000Z",
-          "topic": "health",
-          "section": "health",
-          "tier": "significant",
-          "score": 9.825,
-          "photo": {
-            "path": "data/pending/health/photo-health-2.jpg",
-            "credit": "File photo: Phil Whitehouse from London, United King / CC BY 2.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=9523361",
-            "query": "America",
-            "relevance": 0.33,
-            "title": "Copa America-2004-02"
-          }
-        },
-        {
-          "headline": "TRUMP SIGNS ORDER TO BOOST WOMEN'S HEALTH",
-          "display": "Trump signs order to boost women's health",
-          "original": "Trump signs order to boost women's health",
-          "truncated": false,
-          "usable": true,
-          "category": "HEALTH",
-          "source": "MorungExpress · Reuters · American Hospital Association",
-          "sourceNames": [
-            "MorungExpress",
-            "Reuters",
-            "American Hospital Association"
-          ],
-          "corroboration": 3,
-          "republishers": [],
-          "owners": [
-            "Thomson Reuters (Trust Principles)"
-          ],
-          "ownerCount": 1,
-          "countries": [
-            "GB"
-          ],
-          "fundings": [
-            "trust"
-          ],
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9pcHRhN1FZQnVlWTJqNjJmVDJfUkd4MXNGaUYzY2l3TFRQMGxLbWVQc3FLd2lKSktKTlp1VTRxYzV0UFlkMmVXRGZyVzNNRjVIWHdkcW1TWG1ZYVJHNXFCWVE3T0V4Q3ZBdzZsZzBsUkZIcGF6?oc=5",
-          "published": "2026-10-20T06:21:25.000Z",
+          "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQaWZSSWVubGhkMHpmWUtZdDRXVktxX0kxUDNCV2wxWHBEWGgwdGxzUExRTUU5UmJoQkRrS25vLUlQQkxpU3VkTXUxV21WWnRfbWlLcWRQazJBenBqS2kxZW81NUpCbW51ZmFfWXdNX0k1cVc2LUlxZ3dNeGJCcGNsSlppSi1KVkZrUTUtbTZ2SzhWbk5MeS1yamlOa3IxQWNOb3NsMndXZk5jYTJkb1RTbWJfQlRxMm94cnpzUkpzcFcyVlN6?oc=5",
+          "published": "2026-10-20T11:38:07.000Z",
           "topic": "health",
           "section": "health",
           "tier": "notable",
-          "score": 9.15,
-          "photoError": "timed out (searched \"Trump\")",
+          "score": 7.95,
+          "photoError": "timed out (searched \"Health\")",
           "photo": null
         }
       ],
