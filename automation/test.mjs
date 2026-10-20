@@ -748,6 +748,22 @@ ok('every refusal is attributed to the rule that made it',
     [r, rejectionReason({ title: t, published: Date.now() }, { maxAgeHours: 24 })])
     .filter(([a, b]) => a !== b)));
 
+/* Found by the rejection log on its first live run: the finance gate was
+   throwing away four genuine finance stories a morning, because it had never
+   heard of KOSPI, "quarterly results", "economy" or "housing". Exactly the
+   silent false positive the log exists to surface. */
+ok('the finance gate knows indices beyond the ones it was born with',
+  isTopical("Korea's KOSPI crashes another 5% as AI rout deepens")
+  && isTopical('Hang Seng closes lower for a third session'));
+ok('the finance gate knows the vocabulary of the economy',
+  isTopical("Meta's AI spending, Muse adoption in focus for quarterly results")
+  && isTopical('China flags APEC role as key for a challenged global economy')
+  && isTopical('Number of branded housing projects in India set to jump 2-fold'));
+ok('widening the gate did not open it to everything',
+  !isTopical('Claude cracks a 25-year NSA number mystery')
+  && !isTopical('Best places to eat in Mumbai this weekend'),
+  'a crypto site\u2019s tech section is what the gate is for');
+
 ok('a story the channel would run is not refused',
   rejectionReason({ title: 'Earthquake kills at least 40 in northern Afghanistan',
                     published: Date.now() }, { maxAgeHours: 24 }) === null

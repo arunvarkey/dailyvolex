@@ -41,6 +41,14 @@ const TOPICAL = [
   'market','markets','stock','stocks','share','shares','equity','equities','index','indices',
   'bond','bonds','yield','yields','commodity','commodities','oil','gold','futures','etf','ipo',
   'nasdaq','dow','s&p','sensex','nifty','ftse','nikkei','forex','currency','dollar','rupee','euro','yen',
+  // The rejection log caught this gate refusing "Korea's KOSPI crashes
+  // another 5%" — a stock index it had never heard of. Indices and exchanges
+  // the original list missed:
+  'kospi','hang seng','dax','cac','asx','moex','bovespa','tsx','sse','nse','bse','sensex',
+  // and the vocabulary of the economy, which it also lacked entirely:
+  'economy','economic','economist','quarterly','results','housing','property','realty',
+  'real estate','trade','exports','imports','manufacturing','output','jobs','unemployment',
+  'wages','consumer','retail','sales','growth','demand','supply','capex','spending',
   // crypto
   'bitcoin','btc','ethereum','eth','crypto','cryptocurrency','blockchain','token','tokens','stablecoin',
   'defi','exchange','mining','miner','wallet','altcoin','solana','xrp','binance','coinbase','custody',
