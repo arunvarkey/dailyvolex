@@ -104,6 +104,9 @@ jobs:
                   warnings.push(`${label}: "${(s.display || '').slice(0, 44)}…" has only ONE newsroom behind it.`);
                 if (s.republishers?.length)
                   warnings.push(`${label}: also carried by ${s.republishers.join(', ')} — not counted as corroboration.`);
+                // Who owns the newsrooms that agree with each other.
+                for (const c of (s.concentration || []))
+                  warnings.push(`${label}: ${c}`);
                 if (s.photoError)
                   warnings.push(`${label}: no photo for "${(s.display || '').slice(0, 36)}…" — ${s.photoError}`);
               }
@@ -118,6 +121,8 @@ jobs:
                 stories.map(s =>
                   `- ${s.tier ? `\`${s.tier}\` ` : ''}**${s.display || s.headline}**\n  _${s.source}_ · `
                   + `${s.corroboration} independent newsroom${s.corroboration > 1 ? 's' : ''}`
+                  + (s.ownerCount ? `, ${s.ownerCount} owner${s.ownerCount > 1 ? 's' : ''}` : '')
+                  + (s.countries?.length ? ` (${s.countries.join('/')})` : '')
                   + (s.truncated ? ' · shortened to fit' : '')
                   + (s.link ? `\n  ${s.link}` : '')).join('\n'),
                 '',

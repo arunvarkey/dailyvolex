@@ -42,6 +42,72 @@ const ALIASES = {
   'ap': 'associated press', 'pti': 'press trust of india',
 };
 
+/* ── Who owns the newsroom ─────────────────────────────────────
+ *
+ * Counting newsrooms was the first half. The second half is that three Indian
+ * mastheads owned by three conglomerates, all of them with large businesses
+ * the government regulates, are not three independent checks on a story in the
+ * way Reuters, the Associated Press and a trust-owned paper are. Ownership is
+ * a fact about a source, and the reader is entitled to it.
+ *
+ * `funding` is the part that actually matters for independence:
+ *   conglomerate  owned inside a large commercial group with other interests
+ *   commercial    a media company, listed or private, media is the business
+ *   trust         a trust or foundation holds it, structurally insulated
+ *   cooperative   owned by its members, who are other newsrooms
+ *   state         funded by a government, at whatever arm's length
+ *   reader        subscriptions and donations, no large owner
+ *
+ * None of these labels is a verdict. A state broadcaster can be excellent and
+ * a reader-funded site can be careless. They are stated so the reader can
+ * weigh a story carried by one kind of outlet only.
+ *
+ * Sourced from company filings and Reporters Without Borders' India country
+ * profile. Ownership moves — this register needs checking, not trusting.
+ */
+export const OWNERS = {
+  // ── India ──
+  'times group':      { owner: 'Bennett, Coleman & Co',      funding: 'conglomerate', country: 'IN' },
+  'ht media':         { owner: 'HT Media / KK Birla family', funding: 'conglomerate', country: 'IN' },
+  'network18':        { owner: 'Reliance Industries',        funding: 'conglomerate', country: 'IN' },
+  'ndtv':             { owner: 'Adani Group',                funding: 'conglomerate', country: 'IN' },
+  'zee':              { owner: 'Essel Group',                funding: 'conglomerate', country: 'IN' },
+  'india today':      { owner: 'Living Media',               funding: 'commercial',   country: 'IN' },
+  'the hindu':        { owner: 'The Hindu Group (family-held)', funding: 'commercial', country: 'IN' },
+  'indian express':   { owner: 'Indian Express Group',       funding: 'commercial',   country: 'IN' },
+  'deccan herald':    { owner: 'Printers (Mysore)',          funding: 'commercial',   country: 'IN' },
+  'telegraph india':  { owner: 'ABP Group',                  funding: 'commercial',   country: 'IN' },
+  'business standard':{ owner: 'Business Standard Pvt Ltd',  funding: 'commercial',   country: 'IN' },
+  'prasar bharati':   { owner: 'Government of India',        funding: 'state',        country: 'IN' },
+  'press trust of india': { owner: 'PTI (newspaper cooperative)', funding: 'cooperative', country: 'IN' },
+  'ani':              { owner: 'ANI Media Pvt Ltd',          funding: 'commercial',   country: 'IN' },
+  'the wire':         { owner: 'Foundation for Independent Journalism', funding: 'reader', country: 'IN' },
+  'scroll':           { owner: 'Scroll Media',               funding: 'reader',       country: 'IN' },
+  'newslaundry':      { owner: 'Newslaundry Media',          funding: 'reader',       country: 'IN' },
+
+  // ── International ──
+  'reuters':          { owner: 'Thomson Reuters (Trust Principles)', funding: 'trust', country: 'GB' },
+  'associated press': { owner: 'AP (member cooperative)',    funding: 'cooperative',  country: 'US' },
+  'agence france presse': { owner: 'AFP',                    funding: 'cooperative',  country: 'FR' },
+  'bbc':              { owner: 'BBC (licence fee)',          funding: 'state',        country: 'GB' },
+  'al jazeera':       { owner: 'Government of Qatar',        funding: 'state',        country: 'QA' },
+  'deutsche welle':   { owner: 'Government of Germany',      funding: 'state',        country: 'DE' },
+  'guardian':         { owner: 'Scott Trust',                funding: 'trust',        country: 'GB' },
+  'the guardian':     { owner: 'Scott Trust',                funding: 'trust',        country: 'GB' },
+  'financial times':  { owner: 'Nikkei',                     funding: 'commercial',   country: 'GB' },
+  'wall street journal': { owner: 'News Corp',               funding: 'conglomerate', country: 'US' },
+  'new york times':   { owner: 'New York Times Company',     funding: 'commercial',   country: 'US' },
+  'bloomberg':        { owner: 'Bloomberg LP',               funding: 'conglomerate', country: 'US' },
+  'cnbc':             { owner: 'Comcast / NBCUniversal',     funding: 'conglomerate', country: 'US' },
+  'cnn':              { owner: 'Warner Bros. Discovery',     funding: 'conglomerate', country: 'US' },
+};
+
+const UNKNOWN_OWNER = { owner: null, funding: 'unknown', country: null };
+
+export function ownerOf(name) {
+  return OWNERS[canonicalSource(name)] || UNKNOWN_OWNER;
+}
+
 /* Sites that carry other outlets' copy rather than reporting. A story
    appearing on all of them is one story that syndicated well, not a story
    several newsrooms stood behind. They are still named in the attribution —
@@ -86,9 +152,63 @@ export function independentSources(names = []) {
     if (!reporting.has(key)) reporting.set(key, name);
   }
 
+  const profiles = [...reporting.keys()].map(k => ({ key: k, ...(OWNERS[k] || UNKNOWN_OWNER) }));
+  // Distinct owners, not distinct mastheads. Three Indian conglomerates are
+  // three owners; three titles belonging to one of them is one.
+  const owners = new Set(profiles.map(p => p.owner).filter(Boolean));
+  const countries = new Set(profiles.map(p => p.country).filter(Boolean));
+  const fundings = new Set(profiles.map(p => p.funding).filter(f => f && f !== 'unknown'));
+
   return {
     count: reporting.size,
     names: [...reporting.values()],     // one name per newsroom, as written
     republishers: carried,
+    // ── Ownership, as a fact about the sources rather than a verdict ──
+    owners: [...owners],
+    ownerCount: owners.size,
+    countries: [...countries],
+    fundings: [...fundings],
+    unknownOwners: profiles.filter(p => !p.owner).length,
   };
+}
+
+/* Is the corroboration all of one kind?
+ *
+ * Three mastheads owned by three conglomerates in one country, every one of
+ * them with large businesses that government regulates, is not the same check
+ * on a story as Reuters, the Associated Press and a trust-owned paper. This
+ * does not say the story is wrong — it says what the agreement is worth, and
+ * it belongs in front of whoever is approving the post.
+ *
+ * Says nothing at all when only one or two outlets carry a story: that is
+ * already flagged as thin corroboration, and two more warnings about the same
+ * two outlets is noise.
+ */
+export function concentrationWarnings(sources = []) {
+  const s = independentSources(sources);
+  const out = [];
+  if (s.count < 2) return out;             // thin corroboration is flagged already
+
+  const known = s.count - s.unknownOwners;
+
+  if (known >= 2 && s.ownerCount === 1)
+    out.push(`All ${known} outlets carrying this share one owner (${s.owners[0]}).`);
+
+  if (known >= 3 && s.countries.length === 1 && s.fundings.length === 1
+      && s.fundings[0] === 'conglomerate')
+    out.push(`Every outlet carrying this is a ${s.countries[0]} conglomerate-owned newsroom —`
+      + ` no wire service, trust-owned or reader-funded outlet has it.`);
+
+  // Two governments' broadcasters agreeing is corroboration; one government's
+  // outlets agreeing with themselves is not.
+  if (known >= 2 && s.fundings.length === 1 && s.fundings[0] === 'state'
+      && s.countries.length === 1)
+    out.push(`Only ${s.countries[0]} state-funded outlets are carrying this`
+      + ` (${s.names.join(', ')}).`);
+
+  if (s.count >= 3 && s.unknownOwners === s.count)
+    out.push(`No ownership is recorded for any outlet carrying this —`
+      + ` the corroboration cannot be checked for independence.`);
+
+  return out;
 }

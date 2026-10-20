@@ -12,7 +12,8 @@ import { similarity, cluster, selectStories, selectSections, isRepeat, isTopical
          isSpeculation, isJunk, isPressRelease, rankClusters } from './lib/select.mjs';
 import { sectionOf, sectionLabel, SECTIONS } from './lib/sections.mjs';
 import { makeHeadline, tidy, sourceLine, categoryFor } from './lib/headline.mjs';
-import { canonicalSource, isRepublisher, independentSources } from './lib/outlets.mjs';
+import { canonicalSource, isRepublisher, independentSources,
+         ownerOf, concentrationWarnings } from './lib/outlets.mjs';
 import { buildCaption } from './caption.mjs';
 import { buildCorrection, correctionCaption, findOriginal } from './correct.mjs';
 import { isUsable, pickBest, creditFor, subjectFor, findImage, backdropFor, isSensitive,
@@ -663,6 +664,69 @@ ok('sections respect the no-repeats history', (() => {
 ok('a topic with no section of its own is still reachable',
   sectionOf('india') === 'india' && sectionOf('crypto') === 'business'
   && sectionOf('something-new') === 'top');
+
+/* ── Who owns the newsrooms ───────────────────────────────────── */
+/* Counting newsrooms was half of it. Three Indian mastheads owned by three
+   conglomerates, every one with large businesses the government regulates,
+   are not the check on a story that Reuters, the AP and a trust-owned paper
+   are. Ownership is a fact about a source and belongs in front of whoever is
+   approving the post. */
+
+ok('an outlet carries its owner and how it is funded',
+  ownerOf('NDTV').funding === 'conglomerate'
+  && ownerOf('Moneycontrol').owner === 'Reliance Industries'
+  && ownerOf('Reuters').funding === 'trust'
+  && ownerOf('Associated Press').funding === 'cooperative'
+  && ownerOf('BBC News').funding === 'state');
+ok('ownership is found through a spelling variant',
+  ownerOf('The Times of India').owner === ownerOf('Economic Times').owner,
+  'both are Bennett, Coleman');
+ok('an outlet nobody has recorded is unknown, not assumed',
+  ownerOf('Some Site Nobody Listed').funding === 'unknown'
+  && ownerOf('Some Site Nobody Listed').owner === null);
+
+ok('owners are counted, not mastheads', (() => {
+  const r = independentSources(['News18', 'CNN News18', 'Firstpost']);
+  return r.count === 1 && r.ownerCount === 1;
+})(), 'three Network18 titles are one newsroom and one owner');
+ok('genuinely separate owners count separately', (() => {
+  const r = independentSources(['Reuters', 'Associated Press', 'The Hindu']);
+  return r.count === 3 && r.ownerCount === 3 && r.countries.length === 3
+    && r.fundings.length === 3;
+})());
+
+ok('three conglomerates in one country is flagged as what it is',
+  concentrationWarnings(['NDTV', 'Times of India', 'Moneycontrol'])
+    .some(w => /conglomerate-owned/.test(w)),
+  JSON.stringify(concentrationWarnings(['NDTV', 'Times of India', 'Moneycontrol'])));
+ok('a wire, a cooperative and a trust is not flagged',
+  concentrationWarnings(['Reuters', 'Associated Press', 'The Guardian']).length === 0);
+/* Two governments' broadcasters agreeing is corroboration. One government's
+   outlets agreeing with themselves is not. */
+ok('two different states agreeing is not flagged',
+  concentrationWarnings(['BBC News', 'Al Jazeera']).length === 0);
+ok('one state’s own outlets agreeing is flagged',
+  concentrationWarnings(['DD India', 'Prasar Bharati', 'All India Radio'])
+    .some(w => /state-funded/.test(w))
+  || independentSources(['DD India', 'Prasar Bharati', 'All India Radio']).count === 1,
+  'they fold to one newsroom, which is itself the right answer');
+ok('outlets with no recorded owner say so rather than passing silently',
+  concentrationWarnings(['Site A', 'Site B', 'Site C'])
+    .some(w => /No ownership is recorded/.test(w)));
+ok('a thinly carried story is not double-warned',
+  concentrationWarnings(['NDTV']).length === 0,
+  'one outlet is already flagged as thin corroboration');
+
+ok('ownership reaches the story record', (() => {
+  const t = Date.now();
+  const mk = (title, source) => ({ title, source, topic: 'india', published: t - 600000, weight: 1 });
+  const [chosen] = selectStories([
+    mk('Cabinet approves the port expansion scheme', 'NDTV'),
+    mk('Cabinet approves port expansion scheme', 'Times of India'),
+    mk('Cabinet clears port expansion scheme', 'Moneycontrol'),
+  ], { count: 1, now: t });
+  return chosen && chosen.ownerCount === 3 && chosen.concentration.length > 0;
+})(), 'the approval issue cannot show what the ranking never recorded');
 
 ok('sources are named', sourceLine(['CoinDesk', 'Reuters']) === 'CoinDesk · Reuters');
 ok('the headline overrides the feed when it plainly disagrees',

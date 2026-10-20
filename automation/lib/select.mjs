@@ -6,7 +6,7 @@
  * putting something false out under the channel's name.
  */
 
-import { independentSources } from './outlets.mjs';
+import { independentSources, concentrationWarnings } from './outlets.mjs';
 import { sortIntoSections } from './sections.mjs';
 import { tierOf, TIER_POINTS, TIERS } from './importance.mjs';
 
@@ -237,6 +237,14 @@ export function rankClusters(clusters, { now = Date.now() } = {}) {
       // count written out in words.
       sourceNames: outlets.names,
       republishers: outlets.republishers,
+      // Who owns the newsrooms that carried it. Three mastheads owned by
+      // three conglomerates in one country is not the check on a story that
+      // three owners across three countries and three funding models is.
+      owners: outlets.owners,
+      ownerCount: outlets.ownerCount,
+      countries: outlets.countries,
+      fundings: outlets.fundings,
+      concentration: concentrationWarnings(c.items.map(i => i.source)),
       newest,
       score: Math.round(score * 1000) / 1000,
     };
