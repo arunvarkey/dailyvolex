@@ -148,6 +148,43 @@ ok('CI fails when nothing was rendered at all', (() => {
   return /no graphics were rendered at all/.test(t);
 })(), 'an empty loop used to pass silently');
 
+/* ── Work is never committed ──────────────────────────────────── */
+/* Source photographs are an input to the renderer. They are downloaded at up
+   to 1600 pixels, baked into a slide within seconds, and never published —
+   and they were being written under data/, which is what gets pushed. The
+   repository was carrying about 290 MB of throwaway JPEGs after a handful of
+   days, which is the free hosting this channel depends on running out. */
+ok('work is git-ignored', (() => {
+  const gi = fs.readFileSync(join(ROOT, '.gitignore'), 'utf8');
+  return /^work\/$/m.test(gi);
+})(), 'without this the next run commits every source photograph again');
+
+ok('no source photograph is written where it would be committed', (() => {
+  const r = fs.readFileSync(join(ROOT, 'automation/render.mjs'), 'utf8');
+  // The download destination and the path recorded on the story must both be
+  // under work/, and neither may name data/pending.
+  return /downloadImage\(url, join\(WORK_PHOTOS/.test(r)
+    && /path: `work\/photos\//.test(r)
+    && !/photo-\$\{index\}[^\n]*data\/pending/.test(r);
+})());
+
+ok('the 1600-pixel rendition is downloaded, not the master', (() => {
+  const r = fs.readFileSync(join(ROOT, 'automation/render.mjs'), 'utf8');
+  return /\[cand\.smallerUrl, cand\.url\]/.test(r);
+})(), 'an 18 MB JPEG for 1080 pixels of card');
+
+ok('the architecture is written down', (() => {
+  const a = fs.readFileSync(join(ROOT, 'docs/ARCHITECTURE.md'), 'utf8');
+  // The invariants are the reason the channel is worth running; a doc that
+  // has lost them is not the contract any more.
+  // Whitespace-tolerant: a doc is wrapped prose and a phrase can straddle a
+  // line break, which is how this test first failed on a doc that said it.
+  const flat = a.replace(/\s+/g, ' ');
+  return /Nothing posts without the owner/.test(flat)
+    && /only ever removes/.test(flat)
+    && /Corrections are posted, never deleted/.test(flat);
+})());
+
 /* ── Failure notification ─────────────────────────────────────── */
 /* The 09:03 run died at its last step and nothing said so. Unattended
    automation that fails quietly is not automation. */

@@ -1,1 +1,10 @@
 node_modules/
+
+# Work — inputs and intermediates, never published, never committed.
+#
+# Source photographs are downloaded at up to 1600 pixels, baked into a slide
+# within seconds, and never posted. Reel frames are 1080x1920 PNGs that exist
+# only until ffmpeg has read them. Both used to be written under data/, which
+# is what gets pushed, and the repository was carrying about 290 MB of
+# throwaway JPEGs after a handful of days. See docs/ARCHITECTURE.md.
+work/
