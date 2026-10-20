@@ -174,6 +174,33 @@ Each step leaves the channel working.
    `data/posted.json` became `data/ledger.json`, and `data/rejected.json` went
    inside the edition, which is where the approval issue was already looking
    for it.
-6. **Prune the history.** The 290 MB of photographs that were already
-   committed are still in the history. Removing them means rewriting and
-   force-pushing, which is destructive, so it needs the owner's say-so.
+6. ✅ **Prune the history.** `data/pending/` was removed from all 128
+   commits with `git filter-repo`. The packed repository went from **293 MB
+   to 601 KiB**, and a fresh clone of `main` is 1.2 MB.
+
+   It was checked rather than assumed: the HEAD tree hash is byte-identical
+   before and after (`186ac699…`), so not one tracked file changed; every
+   commit message, author and date is preserved; and the single commit that
+   disappeared was one whose entire content was four slides and a caption
+   under `data/pending/`, which becomes an empty commit once that path is
+   gone. 283.5 MB of the 293.1 MB lived under that one directory.
+
+   `backup/pre-prune-2026-10-20` on the remote still holds the old history.
+   **Until it is deleted the space is not actually reclaimed** — a default
+   `git clone` fetches every branch, so it still pulls 268 MB. Delete it with
+   `git push origin --delete backup/pre-prune-2026-10-20` once the result
+   looks right.
+
+   The seven open approval issues were closed with it. They pinned
+   `data/pending/` paths the approval workflow no longer accepts and commits
+   that no longer exist, so none of them could have been published anyway.
+
+## What still grows
+
+An edition is about 4.3 MB — fifteen JPEG slides and a reel — and the history
+keeps every one, because an approved post has to stay fetchable from the
+commit it was pinned to. That is roughly 1.5 GB a year, which is a problem to
+solve once rather than a problem now. The options, when it matters: prune
+editions older than a few months from the history the same way, or host the
+published assets somewhere that is not a git repository. Both need deciding;
+neither is urgent while the number is small.
