@@ -3,7 +3,11 @@
  *   node automation/test.mjs
  */
 
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
 import { parseFeed } from './lib/rss.mjs';
+import { tierOf, isCryptoVertical, TIER_POINTS } from './lib/importance.mjs';
 import { similarity, cluster, selectStories, selectSections, isRepeat, isTopical, isAdvice,
          isSpeculation, isJunk, isPressRelease, rankClusters } from './lib/select.mjs';
 import { sectionOf, sectionLabel, SECTIONS } from './lib/sections.mjs';
@@ -13,6 +17,8 @@ import { buildCaption } from './caption.mjs';
 import { buildCorrection, correctionCaption, findOriginal } from './correct.mjs';
 import { isUsable, pickBest, creditFor, subjectFor, findImage, backdropFor, isSensitive,
          queriesFor, entitiesFrom, isTitleCase, relevance, prefersChart } from './lib/imagery.mjs';
+
+const TEST_ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
 let passed = 0, failed = 0;
 const ok = (name, cond, detail = '') => {
@@ -177,11 +183,15 @@ ok('repeat detection ignores wording differences',
 
 /* ── A post should not be one subject three times ─────────────── */
 
+/* Real stories, not price moves: a post may not be one subject three times,
+   but the stories have to be ones the channel would carry at all. An earlier
+   version of this fixture was three crypto price items, which the importance
+   hierarchy now keeps off Top entirely — so it tested nothing. */
 const lopsided = [
-  { title:'Bitcoin tops $90,000 on ETF inflows',       source:'A', published:now, weight:1, topic:'crypto' },
-  { title:'Ethereum rallies as staking yields climb',   source:'B', published:now, weight:1, topic:'crypto' },
-  { title:'Solana ETF approved by regulators today',    source:'C', published:now, weight:1, topic:'crypto' },
-  { title:'Sensex climbs 540 points to a record high',  source:'D', published:now, weight:1, topic:'india'  },
+  { title:'Regulator fines a major bank over mis-selling', source:'A', published:now, weight:1, topic:'business' },
+  { title:'Parliament passes the new insolvency bill',     source:'B', published:now, weight:1, topic:'business' },
+  { title:'Cabinet approves a port expansion scheme',      source:'C', published:now, weight:1, topic:'business' },
+  { title:'Supreme Court orders a review of forest rules', source:'D', published:now, weight:1, topic:'india'  },
 ];
 const spread = selectStories(lopsided, { count: 3, now });
 ok('one topic cannot take every slot',
@@ -211,12 +221,18 @@ ok('a general story gets in even with less corroboration',
   balanced.map(c => c.lead.topic).join(','));
 
 // On a quiet day the cap must not leave the post short.
-const onlyCrypto = lopsided.slice(0, 3);
+const oneSubjectOnly = lopsided.slice(0, 3);
 ok('the cap still fills the post when there is nothing else',
-  selectStories(onlyCrypto, { count: 3, now }).length === 3,
-  `${selectStories(onlyCrypto, { count: 3, now }).length} picked`);
-ok('a markets-only day still produces a full post',
-  selectStories(allFinance.filter(i => i.topic !== 'world'), { count: 3, now }).length === 3);
+  selectStories(oneSubjectOnly, { count: 3, now }).length === 3,
+  `${selectStories(oneSubjectOnly, { count: 3, now }).length} picked`);
+/* This used to assert that a day of nothing but market moves still filled
+   the post. It no longer should: index moves and price stories are minor, and
+   a front page is not made of them. The cap filling a short post is covered
+   just above, with stories the channel would actually lead on. */
+ok('a day of nothing but price moves is not a front page',
+  selectStories(allFinance.filter(i => i.topic !== 'world'), { count: 3, now }).length === 0,
+  selectStories(allFinance.filter(i => i.topic !== 'world'), { count: 3, now })
+    .map(c => c.lead.title).join(' | '));
 
 /* ── Headlines ────────────────────────────────────────────────── */
 
@@ -415,6 +431,98 @@ ok('a section will not carry a single-outlet story', (() => {
   return !india || india.clusters.every(c => c.sources >= 2);
 })(), 'nobody scrutinises fifteen headlines every morning');
 
+/* ── The hierarchy of importance ──────────────────────────────── */
+/* The ranking used to know only how well covered a story was, how fresh, and
+   how much its feed was weighted — nothing about the story itself. Two of
+   three top stories came out crypto on a day a cult leader was convicted of
+   starving his followers and Japan launched a mission to Mars. */
+
+ok('lives, power and the economy as a whole lead',
+  ['Earthquake kills at least 40 in northern Afghanistan',
+   'Prime minister resigns after losing no-confidence vote',
+   'Supreme Court strikes down the electoral bonds scheme',
+   'RBI cuts repo rate by 25 basis points',
+   'Kenya cult leader, who convinced followers to starve, found guilty',
+  ].every(h => tierOf(h) === 'lead'));
+
+ok('policy, law and diplomacy are significant',
+  ['US bars government agencies from using China’s DeepSeek',
+   'India-New Zealand trade pact kicks in',
+   'Parliament passes the new insolvency bill',
+   'Japan launches historic mission to bring back Mars moon samples',
+  ].every(h => tierOf(h) === 'significant'));
+
+ok('a product launch and a share price are minor',
+  ['Apple launches iPhone 18 with satellite messaging',
+   'AstraZeneca partners with Oracle on AI clinical research',
+   'Sensex tumbles 876 points; Nifty drops below 22,900',
+   'Wall Street closes lower for a third day',
+  ].every(h => tierOf(h) === 'minor'));
+
+/* The point of the whole change. */
+ok('a coin moving is minor however big the number',
+  tierOf('Bitcoin News | Strategy Bought $22 Million of Bitcoin Last Week') === 'minor'
+  && tierOf('JPMorgan drops JPM Coin on Ethereum with zero retail access') === 'minor'
+  && tierOf('Bitcoin crashes below $60,000') === 'minor',
+  '"crashes" must not buy a price story a place on the front page');
+ok('a crypto story that is actually news is not demoted',
+  tierOf('Crypto exchange founder charged with fraud') === 'significant'
+  && tierOf('SEC approves spot Solana ETF applications') === 'significant'
+  && isCryptoVertical('Bitcoin tops $90,000')
+  && !isCryptoVertical('Crypto exchange founder charged with fraud'));
+
+ok('importance outranks corroboration', (() => {
+  const t = Date.now();
+  const mk = (title, source, topic) => ({ title, source, topic, published: t - 600000, weight: 1 });
+  const items = [
+    // Heavily covered, and minor.
+    ...['Reuters', 'BBC News', 'The Hindu', 'NDTV', 'Al Jazeera'].map(s =>
+      mk('Bitcoin tops $90,000 on ETF inflows', s, 'crypto')),
+    // Thinly covered, and a lead.
+    mk('Earthquake kills at least 40 in the north', 'Associated Press', 'world'),
+    mk('Earthquake kills 40 in the north', 'Reuters', 'world'),
+  ];
+  const [first] = selectStories(items, { count: 1, now: t });
+  return first && /Earthquake/.test(first.lead.title);
+})(), 'five outlets on a price move must not outrank two on an earthquake');
+
+ok('a minor story never reaches Top stories', (() => {
+  const t = Date.now();
+  const items = ['A', 'B', 'C', 'D'].map(s => ({
+    title: 'Bitcoin tops $90,000 on ETF inflows', source: s,
+    topic: 'crypto', published: t - 600000, weight: 1 }));
+  return selectStories(items, { count: 3, now: t }).length === 0;
+})());
+
+ok('a section with nothing above minor is not offered as a post', (() => {
+  const t = Date.now();
+  const mk = (title, source, topic) => ({ title, source, topic, published: t - 600000, weight: 1 });
+  const items = [
+    mk('Bitcoin tops $90,000 on ETF inflows', 'CoinDesk', 'crypto'),
+    mk('Bitcoin tops $90,000 after ETF inflows', 'Reuters', 'crypto'),
+    mk('Cabinet approves the new port scheme', 'The Hindu', 'india'),
+    mk('Cabinet approves new port scheme', 'NDTV', 'india'),
+  ];
+  return !selectSections(items, { count: 0, perSection: 3 }).some(s => s.id === 'business');
+})(), 'BUSINESS came out as three Bitcoin items');
+
+ok('there is no CRYPTO NEWS label on this channel',
+  categoryFor('crypto') === 'BUSINESS'
+  && categoryFor('world', 'Bitcoin tops $90,000') === 'BUSINESS');
+
+ok('the feed mix carries no dedicated crypto feed', (() => {
+  const feeds = JSON.parse(readFileSync(join(TEST_ROOT, 'automation/feeds.json'), 'utf8')).feeds;
+  return !feeds.some(f => f.topic === 'crypto')
+    && !feeds.some(f => /coin|crypto|block/i.test(f.id));
+})(), 'five of nineteen feeds used to be crypto feeds');
+
+ok('general news outweighs finance in the feed mix', (() => {
+  const feeds = JSON.parse(readFileSync(join(TEST_ROOT, 'automation/feeds.json'), 'utf8')).feeds;
+  const general = feeds.filter(f => ['world','india','tech','science','health'].includes(f.topic));
+  const finance = feeds.filter(f => ['business','markets-india','markets-world','crypto'].includes(f.topic));
+  return general.length > finance.length * 2;
+})(), 'the mix is what the account is about');
+
 /* ── Corrections ──────────────────────────────────────────────── */
 /* A news account that cannot correct itself is a broadcast. These are the
    rules that keep a correction from becoming a second mistake. */
@@ -492,10 +600,12 @@ const sectionItems = () => {
             'Emissions summit ends with no agreement', 'world', 'BBC News', 'Reuters'),
     ...pair('Border talks adjourned for a second week',
             'Border talks adjourned again for a second week', 'world', 'Al Jazeera', 'Reuters'),
+    // One real business story, so the section has something above minor, and
+    // one market move, to prove market topics still map into Business.
+    ...pair('Regulator fines a major bank over mis-selling',
+            'Regulator fines major bank for mis-selling', 'business', 'BBC News', 'Reuters'),
     ...pair('Sensex climbs 540 points to a record high',
             'Sensex climbs 540 points to record high', 'markets-india', 'Economic Times', 'NDTV'),
-    ...pair('Bitcoin holds above $90,000',
-            'Bitcoin holds above $90,000 in quiet trade', 'crypto', 'CoinDesk', 'Cointelegraph'),
     ...pair('Chipmaker ships a smaller process node',
             'Chipmaker starts shipping a smaller process node', 'tech', 'Reuters', 'The Hindu'),
     ...pair('Regulator opens a review of app store fees',
@@ -519,6 +629,8 @@ ok('the day comes back sorted into sections', (() => {
 ok('top stories come first, so output[0] is still the top post',
   selectSections(sectionItems(), { count: 3 })[0].label === 'TOP STORIES');
 
+ok('market and business topics all map to the Business section',
+  ['business','markets-india','markets-world','crypto'].every(t => sectionOf(t) === 'business'));
 ok('every market topic lands in Business', (() => {
   const secs = selectSections(sectionItems(), { count: 1, perSection: 5 });
   const biz = secs.find(s => s.id === 'business');
@@ -555,7 +667,7 @@ ok('a topic with no section of its own is still reachable',
 ok('sources are named', sourceLine(['CoinDesk', 'Reuters']) === 'CoinDesk · Reuters');
 ok('the headline overrides the feed when it plainly disagrees',
   categoryFor('markets-world', 'NSE, BSE to remain closed tomorrow') === 'INDIA MARKETS'
-  && categoryFor('world', 'Bitcoin tops $90,000') === 'CRYPTO NEWS',
+  && categoryFor('world', 'Bitcoin tops $90,000') === 'BUSINESS',
   categoryFor('markets-world', 'NSE, BSE to remain closed tomorrow'));
 ok('an ordinary world story keeps its feed category',
   categoryFor('world', 'Ceasefire talks resume in Geneva') === 'WORLD NEWS');

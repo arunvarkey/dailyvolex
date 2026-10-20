@@ -116,7 +116,7 @@ jobs:
                 slides.map((p, i) => `![${id} slide ${i + 1}](${raw(p)})`).join('\n'),
                 '',
                 stories.map(s =>
-                  `- **${s.display || s.headline}**\n  _${s.source}_ · `
+                  `- ${s.tier ? `\`${s.tier}\` ` : ''}**${s.display || s.headline}**\n  _${s.source}_ · `
                   + `${s.corroboration} independent newsroom${s.corroboration > 1 ? 's' : ''}`
                   + (s.truncated ? ' · shortened to fit' : '')
                   + (s.link ? `\n  ${s.link}` : '')).join('\n'),

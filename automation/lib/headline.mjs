@@ -148,9 +148,13 @@ export function makeHeadline(raw, { max = MAX } = {}) {
 /* The feed a story arrived through is not always what it is about: a Google
    News markets search carried an NSE/BSE story, which printed WORLD MARKETS on
    the card. Where the headline plainly says otherwise, it wins. */
+/* No CRYPTO NEWS label. This is a general news channel, and a card headed
+   CRYPTO NEWS tells a reader it is a crypto channel — which is what the feed
+   mix had quietly made it. A crypto story that earns a place is business
+   news, and says so. */
 const BY_CONTENT = [
   [/\b(sensex|nifty|nse|bse|rupee|rbi|dalal street)\b/i, 'INDIA MARKETS'],
-  [/\b(bitcoin|btc|ethereum|eth|crypto|blockchain|stablecoin|solana|xrp)\b/i, 'CRYPTO NEWS'],
+  [/\b(bitcoin|btc|ethereum|crypto|blockchain|stablecoin|solana|xrp)\b/i, 'BUSINESS'],
 ];
 
 export function categoryFor(topic, headline) {
@@ -160,13 +164,15 @@ export function categoryFor(topic, headline) {
 
 function categoryForTopic(topic) {
   switch (topic) {
-    case 'crypto':        return 'CRYPTO NEWS';
+    case 'crypto':        return 'BUSINESS';
     case 'markets-india': return 'INDIA MARKETS';
     case 'markets-world': return 'WORLD MARKETS';
     case 'business':      return 'BUSINESS';
     case 'india':         return 'INDIA';
     case 'world':         return 'WORLD NEWS';
     case 'tech':          return 'TECHNOLOGY';
+    case 'science':       return 'SCIENCE';
+    case 'health':        return 'HEALTH';
     default:              return 'BREAKING NEWS';
   }
 }
