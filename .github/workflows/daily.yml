@@ -134,12 +134,35 @@ jobs:
               `- \`${e.section || 'post'}\` — **${e.sectionLabel || 'POST'}**`
               + ` (${(e.stories || [e]).length} stories)`).join('\n');
 
+            // What the editorial rules threw away. A run reads several
+            // hundred articles and publishes a dozen; if one of those rules
+            // is wrong it is eating real news, and this is the only place
+            // anyone would see it.
+            let refusedBlock = '';
+            try {
+              const rej = JSON.parse(fs.readFileSync('data/rejected.json', 'utf8'));
+              const rules = Object.entries(rej.byRule || {});
+              if (rules.length) refusedBlock = [
+                '<details>',
+                `<summary><b>Refused</b> — ${rej.refused} of ${rej.read} read`
+                  + `, ${rej.published} published. Check these for anything that should have run.</summary>`,
+                '',
+                ...rules.map(([rule, b]) => [
+                  `**${b.count} · ${rule}**`,
+                  ...b.samples.map(s => `- ${s.title}${s.source ? ` _(${s.source})_` : ''}`),
+                  '',
+                ].join('\n')),
+                '</details>',
+              ].join('\n');
+            } catch (e) { /* a run with nothing refused writes no file */ }
+
             const body = [
               `**${out.length} post${out.length === 1 ? '' : 's'} ready.** Nothing goes out unless you name it.`,
               '', menu, '',
               '---', '',
               blocks.join('\n\n'),
               warnings.length ? `\n### ⚠️ Check\n${warnings.map(w => `- ${w}`).join('\n')}` : '',
+              refusedBlock ? `\n${refusedBlock}` : '',
               '',
               '---',
               '**To post, comment** `/approve <section> <section>` — for example `/approve top business`.',

@@ -18,7 +18,7 @@ import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { fetchFeed, parseFeed } from './lib/rss.mjs';
-import { selectStories, selectSections } from './lib/select.mjs';
+import { selectStories, selectSections, rankEligible } from './lib/select.mjs';
 import { sectionOf } from './lib/sections.mjs';
 import { makeHeadline, categoryFor, sourceLine } from './lib/headline.mjs';
 import { readJson, writeJson, loadHistory, recordPosted } from './lib/store.mjs';
@@ -33,6 +33,11 @@ const HISTORY   = join(ROOT, 'data', 'posted.json');
    not approved was never posted. Entries age out, so a story missed once can
    come back tomorrow rather than being silently buried for good. */
 const OFFERED   = join(ROOT, 'data', 'offered.json');
+/* What the editorial rules refused this run, and which rule refused it. The
+   point is not the count — it is being able to read the titles and catch a
+   rule that is wrong. */
+const REJECTED  = join(ROOT, 'data', 'rejected.json');
+const SAMPLES_PER_RULE = 8;
 const OFFER_TTL_HOURS = 36;
 
 function arg(name, fallback) {
@@ -121,12 +126,20 @@ async function main() {
   const sectioned = !breaking && !FLAG('no-sections');
   const perSection = Math.max(1, Math.min(5, parseInt(arg('per-section', '3'), 10) || 3));
 
+  // What the editorial rules threw away, and which rule threw it. A run reads
+  // several hundred articles and publishes a dozen; without this, a regex
+  // quietly eating real news leaves no trace anywhere.
+  const rejected = [];
+
   const sections = sectioned
-    ? selectSections(items, { history, count, perSection, minSources, maxAgeHours })
+    ? selectSections(items, { history, count, perSection, minSources, maxAgeHours, rejected })
     : null;
   const chosen = sections
     ? sections.find(s => s.id === 'top').clusters
-    : selectStories(items, { history, count, minSources, maxAgeHours });
+    : (() => {
+        rankEligible(items, { now: Date.now(), maxAgeHours, rejected });
+        return selectStories(items, { history, count, minSources, maxAgeHours });
+      })();
 
   if (breaking && !chosen.length) {
     // The ordinary result. Say so plainly and leave the shortlist alone, so
@@ -193,6 +206,32 @@ async function main() {
   };
   await writeJson(SHORTLIST, payload);
 
+  /* The rejection log. Counts alone would only say the filters are busy; the
+     titles are the point, because that is how a rule that is wrong becomes
+     visible. A bounded sample per rule keeps the file readable and small. */
+  const byRule = {};
+  for (const r of rejected) {
+    const b = byRule[r.reason] || (byRule[r.reason] = { count: 0, samples: [] });
+    b.count++;
+    if (b.samples.length < SAMPLES_PER_RULE)
+      b.samples.push({ title: r.title, source: r.source });
+  }
+  const publishedCount = sections
+    ? sections.reduce((n, s) => n + s.clusters.length, 0)
+    : stories.length;
+  await writeJson(REJECTED, {
+    generated: new Date().toISOString(),
+    read: items.length,
+    published: publishedCount,
+    refused: rejected.length,
+    // Read from the feeds, not refused by a rule, but not chosen either:
+    // out-ranked, capped, or already seen. Not a concern in the way a
+    // refusal is, but the arithmetic should add up.
+    consideredNotChosen: Math.max(0, items.length - rejected.length - publishedCount),
+    byRule: Object.fromEntries(
+      Object.entries(byRule).sort((a, b) => b[1].count - a[1].count)),
+  });
+
   // Remember what was offered, so the next run does not offer it again.
   // Never from fixtures: the sample build runs repeatedly, and a second run
   // that suppressed its own fixtures as "already offered" would render
@@ -219,7 +258,15 @@ async function main() {
     }
     for (const w of s.concentration || []) log(`     !! ${w}`);
   }
+  log(`\nrefused ${rejected.length} of ${items.length} by the editorial rules:`);
+  for (const [rule, b] of Object.entries(byRule).sort((a, b) => b[1].count - a[1].count)) {
+    log(`  ${String(b.count).padStart(4)}  ${rule}`);
+    // One example each, so an obviously wrong refusal is visible in the log
+    // itself rather than only in the file.
+    if (b.samples[0]) log(`        e.g. ${b.samples[0].title.slice(0, 72)}`);
+  }
   log(`\nwritten to ${SHORTLIST}`);
+  log(`rejections in ${REJECTED}`);
 }
 
 main().catch(err => { console.error('shortlist failed:', err.message); process.exit(1); });

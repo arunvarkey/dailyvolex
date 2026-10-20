@@ -10,7 +10,7 @@ import { parseFeed } from './lib/rss.mjs';
 import { tierOf, isCryptoVertical, TIER_POINTS } from './lib/importance.mjs';
 import { similarity, cluster, selectStories, selectSections, isRepeat, isTopical, isAdvice,
          isSpeculation, isJunk, isPressRelease, isUnverified, isOpinion, isTooThin,
-         rankClusters } from './lib/select.mjs';
+         rankClusters, rankEligible, rejectionReason } from './lib/select.mjs';
 import { sectionOf, sectionLabel, SECTIONS } from './lib/sections.mjs';
 import { makeHeadline, tidy, sourceLine, categoryFor } from './lib/headline.mjs';
 import { canonicalSource, isRepublisher, independentSources,
@@ -725,6 +725,69 @@ ok('sections respect the no-repeats history', (() => {
 ok('a topic with no section of its own is still reachable',
   sectionOf('india') === 'india' && sectionOf('crypto') === 'business'
   && sectionOf('something-new') === 'top');
+
+/* ── The rejection log ───────────────────────────────────────── */
+/* A run reads several hundred articles and publishes a dozen. Everything
+   else is dropped by rules in this file, and until these existed there was
+   no record of which rule dropped what — so a regex quietly eating real news
+   would never have surfaced anywhere. */
+
+const refusalCases = [
+  ['unverified or rumour',            "North Korea's 'Proof Of Life' Amid Kim Jong Un 'Death' Rumour"],
+  ['comment, not reporting',          'Global Health Research in the America First Era'],
+  ['too thin to be a headline',       'Middle East'],
+  ['marketing, not reporting',        'Digital Science and Sunmedia partner on research impact'],
+  ['not news',                        'Your daily horoscope for Tuesday the 20th'],
+  ['tips or price speculation',       'Top 5 stocks to buy this week according to analysts'],
+];
+
+ok('every refusal is attributed to the rule that made it',
+  refusalCases.every(([reason, title]) =>
+    rejectionReason({ title, published: Date.now() }, { maxAgeHours: 24 }) === reason),
+  JSON.stringify(refusalCases.map(([r, t]) =>
+    [r, rejectionReason({ title: t, published: Date.now() }, { maxAgeHours: 24 })])
+    .filter(([a, b]) => a !== b)));
+
+ok('a story the channel would run is not refused',
+  rejectionReason({ title: 'Earthquake kills at least 40 in northern Afghanistan',
+                    published: Date.now() }, { maxAgeHours: 24 }) === null
+  && rejectionReason({ title: 'Cabinet approves a port expansion scheme for the east coast',
+                       published: Date.now() }, { maxAgeHours: 24 }) === null);
+
+ok('an item older than the window is refused for that, not for its content',
+  rejectionReason({ title: 'Earthquake kills at least 40 in northern Afghanistan',
+                    published: Date.now() - 40 * 3600000 }, { maxAgeHours: 24 })
+    === 'older than the window');
+
+ok('the finance gate only applies to finance feeds',
+  rejectionReason({ title: 'Claude cracks a 25-year NSA mystery and wins praise',
+                    requireTopical: true, published: Date.now() }, { maxAgeHours: 24 })
+    === 'finance feed, not a finance story'
+  && rejectionReason({ title: 'Claude cracks a 25-year NSA mystery and wins praise',
+                       published: Date.now() }, { maxAgeHours: 24 }) === null);
+
+ok('the log collects what was refused without running the filters twice', (() => {
+  const now = Date.now();
+  const mk = (title, extra = {}) => ({ title, source: 'X', topic: 'world',
+                                       published: now - 600000, weight: 1, ...extra });
+  const items = [
+    mk('Middle East'),
+    mk('Your daily horoscope for Tuesday the 20th'),
+    mk('Earthquake kills at least 40 in northern Afghanistan'),
+    mk('Earthquake kills 40 in northern Afghanistan say officials'),
+  ];
+  const rejected = [];
+  const ranked = rankEligible(items, { now, maxAgeHours: 24, rejected });
+  return rejected.length === 2 && ranked.length === 1
+    && rejected.every(r => r.reason && r.title);
+})(), 'two refused, two kept and clustered into one story');
+
+ok('collecting is optional and off by default', (() => {
+  const now = Date.now();
+  const ranked = rankEligible([{ title: 'Middle East', source: 'X', topic: 'world',
+                                 published: now - 600000, weight: 1 }], { now });
+  return ranked.length === 0;     // refused, and nothing threw for want of an array
+})());
 
 /* ── Who owns the newsrooms ───────────────────────────────────── */
 /* Counting newsrooms was half of it. Three Indian mastheads owned by three
