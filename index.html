@@ -261,6 +261,26 @@ canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
 .today-pill{font-size:.6rem;font-weight:800;padding:.08rem .36rem;border-radius:999px}
 .today-pill.multi{background:rgba(61,214,140,.16);color:#3dd68c}
 .today-pill.single{background:rgba(242,169,59,.18);color:#f2a93b}
+/* Where a story sits in the hierarchy, shown inline so the judgement the
+   ranking made is visible on the phone and not only in the repo. */
+.today-tier{font-size:.55rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+  padding:.1rem .34rem;border-radius:4px;margin-right:.35rem;vertical-align:.08em;
+  background:var(--ui-card2);color:var(--ui-muted)}
+.today-tier.t-lead{background:rgba(187,25,25,.2);color:#ff6b6b}
+.today-tier.t-significant{background:rgba(61,140,214,.18);color:#5ab0f0}
+/* Ownership concentration: a fact about the sources, not a verdict. */
+.today-warn{font-size:.64rem;line-height:1.45;color:#f2a93b;
+  background:rgba(242,169,59,.1);border-left:2px solid rgba(242,169,59,.5);
+  border-radius:4px;padding:.3rem .45rem;margin-top:.1rem}
+/* One collapsible block per section post. */
+.today-post{background:var(--ui-card);border:1px solid var(--ui-border);
+  border-radius:11px;padding:.5rem .55rem;display:flex;flex-direction:column;gap:.45rem}
+.today-post>summary{cursor:pointer;font-size:.74rem;display:flex;
+  align-items:baseline;justify-content:space-between;gap:.4rem;list-style:none}
+.today-post>summary::-webkit-details-marker{display:none}
+.today-post>summary::after{content:'▾';color:var(--ui-muted);font-size:.7rem}
+.today-post[open]>summary::after{content:'▴'}
+.today-count{font-size:.63rem;color:var(--ui-muted);font-weight:500;margin-left:auto}
 .today-use{align-self:flex-start;margin-top:.15rem;background:transparent;
   border:1px solid var(--ui-border);color:var(--ui-text);border-radius:7px;
   padding:.22rem .5rem;font-size:.66rem;font-weight:700;cursor:pointer}
@@ -1010,43 +1030,47 @@ const S = {
   brand:  { name:'DailyVolex', handle:'@dailyvolex' },
   breaking: {
     category: 'BREAKING NEWS',
-    headline: 'BITCOIN SURGES PAST $120,000 IN BIGGEST SINGLE-DAY RALLY OF 2026',
-    source:   'DailyVolex Terminal Analytics',
-    ticker:   'BTC +8.4%  ···  ETH +12.3%  ···  SOL +18.9%  ···  CRYPTO MARKET CAP HITS $2.4T  ···  ',
+    // The sample content is the first thing anyone opening the app sees, and
+    // it used to be a Bitcoin rally with a crypto price ticker — which told
+    // them, before they typed anything, that this is a crypto channel. It is
+    // a general news channel.
+    headline: 'EARTHQUAKE KILLS AT LEAST 40 IN NORTHERN AFGHANISTAN',
+    source:   'BBC News · Reuters',
+    ticker:   'DAILYVOLEX  ···  TODAY\u2019S NEWS  ···  ',
     showTicker: true,
   },
   stories: {
     label:   'TOP STORIES',
     date:    'July 2026',
     items: [
-      'SEC approves first spot Ethereum ETF in landmark decision',
-      'Fed signals rate cuts as inflation drops to 2.1%',
-      'BlackRock Bitcoin fund crosses $50B in assets under management',
-      'India launches CBDC pilot across 5 major cities',
-      'El Salvador reports $40M profit on Bitcoin reserves',
+      'Earthquake kills at least 40 in northern Afghanistan',
+      'Cabinet approves a port expansion scheme for the east coast',
+      'Ceasefire talks resume in Geneva after months of stalemate',
+      'Japan launches mission to bring back Mars moon samples',
+      'Regulator fines a major bank over mis-selling',
     ],
-    ticker: 'DailyVolex  ···  Your daily crypto & finance news  ···  ',
+    ticker: 'DailyVolex  ···  The day\u2019s news  ···  ',
     showTicker: true,
   },
   facts: {
     title:    'WHAT YOU NEED TO KNOW',
     subtitle: 'DailyVolex · July 2026',
     rows: [
-      { label:'What happened',  value:'SEC approves Ethereum ETF'          },
-      { label:'Who decided',    value:'5-2 Commissioner vote'              },
-      { label:'When',           value:'July 2, 2026'                       },
-      { label:'Market reaction',value:'ETH +18% in 24 hours'              },
-      { label:'What\'s next',   value:'Trading begins Monday, July 7'      },
-      { label:'Why it matters', value:'Opens crypto to $30T pension market'},
+      { label:'What happened',  value:'Magnitude 6.1 quake before dawn'   },
+      { label:'Where',          value:'Northern Afghanistan'              },
+      { label:'Confirmed dead', value:'At least 40'                       },
+      { label:'Reported by',    value:'BBC News, Reuters, AP'             },
+      { label:'What\'s next',   value:'Rescue teams reaching the valley'  },
+      { label:'Why it matters', value:'Remote villages, winter closing in'},
     ],
     ticker: 'DailyVolex  ···  Breaking it down for you  ···  ',
     showTicker: true,
   },
   quote: {
-    stat:    '$2.4T',
-    label:   'Total Crypto Market Cap',
-    context: 'Highest level since 2021 as institutional buying accelerates into Q3.',
-    source:  'CoinMarketCap · July 2026',
+    stat:    '40+',
+    label:   'Confirmed dead in the Afghanistan quake',
+    context: 'Rescue teams reached the worst-hit valley at first light. The toll is expected to rise.',
+    source:  'BBC News · Reuters',
     ticker:  'MARKET DATA  ···  DailyVolex  ···  ',
     showTicker: true,
   },
@@ -1069,7 +1093,8 @@ const S = {
   fullClip: false,
   pos: { x:0, y:0 },   // content nudge, as a fraction of the frame
   tickerFeeds: [
-    { id:'crypto', name:'Crypto',        on:true,  text:'BTC $120,400 ▲ 2.3%   ···   ETH $4,180 ▲ 1.8%   ···   SOL $245 ▲ 4.1%' },
+    { id:'head',   name:'Headlines',     on:true,  text:'DAILYVOLEX   ···   THE DAY\u2019S NEWS   ···   ' },
+    { id:'crypto', name:'Crypto',        on:false, text:'BTC $120,400 ▲ 2.3%   ···   ETH $4,180 ▲ 1.8%   ···   SOL $245 ▲ 4.1%' },
     { id:'world',  name:'World markets', on:false, text:'S&P 500 5,842 ▲ 0.4%   ···   NASDAQ 19,210 ▲ 0.7%   ···   FTSE 100 8,340 ▼ 0.2%' },
     { id:'india',  name:'India',         on:false, text:'SENSEX 82,150 ▲ 0.6%   ···   NIFTY 50 25,080 ▲ 0.5%   ···   USD/INR 84.20' },
     { id:'custom', name:'Custom text',   on:false, text:'' },
@@ -4006,42 +4031,84 @@ async function loadToday() {
     return;
   }
 
-  const entry = ((data.output || data.stories) || [])[0];
-  const stories = entry && entry.stories ? entry.stories : (entry ? [entry] : []);
-  const slides = entry && (entry.images || (entry.image ? [entry.image] : []));
+  /* The run produces a post per section now, so the phone shows all of them
+     rather than output[0] — which was Top stories, with the other four
+     silently invisible. Each post is its own block: its slides, its stories,
+     its caption, its own save button. */
+  const posts = (data.output || (data.stories ? [{ stories: data.stories }] : []) || [])
+    .filter(Boolean);
   const when = data.rendered || data.generated;
 
-  window.__todayStories = stories;      // for the Use-this buttons below
+  if (!posts.length) {
+    body.innerHTML = `<div class="today-empty">A shortlist was made but nothing was rendered.</div>
+      <button class="today-btn ghost" id="refreshToday">Try again</button>`;
+    const again = document.getElementById('refreshToday');
+    if (again) again.addEventListener('click', () => { again.textContent = 'Checking…'; loadToday(); });
+    return;
+  }
 
-  let caption = '';
-  try {
-    const r = await fetch('data/pending/caption-1.txt' + bust, { cache:'no-store' });
-    if (r.ok) caption = (await r.text()).trim();
-  } catch (e) {}
+  // Captions are named by section; a run with no sections falls back to the
+  // old numbered name. Fetched in parallel — this is a phone on mobile data.
+  const captions = await Promise.all(posts.map(async (p, i) => {
+    const name = p.section ? `caption-${p.section}.txt` : `caption-${i + 1}.txt`;
+    try {
+      const r = await fetch('data/pending/' + name + bust, { cache:'no-store' });
+      return r.ok ? (await r.text()).trim() : '';
+    } catch (e) { return ''; }
+  }));
+
+  // Flattened, so "Edit this one" can address any story in any post.
+  window.__todayStories = posts.flatMap(p => p.stories || [p]);
+  window.__todayPosts = posts;
+
+  const tierPill = t => !t ? '' :
+    `<span class="today-tier t-${esc(t)}">${esc(t)}</span>`;
+
+  let flat = -1;
+  const blocks = posts.map((post, pi) => {
+    const stories = post.stories || [post];
+    const slides = post.images || (post.image ? [post.image] : []);
+    const label = post.sectionLabel || (post.kind === 'correction' ? 'CORRECTION' : 'POST');
+    const cap = captions[pi];
+
+    const storyHtml = stories.map(st => {
+      flat++;
+      const n = st.corroboration || 1;
+      const owners = st.ownerCount
+        ? `${st.ownerCount} owner${st.ownerCount > 1 ? 's' : ''}`
+          + (st.unknownOwners ? ` +${st.unknownOwners} unknown` : '')
+        : '';
+      return `<div class="today-story">
+        <p>${tierPill(st.tier)}${esc(st.display || st.headline)}</p>
+        <div class="today-meta">
+          <span class="today-pill ${n>1?'multi':'single'}">${n>1?n+' newsrooms':'1 source'}</span>
+          ${owners ? `<span class="today-pill">${esc(owners)}</span>` : ''}
+          ${esc(st.source || '')}
+        </div>
+        ${(st.concentration||[]).map(w=>`<div class="today-warn">${esc(w)}</div>`).join('')}
+        <button class="today-use" data-story="${flat}">Edit this one</button>
+      </div>`;
+    }).join('');
+
+    return `<details class="today-post" ${pi === 0 ? 'open' : ''}>
+      <summary><b>${esc(label)}</b><span class="today-count">${stories.length} ${
+        stories.length === 1 ? 'story' : 'stories'}${slides.length ? ` · ${slides.length} slides` : ''}</span></summary>
+      ${slides.length ? `<div class="today-slides">${slides.map((p,i)=>
+        `<img src="${esc(p)}${bust}" alt="${esc(label)} slide ${i+1}" loading="lazy">`).join('')}</div>` : ''}
+      ${storyHtml}
+      ${cap ? `<div class="today-cap">${esc(cap)}</div>
+        <button class="today-btn ghost today-copy" data-post="${pi}">Copy caption</button>` : ''}
+      ${slides.length ? `<button class="today-btn today-save" data-post="${pi}">Save ${
+        slides.length > 1 ? `all ${slides.length} slides` : 'the image'} to Photos</button>` : ''}
+    </details>`;
+  }).join('');
 
   body.innerHTML = `
     <div class="today-head">
-      <h2>Today's post</h2>
+      <h2>${posts.length === 1 ? "Today's post" : `Today — ${posts.length} posts`}</h2>
       <span class="today-when">${esc(freshness(when))}</span>
     </div>
-    ${slides && slides.length ? `<div class="today-slides">${slides.map((p,i)=>
-      `<img src="${esc(p)}${bust}" alt="Slide ${i+1}" loading="lazy">`).join('')}</div>` : ''}
-    ${stories.map((st,i)=>{
-      const n = st.corroboration || 1;
-      return `<div class="today-story">
-        <p>${esc(st.display || st.headline)}</p>
-        <div class="today-meta">
-          <span class="today-pill ${n>1?'multi':'single'}">${n>1?n+' outlets':'1 source'}</span>
-          ${esc(st.source || '')}
-        </div>
-        <button class="today-use" data-story="${i}">Edit this one</button>
-      </div>`;
-    }).join('')}
-    ${caption ? `<div class="today-cap">${esc(caption)}</div>
-      <button class="today-btn ghost" id="copyCap">Copy caption</button>` : ''}
-    ${slides && slides.length ? `
-      <button class="today-btn" id="saveAll">Save ${slides.length > 1
-        ? `all ${slides.length} slides` : 'the image'} to Photos</button>` : ''}
+    ${blocks}
     <a class="today-btn ghost" target="_blank" rel="noopener"
        href="https://github.com/${REPO}/issues?q=is%3Aopen+label%3Aawaiting-approval">Approve &amp; post from GitHub</a>
     <button class="today-btn ghost" id="refreshToday">Check for a newer post</button>`;
@@ -4049,8 +4116,11 @@ async function loadToday() {
   // Saving to Photos and pasting the caption is the whole manual route: it
   // needs no Instagram API, no GitHub, and no approval — open the app, save,
   // post. Worth having even once publishing works.
-  const saveBtn = document.getElementById('saveAll');
-  if (saveBtn) saveBtn.addEventListener('click', async () => {
+  body.querySelectorAll('.today-save').forEach(saveBtn => saveBtn.addEventListener('click', async () => {
+    const post = (window.__todayPosts || [])[+saveBtn.dataset.post];
+    if (!post) return;
+    const slides = post.images || (post.image ? [post.image] : []);
+    const tag = post.section || 'post';
     saveBtn.disabled = true;
     const original = saveBtn.textContent;
     saveBtn.textContent = 'Preparing…';
@@ -4059,7 +4129,7 @@ async function loadToday() {
       for (const [i, p] of slides.entries()) {
         const r = await fetch(p + bust, { cache:'no-store' });
         if (!r.ok) throw new Error('could not read slide ' + (i + 1));
-        files.push(new File([await r.blob()], `dailyvolex-${i + 1}.png`, { type:'image/png' }));
+        files.push(new File([await r.blob()], `dailyvolex-${tag}-${i + 1}.png`, { type:'image/png' }));
       }
       if (navigator.canShare && navigator.canShare({ files })) {
         await navigator.share({ files, title: "DailyVolex" });
@@ -4081,16 +4151,16 @@ async function loadToday() {
     } finally {
       saveBtn.disabled = false; saveBtn.textContent = original;
     }
-  });
+  }));
 
-  const copyBtn = document.getElementById('copyCap');
-  if (copyBtn) copyBtn.addEventListener('click', async () => {
+  body.querySelectorAll('.today-copy').forEach(copyBtn => copyBtn.addEventListener('click', async () => {
+    const text = captions[+copyBtn.dataset.post] || '';
     try {
-      await navigator.clipboard.writeText(caption);
+      await navigator.clipboard.writeText(text);
       copyBtn.textContent = 'Caption copied';
       setTimeout(() => { copyBtn.textContent = 'Copy caption'; }, 2500);
     } catch (e) { showToast('Could not copy — select it by hand', 4000); }
-  });
+  }));
 
   const refreshBtn = document.getElementById('refreshToday');
   if (refreshBtn) refreshBtn.addEventListener('click', () => {

@@ -125,6 +125,29 @@ ok('the push helper re-parents without discarding upstream work', (() => {
   return /git reset -q --mixed origin\/main/.test(sh) && !/reset[^\n]*--soft/.test(sh);
 })(), 'must be --mixed, never --soft');
 
+/* ── File contracts between the scripts and the workflows ─────── */
+/* Captions moved from caption-1.txt to caption-<section>.txt when sections
+   landed, and the breaking watch kept reading the old name — so it crashed
+   on every story it actually found, which is every time it mattered. */
+ok('no workflow reads a caption by the old numbered name alone', (() => {
+  const scripts = Object.entries(docs).flatMap(([file, d]) =>
+    Object.values(d?.jobs || {}).flatMap(j => (j.steps || [])
+      .map(st => [file, st.with?.script || st.run || ''])));
+  return scripts.every(([file, body]) =>
+    !/caption-1\.txt/.test(body) || /caption-\$\{[^}]*section/.test(body));
+})(), 'a sectioned post has no caption-1.txt');
+
+/* Sections moved the slides into data/pending/<section>/, which left the
+   CI size check globbing a path that no longer matches anything. */
+ok('CI looks for graphics where sections actually write them', (() => {
+  const t = fs.readFileSync(join(ROOT, '.github/workflows/test.yml'), 'utf8');
+  return /find data\/pending/.test(t) && !/for f in data\/pending\/slide-\*\.png/.test(t);
+})());
+ok('CI fails when nothing was rendered at all', (() => {
+  const t = fs.readFileSync(join(ROOT, '.github/workflows/test.yml'), 'utf8');
+  return /no graphics were rendered at all/.test(t);
+})(), 'an empty loop used to pass silently');
+
 ok('the token check cannot push code',
   docs['token-check.yml']?.permissions?.contents === undefined,
   JSON.stringify(docs['token-check.yml']?.permissions));
