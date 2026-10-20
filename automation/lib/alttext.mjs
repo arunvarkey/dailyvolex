@@ -57,6 +57,13 @@ export function altForStory(story, { handle = '@dailyvolex' } = {}) {
     ? `A correction card from ${handle}.`
     : `A news card from ${handle}${story.category ? `, headed ${story.category}` : ''}.`);
 
+  // A stat card puts one figure at the size of the whole frame. Someone who
+  // cannot see it should be told that is the shape of the card, not just
+  // handed the sentence.
+  if (story.layout === 'quote' && story.stat?.stat)
+    parts.push(`The figure ${story.stat.stat}${story.stat.label ? ' ' + story.stat.label : ''}`
+      + ` is shown very large, above the headline.`);
+
   parts.push(`It reads: “${headline}”.`);
 
   if (story.source) {

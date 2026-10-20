@@ -16,6 +16,7 @@ import { launchChrome, closeChrome, openPage } from './lib/cdp.mjs';
 import { readJson, writeJson } from './lib/store.mjs';
 import { findImage, downloadImage, backdropFor } from './lib/imagery.mjs';
 import { altForEntry, altForStory } from './lib/alttext.mjs';
+import { statFor, prefersStat } from './lib/statcard.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(HERE, '..');
@@ -177,9 +178,21 @@ async function imageFor(story, index, opts, dir = '') {
 }
 
 function storyUrl(port, story, opts) {
+  /* A headline that is really about a number gets the stat layout: one huge
+     figure, with the headline underneath in full. Every card in every post
+     being the same shape is most of why a long post reads flat, and the app
+     has had this layout since the beginning without the automation ever
+     using it.
+
+     Everything on the card is lifted verbatim — the figure is a substring of
+     the headline and so is the label. Rewriting a headline to fit a layout
+     would be inventing, and this channel only ever removes. */
+  const stat = prefersStat(story) ? statFor(story.display || story.headline) : null;
+  if (stat) { story.layout = 'quote'; story.stat = stat; }
+
   const q = new URLSearchParams({
     auto: '1',
-    layout: opts.layout,
+    layout: stat ? 'quote' : opts.layout,
     theme: opts.theme,
     ratio: opts.ratio,
     category: story.category,
@@ -194,6 +207,13 @@ function storyUrl(port, story, opts) {
     // every card "a plain brand design" because nothing wrote this down.
     bg: story.photo ? opts.bg : (story.backdrop = backdropOf(story, opts)),
   });
+  if (stat) {
+    q.set('stat', stat.stat);
+    q.set('statlabel', stat.label);
+    // The headline in full, below the figure. The card never shows a number
+    // without the sentence that explains it.
+    q.set('context', story.display || story.headline);
+  }
   if (opts.posy != null) q.set('posy', String(opts.posy));
   if (story.photo) { q.set('img', story.photo.path); q.set('credit', story.photo.credit); }
   return `http://127.0.0.1:${port}/index.html?${q}`;

@@ -9,6 +9,7 @@ import { dirname, join } from 'node:path';
 import { parseFeed } from './lib/rss.mjs';
 import { licenceFrom, toResult as commonsResult } from './lib/commons.mjs';
 import { altForStory, altForCover, altForEntry, altForClosing } from './lib/alttext.mjs';
+import { statFor, prefersStat } from './lib/statcard.mjs';
 import { tierOf, isCryptoVertical, TIER_POINTS } from './lib/importance.mjs';
 import { similarity, cluster, selectStories, selectSections, isRepeat, isTopical, isAdvice,
          isSpeculation, isJunk, isPressRelease, isUnverified, isOpinion, isTooThin,
@@ -1008,6 +1009,64 @@ ok('a match made only of generic words is no match', (() => {
   const real = { title: 'Dussehra effigy burning', tags: [{name:'dussehra'}] };
   return relevance(fish, hl) === 0 && relevance(real, hl) > 0.2;
 })());
+
+/* ── The stat card ───────────────────────────────────────────── */
+/* Every card in every post was the same shape, which is most of why a long
+   post reads flat. The app has had a stat layout since the beginning and the
+   automation never used it. The rule that cannot bend: everything on the
+   card is lifted verbatim, because rewriting a headline to fit a layout
+   would be inventing. */
+
+ok('a figure that is the story becomes the card', (() => {
+  const cases = [
+    ['Sensex plunges 876 points as banks drag the index lower', '876', 'points'],
+    ['Asian Para Games: India wins 24 medals including 5 golds', '24', 'medals including 5 golds'],
+    ['RBI cuts repo rate by 25 basis points', '25', 'basis points'],
+    ['Kenya cult leader convicted of 191 murders', '191', 'murders'],
+  ];
+  return cases.every(([h, stat, label]) => {
+    const s = statFor(h);
+    return s && s.stat === stat && s.label === label;
+  });
+})(), JSON.stringify(statFor('Sensex plunges 876 points as banks drag the index lower')));
+
+ok('a currency figure keeps its symbol and commas exactly',
+  statFor('Government approves ₹12,000 crore port expansion scheme')?.stat === '₹12,000 crore');
+ok('a percentage is taken as written',
+  statFor('Inflation eases to 4.2% in September')?.stat === '4.2%');
+
+/* "Earthquake kills at least 40 in northern Afghanistan" fell through to a
+   plain card, because "in northern Afghanistan" is not a unit. */
+ok('a casualty count is a figure even with no unit after it',
+  statFor('Earthquake kills at least 40 in northern Afghanistan')?.stat === '40');
+ok('a label that would read as a fragment is dropped instead',
+  statFor('Earthquake kills at least 40 in northern Afghanistan')?.label === '',
+  'the headline below already says where');
+
+ok('a date, a year and an ordinal are not figures',
+  statFor('India Women vs Zimbabwe Women 2026 - 3rd T20I') === null
+  && statFor('The summit opens on 20 October') === null);
+ok('a headline with no figure gets the ordinary card',
+  statFor('Ceasefire talks resume in Geneva after months of stalemate') === null
+  && statFor('Cabinet approves a port expansion scheme for the east coast') === null);
+
+ok('the label never runs into the next clause',
+  !/\bas\b|\bafter\b/.test(statFor('Sensex plunges 876 points as banks drag the index')?.label || ''),
+  '"876 points as banks drag the" is a sentence cut in half');
+
+ok('everything on the card is a substring of the headline', (() => {
+  const h = 'Asian Para Games: India wins 24 medals including 5 golds';
+  const s = statFor(h);
+  return h.includes(s.stat) && h.includes(s.label);
+})(), 'the channel removes words, it never writes them');
+
+ok('a correction is never turned into a stat card',
+  prefersStat({ kind: 'correction', display: 'We said 900 points. It was 489.' }) === false);
+
+ok('a blind reader is told the figure is the card',
+  /The figure 40 is shown very large/.test(altForStory({
+    category: 'WORLD NEWS', display: 'Earthquake kills at least 40 in northern Afghanistan',
+    layout: 'quote', stat: { stat: '40', label: '' } })));
 
 /* ── The shape of a post ─────────────────────────────────────── */
 /* A section post was a cover plus three cards. People swipe for about as
