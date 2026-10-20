@@ -46,6 +46,32 @@ const show = r => console.log(
   + `${r.count != null ? String(r.count).padStart(2) + ' results' : '          '}  `
   + `"${r.q}"${r.rl ? '   ' + r.rl : ''}${r.detail ? '   ' + r.detail : ''}`);
 
+/* Wikimedia Commons as a second source. Openverse throttles an
+   unauthenticated client to roughly one request; Commons is enormous, needs
+   no key, and documents generous limits for a well-identified client. If it
+   answers reliably from here, it is the fix. */
+async function commons(q, timeoutMs = 25000) {
+  const url = 'https://commons.wikimedia.org/w/api.php?action=query&format=json'
+    + '&generator=search&gsrnamespace=6&gsrlimit=8'
+    + `&gsrsearch=${encodeURIComponent('filetype:bitmap ' + q)}`
+    + '&prop=imageinfo&iiprop=url|extmetadata|size';
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), timeoutMs);
+  const t0 = Date.now();
+  try {
+    const res = await fetch(url, { signal: ctrl.signal, headers: {
+      'user-agent': 'DailyVolex/1.0 (https://github.com/arunvarkey/dailyvolex)' } });
+    const ms = Date.now() - t0;
+    let count = null;
+    try { count = Object.keys((await res.json())?.query?.pages || {}).length; } catch {}
+    return { q, ms, status: res.status, count };
+  } catch (err) {
+    return { q, ms: Date.now() - t0,
+             status: err?.name === 'AbortError' ? 'HUNG' : 'ERROR',
+             detail: String(err?.message || err) };
+  } finally { clearTimeout(timer); }
+}
+
 console.log('one at a time:');
 const serial = [];
 for (const q of QUERIES.slice(0, 4)) { const r = await one(q); serial.push(r); show(r); }
@@ -61,6 +87,14 @@ const notice = m => console.log(`::notice::${m}`);
 for (const r of [...serial, ...parallel])
   notice(`${r.status} ${r.ms}ms ${r.count != null ? r.count + ' results' : ''}`
     + ` "${r.q}"${r.rl ? ' ' + r.rl : ''}${r.detail ? ' ' + r.detail : ''}`);
+
+console.log('\nWikimedia Commons, four at once:');
+const wm = await Promise.all(QUERIES.slice(0, 4).map(q => commons(q)));
+for (const r of wm) show(r);
+const wmOk = wm.filter(r => r.status === 200);
+notice(`COMMONS ${wmOk.length}/${wm.length} answered`
+  + (wmOk.length ? `, median ${wmOk.map(r => r.ms).sort((a, b) => a - b)[Math.floor(wmOk.length / 2)]}ms`
+    + `, results ${wm.map(r => r.count ?? '-').join('/')}` : ''));
 
 const all = [...serial, ...parallel];
 const ok = all.filter(r => r.status === 200);
