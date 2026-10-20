@@ -67,12 +67,20 @@ const usedPhotos = new Set();       // one picture must not appear twice in a po
 /* What goes behind this card when there is no photograph. Named here so the
    log line and the URL cannot disagree about it. */
 function backdropOf(story, opts) {
+  // A correction is never illustrated. The first one rendered came out over a
+  // market chart, because the text it was correcting said "Sensex" and
+  // "points" — a chart behind an apology is decoration, and a chart that
+  // looks like the figure we got wrong is worse than decoration.
+  if (story.kind === 'correction') return 'editorial';
   if (opts.bgExplicit) return opts.bg;
   return backdropFor(story.display || story.headline, story.topic);
 }
 
 async function imageFor(story, index, opts, dir = '') {
   if (opts.noPhotos) return null;
+  // Nor does a correction get a photograph. There is no picture of being
+  // wrong, and a stock image under one reads as an attempt to soften it.
+  if (story.kind === 'correction') return null;
   // The topic steers the last-resort query. Without it, every story that named
   // nothing searchable fell back to a markets photo, so a standards conference
   // in Delhi was being illustrated with a trading screen.

@@ -9,13 +9,18 @@
  *   IG_ACCESS_TOKEN  a long-lived token for that account
  *
  *   node automation/publish.mjs --image <public url> --caption-file <path> [--dry-run]
+ *                               [--comment-on <media id> --comment <text>]
+ *
+ * --comment-on attaches a correction to the post it corrects, so that anyone
+ * who finds the wrong post finds the correction with it.
  *
  * Instagram requires the image to be fetchable from a public URL — it pulls
  * the file itself rather than accepting an upload — which is why the graphic
  * is published to GitHub Pages first.
  */
 
-import { readFile } from 'node:fs/promises';
+import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { dirname } from 'node:path';
 
 const GRAPH = 'https://graph.facebook.com/v21.0';
 
@@ -130,6 +135,64 @@ async function main() {
   });
 
   console.log(`published — media id ${published.id}`);
+
+  // The permalink is what a correction has to point at, and what makes the
+  // repo's record of what went out checkable by a person rather than only by
+  // the API. Not worth failing a successful post over, though.
+  let permalink = null;
+  try {
+    const meta = await graph(published.id, { fields: 'permalink', access_token: token }, 'GET');
+    permalink = meta.permalink || null;
+    if (permalink) console.log(permalink);
+  } catch (e) {
+    console.warn(`could not read the permalink: ${e.message}`);
+  }
+
+  await recordPublished({
+    mediaId: published.id, permalink, caption, images,
+    section: arg('section', null), corrects: arg('comment-on', null),
+    postedAt: new Date().toISOString(),
+  });
+
+  // A correction is attached to the post it corrects, so anyone who finds the
+  // wrong post finds the correction with it. A new post on its own reaches
+  // today's readers and nobody who saw the original. This needs
+  // instagram_manage_comments on top of the publishing permissions, so it is
+  // best-effort: a correction that posted but could not be pinned to the
+  // original is still a correction, and failing here would make it look as
+  // though nothing was corrected at all.
+  const commentOn = arg('comment-on');
+  // From a file, never from argv: this text is written by a person in a
+  // GitHub comment and must not pass through a shell on its way here.
+  const commentFile = arg('comment-file');
+  let commentText = arg('comment');
+  if (commentFile) {
+    try { commentText = (await readFile(commentFile, 'utf8')).trim(); }
+    catch (e) { console.warn(`could not read ${commentFile}: ${e.message}`); }
+  }
+  if (commentOn && commentText) {
+    try {
+      const r = await graph(`${commentOn}/comments`, { message: commentText, access_token: token });
+      console.log(`comment ${r.id} added to the corrected post ${commentOn}`);
+    } catch (e) {
+      console.warn(`WARNING: could not comment on ${commentOn}: ${e.message}`);
+      console.warn('The correction was posted. It is not pinned to the original;'
+        + ' add the comment by hand, and check the token has instagram_manage_comments.');
+    }
+  }
+}
+
+/* Append to data/pending/published.json. The approval workflow merges this
+   into data/posted.json, which is the repo's permanent record. */
+async function recordPublished(entry) {
+  const path = arg('record', 'data/pending/published.json');
+  let all = [];
+  try { all = JSON.parse(await readFile(path, 'utf8')); } catch { /* first post */ }
+  if (!Array.isArray(all)) all = [];
+  all.push(entry);
+  await mkdir(dirname(path), { recursive: true });
+  await writeFile(path, JSON.stringify(all, null, 2) + '\n', 'utf8');
+  console.log(`recorded in ${path}`);
 }
 
 main().catch(err => { console.error('publish failed:', err.message); process.exit(1); });

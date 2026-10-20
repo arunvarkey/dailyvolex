@@ -1,0 +1,140 @@
+name: Correction
+
+# A news account that cannot correct itself is a broadcast, not a news
+# account. Everything else in this repo exists to stop a wrong thing going
+# out; this is for when one did anyway, which eventually it will.
+#
+# Comment on the approval issue a post went out from:
+#
+#     /correct We said the Sensex fell over 900 points. It fell 489.
+#
+# This renders a correction card and opens a NEW approval issue. It posts
+# nothing by itself — a correction goes through the same gate as everything
+# else, because a correction with a typo in it is a second mistake.
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: dailyvolex-daily
+  cancel-in-progress: false
+
+jobs:
+  correct:
+    # Same two gates as publishing: the repository owner, and the exact word.
+    # Deliberately NOT limited to issues with a particular label — a
+    # correction may be needed for something posted weeks ago, and hunting for
+    # the right label at that moment is friction in the one workflow that
+    # should have none.
+    if: >
+      startsWith(github.event.comment.body, '/correct') &&
+      github.event.comment.user.login == github.repository_owner
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # The comment is written by a person and goes nowhere near a shell.
+      - name: Read the correction
+        id: read
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const text = (context.payload.comment.body || '')
+              .replace(/^\s*\/correct/i, '').trim();
+            if (text.length < 10) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: 'A correction needs to say what was wrong and what is right, for example:\n\n'
+                  + '`/correct We said the Sensex fell over 900 points. It fell 489.`',
+              });
+              return core.setFailed('no correction text');
+            }
+            fs.mkdirSync('data/pending', { recursive: true });
+            fs.writeFileSync('data/pending/correction-text.txt', text, 'utf8');
+            core.setOutput('issue', String(context.issue.number));
+
+      - name: Build the correction
+        # The text goes in as a file, not as an argument, so it never passes
+        # through a shell. An issue with no posted record behind it produces a
+        # standalone correction with a warning — never a correction silently
+        # attached to whichever post happened to be most recent.
+        run: |
+          node automation/correct.mjs \
+            --text-file data/pending/correction-text.txt \
+            --issue "${{ steps.read.outputs.issue }}"
+
+      - name: Render the correction card
+        run: node automation/render.mjs --ratio 4:5
+
+      - name: Write the caption
+        run: node automation/caption.mjs --index 0
+
+      - name: Publish the graphic so Instagram can fetch it
+        run: |
+          git config user.name  "dailyvolex-bot"
+          git config user.email "noreply@github.com"
+          git add data/
+          git commit -m "Correction requested on #${{ steps.read.outputs.issue }}" || echo "nothing changed"
+          git push
+
+      - name: Open the correction for approval
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const sl = JSON.parse(fs.readFileSync('data/shortlist.json', 'utf8'));
+            const entry = (sl.output || sl.stories)[0];
+            const caption = fs.readFileSync('data/pending/caption-correction.txt', 'utf8');
+            const sha = process.env.GITHUB_SHA;
+            const raw = p => `https://raw.githubusercontent.com/${context.repo.owner}/${context.repo.repo}/${sha}/${p}`;
+            const slides = (entry.images || [entry.image]).filter(Boolean);
+            const c = entry.corrects || {};
+            const from = context.issue.number;
+
+            const notes = [];
+            if (!c.mediaId) notes.push(
+              'No Instagram media id is recorded for the original post, so this correction'
+              + ' **cannot be attached as a comment to it** — it will go out as a standalone post.'
+              + ' Posts made before the media id was recorded will all look like this.');
+            else notes.push(
+              `It will also be added as a comment on the original post (\`${c.mediaId}\`),`
+              + ' so whoever finds the mistake finds the correction with it.');
+
+            const body = [
+              `**Correction** — requested on #${from}.`, '',
+              slides.map((p, i) => `![correction ${i + 1}](${raw(p)})`).join('\n'), '',
+              c.title ? `**Corrects:** ${c.title}\n${c.permalink || ''}` : '**Corrects:** (no original identified)',
+              '',
+              '### Caption', '```', caption.trim(), '```',
+              `\n### Note\n${notes.map(n => `- ${n}`).join('\n')}`,
+              '',
+              '---',
+              '**Comment `/approve` to post this correction.** Anything else, or no reply, and it is never posted.',
+              'The original post is not deleted. A channel that quietly removes its mistakes is',
+              'less trustworthy than one that owns them.',
+            ].join('\n');
+
+            const issue = await github.rest.issues.create({
+              owner: context.repo.owner, repo: context.repo.repo,
+              title: `Correction — ${new Date().toISOString().slice(0, 10)}`,
+              body, labels: ['awaiting-approval', 'correction'],
+            });
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner, repo: context.repo.repo, issue_number: from,
+              body: `Correction drafted in #${issue.data.number} — approve it there.`,
+            });
