@@ -338,7 +338,10 @@ export function isSensitive(headline) {
 /* Work from the most specific subject in the headline down to its category,
    and prefer a result whose own title and tags echo the story. The point is a
    picture OF the story, not a picture of its genre. */
-export async function findImage(headline, { fetchImpl = fetch, timeoutMs = 20000, exclude,
+// 10s, not 20. Openverse answers in a second or two when it answers at all,
+// and with twenty stories in a sectioned run the worst case was most of the
+// job's budget spent waiting for searches that were never going to return.
+export async function findImage(headline, { fetchImpl = fetch, timeoutMs = 10000, exclude,
                                             minRelevance = 0.12, maxQueries = 2, topic } = {}) {
   if (prefersChart(headline))
     return { image: null, query: '(chart)', error: 'a chart illustrates this better than a photo' };

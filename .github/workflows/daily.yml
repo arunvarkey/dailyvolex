@@ -35,7 +35,10 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    # Sections multiplied the work: one carousel became up to seven, each a
+    # cover plus a card per story, each card its own headless Chrome and its
+    # own image search. Fifteen minutes was sized for a single carousel.
+    timeout-minutes: 30
 
     steps:
       - uses: actions/checkout@v4
