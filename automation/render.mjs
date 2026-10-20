@@ -23,8 +23,18 @@ const ROOT = join(HERE, '..');
 const SHORTLIST = join(ROOT, 'data', 'shortlist.json');
 const OUT_DIR   = join(ROOT, 'data', 'pending');
 
+/* Source photographs are an input to the renderer, not an output of it. They
+   are baked into a slide within seconds and are never published, so they have
+   no business in a commit — see docs/ARCHITECTURE.md. Everything under work/
+   is git-ignored, which is the whole point of it. */
+const WORK_PHOTOS = join(ROOT, 'work', 'photos');
+
 const TYPES = { '.html':'text/html', '.js':'text/javascript', '.json':'application/json',
-                '.png':'image/png', '.css':'text/css' };
+                '.png':'image/png', '.css':'text/css',
+                // Source photographs. Served as octet-stream they still drew,
+                // because a browser sniffs an <img>, but there is no reason to
+                // rely on that.
+                '.jpg':'image/jpeg', '.jpeg':'image/jpeg', '.webp':'image/webp' };
 
 function arg(name, fallback) {
   const i = process.argv.indexOf(`--${name}`);
@@ -154,20 +164,25 @@ async function imageFor(story, index, opts, dir = '') {
   // Each section writes into its own folder, so photo-2.jpg in BUSINESS does
   // not overwrite photo-2.jpg in WORLD.
   const relDir = dir ? `${dir}/` : '';
+  await mkdir(join(WORK_PHOTOS, dir), { recursive: true });
   // Openverse indexes links that have since died, so a 404 on the best match
   // should move to the next one rather than cost the story its picture.
   const candidates = [found.image, ...(found.image.alternatives || [])];
   const failures = [];
 
   for (const cand of candidates) {
-    for (const url of [cand.url, cand.smallerUrl].filter(Boolean)) {
+    // The 1600-pixel rendition first, the master only if it is missing. Both
+    // the search and this download were written knowing a master buys nothing
+    // for a canvas 1080 wide — and then asked for the master first anyway, so
+    // the channel downloaded an 18 MB JPEG to put 1080 pixels of it on a card.
+    for (const url of [cand.smallerUrl, cand.url].filter(Boolean)) {
     try {
-      const { bytes } = await downloadImage(url, join(OUT_DIR, dir, name));
+      const { bytes } = await downloadImage(url, join(WORK_PHOTOS, dir, name));
       usedPhotos.add(cand.url);
       console.log(`  photo: "${found.query}" · match ${cand.relevance ?? '?'}`
         + ` · ${cand.credit} · ${(bytes/1024).toFixed(0)} KB`
         + (failures.length ? `  (after ${failures.length} dead link${failures.length>1?'s':''})` : ''));
-      return { path: `data/pending/${relDir}${name}`, credit: cand.credit,
+      return { path: `work/photos/${relDir}${name}`, credit: cand.credit,
                license: cand.license, pageUrl: cand.pageUrl,
                query: found.query, relevance: cand.relevance, title: cand.title };
     } catch (e) {
@@ -286,6 +301,10 @@ async function main() {
 
   await rm(OUT_DIR, { recursive: true, force: true });
   await mkdir(OUT_DIR, { recursive: true });
+  // Yesterday's source photographs are of no use to today and would otherwise
+  // pile up on a machine that is reused.
+  await rm(WORK_PHOTOS, { recursive: true, force: true });
+  await mkdir(WORK_PHOTOS, { recursive: true });
 
   const { server, port } = await serve(ROOT);
   const rendered = [];
