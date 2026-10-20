@@ -108,6 +108,8 @@ jobs:
                 section: e.section || 'post',
                 label: e.sectionLabel || (e.kind === 'correction' ? 'Correction' : 'Post'),
                 caption,
+                // Descriptions for blind readers, written beside the slides.
+                alts: e.altFile && fs.existsSync(e.altFile) ? e.altFile : '',
                 commentOn: story.corrects?.mediaId || '',
                 urls: files.map(f =>
                   `https://raw.githubusercontent.com/${context.repo.owner}/${context.repo.repo}/${sha}/${f}`).join(','),
@@ -130,15 +132,16 @@ jobs:
           echo "$PLAN" | node -e "
             let d=''; process.stdin.on('data',c=>d+=c).on('end',()=>{
               const plan=JSON.parse(d);
-              console.log(plan.map(p=>[p.section,p.urls,p.caption,p.commentOn||''].join('\t')).join('\n'));
+              console.log(plan.map(p=>[p.section,p.urls,p.caption,p.commentOn||'',p.alts||''].join('\t')).join('\n'));
             })" > plan.tsv
-          while IFS=$'\t' read -r SECTION URLS CAPTION COMMENT_ON; do
+          while IFS=$'\t' read -r SECTION URLS CAPTION COMMENT_ON ALTS; do
             [ -n "$SECTION" ] || continue
             echo "── posting $SECTION ──"
             EXTRA=""
             if [ -n "$COMMENT_ON" ] && [ -f data/pending/correction-comment.txt ]; then
               EXTRA="--comment-on $COMMENT_ON --comment-file data/pending/correction-comment.txt"
             fi
+            [ -n "$ALTS" ] && EXTRA="$EXTRA --alt-file $ALTS"
             node automation/publish.mjs --images "$URLS" --caption-file "$CAPTION" \
               --section "$SECTION" $EXTRA
           done < plan.tsv

@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { parseFeed } from './lib/rss.mjs';
 import { licenceFrom, toResult as commonsResult } from './lib/commons.mjs';
+import { altForStory, altForCover, altForEntry } from './lib/alttext.mjs';
 import { tierOf, isCryptoVertical, TIER_POINTS } from './lib/importance.mjs';
 import { similarity, cluster, selectStories, selectSections, isRepeat, isTopical, isAdvice,
          isSpeculation, isJunk, isPressRelease, isUnverified, isOpinion, isTooThin,
@@ -998,6 +999,61 @@ ok('a match made only of generic words is no match', (() => {
   const fish = { title: 'Fish market on a holiday', tags: [{name:'market'},{name:'fish'}] };
   const real = { title: 'Dussehra effigy burning', tags: [{name:'dussehra'}] };
   return relevance(fish, hl) === 0 && relevance(real, hl) > 0.2;
+})());
+
+/* ── Alt text ────────────────────────────────────────────────── */
+/* A news account publishing images without descriptions shuts blind readers
+   out of the news. The headline IS the content here, so the description
+   leads with the words on the card rather than with "an image of". */
+
+const altStory = { category: 'WORLD NEWS', display: 'Earthquake kills at least 40 in northern Afghanistan',
+                   source: 'BBC News · Al Jazeera', corroboration: 2, backdrop: 'editorial' };
+
+ok('the description leads with the words on the card',
+  /It reads: “Earthquake kills at least 40 in northern Afghanistan”/.test(altForStory(altStory)));
+ok('it names the category and who reported it',
+  /headed WORLD NEWS/.test(altForStory(altStory))
+  && /BBC News · Al Jazeera — 2 independent newsrooms/.test(altForStory(altStory)));
+
+/* It described every card as "a plain brand design", because render.mjs
+   never recorded which backdrop it had chosen. */
+ok('it describes the backdrop that was actually used',
+  /concentric rings/.test(altForStory({ ...altStory, backdrop: 'editorial' }))
+  && /generated market chart/.test(altForStory({ ...altStory, backdrop: 'chart' }))
+  && /particle/.test(altForStory({ ...altStory, backdrop: 'particles' })));
+ok('a generated chart is declared as generated',
+  /not real data/.test(altForStory({ ...altStory, backdrop: 'chart' })),
+  'a blind reader must not be told there is data when there is none');
+ok('a library photograph is declared as one', (() => {
+  const a = altForStory({ ...altStory, backdrop: null,
+    photo: { credit: 'File photo: Gage Skidmore / CC BY 2.0', title: 'Kabul street scene' } });
+  return /library photograph/.test(a) && /not a photograph of this event/.test(a)
+    && /Gage Skidmore \/ CC BY 2\.0/.test(a);
+})());
+
+ok('a cover lists what is inside it', (() => {
+  const a = altForCover({ sectionLabel: 'TOP STORIES', stories: [
+    { display: 'Earthquake kills at least 40 in northern Afghanistan' },
+    { display: 'Cabinet approves a port expansion scheme' }] });
+  return /listing 2 headlines/.test(a) && /1\. Earthquake/.test(a) && /2\. Cabinet/.test(a);
+})());
+
+ok('every slide of a carousel gets its own description', (() => {
+  const entry = { sectionLabel: 'TOP STORIES',
+    images: ['a.png', 'b.png', 'c.png'],
+    stories: [{ ...altStory }, { ...altStory, display: 'Second story about something else entirely' }] };
+  const alts = altForEntry(entry);
+  return alts.length === 3 && /cover card/.test(alts[0]) && !/cover card/.test(alts[1]);
+})(), 'a cover plus one card per story');
+
+ok('a single card has no cover to describe', (() => {
+  const alts = altForEntry({ image: 'a.png', ...altStory });
+  return alts.length === 1 && !/cover card/.test(alts[0]);
+})(), 'the breaking watch and corrections render one card');
+
+ok('a description fits what Instagram accepts', (() => {
+  const long = { ...altStory, display: 'x'.repeat(900), source: 'y'.repeat(400) };
+  return altForStory(long).length <= 1000;
 })());
 
 /* ── Wikimedia Commons ───────────────────────────────────────── */
