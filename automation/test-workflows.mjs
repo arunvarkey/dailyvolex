@@ -148,6 +148,36 @@ ok('CI fails when nothing was rendered at all', (() => {
   return /no graphics were rendered at all/.test(t);
 })(), 'an empty loop used to pass silently');
 
+/* ── Failure notification ─────────────────────────────────────── */
+/* The 09:03 run died at its last step and nothing said so. Unattended
+   automation that fails quietly is not automation. */
+const REPORTED = ['daily.yml', 'watch.yml', 'correct.yml'];
+ok('every unattended workflow reports how its run went', REPORTED.every(f => {
+  const steps = Object.values(docs[f]?.jobs || {}).flatMap(j => j.steps || []);
+  return steps.some(st => st.uses === './.github/actions/report-run');
+}), REPORTED.filter(f => !JSON.stringify(docs[f]).includes('report-run')).join(','));
+
+ok('the report runs even when the job failed', REPORTED.every(f => {
+  const step = Object.values(docs[f]?.jobs || {}).flatMap(j => j.steps || [])
+    .find(st => st.uses === './.github/actions/report-run');
+  return /always\(\)/.test(step?.if || '');
+}), 'if: failure() alone would never close a recovered issue');
+
+ok('reporting can name the step that failed', REPORTED.every(f =>
+  (docs[f]?.permissions || {})['actions'] === 'read'),
+  'an explicit permissions block denies everything it does not list');
+
+const reporter = fs.readFileSync(join(ROOT, '.github/actions/report-run/action.yml'), 'utf8');
+/* The watch fires ninety-six times a day. If the feeds go down, ninety-six
+   issues — or ninety-six comments on one issue — is not a notification. */
+ok('a workflow failing all day leaves one issue, not a hundred',
+  /issues\.update/.test(reporter) && /existing/.test(reporter));
+ok('recovery closes the issue it opened',
+  /state: 'closed'/.test(reporter) && /Recovered/.test(reporter),
+  'being told it broke is only half of what is needed to trust it');
+ok('one issue per workflow, not one per repository',
+  /i\.title === title/.test(reporter) && /context\.workflow/.test(reporter));
+
 ok('the token check cannot push code',
   docs['token-check.yml']?.permissions?.contents === undefined,
   JSON.stringify(docs['token-check.yml']?.permissions));
@@ -156,8 +186,15 @@ const actions = [];
 for (const doc of Object.values(docs))
   for (const job of Object.values(doc?.jobs || {}))
     for (const step of job.steps || []) if (step.uses) actions.push(step.uses);
-ok('every action is version-pinned', actions.length > 0 && actions.every(u => /@v\d+$/.test(u)),
-  actions.join(' '));
+/* A third-party action has to name a version or it drifts under us. A local
+   one (./.github/actions/...) lives in this repo at this commit, so it is
+   already pinned by definition. */
+const thirdParty = actions.filter(u => !u.startsWith('./'));
+ok('every third-party action is version-pinned',
+  thirdParty.length > 0 && thirdParty.every(u => /@v\d+$/.test(u)),
+  thirdParty.join(' '));
+ok('local actions are referenced by path, not by a version that cannot exist',
+  actions.filter(u => u.startsWith('./')).every(u => !u.includes('@')));
 
 /* ── The embedded scripts actually run ────────────────────────── */
 

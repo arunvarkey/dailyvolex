@@ -1,0 +1,101 @@
+name: Report a run
+description: >
+  Open an issue when a scheduled run fails, and close it when one succeeds.
+  Unattended automation that fails quietly is not automation — the 09:03 run
+  died at its last step and nothing said so.
+
+inputs:
+  status:
+    description: 'success or failure — pass ${{ job.status }}'
+    required: true
+  token:
+    description: 'GITHUB_TOKEN'
+    required: true
+  note:
+    description: 'Anything extra worth putting in the issue'
+    required: false
+    default: ''
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/github-script@v7
+      with:
+        github-token: ${{ inputs.token }}
+        script: |
+          const LABEL = 'run-failure';
+          const failed = '${{ inputs.status }}' === 'failure';
+          const flow = context.workflow;
+          const title = `${flow} is failing`;
+          const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}`
+            + `/actions/runs/${context.runId}`;
+
+          const { data: open } = await github.rest.issues.listForRepo({
+            owner: context.repo.owner, repo: context.repo.repo,
+            state: 'open', labels: LABEL, per_page: 50,
+          });
+          // One issue per workflow. The watch runs ninety-six times a day; if
+          // the feeds go down, ninety-six issues — or ninety-six comments on
+          // one issue — is not a notification, it is a denial of service on
+          // the person meant to read it.
+          const existing = open.find(i => i.title === title);
+
+          if (!failed) {
+            // Recovery closes the loop: being told it broke is only half of
+            // what is needed to trust it.
+            if (existing) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: existing.number,
+                body: `Recovered — [this run](${runUrl}) succeeded.`,
+              });
+              await github.rest.issues.update({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: existing.number, state: 'closed', state_reason: 'completed',
+              });
+              core.notice(`closed #${existing.number}: ${flow} recovered`);
+            }
+            return;
+          }
+
+          // Name the step that actually failed rather than making someone
+          // open the run to find out.
+          let failedStep = '';
+          try {
+            const { data: jobs } = await github.rest.actions.listJobsForWorkflowRun({
+              owner: context.repo.owner, repo: context.repo.repo, run_id: context.runId,
+            });
+            for (const job of jobs.jobs)
+              for (const step of (job.steps || []))
+                if (step.conclusion === 'failure') failedStep = step.name;
+          } catch (e) { /* the run's own jobs may not be readable yet */ }
+
+          const body = [
+            `**${flow}** failed${failedStep ? ` at **${failedStep}**` : ''}.`,
+            '',
+            `- Run: ${runUrl}`,
+            `- Commit: \`${context.sha.slice(0, 7)}\``,
+            `- When: ${new Date().toISOString()}`,
+            '',
+            '${{ inputs.note }}',
+            '',
+            'Nothing was posted. This issue closes itself when a run succeeds.',
+          ].join('\n');
+
+          if (existing) {
+            // Rewrite the body rather than adding a comment, so a workflow
+            // failing all day leaves one issue saying "still failing" instead
+            // of a hundred notifications.
+            await github.rest.issues.update({
+              owner: context.repo.owner, repo: context.repo.repo,
+              issue_number: existing.number,
+              body: body + `\n\nStill failing as of ${new Date().toISOString()}.`,
+            });
+            core.notice(`updated #${existing.number}: ${flow} still failing`);
+          } else {
+            const { data: made } = await github.rest.issues.create({
+              owner: context.repo.owner, repo: context.repo.repo,
+              title, body, labels: [LABEL],
+            });
+            core.notice(`opened #${made.number}: ${flow} failed`);
+          }

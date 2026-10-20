@@ -19,6 +19,7 @@ on:
 permissions:
   contents: write
   issues: write
+  actions: read             # name the step that failed, in the report
 
 concurrency:
   group: dailyvolex-daily
@@ -133,3 +134,13 @@ jobs:
               owner: context.repo.owner, repo: context.repo.repo, issue_number: from,
               body: `Correction drafted in #${issue.data.number} — approve it there.`,
             });
+
+      # Unattended automation that fails quietly is not automation. Runs on
+      # success too, so the issue closes itself when things recover.
+      - name: Report the run
+        if: always()
+        uses: ./.github/actions/report-run
+        with:
+          status: ${{ job.status }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          note: 'A correction was requested and could not be prepared.'
