@@ -16,6 +16,8 @@
  * finished graphic to be licensed the same way.
  */
 
+import { searchCommons } from './commons.mjs';
+
 const API = 'https://api.openverse.org/v1/images/';
 const USABLE = ['cc0', 'pdm', 'by'];
 
@@ -297,6 +299,25 @@ export function pickBest(results, exclude) {
   return usable[0];
 }
 
+/* Commons first, Openverse second.
+ *
+ * A probe from the runner settled this: Openverse answered one request in
+ * eight and hung for twenty-five seconds on each of the other seven — it
+ * throttles an unauthenticated client by holding the connection rather than
+ * refusing it. Commons answered four out of four in about a second. Openverse
+ * stays as a fallback because its index is different, and one good source
+ * plus a flaky one beats one good source alone. */
+async function searchBoth(q, { fetchImpl, timeoutMs, exclude }) {
+  const wm = await searchCommons(q, { fetchImpl, timeoutMs });
+  if (wm.results.length) return wm;
+  const ov = await searchOnce(q, { fetchImpl, timeoutMs, exclude });
+  // Surface the Commons error only when Openverse had nothing to say either,
+  // so the log names why a story has no picture rather than the first thing
+  // that went wrong on the way there.
+  if (!ov.results.length && !ov.error && wm.error) return { results: [], error: wm.error };
+  return ov;
+}
+
 async function searchOnce(q, { fetchImpl, timeoutMs, exclude }) {
   const url = `${API}?q=${encodeURIComponent(q)}`
     + `&license=${USABLE.join(',')}`
@@ -373,7 +394,7 @@ export async function findImage(headline, { fetchImpl = fetch, timeoutMs = 20000
   let fallback = null, lastError = null;
 
   for (const q of queries) {
-    const { results, error } = await searchOnce(q, { fetchImpl, timeoutMs, exclude });
+    const { results, error } = await searchBoth(q, { fetchImpl, timeoutMs, exclude });
     if (error) { lastError = error; continue; }
 
     const best = pickBest(results, exclude);

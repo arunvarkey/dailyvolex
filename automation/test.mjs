@@ -7,6 +7,7 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { parseFeed } from './lib/rss.mjs';
+import { licenceFrom, toResult as commonsResult } from './lib/commons.mjs';
 import { tierOf, isCryptoVertical, TIER_POINTS } from './lib/importance.mjs';
 import { similarity, cluster, selectStories, selectSections, isRepeat, isTopical, isAdvice,
          isSpeculation, isJunk, isPressRelease, isUnverified, isOpinion, isTooThin,
@@ -998,6 +999,40 @@ ok('a match made only of generic words is no match', (() => {
   const real = { title: 'Dussehra effigy burning', tags: [{name:'dussehra'}] };
   return relevance(fish, hl) === 0 && relevance(real, hl) > 0.2;
 })());
+
+/* ── Wikimedia Commons ───────────────────────────────────────── */
+/* A probe from the runner: Openverse answered 1 request in 8 and hung for 25
+   seconds on the other 7 — it throttles an unauthenticated client by holding
+   the connection. Commons answered 4 of 4 in about a second each. */
+
+ok('CC0, public domain and CC BY are usable',
+  licenceFrom({ License: { value: 'cc0' } })?.license === 'cc0'
+  && licenceFrom({ LicenseShortName: { value: 'Public domain' } })?.license === 'pdm'
+  && licenceFrom({ License: { value: 'cc-by-4.0' } })?.license === 'by');
+ok('share-alike, non-commercial, no-derivatives and GFDL are refused',
+  [['cc-by-sa-4.0'], ['cc-by-nc-2.0'], ['cc-by-nd-3.0'], ['gfdl']]
+    .every(([v]) => licenceFrom({ License: { value: v } }) === null),
+  'a share-alike image would arguably oblige the graphic to match it');
+ok('unknown terms are not read as permission',
+  licenceFrom({}) === null
+  && licenceFrom({ License: { value: 'something-else' } }) === null);
+
+ok('a Commons page maps onto the shape the pipeline already understands', (() => {
+  const r = commonsResult({
+    title: 'File:Marco_Rubio_official_photo.jpg',
+    imageinfo: [{ url: 'https://u/x.jpg', width: 2000, height: 1400,
+      descriptionurl: 'https://commons/x', thumburl: 'https://u/t.jpg',
+      extmetadata: { License: { value: 'pd' }, Artist: { value: '<a href="#">US Senate</a>' },
+                     Categories: { value: 'Portraits|Senators' } } }],
+  });
+  return r.license === 'pdm' && r.creator === 'US Senate'
+    && r.title === 'Marco Rubio official photo'
+    && r.tags.map(t => t.name).join(',') === 'Portraits,Senators'
+    && r.thumbnail === 'https://u/t.jpg';
+})());
+ok('an unusable Commons result is dropped at the source, not ranked lower',
+  commonsResult({ title: 'File:x.jpg', imageinfo: [{ url: 'https://u/x.jpg',
+    extmetadata: { License: { value: 'cc-by-sa-4.0' } } }] }) === null);
 
 /* ── Queries that actually find a picture ─────────────────────── */
 /* One live run produced a photograph for 1 story in 13. Eight timed out on
