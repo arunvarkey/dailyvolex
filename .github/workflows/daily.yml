@@ -27,6 +27,7 @@ on:
 permissions:
   contents: write           # commit the shortlist and the rendered graphic
   issues: write             # open the approval issue
+  actions: read             # name the step that failed, in the report
 
 concurrency:
   group: dailyvolex-daily
@@ -177,3 +178,13 @@ jobs:
               body,
               labels: ['awaiting-approval'],
             });
+
+      # Unattended automation that fails quietly is not automation. Runs on
+      # success too, so the issue closes itself when things recover.
+      - name: Report the run
+        if: always()
+        uses: ./.github/actions/report-run
+        with:
+          status: ${{ job.status }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          note: 'No post was offered for approval today.'
