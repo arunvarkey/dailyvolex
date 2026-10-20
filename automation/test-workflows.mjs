@@ -146,9 +146,9 @@ ok('no workflow reads a caption by the old numbered name alone', (() => {
 
 /* Sections moved the slides into data/pending/<section>/, which left the
    CI size check globbing a path that no longer matches anything. */
-ok('CI looks for graphics where sections actually write them', (() => {
+ok('CI looks for graphics where the edition actually writes them', (() => {
   const t = fs.readFileSync(join(ROOT, '.github/workflows/test.yml'), 'utf8');
-  return /find data\/pending/.test(t) && !/for f in data\/pending\/slide-\*\.png/.test(t);
+  return /find data\/editions/.test(t) && !/data\/pending/.test(t);
 })());
 ok('CI fails when nothing was rendered at all', (() => {
   const t = fs.readFileSync(join(ROOT, '.github/workflows/test.yml'), 'utf8');
@@ -190,6 +190,35 @@ ok('the architecture is written down', (() => {
   return /Nothing posts without the owner/.test(flat)
     && /only ever removes/.test(flat)
     && /Corrections are posted, never deleted/.test(flat);
+})());
+
+/* ── Editions, not a shared folder ────────────────────────────── */
+/* Every run used to rewrite data/pending. The watch fires every fifteen
+   minutes, so an approval from an hour ago pointed at files that had since
+   been replaced, and the only thing between that and the account was a
+   commit hash parsed out of an issue body. */
+ok('nothing writes to the old shared folder any more', (() => {
+  const all = Object.values(docs).map(d => JSON.stringify(d)).join(' ');
+  return !/data\/pending/.test(all);
+})());
+
+ok('an approval pins the edition as well as the commit', (() => {
+  const steps = docs['approve.yml']?.jobs?.publish?.steps || [];
+  const pin = steps.find(st => /data\\\\\.githubusercontent|raw\\\\\./.test(st.with?.script || '')
+    || /setOutput\('edition'/.test(st.with?.script || ''));
+  const plan = steps.find(st => /dv\.mjs plan/.test(st.run || ''));
+  return /setOutput\('edition'/.test(pin?.with?.script || '')
+    && /--edition/.test(plan?.run || '');
+})(), 'approving an hour-old issue must not publish whatever is newest');
+
+ok('the working tree is kept to the last few editions', (() => {
+  const steps = docs['daily.yml']?.jobs?.build?.steps || [];
+  return steps.some(st => /dv\.mjs prune/.test(st.run || ''));
+})(), 'the history keeps them; a fresh checkout has no use for them');
+
+ok('the ledger is what gets committed, not the receipts', (() => {
+  const all = Object.values(docs).map(d => JSON.stringify(d)).join(' ');
+  return /data\/ledger\.json/.test(all) && !/data\/posted\.json/.test(all);
 })());
 
 /* ── Failure notification ─────────────────────────────────────── */

@@ -15,11 +15,6 @@ on:
 
   workflow_dispatch:
     inputs:
-      format:
-        description: 'What to make'
-        type: choice
-        default: sections
-        options: [sections, carousel, digest, cards]
       count:
         description: 'How many stories to shortlist'
         default: '3'
@@ -51,20 +46,17 @@ jobs:
       - name: Pick today's stories
         run: node automation/shortlist.mjs --count "${{ inputs.count || '3' }}"
 
-      - name: Render a post per section
-        env:
-          FORMAT: ${{ inputs.format || 'sections' }}
-        run: |
-          case "$FORMAT" in
-            digest)   FLAG=--digest ;;
-            cards)    FLAG= ;;
-            carousel) FLAG=--carousel ;;
-            *)        FLAG=--sections ;;
-          esac
-          node automation/render.mjs $FLAG --ratio 4:5
+      - name: Draw the cards
+        run: node automation/render.mjs --ratio 4:5
 
       - name: Write a caption for every section
         run: node automation/caption.mjs --all
+
+      # The history keeps every edition regardless — an approved post has to
+      # stay fetchable from the commit it was pinned to — but a fresh
+      # checkout has no use for three months of slides.
+      - name: Keep the working tree to the last ten editions
+        run: node automation/dv.mjs prune
 
       # A reel reaches people a carousel does not. Never required: a day with
       # no reel is a day with a carousel, which is the post that matters, so

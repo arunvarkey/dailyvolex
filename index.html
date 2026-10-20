@@ -4016,9 +4016,15 @@ async function loadToday() {
 
   let data;
   try {
-    const res = await fetch('data/shortlist.json' + bust, { cache:'no-store' });
+    // data/latest.json points at the current edition's directory, so the
+    // phone never has to guess which of data/editions/ is today's.
+    const ptr = await fetch('data/latest.json' + bust, { cache:'no-store' });
+    if (!ptr.ok) throw new Error('HTTP ' + ptr.status);
+    const latest = await ptr.json();
+    const res = await fetch(latest.dir + '/edition.json' + bust, { cache:'no-store' });
     if (!res.ok) throw new Error('HTTP ' + res.status);
     data = await res.json();
+    data.__dir = latest.dir;
   } catch (e) {
     const offline = !navigator.onLine;
     body.innerHTML = `<div class="today-empty">
@@ -4033,13 +4039,22 @@ async function loadToday() {
     return;
   }
 
-  /* The run produces a post per section now, so the phone shows all of them
-     rather than output[0] — which was Top stories, with the other four
-     silently invisible. Each post is its own block: its slides, its stories,
-     its caption, its own save button. */
-  const posts = (data.output || (data.stories ? [{ stories: data.stories }] : []) || [])
-    .filter(Boolean);
-  const when = data.rendered || data.generated;
+  /* The run produces a post per section, so the phone shows all of them —
+     it used to show only the first, with the other four silently invisible.
+     Each section is its own block: its slides, its stories, its caption, its
+     own save button. */
+  const posts = (data.sections || []).map(sec => {
+    const carousel = (sec.posts || []).find(p => p.kind === 'carousel');
+    const reel = (sec.posts || []).find(p => p.kind === 'reel');
+    return {
+      section: sec.id, sectionLabel: sec.label, stories: sec.stories,
+      images: carousel ? carousel.files : [],
+      caption: carousel ? carousel.caption : '',
+      reel: reel || null,
+      kind: data.kind === 'correction' ? 'correction' : 'carousel',
+    };
+  }).filter(p => p.images.length);
+  const when = data.builtAt;
 
   if (!posts.length) {
     body.innerHTML = `<div class="today-empty">A shortlist was made but nothing was rendered.</div>
@@ -4049,12 +4064,14 @@ async function loadToday() {
     return;
   }
 
-  // Captions are named by section; a run with no sections falls back to the
-  // old numbered name. Fetched in parallel — this is a phone on mobile data.
-  const captions = await Promise.all(posts.map(async (p, i) => {
-    const name = p.section ? `caption-${p.section}.txt` : `caption-${i + 1}.txt`;
+  // The edition records where each caption is, so nothing here has to
+  // rebuild the path from a naming convention — which is exactly how the
+  // breaking watch came to read a file that no longer existed. Fetched in
+  // parallel: this is a phone on mobile data.
+  const captions = await Promise.all(posts.map(async p => {
+    if (!p.caption) return '';
     try {
-      const r = await fetch('data/pending/' + name + bust, { cache:'no-store' });
+      const r = await fetch(p.caption + bust, { cache:'no-store' });
       return r.ok ? (await r.text()).trim() : '';
     } catch (e) { return ''; }
   }));

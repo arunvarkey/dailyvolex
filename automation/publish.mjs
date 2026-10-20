@@ -293,7 +293,6 @@ async function specsFromPlan(file) {
   const decided = JSON.parse(await readFile(file, 'utf8'));
   const posts = decided.posts || [];
   if (!posts.length) throw new Error(`${file} names no posts`);
-  const text = await correctionText();
   const out = [];
   for (const p of posts) {
     if (p.kind === 'carousel' && p.urls.length > 10)
@@ -304,7 +303,9 @@ async function specsFromPlan(file) {
       // A reel gets none, and must not look as though it did.
       alts: p.kind === 'reel' ? [] : await loadAlts(p.alts, p.urls.length),
       commentOn: p.commentOn || '',
-      commentText: text,
+      // The correction text travels with the plan, not as a flag on the
+      // command line: it is written by a person in a GitHub comment.
+      commentText: p.commentFile ? (await readFile(p.commentFile, 'utf8')).trim() : '',
       cover: p.cover || '',
     });
   }
@@ -333,10 +334,12 @@ async function main() {
   }
 }
 
-/* Append to data/pending/published.json. The approval workflow merges this
-   into data/posted.json, which is the repo's permanent record. */
+/* Append to work/published.json — what Instagram gave back, which dv.mjs
+   record folds into data/ledger.json, the repo's permanent record. It goes
+   under work/ because it is a receipt for this run, not something to commit:
+   the ledger is the committed thing. */
 async function recordPublished(entry) {
-  const path = arg('record', 'data/pending/published.json');
+  const path = arg('record', 'work/published.json');
   let all = [];
   try { all = JSON.parse(await readFile(path, 'utf8')); } catch { /* first post */ }
   if (!Array.isArray(all)) all = [];

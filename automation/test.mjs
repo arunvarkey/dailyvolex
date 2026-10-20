@@ -12,7 +12,9 @@ import { altForStory, altForCover, altForEntry, altForClosing } from './lib/altt
 import { statFor, prefersStat } from './lib/statcard.mjs';
 import { secondsForStory, secondsForCover, SECONDS_FOR_CLOSING, reelTimings,
          totalSeconds, checkDuration, ffmpegArgs, MIN_SECONDS, MAX_SECONDS } from './lib/reelplan.mjs';
-import { fromShortlist, validate, posts, postById } from './lib/edition.mjs';
+import { create, attachPost, validate, posts, postById, idFor, dirFor,
+         prune, save, load } from './lib/edition.mjs';
+import { composeStory, composeSection, backdropOf, toQuery } from './lib/compose.mjs';
 import { plan } from './lib/plan.mjs';
 import { approvalIssue, warningsFor } from './lib/offer.mjs';
 import { record } from './lib/ledger.mjs';
@@ -1498,59 +1500,185 @@ ok('a reel of one card still builds', (() => {
    here does not fail loudly; it posts the wrong thing under the channel's
    name. */
 
-const SHORTLIST_FIXTURE = {
-  generated: '2026-10-20T02:30:00.000Z',
-  rendered:  '2026-10-20T02:48:00.000Z',
-  feedErrors: [],
-  output: [
-    { kind: 'carousel', section: 'top', sectionLabel: 'TOP STORIES',
-      image: 'data/pending/top/slide-1.png',
-      images: ['data/pending/top/slide-1.png', 'data/pending/top/slide-2.png',
-               'data/pending/top/slide-3.png'],
-      altFile: 'data/pending/top/alt.json',
-      reel: { file: 'data/pending/top/reel.mp4', cover: 'data/pending/top/slide-1.png',
-              seconds: 18.7, bytes: 2_000_000 },
-      stories: [
+/* An edition as the stages build one: the shortlist writes the sections, the
+   render attaches a carousel, the caption fills in its path, the reel
+   attaches a second post. Built here the same way, so the fixture cannot
+   drift into a shape nothing produces. */
+function editionFixture({ kind = 'daily', withReel = true } = {}) {
+  const e = create({
+    id: '2026-10-20', kind,
+    pool: 240,
+    refusals: { read: 240, published: 3, refused: 12, byRule: {
+      'a press release is not news': { count: 7, samples: [{ title: 'Acme announces', source: 'PR' }] } } },
+    sections: [
+      { id: 'top', label: 'TOP STORIES', stories: [
         { headline: 'Earthquake kills at least 40 in northern Afghanistan',
           display: 'Earthquake kills at least 40 in northern Afghanistan',
-          source: 'BBC News · Al Jazeera', corroboration: 2, tier: 'lead', topic: 'world' },
+          source: 'BBC News · Al Jazeera', sourceNames: ['BBC News', 'Al Jazeera'],
+          corroboration: 2, tier: 'lead', topic: 'world' },
         { headline: 'Regulator fines a major bank over mis-selling',
           display: 'Regulator fines a major bank over mis-selling',
-          source: 'Reuters', corroboration: 1, tier: 'significant', topic: 'business',
+          source: 'Reuters', sourceNames: ['Reuters'],
+          corroboration: 1, tier: 'significant', topic: 'business',
           republishers: ['MSN'], concentration: ['two of three are owned by one group'] },
       ] },
-    { kind: 'carousel', section: 'business', sectionLabel: 'BUSINESS',
-      image: 'data/pending/business/slide-1.png',
-      images: ['data/pending/business/slide-1.png', 'data/pending/business/slide-2.png'],
-      altFile: 'data/pending/business/alt.json',
-      stories: [
+      { id: 'business', label: 'BUSINESS', stories: [
         { headline: 'Sensex plunges 876 points', display: 'Sensex plunges 876 points',
-          source: 'The Hindu · Mint', corroboration: 2, tier: 'notable', topic: 'business',
-          photoError: null } ] },
-  ],
-};
+          source: 'The Hindu · Mint', sourceNames: ['The Hindu', 'Mint'],
+          corroboration: 2, tier: 'notable', topic: 'business' },
+      ] },
+    ],
+  });
+  const dir = `data/editions/${e.id}`;
+  attachPost(e, 'top', { kind: 'carousel', id: 'top',
+    files: [`${dir}/top/slide-1.jpg`, `${dir}/top/slide-2.jpg`, `${dir}/top/slide-3.jpg`],
+    cover: `${dir}/top/slide-1.jpg`, alts: `${dir}/top/alt.json`,
+    caption: `${dir}/caption-top.txt`, commentOn: '', commentFile: '' });
+  attachPost(e, 'business', { kind: 'carousel', id: 'business',
+    files: [`${dir}/business/slide-1.jpg`, `${dir}/business/slide-2.jpg`],
+    cover: `${dir}/business/slide-1.jpg`, alts: `${dir}/business/alt.json`,
+    caption: `${dir}/caption-business.txt`, commentOn: '', commentFile: '' });
+  if (withReel) attachPost(e, 'top', { kind: 'reel', id: 'top-reel',
+    files: [`${dir}/top/reel.mp4`], cover: `${dir}/top/slide-1.jpg`,
+    caption: `${dir}/caption-top.txt`, alts: '', seconds: 18.7, bytes: 2_000_000 });
+  return e;
+}
 
-const ed = fromShortlist(SHORTLIST_FIXTURE);
+const ed = editionFixture();
+
+/* ── Editions on disk ─────────────────────────────────────────────
+   Each edition gets a directory of its own. The breaking watch runs every
+   fifteen minutes; when every run rewrote one shared folder, an approval
+   from an hour ago would have published a different post entirely, and the
+   only thing standing between that and the account was a commit hash parsed
+   out of an issue body. */
+
+const noon = new Date('2026-10-20T12:34:56Z');
+ok('a daily edition is named for its day', idFor({ at: noon }) === '2026-10-20');
+ok('a breaking edition cannot land on the day’s post',
+  idFor({ kind: 'breaking', at: noon }) === '2026-10-20-breaking-1234');
+ok('two breaking editions in one day do not collide',
+  idFor({ kind: 'breaking', at: new Date('2026-10-20T09:15:00Z') })
+  !== idFor({ kind: 'breaking', at: noon }));
+ok('a correction says so in its own name',
+  /correction/.test(idFor({ kind: 'correction', at: noon })));
+ok('an edition lives under data/editions', dirFor('2026-10-20') === 'data/editions/2026-10-20');
+
+ok('a post is recorded against its section, and replaced rather than doubled', (() => {
+  const e = editionFixture();
+  const before = e.sections[0].posts.length;
+  attachPost(e, 'top', { kind: 'carousel', id: 'top', files: ['x.jpg'], caption: 'c', alts: 'a' });
+  return e.sections[0].posts.length === before
+    && postById(e, 'top').files.length === 1;
+})(), 'a second render of a section must not leave two carousels behind');
+
+ok('attaching to a section that is not there is an error, not a silent no-op', (() => {
+  try { attachPost(editionFixture(), 'sport', { kind: 'carousel', id: 'sport' }); return false; }
+  catch (e) { return /no section/.test(e.message); }
+})());
+
+{
+  const { mkdtemp, mkdir, readdir, readFile } = await import('node:fs/promises');
+  const { tmpdir } = await import('node:os');
+  const tmp = await mkdtemp(join(tmpdir(), 'dv-ed-'));
+  for (const d of ['2026-10-11', '2026-10-12', '2026-10-13', '2026-10-14'])
+    await mkdir(join(tmp, 'data', 'editions', d), { recursive: true });
+  const gone = await prune(tmp, 2);
+  const left = (await readdir(join(tmp, 'data', 'editions'))).sort();
+  ok('pruning keeps the newest and removes the rest',
+    left.join(',') === '2026-10-13,2026-10-14' && gone.length === 2, left.join(','));
+
+  const saved = editionFixture();
+  await save(tmp, saved);
+  const back = await load(tmp);
+  ok('an edition saved is the edition loaded back',
+    back.id === saved.id && back.sections.length === saved.sections.length);
+  ok('the latest pointer finds the edition without globbing a directory',
+    JSON.parse(await readFile(join(tmp, 'data', 'latest.json'), 'utf8')).id === saved.id);
+}
+
+/* ── Composition ──────────────────────────────────────────────────
+   What each card says and looks like, decided without a browser. These were
+   buried in the renderer's URL builder, which meant the only way to ask
+   "what will the blind reader be told?" was to draw it and look. */
+
+ok('a headline about a number gets the stat layout', (() => {
+  const story = { headline: 'Sensex plunges 876 points as banks drag the index lower',
+    display: 'Sensex plunges 876 points as banks drag the index lower', source: 'Mint' };
+  const spec = composeStory(story, { theme: 'bbc', ratio: '4:5' });
+  return story.layout === 'quote' && spec.params.stat === '876'
+    && spec.params.context === story.display;
+})(), 'and the headline still sits underneath in full');
+
+ok('a headline that is not about a number does not', (() => {
+  const story = { headline: 'Ceasefire talks resume in Geneva',
+    display: 'Ceasefire talks resume in Geneva', source: 'Reuters' };
+  composeStory(story, { layout: 'breaking' });
+  return story.layout === 'breaking' && story.stat === null;
+})());
+
+ok('the backdrop chosen is the backdrop written down', (() => {
+  const story = { headline: 'Cabinet approves a port scheme', display: 'Cabinet approves a port scheme',
+    source: 'The Hindu', topic: 'india' };
+  const spec = composeStory(story, {});
+  // The description has to say what is actually behind the headline. It
+  // called every card "a plain brand design" when nothing recorded this.
+  return story.backdrop && spec.params.bg === story.backdrop
+    && spec.alt.includes(story.backdrop === 'chart' ? 'market chart'
+      : story.backdrop === 'editorial' ? 'brand graphic' : 'background');
+})());
+
+ok('a correction is never illustrated',
+  backdropOf({ kind: 'correction', display: 'We said the Sensex fell 900 points' }, { bg: 'chart' })
+  === 'editorial',
+  'a chart that looks like the figure we got wrong is worse than decoration');
+
+ok('a photograph replaces the backdrop rather than sitting over one', (() => {
+  const story = { headline: 'x', display: 'x', source: 'y',
+    photo: { path: 'work/photos/top/photo-top-2.jpg', credit: 'File photo: A (CC BY 4.0)' } };
+  const spec = composeStory(story, { bg: 'chart' });
+  return story.backdrop === null && spec.params.img === story.photo.path;
+})());
+
+ok('every card of a section is composed, cover and closing included', (() => {
+  const stories = [{ headline: 'a', display: 'a', source: 's' },
+                   { headline: 'b', display: 'b', source: 's' }];
+  const specs = composeSection(stories, { label: 'TOP STORIES' });
+  return specs.map(x => x.kind).join(',') === 'cover,story,story,closing'
+    && specs.every(x => x.alt && x.alt.length > 20);
+})(), 'a slide with no description is a slide a blind reader cannot read');
+
+ok('the cover lists the headlines it is a cover for', (() => {
+  const specs = composeSection([{ headline: 'a', display: 'Afghan quake', source: 's' }], {});
+  return specs[0].params.item.join('') === 'Afghan quake';
+})());
+
+ok('a list of items survives being turned into a query', (() => {
+  const q = toQuery({ auto: '1', item: ['one', 'two'], skip: null });
+  return q.getAll('item').join(',') === 'one,two' && !q.has('skip');
+})());
+
+
 
 ok('an edition is valid before it is offered', validate(ed).length === 0, validate(ed).join('; '));
 ok('a section offers a carousel', postById(ed, 'top')?.kind === 'carousel');
 ok('a section with a reel offers it as a second post',
   postById(ed, 'top-reel')?.kind === 'reel'
-  && postById(ed, 'top-reel').files[0] === 'data/pending/top/reel.mp4');
+  && postById(ed, 'top-reel').files[0].endsWith('/top/reel.mp4'));
 ok('a section without a reel offers only the carousel',
   posts(ed).filter(p => p.section === 'business').length === 1);
 ok('an edition missing its captions is refused rather than offered', (() => {
-  const broken = fromShortlist(SHORTLIST_FIXTURE);
+  const broken = editionFixture();
   broken.sections[0].posts[0].caption = '';
   return validate(broken).some(w => /caption/.test(w));
 })());
 ok('a carousel over ten slides is refused', (() => {
-  const broken = fromShortlist(SHORTLIST_FIXTURE);
+  const broken = editionFixture();
   broken.sections[0].posts[0].files = Array.from({ length: 11 }, (_, i) => `s${i}.png`);
   return validate(broken).some(w => /Instagram takes 10/.test(w));
 })());
 ok('a carousel with no descriptions is refused', (() => {
-  const broken = fromShortlist(SHORTLIST_FIXTURE);
+  const broken = editionFixture();
   broken.sections[0].posts[0].alts = '';
   return validate(broken).some(w => /descriptions/.test(w));
 })(), 'the one accessibility promise this channel makes');
@@ -1594,7 +1722,7 @@ ok('an unknown section is refused, not guessed', (() => {
   return !!r.error && /no such section/.test(r.error);
 })(), 'posting something close to what they meant is how the wrong thing goes out');
 ok('a missing file is refused rather than posted', (() => {
-  const r = P('/approve top', { exists: f => !f.endsWith('slide-2.png') });
+  const r = P('/approve top', { exists: f => !f.endsWith('slide-2.jpg') });
   return !!r.error && /missing at the approved commit/.test(r.error);
 })());
 ok('urls are pinned to the approved commit', (() => {
@@ -1645,10 +1773,12 @@ ok('the record does not grow without limit', (() => {
 })());
 ok('a correction marks the post it corrected in the history', (() => {
   const history = { posted: [{ title: 'Sensex plunges 900 points', mediaId: '17900' }] };
-  const corrEd = fromShortlist({ output: [{ kind: 'correction', section: 'correction',
-    sectionLabel: 'CORRECTION', image: 'a.png', images: ['a.png'], altFile: 'b.json',
-    stories: [{ kind: 'correction', headline: 'We said 900. It was 489.',
-      display: 'We said 900. It was 489.', corrects: { mediaId: '17900' } }] }] });
+  const corrEd = soloEdition({
+    kind: 'correction', id: '2026-10-20-correction-0800',
+    section: 'correction', label: 'CORRECTION', files: ['slide-1.jpg'],
+    story: { kind: 'correction', headline: 'We said 900. It was 489.',
+      display: 'We said 900. It was 489.', corrects: { mediaId: '17900' } },
+  });
   const l = record(history, {
     edition: corrEd, plan: plan(corrEd, '/approve'),
     published: [{ section: 'correction', kind: 'carousel', mediaId: 'C1' }], issue: 11 });
@@ -1687,31 +1817,60 @@ ok('a republisher is named and not counted',
   warningsFor(ed).some(w => /also carried by MSN/.test(w)));
 ok('who owns the newsrooms that agree is stated',
   warningsFor(ed).some(w => /owned by one group/.test(w)));
+/* A run reads several hundred articles and publishes a dozen. If one of the
+   editorial rules is wrong it is eating real news, and the approval issue is
+   the only place anyone would ever see it. It vanished from the issue the
+   moment the body was built from the edition instead of from a file of its
+   own, and nothing noticed, because the only person who reads it is the
+   owner. */
+ok('the issue shows what the editorial rules refused',
+  /<b>Refused<\/b>/.test(issue.body) && /press release is not news/.test(issue.body));
+ok('the refused block names examples, not just counts',
+  /Acme announces/.test(issue.body));
+ok('a run that refused nothing shows no refused block', (() => {
+  const quiet = editionFixture();
+  quiet.refusals = { read: 10, published: 3, refused: 0, byRule: {} };
+  return !/Refused/.test(approvalIssue(quiet, { owner: 'o', repo: 'r', sha: 'a', read: () => '' }).body);
+})());
 ok('the body is within GitHub limits', issue.body.length < 65536, `${issue.body.length}`);
+/* A one-section edition — a breaking story or a correction. Both are a
+   single card set, and both still have to be approvable. */
+function soloEdition({ kind, id, section, label, story, files, extra = {} }) {
+  const e = create({ id, kind, sections: [{ id: section, label, stories: [story] }] });
+  const dir = `data/editions/${id}`;
+  attachPost(e, section, {
+    kind: 'carousel', id: section,
+    files: files.map(f => `${dir}/${section}/${f}`),
+    cover: `${dir}/${section}/${files[0]}`,
+    alts: `${dir}/${section}/alt.json`,
+    caption: `${dir}/caption-${section}.txt`,
+    ...extra,
+  });
+  return e;
+}
+
 /* The three shapes of approval issue. Nothing reaches the account except
    through one of them, and approve.yml gates on the label, so a shape that
    forgot it would be a shape that cannot be approved — or worse, one that
    bypasses the gate. */
-const breakingEd = fromShortlist({
-  breaking: true,
-  output: [{ kind: 'carousel', section: 'world', sectionLabel: 'WORLD',
-    image: 'data/pending/world/slide-1.png',
-    images: ['data/pending/world/slide-1.png', 'data/pending/world/slide-2.png'],
-    altFile: 'data/pending/world/alt.json',
-    stories: [{ headline: 'Ceasefire agreed in Geneva', display: 'Ceasefire agreed in Geneva',
-      source: 'Reuters · AP · BBC News', corroboration: 3, topic: 'world',
-      published: new Date(Date.now() - 23 * 60000).toISOString(),
-      link: 'https://example.org/story' }] }],
+const breakingEd = soloEdition({
+  kind: 'breaking', id: '2026-10-20-breaking-0915', section: 'world', label: 'WORLD',
+  files: ['slide-1.jpg', 'slide-2.jpg'],
+  story: { headline: 'Ceasefire agreed in Geneva', display: 'Ceasefire agreed in Geneva',
+    source: 'Reuters · AP · BBC News', sourceNames: ['Reuters', 'AP', 'BBC News'],
+    corroboration: 3, topic: 'world',
+    published: new Date(Date.now() - 23 * 60000).toISOString(),
+    link: 'https://example.org/story' },
 });
-const correctionEd = fromShortlist({
-  output: [{ kind: 'correction', section: 'correction', sectionLabel: 'CORRECTION',
-    image: 'data/pending/correction/slide-1.png',
-    images: ['data/pending/correction/slide-1.png'],
-    altFile: 'data/pending/correction/alt.json',
-    stories: [{ kind: 'correction', headline: 'We said 900 points. It was 489.',
-      display: 'We said 900 points. It was 489.',
-      corrects: { mediaId: '17900', title: 'Sensex plunges 900 points',
-                  permalink: 'https://instagram.com/p/x' } }] }],
+const correctionEd = soloEdition({
+  kind: 'correction', id: '2026-10-20-correction-1100',
+  section: 'correction', label: 'CORRECTION', files: ['slide-1.jpg'],
+  story: { kind: 'correction', headline: 'We said 900 points. It was 489.',
+    display: 'We said 900 points. It was 489.',
+    corrects: { mediaId: '17900', title: 'Sensex plunges 900 points',
+                permalink: 'https://instagram.com/p/x' } },
+  extra: { commentOn: '17900',
+           commentFile: 'data/editions/2026-10-20-correction-1100/correction-comment.txt' },
 });
 
 const breakingIssue = approvalIssue(breakingEd, { owner: 'o', repo: 'r', sha: 'aa', read: () => 'cap' });
@@ -1735,10 +1894,11 @@ ok('a correction says the original is not deleted',
 ok('a correction with a media id says it will be commented on the original',
   /added as a comment on the original post/.test(corrIssue.body));
 ok('a correction with no media id says so plainly', (() => {
-  const orphan = fromShortlist({ output: [{ ...correctionEd.sections[0], kind: 'correction',
-    section: 'correction', sectionLabel: 'CORRECTION',
-    image: 'a.png', images: ['a.png'], altFile: 'b.json',
-    stories: [{ kind: 'correction', headline: 'x', display: 'x', corrects: {} }] }] });
+  const orphan = soloEdition({
+    kind: 'correction', id: '2026-10-20-correction-0900',
+    section: 'correction', label: 'CORRECTION', files: ['slide-1.jpg'],
+    story: { kind: 'correction', headline: 'x', display: 'x', corrects: {} },
+  });
   return /cannot be attached as a comment/.test(
     approvalIssue(orphan, { owner: 'o', repo: 'r', sha: 'c', read: () => '' }).body);
 })(), 'posts made before the media id was recorded all look like this');

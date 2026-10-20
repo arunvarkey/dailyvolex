@@ -1,33 +1,41 @@
 #!/usr/bin/env node
-/* Stage 2 — turn the shortlist into finished graphics.
+/* Stage 2 — draw the cards the edition decided on.
  *
- * Loads the app itself in headless Chrome with the story in the URL, so what
- * comes out is exactly what the editor would produce. Writes PNGs to
- * data/pending/ and records them in the shortlist.
+ * Loads the app itself in headless Chrome with the card in the URL, so what
+ * comes out is exactly what the editor would produce. This file draws; it no
+ * longer decides. Which layout a headline gets, what sits behind it and what
+ * a blind reader is told are decisions, and they live in lib/compose.mjs
+ * where they can be checked without a browser.
  *
- *   node automation/render.mjs [--ratio 4:5] [--theme bbc] [--layout breaking]
+ *   node automation/render.mjs [--ratio 4:5] [--theme bbc] [--edition <id>]
+ *
+ * Writes into the edition's own directory and records a post per section.
  */
 
 import { createServer } from 'node:http';
-import { readFile, writeFile, mkdir, rm } from 'node:fs/promises';
+import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, extname, normalize } from 'node:path';
 import { launchChrome, closeChrome, openPage } from './lib/cdp.mjs';
-import { readJson, writeJson } from './lib/store.mjs';
-import { findImage, downloadImage, backdropFor } from './lib/imagery.mjs';
-import { altForEntry, altForStory } from './lib/alttext.mjs';
-import { statFor, prefersStat } from './lib/statcard.mjs';
+import { findImage, downloadImage } from './lib/imagery.mjs';
+import { composeSection, backdropOf, toQuery } from './lib/compose.mjs';
+import { load, save, dirFor, attachPost } from './lib/edition.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(HERE, '..');
-const SHORTLIST = join(ROOT, 'data', 'shortlist.json');
-const OUT_DIR   = join(ROOT, 'data', 'pending');
 
 /* Source photographs are an input to the renderer, not an output of it. They
    are baked into a slide within seconds and are never published, so they have
    no business in a commit — see docs/ARCHITECTURE.md. Everything under work/
    is git-ignored, which is the whole point of it. */
 const WORK_PHOTOS = join(ROOT, 'work', 'photos');
+
+/* JPEG, not PNG. A card is a photograph or a gradient behind type, which is
+   what JPEG is for: the same slides came to 10.5 MB as PNG and 1.6 MB at
+   quality 0.95, with no visible difference in the headline. Instagram
+   re-encodes to JPEG whatever arrives, and a megabyte a day is a megabyte of
+   git history every day, forever. */
+const JPEG_QUALITY = 0.95;
 
 const TYPES = { '.html':'text/html', '.js':'text/javascript', '.json':'application/json',
                 '.png':'image/png', '.css':'text/css',
@@ -45,10 +53,8 @@ function arg(name, fallback) {
 /* Serve the app from disk. file:// would do, but a real origin keeps the page
    behaving exactly as it does on GitHub Pages.
  *
- * Exported, along with the card builders and the capture below, because the
- * reel stage renders the same cards upright and must render them the same
- * way. Two copies of "what a DailyVolex card looks like" would drift, and the
- * one that drifted would be the one nobody was looking at. */
+ * Exported, along with the capture below, because the reel stage draws the
+ * same cards upright and must draw them the same way. */
 export function serve(root) {
   return new Promise(resolve => {
     const server = createServer(async (req, res) => {
@@ -65,41 +71,41 @@ export function serve(root) {
   });
 }
 
-/* One card carrying every headline — the classic daily-roundup format, and a
-   better fit than a single Breaking card when there is no video behind it. */
-export function digestUrl(port, stories, opts) {
-  const q = new URLSearchParams({
-    auto: '1', layout: 'stories', theme: opts.theme, ratio: opts.ratio,
-    label: opts.label, date: opts.date, ticker: opts.ticker, bg: opts.bg,
-  });
-  // The outlet's own capitalisation, untouched.
-  for (const s of stories) q.append('item', s.display || s.headline);
-  return `http://127.0.0.1:${port}/index.html?${q}`;
+/* A composed card as a URL the app will draw. */
+export const cardUrl = (port, spec) =>
+  `http://127.0.0.1:${port}/index.html?${toQuery(spec.params)}`;
+
+export async function renderUrl(url, index, { quality = JPEG_QUALITY } = {}) {
+  const chrome = await launchChrome({ port: 9333 + index });
+  try {
+    const page = await openPage(chrome.port, url);
+
+    // Wait for the app to say the fonts are in and a frame is painted. Never
+    // capture before that or the headline renders in a fallback face.
+    let ready = false;
+    for (let i = 0; i < 150; i++) {
+      try { if (await page.evaluate('window.dvReady === true')) { ready = true; break; } } catch {}
+      await new Promise(r => setTimeout(r, 200));
+    }
+    if (!ready) throw new Error('the page never became ready to capture');
+
+    const type = quality ? `'image/jpeg', ${quality}` : `'image/png'`;
+    const dataUrl = await page.evaluate(`document.getElementById('cv').toDataURL(${type})`);
+    const want = quality ? 'data:image/jpeg' : 'data:image/png';
+    if (!dataUrl || !dataUrl.startsWith(want)) throw new Error('no image came back');
+
+    const dims = await page.evaluate(`JSON.stringify({w:cv.width,h:cv.height})`);
+    const fontsOk = await page.evaluate('window.dvFontsOk');
+    page.close();
+    return { bytes: Buffer.from(dataUrl.split(',')[1], 'base64'), dims: JSON.parse(dims),
+             fontsOk, jsErrors: page.errors.slice(0, 3) };
+  } finally {
+    await closeChrome(chrome);
+  }
 }
 
-/* The last slide of every carousel.
- *
- * A post used to stop dead on its final story, which is the moment someone
- * has just given you their whole attention and is deciding whether to follow.
- * It says what the channel does rather than shouting FOLLOW, because what
- * this channel does is the reason to follow it. */
-export function closingUrl(port, opts) {
-  const q = new URLSearchParams({
-    auto: '1', layout: 'stories', theme: opts.theme, ratio: opts.ratio,
-    label: 'HOW THIS IS MADE', date: opts.date, ticker: opts.ticker, bg: 'editorial',
-  });
-  for (const line of [
-    'Every story carried by two or more independent newsrooms',
-    'Outlets named on every card, with who owns them',
-    'Pictures are openly licensed and credited',
-    'Corrections posted in the open, never deleted',
-    `Follow ${opts.handle || '@dailyvolex'}`,
-  ]) q.append('item', line);
-  return `http://127.0.0.1:${port}/index.html?${q}`;
-}
-
-/* Try for a photograph; fall back to a generated backdrop. Never let this stop
-   a run — a post with a backdrop behind it is fine, a failed run is not. */
+/* Try for a photograph; fall back to a generated backdrop. Never let this
+   stop a run — a post with a backdrop behind it is fine, a failed run is not. */
 const usedPhotos = new Set();       // one picture must not appear twice in a post
 
 /* Run `fn` over the list with at most `limit` in flight. Enough to collapse
@@ -131,22 +137,10 @@ function dropDuplicatePhotos(stories) {
   }
 }
 
-/* What goes behind this card when there is no photograph. Named here so the
-   log line and the URL cannot disagree about it. */
-export function backdropOf(story, opts) {
-  // A correction is never illustrated. The first one rendered came out over a
-  // market chart, because the text it was correcting said "Sensex" and
-  // "points" — a chart behind an apology is decoration, and a chart that
-  // looks like the figure we got wrong is worse than decoration.
-  if (story.kind === 'correction') return 'editorial';
-  if (opts.bgExplicit) return opts.bg;
-  return backdropFor(story.display || story.headline, story.topic);
-}
-
 async function imageFor(story, index, opts, dir = '') {
   if (opts.noPhotos) return null;
-  // Nor does a correction get a photograph. There is no picture of being
-  // wrong, and a stock image under one reads as an attempt to soften it.
+  // A correction gets no photograph. There is no picture of being wrong, and
+  // a stock image under one reads as an attempt to soften it.
   if (story.kind === 'correction') return null;
   // The topic steers the last-resort query. Without it, every story that named
   // nothing searchable fell back to a markets photo, so a standards conference
@@ -165,8 +159,8 @@ async function imageFor(story, index, opts, dir = '') {
   // not overwrite photo-2.jpg in WORLD.
   const relDir = dir ? `${dir}/` : '';
   await mkdir(join(WORK_PHOTOS, dir), { recursive: true });
-  // Openverse indexes links that have since died, so a 404 on the best match
-  // should move to the next one rather than cost the story its picture.
+  // Links die, so a 404 on the best match should move to the next one rather
+  // than cost the story its picture.
   const candidates = [found.image, ...(found.image.alternatives || [])];
   const failures = [];
 
@@ -197,97 +191,16 @@ async function imageFor(story, index, opts, dir = '') {
   return null;
 }
 
-export function storyUrl(port, story, opts) {
-  /* A headline that is really about a number gets the stat layout: one huge
-     figure, with the headline underneath in full. Every card in every post
-     being the same shape is most of why a long post reads flat, and the app
-     has had this layout since the beginning without the automation ever
-     using it.
-
-     Everything on the card is lifted verbatim — the figure is a substring of
-     the headline and so is the label. Rewriting a headline to fit a layout
-     would be inventing, and this channel only ever removes. */
-  const stat = prefersStat(story) ? statFor(story.display || story.headline) : null;
-  if (stat) { story.layout = 'quote'; story.stat = stat; }
-
-  const q = new URLSearchParams({
-    auto: '1',
-    layout: stat ? 'quote' : opts.layout,
-    theme: opts.theme,
-    ratio: opts.ratio,
-    category: story.category,
-    headline: story.headline,
-    source: story.source,
-    ticker: opts.ticker,
-    // A photograph covers the whole frame, so the backdrop behind it never
-    // shows; without one, the choice of backdrop is part of what the card
-    // says, and is made per story rather than once for the whole run.
-    // Recorded on the story as well as sent in the URL: the alt text has to
-    // describe what is actually behind the headline, and it was calling
-    // every card "a plain brand design" because nothing wrote this down.
-    bg: story.photo ? opts.bg : (story.backdrop = backdropOf(story, opts)),
-  });
-  if (stat) {
-    q.set('stat', stat.stat);
-    q.set('statlabel', stat.label);
-    // The headline in full, below the figure. The card never shows a number
-    // without the sentence that explains it.
-    q.set('context', story.display || story.headline);
-  }
-  if (opts.posy != null) q.set('posy', String(opts.posy));
-  if (story.photo) { q.set('img', story.photo.path); q.set('credit', story.photo.credit); }
-  return `http://127.0.0.1:${port}/index.html?${q}`;
-}
-
-export async function renderUrl(url, index) {
-  const chrome = await launchChrome({ port: 9333 + index });
-  try {
-    const page = await openPage(chrome.port, url);
-
-    // Wait for the app to say the fonts are in and a frame is painted. Never
-    // capture before that or the headline renders in a fallback face.
-    let ready = false;
-    for (let i = 0; i < 150; i++) {
-      try { if (await page.evaluate('window.dvReady === true')) { ready = true; break; } } catch {}
-      await new Promise(r => setTimeout(r, 200));
-    }
-    if (!ready) throw new Error('the page never became ready to capture');
-
-    const dataUrl = await page.evaluate(`document.getElementById('cv').toDataURL('image/png')`);
-    if (!dataUrl || !dataUrl.startsWith('data:image/png')) throw new Error('no image came back');
-
-    const dims = await page.evaluate(`JSON.stringify({w:cv.width,h:cv.height})`);
-    const fontsOk = await page.evaluate('window.dvFontsOk');
-    if (process.env.DV_DEBUG) console.log('   debug:',
-      await page.evaluate(`JSON.stringify({freeze:S.tickerFreeze,x:S.tickerX,raf:!!S.raf,headless:HEADLESS})`));
-    page.close();
-    return { png: Buffer.from(dataUrl.split(',')[1], 'base64'), dims: JSON.parse(dims),
-             fontsOk, jsErrors: page.errors.slice(0, 3) };
-  } finally {
-    await closeChrome(chrome);
-  }
-}
-
 async function main() {
   const today = new Date().toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' });
   const opts = {
     layout: arg('layout', 'breaking'),
     theme:  arg('theme', 'bbc'),
     ratio:  arg('ratio', '4:5'),       // 4:5 is the largest Instagram feed size
-    ticker: arg('ticker', 'DAILYVOLEX  ···  TODAY\u2019S NEWS  ···  '),
-    label:  arg('label', 'TOP STORIES'),
+    ticker: arg('ticker', 'DAILYVOLEX  ···  TODAY’S NEWS  ···  '),
     date:   arg('date', today),
-    digest: process.argv.includes('--digest'),
-    // A carousel is the strongest format for a daily news post: the cover
-    // earns the tap, each story gets a readable card of its own, and people
-    // save and share multi-slide posts far more than single images.
-    carousel: process.argv.includes('--carousel'),
-    // A post per section — Top stories, India, World, Business, Technology.
-    sections: process.argv.includes('--sections'),
     // Lifts the headline block off the bottom edge. Without it the card is
     // weighted right at the base of an otherwise empty frame.
-    // With a chart behind the text the frame is full, so the headline sits in
-    // its normal place rather than being lifted to fill emptiness.
     posy: arg('posy', '0'),
     bg:   arg('bg', 'chart'),
     // An explicit --bg is an instruction and overrides the per-story choice;
@@ -296,165 +209,75 @@ async function main() {
     noPhotos: process.argv.includes('--no-photos'),
   };
 
-  const shortlist = await readJson(SHORTLIST, null);
-  if (!shortlist || !shortlist.stories?.length) throw new Error('no shortlist — run shortlist.mjs first');
-
-  await rm(OUT_DIR, { recursive: true, force: true });
-  await mkdir(OUT_DIR, { recursive: true });
-  // Yesterday's source photographs are of no use to today and would otherwise
-  // pile up on a machine that is reused.
-  await rm(WORK_PHOTOS, { recursive: true, force: true });
-  await mkdir(WORK_PHOTOS, { recursive: true });
+  const edition = await load(ROOT, arg('edition'));
+  const outDir = join(ROOT, dirFor(edition.id));
+  let fontWarnings = 0;
 
   const { server, port } = await serve(ROOT);
-  const rendered = [];
-  let fontWarnings = 0;
   try {
-    const usable = shortlist.stories.filter(s => s.usable);
-
-    /* One carousel: a cover listing what is inside, then a card per story.
-       Parameterised by output folder so a sectioned run can put each
-       section's post in its own, rather than four sections overwriting one
-       another's slide-1.png. */
-    const renderCarousel = async (stories, carouselOpts, dir, label) => {
-      await mkdir(join(OUT_DIR, dir), { recursive: true });
-      const rel = f => `data/pending/${dir ? dir + '/' : ''}${f}`;
-      const slides = [];
-
-      const cover = await renderUrl(digestUrl(port, stories, carouselOpts), 0);
-      await writeFile(join(OUT_DIR, dir, 'slide-1.png'), cover.png);
-      slides.push({ file: 'slide-1.png', kind: 'cover', ...cover });
+    for (const section of edition.sections) {
+      const stories = section.stories.filter(s => s.usable !== false);
+      if (!stories.length) { console.log(`\n── ${section.label} — nothing usable ──`); continue; }
+      console.log(`\n── ${section.label} (${stories.length}) ──`);
 
       /* Look the photographs up together rather than one at a time.
          Searching serially meant a slow API ate the run's whole budget, and
          the answer to that was NOT the shorter timeout I reached for first:
          cutting it from twenty seconds to ten took the picture rate from
-         most cards to one in thirteen, with eight stories timing out on
-         perfectly good queries like "Marco Rubio". These are independent
-         network calls. Done three at a time they cost about what one did. */
+         most cards to one in thirteen. These are independent network calls.
+         Done three at a time they cost about what one did. */
       await mapWithLimit(stories, 3, async (story, i) => {
-        story.photo = await imageFor(story, `${dir || 'top'}-${i + 2}`, carouselOpts, dir);
+        story.photo = await imageFor(story, `${section.id}-${i + 2}`, opts, section.id);
       });
       dropDuplicatePhotos(stories);
 
-      for (const [i, story] of stories.entries()) {
-        const slide = await renderUrl(
-          storyUrl(port, story, { ...carouselOpts, layout: 'breaking', posy: carouselOpts.posy }), i + 1);
-        const name = `slide-${i + 2}.png`;
-        await writeFile(join(OUT_DIR, dir, name), slide.png);
-        slides.push({ file: name, kind: 'story', story, ...slide });
+      // Every decision about every card, made in one pure call before a
+      // single pixel is drawn.
+      const specs = composeSection(stories, { ...opts, label: section.label });
+
+      await mkdir(join(outDir, section.id), { recursive: true });
+      const files = [];
+      for (const [i, spec] of specs.entries()) {
+        const slide = await renderUrl(cardUrl(port, spec), i);
+        const name = `slide-${i + 1}.jpg`;
+        await writeFile(join(outDir, section.id, name), slide.bytes);
+        files.push(`${dirFor(edition.id)}/${section.id}/${name}`);
+        console.log(`rendered ${section.id}/${name}  ${slide.dims.w}x${slide.dims.h}`
+          + `  ${(slide.bytes.length / 1024).toFixed(0)} KB`
+          + (slide.fontsOk === false ? '  !! WEB FONTS DID NOT LOAD' : '')
+          + (slide.jsErrors.length ? `  (page errors: ${slide.jsErrors.join(' | ')})` : ''));
+        if (slide.fontsOk === false) fontWarnings++;
       }
-
-      // The closing card. Last, so it is what someone is looking at when they
-      // decide whether to follow.
-      const closing = await renderUrl(closingUrl(port, carouselOpts), stories.length + 1);
-      const closingName = `slide-${stories.length + 2}.png`;
-      await writeFile(join(OUT_DIR, dir, closingName), closing.png);
-      slides.push({ file: closingName, kind: 'closing', ...closing });
-
-      for (const s of slides) {
-        console.log(`rendered ${label ? label + '/' : ''}${s.file}  ${s.dims.w}x${s.dims.h}`
-          + `  ${(s.png.length / 1024).toFixed(0)} KB`
-          + (s.fontsOk === false ? '  !! WEB FONTS DID NOT LOAD' : '')
-          + (s.jsErrors.length ? `  (page errors: ${s.jsErrors.join(' | ')})` : ''));
-        if (s.fontsOk === false) fontWarnings++;
-      }
-
-      const entry = {
-        kind: 'carousel',
-        headline: `${stories.length} stories`,
-        images: slides.map(s => rel(s.file)),
-        image: rel('slide-1.png'),                  // the cover, for previews
-        width: slides[0].dims.w, height: slides[0].dims.h,
-        sourceNames: [...new Set(stories.flatMap(s => s.sourceNames))],
-        stories,
-        usable: true,
-      };
 
       // A news account that publishes images without alt text shuts blind
-      // readers out of the news. Written to a file beside the slides, in
-      // slide order, so it reaches the publisher without going through a
-      // shell — the same reason the correction comment is a file.
-      entry.alts = altForEntry(entry);
-      await writeFile(join(OUT_DIR, dir, 'alt.json'),
-                      JSON.stringify(entry.alts, null, 2) + '\n', 'utf8');
-      entry.altFile = rel('alt.json');
-      return entry;
-    };
+      // readers out of the news. Written beside the slides, in slide order,
+      // so it reaches the publisher without going through a shell.
+      await writeFile(join(outDir, section.id, 'alt.json'),
+                      JSON.stringify(specs.map(s => s.alt), null, 2) + '\n', 'utf8');
 
-    /* A post per section. Top stories first, so it is always output[0] and
-       everything that reads output[0] keeps working unchanged. */
-    if (opts.sections) {
-      const sections = (shortlist.sections || []).filter(s => s.stories?.some(x => x.usable));
-      if (!sections.length) throw new Error('no usable headlines in any section');
-
-      for (const section of sections) {
-        const stories = section.stories.filter(s => s.usable);
-        console.log(`\n── ${section.label} (${stories.length}) ──`);
-        const entry = await renderCarousel(
-          stories,
-          { ...opts, label: section.label },
-          section.id,
-          section.id);
-        rendered.push({ ...entry, section: section.id, sectionLabel: section.label });
-      }
-    }
-
-    else if (opts.carousel) {
-      if (!usable.length) throw new Error('no usable headlines for a carousel');
-      rendered.push(await renderCarousel(usable, opts, '', ''));
-    }
-
-    else if (opts.digest) {
-      if (!usable.length) throw new Error('no usable headlines to put in a digest');
-      const { png, dims, fontsOk, jsErrors } = await renderUrl(digestUrl(port, usable, opts), 0);
-      await writeFile(join(OUT_DIR, 'digest.png'), png);
-      console.log(`rendered digest.png  ${dims.w}x${dims.h}  ${(png.length / 1024).toFixed(0)} KB`
-        + (fontsOk === false ? '  !! WEB FONTS DID NOT LOAD' : '')
-        + (jsErrors.length ? `  (page errors: ${jsErrors.join(' | ')})` : ''));
-      if (fontsOk === false) fontWarnings++;
-      rendered.push({
-        kind: 'digest',
-        headline: `${usable.length} stories`,
-        caption: usable.map(s => '• ' + (s.display || s.headline)).join('\n'),
-        sourceNames: [...new Set(usable.flatMap(s => s.sourceNames))],
-        stories: usable,
-        image: 'data/pending/digest.png', width: dims.w, height: dims.h, usable: true,
+      attachPost(edition, section.id, {
+        kind: 'carousel',
+        id: section.id,
+        files,
+        cover: files[0],
+        alts: `${dirFor(edition.id)}/${section.id}/alt.json`,
+        // caption.mjs fills this in; validate() refuses an edition without it.
+        caption: '',
+        // A correction is attached to the post it corrects, so whoever finds
+        // the mistake finds the correction with it.
+        commentOn: stories[0]?.corrects?.mediaId || '',
+        commentFile: stories[0]?.corrects?.commentFile || '',
       });
-    }
-
-    const singleCards = (opts.digest || opts.carousel || opts.sections) ? [] : shortlist.stories;
-    for (const [i, story] of singleCards.entries()) {
-      if (!story.usable) { console.log(`skipped (headline too short): ${story.headline}`); continue; }
-      const { png, dims, fontsOk, jsErrors } = await renderUrl(storyUrl(port, story, opts), i);
-      const name = `story-${i + 1}.png`;
-      await writeFile(join(OUT_DIR, name), png);
-      console.log(`rendered ${name}  ${dims.w}x${dims.h}  ${(png.length / 1024).toFixed(0)} KB`
-        + (fontsOk === false ? '  !! WEB FONTS DID NOT LOAD — headline is in a fallback face' : '')
-        + (jsErrors.length ? `  (page errors: ${jsErrors.join(' | ')})` : ''));
-      if (fontsOk === false) fontWarnings++;
-      const single = { ...story, image: `data/pending/${name}`, width: dims.w, height: dims.h };
-      single.alts = [altForStory(story)];
-      await writeFile(join(OUT_DIR, `alt-${i + 1}.json`),
-                      JSON.stringify(single.alts, null, 2) + '\n', 'utf8');
-      single.altFile = `data/pending/alt-${i + 1}.json`;
-      rendered.push(single);
     }
   } finally {
     server.close();
   }
 
-  if (!rendered.length) throw new Error('nothing rendered');
-  // Write the output alongside the shortlist, never over it. Overwriting
-  // `stories` made the render destroy its own input: a second run found the
-  // previous run's output where the stories should have been.
-  await writeJson(SHORTLIST, {
-    ...shortlist,
-    rendered: new Date().toISOString(),
-    options: opts,
-    output: rendered,
-  });
-  console.log(`\n${rendered.length} graphic(s) in ${OUT_DIR}`);
+  const made = edition.sections.flatMap(s => s.posts);
+  if (!made.length) throw new Error('nothing rendered');
+  await save(ROOT, edition);
+
+  console.log(`\n${made.length} post(s) in ${dirFor(edition.id)}`);
   if (fontWarnings) {
     const msg = `${fontWarnings} graphic(s) rendered WITHOUT the brand typeface — the headline `
       + `is in a fallback face. Check the machine can reach fonts.googleapis.com.`;
@@ -465,7 +288,7 @@ async function main() {
   }
 }
 
-/* Only when run as a stage. The reel stage imports the card builders above,
-   and an unguarded call here would make that import re-render the whole day. */
+/* Only when run as a stage. The reel stage imports the capture above, and an
+   unguarded call here would make that import re-render the whole day. */
 if (process.argv[1] && process.argv[1].endsWith('render.mjs'))
   main().catch(err => { console.error('render failed:', err.message); process.exit(1); });

@@ -57,7 +57,11 @@ async function load() {
   const out = document.getElementById('out');
   let data;
   try {
-    const res = await fetch('data/shortlist.json' + bust, { cache: 'no-store' });
+    // data/latest.json points at the current edition's directory, so this
+    // page never has to guess which of data/editions/ is today's.
+    const ptr = await fetch('data/latest.json' + bust, { cache: 'no-store' });
+    if (!ptr.ok) throw new Error('HTTP ' + ptr.status);
+    const res = await fetch((await ptr.json()).dir + '/edition.json' + bust, { cache: 'no-store' });
     if (!res.ok) throw new Error('HTTP ' + res.status);
     data = await res.json();
   } catch (err) {
@@ -71,16 +75,17 @@ async function load() {
     return;
   }
 
-  const entry = ((data.output || data.stories) || [])[0];
-  const stories = entry && entry.stories ? entry.stories : (entry ? [entry] : []);
-  const when = data.rendered || data.generated;
+  const section = (data.sections || [])[0];
+  const carousel = section && (section.posts || []).find(p => p.kind === 'carousel');
+  const stories = section ? section.stories : [];
+  const when = data.builtAt;
   document.getElementById('when').textContent = when
     ? new Date(when).toLocaleString('en-GB', { dateStyle:'full', timeStyle:'short' })
     : '';
 
   const parts = [];
 
-  const slides = entry && (entry.images || (entry.image ? [entry.image] : []));
+  const slides = carousel && carousel.files;
   if (slides && slides.length) {
     parts.push(`<div class="card">
       <h2>${slides.length > 1 ? `Carousel · ${slides.length} slides` : 'The graphic'}</h2>
@@ -123,9 +128,10 @@ async function load() {
 
   out.innerHTML = parts.join('');
 
-  // The caption is written as a separate file by the job.
+  // The edition records where its caption is, so nothing here rebuilds the
+  // path from a naming convention.
   try {
-    const res = await fetch('data/pending/caption-1.txt' + bust, { cache:'no-store' });
+    const res = await fetch(carousel.caption + bust, { cache:'no-store' });
     document.getElementById('cap').textContent = res.ok ? (await res.text()).trim() : 'not generated yet';
   } catch { document.getElementById('cap').textContent = 'not generated yet'; }
 }

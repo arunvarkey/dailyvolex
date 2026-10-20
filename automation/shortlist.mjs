@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 /* Stage 1 — read the feeds, pick the stories, write a shortlist.
  *
- * Posts nothing. Produces data/shortlist.json, which the render and publish
- * stages read. Safe to run as often as you like.
+ * Posts nothing. Writes an edition — data/editions/<id>/edition.json — which
+ * every stage after this one reads. Safe to run as often as you like.
  *
  *   node automation/shortlist.mjs [--count 3] [--fixtures] [--quiet]
  *                                 [--breaking] [--min-sources 3] [--max-age 1.5]
  *
  * --breaking is the watch mode: it looks only for a story that several
  * independent newsrooms have carried in the last hour or two, and exits
- * without writing a shortlist when there is none. That is the normal outcome,
+ * without writing an edition when there is none. That is the normal outcome,
  * and it has to be, or a watch that runs every fifteen minutes becomes a
  * machine for manufacturing urgency.
  */
@@ -22,21 +22,24 @@ import { selectStories, selectSections, rankEligible } from './lib/select.mjs';
 import { sectionOf } from './lib/sections.mjs';
 import { makeHeadline, categoryFor, sourceLine } from './lib/headline.mjs';
 import { readJson, writeJson, loadHistory, recordPosted } from './lib/store.mjs';
+import { create, save, idFor, dirFor } from './lib/edition.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(HERE, '..');
-const SHORTLIST = join(ROOT, 'data', 'shortlist.json');
-const HISTORY   = join(ROOT, 'data', 'posted.json');
+const HISTORY   = join(ROOT, 'data', 'ledger.json');
 /* What has already been put in front of the owner for approval. Without this,
    a watch running every fifteen minutes offers the same story every fifteen
-   minutes; posted.json alone cannot help, because a story that was offered and
+   minutes; the ledger alone cannot help, because a story that was offered and
    not approved was never posted. Entries age out, so a story missed once can
    come back tomorrow rather than being silently buried for good. */
 const OFFERED   = join(ROOT, 'data', 'offered.json');
 /* What the editorial rules refused this run, and which rule refused it. The
    point is not the count — it is being able to read the titles and catch a
-   rule that is wrong. */
-const REJECTED  = join(ROOT, 'data', 'rejected.json');
+   rule that is wrong. It goes INSIDE the edition: when it lived in a file of
+   its own, the approval issue read that file directly, and the moment the
+   issue was built from the edition instead the refusals silently vanished
+   from it. Something only the owner ever reads is exactly the thing that
+   disappears without anyone noticing. */
 const SAMPLES_PER_RULE = 8;
 const OFFER_TTL_HOURS = 36;
 
@@ -194,25 +197,9 @@ async function main() {
 
   const stories = chosen.map(toStory);
 
-  const payload = {
-    generated: new Date().toISOString(),
-    pool: items.length,
-    feedErrors: errors,
-    breaking,
-    // Top stories stay under `stories`, where every later stage already looks
-    // for them. Sections are additional, not a replacement — renaming the key
-    // would have broken the render, the caption, the approval issue and the
-    // phone's Today tab all at once, for no gain.
-    stories,
-    sections: sections
-      ? sections.map(s => ({ id: s.id, label: s.label, stories: s.clusters.map(toStory) }))
-      : undefined,
-  };
-  await writeJson(SHORTLIST, payload);
-
   /* The rejection log. Counts alone would only say the filters are busy; the
      titles are the point, because that is how a rule that is wrong becomes
-     visible. A bounded sample per rule keeps the file readable and small. */
+     visible. A bounded sample per rule keeps it readable and small. */
   const byRule = {};
   for (const r of rejected) {
     const b = byRule[r.reason] || (byRule[r.reason] = { count: 0, samples: [] });
@@ -223,18 +210,32 @@ async function main() {
   const publishedCount = sections
     ? sections.reduce((n, s) => n + s.clusters.length, 0)
     : stories.length;
-  await writeJson(REJECTED, {
-    generated: new Date().toISOString(),
-    read: items.length,
-    published: publishedCount,
-    refused: rejected.length,
-    // Read from the feeds, not refused by a rule, but not chosen either:
-    // out-ranked, capped, or already seen. Not a concern in the way a
-    // refusal is, but the arithmetic should add up.
-    consideredNotChosen: Math.max(0, items.length - rejected.length - publishedCount),
-    byRule: Object.fromEntries(
-      Object.entries(byRule).sort((a, b) => b[1].count - a[1].count)),
+
+  const edition = create({
+    id: idFor({ kind: breaking ? 'breaking' : 'daily' }),
+    kind: breaking ? 'breaking' : 'daily',
+    pool: items.length,
+    feedErrors: errors,
+    sections: sections
+      ? sections.map(s => ({ id: s.id, label: s.label, stories: s.clusters.map(toStory) }))
+      // A breaking story is one story, and it still belongs to a section —
+      // it is world news or India news like any other.
+      : [{ id: stories[0]?.section || 'top',
+           label: stories[0]?.section ? stories[0].section.toUpperCase() : 'TOP STORIES',
+           stories }],
+    refusals: {
+      read: items.length,
+      published: publishedCount,
+      refused: rejected.length,
+      // Read from the feeds, not refused by a rule, but not chosen either:
+      // out-ranked, capped, or already seen. Not a concern in the way a
+      // refusal is, but the arithmetic should add up.
+      consideredNotChosen: Math.max(0, items.length - rejected.length - publishedCount),
+      byRule: Object.fromEntries(
+        Object.entries(byRule).sort((a, b) => b[1].count - a[1].count)),
+    },
   });
+  const dir = await save(ROOT, edition);
 
   // Remember what was offered, so the next run does not offer it again.
   // Never from fixtures: the sample build runs repeatedly, and a second run
@@ -269,8 +270,7 @@ async function main() {
     // itself rather than only in the file.
     if (b.samples[0]) log(`        e.g. ${b.samples[0].title.slice(0, 72)}`);
   }
-  log(`\nwritten to ${SHORTLIST}`);
-  log(`rejections in ${REJECTED}`);
+  log(`\nedition ${edition.id} written to ${dir}`);
 }
 
 main().catch(err => { console.error('shortlist failed:', err.message); process.exit(1); });

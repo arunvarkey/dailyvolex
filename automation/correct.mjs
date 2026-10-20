@@ -17,21 +17,21 @@
  *   node automation/correct.mjs --text-file <path> [--issue 42]
  *                               [--media <instagram media id>]
  *
- * Writes data/shortlist.json with a single correction entry, ready for
+ * Writes a correction edition of its own — one section, one card — ready for
  * render.mjs and caption.mjs exactly like any other post. It publishes
  * nothing — the approval gate is the same one everything else goes through.
  */
 
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { readFile, writeFile, mkdir } from 'node:fs/promises';
-import { readJson, writeJson } from './lib/store.mjs';
+import { readFile, writeFile } from 'node:fs/promises';
+import { readJson } from './lib/store.mjs';
+import { create, save, idFor, dirFor } from './lib/edition.mjs';
 import { makeHeadline } from './lib/headline.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(HERE, '..');
-const SHORTLIST = join(ROOT, 'data', 'shortlist.json');
-const HISTORY   = join(ROOT, 'data', 'posted.json');
+const HISTORY   = join(ROOT, 'data', 'ledger.json');
 
 function arg(name, fallback) {
   const i = process.argv.indexOf(`--${name}`);
@@ -130,21 +130,29 @@ async function main() {
 
   const entry = buildCorrection(text, original);
 
-  // The comment that gets attached to the post being corrected. Written to a
-  // file so it never has to survive a shell on its way to the API.
-  if (entry.corrects?.mediaId) {
-    await mkdir(join(ROOT, 'data', 'pending'), { recursive: true });
-    await writeFile(join(ROOT, 'data', 'pending', 'correction-comment.txt'),
-      `CORRECTION: ${entry.display}\n\nWe have posted a correction in full.`, 'utf8');
-  }
-
-  await writeJson(SHORTLIST, {
-    generated: new Date().toISOString(),
-    correction: true,
-    pool: 0,
-    feedErrors: [],
-    stories: [entry],
+  // A correction is its own edition, in its own directory, so it can never
+  // land on top of the day's post — or be landed on by the watch.
+  const edition = create({
+    id: idFor({ kind: 'correction' }),
+    kind: 'correction',
+    sections: [{ id: 'correction', label: 'CORRECTION', stories: [entry] }],
   });
+  const dir = await save(ROOT, edition);
+
+  // The comment that gets attached to the post being corrected. Written to a
+  // file so it never has to survive a shell on its way to the API, and kept
+  // with the edition it belongs to.
+  if (entry.corrects?.mediaId) {
+    const rel = `${dirFor(edition.id)}/correction-comment.txt`;
+    await writeFile(join(ROOT, rel),
+      `CORRECTION: ${entry.display}\n\nWe have posted a correction in full.`, 'utf8');
+    // Recorded on the story, so the plan carries it to the publisher. When
+    // the publish step was a shell loop this path was hard-coded in the
+    // workflow; the loop went and took the path with it, which would have
+    // posted a correction that was never attached to the post it corrects.
+    entry.corrects.commentFile = rel;
+    await save(ROOT, edition);
+  }
 
   console.log('CORRECTION');
   console.log(`  ${entry.display}`);
@@ -158,7 +166,7 @@ async function main() {
   } else {
     console.log('  NOTE: nothing posted yet, so this corrects no specific post.');
   }
-  console.log(`\nwritten to ${SHORTLIST}`);
+  console.log(`\nedition ${edition.id} written to ${dir}`);
 }
 
 if (process.argv[1] && process.argv[1].endsWith('correct.mjs')) {

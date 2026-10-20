@@ -9,6 +9,7 @@
  *   node automation/dv.mjs offer --sha <sha> [--out work/issue.json]
  *   node automation/dv.mjs plan  --comment-file <path> [--sha <sha>] [--out work/plan.json]
  *   node automation/dv.mjs record --issue <n> [--plan work/plan.json]
+ *   node automation/dv.mjs prune [--keep 10]
  *   node automation/dv.mjs day                 what today's edition would offer
  *
  * `offer` and `plan` do the deciding and write JSON; the workflows just hand
@@ -25,7 +26,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { readJson } from './lib/store.mjs';
-import { fromShortlist, validate, posts } from './lib/edition.mjs';
+import { load, validate, posts, prune, KEEP_EDITIONS } from './lib/edition.mjs';
 import { approvalIssue, warningsFor } from './lib/offer.mjs';
 import { plan } from './lib/plan.mjs';
 import { record } from './lib/ledger.mjs';
@@ -47,10 +48,7 @@ function repoSlug() {
 }
 
 async function loadEdition() {
-  const shortlist = await readJson(join(ROOT, 'data', 'shortlist.json'), null);
-  if (!shortlist?.output?.length)
-    throw new Error('nothing rendered — run shortlist, render and caption first');
-  const edition = fromShortlist(shortlist);
+  const edition = await load(ROOT, arg('edition'));
   const wrong = validate(edition);
   // Refuse to offer a malformed edition rather than open an issue that
   // promises something the publisher cannot post.
@@ -140,9 +138,9 @@ async function cmdRecord() {
   const decided = JSON.parse(await readFile(join(ROOT, planFile), 'utf8'));
   // What publish.mjs got back from Instagram. Missing on a dry run, and a
   // post that failed leaves nothing — the record must not invent an id.
-  const receipts = await readJson(join(ROOT, arg('published', 'data/pending/published.json')), []);
+  const receipts = await readJson(join(ROOT, arg('published', 'work/published.json')), []);
 
-  const path = join(ROOT, arg('ledger', 'data/posted.json'));
+  const path = join(ROOT, arg('ledger', 'data/ledger.json'));
   const before = await readJson(path, { posted: [] });
   const after = record(before, {
     edition, plan: decided,
@@ -151,10 +149,20 @@ async function cmdRecord() {
   });
   await writeFile(path, JSON.stringify(after, null, 2) + '\n', 'utf8');
   const added = after.posted.length - (before.posted?.length || 0);
-  console.log(`recorded ${added} stor${added === 1 ? 'y' : 'ies'} in ${arg('ledger', 'data/posted.json')}`);
+  console.log(`recorded ${added} stor${added === 1 ? 'y' : 'ies'} in ${arg('ledger', 'data/ledger.json')}`);
 }
 
-const COMMANDS = { offer: cmdOffer, plan: cmdPlan, record: cmdRecord, day: cmdDay };
+/* Keep the working tree from carrying every edition ever built. The history
+   keeps them regardless — an approved post has to stay fetchable from the
+   commit it was pinned to — but a fresh checkout has no use for three months
+   of slides. */
+async function cmdPrune() {
+  const keep = Math.max(1, parseInt(arg('keep', String(KEEP_EDITIONS)), 10) || KEEP_EDITIONS);
+  const gone = await prune(ROOT, keep);
+  console.log(gone.length ? `removed ${gone.length}: ${gone.join(', ')}` : `nothing to remove (keeping ${keep})`);
+}
+
+const COMMANDS = { offer: cmdOffer, plan: cmdPlan, record: cmdRecord, prune: cmdPrune, day: cmdDay };
 
 async function main() {
   const name = process.argv[2];

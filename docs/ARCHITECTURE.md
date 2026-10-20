@@ -52,10 +52,29 @@ different lifetimes. Conflating them is what caused the 290 MB.
 | **record** | media ids, permalinks, what was corrected | forever | yes — text only |
 
 ```
-work/                      git-ignored. Nothing here is ever published.
-data/editions/<id>/        one day's publishable output, immutable once offered
+work/                      git-ignored. Photos, reel frames, receipts, the
+                           text of a /correct comment on its way in.
+data/editions/2026-10-20/  edition.json, caption-<section>.txt, and per
+                           section slide-*.jpg, alt.json, reel.mp4
+data/editions/2026-10-20-breaking-0915/
+data/editions/2026-10-20-correction-1100/
+data/latest.json           which edition is current
 data/ledger.json           the permanent record. Text. Append-only.
 ```
+
+Every run writes its own directory and nothing overwrites anything. The watch
+fires every fifteen minutes; when they all shared one folder, an approval from
+an hour ago pointed at files that had since been replaced, and the only thing
+between that and the account was a commit hash parsed out of an issue body.
+An approval now pins the edition **and** the commit, both read from the image
+URLs the issue is showing.
+
+Slides are JPEG at quality 0.95. A card is type over a gradient or a
+photograph, which is what JPEG is for: the same fifteen slides came to 10.5 MB
+as PNG and 1.6 MB as JPEG, with no visible difference in the headline, and
+Instagram re-encodes to JPEG whatever arrives. `dv.mjs prune` keeps the last
+ten editions in the working tree; the history keeps them all, because an
+approved post has to stay fetchable from the commit it was pinned to.
 
 ## The edition
 
@@ -147,9 +166,14 @@ Each step leaves the channel working.
    `day`. `npm run day` reads whatever has been rendered and prints the
    edition, every warning the owner would see, and what each possible
    approval would post. No GitHub, no Instagram.
-5. **Retire the god object.** Cut the stages over to writing an edition
-   directly — `data/editions/<id>/edition.json`, immutable — and delete
-   `fromShortlist`. Move the ledger to `data/ledger.json`. Still to do.
+5. ✅ **Retire the god object.** `data/shortlist.json` is gone. Every stage
+   reads and writes an edition: the shortlist creates one, the render attaches
+   a carousel per section, the caption fills in its path, the reel attaches a
+   second post. `lib/compose.mjs` is the pure stage the table above promises —
+   layout, figure, backdrop and description decided without a browser.
+   `data/posted.json` became `data/ledger.json`, and `data/rejected.json` went
+   inside the edition, which is where the approval issue was already looking
+   for it.
 6. **Prune the history.** The 290 MB of photographs that were already
    committed are still in the history. Removing them means rewriting and
    force-pushing, which is destructive, so it needs the owner's say-so.
