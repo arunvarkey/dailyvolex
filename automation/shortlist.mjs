@@ -124,7 +124,11 @@ async function main() {
   // Business, Technology. Watch mode stays a single story — a breaking alert
   // sorted into a section is not a breaking alert.
   const sectioned = !breaking && !FLAG('no-sections');
-  const perSection = Math.max(1, Math.min(5, parseInt(arg('per-section', '3'), 10) || 3));
+  // Six, not three. A section post was a cover plus three cards — four
+  // slides, and people swipe for about as long as there is something to
+  // swipe to. Meta's API takes ten items in a carousel, so six stories plus
+  // a cover and a closing card is eight and leaves room.
+  const perSection = Math.max(1, Math.min(8, parseInt(arg('per-section', '6'), 10) || 6));
 
   // What the editorial rules threw away, and which rule threw it. A run reads
   // several hundred articles and publishes a dozen; without this, a regex

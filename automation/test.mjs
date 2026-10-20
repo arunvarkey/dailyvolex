@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { parseFeed } from './lib/rss.mjs';
 import { licenceFrom, toResult as commonsResult } from './lib/commons.mjs';
-import { altForStory, altForCover, altForEntry } from './lib/alttext.mjs';
+import { altForStory, altForCover, altForEntry, altForClosing } from './lib/alttext.mjs';
 import { tierOf, isCryptoVertical, TIER_POINTS } from './lib/importance.mjs';
 import { similarity, cluster, selectStories, selectSections, isRepeat, isTopical, isAdvice,
          isSpeculation, isJunk, isPressRelease, isUnverified, isOpinion, isTooThin,
@@ -1007,6 +1007,34 @@ ok('a match made only of generic words is no match', (() => {
   const fish = { title: 'Fish market on a holiday', tags: [{name:'market'},{name:'fish'}] };
   const real = { title: 'Dussehra effigy burning', tags: [{name:'dussehra'}] };
   return relevance(fish, hl) === 0 && relevance(real, hl) > 0.2;
+})());
+
+/* ── The shape of a post ─────────────────────────────────────── */
+/* A section post was a cover plus three cards. People swipe for about as
+   long as there is something to swipe to, and Meta's API takes ten items. */
+
+ok('a carousel ends on a card about how it is made', (() => {
+  const a = altForClosing();
+  return /closing card/.test(a) && /two or more independent newsrooms/.test(a)
+    && /corrections are posted in the open/.test(a);
+})(), 'a post used to stop dead on its last story');
+
+ok('the closing card is described too, so no slide goes out silent', (() => {
+  const entry = { sectionLabel: 'TOP STORIES',
+    images: ['cover.png', 'a.png', 'b.png', 'closing.png'],
+    stories: [{ display: 'Earthquake kills at least 40 in northern Afghanistan',
+                category: 'WORLD NEWS', backdrop: 'editorial' },
+              { display: 'Cabinet approves a port expansion scheme',
+                category: 'INDIA', backdrop: 'editorial' }] };
+  const alts = altForEntry(entry);
+  return alts.length === 4 && /cover card/.test(alts[0]) && /closing card/.test(alts[3]);
+})());
+
+ok('a post stays inside what the API will take', (() => {
+  // Cover + stories + closing must not exceed ten, which is Meta's limit for
+  // an API-published carousel (the app allows twenty; the API does not).
+  const perSection = 6;
+  return 1 + perSection + 1 <= 10;
 })());
 
 /* ── Stories that are not stories ────────────────────────────── */

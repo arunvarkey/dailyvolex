@@ -82,6 +82,14 @@ export function altForCover(entry, { handle = '@dailyvolex' } = {}) {
   return clip([lead, heads.map((h, i) => `${i + 1}. ${h}`).join(' ')].join(' '), MAX);
 }
 
+/* The closing card, which carries no story — it says how the channel works. */
+export function altForClosing({ handle = '@dailyvolex' } = {}) {
+  return `The closing card of a ${handle} post. It lists how these posts are made:`
+    + ' every story is carried by two or more independent newsrooms; the outlets'
+    + ' are named on every card, with who owns them; pictures are openly licensed'
+    + ' and credited; and corrections are posted in the open rather than deleted.';
+}
+
 /* Alt text for every slide of a rendered entry, in slide order. */
 export function altForEntry(entry, opts = {}) {
   if (!entry) return [];
@@ -89,10 +97,14 @@ export function altForEntry(entry, opts = {}) {
   const slides = entry.images || (entry.image ? [entry.image] : []);
   if (!slides.length) return [];
 
-  // A carousel is a cover followed by one card per story; a single card has
-  // no cover. Tying this to the slide count rather than to `kind` keeps it
-  // right for the breaking watch and for corrections too.
-  if (slides.length === stories.length) return stories.map(s => altForStory(s, opts));
-  return [altForCover(entry, opts), ...stories.map(s => altForStory(s, opts))]
-    .slice(0, slides.length);
+  // A carousel is a cover, a card per story, then the closing card; a single
+  // card has neither. Built to the slide count rather than to `kind`, so the
+  // breaking watch and corrections stay right — and so a slide can never go
+  // out undescribed because the shape changed underneath this.
+  const out = slides.length === stories.length
+    ? stories.map(s => altForStory(s, opts))
+    : [altForCover(entry, opts), ...stories.map(s => altForStory(s, opts))];
+
+  while (out.length < slides.length) out.push(altForClosing(opts));
+  return out.slice(0, slides.length);
 }
