@@ -380,7 +380,12 @@ export function isSensitive(headline) {
 // queries like "Marco Rubio". The searches run concurrently now, so the
 // budget is spent in parallel and a generous timeout costs almost nothing.
 export async function findImage(headline, { fetchImpl = fetch, timeoutMs = 20000, exclude,
-                                            minRelevance = 0.12, maxQueries = 2, topic } = {}) {
+                                            // 0.2, not 0.12. At the lower bar a live run
+                                            // put a Brueghel painting behind a telehealth
+                                            // story because both mention Germany. The
+                                            // matches that were worth having all scored
+                                            // 0.2 or better.
+                                            minRelevance = 0.2, maxQueries = 2, topic } = {}) {
   if (prefersChart(headline))
     return { image: null, query: '(chart)', error: 'a chart illustrates this better than a photo' };
   if (isSensitive(headline))
