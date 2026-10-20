@@ -183,6 +183,10 @@ jobs:
       # success too, so the issue closes itself when things recover.
       - name: Report the run
         if: always()
+        # The reporter must not be able to fail the run it is reporting on.
+        # A typo in it marked a wholly successful run as failed, which is
+        # precisely the confusion it exists to remove.
+        continue-on-error: true
         uses: ./.github/actions/report-run
         with:
           status: ${{ job.status }}

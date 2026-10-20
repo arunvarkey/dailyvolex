@@ -168,6 +168,22 @@ ok('reporting can name the step that failed', REPORTED.every(f =>
   'an explicit permissions block denies everything it does not list');
 
 const reporter = fs.readFileSync(join(ROOT, '.github/actions/report-run/action.yml'), 'utf8');
+
+/* GitHub templates an action manifest's descriptions as well as its steps,
+   and a manifest has no `job` context. Writing the caller's usage into a
+   description as an example broke the action at load time — and because the
+   reporter runs on always(), it marked a wholly successful run as failed. */
+ok('an action manifest has no expressions in its descriptions', (() => {
+  const doc = yaml.load(reporter);
+  const descs = [doc.description, ...Object.values(doc.inputs || {}).map(i => i.description)];
+  return descs.filter(Boolean).every(d => !/\$\{\{/.test(d));
+})(), 'the manifest fails to load, whatever the expression is');
+
+ok('the reporter cannot fail the run it reports on', REPORTED.every(f => {
+  const step = Object.values(docs[f]?.jobs || {}).flatMap(j => j.steps || [])
+    .find(st => st.uses === './.github/actions/report-run');
+  return step?.['continue-on-error'] === true;
+}), 'a typo in it marked a successful run as failed');
 /* The watch fires ninety-six times a day. If the feeds go down, ninety-six
    issues — or ninety-six comments on one issue — is not a notification. */
 ok('a workflow failing all day leaves one issue, not a hundred',

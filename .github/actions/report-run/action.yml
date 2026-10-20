@@ -6,7 +6,10 @@ description: >
 
 inputs:
   status:
-    description: 'success or failure — pass ${{ job.status }}'
+    # No expression syntax in here. GitHub templates the description as well
+    # as the steps, and an action manifest has no `job` context — writing the
+    # caller's usage out as an example broke the whole action at load time.
+    description: 'success or failure — callers pass the job status expression'
     required: true
   token:
     description: 'GITHUB_TOKEN'
