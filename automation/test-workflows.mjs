@@ -85,8 +85,15 @@ ok('a correction needs the word /correct',
    reach the account directly, or "/correct" becomes a way to post anything. */
 ok('raising a correction cannot post to Instagram',
   !JSON.stringify(corr).includes('IG_') && !JSON.stringify(corr).includes('publish.mjs'));
-ok('a correction still goes through the approval gate',
-  JSON.stringify(corr).includes('awaiting-approval'));
+/* The label is what approve.yml gates on, and it is now set by
+   lib/offer.mjs rather than written into this file — so what this checks is
+   that the correction goes out as an issue built by that module, and that
+   test.mjs proves the module always labels it. */
+ok('a correction still goes through the approval gate', (() => {
+  const steps = Object.values(corr?.jobs || {}).flatMap(j => j.steps || []);
+  return steps.some(st => /dv\.mjs offer/.test(st.run || ''))
+    && steps.some(st => /issues\.create/.test(st.with?.script || ''));
+})(), 'and lib/offer.mjs labels every approval issue — see test.mjs');
 ok('the correction text never passes through a shell', (() => {
   const steps = Object.values(corr?.jobs || {}).flatMap(j => j.steps || []);
   const shellSteps = steps.filter(st => typeof st.run === 'string');
@@ -266,110 +273,61 @@ const context = { repo: { owner: 'arunvarkey', repo: 'dailyvolex' }, issue: { nu
                   serverUrl: 'https://github.com', runId: 1 };
 
 
-/* Drives approve.yml's planning step and captures what it decided. */
-let planOut = null, planFailed = null;
-async function runPlan(comment) {
-  planOut = null; planFailed = null;
-  const core = {
-    info() {}, warning() {}, notice() {},
-    setFailed(m) { planFailed = m; },
-    setOutput(k, v) { if (k === 'plan') planOut = JSON.parse(v); },
-  };
-  const step = Object.values(docs['approve.yml'].jobs)
-    .flatMap(j => j.steps || [])
-    .find(s => s.name === 'Work out which sections were approved');
-  if (!step?.with?.script) throw new Error('no planning step in approve.yml');
-  process.env.SHA = 'testsha';
-  const fn = new Function('github', 'context', 'core', 'require', 'process',
-    `return (async () => { ${step.with.script} })()`);
-  try {
-    await fn({}, { ...context, payload: { comment: { body: comment } } }, core, require, process);
-  } catch (e) { planFailed = e.message; }
-  return planFailed ? null : planOut;
-}
+/* ── No workflow decides anything ─────────────────────────────────
+   The decisions — how the approval issue reads, what `/approve top reel`
+   posts — are modules now, with tests of their own in test.mjs, run against
+   the functions themselves rather than against JavaScript pulled out of a
+   YAML string. A workflow may contain checkout, node, one command and a
+   push. These tests exist so that logic cannot creep back into YAML, where
+   it can only ever be first executed in production. */
 
-// The approval issue — the one that does real work.
-let created = null;
-const hasRender = fs.existsSync(join(ROOT, 'data/shortlist.json'))
-               && (fs.existsSync(join(ROOT, 'data/pending/caption-1.txt'))
-                || fs.existsSync(join(ROOT, 'data/pending/caption-top.txt')));
+const allSteps = Object.entries(docs).flatMap(([file, d]) =>
+  Object.values(d?.jobs || {}).flatMap(j => (j.steps || []).map(st => [file, st])));
+const scriptBodies = allSteps.map(([file, st]) => [file, st.with?.script || '']);
 
-if (!hasRender) {
-  console.log('SKIP  no rendered shortlist — run shortlist/render/caption first');
-} else {
-  const cwd = process.cwd();
-  process.chdir(ROOT);
-  try {
-    await runScript(docs['daily.yml'], 'Ask for approval', {
-      github: { rest: { issues: { create: async x => { created = x; return { data: { number: 1 } }; } } } },
-      context, env: { GITHUB_SHA: 'testsha' },
-    });
-    ok('the approval script runs without throwing', true);
-  } catch (e) {
-    ok('the approval script runs without throwing', false, e.message);
-  } finally { process.chdir(cwd); }
+ok('no workflow works out what /approve means',
+  scriptBodies.every(([, b]) => !/\/approve/i.test(b) && !/setOutput\('plan'/.test(b)),
+  scriptBodies.filter(([, b]) => /\/approve/i.test(b)).map(([f]) => f).join(','));
 
-  if (created) {
-    const b = created.body;
-    ok('the issue is labelled for approval', created.labels?.includes('awaiting-approval'));
-    // Every slide of every section has to be visible in the issue: the owner
-    // is approving what they can see, and a slide that is not shown is a
-    // slide nobody checked.
-    const sl = JSON.parse(fs.readFileSync(join(ROOT, 'data/shortlist.json'), 'utf8'));
-    const out = sl.output || sl.stories || [];
-    const totalSlides = out.reduce(
-      (n, e) => n + (e.images || [e.image]).filter(Boolean).length, 0);
-    ok('every slide of every section is embedded',
-      (b.match(/!\[[^\]]*slide [0-9]+\]/g) || []).length === totalSlides,
-      `${(b.match(/!\[[^\]]*slide [0-9]+\]/g) || []).length} of ${totalSlides}`);
-    ok('image links are absolute', /https:\/\/raw\.githubusercontent\.com\//.test(b));
-    ok('every section shows its caption',
-      (b.match(/\*\*Caption\*\*/g) || []).length === out.length,
-      `${(b.match(/\*\*Caption\*\*/g) || []).length} of ${out.length}`);
-    ok('corroboration is stated per story in newsrooms, not bylines',
-      /independent newsroom/.test(b));
-    ok('each section says the words that post it',
-      out.every(e => b.includes(`/approve ${e.section || 'post'}`)),
-      out.map(e => e.section).join(','));
-    ok('it says a bare approval posts only the top section',
-      /bare `\/approve` posts Top stories only/i.test(b));
-    ok('the body is within GitHub limits', b.length < 65536, `${b.length} chars`);
+ok('no workflow builds the approval issue body',
+  scriptBodies.every(([, b]) => !/raw\.githubusercontent/.test(b)),
+  scriptBodies.filter(([, b]) => /raw\.githubusercontent/.test(b)).map(([f]) => f).join(','));
 
-    /* ── What /approve actually publishes ───────────────────────
-       This step decides which posts go to the account. A bug here does not
-       fail loudly; it posts the wrong thing under the channel's name. */
-    ok('naming sections posts exactly those', await (async () => {
-      // Whichever sections this fixture day actually produced — which
-      // sections survive now depends on the importance hierarchy, so naming
-      // one by hand makes the test a hostage to the fixtures.
-      const names = out.map(e => e.section).filter(Boolean).slice(0, 2);
-      if (names.length < 2) return true;
-      const r = await runPlan(`/approve ${names.join(' ')}`);
-      return r && r.map(p => p.section).join(',') === names.join(',');
-    })());
-    ok('a bare approval posts only the top section', await (async () => {
-      const r = await runPlan('/approve');
-      return r && r.length === 1 && r[0].section === 'top';
-    })());
-    ok('/approve all posts every section', await (async () => {
-      const r = await runPlan('/approve all');
-      return r && r.length === out.length;
-    })());
-    ok('an unknown section name is refused, not guessed', await (async () => {
-      const r = await runPlan('/approve sport');
-      return r === null;
-    })(), 'must fail rather than post something else');
-    ok('each planned post carries its own caption file', await (async () => {
-      const r = await runPlan('/approve all');
-      return r && r.every(p => p.caption.includes(p.section))
-        && new Set(r.map(p => p.caption)).size === r.length;
-    })());
-    ok('planned image urls are pinned to the approved commit', await (async () => {
-      const r = await runPlan('/approve top');
-      return r && r[0].urls.split(',').every(u => u.includes('/testsha/'));
-    })());
-  }
-}
+ok('the approval issue comes from a module', (() => {
+  const steps = docs['daily.yml']?.jobs?.build?.steps || [];
+  return steps.some(st => /dv\.mjs offer/.test(st.run || ''))
+    && steps.some(st => /issue\.json/.test(st.with?.script || ''));
+})());
+
+ok('publishing is driven by the plan the module wrote', (() => {
+  const steps = docs['approve.yml']?.jobs?.publish?.steps || [];
+  return steps.some(st => /dv\.mjs plan/.test(st.run || ''))
+    && steps.some(st => /publish\.mjs --plan work\/plan\.json/.test(st.run || ''));
+})());
+
+ok('the approval comment never passes through a shell', (() => {
+  const steps = docs['approve.yml']?.jobs?.publish?.steps || [];
+  // github-script writes it to a file; the planner reads that file.
+  return !steps.some(st => /github\.event\.comment\.body/.test(st.run || ''))
+    && steps.some(st => /--comment-file/.test(st.run || ''));
+})());
+
+ok('a reel is built where it cannot cost the run', (() => {
+  const step = (docs['daily.yml']?.jobs?.build?.steps || [])
+    .find(st => /reel\.mjs/.test(st.run || ''));
+  // A day with no reel is a day with a carousel, which is the post that
+  // matters, so an ffmpeg problem must not fail the run.
+  return step?.['continue-on-error'] === true;
+})());
+
+ok('publishing has time for Meta to transcode a reel',
+  (docs['approve.yml']?.jobs?.publish?.['timeout-minutes'] || 0) >= 20,
+  `${docs['approve.yml']?.jobs?.publish?.['timeout-minutes']} minutes`);
+
+ok('the whole day can be run without GitHub or Instagram', (() => {
+  const pkg = JSON.parse(fs.readFileSync(join(ROOT, 'package.json'), 'utf8'));
+  return /dv\.mjs day/.test(pkg.scripts?.day || '');
+})(), 'npm run day is the thing that never existed');
 
 // The token reminder — must stay silent when there is nothing wrong.
 for (const [state, shouldOpen] of [['ok', false], ['skipped', false], ['unknown', false],

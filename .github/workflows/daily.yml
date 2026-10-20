@@ -66,118 +66,33 @@ jobs:
       - name: Write a caption for every section
         run: node automation/caption.mjs --all
 
+      # A reel reaches people a carousel does not. Never required: a day with
+      # no reel is a day with a carousel, which is the post that matters, so
+      # an ffmpeg problem must not cost the run.
+      - name: Build a reel of the top stories
+        continue-on-error: true
+        run: |
+          ffmpeg -version >/dev/null 2>&1 || sudo apt-get install -y -qq ffmpeg
+          node automation/reel.mjs --section top
+
       - name: Publish the graphic so Instagram can fetch it
         # Instagram pulls the image from a public URL rather than accepting an
         # upload, so the file has to be reachable before it can be posted.
         run: automation/push-data.sh "Shortlist for $(date -u +%Y-%m-%d)"
 
+      # The issue body is decided by automation/lib/offer.mjs, which is pure
+      # and tested. This step only hands the result to the API: a workflow
+      # that decides something is a decision nobody can run on a laptop, and
+      # every expensive bug in this repo's history was in that layer.
+      - name: Write the approval issue
+        run: node automation/dv.mjs offer --sha "$GITHUB_SHA" --out work/issue.json
+
       - name: Ask for approval
         uses: actions/github-script@v7
         with:
           script: |
-            const fs = require('fs');
-            const sl = JSON.parse(fs.readFileSync('data/shortlist.json', 'utf8'));
-            const out = sl.output || sl.stories || [];
-            const sha = process.env.GITHUB_SHA;
-            const raw = p => `https://raw.githubusercontent.com/${context.repo.owner}/${context.repo.repo}/${sha}/${p}`;
-
-            const warnings = [];
-            if (sl.feedErrors?.length) warnings.push(`Feeds that failed: ${sl.feedErrors.join('; ')}`);
-
-            // One block per section. Each is a separate post, and each is
-            // posted only if named — so the summary has to make it obvious
-            // what the words after /approve do.
-            const blocks = out.map(entry => {
-              const id = entry.section || 'post';
-              const label = entry.sectionLabel || 'POST';
-              const slides = (entry.images || [entry.image]).filter(Boolean);
-              const stories = (entry.stories || [entry]);
-              const captionFile = entry.section
-                ? `data/pending/caption-${entry.section}.txt`
-                : 'data/pending/caption-1.txt';
-              const caption = fs.existsSync(captionFile)
-                ? fs.readFileSync(captionFile, 'utf8').trim() : '(no caption)';
-
-              for (const s of stories) {
-                if (s.corroboration < 2)
-                  warnings.push(`${label}: "${(s.display || '').slice(0, 44)}…" has only ONE newsroom behind it.`);
-                if (s.republishers?.length)
-                  warnings.push(`${label}: also carried by ${s.republishers.join(', ')} — not counted as corroboration.`);
-                // Who owns the newsrooms that agree with each other.
-                for (const c of (s.concentration || []))
-                  warnings.push(`${label}: ${c}`);
-                if (s.photoError)
-                  warnings.push(`${label}: no photo for "${(s.display || '').slice(0, 36)}…" — ${s.photoError}`);
-              }
-
-              return [
-                `<details${id === 'top' ? ' open' : ''}>`,
-                `<summary><b>${label}</b> — ${stories.length} stor${stories.length === 1 ? 'y' : 'ies'},`
-                  + ` ${slides.length} slides · post with <code>/approve ${id}</code></summary>`,
-                '',
-                slides.map((p, i) => `![${id} slide ${i + 1}](${raw(p)})`).join('\n'),
-                '',
-                stories.map(s =>
-                  `- ${s.tier ? `\`${s.tier}\` ` : ''}**${s.display || s.headline}**\n  _${s.source}_ · `
-                  + `${s.corroboration} independent newsroom${s.corroboration > 1 ? 's' : ''}`
-                  + (s.ownerCount ? `, ${s.ownerCount} owner${s.ownerCount > 1 ? 's' : ''} recorded` : '')
-                  + (s.unknownOwners ? ` (${s.unknownOwners} not in the register)` : '')
-                  + (s.countries?.length ? ` (${s.countries.join('/')})` : '')
-                  + (s.truncated ? ' · shortened to fit' : '')
-                  + (s.link ? `\n  ${s.link}` : '')).join('\n'),
-                '',
-                '**Caption**', '```', caption, '```',
-                '</details>',
-              ].join('\n');
-            });
-
-            const menu = out.map(e =>
-              `- \`${e.section || 'post'}\` — **${e.sectionLabel || 'POST'}**`
-              + ` (${(e.stories || [e]).length} stories)`).join('\n');
-
-            // What the editorial rules threw away. A run reads several
-            // hundred articles and publishes a dozen; if one of those rules
-            // is wrong it is eating real news, and this is the only place
-            // anyone would see it.
-            let refusedBlock = '';
-            try {
-              const rej = JSON.parse(fs.readFileSync('data/rejected.json', 'utf8'));
-              const rules = Object.entries(rej.byRule || {});
-              if (rules.length) refusedBlock = [
-                '<details>',
-                `<summary><b>Refused</b> — ${rej.refused} of ${rej.read} read`
-                  + `, ${rej.published} published. Check these for anything that should have run.</summary>`,
-                '',
-                ...rules.map(([rule, b]) => [
-                  `**${b.count} · ${rule}**`,
-                  ...b.samples.map(s => `- ${s.title}${s.source ? ` _(${s.source})_` : ''}`),
-                  '',
-                ].join('\n')),
-                '</details>',
-              ].join('\n');
-            } catch (e) { /* a run with nothing refused writes no file */ }
-
-            const body = [
-              `**${out.length} post${out.length === 1 ? '' : 's'} ready.** Nothing goes out unless you name it.`,
-              '', menu, '',
-              '---', '',
-              blocks.join('\n\n'),
-              warnings.length ? `\n### ⚠️ Check\n${warnings.map(w => `- ${w}`).join('\n')}` : '',
-              refusedBlock ? `\n${refusedBlock}` : '',
-              '',
-              '---',
-              '**To post, comment** `/approve <section> <section>` — for example `/approve top business`.',
-              '`/approve all` posts every section. A bare `/approve` posts Top stories only.',
-              'Anything else, or no reply, and nothing is posted. Close this issue to discard it.',
-            ].join('\n');
-
-            await github.rest.issues.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title: `Approve post — ${new Date().toISOString().slice(0, 10)}`,
-              body,
-              labels: ['awaiting-approval'],
-            });
+            const issue = require(`${process.env.GITHUB_WORKSPACE}/work/issue.json`);
+            await github.rest.issues.create({ ...context.repo, ...issue });
 
       # Unattended automation that fails quietly is not automation. Runs on
       # success too, so the issue closes itself when things recover.
