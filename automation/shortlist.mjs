@@ -154,6 +154,10 @@ async function main() {
       published: c.newest ? new Date(c.newest).toISOString() : null,
       topic: c.lead.topic,
       section: sectionOf(c.lead.topic),
+      // Where this sits in the hierarchy — lead, significant, notable, minor.
+      // On the approval issue so the editorial judgement is visible and can
+      // be argued with, rather than being a number nobody can see.
+      tier: c.tier,
       score: c.score,
     };
   };
@@ -188,7 +192,7 @@ async function main() {
 
   log(`\nshortlist (${stories.length}):`);
   for (const s of stories) {
-    log(`  [${s.corroboration} source${s.corroboration > 1 ? 's' : ''}] ${s.headline}`);
+    log(`  [${s.tier}] [${s.corroboration} source${s.corroboration > 1 ? 's' : ''}] ${s.headline}`);
     log(`     ${s.source}${s.truncated ? '  (shortened)' : ''}${s.usable ? '' : '  !! too short to use'}`);
   }
   log(`\nwritten to ${SHORTLIST}`);

@@ -12,12 +12,20 @@
  * means something to somebody already inside the subject.
  */
 
+/* Ordered by prominence, the way a front page is: Top first, then home news,
+   then the world, then the rest. The order here is the order the posts are
+   offered in. */
 export const SECTIONS = [
   { id: 'top',      label: 'TOP STORIES', topics: null },   // drawn from everything
   { id: 'india',    label: 'INDIA',       topics: ['india'] },
   { id: 'world',    label: 'WORLD',       topics: ['world'] },
+  // Crypto is a vertical inside Business, not a section. It was never a beat
+  // this channel covers; it only looked like one because five of nineteen
+  // feeds were crypto feeds.
   { id: 'business', label: 'BUSINESS',    topics: ['business', 'markets-india', 'markets-world', 'crypto'] },
   { id: 'tech',     label: 'TECHNOLOGY',  topics: ['tech'] },
+  { id: 'science',  label: 'SCIENCE',     topics: ['science'] },
+  { id: 'health',   label: 'HEALTH',      topics: ['health'] },
 ];
 
 const BY_TOPIC = new Map();
@@ -83,8 +91,14 @@ export function sortIntoSections(ranked, {
     out.push({ id: section.id, label: section.label, clusters: chosen });
   }
 
-  // A section with nothing in it is not a post. Top is kept even when thin,
-  // because an empty Top means the whole run found nothing and that should be
-  // visible rather than quietly dropped.
-  return out.filter(s => s.id === 'top' || s.clusters.length);
+  // A section with nothing in it is not a post. Nor is one where nothing rises
+  // above minor: BUSINESS came out as three Bitcoin items, every one of them
+  // a price or a purchase, and a post made entirely of those says the channel
+  // thinks they are the day's business news. Top is kept even when thin,
+  // because an empty Top means the whole run found nothing, and that should
+  // be visible rather than quietly dropped.
+  const worthPosting = s =>
+    s.clusters.length && s.clusters.some(c => c.tier && c.tier !== 'minor');
+
+  return out.filter(s => s.id === 'top' || worthPosting(s));
 }

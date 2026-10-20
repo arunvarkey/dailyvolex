@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- General news, so the sample build covers a post that is not all markets:
-     the beat cap, the topic-led image fallback and the editorial backdrop are
-     only exercised when something other than a finance story is in the mix. -->
+<!-- The fixture day is built to exercise the hierarchy: a lead story, a
+     significant one, and a minor one in every section, so the sample build
+     proves the ranking rather than only proving the renderer runs. -->
 <rss version="2.0"><channel><title>BBC News</title>
   <item>
-    <title><![CDATA[Ceasefire talks resume in Geneva after months of stalemate]]></title>
+    <title><![CDATA[Earthquake kills at least 40 in northern Afghanistan]]></title>
     <link>https://bbc.co.uk/news/1</link>
+    <description><![CDATA[Rescue teams reached the valley at first light.]]></description>
+    <pubDate>Fri, 16 Oct 2026 16:25:00 +0000</pubDate>
+  </item>
+  <item>
+    <title><![CDATA[Ceasefire talks resume in Geneva after months of stalemate]]></title>
+    <link>https://bbc.co.uk/news/2</link>
     <description><![CDATA[Negotiators returned to the table on Thursday.]]></description>
     <pubDate>Fri, 16 Oct 2026 16:20:00 +0000</pubDate>
   </item>
   <item>
     <title><![CDATA[Flooding forces thousands from their homes in southern Spain]]></title>
-    <link>https://bbc.co.uk/news/2</link>
+    <link>https://bbc.co.uk/news/3</link>
     <description><![CDATA[Rivers burst their banks overnight.]]></description>
     <pubDate>Fri, 16 Oct 2026 13:05:00 +0000</pubDate>
   </item>

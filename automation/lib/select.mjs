@@ -8,6 +8,7 @@
 
 import { independentSources } from './outlets.mjs';
 import { sortIntoSections } from './sections.mjs';
+import { tierOf, TIER_POINTS, TIERS } from './importance.mjs';
 
 const STOP = new Set(('a an the and or but of for to in on at by with from as is are was were be been '
   + 'has have had will would could should may might can says said after before over under new '
@@ -214,14 +215,22 @@ export function rankClusters(clusters, { now = Date.now() } = {}) {
     const weight = Math.max(...c.items.map(i => i.weight || 1));
     const lead = c.items.slice().sort((a, b) => (b.published || 0) - (a.published || 0))[0];
 
-    // Corroboration still dominates — it is the safety check, not a taste
-    // setting — but outlet weight now carries enough to separate stories that
-    // are otherwise level.
-    const score = (sources * 2) + (freshnessScore(newest, now) * 1.5) + ((weight - 1) * 2);
+    // What the story IS now leads the ranking. The old score knew only how
+    // well covered a story was, how fresh, and how much its feed was
+    // weighted — nothing about the story — so a heavily syndicated piece on a
+    // firm buying $22m of Bitcoin outranked a court ruling. Corroboration
+    // still carries real weight because it is the safety check, but it is no
+    // longer what decides the lead.
+    const tier = tierOf(lead.title, { topic: lead.topic });
+    const score = TIER_POINTS[tier]
+      + (sources * 1.5)
+      + (freshnessScore(newest, now) * 1.5)
+      + ((weight - 1) * 1.5);
 
     return {
       ...c,
       lead,
+      tier,
       sources,
       // One name per newsroom. Printing both "Times of India" and "The Times
       // of India" on a card does not just look careless, it is the inflated
@@ -247,7 +256,12 @@ export function isRepeat(title, history, threshold = 0.6) {
    so beats are capped too. */
 const BEATS = {
   crypto: 'markets', 'markets-india': 'markets', 'markets-world': 'markets',
-  business: 'general', india: 'general', world: 'general', tech: 'general',
+  // Business sits with the markets beat for capping: a post of three money
+  // stories reads as a finance post whichever desk they came from, and this
+  // is a general news channel.
+  business: 'markets',
+  india: 'general', world: 'general', tech: 'general',
+  science: 'general', health: 'general',
 };
 const beatOf = topic => BEATS[topic] || 'general';
 
@@ -272,15 +286,20 @@ export function rankEligible(items, { now = Date.now(), maxAgeHours = 24 } = {})
 
 export function selectStories(items, { history = [], count = 3, now = Date.now(),
                                        minSources = 1, maxAgeHours = 24,
-                                       maxPerTopic = 2, maxPerBeat = 2 } = {}) {
+                                       maxPerTopic = 2, maxPerBeat = 2,
+                                       allowMinorInTop = false } = {}) {
   const ranked = rankEligible(items, { now, maxAgeHours });
   const chosen = [];
   const takenTitles = [];
   const perTopic = new Map();
   const perBeat = new Map();
 
+  // Top stories is the front page. A product launch or a coin moving does
+  // not belong on it however many outlets carried it and however fresh it is
+  // — that was exactly how two of three top stories came out crypto.
   const eligible = c =>
     c.sources >= minSources
+    && (allowMinorInTop || c.tier !== TIERS.MINOR)
     && !isRepeat(c.lead.title, history)
     && !isRepeat(c.lead.title, takenTitles.map(t => ({ title: t })));
 

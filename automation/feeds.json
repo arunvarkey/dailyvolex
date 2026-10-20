@@ -1,130 +1,42 @@
 {
-  "comment": "Free, public RSS feeds, no API keys. 'topic' drives the on-screen category and the mix (no topic takes more than two of three slots). 'aggregator' marks a feed that republishes other outlets \u2014 the real publisher is read out of the title so it is not counted as an independent source. 'requireTopical' applies the finance gate, which belongs only on finance feeds: their tech and lifestyle sections would otherwise leak in.",
+  "comment": "Free, public RSS feeds, no API keys. This is a general news channel, and the mix here decides what the account is about. It used to be five crypto feeds out of nineteen — more than world news — which is why two of three top stories came out crypto. There are no dedicated crypto feeds any more: crypto reaches the account the way any other vertical does, when a general or business desk judges it worth carrying. 'topic' drives the section and the on-screen category. 'aggregator' marks a feed that republishes other outlets — the real publisher is read out of the title so it is not counted as an independent source. 'requireTopical' applies the finance gate, which belongs only on finance feeds, whose tech and lifestyle sections would otherwise leak in.",
   "feeds": [
-    {
-      "id": "coindesk",
-      "name": "CoinDesk",
-      "topic": "crypto",
-      "weight": 1.2,
-      "url": "https://www.coindesk.com/arc/outboundfeeds/rss/",
-      "requireTopical": true
-    },
-    {
-      "id": "cointelegraph",
-      "name": "Cointelegraph",
-      "topic": "crypto",
-      "weight": 1.0,
-      "url": "https://cointelegraph.com/rss",
-      "requireTopical": true
-    },
-    {
-      "id": "decrypt",
-      "name": "Decrypt",
-      "topic": "crypto",
-      "weight": 0.9,
-      "url": "https://decrypt.co/feed",
-      "requireTopical": true
-    },
-    {
-      "id": "theblock",
-      "name": "The Block",
-      "topic": "crypto",
-      "weight": 1.1,
-      "url": "https://www.theblock.co/rss.xml",
-      "requireTopical": true
-    },
-    {
-      "id": "et-markets",
-      "name": "Economic Times",
-      "topic": "markets-india",
-      "weight": 1.1,
-      "url": "https://economictimes.indiatimes.com/markets/rssfeeds/1977021501.cms",
-      "requireTopical": true
-    },
-    {
-      "id": "moneycontrol",
-      "name": "Moneycontrol",
-      "topic": "markets-india",
-      "weight": 1.0,
-      "url": "https://www.moneycontrol.com/rss/marketreports.xml",
-      "requireTopical": true
-    },
-    {
-      "id": "mint-markets",
-      "name": "Mint",
-      "topic": "markets-india",
-      "weight": 1.0,
-      "url": "https://www.livemint.com/rss/markets",
-      "requireTopical": true
-    },
-    {
-      "id": "reuters-biz",
-      "name": "Reuters",
-      "topic": "markets-world",
-      "weight": 1.3,
-      "url": "https://news.google.com/rss/search?q=when:12h+allinurl:reuters.com+business&hl=en-US&gl=US&ceid=US:en",
-      "aggregator": true,
-      "requireTopical": true
-    },
-    {
-      "id": "gnews-markets",
-      "name": "Google News",
-      "topic": "markets-world",
-      "weight": 0.8,
-      "url": "https://news.google.com/rss/search?q=stock+markets+when:12h&hl=en-IN&gl=IN&ceid=IN:en",
-      "aggregator": true,
-      "requireTopical": true
-    },
-    {
-      "id": "gnews-crypto",
-      "name": "Google News",
-      "topic": "crypto",
-      "weight": 0.8,
-      "url": "https://news.google.com/rss/search?q=bitcoin+OR+ethereum+when:12h&hl=en-IN&gl=IN&ceid=IN:en",
-      "aggregator": true,
-      "requireTopical": true
-    },
     {
       "id": "bbc-world",
       "name": "BBC News",
       "topic": "world",
-      "weight": 1.8,
+      "weight": 1.9,
       "url": "https://feeds.bbci.co.uk/news/world/rss.xml"
     },
     {
-      "id": "bbc-business",
-      "name": "BBC News",
-      "topic": "business",
-      "weight": 1.6,
-      "url": "https://feeds.bbci.co.uk/news/business/rss.xml"
+      "id": "reuters-world",
+      "name": "Reuters",
+      "topic": "world",
+      "weight": 1.7,
+      "aggregator": true,
+      "url": "https://news.google.com/rss/search?q=when:12h+allinurl:reuters.com&hl=en-US&gl=US&ceid=US:en"
+    },
+    {
+      "id": "ap-world",
+      "name": "Associated Press",
+      "topic": "world",
+      "weight": 1.7,
+      "aggregator": true,
+      "url": "https://news.google.com/rss/search?q=when:12h+allinurl:apnews.com&hl=en-US&gl=US&ceid=US:en"
     },
     {
       "id": "aljazeera",
       "name": "Al Jazeera",
       "topic": "world",
-      "weight": 1.5,
+      "weight": 1.6,
       "url": "https://www.aljazeera.com/xml/rss/all.xml"
     },
     {
-      "id": "ndtv-top",
-      "name": "NDTV",
-      "topic": "india",
-      "weight": 1.5,
-      "url": "https://feeds.feedburner.com/ndtvnews-top-stories"
-    },
-    {
-      "id": "toi-top",
-      "name": "Times of India",
-      "topic": "india",
-      "weight": 1.3,
-      "url": "https://timesofindia.indiatimes.com/rssfeedstopstories.cms"
-    },
-    {
-      "id": "thehindu-national",
-      "name": "The Hindu",
-      "topic": "india",
+      "id": "guardian-world",
+      "name": "The Guardian",
+      "topic": "world",
       "weight": 1.6,
-      "url": "https://www.thehindu.com/news/national/feeder/default.rss"
+      "url": "https://www.theguardian.com/world/rss"
     },
     {
       "id": "gnews-world",
@@ -135,6 +47,34 @@
       "url": "https://news.google.com/rss/search?q=world+news+when:12h&hl=en-IN&gl=IN&ceid=IN:en"
     },
     {
+      "id": "thehindu-national",
+      "name": "The Hindu",
+      "topic": "india",
+      "weight": 1.8,
+      "url": "https://www.thehindu.com/news/national/feeder/default.rss"
+    },
+    {
+      "id": "ndtv-top",
+      "name": "NDTV",
+      "topic": "india",
+      "weight": 1.6,
+      "url": "https://feeds.feedburner.com/ndtvnews-top-stories"
+    },
+    {
+      "id": "indian-express",
+      "name": "The Indian Express",
+      "topic": "india",
+      "weight": 1.6,
+      "url": "https://indianexpress.com/section/india/feed/"
+    },
+    {
+      "id": "toi-top",
+      "name": "Times of India",
+      "topic": "india",
+      "weight": 1.3,
+      "url": "https://timesofindia.indiatimes.com/rssfeedstopstories.cms"
+    },
+    {
       "id": "gnews-india",
       "name": "Google News",
       "topic": "india",
@@ -143,12 +83,73 @@
       "url": "https://news.google.com/rss/search?q=india+when:12h&hl=en-IN&gl=IN&ceid=IN:en"
     },
     {
+      "id": "bbc-business",
+      "name": "BBC News",
+      "topic": "business",
+      "weight": 1.6,
+      "url": "https://feeds.bbci.co.uk/news/business/rss.xml"
+    },
+    {
+      "id": "guardian-business",
+      "name": "The Guardian",
+      "topic": "business",
+      "weight": 1.4,
+      "url": "https://www.theguardian.com/uk/business/rss"
+    },
+    {
+      "id": "gnews-business",
+      "name": "Google News",
+      "topic": "business",
+      "weight": 1.2,
+      "aggregator": true,
+      "url": "https://news.google.com/rss/search?q=business+OR+economy+when:12h&hl=en-IN&gl=IN&ceid=IN:en"
+    },
+    {
+      "id": "bbc-tech",
+      "name": "BBC News",
+      "topic": "tech",
+      "weight": 1.5,
+      "url": "https://feeds.bbci.co.uk/news/technology/rss.xml"
+    },
+    {
       "id": "gnews-tech",
       "name": "Google News",
       "topic": "tech",
-      "weight": 1.1,
+      "weight": 1.2,
       "aggregator": true,
-      "url": "https://news.google.com/rss/search?q=technology+OR+AI+when:12h&hl=en-IN&gl=IN&ceid=IN:en"
+      "url": "https://news.google.com/rss/search?q=technology+when:12h&hl=en-IN&gl=IN&ceid=IN:en"
+    },
+    {
+      "id": "gnews-science",
+      "name": "Google News",
+      "topic": "science",
+      "weight": 1.3,
+      "aggregator": true,
+      "url": "https://news.google.com/rss/search?q=science+OR+research+when:24h&hl=en-IN&gl=IN&ceid=IN:en"
+    },
+    {
+      "id": "gnews-health",
+      "name": "Google News",
+      "topic": "health",
+      "weight": 1.3,
+      "aggregator": true,
+      "url": "https://news.google.com/rss/search?q=health+OR+medicine+when:24h&hl=en-IN&gl=IN&ceid=IN:en"
+    },
+    {
+      "id": "et-markets",
+      "name": "Economic Times",
+      "topic": "markets-india",
+      "weight": 0.8,
+      "url": "https://economictimes.indiatimes.com/markets/rssfeeds/1977021501.cms",
+      "requireTopical": true
+    },
+    {
+      "id": "moneycontrol",
+      "name": "Moneycontrol",
+      "topic": "markets-india",
+      "weight": 0.7,
+      "url": "https://www.moneycontrol.com/rss/marketreports.xml",
+      "requireTopical": true
     }
   ]
 }

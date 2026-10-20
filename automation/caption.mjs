@@ -16,14 +16,20 @@ import { writeFile } from 'node:fs/promises';
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(HERE, '..');
 
+/* Hashtags follow the story, and they also tell anyone browsing what this
+   account is. A crypto tag set on a general news post advertised a crypto
+   channel; a crypto story that earns its place here is business news and is
+   tagged as such. */
 const TAGS = {
-  crypto:        '#crypto #bitcoin #ethereum #cryptonews #blockchain',
-  'markets-india':'#sensex #nifty #indianstockmarket #stockmarketindia #investing',
-  'markets-world':'#stockmarket #markets #economy #investing',
+  crypto:        '#business #finance #markets',
+  'markets-india':'#sensex #nifty #indianstockmarket #business',
+  'markets-world':'#stockmarket #markets #economy #business',
   business:      '#business #economy #finance #markets',
   india:         '#india #indianews #bharat',
   world:         '#worldnews #globalnews #international',
   tech:          '#tech #technology #ai #innovation',
+  science:       '#science #research #discovery',
+  health:        '#health #medicine #publichealth',
 };
 const BASE_TAGS = '#dailyvolex #news #dailynews #breakingnews';
 

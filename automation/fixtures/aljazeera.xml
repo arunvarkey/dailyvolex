@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- A second outlet on the Geneva story, so it has the corroboration the
-     ranking requires rather than being a single feed's piece. -->
+<!-- A second newsroom on each world story, so they clear the corroboration
+     bar sections are held to. -->
 <rss version="2.0"><channel><title>Al Jazeera</title>
   <item>
-    <title><![CDATA[Geneva ceasefire talks resume after months of deadlock]]></title>
+    <title><![CDATA[Earthquake kills 40 in northern Afghanistan, officials say]]></title>
     <link>https://aljazeera.com/1</link>
+    <description><![CDATA[The tremor struck before dawn.]]></description>
+    <pubDate>Fri, 16 Oct 2026 16:15:00 +0000</pubDate>
+  </item>
+  <item>
+    <title><![CDATA[Geneva ceasefire talks resume after months of deadlock]]></title>
+    <link>https://aljazeera.com/2</link>
     <description><![CDATA[Both delegations arrived in the city.]]></description>
     <pubDate>Fri, 16 Oct 2026 16:10:00 +0000</pubDate>
   </item>
-  <!-- Corroborates the BBC's Spain flooding item, so the WORLD section has a
-       story that two newsrooms carried rather than one. -->
   <item>
-    <title><![CDATA[Flooding forces thousands from their homes in southern Spain]]></title>
-    <link>https://aljazeera.com/2</link>
+    <title><![CDATA[Flooding drives thousands from their homes in southern Spain]]></title>
+    <link>https://aljazeera.com/3</link>
     <description><![CDATA[Emergency services worked overnight.]]></description>
     <pubDate>Fri, 16 Oct 2026 13:15:00 +0000</pubDate>
   </item>
