@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-20T13:18:26.814Z",
+  "generated": "2026-10-20T13:43:51.627Z",
   "pool": 584,
   "feedErrors": [
     "indian-express: HTTP 403"
@@ -7,110 +7,115 @@
   "breaking": false,
   "stories": [
     {
-      "headline": "RUBIO, JAISHANKAR MEET IN MUMBAI AS U.S. AND INDIA AIM TO FINALISE TRADE DEAL",
-      "display": "Rubio, Jaishankar meet in Mumbai as U.S. and India aim to finalise trade deal",
-      "original": "Rubio, Jaishankar meet in Mumbai as U.S. and India aim to finalise trade deal",
+      "headline": "SHAH MEETS FAMILIES OF ANTI-DRUG ACTIVISTS KILLED IN PUNJAB; TARGETS AAP",
+      "display": "Shah meets families of anti-drug activists killed in Punjab; targets AAP",
+      "original": "Shah meets families of anti-drug activists killed in Punjab; targets AAP",
       "truncated": false,
       "usable": true,
       "category": "INDIA",
-      "source": "The Hindu · NDTV · Google News",
+      "source": "NDTV · Times of India",
       "sourceNames": [
-        "The Hindu",
         "NDTV",
-        "Google News"
-      ],
-      "corroboration": 3,
-      "republishers": [],
-      "owners": [
-        "The Hindu Group (family-held)",
-        "Adani Group"
-      ],
-      "ownerCount": 2,
-      "countries": [
-        "IN"
-      ],
-      "fundings": [
-        "commercial",
-        "conglomerate"
-      ],
-      "unknownOwners": 1,
-      "concentration": [],
-      "link": "https://www.thehindu.com/news/national/marco-rubio-mumbai-visit-october-20-2026/article71603994.ece",
-      "published": "2026-10-20T12:30:58.000Z",
-      "topic": "india",
-      "section": "india",
-      "tier": "significant",
-      "score": 13.2
-    },
-    {
-      "headline": "JAPAN LAUNCHES FIRST-OF-ITS-KIND MISSION TO BRING BACK ROCKS FROM MARS’S MOON PHOBOS",
-      "display": "Japan launches first-of-its-kind mission to bring back rocks from Mars’s moon Phobos",
-      "original": "Japan launches first-of-its-kind mission to bring back rocks from Mars’s moon Phobos",
-      "truncated": false,
-      "usable": true,
-      "category": "INDIA",
-      "source": "BBC News · Times of India",
-      "sourceNames": [
-        "BBC News",
         "Times of India"
       ],
       "corroboration": 2,
       "republishers": [],
       "owners": [
-        "BBC (licence fee)",
+        "Adani Group",
         "Bennett, Coleman & Co"
       ],
       "ownerCount": 2,
       "countries": [
+        "IN"
+      ],
+      "fundings": [
+        "conglomerate"
+      ],
+      "unknownOwners": 0,
+      "concentration": [],
+      "link": "https://timesofindia.indiatimes.com/india/amit-shah-meets-families-of-anti-drug-campaigners-killed-in-punjab-targets-aap-on-open-drug-trade/articleshow/135069001.cms",
+      "published": "2026-10-20T11:37:18.000Z",
+      "topic": "india",
+      "section": "india",
+      "tier": "lead",
+      "score": 15.1
+    },
+    {
+      "headline": "UK TO DEPLOY FIGHTER JETS TO SUPPORT SAUDI ARABIA AGAINST HOUTHI ATTACKS",
+      "display": "UK To Deploy Fighter Jets To Support Saudi Arabia Against Houthi Attacks",
+      "original": "UK To Deploy Fighter Jets To Support Saudi Arabia Against Houthi Attacks",
+      "truncated": false,
+      "usable": true,
+      "category": "WORLD NEWS",
+      "source": "Al Jazeera · The Guardian · NDTV",
+      "sourceNames": [
+        "Al Jazeera",
+        "The Guardian",
+        "NDTV",
+        "Times of India"
+      ],
+      "corroboration": 4,
+      "republishers": [],
+      "owners": [
+        "Government of Qatar",
+        "Scott Trust",
+        "Adani Group",
+        "Bennett, Coleman & Co"
+      ],
+      "ownerCount": 4,
+      "countries": [
+        "QA",
         "GB",
         "IN"
       ],
       "fundings": [
         "state",
+        "trust",
         "conglomerate"
       ],
       "unknownOwners": 0,
       "concentration": [],
-      "link": "https://timesofindia.indiatimes.com/science/japan-launches-first-of-its-kind-mission-to-bring-back-rocks-from-marss-moon-phobos/articleshow/135069240.cms",
-      "published": "2026-10-20T11:48:42.000Z",
-      "topic": "india",
+      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNNGFNUlo2TjEwU0ZuOUd1OHROaVR2MjhkSkJvWnh3T2J5ZU0zQkoxNkR6WHZBWVFNZjFJUldYbjcyeXNpanJNcWM5czZDRzBXdkpnRmwtMm4zNnczV3h3eUpVa055RFNYNHd0aEhrY1FsT19YTGZBcE1jcVB6TFpwNXVFUGZ2aG51dWZ3dWpMVDV0OUZDNUd6MHQtaHNNeUdwTDQxLUctNklBWFRkZFBIZlljd9IBuwFBVV95cUxQME51LWxuYkpvczV1eUYteVVMWURJNTh3UGMwNlI5RFA3cWZmTlhPSTMyczUyV0JiUnJLaWl3bmQ3N0h2QjROTnJObk0zbk1kRDJPSEd",
+      "published": "2026-10-20T12:34:48.000Z",
+      "topic": "world",
       "section": "world",
-      "tier": "significant",
-      "score": 11.85
+      "tier": "notable",
+      "score": 11.4
     },
     {
-      "headline": "INDIA IS A REFINING SUPERPOWER, CAN PROCESS VENEZUELAN OIL: MARCO RUBIO",
-      "display": "India is a refining superpower, can process Venezuelan oil: Marco Rubio",
-      "original": "India is a refining superpower, can process Venezuelan oil: Marco Rubio",
+      "headline": "BURNHAM VOWS END TO 'RIP-OFF PARKING CHARGES' UNDER NEW RULES",
+      "display": "Burnham vows end to 'rip-off parking charges' under new rules",
+      "original": "Burnham vows end to 'rip-off parking charges' under new rules",
       "truncated": false,
       "usable": true,
       "category": "BUSINESS",
-      "source": "The Hindu · Business Standard",
+      "source": "BBC News · The Guardian",
       "sourceNames": [
-        "The Hindu",
-        "Business Standard"
+        "BBC News",
+        "The Guardian"
       ],
       "corroboration": 2,
       "republishers": [],
       "owners": [
-        "The Hindu Group (family-held)",
-        "Business Standard Pvt Ltd"
+        "BBC (licence fee)",
+        "Scott Trust"
       ],
       "ownerCount": 2,
       "countries": [
-        "IN"
+        "GB"
       ],
       "fundings": [
-        "commercial"
+        "state",
+        "trust"
       ],
       "unknownOwners": 0,
       "concentration": [],
-      "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxONElCTF9NV1RIbTN2TENySUhYMnlCcnZadl9lWmlBX2NyaXlpdHIyMy1BY0JNMUprRGpXM2ZoLTEtZ0tWWkM1bG5nTzNqSGp4Ul9mSnlTMG90MUE2VngyektQV2Q0SGplUXZaQWtZYmhsQ1ZKdEp4YUx5eDRNdXk5eTY4Uk85QzNQak9JN2ttZkpkZEsyd2JmZy1KM2x2R2k4Qm9EUUlQLVB6VFhxZ1pVVGZoSUZTNkh2dXJrSzRGSUNtcnhZZEE2MXFTaU52ekx5bVHSAdcBQVVfeXFMTVRhbFZMMDZvWFZPSk1wckRrTTJOQWNXZWtmM2dqaFFJODlrMGdLLUx6aURyMW9",
-      "published": "2026-10-20T12:00:54.000Z",
+      "link": "https://www.bbc.co.uk/news/articles/ck87ze7wl4qno?at_medium=RSS&at_campaign=rss",
+      "published": "2026-10-20T08:55:02.000Z",
       "topic": "business",
       "section": "business",
       "tier": "notable",
-      "score": 8.7
+      "score": 8.1
     }
   ],
   "sections": [
@@ -119,122 +124,120 @@
       "label": "TOP STORIES",
       "stories": [
         {
-          "headline": "RUBIO, JAISHANKAR MEET IN MUMBAI AS U.S. AND INDIA AIM TO FINALISE TRADE DEAL",
-          "display": "Rubio, Jaishankar meet in Mumbai as U.S. and India aim to finalise trade deal",
-          "original": "Rubio, Jaishankar meet in Mumbai as U.S. and India aim to finalise trade deal",
+          "headline": "SHAH MEETS FAMILIES OF ANTI-DRUG ACTIVISTS KILLED IN PUNJAB; TARGETS AAP",
+          "display": "Shah meets families of anti-drug activists killed in Punjab; targets AAP",
+          "original": "Shah meets families of anti-drug activists killed in Punjab; targets AAP",
           "truncated": false,
           "usable": true,
           "category": "INDIA",
-          "source": "The Hindu · NDTV · Google News",
+          "source": "NDTV · Times of India",
           "sourceNames": [
-            "The Hindu",
             "NDTV",
-            "Google News"
-          ],
-          "corroboration": 3,
-          "republishers": [],
-          "owners": [
-            "The Hindu Group (family-held)",
-            "Adani Group"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "commercial",
-            "conglomerate"
-          ],
-          "unknownOwners": 1,
-          "concentration": [],
-          "link": "https://www.thehindu.com/news/national/marco-rubio-mumbai-visit-october-20-2026/article71603994.ece",
-          "published": "2026-10-20T12:30:58.000Z",
-          "topic": "india",
-          "section": "india",
-          "tier": "significant",
-          "score": 13.2,
-          "photoError": "timed out (searched \"Jaishankar\")",
-          "photo": null
-        },
-        {
-          "headline": "JAPAN LAUNCHES FIRST-OF-ITS-KIND MISSION TO BRING BACK ROCKS FROM MARS’S MOON PHOBOS",
-          "display": "Japan launches first-of-its-kind mission to bring back rocks from Mars’s moon Phobos",
-          "original": "Japan launches first-of-its-kind mission to bring back rocks from Mars’s moon Phobos",
-          "truncated": false,
-          "usable": true,
-          "category": "INDIA",
-          "source": "BBC News · Times of India",
-          "sourceNames": [
-            "BBC News",
             "Times of India"
           ],
           "corroboration": 2,
           "republishers": [],
           "owners": [
-            "BBC (licence fee)",
+            "Adani Group",
             "Bennett, Coleman & Co"
           ],
           "ownerCount": 2,
           "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://timesofindia.indiatimes.com/india/amit-shah-meets-families-of-anti-drug-campaigners-killed-in-punjab-targets-aap-on-open-drug-trade/articleshow/135069001.cms",
+          "published": "2026-10-20T11:37:18.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "lead",
+          "score": 15.1,
+          "photoError": "a library photograph would misrepresent a story about people in harm (searched \"(none)\")",
+          "photo": null
+        },
+        {
+          "headline": "UK TO DEPLOY FIGHTER JETS TO SUPPORT SAUDI ARABIA AGAINST HOUTHI ATTACKS",
+          "display": "UK To Deploy Fighter Jets To Support Saudi Arabia Against Houthi Attacks",
+          "original": "UK To Deploy Fighter Jets To Support Saudi Arabia Against Houthi Attacks",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "Al Jazeera · The Guardian · NDTV",
+          "sourceNames": [
+            "Al Jazeera",
+            "The Guardian",
+            "NDTV",
+            "Times of India"
+          ],
+          "corroboration": 4,
+          "republishers": [],
+          "owners": [
+            "Government of Qatar",
+            "Scott Trust",
+            "Adani Group",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 4,
+          "countries": [
+            "QA",
             "GB",
             "IN"
           ],
           "fundings": [
             "state",
+            "trust",
             "conglomerate"
           ],
           "unknownOwners": 0,
           "concentration": [],
-          "link": "https://timesofindia.indiatimes.com/science/japan-launches-first-of-its-kind-mission-to-bring-back-rocks-from-marss-moon-phobos/articleshow/135069240.cms",
-          "published": "2026-10-20T11:48:42.000Z",
-          "topic": "india",
+          "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNNGFNUlo2TjEwU0ZuOUd1OHROaVR2MjhkSkJvWnh3T2J5ZU0zQkoxNkR6WHZBWVFNZjFJUldYbjcyeXNpanJNcWM5czZDRzBXdkpnRmwtMm4zNnczV3h3eUpVa055RFNYNHd0aEhrY1FsT19YTGZBcE1jcVB6TFpwNXVFUGZ2aG51dWZ3dWpMVDV0OUZDNUd6MHQtaHNNeUdwTDQxLUctNklBWFRkZFBIZlljd9IBuwFBVV95cUxQME51LWxuYkpvczV1eUYteVVMWURJNTh3UGMwNlI5RFA3cWZmTlhPSTMyczUyV0JiUnJLaWl3bmQ3N0h2QjROTnJObk0zbk1kRDJPSEd",
+          "published": "2026-10-20T12:34:48.000Z",
+          "topic": "world",
           "section": "world",
-          "tier": "significant",
-          "score": 11.85,
-          "photo": {
-            "path": "data/pending/top/photo-top-3.jpg",
-            "credit": "File photo: Soren Bradley / CC BY 4.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=166276509",
-            "query": "Japan",
-            "relevance": 0.1,
-            "title": "Topographic map of Chubu, Japan"
-          }
+          "tier": "notable",
+          "score": 11.4,
+          "photoError": "timed out (searched \"Houthi Attacks\")",
+          "photo": null
         },
         {
-          "headline": "INDIA IS A REFINING SUPERPOWER, CAN PROCESS VENEZUELAN OIL: MARCO RUBIO",
-          "display": "India is a refining superpower, can process Venezuelan oil: Marco Rubio",
-          "original": "India is a refining superpower, can process Venezuelan oil: Marco Rubio",
+          "headline": "BURNHAM VOWS END TO 'RIP-OFF PARKING CHARGES' UNDER NEW RULES",
+          "display": "Burnham vows end to 'rip-off parking charges' under new rules",
+          "original": "Burnham vows end to 'rip-off parking charges' under new rules",
           "truncated": false,
           "usable": true,
           "category": "BUSINESS",
-          "source": "The Hindu · Business Standard",
+          "source": "BBC News · The Guardian",
           "sourceNames": [
-            "The Hindu",
-            "Business Standard"
+            "BBC News",
+            "The Guardian"
           ],
           "corroboration": 2,
           "republishers": [],
           "owners": [
-            "The Hindu Group (family-held)",
-            "Business Standard Pvt Ltd"
+            "BBC (licence fee)",
+            "Scott Trust"
           ],
           "ownerCount": 2,
           "countries": [
-            "IN"
+            "GB"
           ],
           "fundings": [
-            "commercial"
+            "state",
+            "trust"
           ],
           "unknownOwners": 0,
           "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxONElCTF9NV1RIbTN2TENySUhYMnlCcnZadl9lWmlBX2NyaXlpdHIyMy1BY0JNMUprRGpXM2ZoLTEtZ0tWWkM1bG5nTzNqSGp4Ul9mSnlTMG90MUE2VngyektQV2Q0SGplUXZaQWtZYmhsQ1ZKdEp4YUx5eDRNdXk5eTY4Uk85QzNQak9JN2ttZkpkZEsyd2JmZy1KM2x2R2k4Qm9EUUlQLVB6VFhxZ1pVVGZoSUZTNkh2dXJrSzRGSUNtcnhZZEE2MXFTaU52ekx5bVHSAdcBQVVfeXFMTVRhbFZMMDZvWFZPSk1wckRrTTJOQWNXZWtmM2dqaFFJODlrMGdLLUx6aURyMW9",
-          "published": "2026-10-20T12:00:54.000Z",
+          "link": "https://www.bbc.co.uk/news/articles/ck87ze7wl4qno?at_medium=RSS&at_campaign=rss",
+          "published": "2026-10-20T08:55:02.000Z",
           "topic": "business",
           "section": "business",
           "tier": "notable",
-          "score": 8.7,
-          "photoError": "timed out (searched \"Marco Rubio\")",
+          "score": 8.1,
+          "photoError": "no image matched the story closely enough (searched \"office towers business district\")",
           "photo": null
         }
       ]
@@ -277,66 +280,63 @@
           "topic": "india",
           "section": "india",
           "tier": "significant",
-          "score": 11.4,
+          "score": 11.1,
           "photoError": "no image matched the story closely enough (searched \"india\")",
           "photo": null
         },
         {
-          "headline": "SHRADDHA DUBEY, LUCKNOW INFLUENCER ACCUSED OF KILLING LOVER, ARRESTED",
-          "display": "Shraddha Dubey, Lucknow Influencer Accused Of Killing Lover, Arrested",
-          "original": "Shraddha Dubey, Lucknow Influencer Accused Of Killing Lover, Arrested",
+          "headline": "INDIA NEWS: TRADE DEAL, ENERGY SECURITY TO TOP AGENDA FOR RUBIO'S VISIT",
+          "display": "India news: Trade deal, energy security to top agenda for Rubio's visit",
+          "original": "India news: Trade deal, energy security to top agenda for Rubio's visit",
           "truncated": false,
           "usable": true,
           "category": "INDIA",
-          "source": "NDTV · Times of India · India Today",
+          "source": "DW.com · Reuters",
           "sourceNames": [
-            "NDTV",
-            "Times of India",
-            "India Today"
-          ],
-          "corroboration": 3,
-          "republishers": [],
-          "owners": [
-            "Adani Group",
-            "Bennett, Coleman & Co",
-            "Living Media"
-          ],
-          "ownerCount": 3,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "conglomerate",
-            "commercial"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://www.ndtv.com/india-news/shraddha-dubey-lucknow-influencer-accused-of-killing-lover-arrested-12211012#publisher=newsstand",
-          "published": "2026-10-20T12:29:49.000Z",
-          "topic": "india",
-          "section": "india",
-          "tier": "notable",
-          "score": 9.9,
-          "photoError": "no image matched the story closely enough (searched \"india\")",
-          "photo": null
-        },
-        {
-          "headline": "CJP’S ABHIJEET DIPKE THANKS DELHI RAMLILA ORGANISERS FOR 'FREE PUBLICITY' OVER COCKROACH",
-          "display": "CJP’s Abhijeet Dipke thanks Delhi Ramlila organisers for 'free publicity' over cockroach",
-          "original": "CJP’s Abhijeet Dipke thanks Delhi Ramlila organisers for 'free publicity' over cockroach effigy",
-          "truncated": true,
-          "usable": true,
-          "category": "INDIA",
-          "source": "The Hindu · Times of India",
-          "sourceNames": [
-            "The Hindu",
-            "Times of India"
+            "DW.com",
+            "Reuters"
           ],
           "corroboration": 2,
           "republishers": [],
           "owners": [
+            "Thomson Reuters (Trust Principles)"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "GB"
+          ],
+          "fundings": [
+            "trust"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOVnI1Nl92ODBfQ2t6RzMtOUhiMTVNX0xUamxZb1VwUVJUbFhNM3Vwc2J3NFRMeW5lU1RfRGF1WERDMWdoUTRlY0lPWnBkb2FwMmhCaklZX00yQkw4MXlxWDJCVGZiNUFqcjNTUDYwSE1oclZabGV5S2tXUXNDS3JueTZ3dVAyTjJzbTlBcFNRWksyZlB5bElR?oc=5",
+          "published": "2026-10-20T10:50:04.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "significant",
+          "score": 10.5,
+          "photoError": "timed out (searched \"India\")",
+          "photo": null
+        },
+        {
+          "headline": "RUBIO PITCHES US ENERGY AS TRANSFORMATIVE' ALTERNATIVE FOR INDIA IN MUMBAI MEET",
+          "display": "Rubio Pitches US Energy As Transformative' Alternative For India In Mumbai Meet",
+          "original": "Rubio Pitches US Energy As Transformative' Alternative For India In Mumbai Meet With Jaishankar",
+          "truncated": true,
+          "usable": true,
+          "category": "INDIA",
+          "source": "The Hindu · NDTV · Arab News",
+          "sourceNames": [
+            "The Hindu",
+            "NDTV",
+            "Arab News"
+          ],
+          "corroboration": 3,
+          "republishers": [],
+          "owners": [
             "The Hindu Group (family-held)",
-            "Bennett, Coleman & Co"
+            "Adani Group"
           ],
           "ownerCount": 2,
           "countries": [
@@ -346,16 +346,23 @@
             "commercial",
             "conglomerate"
           ],
-          "unknownOwners": 0,
+          "unknownOwners": 1,
           "concentration": [],
-          "link": "https://www.thehindu.com/news/national/cjps-abhijeet-dipke-thanks-delhi-ramlila-organisers-for-free-publicity-over-cockroach-effigy/article71603848.ece",
-          "published": "2026-10-20T12:52:04.000Z",
+          "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNQmp6a1JDZExSTzdwTURkQTRkaXphQlFaMkZLczNZUlhkU2twUUdxODNmbTJyTWxSV3o4eE4tR2xMN2s5d0NROUcwYTlkTm93cjVhUUlUMnZLeFBzbzNfbjY0ZGxZdTAtZ1VJRUtNaWdCQl82aW5pblhxLTZMTlJSN1lFWE5tTnlrQUU0OXhPUDJKTUNTcU5EOHdYWGpHMXJaVE02STQxa1pwV19pRHJRYzd0TVc3NDR1aXZyVmo0dkVnMnVKQ3VJSEVEaEt4bkxlUEHSAdoBQVVfeXFMTXBiZnRwTEpRTmJXczR0QzBxRldkbGk2X01lbnhKWnlsdHROR0pvUXVMLXplOG1",
+          "published": "2026-10-20T13:23:19.000Z",
           "topic": "india",
           "section": "india",
           "tier": "notable",
-          "score": 8.7,
-          "photoError": "timed out (searched \"CJP’s Abhijeet Dipke\")",
-          "photo": null
+          "score": 10.2,
+          "photo": {
+            "path": "data/pending/india/photo-india-4.jpg",
+            "credit": "File photo: Pranav011 at en.wikipedia / CC BY 3.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=16992577",
+            "query": "india",
+            "relevance": 0.14,
+            "title": "An Unripe Mango Of Ratnagiri (India)"
+          }
         }
       ]
     },
@@ -363,50 +370,6 @@
       "id": "world",
       "label": "WORLD",
       "stories": [
-        {
-          "headline": "UK TO DEPLOY FIGHTER JETS TO SUPPORT SAUDI ARABIA AGAINST HOUTHI ATTACKS",
-          "display": "UK To Deploy Fighter Jets To Support Saudi Arabia Against Houthi Attacks",
-          "original": "UK To Deploy Fighter Jets To Support Saudi Arabia Against Houthi Attacks",
-          "truncated": false,
-          "usable": true,
-          "category": "WORLD NEWS",
-          "source": "Al Jazeera · The Guardian · NDTV",
-          "sourceNames": [
-            "Al Jazeera",
-            "The Guardian",
-            "NDTV",
-            "Times of India"
-          ],
-          "corroboration": 4,
-          "republishers": [],
-          "owners": [
-            "Government of Qatar",
-            "Scott Trust",
-            "Adani Group",
-            "Bennett, Coleman & Co"
-          ],
-          "ownerCount": 4,
-          "countries": [
-            "QA",
-            "GB",
-            "IN"
-          ],
-          "fundings": [
-            "state",
-            "trust",
-            "conglomerate"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNNGFNUlo2TjEwU0ZuOUd1OHROaVR2MjhkSkJvWnh3T2J5ZU0zQkoxNkR6WHZBWVFNZjFJUldYbjcyeXNpanJNcWM5czZDRzBXdkpnRmwtMm4zNnczV3h3eUpVa055RFNYNHd0aEhrY1FsT19YTGZBcE1jcVB6TFpwNXVFUGZ2aG51dWZ3dWpMVDV0OUZDNUd6MHQtaHNNeUdwTDQxLUctNklBWFRkZFBIZlljd9IBuwFBVV95cUxQME51LWxuYkpvczV1eUYteVVMWURJNTh3UGMwNlI5RFA3cWZmTlhPSTMyczUyV0JiUnJLaWl3bmQ3N0h2QjROTnJObk0zbk1kRDJPSEd",
-          "published": "2026-10-20T12:34:48.000Z",
-          "topic": "world",
-          "section": "world",
-          "tier": "notable",
-          "score": 11.4,
-          "photoError": "timed out (searched \"Support Saudi Arabia\")",
-          "photo": null
-        },
         {
           "headline": "US BARS GOVERNMENT AGENCIES FROM USING CHINA'S DEEPSEEK",
           "display": "US Bars Government Agencies From Using China's DeepSeek",
@@ -442,7 +405,7 @@
           "section": "world",
           "tier": "significant",
           "score": 10.65,
-          "photoError": "no image matched the story closely enough (searched \"US Bars\")",
+          "photoError": "timed out (searched \"China's DeepSeek\")",
           "photo": null
         },
         {
@@ -482,33 +445,28 @@
           "score": 8.1,
           "photoError": "timed out (searched \"King Charles III\")",
           "photo": null
-        }
-      ]
-    },
-    {
-      "id": "business",
-      "label": "BUSINESS",
-      "stories": [
+        },
         {
-          "headline": "BURNHAM VOWS END TO 'RIP-OFF PARKING CHARGES' UNDER NEW RULES",
-          "display": "Burnham vows end to 'rip-off parking charges' under new rules",
-          "original": "Burnham vows end to 'rip-off parking charges' under new rules",
+          "headline": "ALBERTANS REJECT REFERENDUM ON INDEPENDENCE FROM CANADA",
+          "display": "Albertans reject referendum on independence from Canada",
+          "original": "Albertans reject referendum on independence from Canada",
           "truncated": false,
           "usable": true,
-          "category": "BUSINESS",
-          "source": "BBC News · The Guardian",
+          "category": "WORLD NEWS",
+          "source": "Al Jazeera · The Guardian",
           "sourceNames": [
-            "BBC News",
+            "Al Jazeera",
             "The Guardian"
           ],
           "corroboration": 2,
           "republishers": [],
           "owners": [
-            "BBC (licence fee)",
+            "Government of Qatar",
             "Scott Trust"
           ],
           "ownerCount": 2,
           "countries": [
+            "QA",
             "GB"
           ],
           "fundings": [
@@ -517,15 +475,21 @@
           ],
           "unknownOwners": 0,
           "concentration": [],
-          "link": "https://www.bbc.co.uk/news/articles/ck87ze7wl4qno?at_medium=RSS&at_campaign=rss",
-          "published": "2026-10-20T08:55:02.000Z",
-          "topic": "business",
-          "section": "business",
+          "link": "https://www.aljazeera.com/video/newsfeed/2026/10/20/10-20-alberta-referendum-vote-sv?traffic_source=rss",
+          "published": "2026-10-20T09:42:04.000Z",
+          "topic": "world",
+          "section": "world",
           "tier": "notable",
           "score": 8.1,
-          "photoError": "timed out (searched \"office towers business district\")",
+          "photoError": "timed out (searched \"Albertans\")",
           "photo": null
-        },
+        }
+      ]
+    },
+    {
+      "id": "business",
+      "label": "BUSINESS",
+      "stories": [
         {
           "headline": "INDIA-NEW ZEALAND FTA COMES INTO FORCE: WHAT CHANGES FROM TODAY",
           "display": "India-New Zealand FTA comes into force: What changes from today",
@@ -554,12 +518,12 @@
           "unknownOwners": 0,
           "concentration": [],
           "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNNHdrQ2hIMTJXZWl6aFFfTnY5MTEzWGh2b21McUZCaHZFR0lqZ0p3N0lJUHRZS2ZzOWJPRlN0ZUdqcDVkV1VLMVRJWnpEWjU0WndpWkNYbFFmSXlkWUQ3UEdKWG9JM2QwdXlGV2t3YVlGTHlESGllOG82dzV4b1VTcTdaWDk5WWZwOHFEUzB0dnB1YnJvaXY2eE5qTHJkYk1NUTlYNWNGNFRJT2lDaWZsNWJBbDlWeXJmWVdmM3ZzSFlQV0ZzNmJpZtIBzgFBVV95cUxPcVBsdjVlSlBxRDlCeXZ4RjZUTXV5dFJvekNXQnpISWc5RGZZdk1fQUgzbktBUHR1Tng3OTZZWkp",
-          "published": "2026-10-20T09:34:23.000Z",
+          "published": "2026-10-20T09:34:41.000Z",
           "topic": "business",
           "section": "business",
           "tier": "notable",
           "score": 7.5,
-          "photoError": "timed out (searched \"India-New Zealand FTA\")",
+          "photoError": "no image matched the story closely enough (searched \"office towers business district\")",
           "photo": null
         }
       ]
@@ -603,7 +567,7 @@
           "section": "tech",
           "tier": "significant",
           "score": 11.25,
-          "photoError": "no image matched the story closely enough (searched \"technology data centre\")",
+          "photoError": "timed out (searched \"Google Cloud\")",
           "photo": null
         }
       ]
@@ -613,16 +577,16 @@
       "label": "HEALTH",
       "stories": [
         {
-          "headline": "HEALTH AND ECONOMIC BENEFITS ASSOCIATED WITH INCREASED KIDNEY TRANSPLANTATION FOLLOWING",
-          "display": "Health and Economic Benefits Associated with Increased Kidney Transplantation Following",
-          "original": "Health and Economic Benefits Associated with Increased Kidney Transplantation Following the Advancing American Kidney Health Initiative in 2019",
-          "truncated": true,
+          "headline": "WSU PROFESSOR FELIX LANKESTER ELECTED TO NATIONAL ACADEMY OF MEDICINE",
+          "display": "WSU professor Felix Lankester elected to National Academy of Medicine",
+          "original": "WSU professor Felix Lankester elected to National Academy of Medicine",
+          "truncated": false,
           "usable": true,
           "category": "HEALTH",
-          "source": "HHS.gov · Hopkins Bloomberg Public Health Magazine",
+          "source": "WSU Insider · University of Pittsburgh",
           "sourceNames": [
-            "HHS.gov",
-            "Hopkins Bloomberg Public Health Magazine"
+            "WSU Insider",
+            "University of Pittsburgh"
           ],
           "corroboration": 2,
           "republishers": [],
@@ -632,19 +596,54 @@
           "fundings": [],
           "unknownOwners": 2,
           "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQaWZSSWVubGhkMHpmWUtZdDRXVktxX0kxUDNCV2wxWHBEWGgwdGxzUExRTUU5UmJoQkRrS25vLUlQQkxpU3VkTXUxV21WWnRfbWlLcWRQazJBenBqS2kxZW81NUpCbW51ZmFfWXdNX0k1cVc2LUlxZ3dNeGJCcGNsSlppSi1KVkZrUTUtbTZ2SzhWbk5MeS1yamlOa3IxQWNOb3NsMndXZk5jYTJkb1RTbWJfQlRxMm94cnpzUkpzcFcyVlN6?oc=5",
-          "published": "2026-10-20T11:38:07.000Z",
+          "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxONVRjcjhiN0VYUDhfVjVxVzBCSWhPZDJOWWFUR1FGOGJLS1RJOUtqMUdsTDM1LW0xQnMyUExMY0UxQXNiNTlOc2VYcWF0cFF6Y2FVYW5QQlVyaDEwU2tEd2RDZjloRGFiWEZnQUJLdUg3WEh3WkVYM3k0Vkh4dUI2ck5XYkhYV2dhMS1qME5Vb1AtZWNFRG9GMlRBX05BQVByZ1l5ZVQwWE1yY3M?oc=5",
+          "published": "2026-10-20T13:04:25.000Z",
           "topic": "health",
           "section": "health",
           "tier": "notable",
           "score": 7.95,
-          "photoError": "timed out (searched \"Health\")",
+          "photoError": "timed out (searched \"Felix Lankester\")",
+          "photo": null
+        },
+        {
+          "headline": "HIMS & HERS HEALTH LAUNCHES ONLINE WEIGHT MANAGEMENT SERVICE FOR MEN IN GERMANY",
+          "display": "Hims & Hers Health launches online weight management service for men in Germany",
+          "original": "Hims & Hers Health launches online weight management service for men in Germany",
+          "truncated": false,
+          "usable": true,
+          "category": "HEALTH",
+          "source": "Reuters · Vet Times",
+          "sourceNames": [
+            "Reuters",
+            "Vet Times"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Thomson Reuters (Trust Principles)"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "GB"
+          ],
+          "fundings": [
+            "trust"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPeVZBb29HWEEzMXJWdUlhZklMdjVOTkxGVHl0YzNUVWhWdnNUSDJZNjJjT3ZrZHFudXJURmFSYlBGWGltU3NsendYLXJWWWZSdjFaZmktcWl2YVBxUDIzaTNSS2pYbzItN2dVTWJmektyTExBbWRHTzZWN25vdkh3TGVGVTA5TUJlaENsaklJWDV0TXRDWjBGU2dBckNoVVhJV0t6ZmlmaDE0RTRrTXRsb20xN05FQmxRaXZiQzYza3g?oc=5",
+          "published": "2026-10-20T13:14:00.000Z",
+          "topic": "health",
+          "section": "health",
+          "tier": "minor",
+          "score": 4.95,
+          "photoError": "timed out (searched \"Germany\")",
           "photo": null
         }
       ]
     }
   ],
-  "rendered": "2026-10-20T13:21:55.537Z",
+  "rendered": "2026-10-20T13:48:08.038Z",
   "options": {
     "layout": "breaking",
     "theme": "bbc",
@@ -674,297 +673,49 @@
       "width": 1080,
       "height": 1350,
       "sourceNames": [
-        "The Hindu",
         "NDTV",
-        "Google News",
-        "BBC News",
         "Times of India",
-        "Business Standard"
-      ],
-      "stories": [
-        {
-          "headline": "RUBIO, JAISHANKAR MEET IN MUMBAI AS U.S. AND INDIA AIM TO FINALISE TRADE DEAL",
-          "display": "Rubio, Jaishankar meet in Mumbai as U.S. and India aim to finalise trade deal",
-          "original": "Rubio, Jaishankar meet in Mumbai as U.S. and India aim to finalise trade deal",
-          "truncated": false,
-          "usable": true,
-          "category": "INDIA",
-          "source": "The Hindu · NDTV · Google News",
-          "sourceNames": [
-            "The Hindu",
-            "NDTV",
-            "Google News"
-          ],
-          "corroboration": 3,
-          "republishers": [],
-          "owners": [
-            "The Hindu Group (family-held)",
-            "Adani Group"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "commercial",
-            "conglomerate"
-          ],
-          "unknownOwners": 1,
-          "concentration": [],
-          "link": "https://www.thehindu.com/news/national/marco-rubio-mumbai-visit-october-20-2026/article71603994.ece",
-          "published": "2026-10-20T12:30:58.000Z",
-          "topic": "india",
-          "section": "india",
-          "tier": "significant",
-          "score": 13.2,
-          "photoError": "timed out (searched \"Jaishankar\")",
-          "photo": null
-        },
-        {
-          "headline": "JAPAN LAUNCHES FIRST-OF-ITS-KIND MISSION TO BRING BACK ROCKS FROM MARS’S MOON PHOBOS",
-          "display": "Japan launches first-of-its-kind mission to bring back rocks from Mars’s moon Phobos",
-          "original": "Japan launches first-of-its-kind mission to bring back rocks from Mars’s moon Phobos",
-          "truncated": false,
-          "usable": true,
-          "category": "INDIA",
-          "source": "BBC News · Times of India",
-          "sourceNames": [
-            "BBC News",
-            "Times of India"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "BBC (licence fee)",
-            "Bennett, Coleman & Co"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "GB",
-            "IN"
-          ],
-          "fundings": [
-            "state",
-            "conglomerate"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://timesofindia.indiatimes.com/science/japan-launches-first-of-its-kind-mission-to-bring-back-rocks-from-marss-moon-phobos/articleshow/135069240.cms",
-          "published": "2026-10-20T11:48:42.000Z",
-          "topic": "india",
-          "section": "world",
-          "tier": "significant",
-          "score": 11.85,
-          "photo": {
-            "path": "data/pending/top/photo-top-3.jpg",
-            "credit": "File photo: Soren Bradley / CC BY 4.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=166276509",
-            "query": "Japan",
-            "relevance": 0.1,
-            "title": "Topographic map of Chubu, Japan"
-          }
-        },
-        {
-          "headline": "INDIA IS A REFINING SUPERPOWER, CAN PROCESS VENEZUELAN OIL: MARCO RUBIO",
-          "display": "India is a refining superpower, can process Venezuelan oil: Marco Rubio",
-          "original": "India is a refining superpower, can process Venezuelan oil: Marco Rubio",
-          "truncated": false,
-          "usable": true,
-          "category": "BUSINESS",
-          "source": "The Hindu · Business Standard",
-          "sourceNames": [
-            "The Hindu",
-            "Business Standard"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "The Hindu Group (family-held)",
-            "Business Standard Pvt Ltd"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "commercial"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxONElCTF9NV1RIbTN2TENySUhYMnlCcnZadl9lWmlBX2NyaXlpdHIyMy1BY0JNMUprRGpXM2ZoLTEtZ0tWWkM1bG5nTzNqSGp4Ul9mSnlTMG90MUE2VngyektQV2Q0SGplUXZaQWtZYmhsQ1ZKdEp4YUx5eDRNdXk5eTY4Uk85QzNQak9JN2ttZkpkZEsyd2JmZy1KM2x2R2k4Qm9EUUlQLVB6VFhxZ1pVVGZoSUZTNkh2dXJrSzRGSUNtcnhZZEE2MXFTaU52ekx5bVHSAdcBQVVfeXFMTVRhbFZMMDZvWFZPSk1wckRrTTJOQWNXZWtmM2dqaFFJODlrMGdLLUx6aURyMW9",
-          "published": "2026-10-20T12:00:54.000Z",
-          "topic": "business",
-          "section": "business",
-          "tier": "notable",
-          "score": 8.7,
-          "photoError": "timed out (searched \"Marco Rubio\")",
-          "photo": null
-        }
-      ],
-      "usable": true,
-      "section": "top",
-      "sectionLabel": "TOP STORIES"
-    },
-    {
-      "kind": "carousel",
-      "headline": "3 stories",
-      "images": [
-        "data/pending/india/slide-1.png",
-        "data/pending/india/slide-2.png",
-        "data/pending/india/slide-3.png",
-        "data/pending/india/slide-4.png"
-      ],
-      "image": "data/pending/india/slide-1.png",
-      "width": 1080,
-      "height": 1350,
-      "sourceNames": [
-        "NDTV",
-        "BBC News",
-        "Times of India",
-        "India Today",
-        "The Hindu"
-      ],
-      "stories": [
-        {
-          "headline": "REFORM OR REGIME CHANGE? WHAT GLOBAL MOVEMENTS TELL US ABOUT PROTEST GOALS",
-          "display": "Reform Or Regime Change? What Global Movements Tell Us About Protest Goals",
-          "original": "Reform Or Regime Change? What Global Movements Tell Us About Protest Goals",
-          "truncated": false,
-          "usable": true,
-          "category": "INDIA",
-          "source": "NDTV · BBC News",
-          "sourceNames": [
-            "NDTV",
-            "BBC News"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "Adani Group",
-            "BBC (licence fee)"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "IN",
-            "GB"
-          ],
-          "fundings": [
-            "conglomerate",
-            "state"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://www.ndtv.com/world-news/reform-or-regime-change-what-global-movements-tell-us-about-protest-goals-12210700#publisher=newsstand",
-          "published": "2026-10-20T11:42:57.000Z",
-          "topic": "india",
-          "section": "india",
-          "tier": "significant",
-          "score": 11.4,
-          "photoError": "no image matched the story closely enough (searched \"india\")",
-          "photo": null
-        },
-        {
-          "headline": "SHRADDHA DUBEY, LUCKNOW INFLUENCER ACCUSED OF KILLING LOVER, ARRESTED",
-          "display": "Shraddha Dubey, Lucknow Influencer Accused Of Killing Lover, Arrested",
-          "original": "Shraddha Dubey, Lucknow Influencer Accused Of Killing Lover, Arrested",
-          "truncated": false,
-          "usable": true,
-          "category": "INDIA",
-          "source": "NDTV · Times of India · India Today",
-          "sourceNames": [
-            "NDTV",
-            "Times of India",
-            "India Today"
-          ],
-          "corroboration": 3,
-          "republishers": [],
-          "owners": [
-            "Adani Group",
-            "Bennett, Coleman & Co",
-            "Living Media"
-          ],
-          "ownerCount": 3,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "conglomerate",
-            "commercial"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://www.ndtv.com/india-news/shraddha-dubey-lucknow-influencer-accused-of-killing-lover-arrested-12211012#publisher=newsstand",
-          "published": "2026-10-20T12:29:49.000Z",
-          "topic": "india",
-          "section": "india",
-          "tier": "notable",
-          "score": 9.9,
-          "photoError": "no image matched the story closely enough (searched \"india\")",
-          "photo": null
-        },
-        {
-          "headline": "CJP’S ABHIJEET DIPKE THANKS DELHI RAMLILA ORGANISERS FOR 'FREE PUBLICITY' OVER COCKROACH",
-          "display": "CJP’s Abhijeet Dipke thanks Delhi Ramlila organisers for 'free publicity' over cockroach",
-          "original": "CJP’s Abhijeet Dipke thanks Delhi Ramlila organisers for 'free publicity' over cockroach effigy",
-          "truncated": true,
-          "usable": true,
-          "category": "INDIA",
-          "source": "The Hindu · Times of India",
-          "sourceNames": [
-            "The Hindu",
-            "Times of India"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "The Hindu Group (family-held)",
-            "Bennett, Coleman & Co"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "commercial",
-            "conglomerate"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://www.thehindu.com/news/national/cjps-abhijeet-dipke-thanks-delhi-ramlila-organisers-for-free-publicity-over-cockroach-effigy/article71603848.ece",
-          "published": "2026-10-20T12:52:04.000Z",
-          "topic": "india",
-          "section": "india",
-          "tier": "notable",
-          "score": 8.7,
-          "photoError": "timed out (searched \"CJP’s Abhijeet Dipke\")",
-          "photo": null
-        }
-      ],
-      "usable": true,
-      "section": "india",
-      "sectionLabel": "INDIA"
-    },
-    {
-      "kind": "carousel",
-      "headline": "3 stories",
-      "images": [
-        "data/pending/world/slide-1.png",
-        "data/pending/world/slide-2.png",
-        "data/pending/world/slide-3.png",
-        "data/pending/world/slide-4.png"
-      ],
-      "image": "data/pending/world/slide-1.png",
-      "width": 1080,
-      "height": 1350,
-      "sourceNames": [
         "Al Jazeera",
         "The Guardian",
-        "NDTV",
-        "Times of India",
         "BBC News"
       ],
       "stories": [
+        {
+          "headline": "SHAH MEETS FAMILIES OF ANTI-DRUG ACTIVISTS KILLED IN PUNJAB; TARGETS AAP",
+          "display": "Shah meets families of anti-drug activists killed in Punjab; targets AAP",
+          "original": "Shah meets families of anti-drug activists killed in Punjab; targets AAP",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "NDTV · Times of India",
+          "sourceNames": [
+            "NDTV",
+            "Times of India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Adani Group",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://timesofindia.indiatimes.com/india/amit-shah-meets-families-of-anti-drug-campaigners-killed-in-punjab-targets-aap-on-open-drug-trade/articleshow/135069001.cms",
+          "published": "2026-10-20T11:37:18.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "lead",
+          "score": 15.1,
+          "photoError": "a library photograph would misrepresent a story about people in harm (searched \"(none)\")",
+          "photo": null
+        },
         {
           "headline": "UK TO DEPLOY FIGHTER JETS TO SUPPORT SAUDI ARABIA AGAINST HOUTHI ATTACKS",
           "display": "UK To Deploy Fighter Jets To Support Saudi Arabia Against Houthi Attacks",
@@ -1006,9 +757,214 @@
           "section": "world",
           "tier": "notable",
           "score": 11.4,
-          "photoError": "timed out (searched \"Support Saudi Arabia\")",
+          "photoError": "timed out (searched \"Houthi Attacks\")",
           "photo": null
         },
+        {
+          "headline": "BURNHAM VOWS END TO 'RIP-OFF PARKING CHARGES' UNDER NEW RULES",
+          "display": "Burnham vows end to 'rip-off parking charges' under new rules",
+          "original": "Burnham vows end to 'rip-off parking charges' under new rules",
+          "truncated": false,
+          "usable": true,
+          "category": "BUSINESS",
+          "source": "BBC News · The Guardian",
+          "sourceNames": [
+            "BBC News",
+            "The Guardian"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Scott Trust"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB"
+          ],
+          "fundings": [
+            "state",
+            "trust"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.bbc.co.uk/news/articles/ck87ze7wl4qno?at_medium=RSS&at_campaign=rss",
+          "published": "2026-10-20T08:55:02.000Z",
+          "topic": "business",
+          "section": "business",
+          "tier": "notable",
+          "score": 8.1,
+          "photoError": "no image matched the story closely enough (searched \"office towers business district\")",
+          "photo": null
+        }
+      ],
+      "usable": true,
+      "section": "top",
+      "sectionLabel": "TOP STORIES"
+    },
+    {
+      "kind": "carousel",
+      "headline": "3 stories",
+      "images": [
+        "data/pending/india/slide-1.png",
+        "data/pending/india/slide-2.png",
+        "data/pending/india/slide-3.png",
+        "data/pending/india/slide-4.png"
+      ],
+      "image": "data/pending/india/slide-1.png",
+      "width": 1080,
+      "height": 1350,
+      "sourceNames": [
+        "NDTV",
+        "BBC News",
+        "DW.com",
+        "Reuters",
+        "The Hindu",
+        "Arab News"
+      ],
+      "stories": [
+        {
+          "headline": "REFORM OR REGIME CHANGE? WHAT GLOBAL MOVEMENTS TELL US ABOUT PROTEST GOALS",
+          "display": "Reform Or Regime Change? What Global Movements Tell Us About Protest Goals",
+          "original": "Reform Or Regime Change? What Global Movements Tell Us About Protest Goals",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "NDTV · BBC News",
+          "sourceNames": [
+            "NDTV",
+            "BBC News"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Adani Group",
+            "BBC (licence fee)"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN",
+            "GB"
+          ],
+          "fundings": [
+            "conglomerate",
+            "state"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.ndtv.com/world-news/reform-or-regime-change-what-global-movements-tell-us-about-protest-goals-12210700#publisher=newsstand",
+          "published": "2026-10-20T11:42:57.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "significant",
+          "score": 11.1,
+          "photoError": "no image matched the story closely enough (searched \"india\")",
+          "photo": null
+        },
+        {
+          "headline": "INDIA NEWS: TRADE DEAL, ENERGY SECURITY TO TOP AGENDA FOR RUBIO'S VISIT",
+          "display": "India news: Trade deal, energy security to top agenda for Rubio's visit",
+          "original": "India news: Trade deal, energy security to top agenda for Rubio's visit",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "DW.com · Reuters",
+          "sourceNames": [
+            "DW.com",
+            "Reuters"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Thomson Reuters (Trust Principles)"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "GB"
+          ],
+          "fundings": [
+            "trust"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOVnI1Nl92ODBfQ2t6RzMtOUhiMTVNX0xUamxZb1VwUVJUbFhNM3Vwc2J3NFRMeW5lU1RfRGF1WERDMWdoUTRlY0lPWnBkb2FwMmhCaklZX00yQkw4MXlxWDJCVGZiNUFqcjNTUDYwSE1oclZabGV5S2tXUXNDS3JueTZ3dVAyTjJzbTlBcFNRWksyZlB5bElR?oc=5",
+          "published": "2026-10-20T10:50:04.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "significant",
+          "score": 10.5,
+          "photoError": "timed out (searched \"India\")",
+          "photo": null
+        },
+        {
+          "headline": "RUBIO PITCHES US ENERGY AS TRANSFORMATIVE' ALTERNATIVE FOR INDIA IN MUMBAI MEET",
+          "display": "Rubio Pitches US Energy As Transformative' Alternative For India In Mumbai Meet",
+          "original": "Rubio Pitches US Energy As Transformative' Alternative For India In Mumbai Meet With Jaishankar",
+          "truncated": true,
+          "usable": true,
+          "category": "INDIA",
+          "source": "The Hindu · NDTV · Arab News",
+          "sourceNames": [
+            "The Hindu",
+            "NDTV",
+            "Arab News"
+          ],
+          "corroboration": 3,
+          "republishers": [],
+          "owners": [
+            "The Hindu Group (family-held)",
+            "Adani Group"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial",
+            "conglomerate"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNQmp6a1JDZExSTzdwTURkQTRkaXphQlFaMkZLczNZUlhkU2twUUdxODNmbTJyTWxSV3o4eE4tR2xMN2s5d0NROUcwYTlkTm93cjVhUUlUMnZLeFBzbzNfbjY0ZGxZdTAtZ1VJRUtNaWdCQl82aW5pblhxLTZMTlJSN1lFWE5tTnlrQUU0OXhPUDJKTUNTcU5EOHdYWGpHMXJaVE02STQxa1pwV19pRHJRYzd0TVc3NDR1aXZyVmo0dkVnMnVKQ3VJSEVEaEt4bkxlUEHSAdoBQVVfeXFMTXBiZnRwTEpRTmJXczR0QzBxRldkbGk2X01lbnhKWnlsdHROR0pvUXVMLXplOG1",
+          "published": "2026-10-20T13:23:19.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 10.2,
+          "photo": {
+            "path": "data/pending/india/photo-india-4.jpg",
+            "credit": "File photo: Pranav011 at en.wikipedia / CC BY 3.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=16992577",
+            "query": "india",
+            "relevance": 0.14,
+            "title": "An Unripe Mango Of Ratnagiri (India)"
+          }
+        }
+      ],
+      "usable": true,
+      "section": "india",
+      "sectionLabel": "INDIA"
+    },
+    {
+      "kind": "carousel",
+      "headline": "3 stories",
+      "images": [
+        "data/pending/world/slide-1.png",
+        "data/pending/world/slide-2.png",
+        "data/pending/world/slide-3.png",
+        "data/pending/world/slide-4.png"
+      ],
+      "image": "data/pending/world/slide-1.png",
+      "width": 1080,
+      "height": 1350,
+      "sourceNames": [
+        "NDTV",
+        "BBC News",
+        "Al Jazeera",
+        "The Guardian"
+      ],
+      "stories": [
         {
           "headline": "US BARS GOVERNMENT AGENCIES FROM USING CHINA'S DEEPSEEK",
           "display": "US Bars Government Agencies From Using China's DeepSeek",
@@ -1044,7 +1000,7 @@
           "section": "world",
           "tier": "significant",
           "score": 10.65,
-          "photoError": "no image matched the story closely enough (searched \"US Bars\")",
+          "photoError": "timed out (searched \"China's DeepSeek\")",
           "photo": null
         },
         {
@@ -1084,50 +1040,28 @@
           "score": 8.1,
           "photoError": "timed out (searched \"King Charles III\")",
           "photo": null
-        }
-      ],
-      "usable": true,
-      "section": "world",
-      "sectionLabel": "WORLD"
-    },
-    {
-      "kind": "carousel",
-      "headline": "2 stories",
-      "images": [
-        "data/pending/business/slide-1.png",
-        "data/pending/business/slide-2.png",
-        "data/pending/business/slide-3.png"
-      ],
-      "image": "data/pending/business/slide-1.png",
-      "width": 1080,
-      "height": 1350,
-      "sourceNames": [
-        "BBC News",
-        "The Guardian",
-        "The Hindu",
-        "Business Standard"
-      ],
-      "stories": [
+        },
         {
-          "headline": "BURNHAM VOWS END TO 'RIP-OFF PARKING CHARGES' UNDER NEW RULES",
-          "display": "Burnham vows end to 'rip-off parking charges' under new rules",
-          "original": "Burnham vows end to 'rip-off parking charges' under new rules",
+          "headline": "ALBERTANS REJECT REFERENDUM ON INDEPENDENCE FROM CANADA",
+          "display": "Albertans reject referendum on independence from Canada",
+          "original": "Albertans reject referendum on independence from Canada",
           "truncated": false,
           "usable": true,
-          "category": "BUSINESS",
-          "source": "BBC News · The Guardian",
+          "category": "WORLD NEWS",
+          "source": "Al Jazeera · The Guardian",
           "sourceNames": [
-            "BBC News",
+            "Al Jazeera",
             "The Guardian"
           ],
           "corroboration": 2,
           "republishers": [],
           "owners": [
-            "BBC (licence fee)",
+            "Government of Qatar",
             "Scott Trust"
           ],
           "ownerCount": 2,
           "countries": [
+            "QA",
             "GB"
           ],
           "fundings": [
@@ -1136,15 +1070,35 @@
           ],
           "unknownOwners": 0,
           "concentration": [],
-          "link": "https://www.bbc.co.uk/news/articles/ck87ze7wl4qno?at_medium=RSS&at_campaign=rss",
-          "published": "2026-10-20T08:55:02.000Z",
-          "topic": "business",
-          "section": "business",
+          "link": "https://www.aljazeera.com/video/newsfeed/2026/10/20/10-20-alberta-referendum-vote-sv?traffic_source=rss",
+          "published": "2026-10-20T09:42:04.000Z",
+          "topic": "world",
+          "section": "world",
           "tier": "notable",
           "score": 8.1,
-          "photoError": "timed out (searched \"office towers business district\")",
+          "photoError": "timed out (searched \"Albertans\")",
           "photo": null
-        },
+        }
+      ],
+      "usable": true,
+      "section": "world",
+      "sectionLabel": "WORLD"
+    },
+    {
+      "kind": "carousel",
+      "headline": "1 stories",
+      "images": [
+        "data/pending/business/slide-1.png",
+        "data/pending/business/slide-2.png"
+      ],
+      "image": "data/pending/business/slide-1.png",
+      "width": 1080,
+      "height": 1350,
+      "sourceNames": [
+        "The Hindu",
+        "Business Standard"
+      ],
+      "stories": [
         {
           "headline": "INDIA-NEW ZEALAND FTA COMES INTO FORCE: WHAT CHANGES FROM TODAY",
           "display": "India-New Zealand FTA comes into force: What changes from today",
@@ -1173,12 +1127,12 @@
           "unknownOwners": 0,
           "concentration": [],
           "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNNHdrQ2hIMTJXZWl6aFFfTnY5MTEzWGh2b21McUZCaHZFR0lqZ0p3N0lJUHRZS2ZzOWJPRlN0ZUdqcDVkV1VLMVRJWnpEWjU0WndpWkNYbFFmSXlkWUQ3UEdKWG9JM2QwdXlGV2t3YVlGTHlESGllOG82dzV4b1VTcTdaWDk5WWZwOHFEUzB0dnB1YnJvaXY2eE5qTHJkYk1NUTlYNWNGNFRJT2lDaWZsNWJBbDlWeXJmWVdmM3ZzSFlQV0ZzNmJpZtIBzgFBVV95cUxPcVBsdjVlSlBxRDlCeXZ4RjZUTXV5dFJvekNXQnpISWc5RGZZdk1fQUgzbktBUHR1Tng3OTZZWkp",
-          "published": "2026-10-20T09:34:23.000Z",
+          "published": "2026-10-20T09:34:41.000Z",
           "topic": "business",
           "section": "business",
           "tier": "notable",
           "score": 7.5,
-          "photoError": "timed out (searched \"India-New Zealand FTA\")",
+          "photoError": "no image matched the story closely enough (searched \"office towers business district\")",
           "photo": null
         }
       ],
@@ -1236,7 +1190,7 @@
           "section": "tech",
           "tier": "significant",
           "score": 11.25,
-          "photoError": "no image matched the story closely enough (searched \"technology data centre\")",
+          "photoError": "timed out (searched \"Google Cloud\")",
           "photo": null
         }
       ],
@@ -1246,30 +1200,33 @@
     },
     {
       "kind": "carousel",
-      "headline": "1 stories",
+      "headline": "2 stories",
       "images": [
         "data/pending/health/slide-1.png",
-        "data/pending/health/slide-2.png"
+        "data/pending/health/slide-2.png",
+        "data/pending/health/slide-3.png"
       ],
       "image": "data/pending/health/slide-1.png",
       "width": 1080,
       "height": 1350,
       "sourceNames": [
-        "HHS.gov",
-        "Hopkins Bloomberg Public Health Magazine"
+        "WSU Insider",
+        "University of Pittsburgh",
+        "Reuters",
+        "Vet Times"
       ],
       "stories": [
         {
-          "headline": "HEALTH AND ECONOMIC BENEFITS ASSOCIATED WITH INCREASED KIDNEY TRANSPLANTATION FOLLOWING",
-          "display": "Health and Economic Benefits Associated with Increased Kidney Transplantation Following",
-          "original": "Health and Economic Benefits Associated with Increased Kidney Transplantation Following the Advancing American Kidney Health Initiative in 2019",
-          "truncated": true,
+          "headline": "WSU PROFESSOR FELIX LANKESTER ELECTED TO NATIONAL ACADEMY OF MEDICINE",
+          "display": "WSU professor Felix Lankester elected to National Academy of Medicine",
+          "original": "WSU professor Felix Lankester elected to National Academy of Medicine",
+          "truncated": false,
           "usable": true,
           "category": "HEALTH",
-          "source": "HHS.gov · Hopkins Bloomberg Public Health Magazine",
+          "source": "WSU Insider · University of Pittsburgh",
           "sourceNames": [
-            "HHS.gov",
-            "Hopkins Bloomberg Public Health Magazine"
+            "WSU Insider",
+            "University of Pittsburgh"
           ],
           "corroboration": 2,
           "republishers": [],
@@ -1279,13 +1236,48 @@
           "fundings": [],
           "unknownOwners": 2,
           "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQaWZSSWVubGhkMHpmWUtZdDRXVktxX0kxUDNCV2wxWHBEWGgwdGxzUExRTUU5UmJoQkRrS25vLUlQQkxpU3VkTXUxV21WWnRfbWlLcWRQazJBenBqS2kxZW81NUpCbW51ZmFfWXdNX0k1cVc2LUlxZ3dNeGJCcGNsSlppSi1KVkZrUTUtbTZ2SzhWbk5MeS1yamlOa3IxQWNOb3NsMndXZk5jYTJkb1RTbWJfQlRxMm94cnpzUkpzcFcyVlN6?oc=5",
-          "published": "2026-10-20T11:38:07.000Z",
+          "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxONVRjcjhiN0VYUDhfVjVxVzBCSWhPZDJOWWFUR1FGOGJLS1RJOUtqMUdsTDM1LW0xQnMyUExMY0UxQXNiNTlOc2VYcWF0cFF6Y2FVYW5QQlVyaDEwU2tEd2RDZjloRGFiWEZnQUJLdUg3WEh3WkVYM3k0Vkh4dUI2ck5XYkhYV2dhMS1qME5Vb1AtZWNFRG9GMlRBX05BQVByZ1l5ZVQwWE1yY3M?oc=5",
+          "published": "2026-10-20T13:04:25.000Z",
           "topic": "health",
           "section": "health",
           "tier": "notable",
           "score": 7.95,
-          "photoError": "timed out (searched \"Health\")",
+          "photoError": "timed out (searched \"Felix Lankester\")",
+          "photo": null
+        },
+        {
+          "headline": "HIMS & HERS HEALTH LAUNCHES ONLINE WEIGHT MANAGEMENT SERVICE FOR MEN IN GERMANY",
+          "display": "Hims & Hers Health launches online weight management service for men in Germany",
+          "original": "Hims & Hers Health launches online weight management service for men in Germany",
+          "truncated": false,
+          "usable": true,
+          "category": "HEALTH",
+          "source": "Reuters · Vet Times",
+          "sourceNames": [
+            "Reuters",
+            "Vet Times"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Thomson Reuters (Trust Principles)"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "GB"
+          ],
+          "fundings": [
+            "trust"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPeVZBb29HWEEzMXJWdUlhZklMdjVOTkxGVHl0YzNUVWhWdnNUSDJZNjJjT3ZrZHFudXJURmFSYlBGWGltU3NsendYLXJWWWZSdjFaZmktcWl2YVBxUDIzaTNSS2pYbzItN2dVTWJmektyTExBbWRHTzZWN25vdkh3TGVGVTA5TUJlaENsaklJWDV0TXRDWjBGU2dBckNoVVhJV0t6ZmlmaDE0RTRrTXRsb20xN05FQmxRaXZiQzYza3g?oc=5",
+          "published": "2026-10-20T13:14:00.000Z",
+          "topic": "health",
+          "section": "health",
+          "tier": "minor",
+          "score": 4.95,
+          "photoError": "timed out (searched \"Germany\")",
           "photo": null
         }
       ],
