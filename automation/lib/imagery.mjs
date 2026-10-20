@@ -133,7 +133,23 @@ const NOT_ENTITIES = new Set(('the a an and or but of for to in on at by with fr
   + 'stock stocks share shares market markets holiday holidays trading trade price '
   + 'prices index rate rates news deal deals meet meeting talks plan plans rule rules '
   + 'government police court man woman men women people top full big major global '
-  + 'national state central public private closed open shut ahead due set').split(' '));
+  + 'national state central public private closed open shut ahead due set '
+  // Headline verbs. A title-case headline capitalises these like names, and
+  // the rejection log showed the result: "US Bars Government Agencies From
+  // Using DeepSeek" was searched as "US Bars", and another story as
+  // "Support Saudi Arabia".
+  + 'bars ban bans backs calls ends faces gets hits holds keeps meets moves opens '
+  + 'puts says sees sets takes tells urges warns wins seeks plans slams hails '
+  + 'support supports supporting using use uses '
+  // Abstractions that are never a picture of anything. "Health and Economic
+  // Benefits Associated with Increased Kidney..." was searched as "Health".
+  + 'health economy benefits research study report growth future impact change '
+  + 'crisis reform regime policy rights issues role key '
+  // Prepositions and more verbs, which leave a run trailing off mid-phrase:
+  // "Saudi Arabia Against", "Deploy Fighter Jets".
+  + 'against among within toward towards across beyond behind during through '
+  + 'deploy deploys deployed launch launches launched send sends sent receives '
+  + 'receive aim aims aiming finalise finalize').split(' '));
 
 /* Title Case Headlines Capitalise Everything, which makes capitalisation
    useless as a signal. Detect that rather than extracting nonsense. */
@@ -338,10 +354,11 @@ export function isSensitive(headline) {
 /* Work from the most specific subject in the headline down to its category,
    and prefer a result whose own title and tags echo the story. The point is a
    picture OF the story, not a picture of its genre. */
-// 10s, not 20. Openverse answers in a second or two when it answers at all,
-// and with twenty stories in a sectioned run the worst case was most of the
-// job's budget spent waiting for searches that were never going to return.
-export async function findImage(headline, { fetchImpl = fetch, timeoutMs = 10000, exclude,
+// 20 seconds. I cut this to 10 to save job time and it took the picture rate
+// from most cards to one in thirteen — eight stories timed out on good
+// queries like "Marco Rubio". The searches run concurrently now, so the
+// budget is spent in parallel and a generous timeout costs almost nothing.
+export async function findImage(headline, { fetchImpl = fetch, timeoutMs = 20000, exclude,
                                             minRelevance = 0.12, maxQueries = 2, topic } = {}) {
   if (prefersChart(headline))
     return { image: null, query: '(chart)', error: 'a chart illustrates this better than a photo' };

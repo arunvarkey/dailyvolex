@@ -999,6 +999,29 @@ ok('a match made only of generic words is no match', (() => {
   return relevance(fish, hl) === 0 && relevance(real, hl) > 0.2;
 })());
 
+/* ── Queries that actually find a picture ─────────────────────── */
+/* One live run produced a photograph for 1 story in 13. Eight timed out on
+   good queries; the rest were searched for things like "US Bars". */
+
+ok('a headline verb is never taken for a name',
+  queriesFor("US Bars Government Agencies From Using China's DeepSeek", 'world')[0]
+    === "China's DeepSeek",
+  JSON.stringify(queriesFor("US Bars Government Agencies From Using China's DeepSeek", 'world')));
+ok('a run does not trail off on a preposition',
+  queriesFor('UK To Deploy Fighter Jets To Support Saudi Arabia Against Houthis', 'world')
+    .every(q => !/\b(against|to|from|with|using|support)$/i.test(q)),
+  JSON.stringify(queriesFor('UK To Deploy Fighter Jets To Support Saudi Arabia Against Houthis', 'world')));
+ok('an abstraction is not searched for as though it were a subject',
+  queriesFor('Health and Economic Benefits Associated with Increased Kidney Donation', 'health')[0]
+    !== 'Health');
+ok('people and places are still found',
+  queriesFor('Rubio, Jaishankar meet in Mumbai as India aims to finalise deal', 'india')[0]
+    === 'Jaishankar'
+  && queriesFor('Earthquake kills at least 40 in northern Afghanistan', 'world')[0]
+    === 'Afghanistan'
+  && queriesFor('Deutsche Bank Is Weeks From Holding Bitcoin for Clients', 'business')[0]
+    === 'Deutsche Bank');
+
 /* ── What goes behind a card with no photograph ───────────────── */
 /* The chart used to go behind everything, which made a claim the story did
    not: a card about a legal-metrology conference went out over a falling

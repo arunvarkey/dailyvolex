@@ -64,6 +64,35 @@ function digestUrl(port, stories, opts) {
    a run — a post with a backdrop behind it is fine, a failed run is not. */
 const usedPhotos = new Set();       // one picture must not appear twice in a post
 
+/* Run `fn` over the list with at most `limit` in flight. Enough to collapse
+   the wall time, few enough to stay polite to a free API. */
+async function mapWithLimit(list, limit, fn) {
+  let next = 0;
+  const workers = Array.from({ length: Math.min(limit, list.length) }, async () => {
+    while (next < list.length) {
+      const i = next++;
+      await fn(list[i], i);
+    }
+  });
+  await Promise.all(workers);
+}
+
+/* Concurrent lookups can both settle on the same picture before either has
+   marked it used, so the exclusion set cannot catch it. Rare, and obvious
+   when it happens — the same photograph twice in one post. */
+function dropDuplicatePhotos(stories) {
+  const seen = new Set();
+  for (const s of stories) {
+    const id = s.photo?.pageUrl || s.photo?.path;
+    if (!id) continue;
+    if (seen.has(id)) {
+      console.log(`  dropped a repeated photograph on "${(s.display || '').slice(0, 40)}…"`);
+      s.photoError = 'the same photograph had already been used in this post';
+      s.photo = null;
+    } else seen.add(id);
+  }
+}
+
 /* What goes behind this card when there is no photograph. Named here so the
    log line and the URL cannot disagree about it. */
 function backdropOf(story, opts) {
@@ -227,8 +256,19 @@ async function main() {
       await writeFile(join(OUT_DIR, dir, 'slide-1.png'), cover.png);
       slides.push({ file: 'slide-1.png', kind: 'cover', ...cover });
 
-      for (const [i, story] of stories.entries()) {
+      /* Look the photographs up together rather than one at a time.
+         Searching serially meant a slow API ate the run's whole budget, and
+         the answer to that was NOT the shorter timeout I reached for first:
+         cutting it from twenty seconds to ten took the picture rate from
+         most cards to one in thirteen, with eight stories timing out on
+         perfectly good queries like "Marco Rubio". These are independent
+         network calls. Done three at a time they cost about what one did. */
+      await mapWithLimit(stories, 3, async (story, i) => {
         story.photo = await imageFor(story, `${dir || 'top'}-${i + 2}`, carouselOpts, dir);
+      });
+      dropDuplicatePhotos(stories);
+
+      for (const [i, story] of stories.entries()) {
         const slide = await renderUrl(
           storyUrl(port, story, { ...carouselOpts, layout: 'breaking', posy: carouselOpts.posy }), i + 1);
         const name = `slide-${i + 2}.png`;
