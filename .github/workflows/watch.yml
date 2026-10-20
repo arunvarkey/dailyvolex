@@ -106,8 +106,14 @@ jobs:
           script: |
             const fs = require('fs');
             const sl = JSON.parse(fs.readFileSync('data/shortlist.json', 'utf8'));
-            const caption = fs.readFileSync('data/pending/caption-1.txt', 'utf8');
             const entry = (sl.output || sl.stories)[0];
+            // Captions are named by section now. A breaking story still has a
+            // section — it is world news or India news like any other — so
+            // this read of caption-1.txt was failing on every story the watch
+            // actually found, which is every time it mattered.
+            const caption = fs.readFileSync(
+              entry.section ? `data/pending/caption-${entry.section}.txt`
+                            : 'data/pending/caption-1.txt', 'utf8');
             const sha = process.env.GITHUB_SHA;
             const raw = p => `https://raw.githubusercontent.com/${context.repo.owner}/${context.repo.repo}/${sha}/${p}`;
             const slides = entry.images || [entry.image];

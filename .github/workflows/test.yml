@@ -39,12 +39,19 @@ jobs:
           node automation/test-workflows.mjs
 
       - name: Check the graphics actually came out
+        # Sections moved the slides into data/pending/<section>/, so the old
+        # top-level glob stopped matching anything. Finding none at all is
+        # now a failure in its own right rather than a quietly empty loop.
         run: |
-          for f in data/pending/slide-*.png; do
+          COUNT=0
+          while IFS= read -r f; do
             SIZE=$(stat -c%s "$f")
             test "$SIZE" -gt 20000 || { echo "$f is suspiciously small ($SIZE bytes)"; exit 1; }
             echo "ok  $f  $((SIZE/1024)) KB"
-          done
+            COUNT=$((COUNT + 1))
+          done < <(find data/pending \( -name 'slide-*.png' -o -name 'story-*.png' \) | sort)
+          test "$COUNT" -gt 0 || { echo "no graphics were rendered at all"; exit 1; }
+          echo "$COUNT graphic(s) checked"
 
       - uses: actions/upload-artifact@v4
         if: always()
