@@ -97,6 +97,34 @@ ok('the correction text never passes through a shell', (() => {
 ok('a correction shares the data lock with the daily run',
   corr?.concurrency?.group === docs['daily.yml']?.concurrency?.group);
 
+/* ── Publishing the run's output ──────────────────────────────── */
+/* The daily run takes about twenty minutes and the watch fires every
+   fifteen, so one of them will eventually push from a base that is no longer
+   the tip. A rejected push at the last step throws away the whole run. */
+ok('every workflow publishes through the retrying push helper', (() => {
+  const runs = Object.values(docs)
+    .flatMap(d => Object.values(d?.jobs || {}))
+    .flatMap(j => j.steps || [])
+    .map(st => st.run).filter(r => typeof r === 'string');
+  const pushes = runs.filter(r => /git push/.test(r));
+  // No workflow may call git push directly any more.
+  return pushes.length === 0 && runs.some(r => /push-data\.sh/.test(r));
+})(), 'a bare `git push` loses the run when main moved underneath it');
+
+ok('the push helper never force-pushes', (() => {
+  const sh = fs.readFileSync(join(ROOT, 'automation/push-data.sh'), 'utf8');
+  return !/--force|-f\b|\+HEAD/.test(sh);
+})());
+
+/* A soft reset keeps the index — a whole tree from the stale base — so
+   committing it deletes whatever landed upstream. A test of that scenario
+   caught it wiping another run's file while still showing that run's commit
+   as a parent. */
+ok('the push helper re-parents without discarding upstream work', (() => {
+  const sh = fs.readFileSync(join(ROOT, 'automation/push-data.sh'), 'utf8');
+  return /git reset -q --mixed origin\/main/.test(sh) && !/reset[^\n]*--soft/.test(sh);
+})(), 'must be --mixed, never --soft');
+
 ok('the token check cannot push code',
   docs['token-check.yml']?.permissions?.contents === undefined,
   JSON.stringify(docs['token-check.yml']?.permissions));

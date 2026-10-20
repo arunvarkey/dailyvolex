@@ -198,11 +198,7 @@ jobs:
             fs.writeFileSync('data/posted.json', JSON.stringify(p,null,2)+'\n');
             console.log('recorded '+items.length+' story/stories');
           "
-          git config user.name  "dailyvolex-bot"
-          git config user.email "noreply@github.com"
-          git add data/posted.json
-          git commit -m "Posted $(date -u +%Y-%m-%d)" || echo "nothing changed"
-          git push
+          automation/push-data.sh "Posted $(date -u +%Y-%m-%d)" data/posted.json
 
       - name: Say so on the issue and close it
         if: always()
