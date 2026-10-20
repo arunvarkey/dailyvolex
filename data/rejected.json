@@ -1,13 +1,17 @@
 {
-  "generated": "2026-10-20T13:18:26.816Z",
+  "generated": "2026-10-20T13:43:51.629Z",
   "read": 584,
   "published": 13,
-  "refused": 104,
-  "consideredNotChosen": 467,
+  "refused": 105,
+  "consideredNotChosen": 466,
   "byRule": {
     "older than the window": {
-      "count": 86,
+      "count": 88,
       "samples": [
+        {
+          "title": "Exiled critic of Rwandan president found beheaded",
+          "source": "BBC News"
+        },
         {
           "title": "Personal attacks fire up debate before Brazil's run-off vote",
           "source": "BBC News"
@@ -35,10 +39,31 @@
         {
           "title": "Watch: Shops looted and restaurants gutted in Paris riots",
           "source": "BBC News"
+        }
+      ]
+    },
+    "too thin to be a headline": {
+      "count": 5,
+      "samples": [
+        {
+          "title": "World Table Tennis",
+          "source": "World Table Tennis"
         },
         {
-          "title": "Hilarious quips and ‘100,000-volt’ energy: the hypemen (and women) redefining Afrobeats music",
-          "source": "The Guardian"
+          "title": "Reuters World News Summary",
+          "source": "Devdiscourse"
+        },
+        {
+          "title": "France Protests",
+          "source": "Post Register"
+        },
+        {
+          "title": "Citrini Therapeutics",
+          "source": "Citrini Research | Substack"
+        },
+        {
+          "title": "Healing the American Diet",
+          "source": "Hopkins Bloomberg Public Health Magazine"
         }
       ]
     },
@@ -60,27 +85,6 @@
         {
           "title": "Watch: Burning e-bikes turned into bonfires as France reels from violent protests",
           "source": "Times of India"
-        }
-      ]
-    },
-    "finance feed, not a finance story": {
-      "count": 4,
-      "samples": [
-        {
-          "title": "Meta's AI spending, Muse assistant adoption in focus for quarterly results",
-          "source": "Economic Times"
-        },
-        {
-          "title": "Number of branded housing projects in India set to jump over 2-fold in 6 years: Savills",
-          "source": "Economic Times"
-        },
-        {
-          "title": "China flags APEC's role as key for a challenged global economy",
-          "source": "Economic Times"
-        },
-        {
-          "title": "Korea’s KOSPI crashes another 5% as AI rout deepens; AI bellwether down over 40% from peak",
-          "source": "Economic Times"
         }
       ]
     },
@@ -128,19 +132,6 @@
         {
           "title": "North Korea's 'Proof Of Life' Amid Kim Jong Un 'Brain Haemorrhage Death' Rumour",
           "source": "NDTV"
-        }
-      ]
-    },
-    "too thin to be a headline": {
-      "count": 2,
-      "samples": [
-        {
-          "title": "World Table Tennis",
-          "source": "World Table Tennis"
-        },
-        {
-          "title": "Healing the American Diet",
-          "source": "Hopkins Bloomberg Public Health Magazine"
         }
       ]
     }
