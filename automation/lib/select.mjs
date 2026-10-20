@@ -335,22 +335,51 @@ const beatOf = topic => BEATS[topic] || 'general';
    Shared so that Top stories and the sections are chosen from one list by one
    set of rules — two code paths deciding what may be published is how one of
    them ends up more permissive than the other. */
-export function rankEligible(items, { now = Date.now(), maxAgeHours = 24 } = {}) {
-  const cutoff = now - maxAgeHours * 3600000;
-  const fresh = items
-    .filter(i => !i.published || i.published >= cutoff)
-    // The finance gate belongs only on finance feeds, whose tech and lifestyle
-    // sections would otherwise leak in. A general news feed carries general
-    // news by definition, and gating it on market words would throw away most
-    // of what it is there for.
-    .filter(i => (i.requireTopical ? isTopical(i.title) : true))
-    .filter(i => !isAdvice(i.title))
-    .filter(i => !isJunk(i.title))
-    // Added after a live run led on a rumour, carried an essay title in
-    // HEALTH and put the bare words "Middle East" in SCIENCE.
-    .filter(i => !isUnverified(i.title))
-    .filter(i => !isOpinion(i.title))
-    .filter(i => !isTooThin(i.title));
+/* Why an item was refused, or null if it was not.
+ *
+ * One run read 582 articles and published 17. The other 565 were dropped by
+ * the rules in this file, silently, with no record of which rule did it — so
+ * a regex that was quietly eating real news would never have been noticed.
+ * Every refusal is named here and the names are written out with the run.
+ *
+ * The order matters: it is the order the filters actually applied, so the
+ * reason returned is the one that really dropped the item rather than the
+ * first rule that happens to match.
+ */
+export function rejectionReason(item, { now = Date.now(), maxAgeHours = 24 } = {}) {
+  const title = item?.title || '';
+  if (item?.published && item.published < now - maxAgeHours * 3600000)
+    return 'older than the window';
+  // The finance gate belongs only on finance feeds, whose tech and lifestyle
+  // sections would otherwise leak in. A general news feed carries general
+  // news by definition, and gating it on market words would throw away most
+  // of what it is there for.
+  if (item?.requireTopical && !isTopical(title)) return 'finance feed, not a finance story';
+  if (isAdvice(title))     return 'tips or price speculation';
+  // Split out from "not news" so the log distinguishes four quite different
+  // judgements. A catch-all bucket is the granularity at which a wrong rule
+  // hides.
+  if (isPressRelease(title)) return 'marketing, not reporting';
+  if (isJunk(title))       return 'not news';
+  if (isUnverified(title)) return 'unverified or rumour';
+  if (isOpinion(title))    return 'comment, not reporting';
+  if (isTooThin(title))    return 'too thin to be a headline';
+  return null;
+}
+
+/* `rejected` is an optional array to collect what was refused, so a caller
+   can report it without running the filters twice. */
+export function rankEligible(items, { now = Date.now(), maxAgeHours = 24,
+                                      rejected = null } = {}) {
+  const fresh = [];
+  for (const item of items) {
+    const why = rejectionReason(item, { now, maxAgeHours });
+    if (why) {
+      if (rejected) rejected.push({ reason: why, title: item.title, source: item.source });
+      continue;
+    }
+    fresh.push(item);
+  }
 
   return rankClusters(cluster(fresh), { now });
 }
@@ -419,8 +448,11 @@ export function selectSections(items, { history = [], count = 3, perSection = 3,
                                         sectionMinSources = 2,
                                         maxAgeHours = 24, maxPerTopic = 2,
                                         maxPerBeat = 2,
-                                        allowRepeatsInSections = false } = {}) {
-  const ranked = rankEligible(items, { now, maxAgeHours });
+                                        allowRepeatsInSections = false,
+                                        rejected = null } = {}) {
+  // Collected once here; selectStories below screens the same items again,
+  // so it must not also collect or every refusal would be logged twice.
+  const ranked = rankEligible(items, { now, maxAgeHours, rejected });
   const top = selectStories(items, { history, count, now, minSources,
                                      maxAgeHours, maxPerTopic, maxPerBeat });
 
