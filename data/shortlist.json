@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-20T13:43:51.627Z",
+  "generated": "2026-10-20T14:01:33.034Z",
   "pool": 584,
   "feedErrors": [
     "indian-express: HTTP 403"
@@ -7,368 +7,117 @@
   "breaking": false,
   "stories": [
     {
-      "headline": "SHAH MEETS FAMILIES OF ANTI-DRUG ACTIVISTS KILLED IN PUNJAB; TARGETS AAP",
-      "display": "Shah meets families of anti-drug activists killed in Punjab; targets AAP",
-      "original": "Shah meets families of anti-drug activists killed in Punjab; targets AAP",
-      "truncated": false,
-      "usable": true,
-      "category": "INDIA",
-      "source": "NDTV · Times of India",
-      "sourceNames": [
-        "NDTV",
-        "Times of India"
-      ],
-      "corroboration": 2,
-      "republishers": [],
-      "owners": [
-        "Adani Group",
-        "Bennett, Coleman & Co"
-      ],
-      "ownerCount": 2,
-      "countries": [
-        "IN"
-      ],
-      "fundings": [
-        "conglomerate"
-      ],
-      "unknownOwners": 0,
-      "concentration": [],
-      "link": "https://timesofindia.indiatimes.com/india/amit-shah-meets-families-of-anti-drug-campaigners-killed-in-punjab-targets-aap-on-open-drug-trade/articleshow/135069001.cms",
-      "published": "2026-10-20T11:37:18.000Z",
-      "topic": "india",
-      "section": "india",
-      "tier": "lead",
-      "score": 15.1
-    },
-    {
-      "headline": "UK TO DEPLOY FIGHTER JETS TO SUPPORT SAUDI ARABIA AGAINST HOUTHI ATTACKS",
-      "display": "UK To Deploy Fighter Jets To Support Saudi Arabia Against Houthi Attacks",
-      "original": "UK To Deploy Fighter Jets To Support Saudi Arabia Against Houthi Attacks",
+      "headline": "US BARS GOVERNMENT AGENCIES FROM USING CHINA'S DEEPSEEK",
+      "display": "US Bars Government Agencies From Using China's DeepSeek",
+      "original": "US Bars Government Agencies From Using China's DeepSeek",
       "truncated": false,
       "usable": true,
       "category": "WORLD NEWS",
-      "source": "Al Jazeera · The Guardian · NDTV",
+      "source": "NDTV · BBC News",
       "sourceNames": [
-        "Al Jazeera",
-        "The Guardian",
         "NDTV",
-        "Times of India"
-      ],
-      "corroboration": 4,
-      "republishers": [],
-      "owners": [
-        "Government of Qatar",
-        "Scott Trust",
-        "Adani Group",
-        "Bennett, Coleman & Co"
-      ],
-      "ownerCount": 4,
-      "countries": [
-        "QA",
-        "GB",
-        "IN"
-      ],
-      "fundings": [
-        "state",
-        "trust",
-        "conglomerate"
-      ],
-      "unknownOwners": 0,
-      "concentration": [],
-      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNNGFNUlo2TjEwU0ZuOUd1OHROaVR2MjhkSkJvWnh3T2J5ZU0zQkoxNkR6WHZBWVFNZjFJUldYbjcyeXNpanJNcWM5czZDRzBXdkpnRmwtMm4zNnczV3h3eUpVa055RFNYNHd0aEhrY1FsT19YTGZBcE1jcVB6TFpwNXVFUGZ2aG51dWZ3dWpMVDV0OUZDNUd6MHQtaHNNeUdwTDQxLUctNklBWFRkZFBIZlljd9IBuwFBVV95cUxQME51LWxuYkpvczV1eUYteVVMWURJNTh3UGMwNlI5RFA3cWZmTlhPSTMyczUyV0JiUnJLaWl3bmQ3N0h2QjROTnJObk0zbk1kRDJPSEd",
-      "published": "2026-10-20T12:34:48.000Z",
-      "topic": "world",
-      "section": "world",
-      "tier": "notable",
-      "score": 11.4
-    },
-    {
-      "headline": "BURNHAM VOWS END TO 'RIP-OFF PARKING CHARGES' UNDER NEW RULES",
-      "display": "Burnham vows end to 'rip-off parking charges' under new rules",
-      "original": "Burnham vows end to 'rip-off parking charges' under new rules",
-      "truncated": false,
-      "usable": true,
-      "category": "BUSINESS",
-      "source": "BBC News · The Guardian",
-      "sourceNames": [
-        "BBC News",
-        "The Guardian"
+        "BBC News"
       ],
       "corroboration": 2,
       "republishers": [],
       "owners": [
-        "BBC (licence fee)",
-        "Scott Trust"
+        "Adani Group",
+        "BBC (licence fee)"
       ],
       "ownerCount": 2,
       "countries": [
+        "IN",
         "GB"
       ],
       "fundings": [
-        "state",
-        "trust"
+        "conglomerate",
+        "state"
       ],
       "unknownOwners": 0,
       "concentration": [],
-      "link": "https://www.bbc.co.uk/news/articles/ck87ze7wl4qno?at_medium=RSS&at_campaign=rss",
-      "published": "2026-10-20T08:55:02.000Z",
+      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNaUVKbkZkSVN4bmdzT1I0dzg4b2dRaHJtVEpPWXRTM0xLdTlxQ1lrUVB2RF9vQXdtMTBabXB5UWhGRGM3TzhIRTBYZmo3MDRyX0VJTHJQZnBvU1hyOHlzNmUwSS04a3BDZHVMdzNocXlBSUItbXJlZ0dCUEMzWDMtYV84Tng3OWx3RkhtWU9Kc0NQcEVlcnZ0MGJ4c9IBowFBVV95cUxNNWc0S0JMcTh6SkwxX2lvN211d2VMR3VSWVYtTjVVUjVxdW92a0VOQVlGZjROMG9GNTVQTkM4VlpxNG5rUWZSTElvcjVrY3h6MUdOSVdBYVRxelNSczRnd3B2X1VYa280ckd5ZHR",
+      "published": "2026-10-20T04:31:33.000Z",
+      "topic": "world",
+      "section": "world",
+      "tier": "significant",
+      "score": 10.65
+    },
+    {
+      "headline": "SHRADDHA DUBEY, LUCKNOW INFLUENCER ACCUSED OF KILLING LOVER, ARRESTED",
+      "display": "Shraddha Dubey, Lucknow Influencer Accused Of Killing Lover, Arrested",
+      "original": "Shraddha Dubey, Lucknow Influencer Accused Of Killing Lover, Arrested",
+      "truncated": false,
+      "usable": true,
+      "category": "INDIA",
+      "source": "NDTV · Times of India · India Today",
+      "sourceNames": [
+        "NDTV",
+        "Times of India",
+        "India Today"
+      ],
+      "corroboration": 3,
+      "republishers": [],
+      "owners": [
+        "Adani Group",
+        "Bennett, Coleman & Co",
+        "Living Media"
+      ],
+      "ownerCount": 3,
+      "countries": [
+        "IN"
+      ],
+      "fundings": [
+        "conglomerate",
+        "commercial"
+      ],
+      "unknownOwners": 0,
+      "concentration": [],
+      "link": "https://www.ndtv.com/india-news/shraddha-dubey-lucknow-influencer-accused-of-killing-lover-arrested-12211012#publisher=newsstand",
+      "published": "2026-10-20T12:36:31.000Z",
+      "topic": "india",
+      "section": "india",
+      "tier": "notable",
+      "score": 9.9
+    },
+    {
+      "headline": "INDIA-NEW ZEALAND FTA COMES INTO FORCE: WHAT CHANGES FROM TODAY",
+      "display": "India-New Zealand FTA comes into force: What changes from today",
+      "original": "India-New Zealand FTA comes into force: What changes from today",
+      "truncated": false,
+      "usable": true,
+      "category": "BUSINESS",
+      "source": "The Hindu · Business Standard",
+      "sourceNames": [
+        "The Hindu",
+        "Business Standard"
+      ],
+      "corroboration": 2,
+      "republishers": [],
+      "owners": [
+        "The Hindu Group (family-held)",
+        "Business Standard Pvt Ltd"
+      ],
+      "ownerCount": 2,
+      "countries": [
+        "IN"
+      ],
+      "fundings": [
+        "commercial"
+      ],
+      "unknownOwners": 0,
+      "concentration": [],
+      "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNNHdrQ2hIMTJXZWl6aFFfTnY5MTEzWGh2b21McUZCaHZFR0lqZ0p3N0lJUHRZS2ZzOWJPRlN0ZUdqcDVkV1VLMVRJWnpEWjU0WndpWkNYbFFmSXlkWUQ3UEdKWG9JM2QwdXlGV2t3YVlGTHlESGllOG82dzV4b1VTcTdaWDk5WWZwOHFEUzB0dnB1YnJvaXY2eE5qTHJkYk1NUTlYNWNGNFRJT2lDaWZsNWJBbDlWeXJmWVdmM3ZzSFlQV0ZzNmJpZtIBzgFBVV95cUxPcVBsdjVlSlBxRDlCeXZ4RjZUTXV5dFJvekNXQnpISWc5RGZZdk1fQUgzbktBUHR1Tng3OTZZWkp",
+      "published": "2026-10-20T09:34:41.000Z",
       "topic": "business",
       "section": "business",
       "tier": "notable",
-      "score": 8.1
+      "score": 7.5
     }
   ],
   "sections": [
     {
       "id": "top",
       "label": "TOP STORIES",
-      "stories": [
-        {
-          "headline": "SHAH MEETS FAMILIES OF ANTI-DRUG ACTIVISTS KILLED IN PUNJAB; TARGETS AAP",
-          "display": "Shah meets families of anti-drug activists killed in Punjab; targets AAP",
-          "original": "Shah meets families of anti-drug activists killed in Punjab; targets AAP",
-          "truncated": false,
-          "usable": true,
-          "category": "INDIA",
-          "source": "NDTV · Times of India",
-          "sourceNames": [
-            "NDTV",
-            "Times of India"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "Adani Group",
-            "Bennett, Coleman & Co"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "conglomerate"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://timesofindia.indiatimes.com/india/amit-shah-meets-families-of-anti-drug-campaigners-killed-in-punjab-targets-aap-on-open-drug-trade/articleshow/135069001.cms",
-          "published": "2026-10-20T11:37:18.000Z",
-          "topic": "india",
-          "section": "india",
-          "tier": "lead",
-          "score": 15.1,
-          "photoError": "a library photograph would misrepresent a story about people in harm (searched \"(none)\")",
-          "photo": null
-        },
-        {
-          "headline": "UK TO DEPLOY FIGHTER JETS TO SUPPORT SAUDI ARABIA AGAINST HOUTHI ATTACKS",
-          "display": "UK To Deploy Fighter Jets To Support Saudi Arabia Against Houthi Attacks",
-          "original": "UK To Deploy Fighter Jets To Support Saudi Arabia Against Houthi Attacks",
-          "truncated": false,
-          "usable": true,
-          "category": "WORLD NEWS",
-          "source": "Al Jazeera · The Guardian · NDTV",
-          "sourceNames": [
-            "Al Jazeera",
-            "The Guardian",
-            "NDTV",
-            "Times of India"
-          ],
-          "corroboration": 4,
-          "republishers": [],
-          "owners": [
-            "Government of Qatar",
-            "Scott Trust",
-            "Adani Group",
-            "Bennett, Coleman & Co"
-          ],
-          "ownerCount": 4,
-          "countries": [
-            "QA",
-            "GB",
-            "IN"
-          ],
-          "fundings": [
-            "state",
-            "trust",
-            "conglomerate"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNNGFNUlo2TjEwU0ZuOUd1OHROaVR2MjhkSkJvWnh3T2J5ZU0zQkoxNkR6WHZBWVFNZjFJUldYbjcyeXNpanJNcWM5czZDRzBXdkpnRmwtMm4zNnczV3h3eUpVa055RFNYNHd0aEhrY1FsT19YTGZBcE1jcVB6TFpwNXVFUGZ2aG51dWZ3dWpMVDV0OUZDNUd6MHQtaHNNeUdwTDQxLUctNklBWFRkZFBIZlljd9IBuwFBVV95cUxQME51LWxuYkpvczV1eUYteVVMWURJNTh3UGMwNlI5RFA3cWZmTlhPSTMyczUyV0JiUnJLaWl3bmQ3N0h2QjROTnJObk0zbk1kRDJPSEd",
-          "published": "2026-10-20T12:34:48.000Z",
-          "topic": "world",
-          "section": "world",
-          "tier": "notable",
-          "score": 11.4,
-          "photoError": "timed out (searched \"Houthi Attacks\")",
-          "photo": null
-        },
-        {
-          "headline": "BURNHAM VOWS END TO 'RIP-OFF PARKING CHARGES' UNDER NEW RULES",
-          "display": "Burnham vows end to 'rip-off parking charges' under new rules",
-          "original": "Burnham vows end to 'rip-off parking charges' under new rules",
-          "truncated": false,
-          "usable": true,
-          "category": "BUSINESS",
-          "source": "BBC News · The Guardian",
-          "sourceNames": [
-            "BBC News",
-            "The Guardian"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "BBC (licence fee)",
-            "Scott Trust"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "GB"
-          ],
-          "fundings": [
-            "state",
-            "trust"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://www.bbc.co.uk/news/articles/ck87ze7wl4qno?at_medium=RSS&at_campaign=rss",
-          "published": "2026-10-20T08:55:02.000Z",
-          "topic": "business",
-          "section": "business",
-          "tier": "notable",
-          "score": 8.1,
-          "photoError": "no image matched the story closely enough (searched \"office towers business district\")",
-          "photo": null
-        }
-      ]
-    },
-    {
-      "id": "india",
-      "label": "INDIA",
-      "stories": [
-        {
-          "headline": "REFORM OR REGIME CHANGE? WHAT GLOBAL MOVEMENTS TELL US ABOUT PROTEST GOALS",
-          "display": "Reform Or Regime Change? What Global Movements Tell Us About Protest Goals",
-          "original": "Reform Or Regime Change? What Global Movements Tell Us About Protest Goals",
-          "truncated": false,
-          "usable": true,
-          "category": "INDIA",
-          "source": "NDTV · BBC News",
-          "sourceNames": [
-            "NDTV",
-            "BBC News"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "Adani Group",
-            "BBC (licence fee)"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "IN",
-            "GB"
-          ],
-          "fundings": [
-            "conglomerate",
-            "state"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://www.ndtv.com/world-news/reform-or-regime-change-what-global-movements-tell-us-about-protest-goals-12210700#publisher=newsstand",
-          "published": "2026-10-20T11:42:57.000Z",
-          "topic": "india",
-          "section": "india",
-          "tier": "significant",
-          "score": 11.1,
-          "photoError": "no image matched the story closely enough (searched \"india\")",
-          "photo": null
-        },
-        {
-          "headline": "INDIA NEWS: TRADE DEAL, ENERGY SECURITY TO TOP AGENDA FOR RUBIO'S VISIT",
-          "display": "India news: Trade deal, energy security to top agenda for Rubio's visit",
-          "original": "India news: Trade deal, energy security to top agenda for Rubio's visit",
-          "truncated": false,
-          "usable": true,
-          "category": "INDIA",
-          "source": "DW.com · Reuters",
-          "sourceNames": [
-            "DW.com",
-            "Reuters"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "Thomson Reuters (Trust Principles)"
-          ],
-          "ownerCount": 1,
-          "countries": [
-            "GB"
-          ],
-          "fundings": [
-            "trust"
-          ],
-          "unknownOwners": 1,
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOVnI1Nl92ODBfQ2t6RzMtOUhiMTVNX0xUamxZb1VwUVJUbFhNM3Vwc2J3NFRMeW5lU1RfRGF1WERDMWdoUTRlY0lPWnBkb2FwMmhCaklZX00yQkw4MXlxWDJCVGZiNUFqcjNTUDYwSE1oclZabGV5S2tXUXNDS3JueTZ3dVAyTjJzbTlBcFNRWksyZlB5bElR?oc=5",
-          "published": "2026-10-20T10:50:04.000Z",
-          "topic": "india",
-          "section": "india",
-          "tier": "significant",
-          "score": 10.5,
-          "photoError": "timed out (searched \"India\")",
-          "photo": null
-        },
-        {
-          "headline": "RUBIO PITCHES US ENERGY AS TRANSFORMATIVE' ALTERNATIVE FOR INDIA IN MUMBAI MEET",
-          "display": "Rubio Pitches US Energy As Transformative' Alternative For India In Mumbai Meet",
-          "original": "Rubio Pitches US Energy As Transformative' Alternative For India In Mumbai Meet With Jaishankar",
-          "truncated": true,
-          "usable": true,
-          "category": "INDIA",
-          "source": "The Hindu · NDTV · Arab News",
-          "sourceNames": [
-            "The Hindu",
-            "NDTV",
-            "Arab News"
-          ],
-          "corroboration": 3,
-          "republishers": [],
-          "owners": [
-            "The Hindu Group (family-held)",
-            "Adani Group"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "commercial",
-            "conglomerate"
-          ],
-          "unknownOwners": 1,
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNQmp6a1JDZExSTzdwTURkQTRkaXphQlFaMkZLczNZUlhkU2twUUdxODNmbTJyTWxSV3o4eE4tR2xMN2s5d0NROUcwYTlkTm93cjVhUUlUMnZLeFBzbzNfbjY0ZGxZdTAtZ1VJRUtNaWdCQl82aW5pblhxLTZMTlJSN1lFWE5tTnlrQUU0OXhPUDJKTUNTcU5EOHdYWGpHMXJaVE02STQxa1pwV19pRHJRYzd0TVc3NDR1aXZyVmo0dkVnMnVKQ3VJSEVEaEt4bkxlUEHSAdoBQVVfeXFMTXBiZnRwTEpRTmJXczR0QzBxRldkbGk2X01lbnhKWnlsdHROR0pvUXVMLXplOG1",
-          "published": "2026-10-20T13:23:19.000Z",
-          "topic": "india",
-          "section": "india",
-          "tier": "notable",
-          "score": 10.2,
-          "photo": {
-            "path": "data/pending/india/photo-india-4.jpg",
-            "credit": "File photo: Pranav011 at en.wikipedia / CC BY 3.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=16992577",
-            "query": "india",
-            "relevance": 0.14,
-            "title": "An Unripe Mango Of Ratnagiri (India)"
-          }
-        }
-      ]
-    },
-    {
-      "id": "world",
-      "label": "WORLD",
       "stories": [
         {
           "headline": "US BARS GOVERNMENT AGENCIES FROM USING CHINA'S DEEPSEEK",
@@ -405,91 +154,55 @@
           "section": "world",
           "tier": "significant",
           "score": 10.65,
-          "photoError": "timed out (searched \"China's DeepSeek\")",
-          "photo": null
+          "photo": {
+            "path": "data/pending/top/photo-top-2.jpg",
+            "credit": "File photo: Unknown author Unknown author / Public Domain",
+            "license": "pdm",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Deepseek_login_error.png",
+            "query": "China's DeepSeek",
+            "relevance": 0.33,
+            "title": "Deepseek login error"
+          }
         },
         {
-          "headline": "MYANMAR’S DETAINED EX-LEADER SUU KYI RECEIVES PACKAGE FROM KING CHARLES III",
-          "display": "Myanmar’s detained ex-leader Suu Kyi receives package from King Charles III",
-          "original": "Myanmar’s detained ex-leader Suu Kyi receives package from King Charles III",
+          "headline": "SHRADDHA DUBEY, LUCKNOW INFLUENCER ACCUSED OF KILLING LOVER, ARRESTED",
+          "display": "Shraddha Dubey, Lucknow Influencer Accused Of Killing Lover, Arrested",
+          "original": "Shraddha Dubey, Lucknow Influencer Accused Of Killing Lover, Arrested",
           "truncated": false,
           "usable": true,
-          "category": "WORLD NEWS",
-          "source": "Al Jazeera · The Guardian",
+          "category": "INDIA",
+          "source": "NDTV · Times of India · India Today",
           "sourceNames": [
-            "Al Jazeera",
-            "The Guardian"
+            "NDTV",
+            "Times of India",
+            "India Today"
           ],
-          "corroboration": 2,
+          "corroboration": 3,
           "republishers": [],
           "owners": [
-            "Government of Qatar",
-            "Scott Trust"
+            "Adani Group",
+            "Bennett, Coleman & Co",
+            "Living Media"
           ],
-          "ownerCount": 2,
+          "ownerCount": 3,
           "countries": [
-            "QA",
-            "GB"
+            "IN"
           ],
           "fundings": [
-            "state",
-            "trust"
+            "conglomerate",
+            "commercial"
           ],
           "unknownOwners": 0,
           "concentration": [],
-          "link": "https://www.aljazeera.com/news/2026/10/20/myanmars-detained-ex-leader-suu-kyi-receives-package-from-king-charles-iii?traffic_source=rss",
-          "published": "2026-10-20T11:07:55.000Z",
-          "topic": "world",
-          "section": "world",
+          "link": "https://www.ndtv.com/india-news/shraddha-dubey-lucknow-influencer-accused-of-killing-lover-arrested-12211012#publisher=newsstand",
+          "published": "2026-10-20T12:36:31.000Z",
+          "topic": "india",
+          "section": "india",
           "tier": "notable",
-          "score": 8.1,
-          "photoError": "timed out (searched \"King Charles III\")",
+          "score": 9.9,
+          "photoError": "no image matched the story closely enough (searched \"india\")",
           "photo": null
         },
-        {
-          "headline": "ALBERTANS REJECT REFERENDUM ON INDEPENDENCE FROM CANADA",
-          "display": "Albertans reject referendum on independence from Canada",
-          "original": "Albertans reject referendum on independence from Canada",
-          "truncated": false,
-          "usable": true,
-          "category": "WORLD NEWS",
-          "source": "Al Jazeera · The Guardian",
-          "sourceNames": [
-            "Al Jazeera",
-            "The Guardian"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "Government of Qatar",
-            "Scott Trust"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "QA",
-            "GB"
-          ],
-          "fundings": [
-            "state",
-            "trust"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://www.aljazeera.com/video/newsfeed/2026/10/20/10-20-alberta-referendum-vote-sv?traffic_source=rss",
-          "published": "2026-10-20T09:42:04.000Z",
-          "topic": "world",
-          "section": "world",
-          "tier": "notable",
-          "score": 8.1,
-          "photoError": "timed out (searched \"Albertans\")",
-          "photo": null
-        }
-      ]
-    },
-    {
-      "id": "business",
-      "label": "BUSINESS",
-      "stories": [
         {
           "headline": "INDIA-NEW ZEALAND FTA COMES INTO FORCE: WHAT CHANGES FROM TODAY",
           "display": "India-New Zealand FTA comes into force: What changes from today",
@@ -529,45 +242,309 @@
       ]
     },
     {
-      "id": "tech",
-      "label": "TECHNOLOGY",
+      "id": "india",
+      "label": "INDIA",
       "stories": [
         {
-          "headline": "GOOGLE CLOUD SAYS 'POWER EVENT' BEHIND OUTAGE HITTING UK BANKS AND WEBSITES",
-          "display": "Google Cloud says 'power event' behind outage hitting UK banks and websites",
-          "original": "Google Cloud says 'power event' behind outage hitting UK banks and websites",
+          "headline": "CJP SEEKS URGENT HEARING IN DELHI HIGH COURT CHALLENGING JUDICIAL CUSTODY OF SAURAV DAS",
+          "display": "CJP seeks urgent hearing in Delhi High Court challenging judicial custody of Saurav Das",
+          "original": "CJP seeks urgent hearing in Delhi High Court challenging judicial custody of Saurav Das, Ashutosh Ranka",
+          "truncated": true,
+          "usable": true,
+          "category": "INDIA",
+          "source": "The Hindu · Times of India",
+          "sourceNames": [
+            "The Hindu",
+            "Times of India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "The Hindu Group (family-held)",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.thehindu.com/news/national/saurav-das-ashutosh-ranka-judicial-custody-cjp-seeks-urgent-hearing-in-delhi-high-court/article71604565.ece",
+          "published": "2026-10-20T13:23:47.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 8.7,
+          "photoError": "no image matched the story closely enough (searched \"courthouse columns\")",
+          "photo": null
+        },
+        {
+          "headline": "ASIAN PARA GAMES: INDIA’S MEDAL STORM! 24 MEDALS, 5 GOLDS AS NISHAD, DEEPTHI SHINE",
+          "display": "Asian Para Games: India’s medal storm! 24 medals, 5 golds as Nishad, Deepthi shine",
+          "original": "Asian Para Games: India’s medal storm! 24 medals, 5 golds as Nishad, Deepthi shine",
           "truncated": false,
           "usable": true,
-          "category": "TECHNOLOGY",
-          "source": "BBC News · The Indian Express",
+          "category": "INDIA",
+          "source": "Times of India · ESPN India",
           "sourceNames": [
-            "BBC News",
+            "Times of India",
+            "ESPN India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://timesofindia.indiatimes.com/sports/asian-para-games-2026/indias-medal-storm-24-medals-five-golds-as-nishad-kumar-deepthi-jeevanji-shine-at-asian-para-games/articleshow/135071078.cms",
+          "published": "2026-10-20T13:33:37.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 7.95,
+          "photo": {
+            "path": "data/pending/india/photo-india-3.jpg",
+            "credit": "File photo: Jess M. Escaros Jr. for the Philippine N / Public Domain",
+            "license": "pdm",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:2018_Asian_Para_Games_PH.jpg",
+            "query": "Asian Para Games",
+            "relevance": 0.27,
+            "title": "2018 Asian Para Games PH"
+          }
+        },
+        {
+          "headline": "INDIA WOMEN VS ZIMBABWE WOMEN 2026 - 3RD T20I",
+          "display": "India Women vs Zimbabwe Women 2026 - 3rd T20I",
+          "original": "India Women vs Zimbabwe Women 2026 - 3rd T20I",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "BCCI · The Indian Express",
+          "sourceNames": [
+            "BCCI",
             "The Indian Express"
           ],
           "corroboration": 2,
           "republishers": [],
           "owners": [
-            "BBC (licence fee)",
             "Indian Express Group"
           ],
-          "ownerCount": 2,
+          "ownerCount": 1,
           "countries": [
-            "GB",
             "IN"
           ],
           "fundings": [
-            "state",
             "commercial"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE4wem1BanQ4c1IyVElUb3BqdVU3XzlkTVRfWlZ5Wk1fbHR4QTl5NHNGNTFxTnVmcDdiQWdvNEY1M256QXNxZlRlcXhrTm81Tlc4RktrbTBwcFpZYlFLbFRoSEdIb29zbXdKRjFyVFI3ZVlwQzZJUmU4Y2d3?oc=5",
+          "published": "2026-10-20T13:57:37.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 7.8,
+          "photo": {
+            "path": "data/pending/india/photo-india-4.jpg",
+            "credit": "File photo: Vyacheslav Argenberg / CC BY 4.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Hampi,_India,_Stone_ornaments_at_Vijaya_Vitthala_Temple.jpg",
+            "query": "india",
+            "relevance": 0.25,
+            "title": "Hampi, India, Stone ornaments at Vijaya Vitthala Temple"
+          }
+        }
+      ]
+    },
+    {
+      "id": "world",
+      "label": "WORLD",
+      "stories": [
+        {
+          "headline": "MYANMAR’S DETAINED EX-LEADER SUU KYI RECEIVES PACKAGE FROM KING CHARLES III",
+          "display": "Myanmar’s detained ex-leader Suu Kyi receives package from King Charles III",
+          "original": "Myanmar’s detained ex-leader Suu Kyi receives package from King Charles III",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "Al Jazeera · The Guardian",
+          "sourceNames": [
+            "Al Jazeera",
+            "The Guardian"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Government of Qatar",
+            "Scott Trust"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "QA",
+            "GB"
+          ],
+          "fundings": [
+            "state",
+            "trust"
           ],
           "unknownOwners": 0,
           "concentration": [],
-          "link": "https://www.bbc.co.uk/news/articles/cxdd8mm6qy4mo?at_medium=RSS&at_campaign=rss",
-          "published": "2026-10-20T12:09:25.000Z",
+          "link": "https://www.aljazeera.com/news/2026/10/20/myanmars-detained-ex-leader-suu-kyi-receives-package-from-king-charles-iii?traffic_source=rss",
+          "published": "2026-10-20T11:07:55.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.1,
+          "photo": {
+            "path": "data/pending/world/photo-world-2.jpg",
+            "credit": "File photo: East Asia and Pacific Media Hub U.S. Dep / Public Domain",
+            "license": "pdm",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Secretary_Clinton_Visits_with_Aung_San_Suu_Kyi_(6441361229).jpg",
+            "query": "Suu Kyi",
+            "relevance": 0.33,
+            "title": "Secretary Clinton Visits with Aung San Suu Kyi (6441361229)"
+          }
+        },
+        {
+          "headline": "ALBERTANS REJECT REFERENDUM ON INDEPENDENCE FROM CANADA",
+          "display": "Albertans reject referendum on independence from Canada",
+          "original": "Albertans reject referendum on independence from Canada",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "Al Jazeera · The Guardian",
+          "sourceNames": [
+            "Al Jazeera",
+            "The Guardian"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Government of Qatar",
+            "Scott Trust"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "QA",
+            "GB"
+          ],
+          "fundings": [
+            "state",
+            "trust"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.aljazeera.com/video/newsfeed/2026/10/20/10-20-alberta-referendum-vote-sv?traffic_source=rss",
+          "published": "2026-10-20T09:42:04.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.1,
+          "photo": {
+            "path": "data/pending/world/photo-world-3.jpg",
+            "credit": "File photo: Wikimedia Commons / Public Domain",
+            "license": "pdm",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Canada_BMNG.png",
+            "query": "Canada",
+            "relevance": 0.2,
+            "title": "Canada BMNG"
+          }
+        },
+        {
+          "headline": "WHAT ARE THE GIANT ‘HEAT STORMS’ NOW SCORCHING THE EARTH?",
+          "display": "What are the giant ‘heat storms’ now scorching the Earth?",
+          "original": "What are the giant ‘heat storms’ now scorching the Earth?",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "Reuters · BBC News",
+          "sourceNames": [
+            "Reuters",
+            "BBC News"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Thomson Reuters (Trust Principles)",
+            "BBC (licence fee)"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB"
+          ],
+          "fundings": [
+            "trust",
+            "state"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9KcFExU3IzV0hqRVctRnF0cDJLUFFfN0hGRktMeVQyc0tmVUNrRHd5MVQ4R3RsVG1HS0xET0FjV0NnNU40RnYxLXR5bDhQMC1EczI4?oc=5",
+          "published": "2026-10-20T11:57:29.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.1,
+          "photo": {
+            "path": "data/pending/world/photo-world-4.jpg",
+            "credit": "File photo: Data: Marc Imhoff/NASA GSFC, Christopher / Public Domain",
+            "license": "pdm",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Earth%27s_City_Lights_by_DMSP,_1994-1995_(large).jpg",
+            "query": "Earth",
+            "relevance": 0.2,
+            "title": "Earth's City Lights by DMSP, 1994 1995 (large)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tech",
+      "label": "TECHNOLOGY",
+      "stories": [
+        {
+          "headline": "JIO IS A TECHNOLOGY COMPANY, NOT JUST A TELCO, SAYS AKASH AMBANI AHEAD OF MEGA IPO",
+          "display": "Jio is a technology company, not just a telco, says Akash Ambani ahead of mega IPO",
+          "original": "Jio is a technology company, not just a telco, says Akash Ambani ahead of mega IPO",
+          "truncated": false,
+          "usable": true,
+          "category": "TECHNOLOGY",
+          "source": "MillenniumPost · Business Standard",
+          "sourceNames": [
+            "MillenniumPost",
+            "Business Standard"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Business Standard Pvt Ltd"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNZFkzRHprcEhCTkp2MUFvTTNIeGxYRExfTURLX1R0Ty1wN0Q5RTU2eFNLeklDVjA4VkxtOE9RSHdSRldwYVZSYXM3eFhNRjUtbXZMQURic1JiMFc4eEt5RmVtdzZYWWZIQlBLZG8ydkctNWp0MGJDbEFYTU5hOVhlWm5faWhuUklfeldlYWpDVlJ0WVNoT3h0Y1RzbVh6allFTVpHZ3dsWi1Eem9JT2NGazVsYUZsSFFGY2o0Zm9mRmNWdFJi0gHKAUFVX3lxTE9BU2RTNXE3UDBvaWo5b1hIVG04cDF6Ylk0LTBUVXB3Z08waTllX0czdlM2Zm5tUUt3RXc0cEZrcGFFMkp",
+          "published": "2026-10-20T13:49:55.000Z",
           "topic": "tech",
           "section": "tech",
-          "tier": "significant",
-          "score": 11.25,
-          "photoError": "timed out (searched \"Google Cloud\")",
+          "tier": "notable",
+          "score": 7.8,
+          "photoError": "no image matched the story closely enough (searched \"Jio\")",
           "photo": null
         }
       ]
@@ -602,8 +579,15 @@
           "section": "health",
           "tier": "notable",
           "score": 7.95,
-          "photoError": "timed out (searched \"Felix Lankester\")",
-          "photo": null
+          "photo": {
+            "path": "data/pending/health/photo-health-2.jpg",
+            "credit": "File photo: U.S. Navy photo by Mass Communication Sp / Public Domain",
+            "license": "pdm",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:US_Navy_071212-N-0193M-416_Felix_Lankester,_project_manager_for_the_Limbe_Wildlife_Center,_introduces_U.S._Navy_Cmdr._Byron_Smith,_kneeling,_and_British_Navy_Cmdr._Nigel_May,_to_the_center%27s_residents_while_giving_a_tour.jpg",
+            "query": "Felix Lankester",
+            "relevance": 0.33,
+            "title": "US Navy 071212 N 0193M 416 Felix Lankester, project manager for the Limbe Wildlife Center, introduces U.S. Navy Cmdr. Byron Smith, kneeling, and British Navy Cmdr. Nigel May, to the center's residents while giving a tour"
+          }
         },
         {
           "headline": "HIMS & HERS HEALTH LAUNCHES ONLINE WEIGHT MANAGEMENT SERVICE FOR MEN IN GERMANY",
@@ -637,13 +621,20 @@
           "section": "health",
           "tier": "minor",
           "score": 4.95,
-          "photoError": "timed out (searched \"Germany\")",
-          "photo": null
+          "photo": {
+            "path": "data/pending/health/photo-health-3.jpg",
+            "credit": "File photo: Pieter Brueghel the Elder / Public Domain",
+            "license": "pdm",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Pieter_Brueghel_the_Elder_-_The_Dutch_Proverbs_-_Google_Art_Project.jpg",
+            "query": "Germany",
+            "relevance": 0.14,
+            "title": "Pieter Brueghel the Elder   The Dutch Proverbs   Google Art Project"
+          }
         }
       ]
     }
   ],
-  "rendered": "2026-10-20T13:48:08.038Z",
+  "rendered": "2026-10-20T14:02:49.315Z",
   "options": {
     "layout": "breaking",
     "theme": "bbc",
@@ -674,295 +665,11 @@
       "height": 1350,
       "sourceNames": [
         "NDTV",
+        "BBC News",
         "Times of India",
-        "Al Jazeera",
-        "The Guardian",
-        "BBC News"
-      ],
-      "stories": [
-        {
-          "headline": "SHAH MEETS FAMILIES OF ANTI-DRUG ACTIVISTS KILLED IN PUNJAB; TARGETS AAP",
-          "display": "Shah meets families of anti-drug activists killed in Punjab; targets AAP",
-          "original": "Shah meets families of anti-drug activists killed in Punjab; targets AAP",
-          "truncated": false,
-          "usable": true,
-          "category": "INDIA",
-          "source": "NDTV · Times of India",
-          "sourceNames": [
-            "NDTV",
-            "Times of India"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "Adani Group",
-            "Bennett, Coleman & Co"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "conglomerate"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://timesofindia.indiatimes.com/india/amit-shah-meets-families-of-anti-drug-campaigners-killed-in-punjab-targets-aap-on-open-drug-trade/articleshow/135069001.cms",
-          "published": "2026-10-20T11:37:18.000Z",
-          "topic": "india",
-          "section": "india",
-          "tier": "lead",
-          "score": 15.1,
-          "photoError": "a library photograph would misrepresent a story about people in harm (searched \"(none)\")",
-          "photo": null
-        },
-        {
-          "headline": "UK TO DEPLOY FIGHTER JETS TO SUPPORT SAUDI ARABIA AGAINST HOUTHI ATTACKS",
-          "display": "UK To Deploy Fighter Jets To Support Saudi Arabia Against Houthi Attacks",
-          "original": "UK To Deploy Fighter Jets To Support Saudi Arabia Against Houthi Attacks",
-          "truncated": false,
-          "usable": true,
-          "category": "WORLD NEWS",
-          "source": "Al Jazeera · The Guardian · NDTV",
-          "sourceNames": [
-            "Al Jazeera",
-            "The Guardian",
-            "NDTV",
-            "Times of India"
-          ],
-          "corroboration": 4,
-          "republishers": [],
-          "owners": [
-            "Government of Qatar",
-            "Scott Trust",
-            "Adani Group",
-            "Bennett, Coleman & Co"
-          ],
-          "ownerCount": 4,
-          "countries": [
-            "QA",
-            "GB",
-            "IN"
-          ],
-          "fundings": [
-            "state",
-            "trust",
-            "conglomerate"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNNGFNUlo2TjEwU0ZuOUd1OHROaVR2MjhkSkJvWnh3T2J5ZU0zQkoxNkR6WHZBWVFNZjFJUldYbjcyeXNpanJNcWM5czZDRzBXdkpnRmwtMm4zNnczV3h3eUpVa055RFNYNHd0aEhrY1FsT19YTGZBcE1jcVB6TFpwNXVFUGZ2aG51dWZ3dWpMVDV0OUZDNUd6MHQtaHNNeUdwTDQxLUctNklBWFRkZFBIZlljd9IBuwFBVV95cUxQME51LWxuYkpvczV1eUYteVVMWURJNTh3UGMwNlI5RFA3cWZmTlhPSTMyczUyV0JiUnJLaWl3bmQ3N0h2QjROTnJObk0zbk1kRDJPSEd",
-          "published": "2026-10-20T12:34:48.000Z",
-          "topic": "world",
-          "section": "world",
-          "tier": "notable",
-          "score": 11.4,
-          "photoError": "timed out (searched \"Houthi Attacks\")",
-          "photo": null
-        },
-        {
-          "headline": "BURNHAM VOWS END TO 'RIP-OFF PARKING CHARGES' UNDER NEW RULES",
-          "display": "Burnham vows end to 'rip-off parking charges' under new rules",
-          "original": "Burnham vows end to 'rip-off parking charges' under new rules",
-          "truncated": false,
-          "usable": true,
-          "category": "BUSINESS",
-          "source": "BBC News · The Guardian",
-          "sourceNames": [
-            "BBC News",
-            "The Guardian"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "BBC (licence fee)",
-            "Scott Trust"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "GB"
-          ],
-          "fundings": [
-            "state",
-            "trust"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://www.bbc.co.uk/news/articles/ck87ze7wl4qno?at_medium=RSS&at_campaign=rss",
-          "published": "2026-10-20T08:55:02.000Z",
-          "topic": "business",
-          "section": "business",
-          "tier": "notable",
-          "score": 8.1,
-          "photoError": "no image matched the story closely enough (searched \"office towers business district\")",
-          "photo": null
-        }
-      ],
-      "usable": true,
-      "section": "top",
-      "sectionLabel": "TOP STORIES"
-    },
-    {
-      "kind": "carousel",
-      "headline": "3 stories",
-      "images": [
-        "data/pending/india/slide-1.png",
-        "data/pending/india/slide-2.png",
-        "data/pending/india/slide-3.png",
-        "data/pending/india/slide-4.png"
-      ],
-      "image": "data/pending/india/slide-1.png",
-      "width": 1080,
-      "height": 1350,
-      "sourceNames": [
-        "NDTV",
-        "BBC News",
-        "DW.com",
-        "Reuters",
+        "India Today",
         "The Hindu",
-        "Arab News"
-      ],
-      "stories": [
-        {
-          "headline": "REFORM OR REGIME CHANGE? WHAT GLOBAL MOVEMENTS TELL US ABOUT PROTEST GOALS",
-          "display": "Reform Or Regime Change? What Global Movements Tell Us About Protest Goals",
-          "original": "Reform Or Regime Change? What Global Movements Tell Us About Protest Goals",
-          "truncated": false,
-          "usable": true,
-          "category": "INDIA",
-          "source": "NDTV · BBC News",
-          "sourceNames": [
-            "NDTV",
-            "BBC News"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "Adani Group",
-            "BBC (licence fee)"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "IN",
-            "GB"
-          ],
-          "fundings": [
-            "conglomerate",
-            "state"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://www.ndtv.com/world-news/reform-or-regime-change-what-global-movements-tell-us-about-protest-goals-12210700#publisher=newsstand",
-          "published": "2026-10-20T11:42:57.000Z",
-          "topic": "india",
-          "section": "india",
-          "tier": "significant",
-          "score": 11.1,
-          "photoError": "no image matched the story closely enough (searched \"india\")",
-          "photo": null
-        },
-        {
-          "headline": "INDIA NEWS: TRADE DEAL, ENERGY SECURITY TO TOP AGENDA FOR RUBIO'S VISIT",
-          "display": "India news: Trade deal, energy security to top agenda for Rubio's visit",
-          "original": "India news: Trade deal, energy security to top agenda for Rubio's visit",
-          "truncated": false,
-          "usable": true,
-          "category": "INDIA",
-          "source": "DW.com · Reuters",
-          "sourceNames": [
-            "DW.com",
-            "Reuters"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "Thomson Reuters (Trust Principles)"
-          ],
-          "ownerCount": 1,
-          "countries": [
-            "GB"
-          ],
-          "fundings": [
-            "trust"
-          ],
-          "unknownOwners": 1,
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOVnI1Nl92ODBfQ2t6RzMtOUhiMTVNX0xUamxZb1VwUVJUbFhNM3Vwc2J3NFRMeW5lU1RfRGF1WERDMWdoUTRlY0lPWnBkb2FwMmhCaklZX00yQkw4MXlxWDJCVGZiNUFqcjNTUDYwSE1oclZabGV5S2tXUXNDS3JueTZ3dVAyTjJzbTlBcFNRWksyZlB5bElR?oc=5",
-          "published": "2026-10-20T10:50:04.000Z",
-          "topic": "india",
-          "section": "india",
-          "tier": "significant",
-          "score": 10.5,
-          "photoError": "timed out (searched \"India\")",
-          "photo": null
-        },
-        {
-          "headline": "RUBIO PITCHES US ENERGY AS TRANSFORMATIVE' ALTERNATIVE FOR INDIA IN MUMBAI MEET",
-          "display": "Rubio Pitches US Energy As Transformative' Alternative For India In Mumbai Meet",
-          "original": "Rubio Pitches US Energy As Transformative' Alternative For India In Mumbai Meet With Jaishankar",
-          "truncated": true,
-          "usable": true,
-          "category": "INDIA",
-          "source": "The Hindu · NDTV · Arab News",
-          "sourceNames": [
-            "The Hindu",
-            "NDTV",
-            "Arab News"
-          ],
-          "corroboration": 3,
-          "republishers": [],
-          "owners": [
-            "The Hindu Group (family-held)",
-            "Adani Group"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "commercial",
-            "conglomerate"
-          ],
-          "unknownOwners": 1,
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNQmp6a1JDZExSTzdwTURkQTRkaXphQlFaMkZLczNZUlhkU2twUUdxODNmbTJyTWxSV3o4eE4tR2xMN2s5d0NROUcwYTlkTm93cjVhUUlUMnZLeFBzbzNfbjY0ZGxZdTAtZ1VJRUtNaWdCQl82aW5pblhxLTZMTlJSN1lFWE5tTnlrQUU0OXhPUDJKTUNTcU5EOHdYWGpHMXJaVE02STQxa1pwV19pRHJRYzd0TVc3NDR1aXZyVmo0dkVnMnVKQ3VJSEVEaEt4bkxlUEHSAdoBQVVfeXFMTXBiZnRwTEpRTmJXczR0QzBxRldkbGk2X01lbnhKWnlsdHROR0pvUXVMLXplOG1",
-          "published": "2026-10-20T13:23:19.000Z",
-          "topic": "india",
-          "section": "india",
-          "tier": "notable",
-          "score": 10.2,
-          "photo": {
-            "path": "data/pending/india/photo-india-4.jpg",
-            "credit": "File photo: Pranav011 at en.wikipedia / CC BY 3.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=16992577",
-            "query": "india",
-            "relevance": 0.14,
-            "title": "An Unripe Mango Of Ratnagiri (India)"
-          }
-        }
-      ],
-      "usable": true,
-      "section": "india",
-      "sectionLabel": "INDIA"
-    },
-    {
-      "kind": "carousel",
-      "headline": "3 stories",
-      "images": [
-        "data/pending/world/slide-1.png",
-        "data/pending/world/slide-2.png",
-        "data/pending/world/slide-3.png",
-        "data/pending/world/slide-4.png"
-      ],
-      "image": "data/pending/world/slide-1.png",
-      "width": 1080,
-      "height": 1350,
-      "sourceNames": [
-        "NDTV",
-        "BBC News",
-        "Al Jazeera",
-        "The Guardian"
+        "Business Standard"
       ],
       "stories": [
         {
@@ -1000,105 +707,55 @@
           "section": "world",
           "tier": "significant",
           "score": 10.65,
-          "photoError": "timed out (searched \"China's DeepSeek\")",
-          "photo": null
+          "photo": {
+            "path": "data/pending/top/photo-top-2.jpg",
+            "credit": "File photo: Unknown author Unknown author / Public Domain",
+            "license": "pdm",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Deepseek_login_error.png",
+            "query": "China's DeepSeek",
+            "relevance": 0.33,
+            "title": "Deepseek login error"
+          }
         },
         {
-          "headline": "MYANMAR’S DETAINED EX-LEADER SUU KYI RECEIVES PACKAGE FROM KING CHARLES III",
-          "display": "Myanmar’s detained ex-leader Suu Kyi receives package from King Charles III",
-          "original": "Myanmar’s detained ex-leader Suu Kyi receives package from King Charles III",
+          "headline": "SHRADDHA DUBEY, LUCKNOW INFLUENCER ACCUSED OF KILLING LOVER, ARRESTED",
+          "display": "Shraddha Dubey, Lucknow Influencer Accused Of Killing Lover, Arrested",
+          "original": "Shraddha Dubey, Lucknow Influencer Accused Of Killing Lover, Arrested",
           "truncated": false,
           "usable": true,
-          "category": "WORLD NEWS",
-          "source": "Al Jazeera · The Guardian",
+          "category": "INDIA",
+          "source": "NDTV · Times of India · India Today",
           "sourceNames": [
-            "Al Jazeera",
-            "The Guardian"
+            "NDTV",
+            "Times of India",
+            "India Today"
           ],
-          "corroboration": 2,
+          "corroboration": 3,
           "republishers": [],
           "owners": [
-            "Government of Qatar",
-            "Scott Trust"
+            "Adani Group",
+            "Bennett, Coleman & Co",
+            "Living Media"
           ],
-          "ownerCount": 2,
+          "ownerCount": 3,
           "countries": [
-            "QA",
-            "GB"
+            "IN"
           ],
           "fundings": [
-            "state",
-            "trust"
+            "conglomerate",
+            "commercial"
           ],
           "unknownOwners": 0,
           "concentration": [],
-          "link": "https://www.aljazeera.com/news/2026/10/20/myanmars-detained-ex-leader-suu-kyi-receives-package-from-king-charles-iii?traffic_source=rss",
-          "published": "2026-10-20T11:07:55.000Z",
-          "topic": "world",
-          "section": "world",
+          "link": "https://www.ndtv.com/india-news/shraddha-dubey-lucknow-influencer-accused-of-killing-lover-arrested-12211012#publisher=newsstand",
+          "published": "2026-10-20T12:36:31.000Z",
+          "topic": "india",
+          "section": "india",
           "tier": "notable",
-          "score": 8.1,
-          "photoError": "timed out (searched \"King Charles III\")",
+          "score": 9.9,
+          "photoError": "no image matched the story closely enough (searched \"india\")",
           "photo": null
         },
-        {
-          "headline": "ALBERTANS REJECT REFERENDUM ON INDEPENDENCE FROM CANADA",
-          "display": "Albertans reject referendum on independence from Canada",
-          "original": "Albertans reject referendum on independence from Canada",
-          "truncated": false,
-          "usable": true,
-          "category": "WORLD NEWS",
-          "source": "Al Jazeera · The Guardian",
-          "sourceNames": [
-            "Al Jazeera",
-            "The Guardian"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "Government of Qatar",
-            "Scott Trust"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "QA",
-            "GB"
-          ],
-          "fundings": [
-            "state",
-            "trust"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://www.aljazeera.com/video/newsfeed/2026/10/20/10-20-alberta-referendum-vote-sv?traffic_source=rss",
-          "published": "2026-10-20T09:42:04.000Z",
-          "topic": "world",
-          "section": "world",
-          "tier": "notable",
-          "score": 8.1,
-          "photoError": "timed out (searched \"Albertans\")",
-          "photo": null
-        }
-      ],
-      "usable": true,
-      "section": "world",
-      "sectionLabel": "WORLD"
-    },
-    {
-      "kind": "carousel",
-      "headline": "1 stories",
-      "images": [
-        "data/pending/business/slide-1.png",
-        "data/pending/business/slide-2.png"
-      ],
-      "image": "data/pending/business/slide-1.png",
-      "width": 1080,
-      "height": 1350,
-      "sourceNames": [
-        "The Hindu",
-        "Business Standard"
-      ],
-      "stories": [
         {
           "headline": "INDIA-NEW ZEALAND FTA COMES INTO FORCE: WHAT CHANGES FROM TODAY",
           "display": "India-New Zealand FTA comes into force: What changes from today",
@@ -1137,8 +794,312 @@
         }
       ],
       "usable": true,
-      "section": "business",
-      "sectionLabel": "BUSINESS"
+      "section": "top",
+      "sectionLabel": "TOP STORIES"
+    },
+    {
+      "kind": "carousel",
+      "headline": "3 stories",
+      "images": [
+        "data/pending/india/slide-1.png",
+        "data/pending/india/slide-2.png",
+        "data/pending/india/slide-3.png",
+        "data/pending/india/slide-4.png"
+      ],
+      "image": "data/pending/india/slide-1.png",
+      "width": 1080,
+      "height": 1350,
+      "sourceNames": [
+        "The Hindu",
+        "Times of India",
+        "ESPN India",
+        "BCCI",
+        "The Indian Express"
+      ],
+      "stories": [
+        {
+          "headline": "CJP SEEKS URGENT HEARING IN DELHI HIGH COURT CHALLENGING JUDICIAL CUSTODY OF SAURAV DAS",
+          "display": "CJP seeks urgent hearing in Delhi High Court challenging judicial custody of Saurav Das",
+          "original": "CJP seeks urgent hearing in Delhi High Court challenging judicial custody of Saurav Das, Ashutosh Ranka",
+          "truncated": true,
+          "usable": true,
+          "category": "INDIA",
+          "source": "The Hindu · Times of India",
+          "sourceNames": [
+            "The Hindu",
+            "Times of India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "The Hindu Group (family-held)",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.thehindu.com/news/national/saurav-das-ashutosh-ranka-judicial-custody-cjp-seeks-urgent-hearing-in-delhi-high-court/article71604565.ece",
+          "published": "2026-10-20T13:23:47.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 8.7,
+          "photoError": "no image matched the story closely enough (searched \"courthouse columns\")",
+          "photo": null
+        },
+        {
+          "headline": "ASIAN PARA GAMES: INDIA’S MEDAL STORM! 24 MEDALS, 5 GOLDS AS NISHAD, DEEPTHI SHINE",
+          "display": "Asian Para Games: India’s medal storm! 24 medals, 5 golds as Nishad, Deepthi shine",
+          "original": "Asian Para Games: India’s medal storm! 24 medals, 5 golds as Nishad, Deepthi shine",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "Times of India · ESPN India",
+          "sourceNames": [
+            "Times of India",
+            "ESPN India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://timesofindia.indiatimes.com/sports/asian-para-games-2026/indias-medal-storm-24-medals-five-golds-as-nishad-kumar-deepthi-jeevanji-shine-at-asian-para-games/articleshow/135071078.cms",
+          "published": "2026-10-20T13:33:37.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 7.95,
+          "photo": {
+            "path": "data/pending/india/photo-india-3.jpg",
+            "credit": "File photo: Jess M. Escaros Jr. for the Philippine N / Public Domain",
+            "license": "pdm",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:2018_Asian_Para_Games_PH.jpg",
+            "query": "Asian Para Games",
+            "relevance": 0.27,
+            "title": "2018 Asian Para Games PH"
+          }
+        },
+        {
+          "headline": "INDIA WOMEN VS ZIMBABWE WOMEN 2026 - 3RD T20I",
+          "display": "India Women vs Zimbabwe Women 2026 - 3rd T20I",
+          "original": "India Women vs Zimbabwe Women 2026 - 3rd T20I",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "BCCI · The Indian Express",
+          "sourceNames": [
+            "BCCI",
+            "The Indian Express"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Indian Express Group"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE4wem1BanQ4c1IyVElUb3BqdVU3XzlkTVRfWlZ5Wk1fbHR4QTl5NHNGNTFxTnVmcDdiQWdvNEY1M256QXNxZlRlcXhrTm81Tlc4RktrbTBwcFpZYlFLbFRoSEdIb29zbXdKRjFyVFI3ZVlwQzZJUmU4Y2d3?oc=5",
+          "published": "2026-10-20T13:57:37.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 7.8,
+          "photo": {
+            "path": "data/pending/india/photo-india-4.jpg",
+            "credit": "File photo: Vyacheslav Argenberg / CC BY 4.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Hampi,_India,_Stone_ornaments_at_Vijaya_Vitthala_Temple.jpg",
+            "query": "india",
+            "relevance": 0.25,
+            "title": "Hampi, India, Stone ornaments at Vijaya Vitthala Temple"
+          }
+        }
+      ],
+      "usable": true,
+      "section": "india",
+      "sectionLabel": "INDIA"
+    },
+    {
+      "kind": "carousel",
+      "headline": "3 stories",
+      "images": [
+        "data/pending/world/slide-1.png",
+        "data/pending/world/slide-2.png",
+        "data/pending/world/slide-3.png",
+        "data/pending/world/slide-4.png"
+      ],
+      "image": "data/pending/world/slide-1.png",
+      "width": 1080,
+      "height": 1350,
+      "sourceNames": [
+        "Al Jazeera",
+        "The Guardian",
+        "Reuters",
+        "BBC News"
+      ],
+      "stories": [
+        {
+          "headline": "MYANMAR’S DETAINED EX-LEADER SUU KYI RECEIVES PACKAGE FROM KING CHARLES III",
+          "display": "Myanmar’s detained ex-leader Suu Kyi receives package from King Charles III",
+          "original": "Myanmar’s detained ex-leader Suu Kyi receives package from King Charles III",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "Al Jazeera · The Guardian",
+          "sourceNames": [
+            "Al Jazeera",
+            "The Guardian"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Government of Qatar",
+            "Scott Trust"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "QA",
+            "GB"
+          ],
+          "fundings": [
+            "state",
+            "trust"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.aljazeera.com/news/2026/10/20/myanmars-detained-ex-leader-suu-kyi-receives-package-from-king-charles-iii?traffic_source=rss",
+          "published": "2026-10-20T11:07:55.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.1,
+          "photo": {
+            "path": "data/pending/world/photo-world-2.jpg",
+            "credit": "File photo: East Asia and Pacific Media Hub U.S. Dep / Public Domain",
+            "license": "pdm",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Secretary_Clinton_Visits_with_Aung_San_Suu_Kyi_(6441361229).jpg",
+            "query": "Suu Kyi",
+            "relevance": 0.33,
+            "title": "Secretary Clinton Visits with Aung San Suu Kyi (6441361229)"
+          }
+        },
+        {
+          "headline": "ALBERTANS REJECT REFERENDUM ON INDEPENDENCE FROM CANADA",
+          "display": "Albertans reject referendum on independence from Canada",
+          "original": "Albertans reject referendum on independence from Canada",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "Al Jazeera · The Guardian",
+          "sourceNames": [
+            "Al Jazeera",
+            "The Guardian"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Government of Qatar",
+            "Scott Trust"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "QA",
+            "GB"
+          ],
+          "fundings": [
+            "state",
+            "trust"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.aljazeera.com/video/newsfeed/2026/10/20/10-20-alberta-referendum-vote-sv?traffic_source=rss",
+          "published": "2026-10-20T09:42:04.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.1,
+          "photo": {
+            "path": "data/pending/world/photo-world-3.jpg",
+            "credit": "File photo: Wikimedia Commons / Public Domain",
+            "license": "pdm",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Canada_BMNG.png",
+            "query": "Canada",
+            "relevance": 0.2,
+            "title": "Canada BMNG"
+          }
+        },
+        {
+          "headline": "WHAT ARE THE GIANT ‘HEAT STORMS’ NOW SCORCHING THE EARTH?",
+          "display": "What are the giant ‘heat storms’ now scorching the Earth?",
+          "original": "What are the giant ‘heat storms’ now scorching the Earth?",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "Reuters · BBC News",
+          "sourceNames": [
+            "Reuters",
+            "BBC News"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Thomson Reuters (Trust Principles)",
+            "BBC (licence fee)"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB"
+          ],
+          "fundings": [
+            "trust",
+            "state"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9KcFExU3IzV0hqRVctRnF0cDJLUFFfN0hGRktMeVQyc0tmVUNrRHd5MVQ4R3RsVG1HS0xET0FjV0NnNU40RnYxLXR5bDhQMC1EczI4?oc=5",
+          "published": "2026-10-20T11:57:29.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.1,
+          "photo": {
+            "path": "data/pending/world/photo-world-4.jpg",
+            "credit": "File photo: Data: Marc Imhoff/NASA GSFC, Christopher / Public Domain",
+            "license": "pdm",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Earth%27s_City_Lights_by_DMSP,_1994-1995_(large).jpg",
+            "query": "Earth",
+            "relevance": 0.2,
+            "title": "Earth's City Lights by DMSP, 1994 1995 (large)"
+          }
+        }
+      ],
+      "usable": true,
+      "section": "world",
+      "sectionLabel": "WORLD"
     },
     {
       "kind": "carousel",
@@ -1151,46 +1112,43 @@
       "width": 1080,
       "height": 1350,
       "sourceNames": [
-        "BBC News",
-        "The Indian Express"
+        "MillenniumPost",
+        "Business Standard"
       ],
       "stories": [
         {
-          "headline": "GOOGLE CLOUD SAYS 'POWER EVENT' BEHIND OUTAGE HITTING UK BANKS AND WEBSITES",
-          "display": "Google Cloud says 'power event' behind outage hitting UK banks and websites",
-          "original": "Google Cloud says 'power event' behind outage hitting UK banks and websites",
+          "headline": "JIO IS A TECHNOLOGY COMPANY, NOT JUST A TELCO, SAYS AKASH AMBANI AHEAD OF MEGA IPO",
+          "display": "Jio is a technology company, not just a telco, says Akash Ambani ahead of mega IPO",
+          "original": "Jio is a technology company, not just a telco, says Akash Ambani ahead of mega IPO",
           "truncated": false,
           "usable": true,
           "category": "TECHNOLOGY",
-          "source": "BBC News · The Indian Express",
+          "source": "MillenniumPost · Business Standard",
           "sourceNames": [
-            "BBC News",
-            "The Indian Express"
+            "MillenniumPost",
+            "Business Standard"
           ],
           "corroboration": 2,
           "republishers": [],
           "owners": [
-            "BBC (licence fee)",
-            "Indian Express Group"
+            "Business Standard Pvt Ltd"
           ],
-          "ownerCount": 2,
+          "ownerCount": 1,
           "countries": [
-            "GB",
             "IN"
           ],
           "fundings": [
-            "state",
             "commercial"
           ],
-          "unknownOwners": 0,
+          "unknownOwners": 1,
           "concentration": [],
-          "link": "https://www.bbc.co.uk/news/articles/cxdd8mm6qy4mo?at_medium=RSS&at_campaign=rss",
-          "published": "2026-10-20T12:09:25.000Z",
+          "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNZFkzRHprcEhCTkp2MUFvTTNIeGxYRExfTURLX1R0Ty1wN0Q5RTU2eFNLeklDVjA4VkxtOE9RSHdSRldwYVZSYXM3eFhNRjUtbXZMQURic1JiMFc4eEt5RmVtdzZYWWZIQlBLZG8ydkctNWp0MGJDbEFYTU5hOVhlWm5faWhuUklfeldlYWpDVlJ0WVNoT3h0Y1RzbVh6allFTVpHZ3dsWi1Eem9JT2NGazVsYUZsSFFGY2o0Zm9mRmNWdFJi0gHKAUFVX3lxTE9BU2RTNXE3UDBvaWo5b1hIVG04cDF6Ylk0LTBUVXB3Z08waTllX0czdlM2Zm5tUUt3RXc0cEZrcGFFMkp",
+          "published": "2026-10-20T13:49:55.000Z",
           "topic": "tech",
           "section": "tech",
-          "tier": "significant",
-          "score": 11.25,
-          "photoError": "timed out (searched \"Google Cloud\")",
+          "tier": "notable",
+          "score": 7.8,
+          "photoError": "no image matched the story closely enough (searched \"Jio\")",
           "photo": null
         }
       ],
@@ -1242,8 +1200,15 @@
           "section": "health",
           "tier": "notable",
           "score": 7.95,
-          "photoError": "timed out (searched \"Felix Lankester\")",
-          "photo": null
+          "photo": {
+            "path": "data/pending/health/photo-health-2.jpg",
+            "credit": "File photo: U.S. Navy photo by Mass Communication Sp / Public Domain",
+            "license": "pdm",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:US_Navy_071212-N-0193M-416_Felix_Lankester,_project_manager_for_the_Limbe_Wildlife_Center,_introduces_U.S._Navy_Cmdr._Byron_Smith,_kneeling,_and_British_Navy_Cmdr._Nigel_May,_to_the_center%27s_residents_while_giving_a_tour.jpg",
+            "query": "Felix Lankester",
+            "relevance": 0.33,
+            "title": "US Navy 071212 N 0193M 416 Felix Lankester, project manager for the Limbe Wildlife Center, introduces U.S. Navy Cmdr. Byron Smith, kneeling, and British Navy Cmdr. Nigel May, to the center's residents while giving a tour"
+          }
         },
         {
           "headline": "HIMS & HERS HEALTH LAUNCHES ONLINE WEIGHT MANAGEMENT SERVICE FOR MEN IN GERMANY",
@@ -1277,8 +1242,15 @@
           "section": "health",
           "tier": "minor",
           "score": 4.95,
-          "photoError": "timed out (searched \"Germany\")",
-          "photo": null
+          "photo": {
+            "path": "data/pending/health/photo-health-3.jpg",
+            "credit": "File photo: Pieter Brueghel the Elder / Public Domain",
+            "license": "pdm",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Pieter_Brueghel_the_Elder_-_The_Dutch_Proverbs_-_Google_Art_Project.jpg",
+            "query": "Germany",
+            "relevance": 0.14,
+            "title": "Pieter Brueghel the Elder   The Dutch Proverbs   Google Art Project"
+          }
         }
       ],
       "usable": true,
