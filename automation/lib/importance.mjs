@@ -76,6 +76,23 @@ const SIGNIFICANT = [
 /* ── MINOR ─────────────────────────────────────────────────────
    Incremental and vertical. Never a lead, whatever the corroboration. */
 const MINOR = [
+  // Personal honours and appointments. Real, and not news for a general
+  // channel: "WSU professor elected to National Academy of Medicine" went
+  // out as a top-level story.
+  /\b(elected|appointed|named|inducted|nominated)\b[^.]*\b(to|as|a fellow|member|chair|president|director)\b/i,
+  /\b(receives?|wins?|awarded|honoured|honored)\b[^.]*\b(award|prize|honour|honor|medal|fellowship|doctorate)\b/i,
+  // An executive describing their own company. "Jio is a technology company,
+  // not just a telco, says Akash Ambani" is positioning, not an event.
+  // "<Company> is a technology company, not just a telco, says <Executive>"
+  // — a firm describing itself, which is positioning rather than an event.
+  // The first version anchored the name to the end of the string and missed
+  // this one, whose headline carried on afterwards.
+  /\bis\s+(a|an|not just)\b[^.]*,\s*says\b/i,
+  /\bsays\s+[A-Z][\w.'-]+(\s+[A-Z][\w.'-]+)?\s*$/,
+  /\b(ceo|chairman|founder|managing director|chief executive)\b[^.]*\bsays\b/i,
+  // Explainer features. A question is not a report of something happening.
+  /^\s*(what|why|how|who|when|where)\b[^.]*\?/i,
+  /^\s*(what|why|how)\s+(is|are|was|were|do|does|did|to)\b/i,
   // One company's own news
   /\b(launches?|unveils?|introduc\w+|announces?|releases?|rolls? out|debuts?)\b[^.]*\b(new |its |the )?(product|app|model|version|feature|service|phone|chip|card|platform|tool)\b/i,
   // One company shipping a thing, named or not: "Apple launches iPhone 18

@@ -97,6 +97,10 @@ export function sortIntoSections(ranked, {
         if (taken.has(c)) continue;
         if (sectionOf(c.lead.topic, c.lead.title) !== section.id) continue;
         if (capped && (perTopic.get(c.lead.topic) || 0) >= maxPerTopic) continue;
+        // A minor story never publishes — not in Top, and not riding along in
+        // a section either. The old rule only required one story above minor
+        // per section, so a product launch still went out beside real news.
+        if (c.tier === 'minor') continue;
         if (!eligible(c, chosen, titlesInTop)) continue;
         chosen.push(c);
         taken.add(c);
@@ -118,8 +122,9 @@ export function sortIntoSections(ranked, {
   // thinks they are the day's business news. Top is kept even when thin,
   // because an empty Top means the whole run found nothing, and that should
   // be visible rather than quietly dropped.
-  const worthPosting = s =>
-    s.clusters.length && s.clusters.some(c => c.tier && c.tier !== 'minor');
+  // Nothing minor gets this far now, so a section is worth posting when it
+  // has anything in it at all.
+  const worthPosting = s => s.clusters.length > 0;
 
   return out.filter(s => s.id === 'top' || worthPosting(s));
 }

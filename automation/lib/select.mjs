@@ -117,6 +117,11 @@ const JUNK = [
   // something that happened.
   /^\s*(podcast|listen|watch|video|live blog|liveblog|in charts?|explained)\s*[:|-]/i,
   /\b(episode \d+|full episode|catch up on)\b/i,
+  // A fixture listing is not a story. "India Women vs Zimbabwe Women 2026 -
+  // 3rd T20I" was published as news; it is a line in a schedule.
+  /\bvs\.?\b[^.]*\b(\d+(st|nd|rd|th)\s+)?(t20i?|odi|test|match|leg|round|final|semi|quarter)\b/i,
+  /\b(live\s+(score|blog|updates)|scorecard|playing\s+xi|match\s+(preview|report)|day\s+[1-5]\b)/i,
+  /\b(full\s+squad|probable\s+xi|head\s+to\s+head|points\s+table|fixtures?)\b/i,
   // A machine printing prices is not reporting. "Bitcoin End Price (Previous
   // Epoch): $64,990 Current Price (C…" went out in a BUSINESS section.
   /\b(end price|current price|previous epoch|price update)\b/i,
