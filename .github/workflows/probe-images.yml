@@ -1,0 +1,26 @@
+name: Probe the image API
+
+# Eight of thirteen stories came back "timed out". Diagnosing that through
+# the daily run costs twenty minutes a guess, and the first guess was wrong.
+# This answers it in under a minute.
+#
+# Touch .github/probe-now and push.
+
+on:
+  push:
+    paths: ['.github/probe-now']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node automation/probe-images.mjs
