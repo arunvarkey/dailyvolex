@@ -108,6 +108,15 @@ const JUNK = [
   // something that happened.
   /^\s*(podcast|listen|watch|video|live blog|liveblog|in charts?|explained)\s*[:|-]/i,
   /\b(episode \d+|full episode|catch up on)\b/i,
+  // A machine printing prices is not reporting. "Bitcoin End Price (Previous
+  // Epoch): $64,990 Current Price (C…" went out in a BUSINESS section.
+  /\b(end price|current price|previous epoch|price update)\b/i,
+  /^[A-Z]{2,5}\/[A-Z]{2,5}\s*[:=]/,                    // "BTC/USD: 64,990"
+  // A roundup of the day is what this account publishes, not a story it
+  // carries. "Here's what happened in crypto today" is somebody else's digest.
+  /^\s*here'?s what happened\b/i,
+  /\bwhat happened in \w+ (today|this week)\b/i,
+  /^\s*(morning|evening|weekly|daily) (wrap|roundup|round-up|brief)\b/i,
 ];
 
 /* Marketing written to look like news. A company announcing its own product
