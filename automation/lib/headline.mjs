@@ -19,6 +19,34 @@ const PREFIXES = [
   /^(breaking|exclusive|just in|update|live|watch|explained|analysis|opinion)\s*[:–—-]\s*/i,
 ];
 
+/* A section label the outlet pinned to the front of its own headline:
+   "Bitcoin News | Strategy Bought $22 Million of Bitcoin Last Week". It is
+   furniture from their page, not part of what they reported, and it went out
+   on a card.
+ *
+ * The first attempt at this was a loose regex, and it turned "Sensex falls
+ * 900 points | markets update" into "markets update" — it threw away the
+ * headline and kept the furniture. So the test is narrow and spelled out: a
+ * label is two or three words, carries no digits, and is much shorter than
+ * what follows it. Anything else keeps its pipe. */
+function stripLeadingSection(t) {
+  const i = t.indexOf('|');
+  if (i < 0) return t;
+  const head = t.slice(0, i).trim();
+  const rest = t.slice(i + 1).trim();
+  if (!head || !rest) return t;
+
+  const words = head.split(/\s+/);
+  const looksLikeLabel =
+    words.length >= 2 && words.length <= 3
+    && head.length <= 24
+    && !/\d/.test(head)
+    && /^[A-Z]/.test(head)
+    && rest.length >= head.length * 2;       // the story, not the other half
+
+  return looksLikeLabel ? rest : t;
+}
+
 /* Phrases that can go without changing what is being claimed. */
 const FILLER = [
   /\b(according to (a )?(new )?(report|reports|sources|data)|sources say|report says|reports say)\b[,:]?\s*/gi,
@@ -30,6 +58,7 @@ export function tidy(raw) {
   let t = String(raw || '').replace(/\s+/g, ' ').trim();
   t = t.replace(TRAILING_SOURCE, '');
   t = t.replace(TRAILING_BYLINE, '');
+  t = stripLeadingSection(t);
   for (const p of PREFIXES) t = t.replace(p, '');
   for (const f of FILLER) t = t.replace(f, ' ');
   return t.replace(/\s+/g, ' ').replace(/\s+([,.;:])/g, '$1').trim();

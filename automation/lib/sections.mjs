@@ -45,6 +45,10 @@ export function sectionLabel(id) {
 export function sortIntoSections(ranked, {
   top = [],                       // clusters already taken for Top stories
   perSection = 3,
+  // Business is crypto, India markets and world markets together, and on a
+  // busy crypto day it came out as three Bitcoin stories — one subject told
+  // three times, which is not a section, it is a feed.
+  maxPerTopic = 2,
   eligible = () => true,
   allowRepeatsInSections = false,
 } = {}) {
@@ -56,14 +60,26 @@ export function sortIntoSections(ranked, {
   for (const section of SECTIONS) {
     if (section.id === 'top') continue;
     const chosen = [];
-    for (const c of ranked) {
-      if (chosen.length >= perSection) break;
-      if (taken.has(c)) continue;
-      if (sectionOf(c.lead.topic) !== section.id) continue;
-      if (!eligible(c, chosen, titlesInTop)) continue;
-      chosen.push(c);
-      taken.add(c);
-    }
+    const perTopic = new Map();
+
+    const consider = (capped) => {
+      for (const c of ranked) {
+        if (chosen.length >= perSection) break;
+        if (taken.has(c)) continue;
+        if (sectionOf(c.lead.topic) !== section.id) continue;
+        if (capped && (perTopic.get(c.lead.topic) || 0) >= maxPerTopic) continue;
+        if (!eligible(c, chosen, titlesInTop)) continue;
+        chosen.push(c);
+        taken.add(c);
+        perTopic.set(c.lead.topic, (perTopic.get(c.lead.topic) || 0) + 1);
+      }
+    };
+
+    consider(true);
+    // Then fill any remaining slot without the cap, rather than running a
+    // shorter section on a day when one subject genuinely is the news.
+    consider(false);
+
     out.push({ id: section.id, label: section.label, clusters: chosen });
   }
 

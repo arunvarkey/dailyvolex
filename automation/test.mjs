@@ -344,6 +344,51 @@ ok('a story already offered for approval does not come back',
    more, and the first live sectioned run filled them with a podcast running
    order and two vendor press releases. */
 
+/* From the first unattended sectioned run. */
+ok('a section label the outlet pinned to its own headline is stripped',
+  tidy('Bitcoin News | Strategy Bought $22 Million of Bitcoin Last Week')
+    === 'Strategy Bought $22 Million of Bitcoin Last Week',
+  tidy('Bitcoin News | Strategy Bought $22 Million of Bitcoin Last Week'));
+/* The first attempt at that turned this into "markets update" — it kept the
+   furniture and threw away the headline. */
+ok('a pipe in the middle of a real headline is left alone',
+  tidy('Sensex falls 900 points | markets update') === 'Sensex falls 900 points | markets update'
+  && tidy('Apple | Samsung rivalry deepens') === 'Apple | Samsung rivalry deepens');
+ok('a machine printing prices is not reporting',
+  isJunk('Bitcoin End Price (Previous Epoch): $64,990 Current Price (C')
+  && isJunk('BTC/USD: 64,990 and falling'));
+ok('somebody else’s daily roundup is not our story',
+  isJunk('Here’s what happened in crypto today')
+  && isJunk('Morning wrap: what you missed'));
+ok('a real story that mentions a price is still a story',
+  !isJunk('Strive Buys $335 Million in Bitcoin After Investors Pour In $369M')
+  && !isJunk('Oil prices slip on demand concerns'));
+
+ok('one subject cannot fill a whole section', (() => {
+  const now = Date.now();
+  const mk = (t, s, topic) => ({ title: t, source: s, topic, published: now - 600000, weight: 1 });
+  const items = [];
+  // Four genuinely separate crypto stories, each corroborated, and one
+  // markets story. (An earlier version of this fixture used near-identical
+  // titles, which clustering correctly merged into one story — so it proved
+  // nothing about the cap.)
+  const cryptoPairs = [
+    ['Bitcoin ETF inflows hit a record in October',  'Bitcoin ETF inflows reach a record for October'],
+    ['Ethereum upgrade ships on mainnet overnight',  'Ethereum mainnet upgrade ships overnight'],
+    ['Solana outage halts trading for four hours',   'Solana outage stops trading for four hours'],
+    ['Coinbase wins its appeal in the custody case', 'Coinbase wins custody case appeal'],
+  ];
+  for (const [a, b] of cryptoPairs) {
+    items.push(mk(a, 'CoinDesk', 'crypto'));
+    items.push(mk(b, 'Cointelegraph', 'crypto'));
+  }
+  items.push(mk('Sensex closes at a record high', 'Economic Times', 'markets-india'));
+  items.push(mk('Sensex closes at record high', 'NDTV', 'markets-india'));
+  const biz = selectSections(items, { count: 0, perSection: 3 }).find(s => s.id === 'business');
+  const crypto = biz.clusters.filter(c => c.lead.topic === 'crypto').length;
+  return biz.clusters.length === 3 && crypto <= 2;
+})(), 'BUSINESS came out as three Bitcoin stories');
+
 ok('a podcast running order is not a story',
   isJunk('PODCAST: Ukraine intelligence sharing, France reels and Alberta’s vote')
   && isJunk('WATCH: Protesters gather outside parliament'));
