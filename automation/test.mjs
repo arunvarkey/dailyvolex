@@ -10,6 +10,8 @@ import { parseFeed } from './lib/rss.mjs';
 import { licenceFrom, toResult as commonsResult } from './lib/commons.mjs';
 import { altForStory, altForCover, altForEntry, altForClosing } from './lib/alttext.mjs';
 import { statFor, prefersStat } from './lib/statcard.mjs';
+import { secondsForStory, secondsForCover, SECONDS_FOR_CLOSING, reelTimings,
+         totalSeconds, checkDuration, ffmpegArgs, MIN_SECONDS, MAX_SECONDS } from './lib/reelplan.mjs';
 import { tierOf, isCryptoVertical, TIER_POINTS } from './lib/importance.mjs';
 import { similarity, cluster, selectStories, selectSections, isRepeat, isTopical, isAdvice,
          isSpeculation, isJunk, isPressRelease, isUnverified, isOpinion, isTooThin,
@@ -1397,6 +1399,92 @@ ok(`${kind} caption names the sources`, /Reuters/.test(caption) && /CoinDesk/.te
 ok(`${kind} caption fits Instagram`, caption.length <= 2200, `${caption.length} chars`);
 ok(`${kind} caption is not a bare count`, !/^\d+ stories/.test(caption.trim()), caption.slice(0,24));
 }
+
+
+/* ── Reel ─────────────────────────────────────────────────────────
+   A Reel reaches people a carousel does not, and the pacing is the only
+   craft in it: a card held too briefly is a card nobody read. */
+
+ok('a longer headline is held longer',
+  secondsForStory({ display: 'Earthquake kills at least 40 in northern Afghanistan, officials say' })
+  > secondsForStory({ display: 'Sensex plunges 876 points' }));
+ok('no card is held less than it takes to read one',
+  secondsForStory({ display: 'Fire out' }) >= 3.4);
+ok('no card holds the reel hostage',
+  secondsForStory({ display: 'word '.repeat(80) }) <= 6.5);
+ok('the cover grows with the number of headlines it lists',
+  secondsForCover(5) > secondsForCover(2) && secondsForCover(2) >= 2.6);
+
+const stories3 = [
+  { display: 'Earthquake kills at least 40 in northern Afghanistan' },
+  { display: 'Sensex plunges 876 points as banks drag the index lower' },
+  { display: 'RBI cuts repo rate by 25 basis points' },
+];
+const frames5 = ['a.png', 'b.png', 'c.png', 'd.png', 'e.png'];
+const t5 = reelTimings(frames5, stories3);
+ok('a reel is a cover, a card per story, then the closing card',
+  t5.map(t => t.kind).join(',') === 'cover,story,story,story,closing', t5.map(t => t.kind).join(','));
+ok('the closing card is not paced as a headline',
+  t5[4].seconds === SECONDS_FOR_CLOSING);
+ok('every frame rendered is a frame timed', t5.length === frames5.length);
+
+const fade = 0.45;
+const total = totalSeconds(t5, fade);
+ok('the crossfades are taken out of the running time',
+  Math.abs(total - (t5.reduce((n, t) => n + t.seconds, 0) - 4 * fade)) < 0.05, `${total}`);
+ok('a normal day is a reel Instagram will take',
+  total > MIN_SECONDS && total < MAX_SECONDS, `${total}s`);
+ok('a reel too short to publish is refused before the encode',
+  checkDuration(2) !== null && /under/.test(checkDuration(2)));
+ok('a reel over the limit is refused before the encode',
+  checkDuration(MAX_SECONDS + 1) !== null);
+ok('a publishable length is not refused', checkDuration(total) === null);
+
+const args = ffmpegArgs(t5, { out: 'out.mp4', fps: 30, fade });
+
+/* The bug this exists to stop: the image demuxer loops a still at 25fps
+   whatever the output rate is, so without an explicit input frame rate every
+   clip came out five sixths of its length, the crossfade offsets fell past
+   the end of the first clip, and ffmpeg exited 0 having written a
+   3.8-second video of one card. */
+ok('every still is fed at the output frame rate', (() => {
+  const inputs = args.reduce((n, a, i) => a === '-i' ? n + 1 : n, 0);
+  const rates = args.reduce((n, a, i) => a === '-framerate' && args[i + 1] === '30' ? n + 1 : n, 0);
+  return inputs === frames5.length + 1 && rates === frames5.length;
+})(), 'a clip shorter than its timing silently truncates the reel');
+
+const fc = args[args.indexOf('-filter_complex') + 1];
+ok('each card is crossfaded into the next',
+  (fc.match(/xfade=/g) || []).length === frames5.length - 1);
+ok('the crossfades start before the outgoing card runs out', (() => {
+  const offsets = [...fc.matchAll(/offset=([0-9.]+)/g)].map(m => Number(m[1]));
+  if (offsets.length !== 4) return false;
+  // Each offset is the previous card's end less one fade, so they rise and
+  // the last one leaves room for the closing card.
+  const rising = offsets.every((o, i) => i === 0 || o > offsets[i - 1]);
+  return rising && Math.abs(offsets[0] - (t5[0].seconds - fade)) < 0.05
+    && offsets[3] + t5[4].seconds - total < 0.05;
+})(), 'an offset past the end of a clip drops every card after it');
+ok('the frame is upright and the size Instagram wants',
+  fc.includes('1080x1920') && args.includes('-pix_fmt') && args[args.indexOf('-pix_fmt') + 1] === 'yuv420p');
+ok('the drift never scales a card up by more than a few per cent', (() => {
+  const zs = [...fc.matchAll(/z='([0-9.]+)-/g)].map(m => Number(m[1]));
+  return zs.length === frames5.length && zs.every(z => z <= 1.08);
+})(), 'type that shimmers is type nobody reads');
+ok('the output is cut to the length the cards add up to',
+  args[args.indexOf('-t') + 1] !== undefined
+  && Number(args[args.lastIndexOf('-t') + 1]) === total, `${args[args.lastIndexOf('-t') + 1]} vs ${total}`);
+ok('a reel carries an audio track',
+  args.includes('-c:a') && /anullsrc/.test(args.join(' ')),
+  'some of Meta processing treats a videoless-audio file as broken');
+ok('nothing in the ffmpeg call goes through a shell',
+  Array.isArray(args) && args.every(a => typeof a === 'string'));
+ok('a reel of one card still builds', (() => {
+  const one = reelTimings(['only.png'], []);
+  const a = ffmpegArgs(one, { out: 'x.mp4' });
+  return one.length === 1 && !/xfade/.test(a[a.indexOf('-filter_complex') + 1]);
+})());
+
 
 console.log(`\n${passed} passed, ${failed} failed`);
 process.exit(failed ? 1 : 0);

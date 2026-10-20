@@ -33,8 +33,13 @@ function arg(name, fallback) {
 }
 
 /* Serve the app from disk. file:// would do, but a real origin keeps the page
-   behaving exactly as it does on GitHub Pages. */
-function serve(root) {
+   behaving exactly as it does on GitHub Pages.
+ *
+ * Exported, along with the card builders and the capture below, because the
+ * reel stage renders the same cards upright and must render them the same
+ * way. Two copies of "what a DailyVolex card looks like" would drift, and the
+ * one that drifted would be the one nobody was looking at. */
+export function serve(root) {
   return new Promise(resolve => {
     const server = createServer(async (req, res) => {
       try {
@@ -52,7 +57,7 @@ function serve(root) {
 
 /* One card carrying every headline — the classic daily-roundup format, and a
    better fit than a single Breaking card when there is no video behind it. */
-function digestUrl(port, stories, opts) {
+export function digestUrl(port, stories, opts) {
   const q = new URLSearchParams({
     auto: '1', layout: 'stories', theme: opts.theme, ratio: opts.ratio,
     label: opts.label, date: opts.date, ticker: opts.ticker, bg: opts.bg,
@@ -68,7 +73,7 @@ function digestUrl(port, stories, opts) {
  * has just given you their whole attention and is deciding whether to follow.
  * It says what the channel does rather than shouting FOLLOW, because what
  * this channel does is the reason to follow it. */
-function closingUrl(port, opts) {
+export function closingUrl(port, opts) {
   const q = new URLSearchParams({
     auto: '1', layout: 'stories', theme: opts.theme, ratio: opts.ratio,
     label: 'HOW THIS IS MADE', date: opts.date, ticker: opts.ticker, bg: 'editorial',
@@ -118,7 +123,7 @@ function dropDuplicatePhotos(stories) {
 
 /* What goes behind this card when there is no photograph. Named here so the
    log line and the URL cannot disagree about it. */
-function backdropOf(story, opts) {
+export function backdropOf(story, opts) {
   // A correction is never illustrated. The first one rendered came out over a
   // market chart, because the text it was correcting said "Sensex" and
   // "points" — a chart behind an apology is decoration, and a chart that
@@ -177,7 +182,7 @@ async function imageFor(story, index, opts, dir = '') {
   return null;
 }
 
-function storyUrl(port, story, opts) {
+export function storyUrl(port, story, opts) {
   /* A headline that is really about a number gets the stat layout: one huge
      figure, with the headline underneath in full. Every card in every post
      being the same shape is most of why a long post reads flat, and the app
@@ -219,7 +224,7 @@ function storyUrl(port, story, opts) {
   return `http://127.0.0.1:${port}/index.html?${q}`;
 }
 
-async function renderUrl(url, index) {
+export async function renderUrl(url, index) {
   const chrome = await launchChrome({ port: 9333 + index });
   try {
     const page = await openPage(chrome.port, url);
@@ -441,4 +446,7 @@ async function main() {
   }
 }
 
-main().catch(err => { console.error('render failed:', err.message); process.exit(1); });
+/* Only when run as a stage. The reel stage imports the card builders above,
+   and an unguarded call here would make that import re-render the whole day. */
+if (process.argv[1] && process.argv[1].endsWith('render.mjs'))
+  main().catch(err => { console.error('render failed:', err.message); process.exit(1); });
