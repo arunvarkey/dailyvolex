@@ -61,6 +61,27 @@ function digestUrl(port, stories, opts) {
   return `http://127.0.0.1:${port}/index.html?${q}`;
 }
 
+/* The last slide of every carousel.
+ *
+ * A post used to stop dead on its final story, which is the moment someone
+ * has just given you their whole attention and is deciding whether to follow.
+ * It says what the channel does rather than shouting FOLLOW, because what
+ * this channel does is the reason to follow it. */
+function closingUrl(port, opts) {
+  const q = new URLSearchParams({
+    auto: '1', layout: 'stories', theme: opts.theme, ratio: opts.ratio,
+    label: 'HOW THIS IS MADE', date: opts.date, ticker: opts.ticker, bg: 'editorial',
+  });
+  for (const line of [
+    'Every story carried by two or more independent newsrooms',
+    'Outlets named on every card, with who owns them',
+    'Pictures are openly licensed and credited',
+    'Corrections posted in the open, never deleted',
+    `Follow ${opts.handle || '@dailyvolex'}`,
+  ]) q.append('item', line);
+  return `http://127.0.0.1:${port}/index.html?${q}`;
+}
+
 /* Try for a photograph; fall back to a generated backdrop. Never let this stop
    a run — a post with a backdrop behind it is fine, a failed run is not. */
 const usedPhotos = new Set();       // one picture must not appear twice in a post
@@ -279,6 +300,13 @@ async function main() {
         await writeFile(join(OUT_DIR, dir, name), slide.png);
         slides.push({ file: name, kind: 'story', story, ...slide });
       }
+
+      // The closing card. Last, so it is what someone is looking at when they
+      // decide whether to follow.
+      const closing = await renderUrl(closingUrl(port, carouselOpts), stories.length + 1);
+      const closingName = `slide-${stories.length + 2}.png`;
+      await writeFile(join(OUT_DIR, dir, closingName), closing.png);
+      slides.push({ file: closingName, kind: 'closing', ...closing });
 
       for (const s of slides) {
         console.log(`rendered ${label ? label + '/' : ''}${s.file}  ${s.dims.w}x${s.dims.h}`
