@@ -39,17 +39,20 @@ jobs:
           node automation/test-workflows.mjs
 
       - name: Check the graphics actually came out
-        # Sections moved the slides into data/pending/<section>/, so the old
-        # top-level glob stopped matching anything. Finding none at all is
-        # now a failure in its own right rather than a quietly empty loop.
+        # Finding none at all is a failure in its own right rather than a
+        # quietly empty loop — which is what it was when sections moved the
+        # slides and the old top-level glob stopped matching anything.
+        # Slides are JPEG: a card is type over a gradient or a photograph,
+        # which is what JPEG is for, and as PNG the same fifteen slides came
+        # to 10.5 MB against 1.6 MB.
         run: |
           COUNT=0
           while IFS= read -r f; do
             SIZE=$(stat -c%s "$f")
-            test "$SIZE" -gt 20000 || { echo "$f is suspiciously small ($SIZE bytes)"; exit 1; }
+            test "$SIZE" -gt 8000 || { echo "$f is suspiciously small ($SIZE bytes)"; exit 1; }
             echo "ok  $f  $((SIZE/1024)) KB"
             COUNT=$((COUNT + 1))
-          done < <(find data/pending \( -name 'slide-*.png' -o -name 'story-*.png' \) | sort)
+          done < <(find data/editions -name 'slide-*.jpg' | sort)
           test "$COUNT" -gt 0 || { echo "no graphics were rendered at all"; exit 1; }
           echo "$COUNT graphic(s) checked"
 
@@ -57,5 +60,5 @@ jobs:
         if: always()
         with:
           name: sample-graphics
-          path: data/pending/
+          path: data/editions/
           retention-days: 7

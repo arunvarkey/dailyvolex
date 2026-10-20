@@ -19,7 +19,8 @@
  *
  *   node automation/reel.mjs [--section top] [--fade 0.45] [--fps 30]
  *
- * Writes data/pending/<section>/reel.mp4 and records it in the shortlist.
+ * Writes <edition>/<section>/reel.mp4 and records it on the edition as a
+ * second post of that section, beside the carousel.
  * Never required: a day with no Reel is a day with a carousel, which is the
  * post that matters. The workflow runs this with continue-on-error for that
  * reason.
@@ -30,13 +31,13 @@ import { mkdtemp, writeFile, rm, stat, mkdir } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { readJson, writeJson } from './lib/store.mjs';
-import { serve, renderUrl, digestUrl, closingUrl, storyUrl } from './render.mjs';
+import { serve, renderUrl, cardUrl } from './render.mjs';
+import { composeReel } from './lib/compose.mjs';
+import { load, save, dirFor, attachPost } from './lib/edition.mjs';
 import { reelTimings, totalSeconds, checkDuration, ffmpegArgs, MIN_SECONDS } from './lib/reelplan.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(HERE, '..');
-const SHORTLIST = join(ROOT, 'data', 'shortlist.json');
 
 function arg(name, fallback) {
   const i = process.argv.indexOf(`--${name}`);
@@ -87,16 +88,18 @@ function probe(file) {
 }
 
 async function main() {
-  const shortlist = await readJson(SHORTLIST, null);
-  const out = shortlist?.output;
-  if (!out?.length) throw new Error('nothing rendered yet — run render.mjs first');
-
+  const edition = await load(ROOT, arg('edition'));
   const wanted = arg('section', 'top');
-  const entry = out.find(e => e.section === wanted) || (out.length === 1 ? out[0] : null);
-  if (!entry) throw new Error(
-    `no section "${wanted}" in this post — it has ${out.map(e => e.section || 'post').join(', ')}`);
+  const section = edition.sections.find(s => s.id === wanted)
+    || (edition.sections.length === 1 ? edition.sections[0] : null);
+  if (!section) throw new Error(
+    `no section "${wanted}" in this edition — it has `
+    + edition.sections.map(s => s.id).join(', '));
 
-  const stories = (entry.stories || []).filter(s => s.usable !== false);
+  const carousel = (section.posts || []).find(p => p.kind === 'carousel');
+  if (!carousel) throw new Error(`${section.label} has not been rendered yet`);
+
+  const stories = section.stories.filter(s => s.usable !== false);
   if (!stories.length) throw new Error('that section has no stories to put in a reel');
 
   if (spawnSync('ffmpeg', ['-version']).status !== 0)
@@ -105,12 +108,18 @@ async function main() {
   const fps  = Math.max(23, Math.min(60, parseInt(arg('fps', '30'), 10) || 30));
   const fade = Math.max(0, Math.min(1, Number(arg('fade', '0.45')) || 0.45));
 
-  /* The same card options the carousel was rendered with, upright. Reading
-     them back from the shortlist rather than re-deriving defaults means the
-     reel cannot quietly use a different theme or ticker from the post it
-     belongs to. */
-  const opts = { ...(shortlist.options || {}), ratio: '9:16',
-                 label: entry.sectionLabel || 'TOP STORIES' };
+  /* The same cards, upright. composeReel keeps every choice the carousel
+     made — layout, figure, backdrop, photograph — so a reel can never show a
+     different card from the post it belongs to, and it makes no image-search
+     calls at all. */
+  const specs = composeReel(stories, {
+    theme: arg('theme', 'bbc'),
+    ticker: 'DAILYVOLEX  ···  TODAY’S NEWS  ···  ',
+    date: new Date().toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' }),
+    label: section.label,
+    bg: 'chart',
+    posy: '0',
+  });
 
   // Frames live outside data/, so a run cannot commit eight megabytes of PNG
   // alongside the one file that is actually needed.
@@ -118,19 +127,16 @@ async function main() {
   const { server, port } = await serve(ROOT);
   const frames = [];
   try {
-    const shoot = async (url, n) => {
-      const { png, dims } = await renderUrl(url, n);
+    for (const [i, spec] of specs.entries()) {
+      // PNG for the frames: they are read once by ffmpeg and deleted, so
+      // there is nothing to gain by throwing information away first.
+      const { bytes, dims } = await renderUrl(cardUrl(port, spec), i, { quality: 0 });
       if (dims.w !== 1080 || dims.h !== 1920)
         throw new Error(`a reel frame came out ${dims.w}x${dims.h}, not 1080x1920`);
-      const file = join(work, `frame-${String(n + 1).padStart(2, '0')}.png`);
-      await writeFile(file, png);
+      const file = join(work, `frame-${String(i + 1).padStart(2, '0')}.png`);
+      await writeFile(file, bytes);
       frames.push(file);
-    };
-
-    await shoot(digestUrl(port, stories, opts), 0);
-    for (const [i, story] of stories.entries())
-      await shoot(storyUrl(port, story, { ...opts, layout: 'breaking' }), i + 1);
-    await shoot(closingUrl(port, opts), stories.length + 1);
+    }
   } finally {
     server.close();
   }
@@ -140,14 +146,12 @@ async function main() {
   const refusal = checkDuration(seconds);
   if (refusal) { await rm(work, { recursive: true, force: true }); throw new Error(refusal); }
 
-  for (const t of timings)
-    console.log(`  ${t.kind.padEnd(8)} ${t.seconds}s`);
+  for (const t of timings) console.log(`  ${t.kind.padEnd(8)} ${t.seconds}s`);
   console.log(`  ${timings.length} cards, ${seconds}s with ${fade}s crossfades`);
 
-  const dir = entry.section || '';
-  await mkdir(join(ROOT, 'data', 'pending', dir), { recursive: true });
-  const rel = `data/pending/${dir ? dir + '/' : ''}reel.mp4`;
+  const rel = `${dirFor(edition.id)}/${section.id}/reel.mp4`;
   const outFile = join(ROOT, rel);
+  await mkdir(dirname(outFile), { recursive: true });
 
   try {
     await run('ffmpeg', ffmpegArgs(timings, { out: outFile, fps, fade }));
@@ -179,18 +183,20 @@ async function main() {
     console.log('  WARNING: ffprobe is not available, so the file could not be checked');
   }
 
-  entry.reel = {
-    file: rel,
-    cover: entry.image || null,       // the carousel cover, as the thumbnail
-    seconds: made?.seconds ?? seconds,
-    width: 1080, height: 1920,
-    bytes: size,
+  attachPost(edition, section.id, {
+    kind: 'reel',
+    id: `${section.id}-reel`,
+    files: [rel],
+    cover: carousel.cover,               // the carousel cover, as the thumbnail
+    caption: carousel.caption,
     // Said out loud in the data, not only in a comment: whoever reads this
     // record later should not have to work out why the reel has no alts.
-    alt: 'Instagram does not accept alt text on a reel; the caption carries every headline.',
-    built: new Date().toISOString(),
-  };
-  await writeJson(SHORTLIST, shortlist);
+    alts: '',
+    noAlts: 'Instagram does not accept alt text on a reel; the caption carries every headline.',
+    seconds: made?.seconds ?? seconds,
+    bytes: size,
+  });
+  await save(ROOT, edition);
 
   console.log(`\nreel: ${rel}  ${(size / 1024 / 1024).toFixed(2)} MB`);
 }

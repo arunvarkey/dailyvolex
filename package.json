@@ -6,17 +6,18 @@
   "scripts": {
     "test": "node automation/test.mjs && node automation/test-token.mjs",
     "test:all": "npm test && npm run build:sample && node automation/test-workflows.mjs",
-    "build:sample": "node automation/shortlist.mjs --fixtures --quiet && node automation/render.mjs --sections --ratio 4:5 && node automation/caption.mjs --all",
+    "build:sample": "node automation/shortlist.mjs --fixtures --quiet && node automation/render.mjs --ratio 4:5 && node automation/caption.mjs --all",
     "shortlist": "node automation/shortlist.mjs",
-    "render": "node automation/render.mjs --sections --ratio 4:5",
+    "render": "node automation/render.mjs --ratio 4:5",
     "caption": "node automation/caption.mjs --all",
     "token": "node automation/token-check.mjs",
-    "build:sample:strict": "node automation/shortlist.mjs --fixtures --quiet && node automation/render.mjs --sections --ratio 4:5 --require-fonts && node automation/caption.mjs --all",
+    "build:sample:strict": "node automation/shortlist.mjs --fixtures --quiet && node automation/render.mjs --ratio 4:5 --require-fonts && node automation/caption.mjs --all",
     "day": "node automation/dv.mjs day",
     "reel": "node automation/reel.mjs --section top",
     "offer": "node automation/dv.mjs offer",
     "plan": "node automation/dv.mjs plan",
-    "build:day": "node automation/shortlist.mjs && node automation/render.mjs --sections --ratio 4:5 && node automation/caption.mjs --all && node automation/reel.mjs --section top && node automation/dv.mjs day"
+    "build:day": "node automation/shortlist.mjs && node automation/render.mjs --ratio 4:5 && node automation/caption.mjs --all && node automation/reel.mjs --section top && node automation/dv.mjs day",
+    "prune": "node automation/dv.mjs prune"
   },
   "devDependencies": {
     "js-yaml": "^4.1.0"

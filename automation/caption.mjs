@@ -9,9 +9,9 @@
 
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { readJson, writeJson } from './lib/store.mjs';
 import { correctionCaption } from './correct.mjs';
 import { writeFile } from 'node:fs/promises';
+import { load, save, dirFor, attachPost } from './lib/edition.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(HERE, '..');
@@ -76,38 +76,44 @@ export function buildCaption(entry, { handle = '@dailyvolex' } = {}) {
   return lines.join('\n').slice(0, 2200);
 }
 
-/* Each post needs its own caption file for the publish step to pick up. A
-   sectioned post is named by its section, because the publish step is told
-   which sections to post by name and matching that to an index would be one
-   more place for the wrong caption to end up on the right picture. */
-async function writeCaption(entry, index) {
-  const name = entry.section ? `caption-${entry.section}.txt` : `caption-${index + 1}.txt`;
-  const file = join(ROOT, 'data', 'pending', name);
-  const caption = buildCaption(entry);
-  await writeFile(file, caption, 'utf8');
-  return { file, caption };
+/* A section's caption, written beside its slides.
+ *
+ * Named by its section rather than by an index: the publish step is told
+ * which posts to make by name, and matching that to a number was one more
+ * place for the wrong caption to end up on the right picture — which is
+ * exactly what happened when sections landed and the breaking watch kept
+ * reading caption-1.txt. The path is recorded on the post, so nothing has to
+ * reconstruct it from a convention ever again.
+ */
+function entryFor(section) {
+  return {
+    kind: 'carousel',
+    section: section.id,
+    sectionLabel: section.label,
+    stories: section.stories,
+    sourceNames: [...new Set(section.stories.flatMap(s => s.sourceNames || [s.source]))],
+  };
 }
 
 async function main() {
-  const shortlist = await readJson(join(ROOT, 'data', 'shortlist.json'), null);
-  const out = shortlist?.output || shortlist?.stories;
-  if (!out?.length) throw new Error('nothing rendered yet — run render.mjs first');
+  const edition = await load(ROOT, arg('edition'));
+  const only = arg('section');
 
-  if (FLAG('all')) {
-    for (const [i, entry] of out.entries()) {
-      const { file } = await writeCaption(entry, i);
-      console.log(`${(entry.sectionLabel || 'POST').padEnd(12)} -> ${file}`);
-    }
-    return;
+  for (const section of edition.sections) {
+    if (only && section.id !== only) continue;
+    if (!section.posts?.length) continue;         // nothing rendered for it
+    const rel = `${dirFor(edition.id)}/caption-${section.id}.txt`;
+    const caption = buildCaption(entryFor(section));
+    await writeFile(join(ROOT, rel), caption, 'utf8');
+
+    // Every post of the section carries the same caption: a reel of the top
+    // stories is the top stories.
+    for (const post of section.posts) attachPost(edition, section.id, { ...post, caption: rel });
+    console.log(`${section.label.padEnd(12)} -> ${rel}`);
+    if (!FLAG('all') && !only) console.log('\n' + caption);
   }
 
-  const index = Math.max(0, parseInt(arg('index', '0'), 10) || 0);
-  const entry = out[index];
-  if (!entry) throw new Error(`no entry at index ${index}`);
-
-  const { file, caption } = await writeCaption(entry, index);
-  console.log(caption);
-  console.log(`\nwritten to ${file}`);
+  await save(ROOT, edition);
 }
 
 if (process.argv[1] && process.argv[1].endsWith('caption.mjs')) {

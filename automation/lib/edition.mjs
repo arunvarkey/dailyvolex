@@ -1,29 +1,87 @@
-/* The edition — one day's decisions, in one declared shape.
+/* The edition — one day's decisions, in one declared shape, in one directory.
  *
  * Everything the channel decided about a day lives here: which sections there
  * are, which stories are in them, and per story the tier, who corroborated it
- * and who owns them, the photograph and its licence, the layout, the figure on
- * a stat card, the backdrop, the description for a blind reader. Plus what was
- * refused and why.
+ * and who owns them, the photograph and its licence, the layout, the figure
+ * on a stat card, the backdrop, the description for a blind reader. Plus what
+ * was refused and why.
  *
- * It replaces data/shortlist.json's role as the thing every stage reads. The
- * difference is that this shape is written down and checked: six stages used
- * to write that file in turn, nobody had declared what was in it, and two of
- * them could disagree about a field name with nothing to say so until
- * something wrong went out under the channel's name.
+ * It replaces data/shortlist.json. Six stages used to write that one file in
+ * turn, nobody had declared what was in it, and two of them could disagree
+ * about a field name with nothing to say so until something wrong went out
+ * under the channel's name.
  *
- * `fromShortlist` converts what the pipeline writes today into an edition, so
- * the stages downstream can be built against this shape before the stages
- * upstream are changed to produce it. When they are, the adapter goes and
- * nothing that reads an edition has to change.
+ * Each edition gets its own directory — data/editions/2026-10-20/ — and
+ * nothing ever writes into a directory that is not today's. The breaking
+ * watch runs every fifteen minutes; under the old layout it rewrote
+ * data/pending each time, so an approval from an hour ago would have
+ * published a different post entirely, and the only thing standing between
+ * that and the account was a commit hash parsed out of an issue body. Now
+ * there is nothing to overwrite.
  *
- * A POST is the unit that gets published, not a section. A section can offer
- * a carousel and a reel, and they are published separately — so what the
- * owner approves is a list of posts, and `plan()` works in posts.
+ * A POST is the unit that gets published, not a section: a section can offer
+ * a carousel and a reel, and they are published separately. So what the owner
+ * approves is a list of posts, and plan() works in posts.
  */
 
-/* Every section offers a carousel. Only some offer a reel. */
+import { join } from 'node:path';
+import { mkdir, readdir, rm } from 'node:fs/promises';
+import { readJson, writeJson } from './store.mjs';
+
+export const EDITIONS = join('data', 'editions');
+export const LATEST   = join('data', 'latest.json');
 export const POST_KINDS = ['carousel', 'reel'];
+
+/* How many editions to keep in the working tree. The history keeps every
+   commit regardless — Instagram has to be able to fetch an approved post from
+   the commit it was pinned to — but there is no reason for a fresh checkout
+   to carry three months of slides. */
+export const KEEP_EDITIONS = 10;
+
+const pad = n => String(n).padStart(2, '0');
+
+/* The id, which is also the directory name.
+ *
+ * A daily edition is the date. A breaking one carries the time, because the
+ * watch can catch two in a day and the second must not land on the first. A
+ * correction says so, because a directory listing is something a person reads.
+ */
+export function idFor({ kind = 'daily', at = new Date(), suffix = '' } = {}) {
+  const d = at instanceof Date ? at : new Date(at);
+  const day = `${d.getUTCFullYear()}-${pad(d.getUTCMonth() + 1)}-${pad(d.getUTCDate())}`;
+  const time = `${pad(d.getUTCHours())}${pad(d.getUTCMinutes())}`;
+  const base = kind === 'breaking'   ? `${day}-breaking-${time}`
+             : kind === 'correction' ? `${day}-correction-${time}`
+             : day;
+  return suffix ? `${base}-${suffix}` : base;
+}
+
+export const dirFor = id => join(EDITIONS, id);
+
+/* A new edition, holding the editorial decisions and nothing else. The
+   stages after this one add posts; none of them rewrites what is here. */
+export function create({ id, kind = 'daily', sections, refusals = null,
+                         feedErrors = [], pool = 0 }) {
+  return {
+    id, kind,
+    builtAt: new Date().toISOString(),
+    pool, feedErrors, refusals,
+    sections: sections.map(s => ({
+      id: s.id, label: s.label, stories: s.stories, posts: [],
+    })),
+  };
+}
+
+/* Record a post against a section. Called by the render, caption and reel
+   stages — the only thing they are allowed to change. */
+export function attachPost(edition, sectionId, post) {
+  const section = edition.sections.find(s => s.id === sectionId);
+  if (!section) throw new Error(`no section "${sectionId}" in edition ${edition.id}`);
+  const at = section.posts.findIndex(p => p.id === post.id);
+  if (at >= 0) section.posts[at] = { ...section.posts[at], ...post };
+  else section.posts.push(post);
+  return section;
+}
 
 /* An edition is valid or it is not offered. These are the fields something
    downstream would crash on, or — worse — quietly publish wrongly. */
@@ -80,56 +138,34 @@ export function postById(edition, id) {
   return posts(edition).find(p => p.id === id) || null;
 }
 
-/* ── The adapter ────────────────────────────────────────────────
-   What render.mjs and caption.mjs write today, read as an edition. */
-export function fromShortlist(shortlist, { id = null } = {}) {
-  const out = shortlist?.output || [];
-  const sections = out.map(entry => {
-    const sid = entry.section || 'post';
-    const label = entry.sectionLabel
-      || (entry.kind === 'correction' ? 'CORRECTION' : 'POST');
-    const files = (entry.images || [entry.image]).filter(Boolean);
+/* ── On disk ──────────────────────────────────────────────────── */
 
-    const postList = [{
-      kind: 'carousel',
-      id: sid,
-      files,
-      cover: entry.image || files[0] || null,
-      // caption.mjs names a sectioned caption by its section and an
-      // unsectioned one by its index. The breaking watch crashed on every
-      // story it ever found because something read the other name.
-      caption: entry.section
-        ? `data/pending/caption-${entry.section}.txt`
-        : 'data/pending/caption-1.txt',
-      alts: entry.altFile || '',
-      // A correction is attached to the post it corrects, so whoever finds
-      // the mistake finds the correction with it.
-      commentOn: (entry.stories || [entry])[0]?.corrects?.mediaId || '',
-    }];
-
-    if (entry.reel?.file) postList.push({
-      kind: 'reel',
-      id: `${sid}-reel`,
-      files: [entry.reel.file],
-      cover: entry.reel.cover || entry.image || null,
-      caption: postList[0].caption,
-      // Said out loud rather than left to be rediscovered: Instagram takes
-      // alt_text on an image container and a reel is not one.
-      alts: '',
-      seconds: entry.reel.seconds ?? null,
-      bytes: entry.reel.bytes ?? null,
-    });
-
-    return { id: sid, label, stories: entry.stories || [entry], posts: postList };
+export async function save(root, edition) {
+  const dir = join(root, dirFor(edition.id));
+  await mkdir(dir, { recursive: true });
+  await writeJson(join(dir, 'edition.json'), edition);
+  // A pointer to the current edition, so nothing has to glob a directory and
+  // guess which is newest — the phone's Today tab included.
+  await writeJson(join(root, LATEST), {
+    id: edition.id, dir: dirFor(edition.id), kind: edition.kind, builtAt: edition.builtAt,
   });
+  return dir;
+}
 
-  return {
-    id: id || (shortlist?.generated || new Date().toISOString()).slice(0, 10),
-    kind: out.some(e => e.kind === 'correction') ? 'correction'
-        : shortlist?.breaking ? 'breaking' : 'daily',
-    builtAt: shortlist?.rendered || shortlist?.generated || new Date().toISOString(),
-    sections,
-    refusals: shortlist?.refusals || null,
-    feedErrors: shortlist?.feedErrors || [],
-  };
+export async function load(root, id = null) {
+  const which = id || (await readJson(join(root, LATEST), null))?.id;
+  if (!which) throw new Error('no edition has been built — run the shortlist first');
+  const edition = await readJson(join(root, dirFor(which), 'edition.json'), null);
+  if (!edition) throw new Error(`no edition at ${dirFor(which)}`);
+  return edition;
+}
+
+/* Delete all but the most recent editions from the working tree. */
+export async function prune(root, keep = KEEP_EDITIONS) {
+  let names = [];
+  try { names = await readdir(join(root, EDITIONS)); } catch { return []; }
+  // The id begins with the date, so sorting the names sorts by age.
+  const doomed = names.filter(n => !n.startsWith('.')).sort().reverse().slice(keep);
+  for (const n of doomed) await rm(join(root, EDITIONS, n), { recursive: true, force: true });
+  return doomed;
 }

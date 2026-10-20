@@ -64,8 +64,11 @@ jobs:
               });
               return core.setFailed('no correction text');
             }
-            fs.mkdirSync('data/pending', { recursive: true });
-            fs.writeFileSync('data/pending/correction-text.txt', text, 'utf8');
+            // Under work/, which is git-ignored: this is what a person
+            // typed into a GitHub comment on its way to the builder, not
+            // something to commit.
+            fs.mkdirSync('work', { recursive: true });
+            fs.writeFileSync('work/correction-text.txt', text, 'utf8');
             core.setOutput('issue', String(context.issue.number));
 
       - name: Build the correction
@@ -75,14 +78,14 @@ jobs:
         # attached to whichever post happened to be most recent.
         run: |
           node automation/correct.mjs \
-            --text-file data/pending/correction-text.txt \
+            --text-file work/correction-text.txt \
             --issue "${{ steps.read.outputs.issue }}"
 
       - name: Render the correction card
         run: node automation/render.mjs --ratio 4:5
 
       - name: Write the caption
-        run: node automation/caption.mjs --index 0
+        run: node automation/caption.mjs --all
 
       - name: Publish the graphic so Instagram can fetch it
         run: automation/push-data.sh "Correction requested on #${{ steps.read.outputs.issue }}"

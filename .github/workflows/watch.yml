@@ -87,7 +87,7 @@ jobs:
 
       - name: Write the caption
         if: steps.look.outputs.found == 'yes'
-        run: node automation/caption.mjs --index 0
+        run: node automation/caption.mjs --all
 
       - name: Publish the graphic so Instagram can fetch it
         if: steps.look.outputs.found == 'yes'

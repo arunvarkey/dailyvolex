@@ -81,7 +81,7 @@ export function plan(edition, comment, {
 
   const missing = [];
   const out = chosen.map(p => {
-    for (const f of [...p.files, p.caption, p.alts].filter(Boolean))
+    for (const f of [...p.files, p.caption, p.alts, p.commentFile].filter(Boolean))
       if (!exists(f)) missing.push(f);
     return {
       id: p.id,
@@ -91,6 +91,7 @@ export function plan(edition, comment, {
       caption: p.caption,
       alts: p.alts || '',
       commentOn: p.commentOn || '',
+      commentFile: p.commentFile || '',
       files: p.files,
       // Pinned to the approved commit. What posts has to be what the issue
       // showed: the breaking watch rewrites the working files every fifteen

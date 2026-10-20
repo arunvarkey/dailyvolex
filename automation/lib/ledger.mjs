@@ -1,6 +1,6 @@
 /* The permanent record of what went out.
  *
- * data/posted.json is the only thing in this repository that outlives a day.
+ * data/ledger.json is the only thing in this repository that outlives a day.
  * The next run reads it to avoid repeating a story, and a correction reads it
  * to find the media id of the post it has to be attached to — so an entry
  * that is wrong is a story published twice, or a correction pinned to the
