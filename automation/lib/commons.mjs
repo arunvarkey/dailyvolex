@@ -42,7 +42,10 @@ function text(html) {
     .replace(/<[^>]*>/g, ' ')
     .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
     .replace(/&quot;/g, '"').replace(/&#0?39;|&apos;/g, "'").replace(/&nbsp;/g, ' ')
-    .replace(/\s+/g, ' ').trim();
+    .replace(/\s+/g, ' ').trim()
+    // Commons Artist fields often nest the same name in two elements, which
+    // came out as "Unknown author Unknown author" on a live card.
+    .replace(/^(.{2,60}?)\s+\1$/i, '$1');
 }
 
 /* Commons titles are "File:Some descriptive name.jpg" — the descriptive part
