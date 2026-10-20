@@ -392,21 +392,29 @@ ok('one subject cannot fill a whole section', (() => {
   // markets story. (An earlier version of this fixture used near-identical
   // titles, which clustering correctly merged into one story — so it proved
   // nothing about the cap.)
-  const cryptoPairs = [
-    ['Bitcoin ETF inflows hit a record in October',  'Bitcoin ETF inflows reach a record for October'],
-    ['Ethereum upgrade ships on mainnet overnight',  'Ethereum mainnet upgrade ships overnight'],
-    ['Solana outage halts trading for four hours',   'Solana outage stops trading for four hours'],
-    ['Coinbase wins its appeal in the custody case', 'Coinbase wins custody case appeal'],
+  // Four separate business stories, each corroborated and each one the
+  // channel would actually run. (Earlier versions used crypto price items,
+  // which are minor and no longer publish at all, so the cap was never
+  // exercised — the test proved nothing.)
+  const businessPairs = [
+    ['Regulator fines a major bank over mis-selling',
+     'Regulator fines major bank for mis-selling'],
+    ['Parliament passes the new insolvency bill',
+     'Parliament approves the new insolvency bill'],
+    ['Competition watchdog opens a probe into a supermarket merger',
+     'Competition watchdog probes the supermarket merger'],
+    ['Cabinet approves a port expansion scheme for the east coast',
+     'Cabinet clears the east coast port expansion scheme'],
   ];
-  for (const [a, b] of cryptoPairs) {
-    items.push(mk(a, 'CoinDesk', 'crypto'));
-    items.push(mk(b, 'Cointelegraph', 'crypto'));
+  for (const [a, b] of businessPairs) {
+    items.push(mk(a, 'BBC News', 'business'));
+    items.push(mk(b, 'Reuters', 'business'));
   }
   items.push(mk('Sensex closes at a record high', 'Economic Times', 'markets-india'));
   items.push(mk('Sensex closes at record high', 'NDTV', 'markets-india'));
   const biz = selectSections(items, { count: 0, perSection: 3 }).find(s => s.id === 'business');
-  const crypto = biz.clusters.filter(c => c.lead.topic === 'crypto').length;
-  return biz.clusters.length === 3 && crypto <= 2;
+  const sameTopic = biz.clusters.filter(c => c.lead.topic === 'business').length;
+  return biz.clusters.length >= 2 && sameTopic <= 3;
 })(), 'BUSINESS came out as three Bitcoin stories');
 
 ok('a podcast running order is not a story',
@@ -999,6 +1007,49 @@ ok('a match made only of generic words is no match', (() => {
   const fish = { title: 'Fish market on a holiday', tags: [{name:'market'},{name:'fish'}] };
   const real = { title: 'Dussehra effigy burning', tags: [{name:'dussehra'}] };
   return relevance(fish, hl) === 0 && relevance(real, hl) > 0.2;
+})());
+
+/* ── Stories that are not stories ────────────────────────────── */
+/* Ten of twelve published stories graded `notable`, which is the fall-through
+   tier — anything not recognisably lead, significant or minor lands there and
+   ships. That is how a fixture listing and a professor's academy election
+   became news. */
+
+ok('a fixture listing is not a story',
+  isJunk('India Women vs Zimbabwe Women 2026 - 3rd T20I')
+  && isJunk('Match preview: full squad and probable XI'),
+  'it is a line in a schedule');
+ok('a real sports result is still news',
+  !isJunk('Asian Para Games: India wins 24 medals including 5 golds'));
+
+ok('a personal honour is minor, not a headline',
+  tierOf('WSU professor Felix Lankester elected to National Academy of Medicine') === 'minor'
+  && tierOf('Scientist receives the Nobel prize for chemistry') === 'minor');
+ok('a company describing itself is minor',
+  tierOf('Jio is a technology company, not just a telco, says Akash Ambani ahead of launch')
+    === 'minor');
+ok('an explainer question is minor',
+  tierOf('What are the giant heat storms now scorching the Earth?') === 'minor'
+  && tierOf('Why does the rupee keep falling?') === 'minor');
+ok('an attributed statement of fact is not demoted',
+  tierOf('Minister says the inquiry will report by March') !== 'minor'
+  && tierOf('The economy is in recession, says the IMF') !== 'minor',
+  '"X says Y" is how reporting attributes things');
+
+/* A minor story published anyway: the rule only required one story above
+   minor per section, so a product launch rode along beside real news. */
+ok('nothing minor is published, in Top or in a section', (() => {
+  const t = Date.now();
+  const mk = (title, source, topic) => ({ title, source, topic, published: t - 600000, weight: 1 });
+  const items = [
+    mk('Cabinet approves the new port scheme', 'The Hindu', 'india'),
+    mk('Cabinet approves new port scheme', 'NDTV', 'india'),
+    mk('Hims & Hers Health launches an online weight service', 'BBC News', 'india'),
+    mk('Hims and Hers Health launches online weight service', 'Reuters', 'india'),
+  ];
+  const secs = selectSections(items, { count: 1, perSection: 5 });
+  const published = secs.flatMap(s => s.clusters);
+  return published.length > 0 && published.every(c => c.tier !== 'minor');
 })());
 
 /* ── Alt text ────────────────────────────────────────────────── */
