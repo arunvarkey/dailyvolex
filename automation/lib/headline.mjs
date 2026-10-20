@@ -15,8 +15,14 @@ const TRAILING_SOURCE = /\s*[|–—-]\s*(reuters|bloomberg|cnbc|coindesk|cointe
 /* Some outlets append their own byline: "… today? By Investing.com". */
 const TRAILING_BYLINE = /\s+[Bb]y\s+[A-Z][\w.&' -]{2,30}\s*$/;
 
+/* Furniture that carries no information and can go.
+ *
+ * "Opinion" and "Analysis" are deliberately NOT here. Stripping them turned
+ * an op-ed into something that read like reporting — the label is the most
+ * important word in the headline, not noise. Those pieces are refused in
+ * select.mjs instead. */
 const PREFIXES = [
-  /^(breaking|exclusive|just in|update|live|watch|explained|analysis|opinion)\s*[:–—-]\s*/i,
+  /^(breaking|exclusive|just in|update|live|watch|explained)\s*[:–—-]\s*/i,
 ];
 
 /* A section label the outlet pinned to the front of its own headline:

@@ -119,7 +119,8 @@ jobs:
                 stories.map(s =>
                   `- ${s.tier ? `\`${s.tier}\` ` : ''}**${s.display || s.headline}**\n  _${s.source}_ · `
                   + `${s.corroboration} independent newsroom${s.corroboration > 1 ? 's' : ''}`
-                  + (s.ownerCount ? `, ${s.ownerCount} owner${s.ownerCount > 1 ? 's' : ''}` : '')
+                  + (s.ownerCount ? `, ${s.ownerCount} owner${s.ownerCount > 1 ? 's' : ''} recorded` : '')
+                  + (s.unknownOwners ? ` (${s.unknownOwners} not in the register)` : '')
                   + (s.countries?.length ? ` (${s.countries.join('/')})` : '')
                   + (s.truncated ? ' · shortened to fit' : '')
                   + (s.link ? `\n  ${s.link}` : '')).join('\n'),

@@ -31,8 +31,29 @@ export const SECTIONS = [
 const BY_TOPIC = new Map();
 for (const s of SECTIONS) for (const t of s.topics || []) BY_TOPIC.set(t, s.id);
 
-export function sectionOf(topic) {
-  return BY_TOPIC.get(topic) || 'top';
+/* A feed's topic is where a story arrived from, not what it is about.
+ *
+ * "Kenyan cult leader convicted of killing 190 children" came through an
+ * Indian feed and was filed under INDIA. An Indian outlet reporting a Kenyan
+ * conviction is world news; the only thing Indian about it is which website
+ * we read it on.
+ *
+ * Only the india/world boundary is corrected, because that is where the
+ * mistake is both common and obvious. Deciding that a business story is
+ * "really" technology is an editorial call this has no business making. */
+const FOREIGN = /\b(kenya|kenyan|nigeria|china|chinese|japan|japanese|korea|korean|russia|russian|ukraine|ukrainian|israel|israeli|gaza|palestin\w+|iran|iranian|iraq|syria|afghan\w*|pakistan\w*|bangladesh\w*|sri lanka\w*|nepal\w*|myanmar|france|french|germany|german|britain|british|uk|england|spain|spanish|italy|italian|canada|canadian|australia\w*|brazil\w*|mexico|egypt|turkey|turkish|saudi|qatar|uae|indonesia\w*|vietnam\w*|thailand|philippines|malaysia|singapore|taiwan|hong kong|europe|european union|eu|nato|united nations|un security council|washington|white house|kremlin|beijing|moscow|london|paris|berlin|tokyo|geneva|brussels)\b/i;
+const HOME = /\b(india|indian|delhi|mumbai|bengaluru|bangalore|chennai|kolkata|hyderabad|kerala|punjab|gujarat|maharashtra|tamil nadu|karnataka|bihar|assam|modi|lok sabha|rajya sabha|supreme court of india|rbi|sebi|nse|bse|sensex|nifty)\b/i;
+
+export function sectionOf(topic, headline) {
+  const base = BY_TOPIC.get(topic) || 'top';
+  if (!headline) return base;
+
+  const h = String(headline);
+  // A story filed under India that names a foreign place and nothing at home.
+  if (base === 'india' && FOREIGN.test(h) && !HOME.test(h)) return 'world';
+  // And the reverse: a world feed carrying an India story.
+  if (base === 'world' && HOME.test(h) && !FOREIGN.test(h)) return 'india';
+  return base;
 }
 
 export function sectionLabel(id) {
@@ -74,7 +95,7 @@ export function sortIntoSections(ranked, {
       for (const c of ranked) {
         if (chosen.length >= perSection) break;
         if (taken.has(c)) continue;
-        if (sectionOf(c.lead.topic) !== section.id) continue;
+        if (sectionOf(c.lead.topic, c.lead.title) !== section.id) continue;
         if (capped && (perTopic.get(c.lead.topic) || 0) >= maxPerTopic) continue;
         if (!eligible(c, chosen, titlesInTop)) continue;
         chosen.push(c);

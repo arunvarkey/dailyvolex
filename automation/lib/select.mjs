@@ -130,6 +130,9 @@ const PRESS_RELEASE = [
   /^\s*introducing\b/i,
   /^\s*(meet|say hello to|announcing)\b/i,
   /\bpartners? with\b[^.]*\bto (advance|accelerate|deliver|transform|drive|power|enable)\b/i,
+  // "Digital Science and Sunmedia partner on research impact" — the "with"
+  // rule missed it because the phrasing is "partner on".
+  /\bpartners?\s+on\b/i,
   /\b(is|are|now) (generally )?available (now|today)\b/i,
   /\bannounces the (launch|availability|release|general availability)\b/i,
   /\b(unveils|launches|debuts|rolls out) (its|their|the) new\b/i,
@@ -138,6 +141,60 @@ const PRESS_RELEASE = [
 
 export function isPressRelease(title) {
   return PRESS_RELEASE.some(re => re.test(String(title)));
+}
+
+/* A rumour is not a story this channel can carry.
+ *
+ * "North Korea's 'Proof Of Life' Amid Kim Jong Un 'Brain Haemorrhage Death'
+ * Rumour" was graded a LEAD and put second in the post, because it contains
+ * the word "death". It is a story about an unverified rumour. This channel
+ * has no reporters and cannot check it, and running it — even to report that
+ * it is denied — puts the rumour in front of people under our name. */
+const UNVERIFIED = [
+  /\brumou?rs?\b/i,
+  /\bunconfirmed\b/i,
+  /\bproof of life\b/i,
+  /\bspeculation (mounts|grows|swirls|is rife)\b/i,
+  /\bconspiracy theor(y|ies)\b/i,
+  /\b(claim|post|video)s? (go|goes|going|went) viral\b/i,
+  /\bno official confirmation\b/i,
+];
+
+export function isUnverified(title) {
+  return UNVERIFIED.some(re => re.test(String(title)));
+}
+
+/* Comment, not reporting.
+ *
+ * "Global Health Research in the America First Era" is an essay title: it has
+ * no verb and reports nothing that happened. Note that `tidy` used to strip a
+ * leading "Opinion:" — which laundered an op-ed into looking like news — so
+ * these are refused here instead of being tidied into disguise. */
+const OPINION = [
+  /^\s*(opinion|comment|analysis|viewpoint|perspective|editorial|column)\s*[:|–—-]/i,
+  /\bin the .{3,24} era\b/i,
+  /\bthe case (for|against)\b/i,
+  /\bwhy .{3,40} matters\b/i,
+  /\b(rethinking|reflections on|lessons from|a tribute to)\b/i,
+  /\bwhat .{3,40} means for\b/i,
+  /\bis it time to\b/i,
+];
+
+export function isOpinion(title) {
+  return OPINION.some(re => re.test(String(title)));
+}
+
+/* Too thin to be a headline at all.
+ *
+ * A SCIENCE section went out carrying "Middle East", and a TECHNOLOGY one
+ * carried "Cognizant Technology Solutions Chosen" — a feed title truncated
+ * into meaninglessness. Five words is the threshold because real headlines
+ * clear it easily ("Earthquake kills 40 in Afghanistan" is five) and
+ * fragments rarely do. */
+export function isTooThin(title) {
+  const t = String(title || '').trim();
+  if (t.length < 28) return true;
+  return t.split(/\s+/).filter(Boolean).length < 5;
 }
 
 export function isJunk(title) {
@@ -244,6 +301,7 @@ export function rankClusters(clusters, { now = Date.now() } = {}) {
       ownerCount: outlets.ownerCount,
       countries: outlets.countries,
       fundings: outlets.fundings,
+      unknownOwners: outlets.unknownOwners,
       concentration: concentrationWarnings(c.items.map(i => i.source)),
       newest,
       score: Math.round(score * 1000) / 1000,
@@ -287,7 +345,12 @@ export function rankEligible(items, { now = Date.now(), maxAgeHours = 24 } = {})
     // of what it is there for.
     .filter(i => (i.requireTopical ? isTopical(i.title) : true))
     .filter(i => !isAdvice(i.title))
-    .filter(i => !isJunk(i.title));
+    .filter(i => !isJunk(i.title))
+    // Added after a live run led on a rumour, carried an essay title in
+    // HEALTH and put the bare words "Middle East" in SCIENCE.
+    .filter(i => !isUnverified(i.title))
+    .filter(i => !isOpinion(i.title))
+    .filter(i => !isTooThin(i.title));
 
   return rankClusters(cluster(fresh), { now });
 }
