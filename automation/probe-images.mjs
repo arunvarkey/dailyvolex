@@ -54,6 +54,14 @@ console.log('\nfour at once (what the renderer now does):');
 const parallel = await Promise.all(QUERIES.slice(4).map(q => one(q)));
 for (const r of parallel) show(r);
 
+/* Also emit the findings as workflow annotations. The run log lives in blob
+   storage that the API client here cannot follow, and a diagnostic nobody
+   can read is not a diagnostic. */
+const notice = m => console.log(`::notice::${m}`);
+for (const r of [...serial, ...parallel])
+  notice(`${r.status} ${r.ms}ms ${r.count != null ? r.count + ' results' : ''}`
+    + ` "${r.q}"${r.rl ? ' ' + r.rl : ''}${r.detail ? ' ' + r.detail : ''}`);
+
 const all = [...serial, ...parallel];
 const ok = all.filter(r => r.status === 200);
 const hung = all.filter(r => r.status === 'HUNG');
@@ -66,3 +74,7 @@ if (ok.length) {
 if (all.some(r => r.status === 429)) console.log('RATE LIMITED — an API key would raise this.');
 if (hung.length > all.length / 2)
   console.log('Most requests hang. This is the host, not our timeout.');
+
+notice(`SUMMARY ${ok.length}/${all.length} answered, ${hung.length} hung`
+  + (ok.length ? `, median ${ok.map(r => r.ms).sort((a, b) => a - b)[Math.floor(ok.length / 2)]}ms` : '')
+  + (all.some(r => r.status === 429) ? ' — RATE LIMITED' : ''));
