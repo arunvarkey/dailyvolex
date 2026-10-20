@@ -15,6 +15,7 @@ import { dirname, join, extname, normalize } from 'node:path';
 import { launchChrome, closeChrome, openPage } from './lib/cdp.mjs';
 import { readJson, writeJson } from './lib/store.mjs';
 import { findImage, downloadImage, backdropFor } from './lib/imagery.mjs';
+import { altForEntry, altForStory } from './lib/alttext.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(HERE, '..');
@@ -167,7 +168,10 @@ function storyUrl(port, story, opts) {
     // A photograph covers the whole frame, so the backdrop behind it never
     // shows; without one, the choice of backdrop is part of what the card
     // says, and is made per story rather than once for the whole run.
-    bg: story.photo ? opts.bg : backdropOf(story, opts),
+    // Recorded on the story as well as sent in the URL: the alt text has to
+    // describe what is actually behind the headline, and it was calling
+    // every card "a plain brand design" because nothing wrote this down.
+    bg: story.photo ? opts.bg : (story.backdrop = backdropOf(story, opts)),
   });
   if (opts.posy != null) q.set('posy', String(opts.posy));
   if (story.photo) { q.set('img', story.photo.path); q.set('credit', story.photo.credit); }
@@ -284,7 +288,7 @@ async function main() {
         if (s.fontsOk === false) fontWarnings++;
       }
 
-      return {
+      const entry = {
         kind: 'carousel',
         headline: `${stories.length} stories`,
         images: slides.map(s => rel(s.file)),
@@ -294,6 +298,16 @@ async function main() {
         stories,
         usable: true,
       };
+
+      // A news account that publishes images without alt text shuts blind
+      // readers out of the news. Written to a file beside the slides, in
+      // slide order, so it reaches the publisher without going through a
+      // shell — the same reason the correction comment is a file.
+      entry.alts = altForEntry(entry);
+      await writeFile(join(OUT_DIR, dir, 'alt.json'),
+                      JSON.stringify(entry.alts, null, 2) + '\n', 'utf8');
+      entry.altFile = rel('alt.json');
+      return entry;
     };
 
     /* A post per section. Top stories first, so it is always output[0] and
@@ -347,7 +361,12 @@ async function main() {
         + (fontsOk === false ? '  !! WEB FONTS DID NOT LOAD — headline is in a fallback face' : '')
         + (jsErrors.length ? `  (page errors: ${jsErrors.join(' | ')})` : ''));
       if (fontsOk === false) fontWarnings++;
-      rendered.push({ ...story, image: `data/pending/${name}`, width: dims.w, height: dims.h });
+      const single = { ...story, image: `data/pending/${name}`, width: dims.w, height: dims.h };
+      single.alts = [altForStory(story)];
+      await writeFile(join(OUT_DIR, `alt-${i + 1}.json`),
+                      JSON.stringify(single.alts, null, 2) + '\n', 'utf8');
+      single.altFile = `data/pending/alt-${i + 1}.json`;
+      rendered.push(single);
     }
   } finally {
     server.close();

@@ -9,6 +9,7 @@
  *   IG_ACCESS_TOKEN  a long-lived token for that account
  *
  *   node automation/publish.mjs --image <public url> --caption-file <path> [--dry-run]
+ *                               [--alt-file <path>]   descriptions, one per image
  *                               [--comment-on <media id> --comment <text>]
  *
  * --comment-on attaches a correction to the post it corrects, so that anyone
@@ -79,6 +80,24 @@ async function main() {
   if (!images.length) throw new Error('--image <url> or --images <url,url,...> is required');
   if (images.length > 10) throw new Error('Instagram allows at most 10 images in a carousel');
 
+  /* Descriptions for blind readers, one per image in slide order. Read from
+     a file rather than argv: this text is long, contains quotation marks and
+     em dashes, and has no business passing through a shell. */
+  let alts = [];
+  const altFile = arg('alt-file');
+  if (altFile) {
+    try {
+      const parsed = JSON.parse(await readFile(altFile, 'utf8'));
+      if (Array.isArray(parsed)) alts = parsed.map(a => String(a || ''));
+    } catch (e) {
+      // Never fail a post over this, but never let it pass unnoticed either.
+      console.warn(`WARNING: could not read alt text from ${altFile}: ${e.message}`);
+    }
+  }
+  if (alts.length && alts.length !== images.length)
+    console.warn(`WARNING: ${alts.length} descriptions for ${images.length} images`
+      + ' — some slides will publish without one.');
+
   let caption = arg('caption', '');
   if (captionFile) caption = await readFile(captionFile, 'utf8');
   caption = caption.trim().slice(0, 2200);          // Instagram's caption limit
@@ -86,7 +105,10 @@ async function main() {
   if (dryRun) {
     console.log('DRY RUN — nothing will be posted');
     console.log(images.length > 1 ? `carousel of ${images.length}:` : 'image:');
-    for (const i of images) console.log('  ' + i);
+    for (const [n, i] of images.entries()) {
+      console.log('  ' + i);
+      console.log('    alt: ' + (alts[n] || '(none — this slide would publish without a description)'));
+    }
     console.log('caption:\n' + caption);
     return;
   }
@@ -108,6 +130,9 @@ async function main() {
     console.log('creating media container…');
     container = await graph(`${userId}/media`, {
       image_url: images[0], caption, access_token: token,
+      // Accessibility. Meta added alt_text to image containers in March 2025;
+      // it is set when the container is created, not at publish time.
+      ...(alts[0] ? { alt_text: alts[0].slice(0, 1000) } : {}),
     });
     console.log(`container ${container.id} — waiting for it to be ready…`);
     await waitForContainer(container.id, token);
@@ -115,8 +140,11 @@ async function main() {
     console.log(`creating ${images.length} carousel items…`);
     const children = [];
     for (const [i, url] of images.entries()) {
+      // Each slide of a carousel carries its own description — a reader
+      // swiping through gets the same per-card detail a sighted one does.
       const child = await graph(`${userId}/media`, {
         image_url: url, is_carousel_item: 'true', access_token: token,
+        ...(alts[i] ? { alt_text: alts[i].slice(0, 1000) } : {}),
       });
       await waitForContainer(child.id, token);
       console.log(`  slide ${i + 1}/${images.length} ready`);

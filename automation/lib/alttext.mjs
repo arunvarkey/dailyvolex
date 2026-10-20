@@ -31,10 +31,20 @@ function backdropPhrase(story) {
       + `, ${story.photo.credit.replace(/^File photo:\s*/i, 'credited to ')}`
       + `. It is not a photograph of this event.`;
   }
-  if (story?.kind === 'correction') return 'The background is a plain brand design.';
-  // Matches what render.mjs chose; `chart` is the generated market line.
-  if (story?.backdrop === 'chart') return 'Behind the text is a generated market chart, not real data.';
-  return 'Behind the text is a plain brand design.';
+  // What render.mjs actually chose. Saying "a plain brand design" for every
+  // card was both vague and wrong — a generated market chart is a thing a
+  // reader is entitled to know is generated, and the editorial backdrop is
+  // not plain.
+  switch (story?.backdrop) {
+    case 'chart':
+      return 'Behind the text is a generated market chart. It is decorative, not real data.';
+    case 'editorial':
+      return 'Behind the text is a brand graphic of concentric rings and a halftone pattern.';
+    case 'particles':
+      return 'Behind the text is a dark background with a faint particle pattern.';
+    default:
+      return 'Behind the text is a plain dark background.';
+  }
 }
 
 /* A single story card. */
