@@ -1,77 +1,102 @@
 {
-  "generated": "2026-10-20T07:50:54.522Z",
-  "pool": 590,
-  "feedErrors": [],
+  "generated": "2026-10-20T09:16:13.346Z",
+  "pool": 582,
+  "feedErrors": [
+    "indian-express: HTTP 403"
+  ],
   "breaking": false,
   "stories": [
     {
-      "headline": "JPMORGAN DROPS JPM COIN ON ETHEREUM WITH ZERO RETAIL ACCESS",
-      "display": "JPMorgan drops JPM Coin on Ethereum with zero retail access",
-      "original": "JPMorgan drops JPM Coin on Ethereum with zero retail access",
+      "headline": "KENYA CULT LEADER, WHO CONVINCED FOLLOWERS TO STARVE, FOUND GUILTY OF 191 MURDERS",
+      "display": "Kenya Cult Leader, Who Convinced Followers To Starve, Found Guilty Of 191 Murders",
+      "original": "Kenya Cult Leader, Who Convinced Followers To Starve, Found Guilty Of 191 Murders",
       "truncated": false,
       "usable": true,
-      "category": "CRYPTO NEWS",
-      "source": "CoinDesk · Cointelegraph · Decrypt",
-      "sourceNames": [
-        "CoinDesk",
-        "Cointelegraph",
-        "Decrypt",
-        "The Block",
-        "J.P. Morgan",
-        "CryptoSlate"
-      ],
-      "corroboration": 6,
-      "republishers": [],
-      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOd01lU01vUTZ6ckd6R2VuX1B2dHF4dExxcUUwXzNwVjk4ZHZXRzRVdElFU0lYX2NQcGJZS1UwMDRMRkQ4bjBWVWViSWZIeFU4dDA2d0l3cEFkVUp6YmxwRUZjNTZWd3lnUDg5eExpcW1peXlzR29pbmRoMFdRSFNNQjM2MGJsWXlRdFhXaw?oc=5",
-      "published": "2026-10-20T06:30:25.000Z",
-      "topic": "crypto",
-      "section": "business",
-      "score": 13.9
-    },
-    {
-      "headline": "MOHAN BHAGWAT SAYS FORCES TRYING TO DESTABILISE INDIA",
-      "display": "Mohan Bhagwat says forces trying to destabilise India",
-      "original": "Mohan Bhagwat says forces trying to destabilise India: ‘Regime change doesn’t change circumstances’ | India News",
-      "truncated": true,
-      "usable": true,
       "category": "INDIA",
-      "source": "Times of India · Hindustan Times · The Week",
+      "source": "BBC News · NDTV",
       "sourceNames": [
-        "Times of India",
-        "Hindustan Times",
-        "The Week",
-        "Deccan Herald",
-        "The New Indian Express"
+        "BBC News",
+        "NDTV"
       ],
-      "corroboration": 5,
+      "corroboration": 2,
       "republishers": [],
-      "link": "https://news.google.com/rss/articles/CBMilgJBVV95cUxPRzU3TlU5RnlEelE3RHZQQU0wSU44WGdxdVNBc1E4YUVDazVYM2pvSGJnYy0yZ1pCTHVlRXA0aTRXaWJZS2g2Rk8tUkdxOWtKNmpRajZpQmJLWExmWDE3WXRBUWNwWGRvcEkzZmRhZnh6NDlFMEIzTDMtWWVPSFA5ZHBNVVRzYk4xMHBSbTBRaWJybG1HeFlRWU04TVhDRlpITHBOaEpiZnlCSm83XzBRcnZnOS1qek96SXZGMGx6eVlGaDU5dVUxTk0xamZocF9lNDJ3QmZDQTl5a0xyRlFkMzFybjJmWHNha0FGU0tHYWtxSUV2RG9lUmVSdGFldUtVSENpWGdObVlGMUw",
-      "published": "2026-10-20T07:23:42.000Z",
+      "owners": [
+        "BBC (licence fee)",
+        "Adani Group"
+      ],
+      "ownerCount": 2,
+      "countries": [
+        "GB",
+        "IN"
+      ],
+      "fundings": [
+        "state",
+        "conglomerate"
+      ],
+      "concentration": [],
+      "link": "https://www.ndtv.com/world-news/kenya-cult-leader-who-convinced-followers-to-starve-guilty-of-191-murders-12209556#publisher=newsstand",
+      "published": "2026-10-20T06:17:22.000Z",
       "topic": "india",
       "section": "india",
-      "score": 12.1
+      "tier": "lead",
+      "score": 15.55
     },
     {
-      "headline": "BITCOIN NEWS | STRATEGY BOUGHT $22 MILLION OF BITCOIN LAST WEEK",
-      "display": "Bitcoin News | Strategy Bought $22 Million of Bitcoin Last Week",
-      "original": "Bitcoin News | Strategy Bought $22 Million of Bitcoin Last Week — and $193 Million of Its Own Preferred Stock",
-      "truncated": true,
+      "headline": "NORTH KOREA'S 'PROOF OF LIFE' AMID KIM JONG UN 'BRAIN HAEMORRHAGE DEATH' RUMOUR",
+      "display": "North Korea's 'Proof Of Life' Amid Kim Jong Un 'Brain Haemorrhage Death' Rumour",
+      "original": "North Korea's 'Proof Of Life' Amid Kim Jong Un 'Brain Haemorrhage Death' Rumour",
+      "truncated": false,
       "usable": true,
-      "category": "CRYPTO NEWS",
-      "source": "Cointelegraph · Decrypt · The Block",
+      "category": "INDIA",
+      "source": "NDTV · Open Magazine",
       "sourceNames": [
-        "Cointelegraph",
-        "Decrypt",
-        "The Block",
-        "Binance"
+        "NDTV",
+        "Open Magazine"
       ],
-      "corroboration": 4,
+      "corroboration": 2,
       "republishers": [],
-      "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9VWjdiU0wzN2hocDV6RkZxMHktNjEzZjlpdTFJbTVocVk0MUZnRnZjQVl2a2gxaFRJZHhJQ3RNZ2hvVzRwR2N4NFNBMWM0V0V6bUpiX2ROSFNOd2xkX2tEQU1mR1g?oc=5",
-      "published": "2026-10-20T06:29:05.000Z",
-      "topic": "crypto",
+      "owners": [
+        "Adani Group"
+      ],
+      "ownerCount": 1,
+      "countries": [
+        "IN"
+      ],
+      "fundings": [
+        "conglomerate"
+      ],
+      "concentration": [],
+      "link": "https://www.ndtv.com/world-news/north-koreas-proof-of-life-amid-kim-jong-un-brain-haemorrhage-death-rumour-12209855#publisher=newsstand",
+      "published": "2026-10-20T07:44:14.000Z",
+      "topic": "india",
+      "section": "india",
+      "tier": "lead",
+      "score": 15.4
+    },
+    {
+      "headline": "SILGAN TO ACQUIRE TRIVIUM AND FORM $7.3 BILLION METAL PACKAGING BUSINESS",
+      "display": "Silgan to acquire Trivium and form $7.3 billion metal packaging business",
+      "original": "Silgan to acquire Trivium and form $7.3 billion metal packaging business",
+      "truncated": false,
+      "usable": true,
+      "category": "BUSINESS",
+      "source": "Packaging Europe",
+      "sourceNames": [
+        "Packaging Europe"
+      ],
+      "corroboration": 1,
+      "republishers": [],
+      "owners": [],
+      "ownerCount": 0,
+      "countries": [],
+      "fundings": [],
+      "concentration": [],
+      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOUExucWlWTDNpQnh4aUt3NGhRcG15SFpqRG9qRktHal9xOVQ4blVlSjNtU1NqVGNrajJTU2ZrNnR0V1FZOHhoWFhJV0hxWGVCbWpsNElxbjdGczIyQ1llcE9JX3VYU3NpLXNjcFpVbEJzY3JmdlY4UGdqNkw2Ykg3TjU5c0RyWnVyNDdBNGFrOHRGWW9GQVl0aVJqc3NfNTFzNmNBRFZvTQ?oc=5",
+      "published": "2026-10-20T09:01:15.000Z",
+      "topic": "business",
       "section": "business",
-      "score": 9.7
+      "tier": "significant",
+      "score": 9.3
     }
   ],
   "sections": [
@@ -80,141 +105,9 @@
       "label": "TOP STORIES",
       "stories": [
         {
-          "headline": "JPMORGAN DROPS JPM COIN ON ETHEREUM WITH ZERO RETAIL ACCESS",
-          "display": "JPMorgan drops JPM Coin on Ethereum with zero retail access",
-          "original": "JPMorgan drops JPM Coin on Ethereum with zero retail access",
-          "truncated": false,
-          "usable": true,
-          "category": "CRYPTO NEWS",
-          "source": "CoinDesk · Cointelegraph · Decrypt",
-          "sourceNames": [
-            "CoinDesk",
-            "Cointelegraph",
-            "Decrypt",
-            "The Block",
-            "J.P. Morgan",
-            "CryptoSlate"
-          ],
-          "corroboration": 6,
-          "republishers": [],
-          "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOd01lU01vUTZ6ckd6R2VuX1B2dHF4dExxcUUwXzNwVjk4ZHZXRzRVdElFU0lYX2NQcGJZS1UwMDRMRkQ4bjBWVWViSWZIeFU4dDA2d0l3cEFkVUp6YmxwRUZjNTZWd3lnUDg5eExpcW1peXlzR29pbmRoMFdRSFNNQjM2MGJsWXlRdFhXaw?oc=5",
-          "published": "2026-10-20T06:30:25.000Z",
-          "topic": "crypto",
-          "section": "business",
-          "score": 13.9,
-          "photo": {
-            "path": "data/pending/top/photo-top-2.jpg",
-            "credit": "File photo: Steve Jurvetson / CC BY 2.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=23967924",
-            "query": "JPMorgan",
-            "relevance": 0.14,
-            "title": "File:Jamie Dimon, CEO of JPMorgan Chase.jpg"
-          }
-        },
-        {
-          "headline": "MOHAN BHAGWAT SAYS FORCES TRYING TO DESTABILISE INDIA",
-          "display": "Mohan Bhagwat says forces trying to destabilise India",
-          "original": "Mohan Bhagwat says forces trying to destabilise India: ‘Regime change doesn’t change circumstances’ | India News",
-          "truncated": true,
-          "usable": true,
-          "category": "INDIA",
-          "source": "Times of India · Hindustan Times · The Week",
-          "sourceNames": [
-            "Times of India",
-            "Hindustan Times",
-            "The Week",
-            "Deccan Herald",
-            "The New Indian Express"
-          ],
-          "corroboration": 5,
-          "republishers": [],
-          "link": "https://news.google.com/rss/articles/CBMilgJBVV95cUxPRzU3TlU5RnlEelE3RHZQQU0wSU44WGdxdVNBc1E4YUVDazVYM2pvSGJnYy0yZ1pCTHVlRXA0aTRXaWJZS2g2Rk8tUkdxOWtKNmpRajZpQmJLWExmWDE3WXRBUWNwWGRvcEkzZmRhZnh6NDlFMEIzTDMtWWVPSFA5ZHBNVVRzYk4xMHBSbTBRaWJybG1HeFlRWU04TVhDRlpITHBOaEpiZnlCSm83XzBRcnZnOS1qek96SXZGMGx6eVlGaDU5dVUxTk0xamZocF9lNDJ3QmZDQTl5a0xyRlFkMzFybjJmWHNha0FGU0tHYWtxSUV2RG9lUmVSdGFldUtVSENpWGdObVlGMUw",
-          "published": "2026-10-20T07:23:42.000Z",
-          "topic": "india",
-          "section": "india",
-          "score": 12.1,
-          "photo": {
-            "path": "data/pending/top/photo-top-3.jpg",
-            "credit": "File photo: Nagpurjournalism / CC0",
-            "license": "cc0",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=166877533",
-            "query": "Mohan Bhagwat",
-            "relevance": 0.33,
-            "title": "RSS Chief Shri Mohan Bhagwat with Vijay Darda"
-          }
-        },
-        {
-          "headline": "BITCOIN NEWS | STRATEGY BOUGHT $22 MILLION OF BITCOIN LAST WEEK",
-          "display": "Bitcoin News | Strategy Bought $22 Million of Bitcoin Last Week",
-          "original": "Bitcoin News | Strategy Bought $22 Million of Bitcoin Last Week — and $193 Million of Its Own Preferred Stock",
-          "truncated": true,
-          "usable": true,
-          "category": "CRYPTO NEWS",
-          "source": "Cointelegraph · Decrypt · The Block",
-          "sourceNames": [
-            "Cointelegraph",
-            "Decrypt",
-            "The Block",
-            "Binance"
-          ],
-          "corroboration": 4,
-          "republishers": [],
-          "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9VWjdiU0wzN2hocDV6RkZxMHktNjEzZjlpdTFJbTVocVk0MUZnRnZjQVl2a2gxaFRJZHhJQ3RNZ2hvVzRwR2N4NFNBMWM0V0V6bUpiX2ROSFNOd2xkX2tEQU1mR1g?oc=5",
-          "published": "2026-10-20T06:29:05.000Z",
-          "topic": "crypto",
-          "section": "business",
-          "score": 9.7,
-          "photo": {
-            "path": "data/pending/top/photo-top-4.jpg",
-            "credit": "File photo: 张楠赓 / CC0",
-            "license": "cc0",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=28280558",
-            "query": "Bitcoin",
-            "relevance": 0.33,
-            "title": "File:Avalon-An ASIC base bitcoin machine.jpg"
-          }
-        }
-      ]
-    },
-    {
-      "id": "india",
-      "label": "INDIA",
-      "stories": [
-        {
-          "headline": "INDIA-NEW ZEALAND TRADE PACT KICKS IN",
-          "display": "India-New Zealand trade pact kicks in",
-          "original": "India-New Zealand trade pact kicks in",
-          "truncated": false,
-          "usable": true,
-          "category": "INDIA",
-          "source": "Reuters · India Today · The New Indian Express",
-          "sourceNames": [
-            "Reuters",
-            "India Today",
-            "The New Indian Express"
-          ],
-          "corroboration": 3,
-          "republishers": [],
-          "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQYXhsVFF6eFdOcDA0Ql9KbVhycm5qQS16VlNTRUhMTXQ5Nnl0VGVRVGh3SWtVZ3dLeHdGZjE5ZXRqSElUd1ZJOTlNUkZSaFJWYXVFMVlFcW1PSkpUZGg0MElBYW5DR0ZXaGhaQmctSzZsRVN5QVZHZ19JLUNWMVN4M3I1MFM2N1ZXSzNtRzcyVXVBU2hIWWfSAaMBQVVfeXFMTnZLeEM2U0pObHJQSUVGaUhhTF9RTnNHYWJ5Tmx0MGlFLVd4TnBGZ08yWm1QSFVOdHZ5S1ZYUVhzYnUxUGVuZGMyb2REaVo2aFRLZ3BzUTFsUWdod2xkNk82blowQW5Nd2NxamdNbnRWMmp",
-          "published": "2026-10-20T06:52:35.000Z",
-          "topic": "india",
-          "section": "india",
-          "score": 7.9,
-          "photo": {
-            "path": "data/pending/india/photo-india-2.jpg",
-            "credit": "File photo: Chubby Chandru / CC BY 2.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=44127811",
-            "query": "India-New Zealand",
-            "relevance": 0.5,
-            "title": "India Vs New zealand One day International, 10 December 2010 (6160465490)"
-          }
-        },
-        {
-          "headline": "US BARS GOVERNMENT AGENCIES FROM USING CHINA'S DEEPSEEK",
-          "display": "US Bars Government Agencies From Using China's DeepSeek",
-          "original": "US Bars Government Agencies From Using China's DeepSeek",
+          "headline": "KENYA CULT LEADER, WHO CONVINCED FOLLOWERS TO STARVE, FOUND GUILTY OF 191 MURDERS",
+          "display": "Kenya Cult Leader, Who Convinced Followers To Starve, Found Guilty Of 191 Murders",
+          "original": "Kenya Cult Leader, Who Convinced Followers To Starve, Found Guilty Of 191 Murders",
           "truncated": false,
           "usable": true,
           "category": "INDIA",
@@ -225,42 +118,204 @@
           ],
           "corroboration": 2,
           "republishers": [],
-          "link": "https://www.ndtv.com/world-news/us-bars-government-agencies-from-using-chinas-deepseek-12209217#publisher=newsstand",
-          "published": "2026-10-20T04:31:33.000Z",
+          "owners": [
+            "BBC (licence fee)",
+            "Adani Group"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB",
+            "IN"
+          ],
+          "fundings": [
+            "state",
+            "conglomerate"
+          ],
+          "concentration": [],
+          "link": "https://www.ndtv.com/world-news/kenya-cult-leader-who-convinced-followers-to-starve-guilty-of-191-murders-12209556#publisher=newsstand",
+          "published": "2026-10-20T06:17:22.000Z",
           "topic": "india",
           "section": "india",
-          "score": 6.4,
-          "photoError": "no image matched the story closely enough (searched \"US Bars\")",
+          "tier": "lead",
+          "score": 15.55,
+          "photoError": "timed out (searched \"Kenya Cult Leader\")",
           "photo": null
         },
         {
-          "headline": "INDIA VOICES CONCERN OVER UN'S LIQUIDITY SITUATION IN 2026, SAYS UNPAID ASSESSMENT",
-          "display": "India voices concern over UN's liquidity situation in 2026, says unpaid assessment",
-          "original": "India voices concern over UN's liquidity situation in 2026, says unpaid assessment are at ‘unacceptably high levels’",
-          "truncated": true,
+          "headline": "NORTH KOREA'S 'PROOF OF LIFE' AMID KIM JONG UN 'BRAIN HAEMORRHAGE DEATH' RUMOUR",
+          "display": "North Korea's 'Proof Of Life' Amid Kim Jong Un 'Brain Haemorrhage Death' Rumour",
+          "original": "North Korea's 'Proof Of Life' Amid Kim Jong Un 'Brain Haemorrhage Death' Rumour",
+          "truncated": false,
           "usable": true,
           "category": "INDIA",
-          "source": "The Hindu · The New Indian Express",
+          "source": "NDTV · Open Magazine",
           "sourceNames": [
-            "The Hindu",
-            "The New Indian Express"
+            "NDTV",
+            "Open Magazine"
           ],
           "corroboration": 2,
           "republishers": [],
-          "link": "https://www.thehindu.com/news/national/india-voices-concern-over-uns-liquidity-situation-in-2026/article71603326.ece",
-          "published": "2026-10-20T05:31:08.000Z",
+          "owners": [
+            "Adani Group"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "concentration": [],
+          "link": "https://www.ndtv.com/world-news/north-koreas-proof-of-life-amid-kim-jong-un-brain-haemorrhage-death-rumour-12209855#publisher=newsstand",
+          "published": "2026-10-20T07:44:14.000Z",
           "topic": "india",
           "section": "india",
-          "score": 6.4,
-          "photo": {
-            "path": "data/pending/india/photo-india-4.jpg",
-            "credit": "File photo: Pranav011 at en.wikipedia / CC BY 3.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=16992577",
-            "query": "India",
-            "relevance": 0.13,
-            "title": "An Unripe Mango Of Ratnagiri (India)"
-          }
+          "tier": "lead",
+          "score": 15.4,
+          "photoError": "a library photograph would misrepresent a story about people in harm (searched \"(none)\")",
+          "photo": null
+        },
+        {
+          "headline": "SILGAN TO ACQUIRE TRIVIUM AND FORM $7.3 BILLION METAL PACKAGING BUSINESS",
+          "display": "Silgan to acquire Trivium and form $7.3 billion metal packaging business",
+          "original": "Silgan to acquire Trivium and form $7.3 billion metal packaging business",
+          "truncated": false,
+          "usable": true,
+          "category": "BUSINESS",
+          "source": "Packaging Europe",
+          "sourceNames": [
+            "Packaging Europe"
+          ],
+          "corroboration": 1,
+          "republishers": [],
+          "owners": [],
+          "ownerCount": 0,
+          "countries": [],
+          "fundings": [],
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOUExucWlWTDNpQnh4aUt3NGhRcG15SFpqRG9qRktHal9xOVQ4blVlSjNtU1NqVGNrajJTU2ZrNnR0V1FZOHhoWFhJV0hxWGVCbWpsNElxbjdGczIyQ1llcE9JX3VYU3NpLXNjcFpVbEJzY3JmdlY4UGdqNkw2Ykg3TjU5c0RyWnVyNDdBNGFrOHRGWW9GQVl0aVJqc3NfNTFzNmNBRFZvTQ?oc=5",
+          "published": "2026-10-20T09:01:15.000Z",
+          "topic": "business",
+          "section": "business",
+          "tier": "significant",
+          "score": 9.3,
+          "photoError": "timed out (searched \"Trivium\")",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "india",
+      "label": "INDIA",
+      "stories": [
+        {
+          "headline": "KENYAN CULT LEADER CONVICTED OF KILLING 190 CHILDREN, TOLD THEM TO STARVE 'FOR HEAVEN'",
+          "display": "Kenyan cult leader convicted of killing 190 children, told them to starve 'for heaven'",
+          "original": "Kenyan cult leader convicted of killing 190 children, told them to starve 'for heaven'",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "The Guardian · Times of India",
+          "sourceNames": [
+            "The Guardian",
+            "Times of India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Scott Trust",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB",
+            "IN"
+          ],
+          "fundings": [
+            "trust",
+            "conglomerate"
+          ],
+          "concentration": [],
+          "link": "https://timesofindia.indiatimes.com/world/rest-of-world/kenyan-doomsday-cult-leader-convicted-of-killing-190-children-ordered-followers-to-starve-for-heaven/articleshow/135061043.cms",
+          "published": "2026-10-20T05:26:14.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "lead",
+          "score": 15.1,
+          "photoError": "timed out (searched \"india\")",
+          "photo": null
+        },
+        {
+          "headline": "MARCO RUBIO'S INDIA VISIT: TRADE DEAL, RUSSIAN OIL AND KEY MEETINGS ON AGENDA",
+          "display": "Marco Rubio's India visit: Trade deal, Russian oil and key meetings on agenda",
+          "original": "Marco Rubio's India visit: Trade deal, Russian oil and key meetings on agenda",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "Reuters · India Today · DW.com",
+          "sourceNames": [
+            "Reuters",
+            "India Today",
+            "DW.com"
+          ],
+          "corroboration": 3,
+          "republishers": [],
+          "owners": [
+            "Thomson Reuters (Trust Principles)",
+            "Living Media"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB",
+            "IN"
+          ],
+          "fundings": [
+            "trust",
+            "commercial"
+          ],
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOMUxJTUNBQ25qVl96MmZ3LWZ6TG5FNGlhZWNFQU1nMWltcU1BVS1wdkNzUWk2WTV3dzdXcjRvTkNxbkt6clpLc2FNTTQtSEd3eTdTQnR2WW1jNUU5Slp3VEtVRjlDVlFUbVlZZmxScDB1Z3BaSUdxNTRJbmtmZ1pwa3EzTUpVcTJlSFVaMW1rXzM2dTBiWEJMdER6UWxIdUJSOFBVNV9TUmQ0bUFHTXJ6ZWJjSVA1T2NZWEZ6bWoydEFfWjhhUHpveG9wSGsyc03SAdQBQVVfeXFMTTUtZGk1TnJVcHZxelpueUdSMks5a1RPVVV3TWpMQk81alZrSjVHM01NVUUyQ1M2SnN",
+          "published": "2026-10-20T06:40:58.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "significant",
+          "score": 12,
+          "photoError": "timed out (searched \"Marco Rubio's India\")",
+          "photo": null
+        },
+        {
+          "headline": "INDIA-NEW ZEALAND TRADE PACT KICKS IN",
+          "display": "India-New Zealand trade pact kicks in",
+          "original": "India-New Zealand trade pact kicks in",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "NDTV · YourStory.com",
+          "sourceNames": [
+            "NDTV",
+            "YourStory.com"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Adani Group"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE54d1RhU3VoMXNDeEoyUWhwWmVZQXdwZS1lUmVlY1k0QjJJQ0ZPRW03Q2UtZXZKNlp6R2Jpa29JQU9wbzFSSkI1TU5WcEhtTWdqNmlZZVNuc0Z0WGpyZnlJTXRCZDhLV1dqX2JFMFBRYVJGNHJyR2c?oc=5",
+          "published": "2026-10-20T09:01:48.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "significant",
+          "score": 11.4,
+          "photoError": "timed out (searched \"India-New Zealand\")",
+          "photo": null
         }
       ]
     },
@@ -275,79 +330,112 @@
           "truncated": false,
           "usable": true,
           "category": "WORLD NEWS",
-          "source": "BBC News · Al Jazeera · NDTV",
+          "source": "BBC News · Al Jazeera",
           "sourceNames": [
             "BBC News",
-            "Al Jazeera",
-            "NDTV"
+            "Al Jazeera"
           ],
-          "corroboration": 3,
+          "corroboration": 2,
           "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Government of Qatar"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB",
+            "QA"
+          ],
+          "fundings": [
+            "state"
+          ],
+          "concentration": [],
           "link": "https://www.aljazeera.com/video/newsfeed/2026/10/20/japan-launches-historic-mission-to-bring-back-mars-moon-samples?traffic_source=rss",
           "published": "2026-10-20T04:08:33.000Z",
           "topic": "world",
           "section": "world",
-          "score": 8.8,
-          "photo": {
-            "path": "data/pending/world/photo-world-2.jpg",
-            "credit": "File photo: Soren Bradley / CC BY 4.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=166276509",
-            "query": "Japan",
-            "relevance": 0.11,
-            "title": "Topographic map of Chubu, Japan"
-          }
-        },
-        {
-          "headline": "KENYA CULT LEADER, WHO CONVINCED FOLLOWERS TO STARVE, FOUND GUILTY OF 191 MURDERS",
-          "display": "Kenya Cult Leader, Who Convinced Followers To Starve, Found Guilty Of 191 Murders",
-          "original": "Kenya Cult Leader, Who Convinced Followers To Starve, Found Guilty Of 191 Murders",
-          "truncated": false,
-          "usable": true,
-          "category": "WORLD NEWS",
-          "source": "BBC News · NDTV",
-          "sourceNames": [
-            "BBC News",
-            "NDTV"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPOS12U0xvXzdMaHlZRlROclBDVmZhSXJOQ2tZVmdja21KQXczTmhPajBfZFZTaXBmNktqcjYycVZYOG5aZ2lvdy1nMHE1Uk5WeDlIbzBfZXU3Y0lzWkZpdDFnZnl0OW5FVTk1RjJCSzdob0RVSHZJQ1ZqVWdkYzZha05zYWw2RVFIZzlzbDZwZnh0R2JmRlJnS3hmTXk5U3JSS0VMUkNsSU5PcmlNNVZjaVp2b2LSAbwBQVVfeXFMUHl4LVNaN3A2M3Vhd29JeUFDdzVRRm40YXB6cjdxWEExUmpjUXQ5dkU4R1FyTzBBTTRmdjBCMjRES1F3X0w0bVp0d2JxdDFWc2NHODM",
-          "published": "2026-10-20T06:16:10.000Z",
-          "topic": "world",
-          "section": "world",
-          "score": 7.1,
-          "photoError": "no image matched the story closely enough (searched \"international summit flags\")",
+          "tier": "significant",
+          "score": 11.55,
+          "photoError": "timed out (searched \"Japan\")",
           "photo": null
         },
         {
-          "headline": "FRENCH PROTESTS TAPERS OFF AFTER TOUGHER SECURITY MEASURES IMPOSED",
-          "display": "French protests tapers off after tougher security measures imposed",
-          "original": "French protests tapers off after tougher security measures imposed",
+          "headline": "US BARS GOVERNMENT AGENCIES FROM USING CHINA'S DEEPSEEK",
+          "display": "US Bars Government Agencies From Using China's DeepSeek",
+          "original": "US Bars Government Agencies From Using China's DeepSeek",
           "truncated": false,
           "usable": true,
           "category": "WORLD NEWS",
-          "source": "BBC News · Business Standard",
+          "source": "NDTV · BBC News",
           "sourceNames": [
-            "BBC News",
-            "Business Standard"
+            "NDTV",
+            "BBC News"
           ],
           "corroboration": 2,
           "republishers": [],
-          "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOd0hwOUpBNjZWWXZ4dW1sUVBFMkJoYkdMcmI2VmNZQ3p4YzV1eldmR0RGd3F5cUs3WXdfa1VQa2JuVWJid2RvRGd1SEVfaTRlYnpELTJjb2RyMWZNNnB1b2E3R3J5OFhaU253UXRmLXc0WTVISXNQM0Vad1JvdzdFZTMzN2w5NkotcHlTWUxrMnN0UDRxYkRlemVRODlhblVQcnZWbVloTWt0UHV4bWlFZF9HUWJ0WlpNZnpRcnprODR0SmVCNkhrYmRKb9IB0AFBVV95cUxNV3FBV1JmSjVFbC1ad1U0RnZ2UTJwNWFBdllfakN0WEpJY3ExNE9lMjFrcXVkQkkzS29UbUd",
-          "published": "2026-10-20T03:09:36.000Z",
+          "owners": [
+            "Adani Group",
+            "BBC (licence fee)"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN",
+            "GB"
+          ],
+          "fundings": [
+            "conglomerate",
+            "state"
+          ],
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNaUVKbkZkSVN4bmdzT1I0dzg4b2dRaHJtVEpPWXRTM0xLdTlxQ1lrUVB2RF9vQXdtMTBabXB5UWhGRGM3TzhIRTBYZmo3MDRyX0VJTHJQZnBvU1hyOHlzNmUwSS04a3BDZHVMdzNocXlBSUItbXJlZ0dCUEMzWDMtYV84Tng3OWx3RkhtWU9Kc0NQcEVlcnZ0MGJ4c9IBowFBVV95cUxNNWc0S0JMcTh6SkwxX2lvN211d2VMR3VSWVYtTjVVUjVxdW92a0VOQVlGZjROMG9GNTVQTkM4VlpxNG5rUWZSTElvcjVrY3h6MUdOSVdBYVRxelNSczRnd3B2X1VYa280ckd5ZHR",
+          "published": "2026-10-20T04:31:33.000Z",
           "topic": "world",
           "section": "world",
-          "score": 6.8,
-          "photo": {
-            "path": "data/pending/world/photo-world-4.jpg",
-            "credit": "File photo: Donar Reiskoffer / CC BY 3.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=105904",
-            "query": "French",
-            "relevance": 0.14,
-            "title": "Meuse, in the french ardennes"
-          }
+          "tier": "significant",
+          "score": 11.1,
+          "photoError": "timed out (searched \"US Bars\")",
+          "photo": null
+        },
+        {
+          "headline": "ALBERTA VOTERS REJECT PLAN FOR REFERENDUM TO LEAVE CANADA",
+          "display": "Alberta voters reject plan for referendum to leave Canada",
+          "original": "Alberta voters reject plan for referendum to leave Canada",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "Al Jazeera · The Guardian · Hindustan Times",
+          "sourceNames": [
+            "Al Jazeera",
+            "The Guardian",
+            "Hindustan Times"
+          ],
+          "corroboration": 3,
+          "republishers": [],
+          "owners": [
+            "Government of Qatar",
+            "Scott Trust",
+            "HT Media / KK Birla family"
+          ],
+          "ownerCount": 3,
+          "countries": [
+            "QA",
+            "GB",
+            "IN"
+          ],
+          "fundings": [
+            "state",
+            "trust",
+            "conglomerate"
+          ],
+          "concentration": [],
+          "link": "https://www.theguardian.com/world/2026/oct/20/canada-alberta-rejects-independence-succession-referendum",
+          "published": "2026-10-20T09:02:43.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 9.9,
+          "photoError": "timed out (searched \"Alberta\")",
+          "photo": null
         }
       ]
     },
@@ -356,93 +444,76 @@
       "label": "BUSINESS",
       "stories": [
         {
-          "headline": "BITCOIN END PRICE (PREVIOUS EPOCH): $64,990 CURRENT PRICE (C",
-          "display": "Bitcoin End Price (Previous Epoch): $64,990 Current Price (C",
-          "original": "Bitcoin End Price (Previous Epoch): $64,990 Current Price (C",
+          "headline": "CHANCELLOR REJECTS CALLS TO RAISE CAPITAL GAINS TAX IN BUDGET",
+          "display": "Chancellor rejects calls to raise Capital Gains Tax in Budget",
+          "original": "Chancellor rejects calls to raise Capital Gains Tax in Budget",
           "truncated": false,
           "usable": true,
-          "category": "CRYPTO NEWS",
-          "source": "Fortune · Pluang · KuCoin",
+          "category": "BUSINESS",
+          "source": "The Guardian · BBC News",
           "sourceNames": [
-            "Fortune",
-            "Pluang",
-            "KuCoin"
-          ],
-          "corroboration": 3,
-          "republishers": [],
-          "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE52Y2dnWFNEOHlCTk0tbks3ZmpyS0czc051SEJ6Mnl6ZENXNS1qZlVVQm5ua1pHVnI3Q3ZTdUxqcGFrRTVQeVZ5alRqenpvbVJyTmh2RWRvVFU0bnR5aEhBVDd5Z3kyaDJudG5YZTk5SXFWQQ?oc=5",
-          "published": "2026-10-20T07:05:07.000Z",
-          "topic": "crypto",
-          "section": "business",
-          "score": 7.1,
-          "photo": {
-            "path": "data/pending/business/photo-business-2.jpg",
-            "credit": "File photo: Authors of the study: Shangrong Jiang, Y / CC BY 4.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=105578662",
-            "query": "bitcoin",
-            "relevance": 0.25,
-            "title": "Bitcoin mining pools by location (country) – Mining pool distributions of Bitcoin blockchain"
-          }
-        },
-        {
-          "headline": "STRIVE BUYS $335 MILLION IN BITCOIN AFTER INVESTORS POUR IN $369 MILLION",
-          "display": "Strive Buys $335 Million in Bitcoin After Investors Pour In $369 Million",
-          "original": "Strive Buys $335 Million in Bitcoin After Investors Pour In $369 Million",
-          "truncated": false,
-          "usable": true,
-          "category": "CRYPTO NEWS",
-          "source": "Cointelegraph · Decrypt · The Block",
-          "sourceNames": [
-            "Cointelegraph",
-            "Decrypt",
-            "The Block"
-          ],
-          "corroboration": 3,
-          "republishers": [],
-          "link": "https://decrypt.co/381382/strive-buys-335-million-bitcoin",
-          "published": "2026-10-19T21:46:05.000Z",
-          "topic": "crypto",
-          "section": "business",
-          "score": 6.95,
-          "photo": {
-            "path": "data/pending/business/photo-business-3.jpg",
-            "credit": "File photo: Jorge Franganillo / CC BY 2.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=113283593",
-            "query": "bitcoin",
-            "relevance": 0.2,
-            "title": "Bitcoins"
-          }
-        },
-        {
-          "headline": "HERE’S WHAT HAPPENED IN CRYPTO TODAY",
-          "display": "Here’s what happened in crypto today",
-          "original": "Here’s what happened in crypto today",
-          "truncated": false,
-          "usable": true,
-          "category": "CRYPTO NEWS",
-          "source": "Cointelegraph · BBC News",
-          "sourceNames": [
-            "Cointelegraph",
+            "The Guardian",
             "BBC News"
           ],
           "corroboration": 2,
           "republishers": [],
-          "link": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-          "published": "2026-10-19T20:02:30.000Z",
-          "topic": "crypto",
+          "owners": [
+            "Scott Trust",
+            "BBC (licence fee)"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB"
+          ],
+          "fundings": [
+            "trust",
+            "state"
+          ],
+          "concentration": [],
+          "link": "https://www.bbc.co.uk/news/articles/c50me4w4x1vyo?at_medium=RSS&at_campaign=rss",
+          "published": "2026-10-20T08:44:56.000Z",
+          "topic": "business",
           "section": "business",
-          "score": 5.95,
-          "photo": {
-            "path": "data/pending/business/photo-business-4.jpg",
-            "credit": "File photo: Strelka Institute for Media, Architectur / CC BY 2.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=67593524",
-            "query": "cryptocurrency",
-            "relevance": 0.5,
-            "title": "File:POPULATED BY ROBOTS HOW CRYPTOCURRENCY WILL RE-OPEN THE ARCTIC (36920210013).jpg"
-          }
+          "tier": "notable",
+          "score": 8.4,
+          "photoError": "timed out (searched \"Capital Gains Tax\")",
+          "photo": null
+        },
+        {
+          "headline": "BURNHAM VOWS END TO 'RIP-OFF PARKING CHARGES' UNDER NEW RULES",
+          "display": "Burnham vows end to 'rip-off parking charges' under new rules",
+          "original": "Burnham vows end to 'rip-off parking charges' under new rules",
+          "truncated": false,
+          "usable": true,
+          "category": "BUSINESS",
+          "source": "BBC News · The Guardian",
+          "sourceNames": [
+            "BBC News",
+            "The Guardian"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Scott Trust"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB"
+          ],
+          "fundings": [
+            "state",
+            "trust"
+          ],
+          "concentration": [],
+          "link": "https://www.bbc.co.uk/news/articles/ck87ze7wl4qno?at_medium=RSS&at_campaign=rss",
+          "published": "2026-10-20T08:55:02.000Z",
+          "topic": "business",
+          "section": "business",
+          "tier": "notable",
+          "score": 8.4,
+          "photoError": "timed out (searched \"office towers business district\")",
+          "photo": null
         }
       ]
     },
@@ -451,40 +522,221 @@
       "label": "TECHNOLOGY",
       "stories": [
         {
-          "headline": "ASTRAZENECA PARTNERS WITH ORACLE ON AI CLINICAL RESEARCH",
-          "display": "AstraZeneca partners with Oracle on AI clinical research",
-          "original": "AstraZeneca partners with Oracle on AI clinical research",
+          "headline": "INDIA SEEKS GLOBAL VIGILANCE REGARDING TRANSFER OF SENSITIVE WEAPONS TECHNOLOGY",
+          "display": "India seeks global vigilance regarding transfer of sensitive weapons technology",
+          "original": "India seeks global vigilance regarding transfer of sensitive weapons technology to terror-linked actors",
+          "truncated": true,
+          "usable": true,
+          "category": "TECHNOLOGY",
+          "source": "The New Indian Express · India Today · Greater Kashmir",
+          "sourceNames": [
+            "The New Indian Express",
+            "India Today",
+            "Greater Kashmir"
+          ],
+          "corroboration": 3,
+          "republishers": [],
+          "owners": [
+            "Living Media"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial"
+          ],
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxNUjN4VVp1a1dsa1daYUFJX193enlfeFFsS1lMTTUxNjNXXzI1MHIzcFRjQ25HY2tud1pyOUcxRmozVlhINTBQeDFBb0RuenJBdjlMVU1UaUctaXFMakMzSEgzY0JVS0lwRm5td1BUNXo4RGpDN1oybnNkZ1hOYmVMa1lhenZjcHgxR2p1R0tsT1I5dWRHeUpvU1ZhQllpb2pvcUdHamh6WkhScDNjY0k3RFR0N1VSaEo2X1hQYmxkT3E3S3ZKSTV4NXZCdVVFbWVaRE1JTi1mcFlJREhvS2hXTEQ3Mkt2ZG8x0gHoAUFVX3lxTE1SM3hVWnVrV2xrV1phQUlfX3d6eV94UWx",
+          "published": "2026-10-20T04:23:57.000Z",
+          "topic": "tech",
+          "section": "tech",
+          "tier": "significant",
+          "score": 12,
+          "photo": {
+            "path": "data/pending/tech/photo-tech-2.jpg",
+            "credit": "File photo: Pranav011 at en.wikipedia / CC BY 3.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=16992577",
+            "query": "India",
+            "relevance": 0.13,
+            "title": "An Unripe Mango Of Ratnagiri (India)"
+          }
+        },
+        {
+          "headline": "COGNIZANT TECHNOLOGY SOLUTIONS CHOSEN",
+          "display": "Cognizant Technology Solutions Chosen",
+          "original": "Cognizant Technology Solutions Chosen by Ingenico as Technology Partner",
           "truncated": false,
           "usable": true,
           "category": "TECHNOLOGY",
-          "source": "WSJ · AstraZeneca",
+          "source": "PR Newswire · www.marketscreener.com",
           "sourceNames": [
-            "WSJ",
-            "AstraZeneca"
+            "PR Newswire",
+            "www.marketscreener.com"
           ],
           "corroboration": 2,
-          "republishers": [
-            "Investing.com"
-          ],
-          "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNbDRwbHJXaXh4Tk8ySzlGRTdsVWI4ZWtFUzZOVTcwaG9hUHQzeW5adlhIN1I1ZXpGMTRHVEpRUjlVRHItdzVpc1JWS0xsTWVoajhFVVBVU0I5SHlzMzhhb01kNEpQMHpFUks1RHJodzZYMV90TXNiMFduQUg0WldwVWRYbFl5eDB4U0VRNjlWek5wVm5RdUppLTJ5MDZHN0l4UFRrUHkxaEYxMlpRdHd1RWRuenIzQjkxQ3c?oc=5",
-          "published": "2026-10-20T06:34:49.000Z",
+          "republishers": [],
+          "owners": [],
+          "ownerCount": 0,
+          "countries": [],
+          "fundings": [],
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQVmFoQzZYQjhnZnlLTFJxcVVmMVNjelFPQU1Eem5fRFpMcHRCVUFwWEhld0ZBbWtmR01NS3owOVpTUTZTRFd3LUJTSVZuSnpjZ0lsRlpGajhqYzFadFJkUERpYkt1UmNrZUFFQkFTR2NCdFV1X0VVTjRHYjhPbERDSHhJaGlCdlZzSnB1Y0V3QW1OeThfNkQyUC1YcWl5QmdadENBbkxhWVE4SmZaTzI5MjVNSnJXRDE3STNVV05LRkRaUQ?oc=5",
+          "published": "2026-10-20T09:09:24.000Z",
           "topic": "tech",
           "section": "tech",
-          "score": 5.7,
+          "tier": "notable",
+          "score": 7.8,
+          "photoError": "timed out (searched \"Cognizant Technology Solutions\")",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "science",
+      "label": "SCIENCE",
+      "stories": [
+        {
+          "headline": "DIGITAL SCIENCE AND SUNMEDIA PARTNER ON RESEARCH IMPACT",
+          "display": "Digital Science and Sunmedia partner on research impact",
+          "original": "Digital Science and Sunmedia partner on research impact",
+          "truncated": false,
+          "usable": true,
+          "category": "SCIENCE",
+          "source": "Research Information · TheWire.in",
+          "sourceNames": [
+            "Research Information",
+            "TheWire.in"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [],
+          "ownerCount": 0,
+          "countries": [],
+          "fundings": [],
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNdldBaU0tZUc0UnNzUFJmS1otdFVYa1BmT1NFQXZySDNpQm82WnpvakJpdGhjRmRHRk5JQnFNSlFmc2o5M21MMUt5LU5QU2pjaWt3Ymh3ZGs1THBIZTYyVGlCdmswMEJYYUtrY1FtVGhrYXhOR21JcFAyUlYtcmJfMXRma3dXNEg3Q0RrV2RwampWakxPMUI2OW9VQ2ZwVzg?oc=5",
+          "published": "2026-10-20T08:47:19.000Z",
+          "topic": "science",
+          "section": "science",
+          "tier": "notable",
+          "score": 7.95,
+          "photoError": "timed out (searched \"Digital Science\")",
+          "photo": null
+        },
+        {
+          "headline": "MIDDLE EAST",
+          "display": "Middle East",
+          "original": "Middle East",
+          "truncated": false,
+          "usable": false,
+          "category": "SCIENCE",
+          "source": "MUFG Research · Economic Times",
+          "sourceNames": [
+            "MUFG Research",
+            "Economic Times"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5pZzJtSDB6WDk2cXF2Q1hKOGU2Wl9vNGVqRGlXa3h6Si1Bd0FDSms0eF9NeVBvLXNlT0FieGstcnVaRmcwaUxVT2tKMUVod3pxSnhGSHgybEluRHFtMmhvR0RnUW5sandlaHJwZkZYbDFSb1JJTUh2SA?oc=5",
+          "published": "2026-10-20T07:14:06.000Z",
+          "topic": "science",
+          "section": "science",
+          "tier": "notable",
+          "score": 7.65
+        }
+      ]
+    },
+    {
+      "id": "health",
+      "label": "HEALTH",
+      "stories": [
+        {
+          "headline": "GLOBAL HEALTH RESEARCH IN THE AMERICA FIRST ERA",
+          "display": "Global Health Research in the America First Era",
+          "original": "Global Health Research in the America First Era",
+          "truncated": false,
+          "usable": true,
+          "category": "HEALTH",
+          "source": "The Economist · Think Global Health",
+          "sourceNames": [
+            "The Economist",
+            "Think Global Health"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [],
+          "ownerCount": 0,
+          "countries": [],
+          "fundings": [],
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNbThrU0VFaHVVa2ZncWtnd0w1V1p2S1dnYTd2SHdYX1FadkdWTk1yQ3FSZWtodHo4WFlCSFZPNzVnNzhfVS1jQkZ6VlRjSFpISGFUMW01ckkyTDZsMXhLNU9TSWhESmh5bjZQOFZUWGtSVERBazNVNWI4VnV2RWxPdmlmbUN6S3h2cUk3NWs5a290WG8?oc=5",
+          "published": "2026-10-19T20:23:57.000Z",
+          "topic": "health",
+          "section": "health",
+          "tier": "significant",
+          "score": 9.825,
           "photo": {
-            "path": "data/pending/tech/photo-tech-2.jpg",
-            "credit": "File photo: Agência Brasília / CC BY 2.0",
+            "path": "data/pending/health/photo-health-2.jpg",
+            "credit": "File photo: Phil Whitehouse from London, United King / CC BY 2.0",
             "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=99227214",
-            "query": "AstraZeneca",
-            "relevance": 0.2,
-            "title": "Oxford AstraZeneca vaccine (Indian version) 2021 C"
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=9523361",
+            "query": "America",
+            "relevance": 0.33,
+            "title": "Copa America-2004-02"
           }
+        },
+        {
+          "headline": "TRUMP SIGNS ORDER TO BOOST WOMEN'S HEALTH",
+          "display": "Trump signs order to boost women's health",
+          "original": "Trump signs order to boost women's health",
+          "truncated": false,
+          "usable": true,
+          "category": "HEALTH",
+          "source": "MorungExpress · Reuters · American Hospital Association",
+          "sourceNames": [
+            "MorungExpress",
+            "Reuters",
+            "American Hospital Association"
+          ],
+          "corroboration": 3,
+          "republishers": [],
+          "owners": [
+            "Thomson Reuters (Trust Principles)"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "GB"
+          ],
+          "fundings": [
+            "trust"
+          ],
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9pcHRhN1FZQnVlWTJqNjJmVDJfUkd4MXNGaUYzY2l3TFRQMGxLbWVQc3FLd2lKSktKTlp1VTRxYzV0UFlkMmVXRGZyVzNNRjVIWHdkcW1TWG1ZYVJHNXFCWVE3T0V4Q3ZBdzZsZzBsUkZIcGF6?oc=5",
+          "published": "2026-10-20T06:21:25.000Z",
+          "topic": "health",
+          "section": "health",
+          "tier": "notable",
+          "score": 9.15,
+          "photoError": "timed out (searched \"Trump\")",
+          "photo": null
         }
       ]
     }
   ],
-  "rendered": "2026-10-20T07:54:49.574Z",
+  "rendered": "2026-10-20T09:21:10.305Z",
   "options": {
     "layout": "breaking",
     "theme": "bbc",
@@ -514,115 +766,109 @@
       "width": 1080,
       "height": 1350,
       "sourceNames": [
-        "CoinDesk",
-        "Cointelegraph",
-        "Decrypt",
-        "The Block",
-        "J.P. Morgan",
-        "CryptoSlate",
-        "Times of India",
-        "Hindustan Times",
-        "The Week",
-        "Deccan Herald",
-        "The New Indian Express",
-        "Binance"
+        "BBC News",
+        "NDTV",
+        "Open Magazine",
+        "Packaging Europe"
       ],
       "stories": [
         {
-          "headline": "JPMORGAN DROPS JPM COIN ON ETHEREUM WITH ZERO RETAIL ACCESS",
-          "display": "JPMorgan drops JPM Coin on Ethereum with zero retail access",
-          "original": "JPMorgan drops JPM Coin on Ethereum with zero retail access",
+          "headline": "KENYA CULT LEADER, WHO CONVINCED FOLLOWERS TO STARVE, FOUND GUILTY OF 191 MURDERS",
+          "display": "Kenya Cult Leader, Who Convinced Followers To Starve, Found Guilty Of 191 Murders",
+          "original": "Kenya Cult Leader, Who Convinced Followers To Starve, Found Guilty Of 191 Murders",
           "truncated": false,
           "usable": true,
-          "category": "CRYPTO NEWS",
-          "source": "CoinDesk · Cointelegraph · Decrypt",
-          "sourceNames": [
-            "CoinDesk",
-            "Cointelegraph",
-            "Decrypt",
-            "The Block",
-            "J.P. Morgan",
-            "CryptoSlate"
-          ],
-          "corroboration": 6,
-          "republishers": [],
-          "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOd01lU01vUTZ6ckd6R2VuX1B2dHF4dExxcUUwXzNwVjk4ZHZXRzRVdElFU0lYX2NQcGJZS1UwMDRMRkQ4bjBWVWViSWZIeFU4dDA2d0l3cEFkVUp6YmxwRUZjNTZWd3lnUDg5eExpcW1peXlzR29pbmRoMFdRSFNNQjM2MGJsWXlRdFhXaw?oc=5",
-          "published": "2026-10-20T06:30:25.000Z",
-          "topic": "crypto",
-          "section": "business",
-          "score": 13.9,
-          "photo": {
-            "path": "data/pending/top/photo-top-2.jpg",
-            "credit": "File photo: Steve Jurvetson / CC BY 2.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=23967924",
-            "query": "JPMorgan",
-            "relevance": 0.14,
-            "title": "File:Jamie Dimon, CEO of JPMorgan Chase.jpg"
-          }
-        },
-        {
-          "headline": "MOHAN BHAGWAT SAYS FORCES TRYING TO DESTABILISE INDIA",
-          "display": "Mohan Bhagwat says forces trying to destabilise India",
-          "original": "Mohan Bhagwat says forces trying to destabilise India: ‘Regime change doesn’t change circumstances’ | India News",
-          "truncated": true,
-          "usable": true,
           "category": "INDIA",
-          "source": "Times of India · Hindustan Times · The Week",
+          "source": "BBC News · NDTV",
           "sourceNames": [
-            "Times of India",
-            "Hindustan Times",
-            "The Week",
-            "Deccan Herald",
-            "The New Indian Express"
+            "BBC News",
+            "NDTV"
           ],
-          "corroboration": 5,
+          "corroboration": 2,
           "republishers": [],
-          "link": "https://news.google.com/rss/articles/CBMilgJBVV95cUxPRzU3TlU5RnlEelE3RHZQQU0wSU44WGdxdVNBc1E4YUVDazVYM2pvSGJnYy0yZ1pCTHVlRXA0aTRXaWJZS2g2Rk8tUkdxOWtKNmpRajZpQmJLWExmWDE3WXRBUWNwWGRvcEkzZmRhZnh6NDlFMEIzTDMtWWVPSFA5ZHBNVVRzYk4xMHBSbTBRaWJybG1HeFlRWU04TVhDRlpITHBOaEpiZnlCSm83XzBRcnZnOS1qek96SXZGMGx6eVlGaDU5dVUxTk0xamZocF9lNDJ3QmZDQTl5a0xyRlFkMzFybjJmWHNha0FGU0tHYWtxSUV2RG9lUmVSdGFldUtVSENpWGdObVlGMUw",
-          "published": "2026-10-20T07:23:42.000Z",
+          "owners": [
+            "BBC (licence fee)",
+            "Adani Group"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB",
+            "IN"
+          ],
+          "fundings": [
+            "state",
+            "conglomerate"
+          ],
+          "concentration": [],
+          "link": "https://www.ndtv.com/world-news/kenya-cult-leader-who-convinced-followers-to-starve-guilty-of-191-murders-12209556#publisher=newsstand",
+          "published": "2026-10-20T06:17:22.000Z",
           "topic": "india",
           "section": "india",
-          "score": 12.1,
-          "photo": {
-            "path": "data/pending/top/photo-top-3.jpg",
-            "credit": "File photo: Nagpurjournalism / CC0",
-            "license": "cc0",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=166877533",
-            "query": "Mohan Bhagwat",
-            "relevance": 0.33,
-            "title": "RSS Chief Shri Mohan Bhagwat with Vijay Darda"
-          }
+          "tier": "lead",
+          "score": 15.55,
+          "photoError": "timed out (searched \"Kenya Cult Leader\")",
+          "photo": null
         },
         {
-          "headline": "BITCOIN NEWS | STRATEGY BOUGHT $22 MILLION OF BITCOIN LAST WEEK",
-          "display": "Bitcoin News | Strategy Bought $22 Million of Bitcoin Last Week",
-          "original": "Bitcoin News | Strategy Bought $22 Million of Bitcoin Last Week — and $193 Million of Its Own Preferred Stock",
-          "truncated": true,
+          "headline": "NORTH KOREA'S 'PROOF OF LIFE' AMID KIM JONG UN 'BRAIN HAEMORRHAGE DEATH' RUMOUR",
+          "display": "North Korea's 'Proof Of Life' Amid Kim Jong Un 'Brain Haemorrhage Death' Rumour",
+          "original": "North Korea's 'Proof Of Life' Amid Kim Jong Un 'Brain Haemorrhage Death' Rumour",
+          "truncated": false,
           "usable": true,
-          "category": "CRYPTO NEWS",
-          "source": "Cointelegraph · Decrypt · The Block",
+          "category": "INDIA",
+          "source": "NDTV · Open Magazine",
           "sourceNames": [
-            "Cointelegraph",
-            "Decrypt",
-            "The Block",
-            "Binance"
+            "NDTV",
+            "Open Magazine"
           ],
-          "corroboration": 4,
+          "corroboration": 2,
           "republishers": [],
-          "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9VWjdiU0wzN2hocDV6RkZxMHktNjEzZjlpdTFJbTVocVk0MUZnRnZjQVl2a2gxaFRJZHhJQ3RNZ2hvVzRwR2N4NFNBMWM0V0V6bUpiX2ROSFNOd2xkX2tEQU1mR1g?oc=5",
-          "published": "2026-10-20T06:29:05.000Z",
-          "topic": "crypto",
+          "owners": [
+            "Adani Group"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "concentration": [],
+          "link": "https://www.ndtv.com/world-news/north-koreas-proof-of-life-amid-kim-jong-un-brain-haemorrhage-death-rumour-12209855#publisher=newsstand",
+          "published": "2026-10-20T07:44:14.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "lead",
+          "score": 15.4,
+          "photoError": "a library photograph would misrepresent a story about people in harm (searched \"(none)\")",
+          "photo": null
+        },
+        {
+          "headline": "SILGAN TO ACQUIRE TRIVIUM AND FORM $7.3 BILLION METAL PACKAGING BUSINESS",
+          "display": "Silgan to acquire Trivium and form $7.3 billion metal packaging business",
+          "original": "Silgan to acquire Trivium and form $7.3 billion metal packaging business",
+          "truncated": false,
+          "usable": true,
+          "category": "BUSINESS",
+          "source": "Packaging Europe",
+          "sourceNames": [
+            "Packaging Europe"
+          ],
+          "corroboration": 1,
+          "republishers": [],
+          "owners": [],
+          "ownerCount": 0,
+          "countries": [],
+          "fundings": [],
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOUExucWlWTDNpQnh4aUt3NGhRcG15SFpqRG9qRktHal9xOVQ4blVlSjNtU1NqVGNrajJTU2ZrNnR0V1FZOHhoWFhJV0hxWGVCbWpsNElxbjdGczIyQ1llcE9JX3VYU3NpLXNjcFpVbEJzY3JmdlY4UGdqNkw2Ykg3TjU5c0RyWnVyNDdBNGFrOHRGWW9GQVl0aVJqc3NfNTFzNmNBRFZvTQ?oc=5",
+          "published": "2026-10-20T09:01:15.000Z",
+          "topic": "business",
           "section": "business",
-          "score": 9.7,
-          "photo": {
-            "path": "data/pending/top/photo-top-4.jpg",
-            "credit": "File photo: 张楠赓 / CC0",
-            "license": "cc0",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=28280558",
-            "query": "Bitcoin",
-            "relevance": 0.33,
-            "title": "File:Avalon-An ASIC base bitcoin machine.jpg"
-          }
+          "tier": "significant",
+          "score": 9.3,
+          "photoError": "timed out (searched \"Trivium\")",
+          "photo": null
         }
       ],
       "usable": true,
@@ -642,14 +888,90 @@
       "width": 1080,
       "height": 1350,
       "sourceNames": [
+        "The Guardian",
+        "Times of India",
         "Reuters",
         "India Today",
-        "The New Indian Express",
-        "BBC News",
+        "DW.com",
         "NDTV",
-        "The Hindu"
+        "YourStory.com"
       ],
       "stories": [
+        {
+          "headline": "KENYAN CULT LEADER CONVICTED OF KILLING 190 CHILDREN, TOLD THEM TO STARVE 'FOR HEAVEN'",
+          "display": "Kenyan cult leader convicted of killing 190 children, told them to starve 'for heaven'",
+          "original": "Kenyan cult leader convicted of killing 190 children, told them to starve 'for heaven'",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "The Guardian · Times of India",
+          "sourceNames": [
+            "The Guardian",
+            "Times of India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Scott Trust",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB",
+            "IN"
+          ],
+          "fundings": [
+            "trust",
+            "conglomerate"
+          ],
+          "concentration": [],
+          "link": "https://timesofindia.indiatimes.com/world/rest-of-world/kenyan-doomsday-cult-leader-convicted-of-killing-190-children-ordered-followers-to-starve-for-heaven/articleshow/135061043.cms",
+          "published": "2026-10-20T05:26:14.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "lead",
+          "score": 15.1,
+          "photoError": "timed out (searched \"india\")",
+          "photo": null
+        },
+        {
+          "headline": "MARCO RUBIO'S INDIA VISIT: TRADE DEAL, RUSSIAN OIL AND KEY MEETINGS ON AGENDA",
+          "display": "Marco Rubio's India visit: Trade deal, Russian oil and key meetings on agenda",
+          "original": "Marco Rubio's India visit: Trade deal, Russian oil and key meetings on agenda",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "Reuters · India Today · DW.com",
+          "sourceNames": [
+            "Reuters",
+            "India Today",
+            "DW.com"
+          ],
+          "corroboration": 3,
+          "republishers": [],
+          "owners": [
+            "Thomson Reuters (Trust Principles)",
+            "Living Media"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB",
+            "IN"
+          ],
+          "fundings": [
+            "trust",
+            "commercial"
+          ],
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOMUxJTUNBQ25qVl96MmZ3LWZ6TG5FNGlhZWNFQU1nMWltcU1BVS1wdkNzUWk2WTV3dzdXcjRvTkNxbkt6clpLc2FNTTQtSEd3eTdTQnR2WW1jNUU5Slp3VEtVRjlDVlFUbVlZZmxScDB1Z3BaSUdxNTRJbmtmZ1pwa3EzTUpVcTJlSFVaMW1rXzM2dTBiWEJMdER6UWxIdUJSOFBVNV9TUmQ0bUFHTXJ6ZWJjSVA1T2NZWEZ6bWoydEFfWjhhUHpveG9wSGsyc03SAdQBQVVfeXFMTTUtZGk1TnJVcHZxelpueUdSMks5a1RPVVV3TWpMQk81alZrSjVHM01NVUUyQ1M2SnN",
+          "published": "2026-10-20T06:40:58.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "significant",
+          "score": 12,
+          "photoError": "timed out (searched \"Marco Rubio's India\")",
+          "photo": null
+        },
         {
           "headline": "INDIA-NEW ZEALAND TRADE PACT KICKS IN",
           "display": "India-New Zealand trade pact kicks in",
@@ -657,79 +979,32 @@
           "truncated": false,
           "usable": true,
           "category": "INDIA",
-          "source": "Reuters · India Today · The New Indian Express",
+          "source": "NDTV · YourStory.com",
           "sourceNames": [
-            "Reuters",
-            "India Today",
-            "The New Indian Express"
-          ],
-          "corroboration": 3,
-          "republishers": [],
-          "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQYXhsVFF6eFdOcDA0Ql9KbVhycm5qQS16VlNTRUhMTXQ5Nnl0VGVRVGh3SWtVZ3dLeHdGZjE5ZXRqSElUd1ZJOTlNUkZSaFJWYXVFMVlFcW1PSkpUZGg0MElBYW5DR0ZXaGhaQmctSzZsRVN5QVZHZ19JLUNWMVN4M3I1MFM2N1ZXSzNtRzcyVXVBU2hIWWfSAaMBQVVfeXFMTnZLeEM2U0pObHJQSUVGaUhhTF9RTnNHYWJ5Tmx0MGlFLVd4TnBGZ08yWm1QSFVOdHZ5S1ZYUVhzYnUxUGVuZGMyb2REaVo2aFRLZ3BzUTFsUWdod2xkNk82blowQW5Nd2NxamdNbnRWMmp",
-          "published": "2026-10-20T06:52:35.000Z",
-          "topic": "india",
-          "section": "india",
-          "score": 7.9,
-          "photo": {
-            "path": "data/pending/india/photo-india-2.jpg",
-            "credit": "File photo: Chubby Chandru / CC BY 2.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=44127811",
-            "query": "India-New Zealand",
-            "relevance": 0.5,
-            "title": "India Vs New zealand One day International, 10 December 2010 (6160465490)"
-          }
-        },
-        {
-          "headline": "US BARS GOVERNMENT AGENCIES FROM USING CHINA'S DEEPSEEK",
-          "display": "US Bars Government Agencies From Using China's DeepSeek",
-          "original": "US Bars Government Agencies From Using China's DeepSeek",
-          "truncated": false,
-          "usable": true,
-          "category": "INDIA",
-          "source": "BBC News · NDTV",
-          "sourceNames": [
-            "BBC News",
-            "NDTV"
+            "NDTV",
+            "YourStory.com"
           ],
           "corroboration": 2,
           "republishers": [],
-          "link": "https://www.ndtv.com/world-news/us-bars-government-agencies-from-using-chinas-deepseek-12209217#publisher=newsstand",
-          "published": "2026-10-20T04:31:33.000Z",
+          "owners": [
+            "Adani Group"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE54d1RhU3VoMXNDeEoyUWhwWmVZQXdwZS1lUmVlY1k0QjJJQ0ZPRW03Q2UtZXZKNlp6R2Jpa29JQU9wbzFSSkI1TU5WcEhtTWdqNmlZZVNuc0Z0WGpyZnlJTXRCZDhLV1dqX2JFMFBRYVJGNHJyR2c?oc=5",
+          "published": "2026-10-20T09:01:48.000Z",
           "topic": "india",
           "section": "india",
-          "score": 6.4,
-          "photoError": "no image matched the story closely enough (searched \"US Bars\")",
+          "tier": "significant",
+          "score": 11.4,
+          "photoError": "timed out (searched \"India-New Zealand\")",
           "photo": null
-        },
-        {
-          "headline": "INDIA VOICES CONCERN OVER UN'S LIQUIDITY SITUATION IN 2026, SAYS UNPAID ASSESSMENT",
-          "display": "India voices concern over UN's liquidity situation in 2026, says unpaid assessment",
-          "original": "India voices concern over UN's liquidity situation in 2026, says unpaid assessment are at ‘unacceptably high levels’",
-          "truncated": true,
-          "usable": true,
-          "category": "INDIA",
-          "source": "The Hindu · The New Indian Express",
-          "sourceNames": [
-            "The Hindu",
-            "The New Indian Express"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "link": "https://www.thehindu.com/news/national/india-voices-concern-over-uns-liquidity-situation-in-2026/article71603326.ece",
-          "published": "2026-10-20T05:31:08.000Z",
-          "topic": "india",
-          "section": "india",
-          "score": 6.4,
-          "photo": {
-            "path": "data/pending/india/photo-india-4.jpg",
-            "credit": "File photo: Pranav011 at en.wikipedia / CC BY 3.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=16992577",
-            "query": "India",
-            "relevance": 0.13,
-            "title": "An Unripe Mango Of Ratnagiri (India)"
-          }
         }
       ],
       "usable": true,
@@ -752,7 +1027,8 @@
         "BBC News",
         "Al Jazeera",
         "NDTV",
-        "Business Standard"
+        "The Guardian",
+        "Hindustan Times"
       ],
       "stories": [
         {
@@ -762,79 +1038,112 @@
           "truncated": false,
           "usable": true,
           "category": "WORLD NEWS",
-          "source": "BBC News · Al Jazeera · NDTV",
+          "source": "BBC News · Al Jazeera",
           "sourceNames": [
             "BBC News",
-            "Al Jazeera",
-            "NDTV"
+            "Al Jazeera"
           ],
-          "corroboration": 3,
+          "corroboration": 2,
           "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Government of Qatar"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB",
+            "QA"
+          ],
+          "fundings": [
+            "state"
+          ],
+          "concentration": [],
           "link": "https://www.aljazeera.com/video/newsfeed/2026/10/20/japan-launches-historic-mission-to-bring-back-mars-moon-samples?traffic_source=rss",
           "published": "2026-10-20T04:08:33.000Z",
           "topic": "world",
           "section": "world",
-          "score": 8.8,
-          "photo": {
-            "path": "data/pending/world/photo-world-2.jpg",
-            "credit": "File photo: Soren Bradley / CC BY 4.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=166276509",
-            "query": "Japan",
-            "relevance": 0.11,
-            "title": "Topographic map of Chubu, Japan"
-          }
-        },
-        {
-          "headline": "KENYA CULT LEADER, WHO CONVINCED FOLLOWERS TO STARVE, FOUND GUILTY OF 191 MURDERS",
-          "display": "Kenya Cult Leader, Who Convinced Followers To Starve, Found Guilty Of 191 Murders",
-          "original": "Kenya Cult Leader, Who Convinced Followers To Starve, Found Guilty Of 191 Murders",
-          "truncated": false,
-          "usable": true,
-          "category": "WORLD NEWS",
-          "source": "BBC News · NDTV",
-          "sourceNames": [
-            "BBC News",
-            "NDTV"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPOS12U0xvXzdMaHlZRlROclBDVmZhSXJOQ2tZVmdja21KQXczTmhPajBfZFZTaXBmNktqcjYycVZYOG5aZ2lvdy1nMHE1Uk5WeDlIbzBfZXU3Y0lzWkZpdDFnZnl0OW5FVTk1RjJCSzdob0RVSHZJQ1ZqVWdkYzZha05zYWw2RVFIZzlzbDZwZnh0R2JmRlJnS3hmTXk5U3JSS0VMUkNsSU5PcmlNNVZjaVp2b2LSAbwBQVVfeXFMUHl4LVNaN3A2M3Vhd29JeUFDdzVRRm40YXB6cjdxWEExUmpjUXQ5dkU4R1FyTzBBTTRmdjBCMjRES1F3X0w0bVp0d2JxdDFWc2NHODM",
-          "published": "2026-10-20T06:16:10.000Z",
-          "topic": "world",
-          "section": "world",
-          "score": 7.1,
-          "photoError": "no image matched the story closely enough (searched \"international summit flags\")",
+          "tier": "significant",
+          "score": 11.55,
+          "photoError": "timed out (searched \"Japan\")",
           "photo": null
         },
         {
-          "headline": "FRENCH PROTESTS TAPERS OFF AFTER TOUGHER SECURITY MEASURES IMPOSED",
-          "display": "French protests tapers off after tougher security measures imposed",
-          "original": "French protests tapers off after tougher security measures imposed",
+          "headline": "US BARS GOVERNMENT AGENCIES FROM USING CHINA'S DEEPSEEK",
+          "display": "US Bars Government Agencies From Using China's DeepSeek",
+          "original": "US Bars Government Agencies From Using China's DeepSeek",
           "truncated": false,
           "usable": true,
           "category": "WORLD NEWS",
-          "source": "BBC News · Business Standard",
+          "source": "NDTV · BBC News",
           "sourceNames": [
-            "BBC News",
-            "Business Standard"
+            "NDTV",
+            "BBC News"
           ],
           "corroboration": 2,
           "republishers": [],
-          "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOd0hwOUpBNjZWWXZ4dW1sUVBFMkJoYkdMcmI2VmNZQ3p4YzV1eldmR0RGd3F5cUs3WXdfa1VQa2JuVWJid2RvRGd1SEVfaTRlYnpELTJjb2RyMWZNNnB1b2E3R3J5OFhaU253UXRmLXc0WTVISXNQM0Vad1JvdzdFZTMzN2w5NkotcHlTWUxrMnN0UDRxYkRlemVRODlhblVQcnZWbVloTWt0UHV4bWlFZF9HUWJ0WlpNZnpRcnprODR0SmVCNkhrYmRKb9IB0AFBVV95cUxNV3FBV1JmSjVFbC1ad1U0RnZ2UTJwNWFBdllfakN0WEpJY3ExNE9lMjFrcXVkQkkzS29UbUd",
-          "published": "2026-10-20T03:09:36.000Z",
+          "owners": [
+            "Adani Group",
+            "BBC (licence fee)"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN",
+            "GB"
+          ],
+          "fundings": [
+            "conglomerate",
+            "state"
+          ],
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNaUVKbkZkSVN4bmdzT1I0dzg4b2dRaHJtVEpPWXRTM0xLdTlxQ1lrUVB2RF9vQXdtMTBabXB5UWhGRGM3TzhIRTBYZmo3MDRyX0VJTHJQZnBvU1hyOHlzNmUwSS04a3BDZHVMdzNocXlBSUItbXJlZ0dCUEMzWDMtYV84Tng3OWx3RkhtWU9Kc0NQcEVlcnZ0MGJ4c9IBowFBVV95cUxNNWc0S0JMcTh6SkwxX2lvN211d2VMR3VSWVYtTjVVUjVxdW92a0VOQVlGZjROMG9GNTVQTkM4VlpxNG5rUWZSTElvcjVrY3h6MUdOSVdBYVRxelNSczRnd3B2X1VYa280ckd5ZHR",
+          "published": "2026-10-20T04:31:33.000Z",
           "topic": "world",
           "section": "world",
-          "score": 6.8,
-          "photo": {
-            "path": "data/pending/world/photo-world-4.jpg",
-            "credit": "File photo: Donar Reiskoffer / CC BY 3.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=105904",
-            "query": "French",
-            "relevance": 0.14,
-            "title": "Meuse, in the french ardennes"
-          }
+          "tier": "significant",
+          "score": 11.1,
+          "photoError": "timed out (searched \"US Bars\")",
+          "photo": null
+        },
+        {
+          "headline": "ALBERTA VOTERS REJECT PLAN FOR REFERENDUM TO LEAVE CANADA",
+          "display": "Alberta voters reject plan for referendum to leave Canada",
+          "original": "Alberta voters reject plan for referendum to leave Canada",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "Al Jazeera · The Guardian · Hindustan Times",
+          "sourceNames": [
+            "Al Jazeera",
+            "The Guardian",
+            "Hindustan Times"
+          ],
+          "corroboration": 3,
+          "republishers": [],
+          "owners": [
+            "Government of Qatar",
+            "Scott Trust",
+            "HT Media / KK Birla family"
+          ],
+          "ownerCount": 3,
+          "countries": [
+            "QA",
+            "GB",
+            "IN"
+          ],
+          "fundings": [
+            "state",
+            "trust",
+            "conglomerate"
+          ],
+          "concentration": [],
+          "link": "https://www.theguardian.com/world/2026/oct/20/canada-alberta-rejects-independence-succession-referendum",
+          "published": "2026-10-20T09:02:43.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 9.9,
+          "photoError": "timed out (searched \"Alberta\")",
+          "photo": null
         }
       ],
       "usable": true,
@@ -843,114 +1152,91 @@
     },
     {
       "kind": "carousel",
-      "headline": "3 stories",
+      "headline": "2 stories",
       "images": [
         "data/pending/business/slide-1.png",
         "data/pending/business/slide-2.png",
-        "data/pending/business/slide-3.png",
-        "data/pending/business/slide-4.png"
+        "data/pending/business/slide-3.png"
       ],
       "image": "data/pending/business/slide-1.png",
       "width": 1080,
       "height": 1350,
       "sourceNames": [
-        "Fortune",
-        "Pluang",
-        "KuCoin",
-        "Cointelegraph",
-        "Decrypt",
-        "The Block",
+        "The Guardian",
         "BBC News"
       ],
       "stories": [
         {
-          "headline": "BITCOIN END PRICE (PREVIOUS EPOCH): $64,990 CURRENT PRICE (C",
-          "display": "Bitcoin End Price (Previous Epoch): $64,990 Current Price (C",
-          "original": "Bitcoin End Price (Previous Epoch): $64,990 Current Price (C",
+          "headline": "CHANCELLOR REJECTS CALLS TO RAISE CAPITAL GAINS TAX IN BUDGET",
+          "display": "Chancellor rejects calls to raise Capital Gains Tax in Budget",
+          "original": "Chancellor rejects calls to raise Capital Gains Tax in Budget",
           "truncated": false,
           "usable": true,
-          "category": "CRYPTO NEWS",
-          "source": "Fortune · Pluang · KuCoin",
+          "category": "BUSINESS",
+          "source": "The Guardian · BBC News",
           "sourceNames": [
-            "Fortune",
-            "Pluang",
-            "KuCoin"
-          ],
-          "corroboration": 3,
-          "republishers": [],
-          "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE52Y2dnWFNEOHlCTk0tbks3ZmpyS0czc051SEJ6Mnl6ZENXNS1qZlVVQm5ua1pHVnI3Q3ZTdUxqcGFrRTVQeVZ5alRqenpvbVJyTmh2RWRvVFU0bnR5aEhBVDd5Z3kyaDJudG5YZTk5SXFWQQ?oc=5",
-          "published": "2026-10-20T07:05:07.000Z",
-          "topic": "crypto",
-          "section": "business",
-          "score": 7.1,
-          "photo": {
-            "path": "data/pending/business/photo-business-2.jpg",
-            "credit": "File photo: Authors of the study: Shangrong Jiang, Y / CC BY 4.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=105578662",
-            "query": "bitcoin",
-            "relevance": 0.25,
-            "title": "Bitcoin mining pools by location (country) – Mining pool distributions of Bitcoin blockchain"
-          }
-        },
-        {
-          "headline": "STRIVE BUYS $335 MILLION IN BITCOIN AFTER INVESTORS POUR IN $369 MILLION",
-          "display": "Strive Buys $335 Million in Bitcoin After Investors Pour In $369 Million",
-          "original": "Strive Buys $335 Million in Bitcoin After Investors Pour In $369 Million",
-          "truncated": false,
-          "usable": true,
-          "category": "CRYPTO NEWS",
-          "source": "Cointelegraph · Decrypt · The Block",
-          "sourceNames": [
-            "Cointelegraph",
-            "Decrypt",
-            "The Block"
-          ],
-          "corroboration": 3,
-          "republishers": [],
-          "link": "https://decrypt.co/381382/strive-buys-335-million-bitcoin",
-          "published": "2026-10-19T21:46:05.000Z",
-          "topic": "crypto",
-          "section": "business",
-          "score": 6.95,
-          "photo": {
-            "path": "data/pending/business/photo-business-3.jpg",
-            "credit": "File photo: Jorge Franganillo / CC BY 2.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=113283593",
-            "query": "bitcoin",
-            "relevance": 0.2,
-            "title": "Bitcoins"
-          }
-        },
-        {
-          "headline": "HERE’S WHAT HAPPENED IN CRYPTO TODAY",
-          "display": "Here’s what happened in crypto today",
-          "original": "Here’s what happened in crypto today",
-          "truncated": false,
-          "usable": true,
-          "category": "CRYPTO NEWS",
-          "source": "Cointelegraph · BBC News",
-          "sourceNames": [
-            "Cointelegraph",
+            "The Guardian",
             "BBC News"
           ],
           "corroboration": 2,
           "republishers": [],
-          "link": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-          "published": "2026-10-19T20:02:30.000Z",
-          "topic": "crypto",
+          "owners": [
+            "Scott Trust",
+            "BBC (licence fee)"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB"
+          ],
+          "fundings": [
+            "trust",
+            "state"
+          ],
+          "concentration": [],
+          "link": "https://www.bbc.co.uk/news/articles/c50me4w4x1vyo?at_medium=RSS&at_campaign=rss",
+          "published": "2026-10-20T08:44:56.000Z",
+          "topic": "business",
           "section": "business",
-          "score": 5.95,
-          "photo": {
-            "path": "data/pending/business/photo-business-4.jpg",
-            "credit": "File photo: Strelka Institute for Media, Architectur / CC BY 2.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=67593524",
-            "query": "cryptocurrency",
-            "relevance": 0.5,
-            "title": "File:POPULATED BY ROBOTS HOW CRYPTOCURRENCY WILL RE-OPEN THE ARCTIC (36920210013).jpg"
-          }
+          "tier": "notable",
+          "score": 8.4,
+          "photoError": "timed out (searched \"Capital Gains Tax\")",
+          "photo": null
+        },
+        {
+          "headline": "BURNHAM VOWS END TO 'RIP-OFF PARKING CHARGES' UNDER NEW RULES",
+          "display": "Burnham vows end to 'rip-off parking charges' under new rules",
+          "original": "Burnham vows end to 'rip-off parking charges' under new rules",
+          "truncated": false,
+          "usable": true,
+          "category": "BUSINESS",
+          "source": "BBC News · The Guardian",
+          "sourceNames": [
+            "BBC News",
+            "The Guardian"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Scott Trust"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB"
+          ],
+          "fundings": [
+            "state",
+            "trust"
+          ],
+          "concentration": [],
+          "link": "https://www.bbc.co.uk/news/articles/ck87ze7wl4qno?at_medium=RSS&at_campaign=rss",
+          "published": "2026-10-20T08:55:02.000Z",
+          "topic": "business",
+          "section": "business",
+          "tier": "notable",
+          "score": 8.4,
+          "photoError": "timed out (searched \"office towers business district\")",
+          "photo": null
         }
       ],
       "usable": true,
@@ -959,54 +1245,239 @@
     },
     {
       "kind": "carousel",
-      "headline": "1 stories",
+      "headline": "2 stories",
       "images": [
         "data/pending/tech/slide-1.png",
-        "data/pending/tech/slide-2.png"
+        "data/pending/tech/slide-2.png",
+        "data/pending/tech/slide-3.png"
       ],
       "image": "data/pending/tech/slide-1.png",
       "width": 1080,
       "height": 1350,
       "sourceNames": [
-        "WSJ",
-        "AstraZeneca"
+        "The New Indian Express",
+        "India Today",
+        "Greater Kashmir",
+        "PR Newswire",
+        "www.marketscreener.com"
       ],
       "stories": [
         {
-          "headline": "ASTRAZENECA PARTNERS WITH ORACLE ON AI CLINICAL RESEARCH",
-          "display": "AstraZeneca partners with Oracle on AI clinical research",
-          "original": "AstraZeneca partners with Oracle on AI clinical research",
+          "headline": "INDIA SEEKS GLOBAL VIGILANCE REGARDING TRANSFER OF SENSITIVE WEAPONS TECHNOLOGY",
+          "display": "India seeks global vigilance regarding transfer of sensitive weapons technology",
+          "original": "India seeks global vigilance regarding transfer of sensitive weapons technology to terror-linked actors",
+          "truncated": true,
+          "usable": true,
+          "category": "TECHNOLOGY",
+          "source": "The New Indian Express · India Today · Greater Kashmir",
+          "sourceNames": [
+            "The New Indian Express",
+            "India Today",
+            "Greater Kashmir"
+          ],
+          "corroboration": 3,
+          "republishers": [],
+          "owners": [
+            "Living Media"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial"
+          ],
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxNUjN4VVp1a1dsa1daYUFJX193enlfeFFsS1lMTTUxNjNXXzI1MHIzcFRjQ25HY2tud1pyOUcxRmozVlhINTBQeDFBb0RuenJBdjlMVU1UaUctaXFMakMzSEgzY0JVS0lwRm5td1BUNXo4RGpDN1oybnNkZ1hOYmVMa1lhenZjcHgxR2p1R0tsT1I5dWRHeUpvU1ZhQllpb2pvcUdHamh6WkhScDNjY0k3RFR0N1VSaEo2X1hQYmxkT3E3S3ZKSTV4NXZCdVVFbWVaRE1JTi1mcFlJREhvS2hXTEQ3Mkt2ZG8x0gHoAUFVX3lxTE1SM3hVWnVrV2xrV1phQUlfX3d6eV94UWx",
+          "published": "2026-10-20T04:23:57.000Z",
+          "topic": "tech",
+          "section": "tech",
+          "tier": "significant",
+          "score": 12,
+          "photo": {
+            "path": "data/pending/tech/photo-tech-2.jpg",
+            "credit": "File photo: Pranav011 at en.wikipedia / CC BY 3.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=16992577",
+            "query": "India",
+            "relevance": 0.13,
+            "title": "An Unripe Mango Of Ratnagiri (India)"
+          }
+        },
+        {
+          "headline": "COGNIZANT TECHNOLOGY SOLUTIONS CHOSEN",
+          "display": "Cognizant Technology Solutions Chosen",
+          "original": "Cognizant Technology Solutions Chosen by Ingenico as Technology Partner",
           "truncated": false,
           "usable": true,
           "category": "TECHNOLOGY",
-          "source": "WSJ · AstraZeneca",
+          "source": "PR Newswire · www.marketscreener.com",
           "sourceNames": [
-            "WSJ",
-            "AstraZeneca"
+            "PR Newswire",
+            "www.marketscreener.com"
           ],
           "corroboration": 2,
-          "republishers": [
-            "Investing.com"
-          ],
-          "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNbDRwbHJXaXh4Tk8ySzlGRTdsVWI4ZWtFUzZOVTcwaG9hUHQzeW5adlhIN1I1ZXpGMTRHVEpRUjlVRHItdzVpc1JWS0xsTWVoajhFVVBVU0I5SHlzMzhhb01kNEpQMHpFUks1RHJodzZYMV90TXNiMFduQUg0WldwVWRYbFl5eDB4U0VRNjlWek5wVm5RdUppLTJ5MDZHN0l4UFRrUHkxaEYxMlpRdHd1RWRuenIzQjkxQ3c?oc=5",
-          "published": "2026-10-20T06:34:49.000Z",
+          "republishers": [],
+          "owners": [],
+          "ownerCount": 0,
+          "countries": [],
+          "fundings": [],
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQVmFoQzZYQjhnZnlLTFJxcVVmMVNjelFPQU1Eem5fRFpMcHRCVUFwWEhld0ZBbWtmR01NS3owOVpTUTZTRFd3LUJTSVZuSnpjZ0lsRlpGajhqYzFadFJkUERpYkt1UmNrZUFFQkFTR2NCdFV1X0VVTjRHYjhPbERDSHhJaGlCdlZzSnB1Y0V3QW1OeThfNkQyUC1YcWl5QmdadENBbkxhWVE4SmZaTzI5MjVNSnJXRDE3STNVV05LRkRaUQ?oc=5",
+          "published": "2026-10-20T09:09:24.000Z",
           "topic": "tech",
           "section": "tech",
-          "score": 5.7,
-          "photo": {
-            "path": "data/pending/tech/photo-tech-2.jpg",
-            "credit": "File photo: Agência Brasília / CC BY 2.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=99227214",
-            "query": "AstraZeneca",
-            "relevance": 0.2,
-            "title": "Oxford AstraZeneca vaccine (Indian version) 2021 C"
-          }
+          "tier": "notable",
+          "score": 7.8,
+          "photoError": "timed out (searched \"Cognizant Technology Solutions\")",
+          "photo": null
         }
       ],
       "usable": true,
       "section": "tech",
       "sectionLabel": "TECHNOLOGY"
+    },
+    {
+      "kind": "carousel",
+      "headline": "1 stories",
+      "images": [
+        "data/pending/science/slide-1.png",
+        "data/pending/science/slide-2.png"
+      ],
+      "image": "data/pending/science/slide-1.png",
+      "width": 1080,
+      "height": 1350,
+      "sourceNames": [
+        "Research Information",
+        "TheWire.in"
+      ],
+      "stories": [
+        {
+          "headline": "DIGITAL SCIENCE AND SUNMEDIA PARTNER ON RESEARCH IMPACT",
+          "display": "Digital Science and Sunmedia partner on research impact",
+          "original": "Digital Science and Sunmedia partner on research impact",
+          "truncated": false,
+          "usable": true,
+          "category": "SCIENCE",
+          "source": "Research Information · TheWire.in",
+          "sourceNames": [
+            "Research Information",
+            "TheWire.in"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [],
+          "ownerCount": 0,
+          "countries": [],
+          "fundings": [],
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNdldBaU0tZUc0UnNzUFJmS1otdFVYa1BmT1NFQXZySDNpQm82WnpvakJpdGhjRmRHRk5JQnFNSlFmc2o5M21MMUt5LU5QU2pjaWt3Ymh3ZGs1THBIZTYyVGlCdmswMEJYYUtrY1FtVGhrYXhOR21JcFAyUlYtcmJfMXRma3dXNEg3Q0RrV2RwampWakxPMUI2OW9VQ2ZwVzg?oc=5",
+          "published": "2026-10-20T08:47:19.000Z",
+          "topic": "science",
+          "section": "science",
+          "tier": "notable",
+          "score": 7.95,
+          "photoError": "timed out (searched \"Digital Science\")",
+          "photo": null
+        }
+      ],
+      "usable": true,
+      "section": "science",
+      "sectionLabel": "SCIENCE"
+    },
+    {
+      "kind": "carousel",
+      "headline": "2 stories",
+      "images": [
+        "data/pending/health/slide-1.png",
+        "data/pending/health/slide-2.png",
+        "data/pending/health/slide-3.png"
+      ],
+      "image": "data/pending/health/slide-1.png",
+      "width": 1080,
+      "height": 1350,
+      "sourceNames": [
+        "The Economist",
+        "Think Global Health",
+        "MorungExpress",
+        "Reuters",
+        "American Hospital Association"
+      ],
+      "stories": [
+        {
+          "headline": "GLOBAL HEALTH RESEARCH IN THE AMERICA FIRST ERA",
+          "display": "Global Health Research in the America First Era",
+          "original": "Global Health Research in the America First Era",
+          "truncated": false,
+          "usable": true,
+          "category": "HEALTH",
+          "source": "The Economist · Think Global Health",
+          "sourceNames": [
+            "The Economist",
+            "Think Global Health"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [],
+          "ownerCount": 0,
+          "countries": [],
+          "fundings": [],
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNbThrU0VFaHVVa2ZncWtnd0w1V1p2S1dnYTd2SHdYX1FadkdWTk1yQ3FSZWtodHo4WFlCSFZPNzVnNzhfVS1jQkZ6VlRjSFpISGFUMW01ckkyTDZsMXhLNU9TSWhESmh5bjZQOFZUWGtSVERBazNVNWI4VnV2RWxPdmlmbUN6S3h2cUk3NWs5a290WG8?oc=5",
+          "published": "2026-10-19T20:23:57.000Z",
+          "topic": "health",
+          "section": "health",
+          "tier": "significant",
+          "score": 9.825,
+          "photo": {
+            "path": "data/pending/health/photo-health-2.jpg",
+            "credit": "File photo: Phil Whitehouse from London, United King / CC BY 2.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=9523361",
+            "query": "America",
+            "relevance": 0.33,
+            "title": "Copa America-2004-02"
+          }
+        },
+        {
+          "headline": "TRUMP SIGNS ORDER TO BOOST WOMEN'S HEALTH",
+          "display": "Trump signs order to boost women's health",
+          "original": "Trump signs order to boost women's health",
+          "truncated": false,
+          "usable": true,
+          "category": "HEALTH",
+          "source": "MorungExpress · Reuters · American Hospital Association",
+          "sourceNames": [
+            "MorungExpress",
+            "Reuters",
+            "American Hospital Association"
+          ],
+          "corroboration": 3,
+          "republishers": [],
+          "owners": [
+            "Thomson Reuters (Trust Principles)"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "GB"
+          ],
+          "fundings": [
+            "trust"
+          ],
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9pcHRhN1FZQnVlWTJqNjJmVDJfUkd4MXNGaUYzY2l3TFRQMGxLbWVQc3FLd2lKSktKTlp1VTRxYzV0UFlkMmVXRGZyVzNNRjVIWHdkcW1TWG1ZYVJHNXFCWVE3T0V4Q3ZBdzZsZzBsUkZIcGF6?oc=5",
+          "published": "2026-10-20T06:21:25.000Z",
+          "topic": "health",
+          "section": "health",
+          "tier": "notable",
+          "score": 9.15,
+          "photoError": "timed out (searched \"Trump\")",
+          "photo": null
+        }
+      ],
+      "usable": true,
+      "section": "health",
+      "sectionLabel": "HEALTH"
     }
   ]
 }
