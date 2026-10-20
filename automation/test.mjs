@@ -9,7 +9,8 @@ import { dirname, join } from 'node:path';
 import { parseFeed } from './lib/rss.mjs';
 import { tierOf, isCryptoVertical, TIER_POINTS } from './lib/importance.mjs';
 import { similarity, cluster, selectStories, selectSections, isRepeat, isTopical, isAdvice,
-         isSpeculation, isJunk, isPressRelease, rankClusters } from './lib/select.mjs';
+         isSpeculation, isJunk, isPressRelease, isUnverified, isOpinion, isTooThin,
+         rankClusters } from './lib/select.mjs';
 import { sectionOf, sectionLabel, SECTIONS } from './lib/sections.mjs';
 import { makeHeadline, tidy, sourceLine, categoryFor } from './lib/headline.mjs';
 import { canonicalSource, isRepublisher, independentSources,
@@ -431,6 +432,66 @@ ok('a section will not carry a single-outlet story', (() => {
   const india = secs.find(s => s.id === 'india');
   return !india || india.clusters.every(c => c.sources >= 2);
 })(), 'nobody scrutinises fifteen headlines every morning');
+
+/* ── What the first good sectioned run still got wrong ────────── */
+/* Every one of these went out in a live run. */
+
+ok('a rumour is refused, not led with',
+  isUnverified("North Korea's 'Proof Of Life' Amid Kim Jong Un 'Brain Haemorrhage Death' Rumour")
+  && isUnverified('Unconfirmed reports of a blast near the border'),
+  'it was graded LEAD because it contains the word "death"');
+ok('reporting that something was denied is still reporting',
+  !isUnverified('Government denies the allegations made in the report')
+  && !isUnverified('Minister rejects claims about the contract'));
+
+ok('an essay title is not a news headline',
+  isOpinion('Global Health Research in the America First Era')
+  && isOpinion('Opinion: why the budget will fail')
+  && isOpinion('The case for a wealth tax'));
+/* tidy used to strip a leading "Opinion:", which turned an op-ed into
+   something that read like reporting. */
+ok('an opinion label is never stripped into disguise',
+  tidy('Opinion: why the budget will fail').startsWith('Opinion'),
+  tidy('Opinion: why the budget will fail'));
+ok('a plain news headline is not mistaken for comment',
+  !isOpinion('Kenya cult leader convicted of 191 murders after trial')
+  && !isOpinion('India-New Zealand trade pact kicks in from October 20'));
+
+ok('a fragment is not a story',
+  isTooThin('Middle East') && isTooThin('Cognizant Technology Solutions Chosen'),
+  'both occupied a section slot in a live run');
+ok('a short but complete headline survives',
+  !isTooThin('Earthquake kills at least 40 in northern Afghanistan'));
+
+ok('"partner on" is press release phrasing too',
+  isPressRelease('Digital Science and Sunmedia partner on research impact'));
+
+/* A $7.3bn packaging merger carried by one trade publication reached Top. */
+ok('one newsroom is no longer enough to be published', (() => {
+  const t = Date.now();
+  const only = [{ title: 'Silgan to acquire Trivium and form a $7.3 billion packaging business',
+                  source: 'Packaging Europe', topic: 'business', published: t - 600000, weight: 1 }];
+  return selectStories(only, { count: 3, now: t, minSources: 2 }).length === 0;
+})());
+
+/* A feed's topic is where a story arrived from, not what it is about. */
+ok('a Kenyan story from an Indian feed is world news',
+  sectionOf('india', 'Kenyan cult leader convicted of killing 190 children') === 'world');
+ok('an Indian story from a world feed is India news',
+  sectionOf('world', 'Sensex closes at a record high as banks rally') === 'india');
+ok('a story about India from an Indian feed stays put',
+  sectionOf('india', 'Cabinet approves a port expansion scheme for the east coast') === 'india'
+  && sectionOf('india', 'Marco Rubio India visit: trade deal and Russian oil') === 'india');
+ok('sections other than india and world are left alone',
+  sectionOf('tech', 'EU opens an investigation into a chipmaker') === 'tech'
+  && sectionOf('business', 'Regulator fines a bank in Germany') === 'business');
+
+/* "2 newsrooms, 1 owner" read as though they shared an owner, when only one
+   of the two was in the register at all. */
+ok('an unrecorded owner is reported as unrecorded, not as a shared one', (() => {
+  const r = independentSources(['NDTV', 'Open Magazine']);
+  return r.count === 2 && r.ownerCount === 1 && r.unknownOwners === 1;
+})());
 
 /* ── The hierarchy of importance ──────────────────────────────── */
 /* The ranking used to know only how well covered a story was, how fresh, and

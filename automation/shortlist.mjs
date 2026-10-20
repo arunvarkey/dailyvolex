@@ -87,7 +87,10 @@ async function main() {
   // how an account ends up shouting about nothing several times an hour.
   const count = breaking ? 1
     : Math.max(1, Math.min(5, parseInt(arg('count', '3'), 10) || 3));
-  const minSources = Math.max(1, parseInt(arg('min-sources', breaking ? '3' : '1'), 10) || 1);
+  // Two independent newsrooms for anything that goes out, three for a
+  // breaking alert. One used to be enough, and a $7.3bn packaging merger
+  // carried by a single trade publication reached Top stories.
+  const minSources = Math.max(1, parseInt(arg('min-sources', breaking ? '3' : '2'), 10) || 2);
   const maxAgeHours = Math.max(0.25, parseFloat(arg('max-age', breaking ? '2' : '24')) || 24);
 
   const { feeds } = await readJson(join(HERE, 'feeds.json'), { feeds: [] });
@@ -158,11 +161,12 @@ async function main() {
       ownerCount: c.ownerCount ?? null,
       countries: c.countries || [],
       fundings: c.fundings || [],
+      unknownOwners: c.unknownOwners ?? 0,
       concentration: c.concentration || [],
       link: c.lead.link,
       published: c.newest ? new Date(c.newest).toISOString() : null,
       topic: c.lead.topic,
-      section: sectionOf(c.lead.topic),
+      section: sectionOf(c.lead.topic, c.lead.title),
       // Where this sits in the hierarchy — lead, significant, notable, minor.
       // On the approval issue so the editorial judgement is visible and can
       // be argued with, rather than being a number nobody can see.
@@ -203,10 +207,16 @@ async function main() {
   for (const s of stories) {
     log(`  [${s.tier}] [${s.corroboration} source${s.corroboration > 1 ? 's' : ''}] ${s.headline}`);
     log(`     ${s.source}${s.truncated ? '  (shortened)' : ''}${s.usable ? '' : '  !! too short to use'}`);
-    if (s.ownerCount != null)
-      log(`     ${s.ownerCount} owner${s.ownerCount === 1 ? '' : 's'}`
+    if (s.ownerCount != null) {
+      // Say how many outlets have a recorded owner. "2 newsrooms, 1 owner"
+      // read as though they shared one, when in fact only one of the two was
+      // in the register at all — a different and much weaker statement.
+      const unknown = s.unknownOwners || 0;
+      log(`     ${s.ownerCount} owner${s.ownerCount === 1 ? '' : 's'} recorded`
+        + `${unknown ? ` (${unknown} outlet${unknown === 1 ? '' : 's'} not in the register)` : ''}`
         + `${s.countries.length ? ' · ' + s.countries.join('/') : ''}`
         + `${s.fundings.length ? ' · ' + s.fundings.join(', ') : ''}`);
+    }
     for (const w of s.concentration || []) log(`     !! ${w}`);
   }
   log(`\nwritten to ${SHORTLIST}`);
