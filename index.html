@@ -3919,7 +3919,9 @@ function applyUrlStory() {
 
   set('category', v => S.breaking.category = v.slice(0,40).toUpperCase());
   set('headline', v => S.breaking.headline = v.slice(0,160).toUpperCase());
-  set('source',   v => S.breaking.source   = v.slice(0,80));
+  // The attribution belongs on whichever layout is used, not only on the
+  // breaking card. A stat card was showing the sample data's sources.
+  set('source',   v => { S.breaking.source = S.quote.source = v.slice(0,80); });
 
   // Top Stories: repeated &item= parameters, in order.
   const items = q.getAll('item').filter(Boolean).slice(0,5).map(v=>v.slice(0,110));
