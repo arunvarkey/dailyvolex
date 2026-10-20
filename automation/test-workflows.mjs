@@ -36,7 +36,7 @@ const ok = (name, cond, detail = '') => {
 
 const load = f => yaml.load(fs.readFileSync(join(ROOT, '.github/workflows', f), 'utf8'));
 const docs = {};
-for (const f of ['daily.yml', 'approve.yml', 'token-check.yml', 'watch.yml']) {
+for (const f of ['daily.yml', 'approve.yml', 'token-check.yml', 'watch.yml', 'correct.yml']) {
   try { docs[f] = load(f); ok(`${f} parses`, true); }
   catch (e) { ok(`${f} parses`, false, e.message); }
 }
@@ -74,6 +74,29 @@ ok('the breaking watch backs off while an approval is open',
 ok('the watch and the daily run cannot write data at the same time',
   docs['watch.yml']?.concurrency?.group === docs['daily.yml']?.concurrency?.group,
   `${docs['watch.yml']?.concurrency?.group} vs ${docs['daily.yml']?.concurrency?.group}`);
+/* ── Corrections ──────────────────────────────────────────────── */
+const corr = docs['correct.yml'];
+const corrIf = corr?.jobs?.correct?.if || '';
+ok('a correction can only be raised by the repository owner',
+  /comment\.user\.login == github\.repository_owner/.test(corrIf));
+ok('a correction needs the word /correct',
+  /startsWith\(github\.event\.comment\.body, '\/correct'\)/.test(corrIf));
+/* The correction workflow renders and opens an issue. It must not be able to
+   reach the account directly, or "/correct" becomes a way to post anything. */
+ok('raising a correction cannot post to Instagram',
+  !JSON.stringify(corr).includes('IG_') && !JSON.stringify(corr).includes('publish.mjs'));
+ok('a correction still goes through the approval gate',
+  JSON.stringify(corr).includes('awaiting-approval'));
+ok('the correction text never passes through a shell', (() => {
+  const steps = Object.values(corr?.jobs || {}).flatMap(j => j.steps || []);
+  const shellSteps = steps.filter(st => typeof st.run === 'string');
+  // No step may interpolate the comment body, and the build step reads a file.
+  return !shellSteps.some(st => /github\.event\.comment\.body/.test(st.run))
+    && shellSteps.some(st => /--text-file/.test(st.run));
+})());
+ok('a correction shares the data lock with the daily run',
+  corr?.concurrency?.group === docs['daily.yml']?.concurrency?.group);
+
 ok('the token check cannot push code',
   docs['token-check.yml']?.permissions?.contents === undefined,
   JSON.stringify(docs['token-check.yml']?.permissions));

@@ -101,10 +101,14 @@ jobs:
                 ? `data/pending/caption-${e.section}.txt`
                 : 'data/pending/caption-1.txt';
               if (!fs.existsSync(caption)) throw new Error(`${caption} is missing at ${sha}`);
+              // A correction is attached to the post it corrects, so whoever
+              // finds the mistake finds the correction with it.
+              const story = (e.stories || [e])[0] || {};
               return {
                 section: e.section || 'post',
-                label: e.sectionLabel || 'Post',
+                label: e.sectionLabel || (e.kind === 'correction' ? 'Correction' : 'Post'),
                 caption,
+                commentOn: story.corrects?.mediaId || '',
                 urls: files.map(f =>
                   `https://raw.githubusercontent.com/${context.repo.owner}/${context.repo.repo}/${sha}/${f}`).join(','),
               };
@@ -126,12 +130,17 @@ jobs:
           echo "$PLAN" | node -e "
             let d=''; process.stdin.on('data',c=>d+=c).on('end',()=>{
               const plan=JSON.parse(d);
-              console.log(plan.map(p=>p.section+'\t'+p.urls+'\t'+p.caption).join('\n'));
+              console.log(plan.map(p=>[p.section,p.urls,p.caption,p.commentOn||''].join('\t')).join('\n'));
             })" > plan.tsv
-          while IFS=$'\t' read -r SECTION URLS CAPTION; do
+          while IFS=$'\t' read -r SECTION URLS CAPTION COMMENT_ON; do
             [ -n "$SECTION" ] || continue
             echo "── posting $SECTION ──"
-            node automation/publish.mjs --images "$URLS" --caption-file "$CAPTION"
+            EXTRA=""
+            if [ -n "$COMMENT_ON" ] && [ -f data/pending/correction-comment.txt ]; then
+              EXTRA="--comment-on $COMMENT_ON --comment-file data/pending/correction-comment.txt"
+            fi
+            node automation/publish.mjs --images "$URLS" --caption-file "$CAPTION" \
+              --section "$SECTION" $EXTRA
           done < plan.tsv
           rm -f plan.tsv
 
@@ -154,11 +163,36 @@ jobs:
             const wanted=new Set(JSON.parse(process.env.PLAN).map(p=>p.section));
             const chosen=out.filter(e=>wanted.has(e.section||'post'));
             const now=new Date().toISOString();
-            const items=chosen.flatMap(e=>(e.stories||[e]).map(x=>({
-              title:x.original||x.headline, link:x.link||null,
-              section:e.section||null, issue:Number(process.env.ISSUE), posted:now })));
+            // What publish.mjs actually got back from Instagram: the media id
+            // and permalink per section. Without these a correction has
+            // nothing to point at.
+            let published=[];
+            try { published=JSON.parse(fs.readFileSync('data/pending/published.json','utf8')); } catch {}
+            const bySection=new Map(published.map(p=>[p.section,p]));
+
+            const items=chosen.flatMap(e=>{
+              const meta=bySection.get(e.section||'post')||{};
+              return (e.stories||[e]).map(x=>({
+                title:x.original||x.headline, link:x.link||null,
+                section:e.section||null, issue:Number(process.env.ISSUE),
+                mediaId:meta.mediaId||null, permalink:meta.permalink||null,
+                kind:e.kind||null, posted:now }));
+            });
+
             const p=fs.existsSync('data/posted.json')
               ? JSON.parse(fs.readFileSync('data/posted.json','utf8')) : {posted:[]};
+
+            // Mark the corrected post in the record. A correction that is not
+            // visible in the history is a correction only the reader knows
+            // about, and the history is what the next run checks.
+            for (const e of chosen) {
+              const id=(e.stories||[e])[0]?.corrects?.mediaId;
+              if (!id) continue;
+              for (const rec of (p.posted||[])) {
+                if (rec.mediaId===id) { rec.corrected=now; rec.correctedBy=Number(process.env.ISSUE); }
+              }
+            }
+
             p.posted=[...items,...(p.posted||[])].slice(0,400);
             p.updated=now;
             fs.writeFileSync('data/posted.json', JSON.stringify(p,null,2)+'\n');

@@ -10,6 +10,7 @@ import { sectionOf, sectionLabel, SECTIONS } from './lib/sections.mjs';
 import { makeHeadline, tidy, sourceLine, categoryFor } from './lib/headline.mjs';
 import { canonicalSource, isRepublisher, independentSources } from './lib/outlets.mjs';
 import { buildCaption } from './caption.mjs';
+import { buildCorrection, correctionCaption, findOriginal } from './correct.mjs';
 import { isUsable, pickBest, creditFor, subjectFor, findImage, backdropFor, isSensitive,
          queriesFor, entitiesFrom, isTitleCase, relevance, prefersChart } from './lib/imagery.mjs';
 
@@ -368,6 +369,65 @@ ok('a section will not carry a single-outlet story', (() => {
   const india = secs.find(s => s.id === 'india');
   return !india || india.clusters.every(c => c.sources >= 2);
 })(), 'nobody scrutinises fifteen headlines every morning');
+
+/* ── Corrections ──────────────────────────────────────────────── */
+/* A news account that cannot correct itself is a broadcast. These are the
+   rules that keep a correction from becoming a second mistake. */
+
+const postedRecords = () => [
+  { title: 'Stock market crash today: Sensex plunges over 900 points',
+    section: 'top', issue: 23, mediaId: '17900000000000001',
+    permalink: 'https://www.instagram.com/p/ABC123/', posted: '2026-10-19T12:50:00.000Z' },
+  { title: 'Ceasefire talks resume in Geneva', section: 'world', issue: 22,
+    mediaId: '17900000000000002', permalink: 'https://www.instagram.com/p/XYZ789/',
+    posted: '2026-10-18T07:10:00.000Z' },
+];
+
+ok('a correction finds the post it corrects by issue number',
+  findOriginal(postedRecords(), { issue: 22 })?.mediaId === '17900000000000002');
+ok('and by media id',
+  findOriginal(postedRecords(), { mediaId: '17900000000000001' })?.issue === 23);
+/* The dangerous failure: attaching a correction to a post that was never
+   wrong, because the one named could not be found. */
+ok('an unknown issue finds nothing rather than the most recent post',
+  findOriginal(postedRecords(), { issue: 999 }) === null,
+  'must not silently correct the wrong post');
+ok('an unknown media id finds nothing rather than guessing',
+  findOriginal(postedRecords(), { mediaId: 'nope' }) === null);
+
+const corr = buildCorrection(
+  'We said the Sensex fell over 900 points. It fell 489 points.',
+  postedRecords()[0]);
+
+ok('a correction is labelled as one, on the card and in the data',
+  corr.kind === 'correction' && corr.category === 'CORRECTION');
+ok('a correction carries what it is correcting',
+  corr.corrects.mediaId === '17900000000000001'
+  && /Sensex plunges over 900/.test(corr.corrects.title));
+ok('a correction is always postable, however short',
+  buildCorrection('We said 900. It was 489.', postedRecords()[0]).usable === true,
+  'the usability rule is for mangled headlines, not for short corrections');
+ok('a correction with no text is refused', (() => {
+  try { buildCorrection('   ', postedRecords()[0]); return false; } catch { return true; }
+})());
+ok('a correction invents nothing — the card text comes from the words given',
+  corr.display === 'We said the Sensex fell over 900 points. It fell 489 points.');
+
+const corrCap = correctionCaption(corr);
+ok('the correction caption quotes the original post',
+  /Sensex plunges over 900 points/.test(corrCap));
+ok('the correction caption states the correction in full',
+  corrCap.includes('It fell 489 points'));
+ok('the correction caption links the post being corrected',
+  corrCap.includes('https://www.instagram.com/p/ABC123/'));
+ok('the correction caption says mistakes are not deleted',
+  /rather than deleting/i.test(corrCap));
+ok('the correction caption fits Instagram', corrCap.length <= 2200);
+ok('a standalone correction does not pretend to quote an original', (() => {
+  const c = buildCorrection('We overstated the figure.', null);
+  const cap = correctionCaption(c);
+  return c.corrects === null && !/we posted:/i.test(cap);
+})());
 
 /* ── Sorting the day into sections ────────────────────────────── */
 

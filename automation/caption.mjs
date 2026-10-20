@@ -10,6 +10,7 @@
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { readJson, writeJson } from './lib/store.mjs';
+import { correctionCaption } from './correct.mjs';
 import { writeFile } from 'node:fs/promises';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -34,6 +35,11 @@ function arg(name, fallback) {
 const FLAG = n => process.argv.includes(`--${n}`);
 
 export function buildCaption(entry, { handle = '@dailyvolex' } = {}) {
+  // A correction says what was wrong and what is right, and links the post it
+  // corrects. It has its own shape because none of the rest applies: there is
+  // no outlet to attribute and no topic hashtags to carry.
+  if (entry.kind === 'correction') return correctionCaption(entry, { handle });
+
   const lines = [];
 
   // A carousel carries the same several stories as a digest; only the shape of
