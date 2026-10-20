@@ -87,51 +87,23 @@ jobs:
       - name: Publish the graphic so Instagram can fetch it
         run: automation/push-data.sh "Correction requested on #${{ steps.read.outputs.issue }}"
 
+      # The issue body is decided by automation/lib/offer.mjs, which is pure
+      # and tested — including the note about whether the original post can
+      # be commented on at all. See docs/ARCHITECTURE.md.
+      - name: Write the correction issue
+        run: |
+          node automation/dv.mjs offer --sha "$GITHUB_SHA" \
+            --requested-by "${{ steps.read.outputs.issue }}" \
+            --out work/issue.json
+
       - name: Open the correction for approval
         uses: actions/github-script@v7
         with:
           script: |
-            const fs = require('fs');
-            const sl = JSON.parse(fs.readFileSync('data/shortlist.json', 'utf8'));
-            const entry = (sl.output || sl.stories)[0];
-            const caption = fs.readFileSync('data/pending/caption-correction.txt', 'utf8');
-            const sha = process.env.GITHUB_SHA;
-            const raw = p => `https://raw.githubusercontent.com/${context.repo.owner}/${context.repo.repo}/${sha}/${p}`;
-            const slides = (entry.images || [entry.image]).filter(Boolean);
-            const c = entry.corrects || {};
-            const from = context.issue.number;
-
-            const notes = [];
-            if (!c.mediaId) notes.push(
-              'No Instagram media id is recorded for the original post, so this correction'
-              + ' **cannot be attached as a comment to it** — it will go out as a standalone post.'
-              + ' Posts made before the media id was recorded will all look like this.');
-            else notes.push(
-              `It will also be added as a comment on the original post (\`${c.mediaId}\`),`
-              + ' so whoever finds the mistake finds the correction with it.');
-
-            const body = [
-              `**Correction** — requested on #${from}.`, '',
-              slides.map((p, i) => `![correction ${i + 1}](${raw(p)})`).join('\n'), '',
-              c.title ? `**Corrects:** ${c.title}\n${c.permalink || ''}` : '**Corrects:** (no original identified)',
-              '',
-              '### Caption', '```', caption.trim(), '```',
-              `\n### Note\n${notes.map(n => `- ${n}`).join('\n')}`,
-              '',
-              '---',
-              '**Comment `/approve` to post this correction.** Anything else, or no reply, and it is never posted.',
-              'The original post is not deleted. A channel that quietly removes its mistakes is',
-              'less trustworthy than one that owns them.',
-            ].join('\n');
-
-            const issue = await github.rest.issues.create({
-              owner: context.repo.owner, repo: context.repo.repo,
-              title: `Correction — ${new Date().toISOString().slice(0, 10)}`,
-              body, labels: ['awaiting-approval', 'correction'],
-            });
-
+            const spec = require(`${process.env.GITHUB_WORKSPACE}/work/issue.json`);
+            const issue = await github.rest.issues.create({ ...context.repo, ...spec });
             await github.rest.issues.createComment({
-              owner: context.repo.owner, repo: context.repo.repo, issue_number: from,
+              ...context.repo, issue_number: context.issue.number,
               body: `Correction drafted in #${issue.data.number} — approve it there.`,
             });
 

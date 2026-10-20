@@ -12,6 +12,10 @@ import { altForStory, altForCover, altForEntry, altForClosing } from './lib/altt
 import { statFor, prefersStat } from './lib/statcard.mjs';
 import { secondsForStory, secondsForCover, SECONDS_FOR_CLOSING, reelTimings,
          totalSeconds, checkDuration, ffmpegArgs, MIN_SECONDS, MAX_SECONDS } from './lib/reelplan.mjs';
+import { fromShortlist, validate, posts, postById } from './lib/edition.mjs';
+import { plan } from './lib/plan.mjs';
+import { approvalIssue, warningsFor } from './lib/offer.mjs';
+import { record } from './lib/ledger.mjs';
 import { tierOf, isCryptoVertical, TIER_POINTS } from './lib/importance.mjs';
 import { similarity, cluster, selectStories, selectSections, isRepeat, isTopical, isAdvice,
          isSpeculation, isJunk, isPressRelease, isUnverified, isOpinion, isTooThin,
@@ -1484,6 +1488,266 @@ ok('a reel of one card still builds', (() => {
   const a = ffmpegArgs(one, { out: 'x.mp4' });
   return one.length === 1 && !/xfade/.test(a[a.indexOf('-filter_complex') + 1]);
 })());
+
+
+
+/* ── The edition, and what /approve means ─────────────────────────
+   This is the only logic in the repository that decides what reaches the
+   account. It used to live inside approve.yml, where it could only run on
+   GitHub and was tested by evaluating JavaScript out of a YAML string. A bug
+   here does not fail loudly; it posts the wrong thing under the channel's
+   name. */
+
+const SHORTLIST_FIXTURE = {
+  generated: '2026-10-20T02:30:00.000Z',
+  rendered:  '2026-10-20T02:48:00.000Z',
+  feedErrors: [],
+  output: [
+    { kind: 'carousel', section: 'top', sectionLabel: 'TOP STORIES',
+      image: 'data/pending/top/slide-1.png',
+      images: ['data/pending/top/slide-1.png', 'data/pending/top/slide-2.png',
+               'data/pending/top/slide-3.png'],
+      altFile: 'data/pending/top/alt.json',
+      reel: { file: 'data/pending/top/reel.mp4', cover: 'data/pending/top/slide-1.png',
+              seconds: 18.7, bytes: 2_000_000 },
+      stories: [
+        { headline: 'Earthquake kills at least 40 in northern Afghanistan',
+          display: 'Earthquake kills at least 40 in northern Afghanistan',
+          source: 'BBC News · Al Jazeera', corroboration: 2, tier: 'lead', topic: 'world' },
+        { headline: 'Regulator fines a major bank over mis-selling',
+          display: 'Regulator fines a major bank over mis-selling',
+          source: 'Reuters', corroboration: 1, tier: 'significant', topic: 'business',
+          republishers: ['MSN'], concentration: ['two of three are owned by one group'] },
+      ] },
+    { kind: 'carousel', section: 'business', sectionLabel: 'BUSINESS',
+      image: 'data/pending/business/slide-1.png',
+      images: ['data/pending/business/slide-1.png', 'data/pending/business/slide-2.png'],
+      altFile: 'data/pending/business/alt.json',
+      stories: [
+        { headline: 'Sensex plunges 876 points', display: 'Sensex plunges 876 points',
+          source: 'The Hindu · Mint', corroboration: 2, tier: 'notable', topic: 'business',
+          photoError: null } ] },
+  ],
+};
+
+const ed = fromShortlist(SHORTLIST_FIXTURE);
+
+ok('an edition is valid before it is offered', validate(ed).length === 0, validate(ed).join('; '));
+ok('a section offers a carousel', postById(ed, 'top')?.kind === 'carousel');
+ok('a section with a reel offers it as a second post',
+  postById(ed, 'top-reel')?.kind === 'reel'
+  && postById(ed, 'top-reel').files[0] === 'data/pending/top/reel.mp4');
+ok('a section without a reel offers only the carousel',
+  posts(ed).filter(p => p.section === 'business').length === 1);
+ok('an edition missing its captions is refused rather than offered', (() => {
+  const broken = fromShortlist(SHORTLIST_FIXTURE);
+  broken.sections[0].posts[0].caption = '';
+  return validate(broken).some(w => /caption/.test(w));
+})());
+ok('a carousel over ten slides is refused', (() => {
+  const broken = fromShortlist(SHORTLIST_FIXTURE);
+  broken.sections[0].posts[0].files = Array.from({ length: 11 }, (_, i) => `s${i}.png`);
+  return validate(broken).some(w => /Instagram takes 10/.test(w));
+})());
+ok('a carousel with no descriptions is refused', (() => {
+  const broken = fromShortlist(SHORTLIST_FIXTURE);
+  broken.sections[0].posts[0].alts = '';
+  return validate(broken).some(w => /descriptions/.test(w));
+})(), 'the one accessibility promise this channel makes');
+
+const P = (words, opts = {}) => plan(ed, words, opts);
+
+ok('a bare approval posts the top carousel and nothing else', (() => {
+  const r = P('/approve');
+  return r.posts?.length === 1 && r.posts[0].id === 'top';
+})());
+ok('naming sections posts exactly those', (() => {
+  const r = P('/approve business top');
+  return r.posts?.map(p => p.id).join(',') === 'business,top';
+})(), 'and in the order asked for');
+ok('/approve all posts every carousel', (() => {
+  const r = P('/approve all');
+  return r.posts?.map(p => p.id).join(',') === 'top,business';
+})());
+ok('no approval posts a reel unless the word is there',
+  P('/approve all').posts.every(p => p.kind !== 'reel'));
+ok('reel posts the reel with its carousel', (() => {
+  const r = P('/approve top reel');
+  return r.posts?.map(p => p.id).join(',') === 'top,top-reel';
+})());
+ok('the carousel comes first, so it is the post of record', (() => {
+  const r = P('/approve top reel');
+  return r.posts[0].kind === 'carousel' && r.posts[1].kind === 'reel';
+})());
+ok('a reel never goes out on its own', (() => {
+  // Instagram accepts no description on a reel, so a reel published alone
+  // would be a story in a form a blind reader cannot read.
+  const r = P('/approve reel');
+  return r.posts?.some(p => p.kind === 'carousel');
+})());
+ok('asking for a reel a section does not have is refused, not ignored', (() => {
+  const r = P('/approve business reel');
+  return !!r.error && /no reel/.test(r.error);
+})());
+ok('an unknown section is refused, not guessed', (() => {
+  const r = P('/approve sport');
+  return !!r.error && /no such section/.test(r.error);
+})(), 'posting something close to what they meant is how the wrong thing goes out');
+ok('a missing file is refused rather than posted', (() => {
+  const r = P('/approve top', { exists: f => !f.endsWith('slide-2.png') });
+  return !!r.error && /missing at the approved commit/.test(r.error);
+})());
+ok('urls are pinned to the approved commit', (() => {
+  const r = P('/approve top reel', { owner: 'o', repo: 'r', sha: 'abc' });
+  return r.posts.every(p => p.urls.every(u => u.includes('/abc/')));
+})(), 'the watch rewrites the working files every fifteen minutes');
+ok('every planned post carries its own caption', (() => {
+  const r = P('/approve all');
+  return r.posts.every(p => p.caption.includes(p.section));
+})());
+ok('a reel is planned with no descriptions and does not pretend otherwise',
+  P('/approve top reel').posts.find(p => p.kind === 'reel').alts === '');
+
+/* ── The permanent record ─────────────────────────────────────────
+   The only thing here that outlives a day. The next run reads it to avoid
+   repeating a story and a correction reads it to find the post to attach to,
+   so a wrong entry is a story published twice or a correction pinned to the
+   wrong post. */
+
+const approved = plan(ed, '/approve top reel');
+const receipts = [
+  { section: 'top', kind: 'carousel', mediaId: 'CAR1', permalink: 'https://ig/p/car' },
+  { section: 'top', kind: 'reel',     mediaId: 'REEL1', permalink: 'https://ig/p/reel' },
+];
+const led = record({ posted: [] }, {
+  edition: ed, plan: approved, published: receipts, issue: 9, now: '2026-10-20T06:00:00.000Z' });
+
+ok('every story of an approved section is recorded',
+  led.posted.length === 2, `${led.posted.length}`);
+ok('only the sections that were approved are recorded',
+  led.posted.every(r => r.section === 'top'));
+ok('a story is recorded against the carousel, not the reel',
+  led.posted.every(r => r.mediaId === 'CAR1'),
+  'the carousel is the post of record — it is the one a correction can be commented on'
+  + ' and the one that carries descriptions');
+ok('the reel is recorded too, without displacing the carousel',
+  led.posted.every(r => r.reelMediaId === 'REEL1'));
+ok('the approval issue is recorded, so a post can be traced back',
+  led.posted.every(r => r.issue === 9));
+ok('a post with no receipt records no media id', (() => {
+  const l = record({ posted: [] }, { edition: ed, plan: plan(ed, '/approve top'), published: [] });
+  return l.posted.every(r => r.mediaId === null);
+})(), 'a record that invents an id sends a correction to the wrong post');
+ok('the record does not grow without limit', (() => {
+  const old = Array.from({ length: 420 }, (_, i) => ({ title: `old ${i}`, mediaId: `m${i}` }));
+  return record({ posted: old }, { edition: ed, plan: approved, published: receipts })
+    .posted.length === 400;
+})());
+ok('a correction marks the post it corrected in the history', (() => {
+  const history = { posted: [{ title: 'Sensex plunges 900 points', mediaId: '17900' }] };
+  const corrEd = fromShortlist({ output: [{ kind: 'correction', section: 'correction',
+    sectionLabel: 'CORRECTION', image: 'a.png', images: ['a.png'], altFile: 'b.json',
+    stories: [{ kind: 'correction', headline: 'We said 900. It was 489.',
+      display: 'We said 900. It was 489.', corrects: { mediaId: '17900' } }] }] });
+  const l = record(history, {
+    edition: corrEd, plan: plan(corrEd, '/approve'),
+    published: [{ section: 'correction', kind: 'carousel', mediaId: 'C1' }], issue: 11 });
+  const marked = l.posted.find(r => r.mediaId === '17900');
+  return !!marked?.corrected && marked.correctedBy === 11;
+})(), 'a correction invisible in the history is one only the reader knows about');
+
+/* ── The approval issue ───────────────────────────────────────────
+   The whole human interface of the channel. Every slide that would be posted
+   has to be visible, because the owner is approving what they can see. */
+
+const issue = approvalIssue(ed, {
+  owner: 'arunvarkey', repo: 'dailyvolex', sha: 'c0ffee',
+  read: f => f.includes('top') ? 'Today’s top stories' : 'Business today',
+});
+
+ok('the issue is labelled for approval', issue.labels.includes('awaiting-approval'));
+ok('every slide of every section is shown', (() => {
+  const shown = (issue.body.match(/!\[[^\]]*slide [0-9]+\]/g) || []).length;
+  const total = posts(ed).filter(p => p.kind === 'carousel')
+    .reduce((n, p) => n + p.files.length, 0);
+  return shown === total;
+})(), 'a slide nobody is shown is a slide nobody checked');
+ok('the images are pinned to the commit the issue is showing',
+  issue.body.includes('/arunvarkey/dailyvolex/c0ffee/'));
+ok('each section says the words that post it',
+  ed.sections.every(s => issue.body.includes(`/approve ${s.id}`)));
+ok('a section with a reel says how to post it',
+  issue.body.includes('/approve top reel'));
+ok('the issue says a reel never goes out alone',
+  /no description on one|always posts the\s*carousel/.test(issue.body.replace(/\s+/g, ' ')));
+ok('the reel is offered with its length', /18\.7s/.test(issue.body));
+ok('a story with one newsroom behind it is flagged',
+  warningsFor(ed).some(w => /only ONE newsroom/.test(w)));
+ok('a republisher is named and not counted',
+  warningsFor(ed).some(w => /also carried by MSN/.test(w)));
+ok('who owns the newsrooms that agree is stated',
+  warningsFor(ed).some(w => /owned by one group/.test(w)));
+ok('the body is within GitHub limits', issue.body.length < 65536, `${issue.body.length}`);
+/* The three shapes of approval issue. Nothing reaches the account except
+   through one of them, and approve.yml gates on the label, so a shape that
+   forgot it would be a shape that cannot be approved — or worse, one that
+   bypasses the gate. */
+const breakingEd = fromShortlist({
+  breaking: true,
+  output: [{ kind: 'carousel', section: 'world', sectionLabel: 'WORLD',
+    image: 'data/pending/world/slide-1.png',
+    images: ['data/pending/world/slide-1.png', 'data/pending/world/slide-2.png'],
+    altFile: 'data/pending/world/alt.json',
+    stories: [{ headline: 'Ceasefire agreed in Geneva', display: 'Ceasefire agreed in Geneva',
+      source: 'Reuters · AP · BBC News', corroboration: 3, topic: 'world',
+      published: new Date(Date.now() - 23 * 60000).toISOString(),
+      link: 'https://example.org/story' }] }],
+});
+const correctionEd = fromShortlist({
+  output: [{ kind: 'correction', section: 'correction', sectionLabel: 'CORRECTION',
+    image: 'data/pending/correction/slide-1.png',
+    images: ['data/pending/correction/slide-1.png'],
+    altFile: 'data/pending/correction/alt.json',
+    stories: [{ kind: 'correction', headline: 'We said 900 points. It was 489.',
+      display: 'We said 900 points. It was 489.',
+      corrects: { mediaId: '17900', title: 'Sensex plunges 900 points',
+                  permalink: 'https://instagram.com/p/x' } }] }],
+});
+
+const breakingIssue = approvalIssue(breakingEd, { owner: 'o', repo: 'r', sha: 'aa', read: () => 'cap' });
+const corrIssue = approvalIssue(correctionEd, {
+  owner: 'o', repo: 'r', sha: 'bb', read: () => 'cap', requestedBy: 42 });
+
+ok('a breaking issue is still an approval issue',
+  breakingIssue.labels.includes('awaiting-approval') && breakingIssue.labels.includes('breaking'));
+ok('a breaking issue says how old the story is',
+  /2[0-9] minutes old/.test(breakingIssue.body), breakingIssue.body.slice(0, 200));
+ok('a breaking issue takes a bare approval, not a section name',
+  /Comment `\/approve` to post/.test(breakingIssue.body));
+ok('a correction is still an approval issue',
+  corrIssue.labels.includes('awaiting-approval') && corrIssue.labels.includes('correction'));
+ok('a correction names the post it corrects, with its link',
+  /Corrects:\*\* Sensex plunges 900 points/.test(corrIssue.body)
+  && corrIssue.body.includes('https://instagram.com/p/x'));
+ok('a correction points back at where it was asked for', /#42/.test(corrIssue.body));
+ok('a correction says the original is not deleted',
+  /not deleted/.test(corrIssue.body));
+ok('a correction with a media id says it will be commented on the original',
+  /added as a comment on the original post/.test(corrIssue.body));
+ok('a correction with no media id says so plainly', (() => {
+  const orphan = fromShortlist({ output: [{ ...correctionEd.sections[0], kind: 'correction',
+    section: 'correction', sectionLabel: 'CORRECTION',
+    image: 'a.png', images: ['a.png'], altFile: 'b.json',
+    stories: [{ kind: 'correction', headline: 'x', display: 'x', corrects: {} }] }] });
+  return /cannot be attached as a comment/.test(
+    approvalIssue(orphan, { owner: 'o', repo: 'r', sha: 'c', read: () => '' }).body);
+})(), 'posts made before the media id was recorded all look like this');
+ok('no approval issue is ever unlabelled',
+  [issue, breakingIssue, corrIssue].every(i => i.labels.includes('awaiting-approval')),
+  'approve.yml gates on that label');
+
+ok('the issue says a bare approval posts top only',
+  /bare `\/approve` posts Top stories only/i.test(issue.body));
 
 
 console.log(`\n${passed} passed, ${failed} failed`);

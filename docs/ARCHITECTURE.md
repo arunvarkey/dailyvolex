@@ -131,14 +131,25 @@ changes. This architecture is about what surrounds it.
 
 Each step leaves the channel working.
 
-1. **Stop committing work.** `work/`, git-ignored; photographs and reel frames
-   move there. Fixes the 290 MB.
-2. **Declare the edition.** `lib/edition.mjs` — schema and validator. Written
-   alongside the shortlist before anything reads it.
-3. **Empty the YAML.** The approval issue becomes `lib/offer.mjs`; `/approve`
-   becomes `lib/plan.mjs`. Both pure, both tested. The reel's wiring lands
-   here, where it can be tested.
-4. **One entry point.** `npm run day` builds a whole edition locally — no
-   GitHub, no Instagram — and prints exactly what would be posted.
-5. **Retire the god object.** Cut the stages over to the edition and delete
-   the adapters.
+1. ✅ **Stop committing work.** `work/`, git-ignored; photographs and reel
+   frames move there, and the download takes the 1600-pixel rendition rather
+   than the master.
+2. ✅ **Declare the edition.** `lib/edition.mjs` — the shape, a validator that
+   refuses to offer a malformed edition, and `fromShortlist` so the stages
+   downstream could be built against it before the stages upstream produce it.
+3. ✅ **Empty the YAML.** Every decision is a module now:
+   `lib/offer.mjs` (all three approval issues — daily, breaking, correction),
+   `lib/plan.mjs` (what `/approve top reel` posts), `lib/ledger.mjs` (the
+   permanent record). `publish.mjs` takes the plan and publishes it, reels
+   included. Four workflows lost 237 lines between them, and
+   `test-workflows.mjs` now fails if a decision creeps back in.
+4. ✅ **One entry point.** `automation/dv.mjs` — `offer`, `plan`, `record` and
+   `day`. `npm run day` reads whatever has been rendered and prints the
+   edition, every warning the owner would see, and what each possible
+   approval would post. No GitHub, no Instagram.
+5. **Retire the god object.** Cut the stages over to writing an edition
+   directly — `data/editions/<id>/edition.json`, immutable — and delete
+   `fromShortlist`. Move the ledger to `data/ledger.json`. Still to do.
+6. **Prune the history.** The 290 MB of photographs that were already
+   committed are still in the history. Removing them means rewriting and
+   force-pushing, which is destructive, so it needs the owner's say-so.

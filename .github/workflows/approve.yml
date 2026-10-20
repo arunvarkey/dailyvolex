@@ -28,7 +28,9 @@ jobs:
       github.event.comment.user.login == github.repository_owner
 
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    # A reel container is transcoded by Meta before it can be published,
+    # which takes minutes rather than seconds. Ten was sized for images.
+    timeout-minutes: 30
 
     steps:
       - uses: actions/checkout@v4
@@ -59,148 +61,51 @@ jobs:
           git fetch --depth=1 origin "${{ steps.pin.outputs.sha }}"
           git checkout "${{ steps.pin.outputs.sha }}" -- data/
 
-      # "/approve top business" posts those two sections and nothing else.
-      # Naming nothing posts Top stories only — the conservative reading of an
-      # ambiguous approval, and what the command used to mean.
-      - name: Work out which sections were approved
-        id: plan
-        env:
-          SHA: ${{ steps.pin.outputs.sha }}
+      # The comment goes to a file, never through a shell: a person wrote it
+      # and it must not be interpolated into a command line on its way here.
+      - name: Take down what was asked for
         uses: actions/github-script@v7
         with:
           script: |
             const fs = require('fs');
-            const sl = JSON.parse(fs.readFileSync('data/shortlist.json', 'utf8'));
-            const out = sl.output || sl.stories || [];
-            if (!out.length) return core.setFailed('nothing rendered to post');
+            fs.mkdirSync('work', { recursive: true });
+            fs.writeFileSync('work/comment.txt', context.payload.comment.body || '', 'utf8');
 
-            const asked = (context.payload.comment.body || '')
-              .replace(/^\s*\/approve/i, '').trim().toLowerCase()
-              .split(/[\s,]+/).filter(Boolean);
-
-            const sectioned = out.some(e => e.section);
-            let chosen;
-            if (!sectioned)                chosen = [out[0]];
-            else if (asked.includes('all')) chosen = out;
-            else if (!asked.length)         chosen = out.filter(e => e.section === 'top');
-            else {
-              const unknown = asked.filter(a => !out.some(e => e.section === a));
-              if (unknown.length) return core.setFailed(
-                `no such section: ${unknown.join(', ')} — this post has `
-                + out.map(e => e.section).join(', '));
-              chosen = asked.map(a => out.find(e => e.section === a));
-            }
-            if (!chosen.length) return core.setFailed('nothing matched that approval');
-
-            const sha = process.env.SHA;
-            const plan = chosen.map(e => {
-              const files = (e.images || [e.image]).filter(Boolean);
-              for (const f of files)
-                if (!fs.existsSync(f)) throw new Error(`${f} is missing at ${sha}`);
-              const caption = e.section
-                ? `data/pending/caption-${e.section}.txt`
-                : 'data/pending/caption-1.txt';
-              if (!fs.existsSync(caption)) throw new Error(`${caption} is missing at ${sha}`);
-              // A correction is attached to the post it corrects, so whoever
-              // finds the mistake finds the correction with it.
-              const story = (e.stories || [e])[0] || {};
-              return {
-                section: e.section || 'post',
-                label: e.sectionLabel || (e.kind === 'correction' ? 'Correction' : 'Post'),
-                caption,
-                // Descriptions for blind readers, written beside the slides.
-                alts: e.altFile && fs.existsSync(e.altFile) ? e.altFile : '',
-                commentOn: story.corrects?.mediaId || '',
-                urls: files.map(f =>
-                  `https://raw.githubusercontent.com/${context.repo.owner}/${context.repo.repo}/${sha}/${f}`).join(','),
-              };
-            });
-            core.notice(`posting: ${plan.map(p => p.label).join(', ')}`);
-            core.setOutput('plan', JSON.stringify(plan));
-            core.setOutput('labels', plan.map(p => p.label).join(', '));
+      # What `/approve top business` means is decided by automation/lib/plan.mjs,
+      # which is pure and tested directly. It used to live in this file, where
+      # it could not be run anywhere but GitHub and was tested by evaluating
+      # JavaScript out of a YAML string — and a bug in it does not fail
+      # loudly, it posts the wrong thing under the channel's name.
+      - name: Work out what was approved
+        id: plan
+        run: |
+          node automation/dv.mjs plan \
+            --comment-file work/comment.txt \
+            --sha "${{ steps.pin.outputs.sha }}" \
+            --out work/plan.json
+          node -e "
+            const p = require('./work/plan.json');
+            console.log('labels=' + p.labels);
+          " >> "$GITHUB_OUTPUT"
 
       - name: Post to Instagram
         env:
           IG_USER_ID:      ${{ secrets.IG_USER_ID }}
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
-          PLAN:            ${{ steps.plan.outputs.plan }}
-        run: |
-          # One Instagram post per approved section, in the order asked for.
-          # A failure part-way through stops the rest: half a morning posted is
-          # recoverable, but carrying on past an error is how the same post
-          # goes out twice.
-          echo "$PLAN" | node -e "
-            let d=''; process.stdin.on('data',c=>d+=c).on('end',()=>{
-              const plan=JSON.parse(d);
-              console.log(plan.map(p=>[p.section,p.urls,p.caption,p.commentOn||'',p.alts||''].join('\t')).join('\n'));
-            })" > plan.tsv
-          while IFS=$'\t' read -r SECTION URLS CAPTION COMMENT_ON ALTS; do
-            [ -n "$SECTION" ] || continue
-            echo "── posting $SECTION ──"
-            EXTRA=""
-            if [ -n "$COMMENT_ON" ] && [ -f data/pending/correction-comment.txt ]; then
-              EXTRA="--comment-on $COMMENT_ON --comment-file data/pending/correction-comment.txt"
-            fi
-            [ -n "$ALTS" ] && EXTRA="$EXTRA --alt-file $ALTS"
-            node automation/publish.mjs --images "$URLS" --caption-file "$CAPTION" \
-              --section "$SECTION" $EXTRA
-          done < plan.tsv
-          rm -f plan.tsv
+        run: node automation/publish.mjs --plan work/plan.json
 
+      # The record outlives the day: the next run reads it to avoid
+      # repeating a story, and a correction reads it to find the media id of
+      # the post it has to be attached to. Decided by lib/ledger.mjs, which
+      # is pure and tested — it was forty lines of JavaScript inside a shell
+      # string inside this file.
       - name: Remember what was posted, so it never comes round again
-        env:
-          PLAN: ${{ steps.plan.outputs.plan }}
-          ISSUE: ${{ github.event.issue.number }}
         run: |
-          # The pinned checkout replaced data/ wholesale, posted.json included.
-          # That file is the running record and may have gained entries since,
-          # so take the current one back before adding to it.
+          # The pinned checkout replaced data/ wholesale, posted.json
+          # included. That file is the running record and may have gained
+          # entries since, so take the current one back before adding to it.
           git checkout HEAD -- data/posted.json 2>/dev/null || true
-          # Only the sections that were actually approved. Recording the whole
-          # shortlist would bury the sections the owner chose NOT to post, and
-          # they should be free to come back tomorrow.
-          node -e "
-            const fs=require('fs');
-            const s=JSON.parse(fs.readFileSync('data/shortlist.json','utf8'));
-            const out=s.output||s.stories||[];
-            const wanted=new Set(JSON.parse(process.env.PLAN).map(p=>p.section));
-            const chosen=out.filter(e=>wanted.has(e.section||'post'));
-            const now=new Date().toISOString();
-            // What publish.mjs actually got back from Instagram: the media id
-            // and permalink per section. Without these a correction has
-            // nothing to point at.
-            let published=[];
-            try { published=JSON.parse(fs.readFileSync('data/pending/published.json','utf8')); } catch {}
-            const bySection=new Map(published.map(p=>[p.section,p]));
-
-            const items=chosen.flatMap(e=>{
-              const meta=bySection.get(e.section||'post')||{};
-              return (e.stories||[e]).map(x=>({
-                title:x.original||x.headline, link:x.link||null,
-                section:e.section||null, issue:Number(process.env.ISSUE),
-                mediaId:meta.mediaId||null, permalink:meta.permalink||null,
-                kind:e.kind||null, posted:now }));
-            });
-
-            const p=fs.existsSync('data/posted.json')
-              ? JSON.parse(fs.readFileSync('data/posted.json','utf8')) : {posted:[]};
-
-            // Mark the corrected post in the record. A correction that is not
-            // visible in the history is a correction only the reader knows
-            // about, and the history is what the next run checks.
-            for (const e of chosen) {
-              const id=(e.stories||[e])[0]?.corrects?.mediaId;
-              if (!id) continue;
-              for (const rec of (p.posted||[])) {
-                if (rec.mediaId===id) { rec.corrected=now; rec.correctedBy=Number(process.env.ISSUE); }
-              }
-            }
-
-            p.posted=[...items,...(p.posted||[])].slice(0,400);
-            p.updated=now;
-            fs.writeFileSync('data/posted.json', JSON.stringify(p,null,2)+'\n');
-            console.log('recorded '+items.length+' story/stories');
-          "
+          node automation/dv.mjs record --issue "${{ github.event.issue.number }}"
           automation/push-data.sh "Posted $(date -u +%Y-%m-%d)" data/posted.json
 
       - name: Say so on the issue and close it

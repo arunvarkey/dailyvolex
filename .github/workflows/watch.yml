@@ -100,60 +100,20 @@ jobs:
         run: |
           automation/push-data.sh "Watch - nothing new" data/offered.json
 
+      # The issue body is decided by automation/lib/offer.mjs, which is pure
+      # and tested. This step only hands the result to the API — see
+      # docs/ARCHITECTURE.md on why no workflow may decide anything.
+      - name: Write the approval issue
+        if: steps.look.outputs.found == 'yes'
+        run: node automation/dv.mjs offer --sha "$GITHUB_SHA" --out work/issue.json
+
       - name: Ask for approval
         if: steps.look.outputs.found == 'yes'
         uses: actions/github-script@v7
         with:
           script: |
-            const fs = require('fs');
-            const sl = JSON.parse(fs.readFileSync('data/shortlist.json', 'utf8'));
-            const entry = (sl.output || sl.stories)[0];
-            // Captions are named by section now. A breaking story still has a
-            // section — it is world news or India news like any other — so
-            // this read of caption-1.txt was failing on every story the watch
-            // actually found, which is every time it mattered.
-            const caption = fs.readFileSync(
-              entry.section ? `data/pending/caption-${entry.section}.txt`
-                            : 'data/pending/caption-1.txt', 'utf8');
-            const sha = process.env.GITHUB_SHA;
-            const raw = p => `https://raw.githubusercontent.com/${context.repo.owner}/${context.repo.repo}/${sha}/${p}`;
-            const slides = entry.images || [entry.image];
-            const img = slides.map((p, i) => `![slide ${i + 1}](${raw(p)})`).join('\n');
-
-            const s = entry.stories ? entry.stories[0] : entry;
-            const age = s.published
-              ? Math.round((Date.now() - Date.parse(s.published)) / 60000) + ' minutes old'
-              : 'age unknown';
-
-            const warnings = [];
-            if (sl.feedErrors?.length) warnings.push(`Feeds that failed: ${sl.feedErrors.join('; ')}`);
-            if (s.republishers?.length)
-              warnings.push(`Also carried by, but not counted as corroboration: ${s.republishers.join(', ')}`);
-            if (s.truncated) warnings.push('The headline was shortened to fit the card.');
-            if (s.photoError) warnings.push(`No photo: ${s.photoError}`);
-
-            const body = [
-              '**Breaking — caught by the watch, not the daily run.**', '',
-              img, '',
-              `**${s.display || s.headline}**`,
-              `_${s.source}_ · ${s.corroboration} independent newsroom${s.corroboration > 1 ? 's' : ''} · ${age}`,
-              s.link ? `\n${s.link}` : '',
-              '',
-              '### Caption', '```', caption.trim(), '```',
-              warnings.length ? `\n### ⚠️ Check\n${warnings.map(w => `- ${w}`).join('\n')}` : '',
-              '',
-              '---',
-              '**Comment `/approve` to post this to Instagram.** Anything else, or no reply, and it is never posted.',
-              'Close this issue to discard it — the watch stays quiet until you do.',
-            ].join('\n');
-
-            await github.rest.issues.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title: `Breaking — ${(entry.stories ? entry.stories[0] : entry).display?.slice(0, 60) || 'story'}`,
-              body,
-              labels: ['awaiting-approval', 'breaking'],
-            });
+            const issue = require(`${process.env.GITHUB_WORKSPACE}/work/issue.json`);
+            await github.rest.issues.create({ ...context.repo, ...issue });
 
       # Unattended automation that fails quietly is not automation. Runs on
       # success too, so the issue closes itself when things recover.
