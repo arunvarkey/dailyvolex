@@ -68,12 +68,7 @@ jobs:
       - name: Publish the graphic so Instagram can fetch it
         # Instagram pulls the image from a public URL rather than accepting an
         # upload, so the file has to be reachable before it can be posted.
-        run: |
-          git config user.name  "dailyvolex-bot"
-          git config user.email "noreply@github.com"
-          git add data/
-          git commit -m "Shortlist for $(date -u +%Y-%m-%d)" || echo "nothing changed"
-          git push
+        run: automation/push-data.sh "Shortlist for $(date -u +%Y-%m-%d)"
 
       - name: Ask for approval
         uses: actions/github-script@v7

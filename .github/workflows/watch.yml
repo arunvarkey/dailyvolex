@@ -90,22 +90,14 @@ jobs:
 
       - name: Publish the graphic so Instagram can fetch it
         if: steps.look.outputs.found == 'yes'
-        run: |
-          git config user.name  "dailyvolex-bot"
-          git config user.email "noreply@github.com"
-          git add data/
-          git commit -m "Breaking story for $(date -u +'%Y-%m-%d %H:%M') UTC" || echo "nothing changed"
-          git push
+        run: automation/push-data.sh "Breaking story for $(date -u +'%Y-%m-%d %H:%M') UTC"
 
       - name: Remember what was offered, even when nothing broke
         # offered.json is what stops the next watch offering the same story
         # again fifteen minutes later, so it has to be committed either way.
         if: steps.look.outputs.found == 'no'
         run: |
-          git config user.name  "dailyvolex-bot"
-          git config user.email "noreply@github.com"
-          git add data/offered.json 2>/dev/null || true
-          git diff --cached --quiet || { git commit -m "Watch: nothing new"; git push; }
+          automation/push-data.sh "Watch - nothing new" data/offered.json
 
       - name: Ask for approval
         if: steps.look.outputs.found == 'yes'

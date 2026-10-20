@@ -84,12 +84,7 @@ jobs:
         run: node automation/caption.mjs --index 0
 
       - name: Publish the graphic so Instagram can fetch it
-        run: |
-          git config user.name  "dailyvolex-bot"
-          git config user.email "noreply@github.com"
-          git add data/
-          git commit -m "Correction requested on #${{ steps.read.outputs.issue }}" || echo "nothing changed"
-          git push
+        run: automation/push-data.sh "Correction requested on #${{ steps.read.outputs.issue }}"
 
       - name: Open the correction for approval
         uses: actions/github-script@v7
