@@ -1,9 +1,9 @@
 {
-  "generated": "2026-10-20T13:43:51.629Z",
+  "generated": "2026-10-20T14:01:33.036Z",
   "read": 584,
-  "published": 13,
-  "refused": 105,
-  "consideredNotChosen": 466,
+  "published": 12,
+  "refused": 104,
+  "consideredNotChosen": 468,
   "byRule": {
     "older than the window": {
       "count": 88,
@@ -42,31 +42,6 @@
         }
       ]
     },
-    "too thin to be a headline": {
-      "count": 5,
-      "samples": [
-        {
-          "title": "World Table Tennis",
-          "source": "World Table Tennis"
-        },
-        {
-          "title": "Reuters World News Summary",
-          "source": "Devdiscourse"
-        },
-        {
-          "title": "France Protests",
-          "source": "Post Register"
-        },
-        {
-          "title": "Citrini Therapeutics",
-          "source": "Citrini Research | Substack"
-        },
-        {
-          "title": "Healing the American Diet",
-          "source": "Hopkins Bloomberg Public Health Magazine"
-        }
-      ]
-    },
     "not news": {
       "count": 4,
       "samples": [
@@ -83,8 +58,29 @@
           "source": "The Hindu"
         },
         {
-          "title": "Watch: Burning e-bikes turned into bonfires as France reels from violent protests",
-          "source": "Times of India"
+          "title": "Video: Finnish Family Compares India And Finland, Explains Why They Love The 'Beautiful Chaos'",
+          "source": "NDTV"
+        }
+      ]
+    },
+    "too thin to be a headline": {
+      "count": 4,
+      "samples": [
+        {
+          "title": "World Table Tennis",
+          "source": "World Table Tennis"
+        },
+        {
+          "title": "Reuters World News Summary",
+          "source": "Devdiscourse"
+        },
+        {
+          "title": "Citrini Therapeutics",
+          "source": "Citrini Research | Substack"
+        },
+        {
+          "title": "Healing the American Diet",
+          "source": "Hopkins Bloomberg Public Health Magazine"
         }
       ]
     },
