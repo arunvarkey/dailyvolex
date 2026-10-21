@@ -11,6 +11,8 @@ import { licenceFrom, toResult as commonsResult } from './lib/commons.mjs';
 import { altForStory, altForCover, altForEntry, altForClosing } from './lib/alttext.mjs';
 import { statFor, prefersStat } from './lib/statcard.mjs';
 import { looksLikeNews, hasNewsVerb, reportsNothing, NEWS_VERBS } from './lib/verbs.mjs';
+import { imageUrlFrom, isFurniture, creditFor as articleCredit,
+         imageFromArticle } from './lib/articleimage.mjs';
 import { secondsForStory, secondsForCover, SECONDS_FOR_CLOSING, reelTimings,
          totalSeconds, checkDuration, ffmpegArgs, MIN_SECONDS, MAX_SECONDS } from './lib/reelplan.mjs';
 import { create, attachPost, validate, posts, postById, idFor, dirFor,
@@ -1849,6 +1851,18 @@ ok('a run that refused nothing shows no refused block', (() => {
   quiet.refusals = { read: 10, published: 3, refused: 0, byRule: {} };
   return !/Refused/.test(approvalIssue(quiet, { owner: 'o', repo: 'r', sha: 'a', read: () => '' }).body);
 })());
+ok('the issue says when pictures are the outlets’ own', (() => {
+  const e = editionFixture();
+  e.sections[0].stories[0].photo = { from: 'article', credit: 'Photo: Reuters' };
+  return /used without a licence/.test(
+    approvalIssue(e, { owner: 'o', repo: 'r', sha: 'a', read: () => '' }).body);
+})(), 'stated every time rather than left to memory');
+ok('a post with only library pictures says nothing about licences', (() => {
+  const e = editionFixture();
+  e.sections[0].stories[0].photo = { from: 'library', credit: 'File photo: X (CC BY 4.0)' };
+  return !/used without a licence/.test(
+    approvalIssue(e, { owner: 'o', repo: 'r', sha: 'a', read: () => '' }).body);
+})());
 ok('the body is within GitHub limits', issue.body.length < 65536, `${issue.body.length}`);
 /* A one-section edition — a breaking story or a correction. Both are a
    single card set, and both still have to be approvable. */
@@ -2249,6 +2263,107 @@ ok('the verbs that run refused are in the list now',
    'Qatar and Turkiye are deepening defence ties',
    'Israeli settlers have Palestinians surrounded',
    'War in Lebanon has cost young people with autism'].every(hasNewsVerb));
+
+
+
+/* ── The photograph the outlet put on the story ───────────────────
+   Every picture used to come from Wikimedia Commons: safe, and frequently
+   nothing to do with the story — four cards in ten went out over a gradient.
+   The owner's decision is that the story matters more than the licence, so
+   the article's own picture is tried first. It is the outlet's copyright,
+   which is why the outlet is named on the card and flagged in the approval
+   issue rather than being quietly used. */
+
+const PAGE = (head, base = 'https://example.com/news/story') => ({ head, base });
+
+ok('og:image is read, in either attribute order', (() => {
+  const a = imageUrlFrom('<meta property="og:image" content="https://i.ex.com/a.jpg">', PAGE().base);
+  const b = imageUrlFrom('<meta content="https://i.ex.com/b.jpg" property="og:image">', PAGE().base);
+  return a === 'https://i.ex.com/a.jpg' && b === 'https://i.ex.com/b.jpg';
+})());
+ok('og:image:url is read too',
+  imageUrlFrom('<meta property="og:image:url" content="https://i.ex.com/c.jpg">', PAGE().base)
+  === 'https://i.ex.com/c.jpg');
+ok('twitter:image is the fallback',
+  imageUrlFrom('<meta name="twitter:image" content="https://i.ex.com/t.jpg">', PAGE().base)
+  === 'https://i.ex.com/t.jpg');
+ok('og:image wins over twitter:image', (() => {
+  const html = '<meta name="twitter:image" content="https://i.ex.com/t.jpg">'
+             + '<meta property="og:image" content="https://i.ex.com/o.jpg">';
+  return imageUrlFrom(html, PAGE().base) === 'https://i.ex.com/o.jpg';
+})(), 'og:image is the one outlets actually maintain');
+ok('a relative path is resolved against the article',
+  imageUrlFrom('<meta property="og:image" content="/img/lead.jpg">',
+               'https://thehindu.com/news/india/story-1234')
+  === 'https://thehindu.com/img/lead.jpg');
+ok('a protocol-relative url is resolved',
+  imageUrlFrom('<meta property="og:image" content="//i.ex.com/p.jpg">', 'https://ex.com/a')
+  === 'https://i.ex.com/p.jpg');
+ok('an escaped ampersand is unescaped',
+  imageUrlFrom('<meta property="og:image" content="https://i.ex.com/a.jpg?w=1&amp;h=2">', PAGE().base)
+  === 'https://i.ex.com/a.jpg?w=1&h=2');
+ok('a page declaring nothing yields nothing',
+  imageUrlFrom('<html><head><title>A story</title></head></html>', PAGE().base) === null);
+
+/* Furniture. A card wearing a newspaper's own logo looks like a mistake. */
+ok('a masthead is not a photograph',
+  ['https://x.com/logo.png', 'https://x.com/favicon.ico', 'https://x.com/1x1.gif',
+   'https://x.com/default-image.jpg', 'https://x.com/share-icon.png',
+   'https://x.com/placeholder.jpg'].every(isFurniture));
+ok('a real photograph is not furniture',
+  !isFurniture('https://th.com/2026/10/21/Chandigarh-court-verdict.jpg')
+  && !isFurniture('https://i.ex.com/incoming/abc123.jpg?w=1200'));
+ok('furniture is skipped rather than returned', (() => {
+  const html = '<meta property="og:image" content="https://x.com/logo.png">'
+             + '<meta name="twitter:image" content="https://x.com/real-photo.jpg">';
+  return imageUrlFrom(html, PAGE().base) === 'https://x.com/real-photo.jpg';
+})());
+ok('a query string does not make a logo a photograph',
+  isFurniture('https://x.com/logo.png?v=3'), 'the path is what is checked');
+
+/* The credit. A picture whose source cannot be named does not go on a card. */
+ok('the outlet is credited by name',
+  articleCredit('The Hindu · NDTV', 'https://thehindu.com/a') === 'Photo: The Hindu');
+ok('with no outlet, the host is named',
+  articleCredit('', 'https://www.thehindu.com/news/a') === 'Photo: thehindu.com');
+
+/* The fetch itself never throws: a run that dies because one newspaper was
+   slow is a run with no post at all. */
+ok('a story with no link is handled, not thrown', async () => {}, '');
+{
+  const noLink = await imageFromArticle('', { source: 'Reuters' });
+  ok('a story with no link asks for nothing',
+    noLink.image === null && /no link/.test(noLink.error));
+
+  const ok200 = await imageFromArticle('https://ex.com/a', {
+    source: 'Reuters',
+    fetchImpl: async () => ({ ok: true, url: 'https://ex.com/a',
+      text: async () => '<meta property="og:image" content="https://i.ex.com/a.jpg">' }),
+  });
+  ok('a page with a picture yields it, credited', ok200.image?.url === 'https://i.ex.com/a.jpg'
+    && ok200.image.credit === 'Photo: Reuters' && ok200.image.licence === 'publisher');
+  ok('the picture says plainly that it is the publisher’s',
+    ok200.image.licence === 'publisher',
+    'so the approval issue can show what is being approved');
+
+  const dead = await imageFromArticle('https://ex.com/a', {
+    source: 'Reuters', fetchImpl: async () => ({ ok: false, status: 403 }),
+  });
+  ok('a refusal is reported, not thrown', dead.image === null && /403/.test(dead.error));
+
+  const boom = await imageFromArticle('https://ex.com/a', {
+    source: 'Reuters', fetchImpl: async () => { throw new Error('network is down'); },
+  });
+  ok('a network failure is reported, not thrown',
+    boom.image === null && /network is down/.test(boom.error));
+
+  const bare = await imageFromArticle('https://ex.com/a', {
+    source: 'Reuters',
+    fetchImpl: async () => ({ ok: true, url: 'https://ex.com/a', text: async () => '<html></html>' }),
+  });
+  ok('a page with no picture is reported as such',
+    bare.image === null && /declares no picture/.test(bare.error));
+}
 
 
 console.log(`\n${passed} passed, ${failed} failed`);

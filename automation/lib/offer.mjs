@@ -42,6 +42,17 @@ export function warningsFor(edition) {
     }
   }
   if (edition.feedErrors?.length) out.push(`Feeds that failed: ${edition.feedErrors.join('; ')}`);
+
+  /* Said once, at the top, rather than on every card. The outlets' own
+     photographs are used without a licence — a deliberate decision, and one
+     the person approving the post should see stated every time rather than
+     have to remember. */
+  const all = (edition.sections || []).flatMap(s => s.stories || []);
+  const fromArticle = all.filter(s => s.photo?.from === 'article').length;
+  if (fromArticle) out.push(
+    `${fromArticle} of ${all.length} pictures are the outlets' own photographs,`
+    + ' used without a licence and credited to them by name.'
+    + ' A rights holder can issue a takedown against these.');
   return out;
 }
 

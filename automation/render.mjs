@@ -18,6 +18,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join, extname, normalize } from 'node:path';
 import { launchChrome, closeChrome, openPage } from './lib/cdp.mjs';
 import { findImage, downloadImage } from './lib/imagery.mjs';
+import { imageFromArticle } from './lib/articleimage.mjs';
 import { composeSection, backdropOf, toQuery } from './lib/compose.mjs';
 import { load, save, dirFor, attachPost } from './lib/edition.mjs';
 
@@ -137,16 +138,43 @@ function dropDuplicatePhotos(stories) {
   }
 }
 
+/* Where a story's picture comes from, best first.
+ *
+ * The article's own photograph is the only source that is reliably a picture
+ * OF the story rather than a picture of its genre — a courthouse in the right
+ * city, the actual minister, the actual wreck. It is also the outlet's
+ * copyright, used without a licence, which is a decision the owner made
+ * knowingly and which is why the outlet is named on the card and flagged in
+ * the approval issue.
+ *
+ * The openly-licensed library stays as the fallback, so a story whose article
+ * declares no picture still has a chance of one. */
+async function findPhoto(story, opts) {
+  if (!opts.noArticlePhotos) {
+    const fromArticle = await imageFromArticle(story.link, { source: story.source });
+    if (fromArticle.image) return { image: fromArticle.image, query: '(the article)', error: null };
+    story.articlePhotoError = fromArticle.error;
+  }
+
+  // The sensitivity rule applies to the LIBRARY only, and deliberately. It
+  // exists because a stock photograph of an identifiable person under a story
+  // about harm misrepresents them. The outlet's own picture of its own story
+  // does not misrepresent anything — it is the photograph the story was
+  // published with.
+  // The topic steers the last-resort query. Without it, every story that named
+  // nothing searchable fell back to a markets photo, so a standards conference
+  // in Delhi was being illustrated with a trading screen.
+  return findImage(story.display || story.headline,
+                   { exclude: usedPhotos, topic: story.topic });
+}
+
 async function imageFor(story, index, opts, dir = '') {
   if (opts.noPhotos) return null;
   // A correction gets no photograph. There is no picture of being wrong, and
   // a stock image under one reads as an attempt to soften it.
   if (story.kind === 'correction') return null;
-  // The topic steers the last-resort query. Without it, every story that named
-  // nothing searchable fell back to a markets photo, so a standards conference
-  // in Delhi was being illustrated with a trading screen.
-  const found = await findImage(story.display || story.headline,
-                               { exclude: usedPhotos, topic: story.topic });
+
+  const found = await findPhoto(story, opts);
   if (!found.image) {
     // Record the reason on the story: without it, "no picture" is impossible to
     // tell apart from "rate limited" or "the API is down" after the fact.
@@ -172,13 +200,20 @@ async function imageFor(story, index, opts, dir = '') {
     for (const url of [cand.smallerUrl, cand.url].filter(Boolean)) {
     try {
       const { bytes } = await downloadImage(url, join(WORK_PHOTOS, dir, name));
+      // A masthead or a share icon declared as og:image comes back a few
+      // kilobytes. A photograph does not, and a card wearing a newspaper's
+      // logo looks like a mistake because it is one.
+      if (bytes < 12_000) throw new Error(`only ${(bytes/1024).toFixed(0)} KB — furniture, not a photograph`);
       usedPhotos.add(cand.url);
       console.log(`  photo: "${found.query}" · match ${cand.relevance ?? '?'}`
         + ` · ${cand.credit} · ${(bytes/1024).toFixed(0)} KB`
         + (failures.length ? `  (after ${failures.length} dead link${failures.length>1?'s':''})` : ''));
       return { path: `work/photos/${relDir}${name}`, credit: cand.credit,
-               license: cand.license, pageUrl: cand.pageUrl,
-               query: found.query, relevance: cand.relevance, title: cand.title };
+               license: cand.license ?? cand.licence ?? null, pageUrl: cand.pageUrl,
+               query: found.query, relevance: cand.relevance, title: cand.title,
+               // Where it came from, so the approval issue can say so and the
+               // record of what was published is honest about it.
+               from: cand.licence === 'publisher' ? 'article' : 'library' };
     } catch (e) {
       failures.push(e.message);
     }
@@ -207,6 +242,8 @@ async function main() {
     // the default must not, or every card gets the chart again.
     bgExplicit: process.argv.includes('--bg'),
     noPhotos: process.argv.includes('--no-photos'),
+    // Library only, for comparing coverage with and without.
+    noArticlePhotos: process.argv.includes('--no-article-photos'),
   };
 
   const edition = await load(ROOT, arg('edition'));
