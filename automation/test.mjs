@@ -1759,8 +1759,9 @@ ok('a reel is planned with no descriptions and does not pretend otherwise',
 
 const approved = plan(ed, '/approve top reel');
 const receipts = [
-  { section: 'top', kind: 'carousel', mediaId: 'CAR1', permalink: 'https://ig/p/car' },
-  { section: 'top', kind: 'reel',     mediaId: 'REEL1', permalink: 'https://ig/p/reel' },
+  { post: 'top-1', section: 'top', kind: 'carousel', mediaId: 'CAR1', permalink: 'https://ig/p/car1' },
+  { post: 'top-reel', section: 'top', kind: 'reel',  mediaId: 'REEL1', permalink: 'https://ig/p/reel' },
+  { post: 'top-2', section: 'top', kind: 'carousel', mediaId: 'CAR2', permalink: 'https://ig/p/car2' },
 ];
 const led = record({ posted: [] }, {
   edition: ed, plan: approved, published: receipts, issue: 9, now: '2026-10-20T06:00:00.000Z' });
@@ -1770,11 +1771,45 @@ ok('every story of an approved section is recorded',
 ok('only the sections that were approved are recorded',
   led.posted.every(r => r.section === 'top'));
 ok('a story is recorded against the carousel, not the reel',
-  led.posted.every(r => r.mediaId === 'CAR1'),
+  led.posted.every(r => /^CAR/.test(r.mediaId)),
   'the carousel is the post of record — it is the one a correction can be commented on'
   + ' and the one that carries descriptions');
-ok('the reel is recorded too, without displacing the carousel',
-  led.posted.every(r => r.reelMediaId === 'REEL1'));
+
+/* The bug this exists to catch: receipts were keyed by section and kind, so
+   top-1, top-2 and top-3 were all "top:carousel" and the last one won. Every
+   story in the section was then recorded against one media id — and this
+   record is how a correction finds the post it belongs to. */
+ok('each story is recorded against its OWN post, not the section’s last',
+  led.posted.map(r => `${r.post}=${r.mediaId}`).sort().join(' ')
+    === 'top-1=CAR1 top-2=CAR2',
+  led.posted.map(r => `${r.post}=${r.mediaId}`).join(' '));
+ok('the permalink recorded is the one of that story’s post',
+  led.posted.find(r => r.post === 'top-2').permalink === 'https://ig/p/car2');
+
+ok('the reel is recorded on the story it was made from',
+  led.posted.find(r => r.post === 'top-1').reelMediaId === 'REEL1');
+ok('and not on the stories it is not of',
+  led.posted.find(r => r.post === 'top-2').reelMediaId === undefined,
+  'a reel of the lead story claimed on every story is a post that was never made');
+ok('the reel does not displace the carousel it belongs to',
+  led.posted.find(r => r.post === 'top-1').mediaId === 'CAR1');
+
+/* Approving one story must not record the rest of its section as posted —
+   the next run reads this to decide what it has already covered. */
+ok('approving one post records one post', (() => {
+  const l = record({ posted: [] }, {
+    edition: ed, plan: plan(ed, '/approve top-2'), published: receipts });
+  return l.posted.length === 1 && l.posted[0].post === 'top-2'
+    && l.posted[0].mediaId === 'CAR2';
+})(), 'recording a story that was never published hides it from every later run');
+
+ok('a receipt from a publish run by hand still finds its post', (() => {
+  const l = record({ posted: [] }, {
+    edition: ed, plan: plan(ed, '/approve top-1'),
+    published: [{ section: 'top', kind: 'carousel', mediaId: 'HAND' }] });
+  return l.posted[0].mediaId === 'HAND';
+})());
+
 ok('the approval issue is recorded, so a post can be traced back',
   led.posted.every(r => r.issue === 9));
 ok('a post with no receipt records no media id', (() => {
@@ -2253,6 +2288,24 @@ ok('a desk label with a colon is furniture, not the headline',
 ok('a short headline keeps its label rather than being gutted',
   tidy('India news: short') === 'India news: short',
   'the first version of the pipe rule threw away the story and kept the furniture');
+
+/* Caught on a live run: this went out on a card with the desk still on it. */
+ok('a desk label with a dash is furniture too',
+  tidy('Business - French bond yields hit 24-year high after unrest')
+  === 'French bond yields hit 24-year high after unrest');
+ok('the desk label does not need the word "news" to be furniture',
+  tidy('World — Ceasefire talks resume in Geneva after months of silence')
+  === 'Ceasefire talks resume in Geneva after months of silence');
+ok('a hyphenated word is not a desk label',
+  tidy('Markets-beating fund returns 40% in a year')
+  === 'Markets-beating fund returns 40% in a year',
+  'the separator has to have space around it, or every hyphen is furniture');
+ok('a desk label is not stripped off a fragment',
+  tidy('Business - short one') === 'Business - short one');
+ok('what is left has to read as a headline, not a continuation',
+  tidy('Health - care costs have risen every year since 2019')
+  === 'Health - care costs have risen every year since 2019',
+  'stripping a label off a lowercase remainder makes a sentence nobody published');
 
 /* The four verbs the first live run proved were missing. */
 ok('the verbs that run refused are in the list now',

@@ -142,7 +142,7 @@ async function loadCaption(file, fallback = '') {
 
 /* Publish exactly one post: a carousel, a single image, or a reel. */
 async function publishOne(spec, { userId, token, dryRun }) {
-  const { kind, urls, caption, alts = [], commentOn, commentText, section, cover } = spec;
+  const { id, kind, urls, caption, alts = [], commentOn, commentText, section, cover } = spec;
   const video = kind === 'reel' ? urls[0] : null;
   const images = kind === 'reel' ? [] : urls;
 
@@ -224,6 +224,9 @@ async function publishOne(spec, { userId, token, dryRun }) {
   await recordPublished({
     mediaId: published.id, permalink, caption,
     images: urls, kind,
+    // The post, not just its section: a section is several posts now, and the
+    // ledger has to attribute each media id to the story it is of.
+    post: id || null,
     section: section || null, corrects: commentOn || null,
     postedAt: new Date().toISOString(),
   });
@@ -298,7 +301,7 @@ async function specsFromPlan(file) {
     if (p.kind === 'carousel' && p.urls.length > 10)
       throw new Error(`${p.label} has ${p.urls.length} slides; Instagram takes 10`);
     out.push({
-      label: p.label, kind: p.kind, urls: p.urls, section: p.section,
+      id: p.id, label: p.label, kind: p.kind, urls: p.urls, section: p.section,
       caption: await loadCaption(p.caption),
       // A reel gets none, and must not look as though it did.
       alts: p.kind === 'reel' ? [] : await loadAlts(p.alts, p.urls.length),

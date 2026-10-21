@@ -23,13 +23,34 @@ const TRAILING_BYLINE = /\s+[Bb]y\s+[A-Z][\w.&' -]{2,30}\s*$/;
  * select.mjs instead. */
 const PREFIXES = [
   /^(breaking|exclusive|just in|update|live|watch|explained)\s*[:–—-]\s*/i,
-  /* A desk label the outlet pinned to the front with a colon rather than a
-     pipe: "India news: India-US trade deal 'pretty close,' says Trump" went
-     out on a card with the furniture still attached. Same narrowness as the
-     pipe rule — a short label, no digits, and the story after it has to be
-     substantially longer than the label. */
-  /^(india|world|business|tech(nology)?|science|health|sports?|markets?|top)\s+news\s*:\s*(?=.{24,})/i,
 ];
+
+/* A desk label the outlet pinned to the front with a colon or a dash rather
+ * than a pipe. Both of these went out on a card with the furniture still
+ * attached:
+ *     "India news: India-US trade deal 'pretty close,' says Trump"
+ *     "Business - French bond yields hit 24-year high after unrest"
+ *
+ * A function rather than one more regex in the list above, for the same
+ * reason the pipe rule is one: the capital-letter test has to be case
+ * SENSITIVE while the label itself is matched case-insensitively, and a
+ * single /i regex cannot do both. The first version was one regex, and the /i
+ * quietly defeated the guard — it turned "Health - care costs have risen
+ * every year since 2019" into "care costs have risen every year since 2019",
+ * a sentence no newsroom published.
+ */
+const DESKS = /^(india|world|business|tech(nology)?|science|health|sports?|markets?|top)(\s+news)?(\s*:\s*|\s+[–—-]\s+)/i;
+
+function stripLeadingDesk(t) {
+  const m = t.match(DESKS);
+  if (!m) return t;
+  const rest = t.slice(m[0].length);
+  // Long enough to be the story rather than the other half of it, and opening
+  // the way a headline opens.
+  if (rest.length < 24) return t;
+  if (!/^['"“‘]?[A-Z0-9]/.test(rest)) return t;
+  return rest;
+}
 
 /* A section label the outlet pinned to the front of its own headline:
    "Bitcoin News | Strategy Bought $22 Million of Bitcoin Last Week". It is
@@ -71,6 +92,7 @@ export function tidy(raw) {
   t = t.replace(TRAILING_SOURCE, '');
   t = t.replace(TRAILING_BYLINE, '');
   t = stripLeadingSection(t);
+  t = stripLeadingDesk(t);
   for (const p of PREFIXES) t = t.replace(p, '');
   for (const f of FILLER) t = t.replace(f, ' ');
   return t.replace(/\s+/g, ' ').replace(/\s+([,.;:])/g, '$1').trim();

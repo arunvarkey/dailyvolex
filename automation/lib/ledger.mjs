@@ -23,52 +23,82 @@ const KEEP = 400;        // plenty to catch repeats, small enough to stay quick
  */
 export function record(ledger, { edition, plan, published = [], issue = null, now = null }) {
   const at = now || new Date().toISOString();
-  const wanted = new Set((plan?.posts || []).map(p => p.section || 'post'));
+  const planned = (plan?.posts || []);
 
-  /* What came back from Instagram, keyed by section AND kind.
+  /* What came back from Instagram, keyed by the post it belongs to.
    *
-   * Keying on section alone was a real bug the moment reels existed: a
-   * carousel and a reel of the same section both carry section "top", so the
-   * later one — the reel — won, and every story in the record got the reel's
-   * media id. A correction would then have been attached to the reel, which
-   * is not the post of record and cannot carry a description. */
-  const byPost = new Map((published || []).map(p => [`${p.section || 'post'}:${p.kind}`, p]));
+   * Keying on section was a real bug twice over. First the moment reels
+   * existed: a carousel and a reel of the same section both carry section
+   * "top", so the later one — the reel — won, and every story in the record
+   * got the reel's media id. Then again when a section became a post per
+   * story: top-1, top-2 and top-3 are all "top:carousel", so two of the three
+   * media ids were thrown away and all three stories were recorded against
+   * whichever receipt happened to be last. A correction is found through this
+   * record, so a wrong id here comments on the wrong post. */
+  const byPost = new Map();
+  for (const p of published || []) {
+    // A publish run by hand from the command line carries no post id.
+    byPost.set(`${p.section || 'post'}:${p.kind}`, p);
+    if (p.post) byPost.set(p.post, p);
+  }
+  const receipt = p => byPost.get(p.id) || byPost.get(`${p.section || 'post'}:${p.kind}`) || {};
 
-  const sections = (edition?.sections || []).filter(s => wanted.has(s.id));
-  const items = sections.flatMap(section => {
-    // The carousel is the post of record: it is the one with a description on
-    // every slide, and the one a correction can be commented on.
-    const carousel = byPost.get(`${section.id}:carousel`)
-      || byPost.get(`${section.id}:image`) || {};
-    const reel = byPost.get(`${section.id}:reel`) || null;
+  const sectionsById = new Map((edition?.sections || []).map(s => [s.id, s]));
 
-    return (section.stories || []).map(story => ({
-      title: story.original || story.headline,
+  /* One row per post, which is one row per story. Walked from the plan rather
+     than from the edition: approving top-2 publishes one story, and recording
+     the whole section would claim two stories were posted that were not — and
+     the next run reads this to decide what it has already covered. */
+  const items = [];
+  for (const [i, p] of planned.entries()) {
+    if (p.kind === 'reel') continue;          // recorded on the post it follows
+    const section = sectionsById.get(p.section) || {};
+    // The post was named with its story's headline; that is the link back.
+    const story = (section.stories || []).find(s => (s.display || s.headline) === p.label)
+      || (section.stories || [])[0] || {};
+    const post = receipt(p);
+    // plan.mjs emits a section's reel directly after the post it was made
+    // from, so that pairing is the one to record.
+    const next = planned[i + 1];
+    const reel = next?.kind === 'reel' && next.section === p.section ? receipt(next) : null;
+
+    items.push({
+      title: story.original || story.headline || p.label,
       link: story.link || null,
-      section: section.id || null,
+      section: p.section || null,
+      post: p.id || null,
       issue: issue == null ? null : Number(issue),
-      mediaId: carousel.mediaId || null,
-      permalink: carousel.permalink || null,
+      mediaId: post.mediaId || null,
+      permalink: post.permalink || null,
       // Recorded separately rather than in place of the carousel's, so the
       // reel is in the history without displacing the post of record.
       ...(reel ? { reelMediaId: reel.mediaId || null,
                    reelPermalink: reel.permalink || null } : {}),
-      kind: story.kind || (section.posts || [])[0]?.kind || null,
+      kind: story.kind || p.kind || null,
       posted: at,
-    }));
-  });
+    });
+  }
 
   const posted = Array.isArray(ledger?.posted) ? [...ledger.posted] : [];
 
   /* Mark the corrected post in the record. A correction that is not visible
      in the history is a correction only the reader knows about, and the
-     history is what the next run checks. */
-  for (const section of sections) {
-    const id = (section.stories || [])[0]?.corrects?.mediaId;
-    if (!id) continue;
-    for (const rec of posted)
-      if (rec.mediaId === id) { rec.corrected = at; rec.correctedBy = issue == null ? null : Number(issue); }
-  }
+     history is what the next run checks.
+     Taken from the post that was published rather than from the first story
+     of its section: a correction is its own post now, and reading the section
+     would mark whatever happened to be listed first. */
+  const corrected = new Set(planned.flatMap(p => {
+    const section = sectionsById.get(p.section) || {};
+    const story = (section.stories || []).find(s => (s.display || s.headline) === p.label)
+      || (section.stories || [])[0];
+    const id = story?.corrects?.mediaId;
+    return id ? [id] : [];
+  }));
+  for (const rec of posted)
+    if (corrected.has(rec.mediaId)) {
+      rec.corrected = at;
+      rec.correctedBy = issue == null ? null : Number(issue);
+    }
 
   return {
     ...ledger,

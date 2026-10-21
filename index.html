@@ -2204,7 +2204,6 @@ function drawScene(theme, withGuides) {
      already a photograph with a scrim and text on it; this just lets the
      photograph move. */
   if (!S.overlayOnly) drawBG(theme);
-  drawPhotoCredit(theme);
   drawBranding(theme);
   switch(S.layout) {
     case 'breaking': drawBreaking(theme); break;
@@ -2212,6 +2211,14 @@ function drawScene(theme, withGuides) {
     case 'facts':    drawFacts(theme);    break;
     case 'quote':    drawQuote(theme);    break;
   }
+  /* Last, over everything.
+   *
+   * It used to be drawn straight after the background, and then the Breaking
+   * layout painted a scrim over the bottom half that ends at 96% black — so
+   * the credit came out at roughly 3% white and was invisible on the card.
+   * This line is the attribution the photograph is used under, and a credit
+   * nobody can read is not a credit. */
+  drawPhotoCredit(theme);
   // Reel progress bar — thin line filling across the top while recording
   if (S.recording && S.recStart) {
     const known=S.videoLoaded && isFinite(vid.duration) && vid.duration>0;

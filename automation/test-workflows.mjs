@@ -440,6 +440,20 @@ ok('the band still stops clear of Instagram’s caption UI', (() => {
     && /bottom:\s*Math\.min\(H\*\(1-z\.bottom\)/.test(html);
 })(), 'filling that space would put text under the caption');
 
+/* The photo credit. Caught on a live run: it was drawn right after the
+   background, and the Breaking layout then painted a scrim over the bottom
+   half ending at 96% black, so the credit rendered at about 3% white. The
+   pictures are the outlets' own and the credit is what names them, so an
+   unreadable one is no attribution at all. */
+ok('the photo credit is drawn over the layout, not under its scrim', (() => {
+  const html = fs.readFileSync(join(ROOT, 'index.html'), 'utf8');
+  const scene = html.slice(html.indexOf('function drawScene('));
+  const body = scene.slice(0, scene.indexOf('\n}'));
+  const credit = body.indexOf('drawPhotoCredit(theme)');
+  const layout = body.indexOf("case 'breaking':");
+  return credit > 0 && layout > 0 && credit > layout;
+})(), 'a credit nobody can read is not a credit');
+
 ok('the app offers an approve link rather than a credential', (() => {
   const html = fs.readFileSync(join(ROOT, 'index.html'), 'utf8');
   return /issues\/new/.test(html) && /encodeURIComponent\('\/approve /.test(html)
