@@ -1,19 +1,19 @@
 {
   "id": "2026-10-21",
   "kind": "daily",
-  "builtAt": "2026-10-21T05:59:15.610Z",
+  "builtAt": "2026-10-21T06:10:28.804Z",
   "pool": 585,
   "feedErrors": [
     "indian-express: HTTP 403"
   ],
   "refusals": {
     "read": 585,
-    "published": 21,
-    "refused": 118,
-    "consideredNotChosen": 446,
+    "published": 15,
+    "refused": 131,
+    "consideredNotChosen": 439,
     "byRule": {
       "older than the window": {
-        "count": 84,
+        "count": 88,
         "samples": [
           {
             "title": "Tourist found guilty after stealing Las Vegas flamingo from enclosure",
@@ -57,6 +57,10 @@
             "source": "Al Jazeera"
           },
           {
+            "title": "Video. Latest news bulletin | October 21st, 2026 – Morning",
+            "source": "Euronews.com"
+          },
+          {
             "title": "Explained: Why Musk Would Merge SpaceX And Tesla",
             "source": "NDTV"
           },
@@ -69,33 +73,62 @@
             "source": "NDTV"
           },
           {
+            "title": "Watch: Mamdani does garba with Indian community at New York Navratri celebrations",
+            "source": "Times of India"
+          },
+          {
             "title": "In charts: Indonesia’s Prabowo Subianto misses beat on economy",
             "source": "Financial Times"
           },
           {
-            "title": "FILE PHOTO: Jio Platforms Ltd. IPO press conference in Mumbai - The Daily News | Texas' Oldest Newspaper",
-            "source": "Google News"
-          },
-          {
             "title": "llm-d 1.0 hardens open-source AI inference for day 2 production operations",
             "source": "IBM Research"
+          }
+        ]
+      },
+      "tips or price speculation": {
+        "count": 11,
+        "samples": [
+          {
+            "title": "Elon Musk considering Tesla-SpaceX merger",
+            "source": "BBC News"
           },
           {
-            "title": "Best Medicine Season 2 Episode 5 Photos: Jack Cutmore-Scott Guest Stars — Airs Tonight on Fox",
-            "source": "IMDb"
+            "title": "Elon Musk says SpaceX and Tesla exploring largest merger in history",
+            "source": "Al Jazeera"
+          },
+          {
+            "title": "Musk confirms SpaceX and Tesla exploring merger",
+            "source": "Al Jazeera"
+          },
+          {
+            "title": "AI-powered personal assistants could reshape the digital economy | World News",
+            "source": "Hindustan Times"
+          },
+          {
+            "title": "Elon Musk considering Tesla-SpaceX merger",
+            "source": "BBC News"
+          },
+          {
+            "title": "Elon Musk says SpaceX and Tesla exploring largest merger in history",
+            "source": "Al Jazeera"
+          },
+          {
+            "title": "AI-powered personal assistants could reshape the digital economy",
+            "source": "The Economist"
+          },
+          {
+            "title": "Elon Musk considering Tesla-SpaceX merger",
+            "source": "BBC News"
           }
         ]
       },
       "too thin to be a headline": {
-        "count": 6,
+        "count": 5,
         "samples": [
           {
             "title": "Reuters World News Summary",
             "source": "Devdiscourse"
-          },
-          {
-            "title": "Rubio Central Asia",
-            "source": "Post Register"
           },
           {
             "title": "The ECI’s unfinished lessons",
@@ -115,25 +148,8 @@
           }
         ]
       },
-      "tips or price speculation": {
-        "count": 3,
-        "samples": [
-          {
-            "title": "Is GSP Crop Science the Best Stock in Its Sector? A Look at the Numbers",
-            "source": "Univest"
-          },
-          {
-            "title": "Hindustan Zinc shares jump 4% after Q2 net profit more than doubles. Why Jefferies cut target price?",
-            "source": "Economic Times"
-          },
-          {
-            "title": "Why is market rising today? Sensex jumps 800 points, Nifty above 23,050. 5 key factors behind D-Street rebound",
-            "source": "Economic Times"
-          }
-        ]
-      },
       "marketing, not reporting": {
-        "count": 2,
+        "count": 3,
         "samples": [
           {
             "title": "Meet Dev Rai, the Indian-American Virginia student who founded a nonprofit at 15 to help artisans in Indi",
@@ -142,6 +158,23 @@
           {
             "title": "Takara Bio USA partners with SPT Labtech to deliver automation-ready NGS library preparation technologies - News-Medical",
             "source": "Google News"
+          },
+          {
+            "title": "On October 20, the 2026 Chery Global Innovation Conference was officia",
+            "source": "Shanghai Metals Market"
+          }
+        ]
+      },
+      "comment, not reporting": {
+        "count": 2,
+        "samples": [
+          {
+            "title": "Inbound investment in Korea: lessons from legal and business frontlines",
+            "source": "Law.asia"
+          },
+          {
+            "title": "Continuity of care and service integration: lessons from local experiences to strengthen primary health care",
+            "source": "Pan American Health Organization (PAHO)"
           }
         ]
       },
@@ -151,15 +184,6 @@
           {
             "title": "North Korea publishes photos of Kim Jong Un - why do rumours of his death keep coming back?",
             "source": "BBC News"
-          }
-        ]
-      },
-      "comment, not reporting": {
-        "count": 1,
-        "samples": [
-          {
-            "title": "Continuity of care and service integration: lessons from local experiences to strengthen primary health care",
-            "source": "Pan American Health Organization (PAHO)"
           }
         ]
       },
@@ -180,158 +204,144 @@
       "label": "TOP STORIES",
       "stories": [
         {
-          "headline": "ELON MUSK CONSIDERING TESLA-SPACEX MERGER",
-          "display": "Elon Musk considering Tesla-SpaceX merger",
-          "original": "Elon Musk considering Tesla-SpaceX merger",
+          "headline": "TEAM TRUMP'S TARIFFS, VISA CURBS NOT TARGETED AT INDIA: MARCO RUBIO",
+          "display": "Team Trump's Tariffs, Visa Curbs Not Targeted At India: Marco Rubio",
+          "original": "Team Trump's Tariffs, Visa Curbs Not Targeted At India: Marco Rubio",
           "truncated": false,
           "usable": true,
-          "category": "WORLD NEWS",
-          "source": "BBC News · Al Jazeera · NDTV",
+          "category": "INDIA",
+          "source": "NDTV · The Hindu · Hindustan Times",
           "sourceNames": [
-            "BBC News",
-            "Al Jazeera",
             "NDTV",
-            "The Guardian",
-            "Reuters"
+            "The Hindu",
+            "Hindustan Times"
           ],
-          "corroboration": 5,
+          "corroboration": 3,
           "republishers": [],
           "owners": [
-            "BBC (licence fee)",
-            "Government of Qatar",
             "Adani Group",
-            "Scott Trust",
-            "Thomson Reuters (Trust Principles)"
+            "The Hindu Group (family-held)",
+            "HT Media / KK Birla family"
           ],
-          "ownerCount": 5,
+          "ownerCount": 3,
           "countries": [
-            "GB",
-            "QA",
             "IN"
           ],
           "fundings": [
-            "state",
             "conglomerate",
-            "trust"
+            "commercial"
           ],
           "unknownOwners": 0,
           "concentration": [],
-          "link": "https://www.bbc.co.uk/news/articles/cmlyl09xjke4o?at_medium=RSS&at_campaign=rss",
-          "published": "2026-10-21T05:48:46.000Z",
-          "topic": "world",
-          "section": "world",
+          "link": "https://www.ndtv.com/world-news/team-trumps-tariffs-visa-curbs-not-targeted-at-india-marco-rubio-12213446#publisher=newsstand",
+          "published": "2026-10-21T05:07:09.000Z",
+          "topic": "india",
+          "section": "india",
           "tier": "significant",
-          "score": 16.35,
+          "score": 13.2,
           "photo": {
             "path": "work/photos/top/photo-top-2.jpg",
-            "credit": "File photo: Tesla Owners Club Belgium / CC BY 2.0",
+            "credit": "File photo: Vyacheslav Argenberg / CC BY 4.0",
             "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Elon_Musk_(12271217906).jpg",
-            "query": "Elon Musk",
-            "relevance": 0.33,
-            "title": "Elon Musk (12271217906)"
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Hampi,_India,_Lotus_Mahal.jpg",
+            "query": "india",
+            "relevance": 0.11,
+            "title": "Hampi, India, Lotus Mahal"
           },
           "layout": "breaking",
           "stat": null,
           "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Elon Musk considering Tesla-SpaceX merger”. Reported by BBC News · Al Jazeera · NDTV — 5 independent newsrooms. Behind the text is a library photograph captioned “Elon Musk (12271217906)”, credited to Tesla Owners Club Belgium / CC BY 2.0. It is not a photograph of this event."
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Team Trump's Tariffs, Visa Curbs Not Targeted At India: Marco Rubio”. Reported by NDTV · The Hindu · Hindustan Times — 3 independent newsrooms. Behind the text is a library photograph captioned “Hampi, India, Lotus Mahal”, credited to Vyacheslav Argenberg / CC BY 4.0. It is not a photograph of this event."
         },
         {
-          "headline": "INDIA, U.S. TRADE DEAL TO BE MUCH DIFFERENT: DONALD TRUMP",
-          "display": "India, U.S. trade deal to be much different: Donald Trump",
-          "original": "India, U.S. trade deal to be much different: Donald Trump",
-          "truncated": false,
+          "headline": "INDIA OPPOSES ATTEMPTS TO PORTRAY WORLD’S LARGEST DEMOCRACY NEGATIVELY USING UNVERIFIED",
+          "display": "India opposes attempts to portray world’s largest democracy negatively using unverified",
+          "original": "India opposes attempts to portray world’s largest democracy negatively using unverified allegations at UN",
+          "truncated": true,
           "usable": true,
           "category": "INDIA",
-          "source": "The Hindu · Times of India · The New Indian Express",
+          "source": "Hindustan Times · The Hindu · The New Indian Express",
           "sourceNames": [
+            "Hindustan Times",
             "The Hindu",
-            "Times of India",
-            "The New Indian Express",
-            "BusinessLine"
+            "The New Indian Express"
           ],
-          "corroboration": 4,
+          "corroboration": 3,
           "republishers": [],
           "owners": [
-            "The Hindu Group (family-held)",
-            "Bennett, Coleman & Co"
+            "HT Media / KK Birla family",
+            "The Hindu Group (family-held)"
           ],
           "ownerCount": 2,
           "countries": [
             "IN"
           ],
           "fundings": [
-            "commercial",
-            "conglomerate"
+            "conglomerate",
+            "commercial"
           ],
-          "unknownOwners": 2,
+          "unknownOwners": 1,
           "concentration": [],
-          "link": "https://www.thehindu.com/news/international/india-us-trade-deal-to-be-much-different-donald-trump/article71606121.ece",
-          "published": "2026-10-21T03:22:10.000Z",
+          "link": "https://www.thehindu.com/news/national/india-opposes-attempts-to-portray-worlds-largest-democracy-negatively-using-unverified-allegations-at-un/article71606235.ece",
+          "published": "2026-10-21T05:36:55.000Z",
           "topic": "india",
           "section": "india",
-          "tier": "significant",
-          "score": 14.4,
+          "tier": "notable",
+          "score": 10.2,
           "photo": {
             "path": "work/photos/top/photo-top-3.jpg",
-            "credit": "File photo: Ali Shaker/VOA / Public Domain",
-            "license": "pdm",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Donald_Trump_RNC_July_2016.jpg",
-            "query": "Donald Trump",
-            "relevance": 0.4,
-            "title": "Donald Trump RNC July 2016"
+            "credit": "File photo: Vyacheslav Argenberg / CC BY 4.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Hampi,_India,_Stone_ornaments_at_Vijaya_Vitthala_Temple.jpg",
+            "query": "India",
+            "relevance": 0.11,
+            "title": "Hampi, India, Stone ornaments at Vijaya Vitthala Temple"
           },
           "layout": "breaking",
           "stat": null,
           "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “India, U.S. trade deal to be much different: Donald Trump”. Reported by The Hindu · Times of India · The New Indian Express — 4 independent newsrooms. Behind the text is a library photograph captioned “Donald Trump RNC July 2016”, credited to Ali Shaker/VOA / Public Domain. It is not a photograph of this event."
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “India opposes attempts to portray world’s largest democracy negatively using unverified”. Reported by Hindustan Times · The Hindu · The New Indian Express — 3 independent newsrooms. Behind the text is a library photograph captioned “Hampi, India, Stone ornaments at Vijaya Vitthala Temple”, credited to Vyacheslav Argenberg / CC BY 4.0. It is not a photograph of this event."
         },
         {
-          "headline": "SBI REPORTS CYBERATTACK EXPOSING 3,897 CUSTOMER RECORDS ON DARK WEB",
-          "display": "SBI reports cyberattack exposing 3,897 customer records on dark web",
-          "original": "SBI reports cyberattack exposing 3,897 customer records on dark web",
+          "headline": "DNB EXCEEDS Q3 PROFIT FORECAST AS NORWAY'S ECONOMY STAYS STRONG",
+          "display": "DNB Exceeds Q3 Profit Forecast as Norway's Economy Stays Strong",
+          "original": "DNB Exceeds Q3 Profit Forecast as Norway's Economy Stays Strong",
           "truncated": false,
           "usable": true,
           "category": "BUSINESS",
-          "source": "Reuters · Business Standard · The Indian Express",
+          "source": "Reuters · Global Banking & Finance Review",
           "sourceNames": [
             "Reuters",
-            "Business Standard",
-            "The Indian Express"
+            "Global Banking & Finance Review"
           ],
-          "corroboration": 3,
-          "republishers": [],
+          "corroboration": 2,
+          "republishers": [
+            "Google News"
+          ],
           "owners": [
-            "Thomson Reuters (Trust Principles)",
-            "Business Standard Pvt Ltd",
-            "Indian Express Group"
+            "Thomson Reuters (Trust Principles)"
           ],
-          "ownerCount": 3,
+          "ownerCount": 1,
           "countries": [
-            "GB",
-            "IN"
+            "GB"
           ],
           "fundings": [
-            "trust",
-            "commercial"
+            "trust"
           ],
-          "unknownOwners": 0,
+          "unknownOwners": 1,
           "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQa1FIUXVZTjg3YUxZclpfR1VSQ1ZCbThlRHdxLW1FXzdGMUVKYW40WTBLZXE2ZmtaaFpOQ3BDZkZtdWVEbTBWZVBsTzF4WklVWTJ3R21uejZPY244N090czcxZEVHMWs1c3BQWVIxR3k0RVlSZEVtajlnbGh2YVFjOWtnWU5OcG54VjF5RERCb3NnY1dheXpfS3RuNFVoaldkVWFGVWhOYU52WU8td0l5c0JUOEdYZ3Q2OFVaNVRKbG1GMlU1N0I4djNvaGxHVHd0ak1KX9IB2gFBVV95cUxQUE00YnpqdEJqRTdJQ2hOY0lvNWRpTW9EeWRSOHBydXFYaF9Lck5KOU5OTjZ",
-          "published": "2026-10-21T04:40:58.000Z",
+          "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNVzF0cDJ6dG1KUWV5M01tTl9LRW0tektaVmdnNmJQQXdaVnRJcGxTX3dTZGxpZkFGaEVfZ0xPaGk1bmtDSklFSWdPa3g3M0Q1T1ZRNFZzYUpTS3ZYNlB6OTVrSTB6RHY2ajVGeWpwOHh6WlZzNnRzZ0s4YUVoUUYzaHdXWlZYSUpBRkVVMUxlQ252bnlWUUwxZU1R?oc=5",
+          "published": "2026-10-21T06:00:00.000Z",
           "topic": "business",
           "section": "business",
-          "tier": "significant",
-          "score": 12.3,
-          "photoError": "no image matched the story closely enough (searched \"SBI\")",
+          "tier": "notable",
+          "score": 7.8,
+          "photoError": "no image matched the story closely enough (searched \"DNB Exceeds\")",
           "photo": null,
-          "layout": "quote",
-          "stat": {
-            "stat": "3,897",
-            "label": "customer records on dark"
-          },
-          "backdrop": "editorial",
-          "alt": "A news card from @dailyvolex, headed BUSINESS. The figure 3,897 customer records on dark is shown very large, above the headline. It reads: “SBI reports cyberattack exposing 3,897 customer records on dark web”. Reported by Reuters · Business Standard · The Indian Express — 3 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": "chart",
+          "alt": "A news card from @dailyvolex, headed BUSINESS. It reads: “DNB Exceeds Q3 Profit Forecast as Norway's Economy Stays Strong”. Reported by Reuters · Global Banking & Finance Review — 2 independent newsrooms. Behind the text is a generated market chart. It is decorative, not real data."
         }
       ],
       "posts": [
@@ -361,8 +371,8 @@
           "caption": "data/editions/2026-10-21/caption-top.txt",
           "alts": "",
           "noAlts": "Instagram does not accept alt text on a reel; the caption carries every headline.",
-          "seconds": 18.7,
-          "bytes": 2284914
+          "seconds": 19.4,
+          "bytes": 3812842
         }
       ]
     },
@@ -370,152 +380,6 @@
       "id": "india",
       "label": "INDIA",
       "stories": [
-        {
-          "headline": "TEAM TRUMP'S TARIFFS, VISA CURBS NOT TARGETED AT INDIA: MARCO RUBIO",
-          "display": "Team Trump's Tariffs, Visa Curbs Not Targeted At India: Marco Rubio",
-          "original": "Team Trump's Tariffs, Visa Curbs Not Targeted At India: Marco Rubio",
-          "truncated": false,
-          "usable": true,
-          "category": "INDIA",
-          "source": "NDTV · Hindustan Times",
-          "sourceNames": [
-            "NDTV",
-            "Hindustan Times"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "Adani Group",
-            "HT Media / KK Birla family"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "conglomerate"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://www.ndtv.com/world-news/team-trumps-tariffs-visa-curbs-not-targeted-at-india-marco-rubio-12213446#publisher=newsstand",
-          "published": "2026-10-21T05:07:09.000Z",
-          "topic": "india",
-          "section": "india",
-          "tier": "significant",
-          "score": 11.4,
-          "photo": {
-            "path": "work/photos/india/photo-india-2.jpg",
-            "credit": "File photo: Vyacheslav Argenberg / CC BY 4.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Hampi,_India,_Lotus_Mahal.jpg",
-            "query": "india",
-            "relevance": 0.11,
-            "title": "Hampi, India, Lotus Mahal"
-          },
-          "layout": "breaking",
-          "stat": null,
-          "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Team Trump's Tariffs, Visa Curbs Not Targeted At India: Marco Rubio”. Reported by NDTV · Hindustan Times — 2 independent newsrooms. Behind the text is a library photograph captioned “Hampi, India, Lotus Mahal”, credited to Vyacheslav Argenberg / CC BY 4.0. It is not a photograph of this event."
-        },
-        {
-          "headline": "U.S.-INDIA PERFECTLY ALIGNED ON CORE ISSUES: MARCO RUBIO",
-          "display": "U.S.-India perfectly aligned on core issues: Marco Rubio",
-          "original": "U.S.-India perfectly aligned on core issues: Marco Rubio",
-          "truncated": false,
-          "usable": true,
-          "category": "INDIA",
-          "source": "NDTV · The Hindu · News On AIR",
-          "sourceNames": [
-            "NDTV",
-            "The Hindu",
-            "News On AIR"
-          ],
-          "corroboration": 3,
-          "republishers": [],
-          "owners": [
-            "Adani Group",
-            "The Hindu Group (family-held)",
-            "Government of India"
-          ],
-          "ownerCount": 3,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "conglomerate",
-            "commercial",
-            "state"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://www.thehindu.com/news/national/marco-rubio-mumbai-visit-october-20-2026/article71603994.ece",
-          "published": "2026-10-21T03:35:01.000Z",
-          "topic": "india",
-          "section": "india",
-          "tier": "notable",
-          "score": 9.9,
-          "photo": {
-            "path": "work/photos/india/photo-india-3.jpg",
-            "credit": "File photo: Florida House of Representatives / Public Domain",
-            "license": "pdm",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Dennis_Baxley_and_Marco_Rubio.jpg",
-            "query": "Marco Rubio",
-            "relevance": 0.33,
-            "title": "Dennis Baxley and Marco Rubio"
-          },
-          "layout": "breaking",
-          "stat": null,
-          "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “U.S.-India perfectly aligned on core issues: Marco Rubio”. Reported by NDTV · The Hindu · News On AIR — 3 independent newsrooms. Behind the text is a library photograph captioned “Dennis Baxley and Marco Rubio”, credited to Florida House of Representatives / Public Domain. It is not a photograph of this event."
-        },
-        {
-          "headline": "INDIA OPPOSES ATTEMPTS TO PORTRAY WORLD’S LARGEST DEMOCRACY NEGATIVELY USING UNVERIFIED",
-          "display": "India opposes attempts to portray world’s largest democracy negatively using unverified",
-          "original": "India opposes attempts to portray world’s largest democracy negatively using unverified allegations at UN",
-          "truncated": true,
-          "usable": true,
-          "category": "INDIA",
-          "source": "Hindustan Times · The Hindu",
-          "sourceNames": [
-            "Hindustan Times",
-            "The Hindu"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "HT Media / KK Birla family",
-            "The Hindu Group (family-held)"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "conglomerate",
-            "commercial"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://www.thehindu.com/news/national/india-opposes-attempts-to-portray-worlds-largest-democracy-negatively-using-unverified-allegations-at-un/article71606235.ece",
-          "published": "2026-10-21T05:36:55.000Z",
-          "topic": "india",
-          "section": "india",
-          "tier": "notable",
-          "score": 8.7,
-          "photo": {
-            "path": "work/photos/india/photo-india-4.jpg",
-            "credit": "File photo: Vyacheslav Argenberg / CC BY 4.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Hampi,_India,_Stone_ornaments_at_Vijaya_Vitthala_Temple.jpg",
-            "query": "India",
-            "relevance": 0.11,
-            "title": "Hampi, India, Stone ornaments at Vijaya Vitthala Temple"
-          },
-          "layout": "breaking",
-          "stat": null,
-          "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “India opposes attempts to portray world’s largest democracy negatively using unverified”. Reported by Hindustan Times · The Hindu — 2 independent newsrooms. Behind the text is a library photograph captioned “Hampi, India, Stone ornaments at Vijaya Vitthala Temple”, credited to Vyacheslav Argenberg / CC BY 4.0. It is not a photograph of this event."
-        },
         {
           "headline": "PARVINDER SINGH JHOTA MURDER CASE: CBI TAKES OVER PROBE, TEAM REACHES PUNJAB’S MANSA",
           "display": "Parvinder Singh Jhota murder case: CBI takes over probe, team reaches Punjab’s Mansa",
@@ -599,9 +463,9 @@
           "alt": "A news card from @dailyvolex, headed INDIA. It reads: “More trouble for CJP leaders: Another FIR against Das, Ranka transferred to Crime Branch”. Reported by The Hindu · Times of India — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
         },
         {
-          "headline": "RIL'S JIO IPO: BILLIONAIRE MUKESH AMBANI'S FIRM LAUNCHES INDIA'S BIGGEST SHARE SALE",
-          "display": "RIL's Jio IPO: Billionaire Mukesh Ambani's firm launches India's biggest share sale",
-          "original": "RIL's Jio IPO: Billionaire Mukesh Ambani's firm launches India's biggest share sale",
+          "headline": "BILLIONAIRE MUKESH AMBANI'S JIO LAUNCHES INDIA'S BIGGEST SHARE SALE",
+          "display": "Billionaire Mukesh Ambani's Jio launches India's biggest share sale",
+          "original": "Billionaire Mukesh Ambani's Jio launches India's biggest share sale",
           "truncated": false,
           "usable": true,
           "category": "INDIA",
@@ -633,18 +497,146 @@
           "tier": "notable",
           "score": 8.4,
           "photo": {
-            "path": "work/photos/india/photo-india-7.jpg",
+            "path": "work/photos/india/photo-india-4.jpg",
             "credit": "File photo: Bohoindian / CC BY 4.0",
             "license": "by",
             "pageUrl": "https://commons.wikimedia.org/wiki/File:Vantara-Ambani.jpg",
             "query": "Billionaire Mukesh Ambani",
-            "relevance": 0.14,
+            "relevance": 0.17,
             "title": "Vantara Ambani"
           },
           "layout": "breaking",
           "stat": null,
           "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “RIL's Jio IPO: Billionaire Mukesh Ambani's firm launches India's biggest share sale”. Reported by The Guardian · BBC — 2 independent newsrooms. Behind the text is a library photograph captioned “Vantara Ambani”, credited to Bohoindian / CC BY 4.0. It is not a photograph of this event."
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Billionaire Mukesh Ambani's Jio launches India's biggest share sale”. Reported by The Guardian · BBC — 2 independent newsrooms. Behind the text is a library photograph captioned “Vantara Ambani”, credited to Bohoindian / CC BY 4.0. It is not a photograph of this event."
+        },
+        {
+          "headline": "PUNJAB CM BHAGWANT MANN 'DETAINED FOR 3 HOURS' AT DELHI AIRPORT, FINED RS 50K",
+          "display": "Punjab CM Bhagwant Mann 'detained for 3 hours' at Delhi airport, fined Rs 50k",
+          "original": "Punjab CM Bhagwant Mann 'detained for 3 hours' at Delhi airport, fined Rs 50k",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "The Hindu · Times of India",
+          "sourceNames": [
+            "The Hindu",
+            "Times of India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "The Hindu Group (family-held)",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://timesofindia.indiatimes.com/city/chandigarh/punjab-cm-bhagwant-mann-detained-for-3-hours-at-delhi-airport-fined-50k/articleshow/135079427.cms",
+          "published": "2026-10-21T01:37:53.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 8.4,
+          "photo": {
+            "path": "work/photos/india/photo-india-5.jpg",
+            "credit": "File photo: NASA / Public Domain",
+            "license": "pdm",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Delhi_metropolitan_region,_satellite_image,_Landsat-5,_2011-03-12.jpg",
+            "query": "Delhi",
+            "relevance": 0.13,
+            "title": "Delhi metropolitan region, satellite image, Landsat 5, 2011 03 12"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Punjab CM Bhagwant Mann 'detained for 3 hours' at Delhi airport, fined Rs 50k”. Reported by The Hindu · Times of India — 2 independent newsrooms. Behind the text is a library photograph captioned “Delhi metropolitan region, satellite image, Landsat 5, 2011 03 12”, credited to NASA / Public Domain. It is not a photograph of this event."
+        },
+        {
+          "headline": "JIO IPO OPENS TODAY: MINIMUM INVESTMENT, PRICE BAND, RISKS AND 10 KEY DETAILS",
+          "display": "Jio IPO Opens Today: Minimum Investment, Price Band, Risks And 10 Key Details",
+          "original": "Jio IPO Opens Today: Minimum Investment, Price Band, Risks And 10 Key Details",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "NDTV · Times of India",
+          "sourceNames": [
+            "NDTV",
+            "Times of India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Adani Group",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.ndtv.com/business-news/jio-ipo-opens-today-gmp-minimum-investment-price-band-risks-listing-key-details-12213401#publisher=newsstand",
+          "published": "2026-10-21T04:48:04.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 8.4,
+          "photoError": "no image matched the story closely enough (searched \"trading floor\")",
+          "photo": null,
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": "chart",
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Jio IPO Opens Today: Minimum Investment, Price Band, Risks And 10 Key Details”. Reported by NDTV · Times of India — 2 independent newsrooms. Behind the text is a generated market chart. It is decorative, not real data."
+        },
+        {
+          "headline": "JIO IPO: QIB PORTION FULLY SUBSCRIBED AT OVER 2X DEMAND WITHIN MINUTES",
+          "display": "Jio IPO: QIB portion fully subscribed at over 2x demand within minutes",
+          "original": "Jio IPO: QIB portion fully subscribed at over 2x demand within minutes",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "Times of India · Moneycontrol.com",
+          "sourceNames": [
+            "Times of India",
+            "Moneycontrol.com"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Bennett, Coleman & Co",
+            "Reliance Industries"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://timesofindia.indiatimes.com/business/india-business/jio-ipo-qualified-institutional-buyers-portion-fully-subscribed-at-over-2x-demand-within-minutes/articleshow/135082499.cms",
+          "published": "2026-10-21T05:05:49.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 7.95,
+          "photoError": "no image matched the story closely enough (searched \"QIB\")",
+          "photo": null,
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": "chart",
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Jio IPO: QIB portion fully subscribed at over 2x demand within minutes”. Reported by Times of India · Moneycontrol.com — 2 independent newsrooms. Behind the text is a generated market chart. It is decorative, not real data."
         }
       ],
       "posts": [
@@ -714,155 +706,15 @@
             "path": "work/photos/world/photo-world-2.jpg",
             "credit": "File photo: Tesla Owners Club Belgium / CC BY 2.0",
             "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Elon_Musk_(12270805983).jpg",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Elon_Musk_(12271217906).jpg",
             "query": "Elon Musk",
             "relevance": 0.22,
-            "title": "Elon Musk (12270805983)"
+            "title": "Elon Musk (12271217906)"
           },
           "layout": "breaking",
           "stat": null,
           "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Elon Musk ordered Starlink slowdown that disrupted Ukraine’s drone operations”. Reported by NDTV · Hindustan Times · Times of India — 3 independent newsrooms. Behind the text is a library photograph captioned “Elon Musk (12270805983)”, credited to Tesla Owners Club Belgium / CC BY 2.0. It is not a photograph of this event."
-        },
-        {
-          "headline": "IS EBOLA UNDER CONTROL IN KENYA AFTER NINE CASES CONFIRMED?",
-          "display": "Is Ebola under control in Kenya after nine cases confirmed?",
-          "original": "Is Ebola under control in Kenya after nine cases confirmed?",
-          "truncated": false,
-          "usable": true,
-          "category": "WORLD NEWS",
-          "source": "BBC News · Reuters",
-          "sourceNames": [
-            "BBC News",
-            "Reuters"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "BBC (licence fee)",
-            "Thomson Reuters (Trust Principles)"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "GB"
-          ],
-          "fundings": [
-            "state",
-            "trust"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://www.bbc.co.uk/news/articles/c693z948px0jo?at_medium=RSS&at_campaign=rss",
-          "published": "2026-10-20T23:41:30.000Z",
-          "topic": "world",
-          "section": "world",
-          "tier": "notable",
-          "score": 8.1,
-          "photo": {
-            "path": "work/photos/world/photo-world-3.jpg",
-            "credit": "File photo: CDC/Cynthia Goldsmith / Public Domain",
-            "license": "pdm",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Ebola_virus_virion.jpg",
-            "query": "Ebola",
-            "relevance": 0.33,
-            "title": "Ebola virus virion"
-          },
-          "layout": "breaking",
-          "stat": null,
-          "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Is Ebola under control in Kenya after nine cases confirmed?”. Reported by BBC News · Reuters — 2 independent newsrooms. Behind the text is a library photograph captioned “Ebola virus virion”, credited to CDC/Cynthia Goldsmith / Public Domain. It is not a photograph of this event."
-        },
-        {
-          "headline": "VIDEO. LATEST NEWS BULLETIN | OCTOBER 21ST, 2026 – MORNING",
-          "display": "Video. Latest news bulletin | October 21st, 2026 – Morning",
-          "original": "Video. Latest news bulletin | October 21st, 2026 – Morning",
-          "truncated": false,
-          "usable": true,
-          "category": "WORLD NEWS",
-          "source": "Euronews.com · News On AIR",
-          "sourceNames": [
-            "Euronews.com",
-            "News On AIR"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "Government of India"
-          ],
-          "ownerCount": 1,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "state"
-          ],
-          "unknownOwners": 1,
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQZnFvNkFSaTRsYVBzd01mVEl5dTdDd3R1aDk1a2NjNjlzTmVRcFNnOVRKRzZ3aTRNRGdyUnNKcXJIeXM1RTU3WWl0WmhabmlsXzZ1RTNvMXZ0SkpuRFk1YWkwUHBoeDVGS09fSXQ2QkZhVlY4N05WNTVsVzVsYzlmajBIY3d5RjVKMDB4NmM2SzgzQQ?oc=5",
-          "published": "2026-10-21T05:00:32.000Z",
-          "topic": "world",
-          "section": "world",
-          "tier": "notable",
-          "score": 7.8,
-          "photo": {
-            "path": "work/photos/world/photo-world-4.jpg",
-            "credit": "File photo: newsanna / ANNA-News Official Stream / CC BY 3.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Helen_Krasovskaya_with_latest_news_of_Novorossia,_Aug_9,_2014.jpg",
-            "query": "Video Latest",
-            "relevance": 0.33,
-            "title": "Helen Krasovskaya with latest news of Novorossia, Aug 9, 2014"
-          },
-          "layout": "breaking",
-          "stat": null,
-          "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Video. Latest news bulletin | October 21st, 2026 – Morning”. Reported by Euronews.com · News On AIR — 2 independent newsrooms. Behind the text is a library photograph captioned “Helen Krasovskaya with latest news of Novorossia, Aug 9, 2014”, credited to newsanna / ANNA-News Official Stream / CC BY 3.0. It is not a photograph of this event."
-        },
-        {
-          "headline": "AI-POWERED PERSONAL ASSISTANTS COULD RESHAPE THE DIGITAL ECONOMY | WORLD NEWS",
-          "display": "AI-powered personal assistants could reshape the digital economy | World News",
-          "original": "AI-powered personal assistants could reshape the digital economy | World News",
-          "truncated": false,
-          "usable": true,
-          "category": "WORLD NEWS",
-          "source": "Hindustan Times · The Economist",
-          "sourceNames": [
-            "Hindustan Times",
-            "The Economist"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "HT Media / KK Birla family"
-          ],
-          "ownerCount": 1,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "conglomerate"
-          ],
-          "unknownOwners": 1,
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPVzNmaVpPYnlIXzRQT1JTOGNqRHRvU3RoQkJNSmVVRXM3eHZubWtUczFscWNBU0laQjY2dy1JMHU5ZmVHa080SlFOOTd6dEhTanRSSHo1ZjFoOThYVkpkaDZtZWd0YTNhZUxPdVBOcC1PdzRGSjIzRzBMMGxEa3JubHRfa3NSRTJDbndLWW9kdnZGT2ZiQk9ucXhjaTdsWnhzVU56QVdMcS1NU1ZXVlQ0YVUxV1QteXFLVk4xUXZGenJqRW16TllhcGRB0gHKAUFVX3lxTE9XM2ZpWk9ieUhfNFBPUlM4Y2pEdG9TdGhCQk1KZVVFczd4dm5ta1RzMWxxY0FTSVpCNjZ3LUk",
-          "published": "2026-10-21T03:08:53.000Z",
-          "topic": "world",
-          "section": "world",
-          "tier": "notable",
-          "score": 7.5,
-          "photo": {
-            "path": "work/photos/world/photo-world-5.jpg",
-            "credit": "File photo: F22raptor editor / CC0",
-            "license": "cc0",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Algor_Education_AI-Powered_Learning_Platform.png",
-            "query": "AI-powered",
-            "relevance": 0.17,
-            "title": "Algor Education AI Powered Learning Platform"
-          },
-          "layout": "breaking",
-          "stat": null,
-          "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “AI-powered personal assistants could reshape the digital economy | World News”. Reported by Hindustan Times · The Economist — 2 independent newsrooms. Behind the text is a library photograph captioned “Algor Education AI Powered Learning Platform”, credited to F22raptor editor / CC0. It is not a photograph of this event."
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Elon Musk ordered Starlink slowdown that disrupted Ukraine’s drone operations”. Reported by NDTV · Hindustan Times · Times of India — 3 independent newsrooms. Behind the text is a library photograph captioned “Elon Musk (12271217906)”, credited to Tesla Owners Club Belgium / CC BY 2.0. It is not a photograph of this event."
         }
       ],
       "posts": [
@@ -872,10 +724,7 @@
           "files": [
             "data/editions/2026-10-21/world/slide-1.jpg",
             "data/editions/2026-10-21/world/slide-2.jpg",
-            "data/editions/2026-10-21/world/slide-3.jpg",
-            "data/editions/2026-10-21/world/slide-4.jpg",
-            "data/editions/2026-10-21/world/slide-5.jpg",
-            "data/editions/2026-10-21/world/slide-6.jpg"
+            "data/editions/2026-10-21/world/slide-3.jpg"
           ],
           "cover": "data/editions/2026-10-21/world/slide-1.jpg",
           "alts": "data/editions/2026-10-21/world/alt.json",
@@ -890,90 +739,48 @@
       "label": "BUSINESS",
       "stories": [
         {
-          "headline": "NORWAY'S DNB EXCEEDS Q3 PROFIT FORECAST AMID ROBUST NORWEGIAN ECONOMY",
-          "display": "Norway's DNB Exceeds Q3 Profit Forecast Amid Robust Norwegian Economy",
-          "original": "Norway's DNB Exceeds Q3 Profit Forecast Amid Robust Norwegian Economy",
+          "headline": "SBI CONFIRMS DATA LEAK INVOLVING 3,897 CUSTOMER RECORDS IN PRELIMINARY ANALYSIS",
+          "display": "SBI confirms data leak involving 3,897 customer records in preliminary analysis",
+          "original": "SBI confirms data leak involving 3,897 customer records in preliminary analysis",
           "truncated": false,
           "usable": true,
           "category": "BUSINESS",
-          "source": "Reuters · Google News · Global Banking & Finance Review",
+          "source": "Business Standard · Hindustan Times",
           "sourceNames": [
-            "Reuters",
-            "Google News",
-            "Global Banking & Finance Review"
-          ],
-          "corroboration": 3,
-          "republishers": [],
-          "owners": [
-            "Thomson Reuters (Trust Principles)"
-          ],
-          "ownerCount": 1,
-          "countries": [
-            "GB"
-          ],
-          "fundings": [
-            "trust"
-          ],
-          "unknownOwners": 2,
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNVzF0cDJ6dG1KUWV5M01tTl9LRW0tektaVmdnNmJQQXdaVnRJcGxTX3dTZGxpZkFGaEVfZ0xPaGk1bmtDSklFSWdPa3g3M0Q1T1ZRNFZzYUpTS3ZYNlB6OTVrSTB6RHY2ajVGeWpwOHh6WlZzNnRzZ0s4YUVoUUYzaHdXWlZYSUpBRkVVMUxlQ252bnlWUUwxZU1R?oc=5",
-          "published": "2026-10-21T05:42:26.000Z",
-          "topic": "business",
-          "section": "business",
-          "tier": "notable",
-          "score": 9.3,
-          "photoError": "no image matched the story closely enough (searched \"trading floor\")",
-          "photo": null,
-          "layout": "breaking",
-          "stat": null,
-          "backdrop": "chart",
-          "alt": "A news card from @dailyvolex, headed BUSINESS. It reads: “Norway's DNB Exceeds Q3 Profit Forecast Amid Robust Norwegian Economy”. Reported by Reuters · Google News · Global Banking & Finance Review — 3 independent newsrooms. Behind the text is a generated market chart. It is decorative, not real data."
-        },
-        {
-          "headline": "SOUTHEAST ASIA’S DIGITAL ECONOMY TO HIT $368 BILLION",
-          "display": "Southeast Asia’s digital economy to hit $368 billion",
-          "original": "Southeast Asia’s digital economy to hit $368 billion",
-          "truncated": false,
-          "usable": true,
-          "category": "BUSINESS",
-          "source": "blog.google · Business Standard",
-          "sourceNames": [
-            "blog.google",
-            "Business Standard"
+            "Business Standard",
+            "Hindustan Times"
           ],
           "corroboration": 2,
           "republishers": [],
           "owners": [
-            "Business Standard Pvt Ltd"
+            "Business Standard Pvt Ltd",
+            "HT Media / KK Birla family"
           ],
-          "ownerCount": 1,
+          "ownerCount": 2,
           "countries": [
             "IN"
           ],
           "fundings": [
-            "commercial"
+            "commercial",
+            "conglomerate"
           ],
-          "unknownOwners": 1,
+          "unknownOwners": 0,
           "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQU002QmNaRFNDMzNVb0xEQ3BJWU50RllXME1nRlMxblNYZWZzV1hTVUxtS2FOZ01ERG5JVElTX2JiOXBOc1RaQlRoM3hjOXFqbER1Q1dzb2JQT0szZF9CSFA0dmlKTXk5V3lZd19ZYVc4UG13cXpzLUEtTXJpQmZEQ2xaQVVXUWhzYkpTVFN1LU1jUlpJUk4wWjRpdlBNc19wUThV?oc=5",
-          "published": "2026-10-21T04:09:26.000Z",
+          "link": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxORHd3VHd4RG90UlM1UE5wdmdzODNyeVhXOEtmQjRIWlREakNLU1lJWXdFYUFDMUFicWpmelJBU2xDOFhxNGRNaGZXZWpWRlprS091Z3pwYi1tSG4xMHZBX21rNTU4R2E4cUJ2Qno3NTZPbUJLdlhndUdGRWwycC1HOEpLRGZzUTEya0Q3bmRIRVFFV3BTTW5WMnVxdjhVeWlfcHc1dVFfa0taY1dLX3pybDc0Q1pqdFJkNjFZUVVSdmFIOTVIUHFzb3pVcDM1bl9zOTVINkhfenlkcl9jUVB5TFBBU09hbjhhYXhINXlOcy05TVBSaktEdQ?oc=5",
+          "published": "2026-10-21T05:58:15.000Z",
           "topic": "business",
           "section": "business",
           "tier": "notable",
           "score": 7.8,
-          "photo": {
-            "path": "work/photos/business/photo-business-3.jpg",
-            "credit": "File photo: Vyacheslav Argenberg / CC BY 4.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Koh_Samui,_Seashells,_Southeast_Asia,_Thailand.jpg",
-            "query": "Southeast Asia",
-            "relevance": 0.67,
-            "title": "Koh Samui, Seashells, Southeast Asia, Thailand"
+          "photoError": "no image matched the story closely enough (searched \"SBI\")",
+          "photo": null,
+          "layout": "quote",
+          "stat": {
+            "stat": "3,897",
+            "label": "customer records"
           },
-          "layout": "breaking",
-          "stat": null,
-          "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed BUSINESS. It reads: “Southeast Asia’s digital economy to hit $368 billion”. Reported by blog.google · Business Standard — 2 independent newsrooms. Behind the text is a library photograph captioned “Koh Samui, Seashells, Southeast Asia, Thailand”, credited to Vyacheslav Argenberg / CC BY 4.0. It is not a photograph of this event."
+          "backdrop": "editorial",
+          "alt": "A news card from @dailyvolex, headed BUSINESS. The figure 3,897 customer records is shown very large, above the headline. It reads: “SBI confirms data leak involving 3,897 customer records in preliminary analysis”. Reported by Business Standard · Hindustan Times — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
         },
         {
           "headline": "SPACEX REVENUE JUMPS 161% TO $14.6 BILLION AS AI BUSINESS OVERTAKES STARLINK",
@@ -1002,7 +809,7 @@
           "tier": "notable",
           "score": 7.5,
           "photo": {
-            "path": "work/photos/business/photo-business-4.jpg",
+            "path": "work/photos/business/photo-business-3.jpg",
             "credit": "File photo: SpaceX / CC0",
             "license": "cc0",
             "pageUrl": "https://commons.wikimedia.org/wiki/File:SpaceX_Headquarters,_Hawthorne,_CA.jpg",
@@ -1053,7 +860,7 @@
           "tier": "notable",
           "score": 7.275,
           "photo": {
-            "path": "work/photos/business/photo-business-5.jpg",
+            "path": "work/photos/business/photo-business-4.jpg",
             "credit": "File photo: Marek Ślusarczyk ( Tupungato ) Photo gal / CC BY 2.5",
             "license": "by",
             "pageUrl": "https://commons.wikimedia.org/wiki/File:Moore_Street_market,_Dublin.jpg",
@@ -1064,10 +871,10 @@
           "layout": "quote",
           "stat": {
             "stat": "1,400",
-            "label": "jobs and blames betting"
+            "label": "jobs"
           },
           "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed BUSINESS. The figure 1,400 jobs and blames betting is shown very large, above the headline. It reads: “Paddy Power cuts 1,400 jobs and blames betting tax rises”. Reported by BBC News · The Guardian — 2 independent newsrooms. Behind the text is a library photograph captioned “Moore Street market, Dublin”, credited to Marek Ślusarczyk ( Tupungato ) Photo gal / CC BY 2.5. It is not a photograph of this event."
+          "alt": "A news card from @dailyvolex, headed BUSINESS. The figure 1,400 jobs is shown very large, above the headline. It reads: “Paddy Power cuts 1,400 jobs and blames betting tax rises”. Reported by BBC News · The Guardian — 2 independent newsrooms. Behind the text is a library photograph captioned “Moore Street market, Dublin”, credited to Marek Ślusarczyk ( Tupungato ) Photo gal / CC BY 2.5. It is not a photograph of this event."
         }
       ],
       "posts": [
@@ -1079,8 +886,7 @@
             "data/editions/2026-10-21/business/slide-2.jpg",
             "data/editions/2026-10-21/business/slide-3.jpg",
             "data/editions/2026-10-21/business/slide-4.jpg",
-            "data/editions/2026-10-21/business/slide-5.jpg",
-            "data/editions/2026-10-21/business/slide-6.jpg"
+            "data/editions/2026-10-21/business/slide-5.jpg"
           ],
           "cover": "data/editions/2026-10-21/business/slide-1.jpg",
           "alts": "data/editions/2026-10-21/business/alt.json",
@@ -1095,82 +901,42 @@
       "label": "TECHNOLOGY",
       "stories": [
         {
-          "headline": "ON OCTOBER 20, THE 2026 CHERY GLOBAL INNOVATION CONFERENCE WAS OFFICIA",
-          "display": "On October 20, the 2026 Chery Global Innovation Conference was officia",
-          "original": "On October 20, the 2026 Chery Global Innovation Conference was officia",
-          "truncated": false,
-          "usable": true,
-          "category": "TECHNOLOGY",
-          "source": "Shanghai Metals Market · Think Global Health",
-          "sourceNames": [
-            "Shanghai Metals Market",
-            "Think Global Health"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [],
-          "ownerCount": 0,
-          "countries": [],
-          "fundings": [],
-          "unknownOwners": 2,
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMikAJBVV95cUxOQ05QSktNaWljSDNKZ0FUTzFXZFAtaFZVSmstejhoQzBFT3FNOVRwLXFvNHZOVUphOXV1a0N0Y3RPR0JkblJ0WThhc1hxRzctZjByVGJ0SlFXOTJWdDN3aXhhMWxqWVB5T25hY1BQLVk4bDN2WjZTOTZvS3N3el8yWnRoVk9fMEFLYXFIb2V2S1RBa1dibXhaY1U0RWtiempldkdyRjVWX2cxeXNDbllOeGNqLUx1akE3cm9zZHNWYjdSMnZWTVNrb29hQjRULWkxSnVHQ01YWk1XUWUycmhXTklaMzVWVHl5U2FRWGM2VWlrcVJpNEJnVkljRUNHYk9Wa0tJMG1KRGExc0M",
-          "published": "2026-10-21T05:16:00.000Z",
-          "topic": "tech",
-          "section": "tech",
-          "tier": "significant",
-          "score": 10.95,
-          "photo": {
-            "path": "work/photos/tech/photo-tech-2.jpg",
-            "credit": "File photo: Sebastiaan ter Burg / CC BY 2.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/w/index.php?curid=49403595",
-            "query": "Innovation Conference",
-            "relevance": 0.4,
-            "title": "Henry Chesbrough at Open Innovation 2.0 Conference 2016 02"
-          },
-          "layout": "breaking",
-          "stat": null,
-          "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed TECHNOLOGY. It reads: “On October 20, the 2026 Chery Global Innovation Conference was officia”. Reported by Shanghai Metals Market · Think Global Health — 2 independent newsrooms. Behind the text is a library photograph captioned “Henry Chesbrough at Open Innovation 2.0 Conference 2016 02”, credited to Sebastiaan ter Burg / CC BY 2.0. It is not a photograph of this event."
-        },
-        {
           "headline": "ANTHROPIC POSTS $80BN LOSS IN FIRST HALF OF 2026: WSJ",
           "display": "Anthropic posts $80bn loss in first half of 2026: WSJ",
           "original": "Anthropic posts $80bn loss in first half of 2026: WSJ",
           "truncated": false,
           "usable": true,
           "category": "TECHNOLOGY",
-          "source": "NDTV · Al Jazeera",
+          "source": "Al Jazeera · NDTV",
           "sourceNames": [
-            "NDTV",
-            "Al Jazeera"
+            "Al Jazeera",
+            "NDTV"
           ],
           "corroboration": 2,
           "republishers": [],
           "owners": [
-            "Adani Group",
-            "Government of Qatar"
+            "Government of Qatar",
+            "Adani Group"
           ],
           "ownerCount": 2,
           "countries": [
-            "IN",
-            "QA"
+            "QA",
+            "IN"
           ],
           "fundings": [
-            "conglomerate",
-            "state"
+            "state",
+            "conglomerate"
           ],
           "unknownOwners": 0,
           "concentration": [],
           "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQV0ZfTHFlMmNYREl3N2Y2MXd0d1Y3cTlWQzl3YVJDQl9zV2Z6dWowQ2RYTndpVlNHYUJuR1hsbDNCLVBhbDM1WU5udU5ST1lOSHBqRzNHemYxWEtDUFduay1qeHMzWk1aLUhzTlRyaTg1ajNYbWlobEhHTlJHaU12eTVqbHk1NlpFS3ZWbk5aMDZwUjItZDNFdtIBngFBVV95cUxNbTgza084T1RZZ2UzOWlQM2pDd2NON3NSSjQ5enAzN1BzSWFiRVlTU3l0RWx1UXo2RjkydFk0RWhHa0FZcFJqUVNIaWg3MmJoMUpYVzJFSkhMYnBJbE1oRFVfcGhWcjNRdXJYSW1Bbkg",
-          "published": "2026-10-21T05:37:30.000Z",
+          "published": "2026-10-21T05:48:45.000Z",
           "topic": "tech",
           "section": "tech",
           "tier": "notable",
-          "score": 7.8,
+          "score": 8.4,
           "photo": {
-            "path": "work/photos/tech/photo-tech-3.jpg",
+            "path": "work/photos/tech/photo-tech-2.jpg",
             "credit": "File photo: Department for Science, Innovation and T / CC BY 2.0",
             "license": "by",
             "pageUrl": "https://commons.wikimedia.org/wiki/File:Secretary_of_State_Peter_Kyle_visits_Anthropic_in_San_Francisco._(54099081629).jpg",
@@ -1181,10 +947,10 @@
           "layout": "quote",
           "stat": {
             "stat": "$80bn",
-            "label": "loss in first half"
+            "label": "loss"
           },
           "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed TECHNOLOGY. The figure $80bn loss in first half is shown very large, above the headline. It reads: “Anthropic posts $80bn loss in first half of 2026: WSJ”. Reported by NDTV · Al Jazeera — 2 independent newsrooms. Behind the text is a library photograph captioned “Secretary of State Peter Kyle visits Anthropic in San Francisco.…”, credited to Department for Science, Innovation and T / CC BY 2.0. It is not a photograph of this event."
+          "alt": "A news card from @dailyvolex, headed TECHNOLOGY. The figure $80bn loss is shown very large, above the headline. It reads: “Anthropic posts $80bn loss in first half of 2026: WSJ”. Reported by Al Jazeera · NDTV — 2 independent newsrooms. Behind the text is a library photograph captioned “Secretary of State Peter Kyle visits Anthropic in San Francisco.…”, credited to Department for Science, Innovation and T / CC BY 2.0. It is not a photograph of this event."
         },
         {
           "headline": "CHANDRABABU NAIDU CALLS FOR TECHNOLOGY-DRIVEN, HUMANE POLICING IN ANDHRA PRADESH",
@@ -1193,26 +959,24 @@
           "truncated": false,
           "usable": true,
           "category": "TECHNOLOGY",
-          "source": "India Today · Hindustan Times",
+          "source": "India Today · ThePrint",
           "sourceNames": [
             "India Today",
-            "Hindustan Times"
+            "ThePrint"
           ],
           "corroboration": 2,
           "republishers": [],
           "owners": [
-            "Living Media",
-            "HT Media / KK Birla family"
+            "Living Media"
           ],
-          "ownerCount": 2,
+          "ownerCount": 1,
           "countries": [
             "IN"
           ],
           "fundings": [
-            "commercial",
-            "conglomerate"
+            "commercial"
           ],
-          "unknownOwners": 0,
+          "unknownOwners": 1,
           "concentration": [],
           "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQaUYxZTlsMkdfMWR1dW5nUjdNZGVObmFoMjgxS3RNMEozWGl5UzhkRnhRQVhGZXgzMlRTRHFMMl80aWRETVdMUFNMMHQ5SHlUUnB0aVRnYzJIWGgxa0ZzTzBqVjNoSV9oOE4zVlo0SGdtRUJJRVpjUmN0Uk1sY1hsVGNGcUJFbC1HdERSWlM0c0xONmpEUHk4SzdKV3B2NWx1bVhTeW9PSndqQzVmakkzaUVhX2xUZ9IBuwFBVV95cUxPWm8xd0FuZG56Tm9WZmZMVmZPRVh0WmhVRnY1NTU1SmZ3VjZnbDFPdWRycFZWeFNFeHBCQTBlT2sxQWU0czd2RUtkaWxtbF9Wd1J",
           "published": "2026-10-21T05:18:55.000Z",
@@ -1221,7 +985,7 @@
           "tier": "notable",
           "score": 7.8,
           "photo": {
-            "path": "work/photos/tech/photo-tech-4.jpg",
+            "path": "work/photos/tech/photo-tech-3.jpg",
             "credit": "File photo: 456legend / CC BY 4.0",
             "license": "by",
             "pageUrl": "https://commons.wikimedia.org/wiki/File:Andhra_Pradesh_2024_TDP%2BJSP_seat_share.jpg",
@@ -1232,49 +996,7 @@
           "layout": "breaking",
           "stat": null,
           "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed TECHNOLOGY. It reads: “Chandrababu Naidu calls for technology-driven, humane policing in Andhra Pradesh”. Reported by India Today · Hindustan Times — 2 independent newsrooms. Behind the text is a library photograph captioned “Andhra Pradesh 2024 TDP+JSP seat share”, credited to 456legend / CC BY 4.0. It is not a photograph of this event."
-        },
-        {
-          "headline": "L&T TECHNOLOGY SERVICES ZOOMS ON REPORTING 67% JUMP IN Q2 CONSOLIDATED NET PROFIT",
-          "display": "L&T Technology Services zooms on reporting 67% jump in Q2 consolidated net profit",
-          "original": "L&T Technology Services zooms on reporting 67% jump in Q2 consolidated net profit",
-          "truncated": false,
-          "usable": true,
-          "category": "TECHNOLOGY",
-          "source": "NDTV Profit · Investment Guru",
-          "sourceNames": [
-            "NDTV Profit",
-            "Investment Guru"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "Adani Group"
-          ],
-          "ownerCount": 1,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "conglomerate"
-          ],
-          "unknownOwners": 1,
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPaWlVcVpMck03Zm9xYXNKSmw5WlJyWEdnTFQzSHYxNkNtZW41UWthQkZVeFp2anhtVVNHNVhmNUFPdVBCYTVsYXNnSy1zek9VdHhOaUs5ZDBqeUhYa19SdkRjaGZKY3FISWlkNTVZU1JYWmF5WDB4Y3p1UHlkUHhCckFTU1Z2RXEyWlVybVo5RW5MSlBOb0hNQ2NFRWY3dUZoVnp6WlZ5S01EQkF2YzRDOGhRbkpsMzlTN2hIaEgyRkpDejh2Z2dFTw?oc=5",
-          "published": "2026-10-21T04:18:16.000Z",
-          "topic": "tech",
-          "section": "tech",
-          "tier": "notable",
-          "score": 7.8,
-          "photoError": "no image matched the story closely enough (searched \"trading floor\")",
-          "photo": null,
-          "layout": "quote",
-          "stat": {
-            "stat": "67%",
-            "label": "jump in Q2 consolidated"
-          },
-          "backdrop": "chart",
-          "alt": "A news card from @dailyvolex, headed TECHNOLOGY. The figure 67% jump in Q2 consolidated is shown very large, above the headline. It reads: “L&T Technology Services zooms on reporting 67% jump in Q2 consolidated net profit”. Reported by NDTV Profit · Investment Guru — 2 independent newsrooms. Behind the text is a generated market chart. It is decorative, not real data."
+          "alt": "A news card from @dailyvolex, headed TECHNOLOGY. It reads: “Chandrababu Naidu calls for technology-driven, humane policing in Andhra Pradesh”. Reported by India Today · ThePrint — 2 independent newsrooms. Behind the text is a library photograph captioned “Andhra Pradesh 2024 TDP+JSP seat share”, credited to 456legend / CC BY 4.0. It is not a photograph of this event."
         }
       ],
       "posts": [
@@ -1285,9 +1007,7 @@
             "data/editions/2026-10-21/tech/slide-1.jpg",
             "data/editions/2026-10-21/tech/slide-2.jpg",
             "data/editions/2026-10-21/tech/slide-3.jpg",
-            "data/editions/2026-10-21/tech/slide-4.jpg",
-            "data/editions/2026-10-21/tech/slide-5.jpg",
-            "data/editions/2026-10-21/tech/slide-6.jpg"
+            "data/editions/2026-10-21/tech/slide-4.jpg"
           ],
           "cover": "data/editions/2026-10-21/tech/slide-1.jpg",
           "alts": "data/editions/2026-10-21/tech/alt.json",
