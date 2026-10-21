@@ -40,6 +40,13 @@ const ALIASES = {
   'indian express': 'indian express', 'financial express': 'indian express',
   'wsj': 'wall street journal', 'ft': 'financial times',
   'ap': 'associated press', 'pti': 'press trust of india',
+  // Spellings that were landing outside the register and so counted as an
+  // outlet nobody can identify. Deutsche Welle is in the register; "DW.com"
+  // canonicalises to "dw" and never reached it.
+  'dw': 'deutsche welle', 'afp': 'agence france presse',
+  'nyt': 'new york times', 'ny times': 'new york times',
+  'wapo': 'washington post', 'ians': 'indo asian news service',
+  'cnbc tv': 'cnbc', 'aljazeera': 'al jazeera',
 };
 
 /* ── Who owns the newsroom ─────────────────────────────────────
@@ -183,6 +190,12 @@ export function independentSources(names = []) {
     count: reporting.size,
     names: [...reporting.values()],     // one name per newsroom, as written
     republishers: carried,
+    // How many of them this channel can actually identify. "2 newsrooms"
+    // where neither is in the register means two sites nobody has heard of
+    // agreeing with each other, which is not corroboration — it is how a
+    // university comms page and an organisation writing about its own
+    // officer came to carry a HEALTH story between them.
+    known: profiles.filter(p => p.owner).length,
     // ── Ownership, as a fact about the sources rather than a verdict ──
     owners: [...owners],
     ownerCount: owners.size,

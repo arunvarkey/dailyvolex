@@ -102,19 +102,22 @@ ok('a currency amount alone is enough', isTopical('Startup raises \u20b92,000 cr
 // The finance gate applies to finance feeds, which is where off-topic leaks in.
 ok('a finance feed cannot leak an off-topic story',
   !selectStories([
-    { title: 'Claude cracks a 25-year NSA number mystery', source:'A', published: Date.now(), weight:1, topic:'crypto', requireTopical:true },
-    { title: 'Claude cracks a 25-year NSA number mystery, say researchers', source:'B', published: Date.now(), weight:1, topic:'crypto', requireTopical:true },
+    { title: 'Claude cracks a 25-year NSA number mystery', source:'Reuters', published: Date.now(), weight:1, topic:'crypto', requireTopical:true },
+    { title: 'Claude cracks a 25-year NSA number mystery, say researchers', source:'BBC News', published: Date.now(), weight:1, topic:'crypto', requireTopical:true },
   ], { count: 3, now: Date.now() }).length);
 // A general news feed is not gated on market words — that is the point of it.
+// Real mastheads, because corroboration now requires at least one outlet
+// whose owner this channel can actually name. The gate under test here is
+// the topical one, not that.
 ok('a general feed may carry general news',
   selectStories([
-    { title: 'Prime Minister announces new education policy', source:'A', published: Date.now(), weight:1, topic:'india' },
-    { title: 'Prime Minister unveils education policy reforms', source:'B', published: Date.now(), weight:1, topic:'india' },
+    { title: 'Prime Minister announces new education policy', source:'The Hindu', published: Date.now(), weight:1, topic:'india' },
+    { title: 'Prime Minister unveils education policy reforms', source:'NDTV', published: Date.now(), weight:1, topic:'india' },
   ], { count: 3, now: Date.now() }).length === 1);
 ok('junk never reaches the shortlist, whatever the feed',
   !selectStories([
-    { title: 'Horoscope today: what the stars say for your sign', source:'A', published: Date.now(), weight:1, topic:'india' },
-    { title: 'Horoscope today: what the stars hold for your sign', source:'B', published: Date.now(), weight:1, topic:'india' },
+    { title: 'Horoscope today: what the stars say for your sign', source:'Reuters', published: Date.now(), weight:1, topic:'india' },
+    { title: 'Horoscope today: what the stars hold for your sign', source:'BBC News', published: Date.now(), weight:1, topic:'india' },
   ], { count: 3, now: Date.now() }).length);
 
 /* ── Stock tips are not news ──────────────────────────────────── */
@@ -139,8 +142,8 @@ ok('actual news is not refused',
 ok('advice never reaches the shortlist', (() => {
   const t = Date.now();
   return !selectStories([
-    { title:'Analyst recommends 3 stocks to buy this week', source:'A', published:t, weight:1, topic:'india' },
-    { title:'Analyst recommends 3 stocks to buy this week now', source:'B', published:t, weight:1, topic:'india' },
+    { title:'Analyst recommends 3 stocks to buy this week', source:'Reuters', published:t, weight:1, topic:'india' },
+    { title:'Analyst recommends 3 stocks to buy this week now', source:'BBC News', published:t, weight:1, topic:'india' },
   ], { count:3, now:t }).length;
 })());
 
@@ -164,9 +167,9 @@ ok('does not match unrelated stories',
   similarity('Bitcoin tops $90,000', 'India launches new CBDC pilot in five cities') < 0.3);
 
 const mixed = [
-  { title: 'Fed cuts rates by 25 basis points', source: 'A', published: Date.now(), weight: 1, topic: 'world' },
-  { title: 'Federal Reserve cuts rates 25 bps',  source: 'B', published: Date.now(), weight: 1, topic: 'world' },
-  { title: 'Solana ETF approved by regulators',  source: 'C', published: Date.now(), weight: 1, topic: 'crypto' },
+  { title: 'Fed cuts rates by 25 basis points', source: 'Reuters', published: Date.now(), weight: 1, topic: 'world' },
+  { title: 'Federal Reserve cuts rates 25 bps',  source: 'BBC News', published: Date.now(), weight: 1, topic: 'world' },
+  { title: 'Solana ETF approved by regulators',  source: 'The Hindu', published: Date.now(), weight: 1, topic: 'crypto' },
 ];
 ok('groups one story and leaves the other alone', cluster(mixed).length === 2);
 
@@ -174,11 +177,11 @@ ok('groups one story and leaves the other alone', cluster(mixed).length === 2);
 
 const now = Date.now();
 const pool = [
-  { title: 'Fed cuts rates by 25 basis points', source: 'A', published: now, weight: 1, topic: 'world' },
-  { title: 'Federal Reserve cuts rates 25 bps',  source: 'B', published: now, weight: 1, topic: 'world' },
-  { title: 'Fed lowers interest rates 25 basis points', source: 'C', published: now, weight: 1, topic: 'world' },
-  { title: 'Obscure altcoin might possibly moon soon', source: 'D', published: now, weight: 1, topic: 'crypto' },
-  { title: 'Very old news about something', source: 'A', published: now - 80 * 3600000, weight: 1, topic: 'world' },
+  { title: 'Fed cuts rates by 25 basis points', source: 'Reuters', published: now, weight: 1, topic: 'world' },
+  { title: 'Federal Reserve cuts rates 25 bps',  source: 'BBC News', published: now, weight: 1, topic: 'world' },
+  { title: 'Fed lowers interest rates 25 basis points', source: 'The Hindu', published: now, weight: 1, topic: 'world' },
+  { title: 'Obscure altcoin might possibly moon soon', source: 'NDTV', published: now, weight: 1, topic: 'crypto' },
+  { title: 'Very old news about something', source: 'Reuters', published: now - 80 * 3600000, weight: 1, topic: 'world' },
 ];
 
 const picked = selectStories(pool, { count: 2, now });
@@ -203,10 +206,10 @@ ok('repeat detection ignores wording differences',
    version of this fixture was three crypto price items, which the importance
    hierarchy now keeps off Top entirely — so it tested nothing. */
 const lopsided = [
-  { title:'Regulator fines a major bank over mis-selling', source:'A', published:now, weight:1, topic:'business' },
-  { title:'Parliament passes the new insolvency bill',     source:'B', published:now, weight:1, topic:'business' },
-  { title:'Cabinet approves a port expansion scheme',      source:'C', published:now, weight:1, topic:'business' },
-  { title:'Supreme Court orders a review of forest rules', source:'D', published:now, weight:1, topic:'india'  },
+  { title:'Regulator fines a major bank over mis-selling', source:'Reuters', published:now, weight:1, topic:'business' },
+  { title:'Parliament passes the new insolvency bill',     source:'BBC News', published:now, weight:1, topic:'business' },
+  { title:'Cabinet approves a port expansion scheme',      source:'The Hindu', published:now, weight:1, topic:'business' },
+  { title:'Supreme Court orders a review of forest rules', source:'NDTV', published:now, weight:1, topic:'india'  },
 ];
 const spread = selectStories(lopsided, { count: 3, now });
 ok('one topic cannot take every slot',
@@ -218,14 +221,14 @@ ok('another topic gets in',
 
 // Crypto, India markets and world markets are one beat to a reader.
 const allFinance = [
-  { title:'Sensex tumbles 876 points as banks drag',   source:'A', published:now, weight:1.1, topic:'markets-india' },
-  { title:'Sensex falls 876 points dragged by lenders', source:'B', published:now, weight:1,   topic:'markets-india' },
-  { title:'Sensex drops 876 points on bank selling',    source:'C', published:now, weight:1,   topic:'markets-india' },
-  { title:'Bitcoin ETFs see heavy weekly outflows',     source:'D', published:now, weight:1.2, topic:'crypto' },
-  { title:'Bitcoin ETF outflows run for a second week', source:'E', published:now, weight:1,   topic:'crypto' },
-  { title:'Wall Street closes lower for a third day',   source:'F', published:now, weight:1.3, topic:'markets-world' },
-  { title:'Wall Street ends lower for a third session', source:'G', published:now, weight:1,   topic:'markets-world' },
-  { title:'Ceasefire talks resume in Geneva',           source:'H', published:now, weight:1.8, topic:'world' },
+  { title:'Sensex tumbles 876 points as banks drag',   source:'Reuters', published:now, weight:1.1, topic:'markets-india' },
+  { title:'Sensex falls 876 points dragged by lenders', source:'BBC News', published:now, weight:1,   topic:'markets-india' },
+  { title:'Sensex drops 876 points on bank selling',    source:'The Hindu', published:now, weight:1,   topic:'markets-india' },
+  { title:'Bitcoin ETFs see heavy weekly outflows',     source:'NDTV', published:now, weight:1.2, topic:'crypto' },
+  { title:'Bitcoin ETF outflows run for a second week', source:'The Guardian', published:now, weight:1,   topic:'crypto' },
+  { title:'Wall Street closes lower for a third day',   source:'Al Jazeera', published:now, weight:1.3, topic:'markets-world' },
+  { title:'Wall Street ends lower for a third session', source:'Hindustan Times', published:now, weight:1,   topic:'markets-world' },
+  { title:'Ceasefire talks resume in Geneva',           source:'Associated Press', published:now, weight:1.8, topic:'world' },
 ];
 const balanced = selectStories(allFinance, { count: 3, now });
 ok('markets cannot take every slot, even across three topics',
@@ -2177,6 +2180,60 @@ ok('a real story is not refused by the new rule',
   REAL_NEWS.every(t => rejectionReason({ title: t, published: Date.now() })
     !== 'says nothing happened'),
   'the list is the rule, so it has to carry the ordinary vocabulary of a news page');
+
+
+
+/* ── Corroboration by outlets this channel can name ───────────────
+   A HEALTH story went out carried by "Duke Today · Special Olympics" — a
+   university comms page and the organisation writing about its own officer,
+   counted as two independent newsrooms. Listing every site that is not a
+   newsroom never converges; asking for one that IS does. */
+
+ok('an outlet in the register is identifiable',
+  independentSources(['BBC News', 'Al Jazeera']).known === 2);
+ok('two sites nobody has heard of corroborate nothing',
+  independentSources(['Duke Today', 'Special Olympics']).known === 0,
+  'they are still counted as sources and still named — they are just not a check');
+ok('one identifiable newsroom among unknowns is enough to be identifiable',
+  independentSources(['Some Site', 'Reuters']).known === 1);
+ok('a spelling that missed the register now reaches it',
+  independentSources(['DW.com']).known === 1,
+  'Deutsche Welle was in the register all along; "dw" never got there');
+
+ok('a story nobody identifiable carried is not selected', (() => {
+  const t = Date.now();
+  const mk = (title, source) => ({ title, source, topic: 'health', published: t - 600000, weight: 1 });
+  const chosen = selectStories([
+    mk('Special Olympics chief health officer elected to academy', 'Duke Today'),
+    mk('Special Olympics chief health officer elected to the academy', 'Special Olympics'),
+  ], { count: 3, now: t, minSources: 1 });
+  return chosen.length === 0;
+})(), 'two sources, nothing checked');
+
+ok('the same story with one real newsroom behind it is selected', (() => {
+  const t = Date.now();
+  const mk = (title, source) => ({ title, source, topic: 'world', published: t - 600000, weight: 1 });
+  const chosen = selectStories([
+    mk('Nigeria confirms Ebola case linked to East Africa', 'Some Site'),
+    mk('Nigeria confirms Ebola case in the east', 'Reuters'),
+  ], { count: 3, now: t, minSources: 1 });
+  return chosen.length === 1;
+})());
+
+/* ── Furniture the outlet pinned to its own headline ────────────── */
+ok('a desk label with a colon is furniture, not the headline',
+  tidy("India news: India-US trade deal 'pretty close,' says Trump")
+  === "India-US trade deal 'pretty close,' says Trump");
+ok('a short headline keeps its label rather than being gutted',
+  tidy('India news: short') === 'India news: short',
+  'the first version of the pipe rule threw away the story and kept the furniture');
+
+/* The four verbs the first live run proved were missing. */
+ok('the verbs that run refused are in the list now',
+  ['Haitian migrants changed this US town',
+   'Qatar and Turkiye are deepening defence ties',
+   'Israeli settlers have Palestinians surrounded',
+   'War in Lebanon has cost young people with autism'].every(hasNewsVerb));
 
 
 console.log(`\n${passed} passed, ${failed} failed`);

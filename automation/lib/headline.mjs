@@ -23,6 +23,12 @@ const TRAILING_BYLINE = /\s+[Bb]y\s+[A-Z][\w.&' -]{2,30}\s*$/;
  * select.mjs instead. */
 const PREFIXES = [
   /^(breaking|exclusive|just in|update|live|watch|explained)\s*[:–—-]\s*/i,
+  /* A desk label the outlet pinned to the front with a colon rather than a
+     pipe: "India news: India-US trade deal 'pretty close,' says Trump" went
+     out on a card with the furniture still attached. Same narrowness as the
+     pipe rule — a short label, no digits, and the story after it has to be
+     substantially longer than the label. */
+  /^(india|world|business|tech(nology)?|science|health|sports?|markets?|top)\s+news\s*:\s*(?=.{24,})/i,
 ];
 
 /* A section label the outlet pinned to the front of its own headline:

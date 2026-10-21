@@ -383,6 +383,10 @@ export function rankClusters(clusters, { now = Date.now() } = {}) {
       lead,
       tier,
       sources,
+      // How many of those newsrooms this channel can actually name an owner
+      // for. Two sites nobody has heard of agreeing with each other is not
+      // corroboration.
+      knownSources: outlets.known,
       // One name per newsroom. Printing both "Times of India" and "The Times
       // of India" on a card does not just look careless, it is the inflated
       // count written out in words.
@@ -507,6 +511,12 @@ export function selectStories(items, { history = [], count = 3, now = Date.now()
   // — that was exactly how two of three top stories came out crypto.
   const eligible = c =>
     c.sources >= minSources
+    // At least one outlet whose owner is recorded. A HEALTH story went out
+    // corroborated by a university comms page and the organisation writing
+    // about its own officer — two sources, nothing checked. Enumerating
+    // sites that are not newsrooms never converges either; asking for one
+    // that IS a newsroom does.
+    && c.knownSources >= 1
     && (allowMinorInTop || c.tier !== TIERS.MINOR)
     && !isRepeat(c.lead.title, history)
     && !isRepeat(c.lead.title, takenTitles.map(t => ({ title: t })));
@@ -566,6 +576,9 @@ export function selectSections(items, { history = [], count = 3, perSection = 3,
 
   const eligible = (c, chosenHere, titlesInTop) =>
     c.sources >= Math.max(minSources, sectionMinSources)
+    // Sections run with less scrutiny than Top, so the same rule matters
+    // more here, not less.
+    && c.knownSources >= 1
     && !isRepeat(c.lead.title, history)
     && !isRepeat(c.lead.title, titlesInTop.map(t => ({ title: t })))
     && !isRepeat(c.lead.title, chosenHere.map(x => ({ title: x.lead.title })));

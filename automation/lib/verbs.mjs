@@ -75,6 +75,13 @@ const STEMS = [
   'grow', 'double', 'triple', 'halve', 'axe', 'outlaw',
   'appeal', 'challenge', 'contest', 'overturn', 'uphold', 'proclaim',
   'qualify', 'advance', 'eliminate', 'knock', 'ink', 'restart', 'nab',
+  // Found by reading what the rule refused on its first live run, where it
+  // threw out "Haitian migrants changed this US town", "how they are
+  // deepening defence ties" and "Israeli settlers have Palestinians
+  // surrounded". The list being incomplete is the known cost of this rule;
+  // the refusal log is how the cost stays visible.
+  'change', 'deepen', 'surround', 'cost', 'shift', 'turn', 'split',
+  'unite', 'divide', 'overhaul', 'revamp', 'scrap', 'abolish', 'merge',
 ];
 
 /* Irregular forms, which no rule would produce. */
