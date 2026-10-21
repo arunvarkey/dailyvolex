@@ -141,13 +141,13 @@ async function main() {
     server.close();
   }
 
-  const timings = reelTimings(frames, stories);
+  const timings = reelTimings(frames, specs);
   const seconds = totalSeconds(timings, fade);
   const refusal = checkDuration(seconds);
   if (refusal) { await rm(work, { recursive: true, force: true }); throw new Error(refusal); }
 
   for (const t of timings) console.log(`  ${t.kind.padEnd(8)} ${t.seconds}s`);
-  console.log(`  ${timings.length} cards, ${seconds}s with ${fade}s crossfades`);
+  console.log(`  ${timings.length} cards, ${seconds.toFixed(1)}s with ${fade}s crossfades`);
 
   const rel = `${dirFor(edition.id)}/${section.id}/reel.mp4`;
   const outFile = join(ROOT, rel);
@@ -176,7 +176,7 @@ async function main() {
     // The one that matters most, because nothing else about the file looks
     // wrong when it happens: the cards did not all make it in.
     if (Math.abs(made.seconds - seconds) > 0.3)
-      wrong.push(`the video runs ${made.seconds}s, not the ${seconds}s the cards add up to`);
+      wrong.push(`the video runs ${made.seconds}s, not the ${seconds.toFixed(1)}s the cards add up to`);
     if (made.seconds < MIN_SECONDS) wrong.push(`under Instagram's ${MIN_SECONDS}s floor`);
     if (wrong.length) throw new Error(`the reel is not in a shape Instagram accepts: ${wrong.join(', ')}`);
   } else {

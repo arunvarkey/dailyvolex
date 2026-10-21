@@ -297,6 +297,12 @@ canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
 .today-btn.ghost{background:transparent;border:1px solid var(--ui-border);color:var(--ui-text)}
 /* Approving is the one thing this tab exists for, so it does not look
    like the other buttons. */
+/* The reel, playable. It was the one thing in a post nobody could see
+   before approving it. */
+.today-reel{margin:.6rem 0}
+.today-reel video{width:100%;max-width:300px;display:block;margin:0 auto;
+  border-radius:12px;background:#000;border:1px solid var(--ui-border)}
+.today-reelnote{font-size:.72rem;opacity:.6;margin:.4rem 0 0;text-align:center;line-height:1.45}
 .today-approve{background:linear-gradient(135deg,#166534,#14532d);border:1px solid #22c55e;
   color:#dcfce7;font-weight:700;text-decoration:none;letter-spacing:.01em}
 .today-approve:hover{filter:brightness(1.15)}
@@ -4142,6 +4148,13 @@ async function loadToday() {
         post.reel ? ' · reel' : ''}</span></summary>
       ${slides.length ? `<div class="today-slides">${slides.map((p,i)=>
         `<img src="${esc(p)}${bust}" alt="${esc(label)} slide ${i+1}" loading="lazy">`).join('')}</div>` : ''}
+      ${post.reel ? `<div class="today-reel">
+        <video src="${esc(post.reel.files[0])}${bust}" controls playsinline muted
+               preload="metadata" poster="${esc(post.reel.cover || slides[0] || '')}${bust}"></video>
+        <p class="today-reelnote">Reel · ${post.reel.seconds}s · opens on the lead story.
+          Watch it before you approve — it is the only thing here you cannot
+          check by looking at a still.</p>
+      </div>` : ''}
       ${storyHtml}
       ${cap ? `<div class="today-cap">${esc(cap)}</div>
         <button class="today-btn ghost today-copy" data-post="${pi}">Copy caption</button>` : ''}

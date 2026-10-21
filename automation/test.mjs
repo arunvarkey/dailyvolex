@@ -1431,18 +1431,29 @@ const stories3 = [
   { display: 'Sensex plunges 876 points as banks drag the index lower' },
   { display: 'RBI cuts repo rate by 25 basis points' },
 ];
-const frames5 = ['a.png', 'b.png', 'c.png', 'd.png', 'e.png'];
-const t5 = reelTimings(frames5, stories3);
-ok('a reel is a cover, a card per story, then the closing card',
-  t5.map(t => t.kind).join(',') === 'cover,story,story,story,closing', t5.map(t => t.kind).join(','));
+/* A reel is a card per story then the closing card — no cover. The carousel
+   opens on a contents page because that is what earns the tap; a reel is
+   scrolled past, and four and a half seconds of contents page before any news
+   is a setup where the payoff should be. */
+const specs4 = [...stories3.map(story => ({ kind: 'story', story })), { kind: 'closing' }];
+const frames5 = ['a.png', 'b.png', 'c.png', 'd.png'];
+const t5 = reelTimings(frames5, specs4);
+ok('a reel opens on the lead story, not a contents page',
+  t5.map(t => t.kind).join(',') === 'story,story,story,closing', t5.map(t => t.kind).join(','));
 ok('the closing card is not paced as a headline',
-  t5[4].seconds === SECONDS_FOR_CLOSING);
+  t5[3].seconds === SECONDS_FOR_CLOSING);
 ok('every frame rendered is a frame timed', t5.length === frames5.length);
+ok('a frame with no card behind it is an error, not a guess', (() => {
+  try { reelTimings(['a.png', 'b.png'], specs4); return false; }
+  catch (e) { return /must match/.test(e.message); }
+})(), 'the kind used to be inferred from the position, which stopped being true');
 
 const fade = 0.45;
 const total = totalSeconds(t5, fade);
 ok('the crossfades are taken out of the running time',
-  Math.abs(total - (t5.reduce((n, t) => n + t.seconds, 0) - 4 * fade)) < 0.05, `${total}`);
+  Math.abs(total - (t5.reduce((n, t) => n + t.seconds, 0) - 3 * fade)) < 0.05, `${total}`);
+ok('a day of news fits where short video completes best',
+  total < 18, `${total}s — dropping the contents page took about four seconds off`);
 ok('a normal day is a reel Instagram will take',
   total > MIN_SECONDS && total < MAX_SECONDS, `${total}s`);
 ok('a reel too short to publish is refused before the encode',
@@ -1469,12 +1480,13 @@ ok('each card is crossfaded into the next',
   (fc.match(/xfade=/g) || []).length === frames5.length - 1);
 ok('the crossfades start before the outgoing card runs out', (() => {
   const offsets = [...fc.matchAll(/offset=([0-9.]+)/g)].map(m => Number(m[1]));
-  if (offsets.length !== 4) return false;
-  // Each offset is the previous card's end less one fade, so they rise and
-  // the last one leaves room for the closing card.
+  if (offsets.length !== t5.length - 1) return false;
+  // Each offset is the previous card's end less one fade, so they rise, and
+  // the last one leaves exactly room for the closing card.
   const rising = offsets.every((o, i) => i === 0 || o > offsets[i - 1]);
+  const last = offsets[offsets.length - 1];
   return rising && Math.abs(offsets[0] - (t5[0].seconds - fade)) < 0.05
-    && offsets[3] + t5[4].seconds - total < 0.05;
+    && Math.abs(last + t5[t5.length - 1].seconds - total) < 0.05;
 })(), 'an offset past the end of a clip drops every card after it');
 ok('the frame is upright and the size Instagram wants',
   fc.includes('1080x1920') && args.includes('-pix_fmt') && args[args.indexOf('-pix_fmt') + 1] === 'yuv420p');

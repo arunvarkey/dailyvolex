@@ -46,21 +46,31 @@ export function secondsForCover(count) {
 }
 
 /* The closing card is four short lines and a handle. */
-export const SECONDS_FOR_CLOSING = 3;
+/* Shorter than it was. It is the only card in the reel carrying no news, and
+   on a fourteen-second video three seconds of it is a fifth of the running
+   time. Long enough to read four short lines and a handle. */
+export const SECONDS_FOR_CLOSING = 2.5;
 
 /* Frame-by-frame timings for one section's reel.
  *
- * `frames` is what was rendered, in order: a cover, a card per story, then the
- * closing card — the same shape as the carousel, because it is the same cards.
+ * `specs` are the composed cards, each carrying what kind of card it is. It
+ * used to work the kind out from the position — first is a cover, last is
+ * the closing card — which was guesswork that happened to be right, and
+ * stopped being right the moment the reel dropped its cover. The composer
+ * already knows; it just was not being asked.
  */
-export function reelTimings(frames, stories) {
+export function reelTimings(frames, specs = []) {
   if (!frames?.length) throw new Error('a reel needs at least one frame');
+  if (specs.length && specs.length !== frames.length)
+    throw new Error(`${frames.length} frames but ${specs.length} cards — they must match`);
+
   return frames.map((file, i) => {
-    if (i === 0 && frames.length > 1)
-      return { file, seconds: secondsForCover(stories?.length || frames.length - 1), kind: 'cover' };
-    if (i === frames.length - 1 && frames.length > stories?.length + 1)
-      return { file, seconds: SECONDS_FOR_CLOSING, kind: 'closing' };
-    return { file, seconds: secondsForStory(stories?.[i - 1]), kind: 'story' };
+    const spec = specs[i] || {};
+    if (spec.kind === 'closing') return { file, seconds: SECONDS_FOR_CLOSING, kind: 'closing' };
+    if (spec.kind === 'cover')
+      return { file, seconds: secondsForCover(specs.filter(x => x.kind === 'story').length),
+               kind: 'cover' };
+    return { file, seconds: secondsForStory(spec.story), kind: 'story' };
   });
 }
 
@@ -69,7 +79,12 @@ export function reelTimings(frames, stories) {
    on screen together for it. */
 export function totalSeconds(timings, fade) {
   const sum = timings.reduce((n, t) => n + t.seconds, 0);
-  return round1(sum - Math.max(0, timings.length - 1) * fade);
+  // Exact, and rounded only where it is printed. Rounding here could round
+  // UP past where the crossfade chain actually ends — 14.25 became 14.3 —
+  // so `-t` asked ffmpeg for a twentieth of a second of video that does not
+  // exist. Harmless in the file and wrong in the arithmetic, which is the
+  // kind of wrong that becomes harmful later.
+  return sum - Math.max(0, timings.length - 1) * fade;
 }
 
 /* Refuse before the encode rather than after Instagram does. */

@@ -127,7 +127,21 @@ export function composeSection(stories, opts = {}) {
    layout and backdrop they were already given, so a reel can never show a
    different card from the carousel it belongs to. */
 export function composeReel(stories, opts = {}) {
-  return composeSection(stories, { ...opts, ratio: '9:16' });
+  /* No contents page.
+   *
+   * The carousel opens on a cover listing every headline, which is what
+   * earns the tap: you can see what you are about to swipe through. A reel
+   * is not swiped, it is scrolled past, and the opening seconds are the only
+   * ones most people see. A list of three headlines held for four and a half
+   * seconds is a setup before the payoff, and four and a half seconds is a
+   * long time to show somebody a contents page.
+   *
+   * So the reel opens on the lead story — the actual news, in the editorial
+   * order the section already decided. Dropping the cover also takes the
+   * whole thing from about nineteen seconds to about fourteen, which is
+   * where short video completes best. */
+  return composeSection(stories, { ...opts, ratio: '9:16' })
+    .filter(spec => spec.kind !== 'cover');
 }
 
 /* A spec's parameters as a query string. `item` repeats, which is how the
