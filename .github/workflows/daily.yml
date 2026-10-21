@@ -90,10 +90,14 @@ jobs:
       - name: Build a reel of the lead story
         if: steps.pick.outputs.empty != 'yes'
         continue-on-error: true
-        env:
-          PIPER_MODEL: ~/.cache/piper/en_GB-alba-medium.onnx
         run: |
           set -e
+          # NOT in an env: block. A value there is a literal string, so "~"
+          # stays a tilde and piper looks for a directory called "~". The
+          # first run of this built a silent reel and reported nothing wrong,
+          # because a missing voice is caught and a reel without one is still
+          # a reel.
+          export PIPER_MODEL="$HOME/.cache/piper/en_GB-alba-medium.onnx"
           # apt-get update first, or the install 404s on a runner whose
           # package lists point at versions that have since been superseded.
           if ! ffmpeg -version >/dev/null 2>&1; then
@@ -114,11 +118,11 @@ jobs:
               "$BASE/en_GB-alba-medium.onnx.json" || true
           fi
           # Speak with piper only if the model actually arrived.
-          if [ -s ~/.cache/piper/en_GB-alba-medium.onnx ]; then
-            echo "voice: piper"
+          if [ -s "$PIPER_MODEL" ]; then
+            echo "voice: piper ($(du -h "$PIPER_MODEL" | cut -f1))"
             node automation/reel.mjs --section top --voice piper
           else
-            echo "voice: espeak-ng (the model could not be fetched)"
+            echo "voice: espeak-ng — the model could not be fetched"
             node automation/reel.mjs --section top --voice espeak
           fi
 

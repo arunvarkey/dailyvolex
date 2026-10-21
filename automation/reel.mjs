@@ -146,21 +146,30 @@ async function main() {
     const script = scriptFor(story);
     let voiceFile = null;
     if (!FLAG('silent') && script.text) {
-      const engine = arg('voice', process.env.PIPER_MODEL ? 'piper' : 'espeak');
+      /* The asked-for engine, then the other one. A silent reel is a reel
+         that lost its whole point, so it is worth a second attempt before
+         giving up — the first run of this went out silent because a voice
+         model path had a tilde in it and the failure was caught quietly. */
+      const asked = arg('voice', process.env.PIPER_MODEL ? 'piper' : 'espeak');
       const out = join(work, 'voice.wav');
-      try {
-        const { cmd, args, stdin } = speakArgs(engine, {
-          text: script.text, out, model: process.env.PIPER_MODEL,
-        });
-        await run(cmd, args, { stdin });
-        voiceFile = out;
-        console.log(`  voice: ${engine}, ${seconds(out).toFixed(1)}s`
-          + ` (${script.lines.length} lines, estimated ${spokenSeconds(script.text)}s)`);
-      } catch (e) {
-        // A reel with no voice is still a reel. A run that dies because a
-        // speech engine is missing is a run with no post.
-        console.log(`  no voice: ${e.message}`);
+      for (const engine of [asked, asked === 'piper' ? 'espeak' : 'piper']) {
+        try {
+          const { cmd, args, stdin } = speakArgs(engine, {
+            text: script.text, out, model: process.env.PIPER_MODEL,
+          });
+          await run(cmd, args, { stdin });
+          if (seconds(out) < 1) throw new Error('it produced no audio');
+          voiceFile = out;
+          console.log(`  voice: ${engine}, ${seconds(out).toFixed(1)}s`
+            + ` (${script.lines.length} lines, estimated ${spokenSeconds(script.text)}s)`
+            + (engine === asked ? '' : `  — ${asked} failed, this is the fallback`));
+          break;
+        } catch (e) {
+          console.log(`  ${engine} could not speak: ${e.message}`);
+        }
       }
+      // Said loudly, because a silent reel is not an error and is still wrong.
+      if (!voiceFile) console.log('  WARNING: this reel has no voice on it');
     }
     for (const line of script.lines) console.log(`    "${line}"`);
 
@@ -185,8 +194,16 @@ async function main() {
       }
     }
 
-    // The photograph, when there is no tape. It is already downloaded.
-    const still = !footage && story.photo?.path ? join(ROOT, story.photo.path) : null;
+    /* The photograph, when there is no tape. It is already downloaded — but
+       it lives under work/, which is git-ignored, so it is there only while
+       the render that fetched it is still in the same job. Checked rather
+       than assumed, because a missing file here failed the whole stage when
+       falling back to the card would have produced a reel. */
+    const { existsSync } = await import('node:fs');
+    const photoPath = story.photo?.path ? join(ROOT, story.photo.path) : null;
+    const still = !footage && photoPath && existsSync(photoPath) ? photoPath : null;
+    if (!footage && photoPath && !still)
+      console.log(`  the photograph is not on disk (${story.photo.path}) — showing the card`);
     if (!footage && still) console.log('  showing the photograph, pushed in slowly');
     // And when there is neither: the card itself, pushed in. Not much of a
     // reel, but a day with no reel is worse than a plain one.
