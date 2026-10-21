@@ -1,19 +1,19 @@
 {
   "id": "2026-10-21",
   "kind": "daily",
-  "builtAt": "2026-10-21T18:04:42.246Z",
+  "builtAt": "2026-10-21T18:51:37.612Z",
   "pool": 588,
   "feedErrors": [
     "indian-express: HTTP 403"
   ],
   "refusals": {
     "read": 588,
-    "published": 2,
-    "refused": 238,
-    "consideredNotChosen": 348,
+    "published": 3,
+    "refused": 229,
+    "consideredNotChosen": 356,
     "byRule": {
       "says nothing happened": {
-        "count": 124,
+        "count": 121,
         "samples": [
           {
             "title": "Trump and Zelensky at loggerheads despite new optimism",
@@ -36,21 +36,21 @@
             "source": "Al Jazeera"
           },
           {
-            "title": "Iran’s enriched uranium re-emerges as point of contention in US talks",
-            "source": "Al Jazeera"
-          },
-          {
             "title": "Booking.com under investigation by EU regulators over fake listings and scams",
             "source": "The Guardian"
           },
           {
             "title": "Troubled waters: life during wartime for Iranians on the strait of Hormuz",
             "source": "The Guardian"
+          },
+          {
+            "title": "News from the world of Education: October 21, 2026",
+            "source": "The Hindu"
           }
         ]
       },
       "older than the window": {
-        "count": 95,
+        "count": 91,
         "samples": [
           {
             "title": "Sudan army drones hit mourners and fuel market killing more than 300 people, sources say",
@@ -87,7 +87,7 @@
         ]
       },
       "not news": {
-        "count": 12,
+        "count": 11,
         "samples": [
           {
             "title": "Video. Latest news bulletin | October 21st, 2026 – Evening",
@@ -100,10 +100,6 @@
           {
             "title": "Where India stands in Asian Para Games medal tally after 27-medal haul on Day 3",
             "source": "Times of India"
-          },
-          {
-            "title": "NZ vs IND 2026/27, NZ vs IND 1st T20I Match Preview - Jetlagged India brace for New Zealand challenge",
-            "source": "Cricinfo"
           },
           {
             "title": "When and where to watch IND vs NZ first T20I: Match date, time, venue and live streaming details",
@@ -120,6 +116,10 @@
           {
             "title": "Video. Dussehra: Giant effigies of demons go up in flames in India",
             "source": "Euronews.com"
+          },
+          {
+            "title": "Watch: The SpaceX rocket science inside Tesla’s new Roadster | Business Matters",
+            "source": "The Hindu"
           }
         ]
       },
@@ -127,8 +127,8 @@
         "count": 2,
         "samples": [
           {
-            "title": "India Hindu Festival",
-            "source": "Post Register"
+            "title": "News at a glance",
+            "source": "MillenniumPost"
           },
           {
             "title": "Tech Life",
@@ -137,24 +137,20 @@
         ]
       },
       "comment, not reporting": {
-        "count": 2,
+        "count": 1,
         "samples": [
           {
             "title": "Opinion: Blog: Away From Kolkata, A Delhi Home Keeps The Spirit Of Durga Puja Alive",
             "source": "NDTV"
-          },
-          {
-            "title": "Opinion: Abbott’s family tree is growing. Will its newest branch thrive like AbbVie?",
-            "source": "Crain's Chicago Business"
           }
         ]
       },
-      "unverified or rumour": {
+      "marketing, not reporting": {
         "count": 1,
         "samples": [
           {
-            "title": "Macron says Trump spread rumours about protests",
-            "source": "Al Jazeera"
+            "title": "Meet Joe Popelas, who started an AI ebook business with just $500; two years later, it was valued at more",
+            "source": "The Economic Times"
           }
         ]
       },
@@ -184,96 +180,198 @@
       "label": "TOP STORIES",
       "stories": [
         {
-          "headline": "RUSSIA SAYS IT IS READY TO RESUME TALKS WITH UKRAINE AND US TO END WAR",
-          "display": "Russia says it is ready to resume talks with Ukraine and US to end war",
-          "original": "Russia says it is ready to resume talks with Ukraine and US to end war",
+          "headline": "QATAR, TURKIYE, PAKISTAN AND INDONESIA SIGN ‘BADR’ DEFENCE PACT",
+          "display": "Qatar, Turkiye, Pakistan and Indonesia sign ‘Badr’ defence pact",
+          "original": "Qatar, Turkiye, Pakistan and Indonesia sign ‘Badr’ defence pact",
           "truncated": false,
           "usable": true,
           "category": "WORLD NEWS",
-          "source": "BBC News · Hindustan Times",
+          "source": "Al Jazeera · Times of India · India Today",
           "sourceNames": [
-            "BBC News",
-            "Hindustan Times"
+            "Al Jazeera",
+            "Times of India",
+            "India Today"
           ],
-          "corroboration": 2,
+          "corroboration": 3,
           "republishers": [],
           "owners": [
-            "BBC (licence fee)",
-            "HT Media / KK Birla family"
+            "Government of Qatar",
+            "Bennett, Coleman & Co",
+            "Living Media"
           ],
-          "ownerCount": 2,
+          "ownerCount": 3,
           "countries": [
-            "GB",
+            "QA",
             "IN"
           ],
           "fundings": [
             "state",
-            "conglomerate"
+            "conglomerate",
+            "commercial"
           ],
           "unknownOwners": 0,
           "concentration": [],
-          "link": "https://www.bbc.co.uk/news/articles/cq3djn5nxx12o?at_medium=RSS&at_campaign=rss",
-          "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/808c/live/f0408560-cd64-11f1-bc2e-018d645d8d21.jpg",
-          "published": "2026-10-21T17:42:34.000Z",
+          "link": "https://www.aljazeera.com/video/newsfeed/2026/10/21/qatar-turkiye-pakistan-and-indonesia-sign-badr-defence-pact?traffic_source=rss",
+          "summary": "Al Jazeera’s Osama Bin Javaid reports on the ‘Badr’ Memorandum of Understanding.",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.aljazeera.com/video/newsfeed/2026/10/21/qatar-turkiye-pakistan-and-indonesia-sign-badr-defence-pact?traffic_source=rss",
+              "source": "Al Jazeera",
+              "feedImage": null
+            },
+            {
+              "link": "https://www.aljazeera.com/news/2026/10/21/how-qatar-turkiye-pakistan-and-indonesia-are-deepening-defence-ties?traffic_source=rss",
+              "source": "Al Jazeera",
+              "feedImage": null
+            },
+            {
+              "link": "https://timesofindia.indiatimes.com/world/rest-of-world/turkey-pakistan-qatar-and-indonesia-sign-defence-pact-to-boost-joint-arms-production/articleshow/135089701.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135090037,imgsize-81444.cms"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMikgJBVV95cUxOZjU1d0xxTm04TzcwOHNKQ1FUU2dEUHVybV9rYlA2aUhtZFVZMzlNUTBYQ1NKbGEwQmxzWFBQTG9ibjlDcWRlMm9XWUNZY1JLOU5pUGp6dldlLTFITlNpam1wYUtkZGxQUGl0X2t5NFhVMmwzdVc0bzNIYURpQTVHNFpSbUZWOVAwcktOWF8zdzZ5LVpiNDBtSTlUUUE4VVJtNGdsZW1oMlBpRTRMMmcxN19PbjVtQnhfc241OERKVzQ4XzhzN0F4UGNKS012dVlLdUVYMlRCNmpHRUZwM0FnaWhBVDR4cG1WTXVrV3EzNnlXMlI3Sm5yNjdyMmFwQmVoYkpMc1NqZ2NPXzJ",
+              "source": "India Today",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-21T18:35:42.000Z",
           "topic": "world",
           "section": "world",
           "tier": "notable",
-          "score": 8.85,
-          "photoError": "every candidate failed to download (only 5 KB — furniture, not a photograph)",
-          "photo": null,
-          "layout": "breaking",
-          "stat": null,
-          "backdrop": "editorial",
-          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Russia says it is ready to resume talks with Ukraine and US to end war”. Reported by BBC News · Hindustan Times — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
-        },
-        {
-          "headline": "LONDON POLICE TEST 'LIVE FACIAL RECOGNITION' TECHNOLOGY AT CHELSEA AND TOTTENHAM DERBY",
-          "display": "London police test 'live facial recognition' technology at Chelsea and Tottenham derby",
-          "original": "London police test 'live facial recognition' technology at Chelsea and Tottenham derby",
-          "truncated": false,
-          "usable": true,
-          "category": "TECHNOLOGY",
-          "source": "Reuters · Goal.com",
-          "sourceNames": [
-            "Reuters",
-            "Goal.com"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "Thomson Reuters (Trust Principles)"
-          ],
-          "ownerCount": 1,
-          "countries": [
-            "GB"
-          ],
-          "fundings": [
-            "trust"
-          ],
-          "unknownOwners": 1,
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOT0QwcU84clFhVTdjNW1VTmJqY1A4X05oaFVOVG93T2pTSHAwMDVfS2VqcnlyMUFiMXVDM3FqcGRJa1lxN2lucWVmYl9HQjRERm5LQWZEOW9sRS1kajVaYm9Bb1NmbU93N281cTdOdmdIUTNYdEdudC02S3RPYUFYcWhPbUdVaUdaaHhJZFduWFZIYnhEeTBUMHVvR0lUTHRrazYyWGNqYzV6VzNQM2J4STVlZm1hUi1pMDJMYTZkbVgxMUZvVWRHNWRPSFVzMlRwSnc?oc=5",
-          "feedImage": null,
-          "published": "2026-10-21T15:04:15.000Z",
-          "topic": "tech",
-          "section": "tech",
-          "tier": "notable",
-          "score": 7.5,
-          "articlePhotoError": "the article declares no picture",
+          "score": 9.9,
           "photo": {
-            "path": "work/photos/top/photo-top-3.jpg",
-            "credit": "File photo: Harry Pot for Anefo / CC0",
-            "license": "cc0",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Tottenham_Hotspurs_tegen_Atletico_Madrid_5-1_Nr_14_en_15_Elftal_Tottenham_Hots,_Bestanddeelnr_915-1586.jpg",
-            "query": "Tottenham",
-            "relevance": 0.13,
-            "title": "Tottenham Hotspurs tegen Atletico Madrid 5 1 Nr 14 en 15 Elftal Tottenham Hots, Bestanddeelnr 915 1586",
-            "from": "library"
+            "path": "work/photos/top/photo-top-2.jpg",
+            "credit": "Photo: Times of India",
+            "license": "publisher",
+            "pageUrl": "https://timesofindia.indiatimes.com/world/rest-of-world/turkey-pakistan-qatar-and-indonesia-sign-defence-pact-to-boost-joint-arms-production/articleshow/135089701.cms",
+            "query": "(the feed)",
+            "from": "article"
           },
           "layout": "breaking",
           "stat": null,
           "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed TECHNOLOGY. It reads: “London police test 'live facial recognition' technology at Chelsea and Tottenham derby”. Reported by Reuters · Goal.com — 2 independent newsrooms. Behind the text is a library photograph captioned “Tottenham Hotspurs tegen Atletico Madrid 5 1 Nr 14 en 15 Elftal…”, credited to Harry Pot for Anefo / CC0. It is not a photograph of this event."
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Qatar, Turkiye, Pakistan and Indonesia sign ‘Badr’ defence pact”. Reported by Al Jazeera · Times of India · India Today — 3 independent newsrooms. Behind the text is a library photograph, Photo: Times of India. It is not a photograph of this event."
+        },
+        {
+          "headline": "THOUSANDS MARCH FOR SCHOOL FUNDING IN GREECE",
+          "display": "Thousands march for school funding in Greece",
+          "original": "Thousands march for school funding in Greece",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "Al Jazeera · The Guardian",
+          "sourceNames": [
+            "Al Jazeera",
+            "The Guardian"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Government of Qatar",
+            "Scott Trust"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "QA",
+            "GB"
+          ],
+          "fundings": [
+            "state",
+            "trust"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.aljazeera.com/news/2026/10/21/thousands-march-for-school-funding-in-greece?traffic_source=rss",
+          "summary": "Teachers joined nationwide student protests amid growing youth-led demonstrations in Europe.",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.aljazeera.com/news/2026/10/21/thousands-march-for-school-funding-in-greece?traffic_source=rss",
+              "source": "Al Jazeera",
+              "feedImage": null
+            },
+            {
+              "link": "https://www.theguardian.com/world/live/2026/oct/21/us-russia-ukraine-putin-witkoff-zelenskyy-france-italy-protests-europe-latest-news-updates",
+              "source": "The Guardian",
+              "feedImage": "https://i.guim.co.uk/img/media/d748117c85bca5a45c4bd056e5fd3f2f780c280b/405_0_2953_2362/master/2953.jpg?width=140&quality=85&auto=format&fit=max&s=b4950ebe667b9b30c98517698e167fe9"
+            }
+          ],
+          "published": "2026-10-21T18:45:46.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.4,
+          "photoError": "every candidate failed to download (only 6 KB — furniture, not a photograph; HTTP 401)",
+          "photo": null,
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": "editorial",
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Thousands march for school funding in Greece”. Reported by Al Jazeera · The Guardian — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
+        },
+        {
+          "headline": "META ORDERED TO PAY $25 BILLION IN FINE LINKED TO 8-YEAR-OLD DATA PRIVACY SCANDAL",
+          "display": "Meta ordered to pay $25 billion in fine linked to 8-year-old data privacy scandal",
+          "original": "Meta ordered to pay $25 billion in fine linked to 8-year-old data privacy scandal",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "NDTV · Times of India",
+          "sourceNames": [
+            "NDTV",
+            "Times of India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Adani Group",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://timesofindia.indiatimes.com/technology/tech-news/judge-orders-meta-to-pay-25-billion-in-trial-related-to-8-year-old-data-privacy-scandal/articleshow/135098967.cms",
+          "summary": "A New Mexico state court has imposed a $25 billion penalty on Meta following a legal battle. Jurors found Meta liable for deceiving residents about data privacy measures and harmful content management. The court reduced the initial $219.5 billion request, affirming the penalty's justification due to numerous violations. Meta's internal inquiry was deemed ineffective, failing to meet commitments ma",
+          "feedImage": "https://static.toiimg.com/photo/msid-135098976,imgsize-23760.cms",
+          "sources": [
+            {
+              "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOaXNMUjNhNVhOQkxnTzRmemFsS1BHZWEtQm9PbW9EVkdULU1mb05FTGxaWWd6X1BFMjQ5cWNIb1V2OUl0Z2d3NV9RZEdlQ0FVUWVjWUtBZnlrSW1UY2pISF9TVERPajlmZFpLNzczTkp3SkN1YnJsTXZiNEUwbVJwMnZla0x5dlVQNThwNS1YNHJPNjVELWI4WXZtVXhxNTk1RzFLVm91VdIBrwFBVV95cUxNdEE1SzZ4enpYV0tDMWhMbkNUTjhLb29PQnJNRTMtNldwdnp5aGlEOXJ3LUpuRlNNN1JzZnl6WTJOMFpJRzBKZURvWVBqTG82RU1pX2tqck1BN3ZXMXp2RlQ",
+              "source": "NDTV",
+              "feedImage": null
+            },
+            {
+              "link": "https://timesofindia.indiatimes.com/technology/tech-news/judge-orders-meta-to-pay-25-billion-in-trial-related-to-8-year-old-data-privacy-scandal/articleshow/135098967.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135098976,imgsize-23760.cms"
+            }
+          ],
+          "published": "2026-10-21T18:27:53.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 7.95,
+          "photo": {
+            "path": "work/photos/top/photo-top-4.jpg",
+            "credit": "Photo: Times of India",
+            "license": "publisher",
+            "pageUrl": "https://timesofindia.indiatimes.com/technology/tech-news/judge-orders-meta-to-pay-25-billion-in-trial-related-to-8-year-old-data-privacy-scandal/articleshow/135098967.cms",
+            "query": "(the feed)",
+            "from": "article"
+          },
+          "layout": "quote",
+          "stat": {
+            "stat": "$25 billion",
+            "label": ""
+          },
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. The figure $25 billion is shown very large, above the headline. It reads: “Meta ordered to pay $25 billion in fine linked to 8-year-old data privacy scandal”. Reported by NDTV · Times of India — 2 independent newsrooms. Behind the text is a library photograph, Photo: Times of India. It is not a photograph of this event."
         }
       ],
       "posts": [
@@ -284,7 +382,8 @@
             "data/editions/2026-10-21/top/slide-1.jpg",
             "data/editions/2026-10-21/top/slide-2.jpg",
             "data/editions/2026-10-21/top/slide-3.jpg",
-            "data/editions/2026-10-21/top/slide-4.jpg"
+            "data/editions/2026-10-21/top/slide-4.jpg",
+            "data/editions/2026-10-21/top/slide-5.jpg"
           ],
           "cover": "data/editions/2026-10-21/top/slide-1.jpg",
           "alts": "data/editions/2026-10-21/top/alt.json",
@@ -301,9 +400,12 @@
           "cover": "data/editions/2026-10-21/top/slide-1.jpg",
           "caption": "data/editions/2026-10-21/caption-top.txt",
           "alts": "",
-          "noAlts": "Instagram does not accept alt text on a reel; the caption carries every headline.",
-          "seconds": 11.4,
-          "bytes": 2042382
+          "noAlts": "Instagram does not accept alt text on a reel; the caption carries the headline.",
+          "seconds": 13.8,
+          "bytes": 1070106,
+          "story": "Qatar, Turkiye, Pakistan and Indonesia sign ‘Badr’ defence pact",
+          "footage": "the photograph, pushed in",
+          "spoken": null
         }
       ]
     }
