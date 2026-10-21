@@ -21,7 +21,8 @@ import { record } from './lib/ledger.mjs';
 import { tierOf, isCryptoVertical, TIER_POINTS } from './lib/importance.mjs';
 import { similarity, cluster, selectStories, selectSections, isRepeat, isTopical, isAdvice,
          isSpeculation, isJunk, isPressRelease, isUnverified, isOpinion, isTooThin,
-         rankClusters, rankEligible, rejectionReason } from './lib/select.mjs';
+         rankClusters, rankEligible, rejectionReason, cluster as clusterBy,
+         attributionOf } from './lib/select.mjs';
 import { sectionOf, sectionLabel, SECTIONS } from './lib/sections.mjs';
 import { makeHeadline, tidy, sourceLine, categoryFor } from './lib/headline.mjs';
 import { canonicalSource, isRepublisher, independentSources,
@@ -1908,6 +1909,128 @@ ok('no approval issue is ever unlabelled',
 
 ok('the issue says a bare approval posts top only',
   /bare `\/approve` posts Top stories only/i.test(issue.body));
+
+
+
+/* ── What the first live run put on the account ───────────────────
+   Every case below is a real headline from the run of 2026-10-21, which was
+   the first time any of this met real feeds rather than saved fixtures. Five
+   hundred and eighty-five items went in and twenty-one cards came out; these
+   are the ones that should not have. */
+
+ok('a broadcaster’s video index is not a story',
+  isJunk('Video. Latest news bulletin | October 21st, 2026 – Morning'),
+  'the rule wanted a colon after "Video" and this one had a full stop');
+ok('a bulletin listing is refused however it is punctuated',
+  isJunk('Watch. News bulletin | Evening') && isJunk('Video: Morning news bulletin'));
+
+ok('a company writing up its own event is a press release',
+  isPressRelease('On October 20, the 2026 Chery Global Innovation Conference was held in Wuhu'),
+  'it was ranked significant and put in TECHNOLOGY');
+ok('a headline does not open by setting a date',
+  isPressRelease('On March 3, the company reported record revenue'));
+ok('past passive is the voice of a press release',
+  isPressRelease('The flagship store was successfully launched in Mumbai'));
+ok('a developer conference is a marketing occasion',
+  isPressRelease('Acme Developer Conference draws 5,000 attendees'));
+ok('a real summit is still news',
+  !isJunk('COP31 climate summit opens in Belem')
+  && !isPressRelease('G20 summit agrees debt relief framework'),
+  'the rule must not eat the stories this channel exists to carry');
+
+ok('reported intention is not a reported event',
+  isSpeculation('Elon Musk considering Tesla-SpaceX merger'),
+  'it led the post, and nothing had happened');
+ok('a government weighing a policy is still news',
+  !isSpeculation('Government considering new data protection rules'),
+  'the rule is narrow to deal words on purpose');
+ok('an essay’s thesis is not a story',
+  isSpeculation('AI-powered personal assistants could reshape the digital economy'));
+
+ok('a headline that asks rather than answers is a feature',
+  tierOf('Is Ebola under control in Kenya after nine cases confirmed?') === 'minor');
+ok('every interrogative is caught, not only the wh- words',
+  ['Can India meet its climate target?', 'Should the RBI cut again?',
+   'Has the rupee stopped falling?', 'Does the deal help farmers?']
+    .every(t => tierOf(t) === 'minor'));
+ok('a statement that happens to end in a question mark is not demoted',
+  tierOf('RBI cuts repo rate by 25 basis points') !== 'minor');
+
+/* Corroboration — the one number this channel is built on. */
+ok('an aggregator is not a newsroom, whatever the list spells it',
+  isRepublisher('Google News') && isRepublisher('Bing News'),
+  'canonicalSource strips a trailing " news", so the list never matched');
+ok('a company blog reporting its own company is not a second newsroom',
+  isRepublisher('blog.google') && isRepublisher('Microsoft Newsroom'),
+  'blog.google was corroborating a story about a Google report');
+ok('a press release wire is not a newsroom',
+  isRepublisher('PR Newswire') && isRepublisher('GlobeNewswire'));
+ok('a real newsroom is still a newsroom',
+  !isRepublisher('Reuters') && !isRepublisher('BBC News') && !isRepublisher('The Hindu'));
+ok('the aggregator is named in the attribution but not in the count', (() => {
+  const r = independentSources(['Reuters', 'Google News', 'Global Banking & Finance Review']);
+  return r.count === 2 && r.republishers.join() === 'Google News';
+})(), 'it did carry the story; it did not stand behind it');
+ok('a corporate blog is excluded through the predicate, not the raw list', (() => {
+  const r = independentSources(['blog.google', 'Business Standard']);
+  return r.count === 1 && r.republishers.join() === 'blog.google';
+})(), 'the set cannot know about a blog it has never been told about');
+
+/* Two cards, one briefing. */
+ok('a quoted speaker is read off the end of a headline',
+  attributionOf('U.S.-India perfectly aligned on core issues: Marco Rubio') === 'marco rubio'
+  && attributionOf('The deal is done, says Jane Smith') === 'jane smith');
+ok('a desk or a place after a colon is not a speaker',
+  attributionOf('Markets: Sensex') === null
+  && attributionOf('Earthquake kills at least 40 in northern Afghanistan') === null);
+ok('two headlines quoting the same person are one story', (() => {
+  const c = clusterBy([
+    { title: "Team Trump's Tariffs, Visa Curbs Not Targeted At India: Marco Rubio" },
+    { title: 'U.S.-India perfectly aligned on core issues: Marco Rubio' },
+  ]);
+  return c.length === 1 && c[0].items.length === 2;
+})(), 'they went out as two separate cards in the same section');
+ok('different speakers are not merged just because both are quoted', (() => {
+  const c = clusterBy([
+    { title: 'Tariffs not targeted at India: Marco Rubio' },
+    { title: 'Tariffs will be reviewed: Piyush Goyal' },
+  ]);
+  return c.length === 2;
+})());
+ok('unrelated stories are still unrelated', (() => {
+  const c = clusterBy([
+    { title: 'Earthquake kills at least 40 in northern Afghanistan' },
+    { title: 'Sensex plunges 876 points as banks drag the index lower' },
+  ]);
+  return c.length === 2;
+})());
+
+/* The label on a stat card, which a reader sees at the size of the frame. */
+ok('a stat label is not cut mid-phrase', (() => {
+  const s = statFor('SBI reports cyberattack exposing 3,897 customer records on dark web');
+  return s.stat === '3,897' && s.label === 'customer records';
+})(), 'the card went out reading "customer records on dark"');
+ok('a stat label stops before a conjunction', (() => {
+  const s = statFor('Paddy Power cuts 1,400 jobs and blames betting tax rises');
+  return s.label === 'jobs';
+})());
+ok('a stat label stops before a preposition', (() => {
+  const s = statFor('L&T Technology Services zooms on reporting 67% jump in Q2 consolidated net profit');
+  return s.label === 'jump';
+})());
+ok('a label that continues its own phrase is kept whole',
+  statFor('Asian Para Games: India wins 24 medals including 5 golds')?.label
+  === 'medals including 5 golds',
+  '"including" continues the phrase rather than starting a new one');
+ok('no stat label ends on a word that cannot end one', (() => {
+  const BAD = /\b(on|in|at|for|to|from|with|by|and|or|as|the|a|an)$/i;
+  return ['SBI reports cyberattack exposing 3,897 customer records on dark web',
+          'Paddy Power cuts 1,400 jobs and blames betting tax rises',
+          'Sensex plunges 876 points as banks drag the index lower',
+          'Anthropic posts $80bn loss in first half of 2026: WSJ',
+          'RBI cuts repo rate by 25 basis points']
+    .every(h => !BAD.test(statFor(h)?.label || ''));
+})());
 
 
 console.log(`\n${passed} passed, ${failed} failed`);

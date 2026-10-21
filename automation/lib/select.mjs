@@ -86,6 +86,14 @@ const SPECULATION = [
   /\bhow (high|low) (can|will|could)\b/i,
   /\bwhy (is|are|did|has) \w+ (stock|share|price)?\s*(gaining|falling|rising|dropping|surging|crashing)\b/i,
   /\bby (the end of )?20\d\d\?/i,
+  // Reported intention is not a reported event. "Elon Musk considering
+  // Tesla-SpaceX merger" led the post; nothing had happened. Kept
+  // narrow to the deal words, because a government considering a policy
+  // is ordinary news and this channel should carry it.
+  /\b(considering|mulling|weighing|exploring|eyeing)\b[^.]*\b(merger|acquisition|takeover|buyout|bid for|stake in|ipo|listing|sale of)\b/i,
+  // "AI-powered personal assistants could reshape the digital economy"
+  // is an essay's thesis, not something that happened.
+  /\b(could|might|may|set to|poised to)\s+(reshape|transform|disrupt|upend|revolutionise|revolutionize|change everything)\b/i,
   // Not "outlook for 2027": an institution revising its outlook is news, and
   // "IMF cuts global growth outlook for 2027" is exactly the kind of story
   // this channel exists to carry.
@@ -115,7 +123,12 @@ const JUNK = [
   // sharing, France reels and Alberta's vote" went out in a WORLD section —
   // three unrelated subjects and a running order, which is a programme, not
   // something that happened.
-  /^\s*(podcast|listen|watch|video|live blog|liveblog|in charts?|explained)\s*[:|-]/i,
+  // The separator has to include a full stop. "Video. Latest news
+  // bulletin | October 21st, 2026 – Morning" went out as a WORLD story:
+  // it is a line in a broadcaster's video index, and the rule missed it
+  // only because the word was followed by "." rather than ":".
+  /^\s*(podcast|listen|watch|video|live blog|liveblog|in charts?|explained)\s*[:|.-]/i,
+  /\bnews bulletin\b/i,
   /\b(episode \d+|full episode|catch up on)\b/i,
   // A fixture listing is not a story. "India Women vs Zimbabwe Women 2026 -
   // 3rd T20I" was published as news; it is a line in a schedule.
@@ -150,6 +163,16 @@ const PRESS_RELEASE = [
   /\bannounces the (launch|availability|release|general availability)\b/i,
   /\b(unveils|launches|debuts|rolls out) (its|their|the) new\b/i,
   /\bpress release\b/i,
+  // A headline does not open by setting a date — a company's own
+  // write-up of its own event does. "On October 20, the 2026 Chery
+  // Global Innovation Conference was held in Wuhu" was ranked
+  // significant and put in TECHNOLOGY.
+  /^\s*on\s+(january|february|march|april|may|june|july|august|september|october|november|december)\s+\d{1,2}\b/i,
+  // Past passive is the voice of a press release, not of a headline.
+  /\bwas\s+(successfully\s+)?(held|hosted|showcased|unveiled|launched)\b/i,
+  // A company's own event. A climate or security summit is news; an
+  // innovation, developer or user conference is a marketing occasion.
+  /\b(innovation|developer|user|partner|investor)\s+(conference|summit|day|forum)\b/i,
 ];
 
 export function isPressRelease(title) {
@@ -241,13 +264,36 @@ export function similarity(a, b) {
 }                                                // a short headline inside a
                                                  // long one still counts.
 
-/* Group items that are plainly the same story. */
-export function cluster(items, threshold = 0.5) {
+/* Who a headline is quoting, when it says so in the usual places: a trailing
+   ": Marco Rubio", or "…, says Marco Rubio". Null when nobody is named. */
+export function attributionOf(title) {
+  const t = String(title || '').trim().replace(/\s+/g, ' ');
+  const m = t.match(/:\s*([A-Z][\w.'-]*(?:\s+[A-Z][\w.'-]*){0,3})\s*$/)
+         || t.match(/\bsays?\s+([A-Z][\w.'-]*(?:\s+[A-Z][\w.'-]*){0,3})\s*$/);
+  if (!m) return null;
+  const who = m[1].toLowerCase().replace(/[^a-z ]/g, '').trim();
+  // A single short word after a colon is usually a place or a desk, not a
+  // person: "Markets: Sensex" names nobody.
+  return who.split(' ').length >= 2 ? who : null;
+}
+
+/* Group items that are plainly the same story.
+ *
+ * Two headlines quoting the same person are usually one briefing reported
+ * twice. "Team Trump's Tariffs, Visa Curbs Not Targeted At India: Marco
+ * Rubio" and "U.S.-India perfectly aligned on core issues: Marco Rubio" went
+ * out as two separate cards in the same section — they share almost no words,
+ * so the overlap score could never have merged them, but they are one press
+ * conference. When the speaker matches, far less wording has to. */
+export function cluster(items, threshold = 0.5, { quotedThreshold = 0.2 } = {}) {
   const clusters = [];
   for (const item of items) {
     let placed = false;
+    const who = attributionOf(item.title);
     for (const c of clusters) {
-      if (similarity(item.title, c.items[0].title) >= threshold) {
+      const lead = c.items[0].title;
+      const same = who && who === attributionOf(lead);
+      if (similarity(item.title, lead) >= (same ? quotedThreshold : threshold)) {
         c.items.push(item);
         placed = true;
         break;

@@ -91,7 +91,10 @@ const MINOR = [
   /\bsays\s+[A-Z][\w.'-]+(\s+[A-Z][\w.'-]+)?\s*$/,
   /\b(ceo|chairman|founder|managing director|chief executive)\b[^.]*\bsays\b/i,
   // Explainer features. A question is not a report of something happening.
-  /^\s*(what|why|how|who|when|where)\b[^.]*\?/i,
+  // The interrogatives are not only the wh- words: "Is Ebola under control in
+  // Kenya after nine cases confirmed?" was published as a WORLD story, and a
+  // headline that asks rather than answers is a feature, not a report.
+  /^\s*(what|why|how|who|when|where|which|is|are|was|were|do|does|did|can|could|should|will|would|has|have|had)\b[^.]*\?/i,
   /^\s*(what|why|how)\s+(is|are|was|were|do|does|did|to)\b/i,
   // One company's own news
   /\b(launches?|unveils?|introduc\w+|announces?|releases?|rolls? out|debuts?)\b[^.]*\b(new |its |the )?(product|app|model|version|feature|service|phone|chip|card|platform|tool)\b/i,

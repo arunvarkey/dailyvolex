@@ -108,16 +108,19 @@ export function ownerOf(name) {
   return OWNERS[canonicalSource(name)] || UNKNOWN_OWNER;
 }
 
-/* Sites that carry other outlets' copy rather than reporting. A story
-   appearing on all of them is one story that syndicated well, not a story
-   several newsrooms stood behind. They are still named in the attribution —
-   they did carry it — but they do not count as corroboration. */
-const REPUBLISHERS = new Set([
+/* Sites that carry other outlets' copy rather than reporting, and wires that
+   print whatever was paid for. A story appearing on all of them is one story
+   that syndicated well, not a story several newsrooms stood behind. They are
+   still named in the attribution — they did carry it — but they do not count
+   as corroboration. */
+const NOT_NEWSROOMS = [
   'yahoo finance', 'yahoo', 'msn', 'google news', 'news break', 'newsbreak',
   'sarkaritel', 'univest', 'investing', 'tradingview', 'stocktwits',
   'daijiworld', 'devdiscourse', 'latestly', 'zee business', 'bing news',
   'marketscreener', 'simply wall st', 'insider monkey', 'aol',
-]);
+  'prnewswire', 'pr newswire', 'businesswire', 'business wire',
+  'globenewswire', 'globe newswire', 'accesswire', 'einpresswire', 'prweb',
+];
 
 /* Strip a masthead down to something comparable: "The Times of India",
    "Times of India" and "timesofindia.com" all have to land on one key. */
@@ -133,8 +136,22 @@ export function canonicalSource(name) {
   return ALIASES[s] || s;
 }
 
+/* Held in canonical form, which is the whole point: canonicalSource strips a
+   trailing " news", so "Google News" became "google" and never matched the
+   entry spelled "google news". Google News was being counted as an
+   independent newsroom standing behind stories — silently inflating the one
+   number this channel is built on. Canonicalising the list fixes it for
+   "Bing News" too, and for whatever is added later in whichever spelling.
+   Built after canonicalSource is declared, because it calls it. */
+const REPUBLISHERS = new Set(NOT_NEWSROOMS.map(canonicalSource));
+
 export function isRepublisher(name) {
-  return REPUBLISHERS.has(canonicalSource(name));
+  const key = canonicalSource(name);
+  if (REPUBLISHERS.has(key)) return true;
+  // A company's blog reporting on that company is not a second newsroom
+  // agreeing — it is the subject speaking. blog.google was corroborating a
+  // story about a Google report.
+  return /^blog\b/.test(key) || /\bnewsroom$/.test(key);
 }
 
 /* The corroboration figure: how many independent newsrooms carried this.
@@ -148,7 +165,10 @@ export function independentSources(names = []) {
     if (!name) continue;
     const key = canonicalSource(name);
     if (!key) continue;
-    if (REPUBLISHERS.has(key)) { if (!carried.includes(name)) carried.push(name); continue; }
+    // Through isRepublisher, not the set directly: the set cannot know about
+    // a corporate blog or a company newsroom, and asking the set was how
+    // blog.google came to corroborate a story about a Google report.
+    if (isRepublisher(name)) { if (!carried.includes(name)) carried.push(name); continue; }
     if (!reporting.has(key)) reporting.set(key, name);
   }
 

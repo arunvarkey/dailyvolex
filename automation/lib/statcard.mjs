@@ -70,10 +70,22 @@ export function statFor(headline) {
   // the headline below already says it.
   let label = after.split(/[,;:–—]|\s+-\s+/)[0].trim();
   if (WEAK_START.test(label)) label = '';
-  // Stop the label before it runs into the next clause: "876 points as banks
-  // drag the" is a sentence cut in half, not a label.
-  label = label.split(/\s+(?:as|after|while|when|amid|following|despite|since|because)\s+/i)[0];
-  label = label.split(/\s+/).slice(0, 4).join(' ').replace(/[.!?]+$/, '');
+
+  /* Then cut it at the first word that starts a new phrase, BEFORE the length
+     cap rather than after it. A card went out reading
+         3,897
+         customer records on dark
+     because the cap took four words out of "customer records on dark web" and
+     left a preposition dangling with its object chopped off. Cutting at the
+     preposition instead gives "customer records", which is what the figure
+     counts. Same fix for "1,400 jobs and blames betting", which becomes
+     "jobs". "of" and "including" are deliberately absent: they continue the
+     phrase rather than starting a new one. */
+  const words = label.split(/\s+/).filter(Boolean);
+  const BREAK = /^(on|in|at|for|to|from|with|by|and|or|but|as|after|before|while|when|amid|following|despite|since|because|that|which|who|over|into|under|across|against|about|than)$/i;
+  const cut = words.findIndex(w => BREAK.test(w));
+  label = (cut >= 0 ? words.slice(0, cut) : words)
+    .slice(0, 4).join(' ').replace(/[.!?]+$/, '');
 
   return { stat, label };
 }
