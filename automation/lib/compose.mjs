@@ -46,7 +46,11 @@ export function backdropOf(story, opts = {}) {
  * would be inventing, and this channel only ever removes.
  */
 export function composeStory(story, opts = {}) {
-  const stat = prefersStat(story) ? statFor(story.display || story.headline) : null;
+  // `noStat` is for callers that show the figure somewhere else — the post
+  // that gives it a card of its own, and the reel, which has one card for the
+  // whole duration and wants the headline on it.
+  const stat = !opts.noStat && prefersStat(story)
+    ? statFor(story.display || story.headline) : null;
   story.layout = stat ? 'quote' : (opts.layout || 'breaking');
   story.stat = stat;
   // A photograph covers the whole frame, so the backdrop behind it never
@@ -154,4 +158,86 @@ export function toQuery(params) {
     else q.set(k, String(v));
   }
   return q;
+}
+
+/* ── One story, one post ──────────────────────────────────────────
+ *
+ * A section carousel put six unrelated stories behind one cover: you tapped
+ * for the first and swiped past five you had not chosen. A post about one
+ * thing can be judged on its own, shared on its own, and corrected on its
+ * own.
+ *
+ * One card is the normal case — a headline over a photograph is a complete
+ * post. More only when the story has more IN IT: a figure worth showing at
+ * the size of the frame, and then the provenance that figure should be read
+ * with. Never two, because a second card with no third reads as a post that
+ * was cut short.
+ */
+
+/* The outlets, the ownership, and what this channel promises — for this
+   story rather than in general. It is the same claim the closing card made
+   to a whole carousel, made to the story it is actually about. */
+export function composeProvenance(story, opts = {}) {
+  const names = String(story.source || '').split('·').map(x => x.trim()).filter(Boolean);
+  const n = story.corroboration || names.length || 1;
+
+  const items = [
+    names.length ? `Carried by ${names.join(', ')}` : 'Carried by the outlets named on the card',
+    `${n} independent newsroom${n === 1 ? '' : 's'}`
+      + (story.ownerCount ? `, ${story.ownerCount} owner${story.ownerCount === 1 ? '' : 's'} recorded` : ''),
+  ];
+  // Only what is true of THIS story. A promise about pictures on a card with
+  // no picture is a promise about nothing.
+  if (story.photo?.credit) items.push(story.photo.credit);
+  if (story.concentration?.length) items.push(story.concentration[0]);
+  items.push('Corrections posted in the open, never deleted');
+  items.push(`Follow ${opts.handle || '@dailyvolex'}`);
+
+  return {
+    kind: 'provenance',
+    params: {
+      auto: '1', layout: 'stories', theme: opts.theme, ratio: opts.ratio,
+      label: 'WHO REPORTED THIS', date: opts.date, ticker: opts.ticker, bg: 'editorial',
+      item: items.slice(0, 6),
+    },
+    alt: `A card from ${opts.handle || '@dailyvolex'} listing who reported the story`
+       + ` — ${items.join('; ')}.`,
+  };
+}
+
+/* Is there a figure in this headline worth a card of its own? */
+export function figureIn(story) {
+  return prefersStat(story) ? statFor(story.display || story.headline) : null;
+}
+
+/* The figure, at the size of the frame, with the headline under it. */
+export function composeFigure(story, opts = {}) {
+  const stat = figureIn(story);
+  if (!stat) return null;
+  return {
+    kind: 'figure',
+    params: {
+      auto: '1', layout: 'quote', theme: opts.theme, ratio: opts.ratio,
+      ticker: opts.ticker, bg: story.backdrop || opts.bg || 'editorial',
+      source: story.source,
+      stat: stat.stat, statlabel: stat.label,
+      context: story.display || story.headline,
+    },
+    alt: `A card from ${opts.handle || '@dailyvolex'} showing the figure ${stat.stat}`
+       + `${stat.label ? ' ' + stat.label : ''} very large, above the headline`
+       + ` “${story.display || story.headline}”.`,
+  };
+}
+
+/* The whole post for one story: one card, or three. */
+export function composeStoryPost(story, opts = {}) {
+  // Decided before the lead is composed, because the lead has to know. The
+  // first version let composeStory take the stat layout AND gave the figure
+  // its own card after it, so cards one and two came out pixel-identical and
+  // the post read as a glitch. The lead is the headline over the picture; the
+  // figure follows it, at the size of the frame.
+  const hasFigure = Boolean(figureIn(story));
+  const lead = composeStory(story, { ...opts, noStat: hasFigure });
+  if (!hasFigure) return [lead];
+  return [lead, composeFigure(story, opts), composeProvenance(story, opts)];
 }

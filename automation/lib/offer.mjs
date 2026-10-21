@@ -102,58 +102,64 @@ function dailyIssue(edition, { raw, read }) {
   const sections = edition.sections || [];
   const reels = allPosts(edition).filter(p => p.kind === 'reel');
 
-  const blocks = sections.map(section => {
-    const carousel = (section.posts || []).find(p => p.kind === 'carousel');
-    const reel = (section.posts || []).find(p => p.kind === 'reel');
-    const slides = carousel?.files || [];
+  /* A block per POST, not per section. A section is no longer one post: it
+     is a post per story, and the owner approves posts. */
+  const blocks = sections.flatMap(section =>
+    (section.posts || []).filter(p => p.kind === 'carousel').map(post => {
+      const reel = (section.posts || []).find(
+        p => p.kind === 'reel' && p.id.startsWith(post.id.split('-')[0]));
+      const slides = post.files || [];
+      const story = (section.stories || []).find(
+        st => (st.display || st.headline) === post.story) || {};
 
-    return join([
-      `<details${section.id === 'top' ? ' open' : ''}>`,
-      `<summary><b>${section.label}</b> — ${section.stories.length}`
-        + ` stor${section.stories.length === 1 ? 'y' : 'ies'},`
-        + ` ${slides.length} slides · post with <code>/approve ${section.id}</code>`
-        + (reel ? ` · with the reel: <code>/approve ${section.id} reel</code>` : '')
-        + '</summary>',
-      '',
-      // The cover, and the rest behind a fold. Every slide still has to be
-      // visible — the owner is approving what they can see — but a page of
-      // thirty-one full-size images is not something anyone reads on a
-      // phone, and an interface nobody reads is not an approval.
-      slides.length ? `![${section.id} slide 1](${raw(slides[0])})` : '',
-      slides.length > 1 ? [
+      return join([
+        `<details${post.id.endsWith('-1') && section.id === 'top' ? ' open' : ''}>`,
+        `<summary><b>${section.label}</b> — ${post.story || '(untitled)'}`
+          + ` · ${slides.length} card${slides.length === 1 ? '' : 's'}`
+          + ` · post with <code>/approve ${post.id}</code></summary>`,
         '',
-        `<details><summary>the other ${slides.length - 1} slide${slides.length > 2 ? 's' : ''}</summary>`,
+        slides.length ? `![${post.id} card 1](${raw(slides[0])})` : '',
+        slides.length > 1 ? [
+          '',
+          `<details><summary>the other ${slides.length - 1} card${slides.length > 2 ? 's' : ''}</summary>`,
+          '',
+          slides.slice(1).map((p, i) => `![${post.id} card ${i + 2}](${raw(p)})`).join('\n'),
+          '',
+          '</details>',
+        ].join('\n') : '',
         '',
-        slides.slice(1).map((p, i) => `![${section.id} slide ${i + 2}](${raw(p)})`).join('\n'),
+        reel && post.id.endsWith('-1')
+          ? `🎬 **Reel** — ${reel.seconds ?? '?'}s`
+            + (reel.bytes ? `, ${MB(reel.bytes)}` : '')
+            + `, ${reel.footage || 'this story, moving'}`
+            + `, with a voice reading it · [download](${raw(reel.files[0])})`
+            + '\n\nInstagram takes no description on a reel, so `reel` always posts the'
+            + ' cards with it.\n'
+          : '',
+        storyLine(story),
         '',
+        captionBlock(read(post.caption)),
         '</details>',
-      ].join('\n') : '',
-      '',
-      // GitHub plays a video only from an upload, not from a raw link, so the
-      // reel is offered as a link with its length; the slides above are the
-      // cards it is made of.
-      reel ? `🎬 **Reel** — ${reel.seconds ?? '?'}s`
-        + (reel.bytes ? `, ${MB(reel.bytes)}` : '')
-        + `, the same cards upright · [download](${raw(reel.files[0])})`
-        + '\n\nInstagram takes no description on a reel, so `reel` always posts the'
-        + ' carousel with it.\n' : '',
-      section.stories.map(storyLine).join('\n'),
-      '',
-      captionBlock(read(carousel?.caption)),
-      '</details>',
-    ]);
-  });
+      ]);
+    }));
 
-  const menu = sections.map(s =>
-    `- \`${s.id}\` — **${s.label}** (${s.stories.length} stories)`
-    + ((s.posts || []).some(p => p.kind === 'reel') ? ' · reel available' : '')).join('\n');
+  // Named by section, because approving a section approves its posts, and
+  // nobody wants to type seven post ids.
+  const menu = sections.map(s => {
+    const n = (s.posts || []).filter(p => p.kind === 'carousel').length;
+    return `- \`${s.id}\` — **${s.label}** (${n} post${n === 1 ? '' : 's'})`
+      + ((s.posts || []).some(p => p.kind === 'reel') ? ' · reel available' : '');
+  }).join('\n');
 
   return {
     title: `Approve post — ${edition.id}`,
     labels: ['awaiting-approval'],
     body: join([
-      `**${sections.length} post${sections.length === 1 ? '' : 's'} ready.**`
-        + ' Nothing goes out unless you name it.',
+      (() => {
+        const n = allPosts(edition).filter(p => p.kind === 'carousel').length;
+        return `**${n} post${n === 1 ? '' : 's'} ready**, one per story.`
+          + ' Nothing goes out unless you name it.';
+      })(),
       '', menu, '',
       '---', '',
       blocks.join('\n\n'),
@@ -161,8 +167,9 @@ function dailyIssue(edition, { raw, read }) {
       refusedBlock(edition.refusals) ? `\n${refusedBlock(edition.refusals)}` : '',
       '',
       '---',
-      '**To post, comment** `/approve <section> <section>` — for example `/approve top business`.',
-      '`/approve all` posts every section. A bare `/approve` posts Top stories only.',
+      '**To post, comment** `/approve <section>` — for example `/approve top business` —'
+        + ' or name a single post, `/approve top-2`.',
+      '`/approve all` posts everything. A bare `/approve` posts Top stories only.',
       reels.length
         ? 'Add `reel` to post the reel as well — `/approve top reel`. A reel never goes out'
           + ' on its own, because Instagram accepts no description on one.'

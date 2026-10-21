@@ -20,7 +20,7 @@ import { launchChrome, closeChrome, openPage } from './lib/cdp.mjs';
 import { findImage, downloadImage } from './lib/imagery.mjs';
 import { imageFromArticle, isFurniture, biggerVariants,
          creditFor as articleCredit } from './lib/articleimage.mjs';
-import { composeSection, backdropOf, toQuery } from './lib/compose.mjs';
+import { composeStoryPost, backdropOf, toQuery } from './lib/compose.mjs';
 import { load, save, dirFor, attachPost } from './lib/edition.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -308,43 +308,54 @@ async function main() {
       });
       dropDuplicatePhotos(stories);
 
-      // Every decision about every card, made in one pure call before a
-      // single pixel is drawn.
-      const specs = composeSection(stories, { ...opts, label: section.label });
+      /* One post per story, not one carousel per section.
+       *
+       * A section carousel put six unrelated stories behind one cover: you
+       * tapped for the first and swiped past five you had not chosen. A post
+       * about one thing can be judged on its own, shared on its own, and
+       * corrected on its own. */
+      for (const [i, story] of stories.entries()) {
+        const n = i + 1;
+        const dir = `${section.id}/${n}`;
+        // Every decision about every card, made in one pure call before a
+        // single pixel is drawn.
+        const specs = composeStoryPost(story, { ...opts, label: section.label });
 
-      await mkdir(join(outDir, section.id), { recursive: true });
-      const files = [];
-      for (const [i, spec] of specs.entries()) {
-        const slide = await renderUrl(cardUrl(port, spec), i);
-        const name = `slide-${i + 1}.jpg`;
-        await writeFile(join(outDir, section.id, name), slide.bytes);
-        files.push(`${dirFor(edition.id)}/${section.id}/${name}`);
-        console.log(`rendered ${section.id}/${name}  ${slide.dims.w}x${slide.dims.h}`
-          + `  ${(slide.bytes.length / 1024).toFixed(0)} KB`
-          + (slide.fontsOk === false ? '  !! WEB FONTS DID NOT LOAD' : '')
-          + (slide.jsErrors.length ? `  (page errors: ${slide.jsErrors.join(' | ')})` : ''));
-        if (slide.fontsOk === false) fontWarnings++;
+        await mkdir(join(outDir, dir), { recursive: true });
+        const files = [];
+        for (const [c, spec] of specs.entries()) {
+          const slide = await renderUrl(cardUrl(port, spec), c);
+          const name = `slide-${c + 1}.jpg`;
+          await writeFile(join(outDir, dir, name), slide.bytes);
+          files.push(`${dirFor(edition.id)}/${dir}/${name}`);
+          console.log(`rendered ${dir}/${name}  ${slide.dims.w}x${slide.dims.h}`
+            + `  ${(slide.bytes.length / 1024).toFixed(0)} KB  ${spec.kind}`
+            + (slide.fontsOk === false ? '  !! WEB FONTS DID NOT LOAD' : '')
+            + (slide.jsErrors.length ? `  (page errors: ${slide.jsErrors.join(' | ')})` : ''));
+          if (slide.fontsOk === false) fontWarnings++;
+        }
+
+        // A news account that publishes images without alt text shuts blind
+        // readers out of the news. Written beside the slides, in slide order,
+        // so it reaches the publisher without going through a shell.
+        await writeFile(join(outDir, dir, 'alt.json'),
+                        JSON.stringify(specs.map(x => x.alt), null, 2) + '\n', 'utf8');
+
+        attachPost(edition, section.id, {
+          kind: 'carousel',
+          id: `${section.id}-${n}`,
+          story: story.display || story.headline,
+          files,
+          cover: files[0],
+          alts: `${dirFor(edition.id)}/${dir}/alt.json`,
+          // caption.mjs fills this in; validate() refuses an edition without it.
+          caption: '',
+          // A correction is attached to the post it corrects, so whoever finds
+          // the mistake finds the correction with it.
+          commentOn: story?.corrects?.mediaId || '',
+          commentFile: story?.corrects?.commentFile || '',
+        });
       }
-
-      // A news account that publishes images without alt text shuts blind
-      // readers out of the news. Written beside the slides, in slide order,
-      // so it reaches the publisher without going through a shell.
-      await writeFile(join(outDir, section.id, 'alt.json'),
-                      JSON.stringify(specs.map(s => s.alt), null, 2) + '\n', 'utf8');
-
-      attachPost(edition, section.id, {
-        kind: 'carousel',
-        id: section.id,
-        files,
-        cover: files[0],
-        alts: `${dirFor(edition.id)}/${section.id}/alt.json`,
-        // caption.mjs fills this in; validate() refuses an edition without it.
-        caption: '',
-        // A correction is attached to the post it corrects, so whoever finds
-        // the mistake finds the correction with it.
-        commentOn: stories[0]?.corrects?.mediaId || '',
-        commentFile: stories[0]?.corrects?.commentFile || '',
-      });
     }
   } finally {
     server.close();

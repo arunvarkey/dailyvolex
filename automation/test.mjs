@@ -20,7 +20,8 @@ import { plainText, firstSentence, sourceLine as spokenSources, scriptFor,
 import { videoUrlFrom, kindOf, videoFromArticle } from './lib/articlevideo.mjs';
 import { create, attachPost, validate, posts, postById, idFor, dirFor,
          prune, save, load } from './lib/edition.mjs';
-import { composeStory, composeSection, backdropOf, toQuery } from './lib/compose.mjs';
+import { composeStory, composeSection, composeStoryPost,
+         backdropOf, toQuery } from './lib/compose.mjs';
 import { plan } from './lib/plan.mjs';
 import { approvalIssue, warningsFor } from './lib/offer.mjs';
 import { record } from './lib/ledger.mjs';
@@ -1416,6 +1417,27 @@ ok(`${kind} caption fits Instagram`, caption.length <= 2200, `${caption.length} 
 ok(`${kind} caption is not a bare count`, !/^\d+ stories/.test(caption.trim()), caption.slice(0,24));
 }
 
+/* A post is one story now, so this is the caption nearly every post gets. */
+{
+  const one = buildCaption({
+    kind: 'story', display: 'Earthquake kills at least 40 in northern Afghanistan',
+    topic: 'world', source: 'BBC News · Al Jazeera',
+    sourceNames: ['BBC News', 'Al Jazeera'],
+  });
+  ok('a one-story caption leads with its headline',
+     one.startsWith('Earthquake kills at least 40'), one.slice(0, 40));
+  ok('a one-story caption names every outlet, plurally',
+     /Sources: BBC News, Al Jazeera/.test(one), one);
+  ok('a one-story caption does not read the card’s middle dots aloud',
+     !one.includes('·'), one);
+  ok('a one-story caption carries its topic tag', /#worldnews/.test(one), one);
+
+  const solo = buildCaption({ kind: 'story', display: 'Rupee steadies', source: 'Mint' });
+  ok('one outlet is a source, not sources', /Source: Mint/.test(solo), solo);
+  ok('a story with no outlet claims none',
+     !/Sources?:/.test(buildCaption({ kind: 'story', display: 'x' })));
+}
+
 
 /* ── The edition, and what /approve means ─────────────────────────
    This is the only logic in the repository that decides what reaches the
@@ -1454,17 +1476,23 @@ function editionFixture({ kind = 'daily', withReel = true } = {}) {
     ],
   });
   const dir = `data/editions/${e.id}`;
-  attachPost(e, 'top', { kind: 'carousel', id: 'top',
-    files: [`${dir}/top/slide-1.jpg`, `${dir}/top/slide-2.jpg`, `${dir}/top/slide-3.jpg`],
-    cover: `${dir}/top/slide-1.jpg`, alts: `${dir}/top/alt.json`,
-    caption: `${dir}/caption-top.txt`, commentOn: '', commentFile: '' });
-  attachPost(e, 'business', { kind: 'carousel', id: 'business',
-    files: [`${dir}/business/slide-1.jpg`, `${dir}/business/slide-2.jpg`],
-    cover: `${dir}/business/slide-1.jpg`, alts: `${dir}/business/alt.json`,
-    caption: `${dir}/caption-business.txt`, commentOn: '', commentFile: '' });
+  // A post per story, which is what the renderer builds: one card normally,
+  // three when the story has a figure in it.
+  const post = (section, n, story, cards) => attachPost(e, section, {
+    kind: 'carousel', id: `${section}-${n}`, story,
+    files: Array.from({ length: cards }, (_, i) => `${dir}/${section}/${n}/slide-${i + 1}.jpg`),
+    cover: `${dir}/${section}/${n}/slide-1.jpg`,
+    alts: `${dir}/${section}/${n}/alt.json`,
+    caption: `${dir}/caption-${section}-${n}.txt`, commentOn: '', commentFile: '' });
+
+  post('top', 1, 'Earthquake kills at least 40 in northern Afghanistan', 3);
+  post('top', 2, 'Regulator fines a major bank over mis-selling', 1);
+  post('business', 1, 'Sensex plunges 876 points', 3);
   if (withReel) attachPost(e, 'top', { kind: 'reel', id: 'top-reel',
-    files: [`${dir}/top/reel.mp4`], cover: `${dir}/top/slide-1.jpg`,
-    caption: `${dir}/caption-top.txt`, alts: '', seconds: 18.7, bytes: 2_000_000 });
+    files: [`${dir}/top/reel.mp4`], cover: `${dir}/top/1/slide-1.jpg`,
+    caption: `${dir}/caption-top-1.txt`, alts: '', seconds: 18.7, bytes: 2_000_000,
+    story: 'Earthquake kills at least 40 in northern Afghanistan',
+    footage: 'the photograph, pushed in' });
   return e;
 }
 
@@ -1491,9 +1519,9 @@ ok('an edition lives under data/editions', dirFor('2026-10-20') === 'data/editio
 ok('a post is recorded against its section, and replaced rather than doubled', (() => {
   const e = editionFixture();
   const before = e.sections[0].posts.length;
-  attachPost(e, 'top', { kind: 'carousel', id: 'top', files: ['x.jpg'], caption: 'c', alts: 'a' });
+  attachPost(e, 'top', { kind: 'carousel', id: 'top-1', files: ['x.jpg'], caption: 'c', alts: 'a' });
   return e.sections[0].posts.length === before
-    && postById(e, 'top').files.length === 1;
+    && postById(e, 'top-1').files.length === 1;
 })(), 'a second render of a section must not leave two carousels behind');
 
 ok('attaching to a section that is not there is an error, not a silent no-op', (() => {
@@ -1577,6 +1605,54 @@ ok('the cover lists the headlines it is a cover for', (() => {
   return specs[0].params.item.join('') === 'Afghan quake';
 })());
 
+/* ── One story, one post ──────────────────────────────────────────
+   A post is the publishable unit now, so this is what every post in the
+   edition is made of. */
+{
+  const plain = () => ({ headline: 'Ceasefire talks resume in Geneva',
+    display: 'Ceasefire talks resume in Geneva', source: 'Reuters · AP',
+    sourceNames: ['Reuters', 'AP'], corroboration: 2, topic: 'world' });
+  const numeric = () => ({ headline: 'Earthquake kills at least 40 in northern Afghanistan',
+    display: 'Earthquake kills at least 40 in northern Afghanistan',
+    source: 'BBC News · Al Jazeera', sourceNames: ['BBC News', 'Al Jazeera'],
+    corroboration: 2, ownerCount: 2, topic: 'world' });
+
+  ok('a story with no figure in it is one card',
+     composeStoryPost(plain(), {}).map(x => x.kind).join(',') === 'story');
+
+  const post = composeStoryPost(numeric(), {});
+  ok('a story with a figure gets the figure and its provenance',
+     post.map(x => x.kind).join(',') === 'story,figure,provenance', post.map(x => x.kind).join(','));
+  ok('a post is never two cards — that reads as one that was cut short',
+     post.length !== 2);
+
+  /* The bug this exists to catch: composeStory took the stat layout AND the
+     figure got a card of its own, so cards one and two came out byte-for-byte
+     identical. Nothing in the suite looked, and only a render showed it. */
+  ok('the lead card is not the figure card drawn twice',
+     JSON.stringify(post[0].params) !== JSON.stringify(post[1].params));
+  ok('the lead card carries the headline, the figure card the number',
+     post[0].params.headline === numeric().headline && post[0].params.stat == null
+     && post[1].params.stat === '40',
+     `${post[0].params.layout} / ${post[1].params.stat}`);
+  ok('every card of a post can be described to a blind reader',
+     post.every(x => x.alt && x.alt.length > 20));
+
+  const prov = post[2].params.item.join(' | ');
+  ok('the provenance card names the outlets that carried THIS story',
+     /Carried by BBC News, Al Jazeera/.test(prov), prov);
+  ok('the provenance card counts the newsrooms and the owners',
+     /2 independent newsrooms, 2 owners recorded/.test(prov), prov);
+  ok('a story with no photograph promises nothing about photographs',
+     !/Pictures/.test(prov), prov);
+  ok('the provenance card fits on one card', post[2].params.item.length <= 6);
+
+  ok('a correction is one card and never carries a figure',
+     composeStoryPost({ kind: 'correction', headline: 'We said the Sensex fell 900 points',
+                        display: 'We said the Sensex fell 900 points', source: 'DailyVolex' }, {})
+       .length === 1);
+}
+
 ok('a list of items survives being turned into a query', (() => {
   const q = toQuery({ auto: '1', item: ['one', 'two'], skip: null });
   return q.getAll('item').join(',') === 'one,two' && !q.has('skip');
@@ -1585,11 +1661,13 @@ ok('a list of items survives being turned into a query', (() => {
 
 
 ok('an edition is valid before it is offered', validate(ed).length === 0, validate(ed).join('; '));
-ok('a section offers a carousel', postById(ed, 'top')?.kind === 'carousel');
+ok('a story has a post of its own', postById(ed, 'top-1')?.kind === 'carousel');
 ok('a section with a reel offers it as a second post',
   postById(ed, 'top-reel')?.kind === 'reel'
   && postById(ed, 'top-reel').files[0].endsWith('/top/reel.mp4'));
-ok('a section without a reel offers only the carousel',
+ok('a section is several posts, one per story',
+  posts(ed).filter(p => p.section === 'top' && p.kind === 'carousel').length === 2);
+ok('a section without a reel offers only its story posts',
   posts(ed).filter(p => p.section === 'business').length === 1);
 ok('an edition missing its captions is refused rather than offered', (() => {
   const broken = editionFixture();
@@ -1609,24 +1687,36 @@ ok('a carousel with no descriptions is refused', (() => {
 
 const P = (words, opts = {}) => plan(ed, words, opts);
 
-ok('a bare approval posts the top carousel and nothing else', (() => {
+ok('a bare approval posts the top section and nothing else', (() => {
   const r = P('/approve');
-  return r.posts?.length === 1 && r.posts[0].id === 'top';
+  return r.posts?.every(p => p.section === 'top') && r.posts.length === 2;
+})());
+ok('a single post can be named on its own', (() => {
+  const r = P('/approve top-2');
+  return r.posts?.length === 1 && r.posts[0].id === 'top-2';
+})(), 'one bad story must not cost the whole section');
+ok('naming a section and a post inside it is not the post twice', (() => {
+  const r = P('/approve top top-2');
+  return r.posts?.length === 2;
 })());
 ok('naming sections posts exactly those', (() => {
   const r = P('/approve business top');
-  return r.posts?.map(p => p.id).join(',') === 'business,top';
+  return r.posts?.map(p => p.id).join(',') === 'business-1,top-1,top-2';
 })(), 'and in the order asked for');
-ok('/approve all posts every carousel', (() => {
+ok('/approve all posts every story', (() => {
   const r = P('/approve all');
-  return r.posts?.map(p => p.id).join(',') === 'top,business';
+  return r.posts?.map(p => p.id).join(',') === 'top-1,top-2,business-1';
 })());
 ok('no approval posts a reel unless the word is there',
   P('/approve all').posts.every(p => p.kind !== 'reel'));
-ok('reel posts the reel with its carousel', (() => {
+ok('reel posts the reel with its story', (() => {
   const r = P('/approve top reel');
-  return r.posts?.map(p => p.id).join(',') === 'top,top-reel';
+  return r.posts?.map(p => p.id).join(',') === 'top-1,top-reel,top-2';
 })());
+ok('a reel is queued once, not once per post in its section', (() => {
+  const r = P('/approve top reel');
+  return r.posts.filter(p => p.kind === 'reel').length === 1;
+})(), 'three identical reels on the account from one approval');
 ok('the carousel comes first, so it is the post of record', (() => {
   const r = P('/approve top reel');
   return r.posts[0].kind === 'carousel' && r.posts[1].kind === 'reel';
@@ -1646,7 +1736,7 @@ ok('an unknown section is refused, not guessed', (() => {
   return !!r.error && /no such section/.test(r.error);
 })(), 'posting something close to what they meant is how the wrong thing goes out');
 ok('a missing file is refused rather than posted', (() => {
-  const r = P('/approve top', { exists: f => !f.endsWith('slide-2.jpg') });
+  const r = P('/approve top-1', { exists: f => !f.endsWith('slide-2.jpg') });
   return !!r.error && /missing at the approved commit/.test(r.error);
 })());
 ok('urls are pinned to the approved commit', (() => {
@@ -1655,8 +1745,9 @@ ok('urls are pinned to the approved commit', (() => {
 })(), 'the watch rewrites the working files every fifteen minutes');
 ok('every planned post carries its own caption', (() => {
   const r = P('/approve all');
-  return r.posts.every(p => p.caption.includes(p.section));
-})());
+  return r.posts.every(p => p.caption.includes(p.id))
+    && new Set(r.posts.map(p => p.caption)).size === r.posts.length;
+})(), 'a caption matched to a post by index is how the wrong one gets attached');
 ok('a reel is planned with no descriptions and does not pretend otherwise',
   P('/approve top reel').posts.find(p => p.kind === 'reel').alts === '');
 
@@ -1720,18 +1811,19 @@ const issue = approvalIssue(ed, {
 });
 
 ok('the issue is labelled for approval', issue.labels.includes('awaiting-approval'));
-ok('every slide of every section is shown', (() => {
-  const shown = (issue.body.match(/!\[[^\]]*slide [0-9]+\]/g) || []).length;
+ok('every card of every post is shown', (() => {
+  const shown = (issue.body.match(/!\[[^\]]*card [0-9]+\]/g) || []).length;
   const total = posts(ed).filter(p => p.kind === 'carousel')
     .reduce((n, p) => n + p.files.length, 0);
   return shown === total;
-})(), 'a slide nobody is shown is a slide nobody checked');
+})(), 'a card nobody is shown is a card nobody checked');
 ok('the images are pinned to the commit the issue is showing',
   issue.body.includes('/arunvarkey/dailyvolex/c0ffee/'));
-ok('each section says the words that post it',
-  ed.sections.every(s => issue.body.includes(`/approve ${s.id}`)));
+ok('every post says the words that post it',
+  posts(ed).filter(p => p.kind === 'carousel')
+    .every(p => issue.body.includes(`/approve ${p.id}`)));
 ok('a section with a reel says how to post it',
-  issue.body.includes('/approve top reel'));
+  /reel/i.test(issue.body));
 ok('the issue says a reel never goes out alone',
   /no description on one|always posts the\s*carousel/.test(issue.body.replace(/\s+/g, ' ')));
 ok('the reel is offered with its length', /18\.7s/.test(issue.body));
@@ -2016,14 +2108,14 @@ ok('the subject cap survives the pass that fills empty slots', (() => {
 })(), 'a shorter section is better than the same story three times');
 
 /* ── The approval issue a person actually reads ──────────────────── */
-ok('only the cover is shown up front', (() => {
+ok('only the first card is shown up front', (() => {
   const b = approvalIssue(ed, { owner: 'o', repo: 'r', sha: 'a', read: () => '' }).body;
   const before = b.slice(0, b.indexOf('<details><summary>the other'));
   return (before.match(/!\[/g) || []).length === 1;
 })(), 'thirty-one full-size images is not something anyone reads on a phone');
-ok('every slide is still in the issue', (() => {
+ok('every card is still in the issue', (() => {
   const b = approvalIssue(ed, { owner: 'o', repo: 'r', sha: 'a', read: () => '' }).body;
-  const shown = (b.match(/!\[[^\]]*slide [0-9]+\]/g) || []).length;
+  const shown = (b.match(/!\[[^\]]*card [0-9]+\]/g) || []).length;
   const total = posts(ed).filter(p => p.kind === 'carousel')
     .reduce((n, p) => n + p.files.length, 0);
   return shown === total;

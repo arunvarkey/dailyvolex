@@ -4084,16 +4084,23 @@ async function loadToday() {
      it used to show only the first, with the other four silently invisible.
      Each section is its own block: its slides, its stories, its caption, its
      own save button. */
-  const posts = (data.sections || []).map(sec => {
-    const carousel = (sec.posts || []).find(p => p.kind === 'carousel');
+  /* A post per story, not per section. A section carousel put six unrelated
+     stories behind one cover; now each story is its own post, judged, shared
+     and corrected on its own. */
+  const posts = (data.sections || []).flatMap(sec => {
     const reel = (sec.posts || []).find(p => p.kind === 'reel');
-    return {
-      section: sec.id, sectionLabel: sec.label, stories: sec.stories,
-      images: carousel ? carousel.files : [],
-      caption: carousel ? carousel.caption : '',
-      reel: reel || null,
+    return (sec.posts || []).filter(p => p.kind === 'carousel').map(post => ({
+      section: sec.id, sectionLabel: sec.label,
+      id: post.id,
+      headline: post.story,
+      stories: (sec.stories || []).filter(
+        st => (st.display || st.headline) === post.story),
+      images: post.files || [],
+      caption: post.caption || '',
+      // The reel belongs to the lead story of its section.
+      reel: (reel && post.id.endsWith('-1')) ? reel : null,
       kind: data.kind === 'correction' ? 'correction' : 'carousel',
-    };
+    }));
   }).filter(p => p.images.length);
   const when = data.builtAt;
 
@@ -4140,7 +4147,7 @@ async function loadToday() {
 
   const approveBtn = (post) => {
     if (!post.images.length) return '';
-    const what = post.section + (post.reel ? ' reel' : '');
+    const what = post.id + (post.reel ? ' reel' : '');
     return `<a class="today-btn today-approve" target="_blank" rel="noopener"
        href="${approveUrl(what)}">Approve &amp; post${post.reel ? ' (with the reel)' : ''}</a>`;
   };
@@ -4172,8 +4179,8 @@ async function loadToday() {
     }).join('');
 
     return `<details class="today-post" ${pi === 0 ? 'open' : ''}>
-      <summary><b>${esc(label)}</b><span class="today-count">${stories.length} ${
-        stories.length === 1 ? 'story' : 'stories'}${slides.length ? ` · ${slides.length} slides` : ''}${
+      <summary><b>${esc(label)}</b> ${esc(post.headline || '')}<span class="today-count">${
+        slides.length} card${slides.length === 1 ? '' : 's'}${
         post.reel ? ' · reel' : ''}</span></summary>
       ${slides.length ? `<div class="today-slides">${slides.map((p,i)=>
         `<img src="${esc(p)}${bust}" alt="${esc(label)} slide ${i+1}" loading="lazy">`).join('')}</div>` : ''}

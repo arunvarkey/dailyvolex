@@ -126,6 +126,8 @@ async function main() {
   if (!section) throw new Error(
     `no section "${wanted}" in this edition — it has ${edition.sections.map(s => s.id).join(', ')}`);
 
+  // The lead story's post — the reel is made of the same story, so it takes
+  // that post's caption and cover.
   const carousel = (section.posts || []).find(p => p.kind === 'carousel');
   if (!carousel) throw new Error(`${section.label} has not been rendered yet`);
 
@@ -215,6 +217,10 @@ async function main() {
     let overlay;
     try {
       const spec = composeStory({ ...story, photo: null }, {
+        // The headline, not the figure. A reel is one card held for the whole
+        // read — nobody can swipe past a giant number to find out what it
+        // counts — and the voice is reading the headline over it.
+        noStat: true,
         theme: arg('theme', 'bbc'), ratio: '9:16', layout: 'breaking',
         ticker: 'DAILYVOLEX  ···  TODAY’S NEWS  ···  ',
         date: new Date().toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' }),

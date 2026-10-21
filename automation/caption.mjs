@@ -62,7 +62,15 @@ export function buildCaption(entry, { handle = '@dailyvolex' } = {}) {
     for (const s of entry.stories) lines.push(`• ${s.display || s.headline}`);
     lines.push('', `Sources: ${[...new Set(entry.sourceNames)].join(', ')}`);
   } else {
-    lines.push(entry.display || entry.headline, '', `Source: ${entry.source}`);
+    // One story, and the outlets that carried it. Named with commas rather
+    // than the middle dots the card uses: a card has a line to fit, a caption
+    // does not, and "Reuters · AP · BBC News" reads as one odd masthead.
+    const names = [...new Set(
+      (entry.sourceNames?.length ? entry.sourceNames
+        : String(entry.source || '').split('·')).map(s => String(s).trim()).filter(Boolean)
+    )];
+    lines.push(entry.display || entry.headline, '');
+    if (names.length) lines.push(`${names.length > 1 ? 'Sources' : 'Source'}: ${names.join(', ')}`);
   }
 
   lines.push('', `Follow ${handle} for the day's news.`, '');
@@ -76,22 +84,24 @@ export function buildCaption(entry, { handle = '@dailyvolex' } = {}) {
   return lines.join('\n').slice(0, 2200);
 }
 
-/* A section's caption, written beside its slides.
+/* A caption per post, written beside its slides.
  *
- * Named by its section rather than by an index: the publish step is told
- * which posts to make by name, and matching that to a number was one more
- * place for the wrong caption to end up on the right picture — which is
- * exactly what happened when sections landed and the breaking watch kept
- * reading caption-1.txt. The path is recorded on the post, so nothing has to
- * reconstruct it from a convention ever again.
+ * Named by the post rather than the section, because a section is no longer
+ * one post: it is a post per story. Matching a caption to a post by index
+ * was one more place for the wrong caption to end up on the right picture,
+ * which is exactly what happened when sections landed and the breaking watch
+ * kept reading caption-1.txt. The path is recorded on the post, so nothing
+ * reconstructs it from a convention.
  */
-function entryFor(section) {
+function entryFor(section, post) {
+  const story = (section.stories || []).find(
+    s => (s.display || s.headline) === post.story) || (section.stories || [])[0] || {};
   return {
-    kind: 'carousel',
+    kind: story.kind === 'correction' ? 'correction' : 'story',
     section: section.id,
     sectionLabel: section.label,
-    stories: section.stories,
-    sourceNames: [...new Set(section.stories.flatMap(s => s.sourceNames || [s.source]))],
+    ...story,
+    sourceNames: story.sourceNames || (story.source ? [story.source] : []),
   };
 }
 
@@ -101,16 +111,22 @@ async function main() {
 
   for (const section of edition.sections) {
     if (only && section.id !== only) continue;
-    if (!section.posts?.length) continue;         // nothing rendered for it
-    const rel = `${dirFor(edition.id)}/caption-${section.id}.txt`;
-    const caption = buildCaption(entryFor(section));
-    await writeFile(join(ROOT, rel), caption, 'utf8');
-
-    // Every post of the section carries the same caption: a reel of the top
-    // stories is the top stories.
-    for (const post of section.posts) attachPost(edition, section.id, { ...post, caption: rel });
-    console.log(`${section.label.padEnd(12)} -> ${rel}`);
-    if (!FLAG('all') && !only) console.log('\n' + caption);
+    for (const post of (section.posts || [])) {
+      // The reel carries the caption of the post it belongs to; it is
+      // written when that post is.
+      if (post.kind !== 'carousel') continue;
+      const rel = `${dirFor(edition.id)}/caption-${post.id}.txt`;
+      const caption = buildCaption(entryFor(section, post));
+      await writeFile(join(ROOT, rel), caption, 'utf8');
+      attachPost(edition, section.id, { ...post, caption: rel });
+      console.log(`${post.id.padEnd(14)} -> ${rel}`);
+    }
+    // A reel takes the caption of the story it was made from.
+    const reel = (section.posts || []).find(p => p.kind === 'reel');
+    if (reel) {
+      const lead = (section.posts || []).find(p => p.kind === 'carousel');
+      if (lead?.caption) attachPost(edition, section.id, { ...reel, caption: lead.caption });
+    }
   }
 
   await save(ROOT, edition);

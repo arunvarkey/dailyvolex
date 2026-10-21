@@ -51,17 +51,25 @@ export function plan(edition, comment, {
   const wantsAll  = asked.includes(WORDS.ALL);
   const named     = asked.filter(a => a !== WORDS.REEL && a !== WORDS.ALL);
 
-  // A section named that this edition does not have is a refusal, not a
-  // near-miss. The owner may have meant yesterday's post.
-  const unknown = named.filter(n => !carousels.some(p => p.section === n));
+  /* A word is either a section — which approves every post in it — or a
+     single post id like "top-2". A section is now several posts, one per
+     story, and naming one of them has to be possible or a single bad story
+     costs the whole section. */
+  const matches = word => carousels.filter(p => p.id === word || p.section === word);
+
+  // A word this edition does not have is a refusal, not a near-miss. The
+  // owner may have meant yesterday's post.
+  const unknown = named.filter(n => !matches(n).length);
   if (unknown.length) return {
-    error: `no such section: ${unknown.join(', ')} — this edition has `
-      + carousels.map(p => p.section).join(', '),
+    error: `no such section or post: ${unknown.join(', ')} — this edition has `
+      + [...new Set(carousels.map(p => p.section))].join(', ')
+      + ` (${carousels.length} posts: ${carousels.map(p => p.id).join(', ')})`,
   };
 
   let chosen;
   if (wantsAll)          chosen = carousels;
-  else if (named.length) chosen = named.map(n => carousels.find(p => p.section === n));
+  // Deduplicated: naming a section and a post inside it is one post, not two.
+  else if (named.length) chosen = [...new Set(named.flatMap(matches))];
   else                   chosen = carousels.filter(p => p.section === 'top');
 
   // An edition with no section called "top" — a correction, or a breaking
@@ -74,9 +82,17 @@ export function plan(edition, comment, {
     if (!reels.length) return {
       error: `there is no reel for ${[...sections].join(', ')} in this edition`,
     };
-    // After its carousel, so the carousel is the post of record and the one
-    // that lands first.
-    chosen = chosen.flatMap(p => [p, ...reels.filter(r => r.section === p.section)]);
+    /* Once per section, not once per post. A section is several posts now,
+       and appending the reel to each of them queued the same video three
+       times — three identical reels on the account from one approval. */
+    const added = new Set();
+    chosen = chosen.flatMap(p => {
+      const reel = reels.find(r => r.section === p.section && !added.has(r.id));
+      if (!reel) return [p];
+      added.add(reel.id);
+      // After its carousel, so the cards are the post of record and land first.
+      return [p, reel];
+    });
   }
 
   const missing = [];
@@ -87,7 +103,10 @@ export function plan(edition, comment, {
       id: p.id,
       kind: p.kind,
       section: p.section,
-      label: p.sectionLabel + (p.kind === 'reel' ? ' (reel)' : ''),
+      /* Named by the story, not the section. Seven posts all labelled "TOP
+         STORIES" is a list nobody can read, and this label is what the
+         approval comment reports back and what the record keeps. */
+      label: (p.story || p.sectionLabel) + (p.kind === 'reel' ? ' (reel)' : ''),
       caption: p.caption,
       alts: p.alts || '',
       commentOn: p.commentOn || '',
