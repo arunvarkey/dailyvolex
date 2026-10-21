@@ -1782,10 +1782,22 @@ function drawBreaking(theme) {
 
   beginShift();
 
-  // Anchor point for the text block. In 9:16 the bottom of a Reel is covered
-  // by Instagram's caption, username and audio row, so the block is lifted
-  // clear of it. Feed ratios have no such overlay and can sit lower.
-  const baseY=H-tickerH-Math.round(H*(S.ratio==='9:16' ? 0.20 : 0.12));
+  /* With no photograph behind it, the headline IS the card.
+   *
+   * The block is anchored to the bottom because in 9:16 the foot of a Reel
+   * is covered by Instagram's caption, username and audio row. That is right
+   * for a photo card, where the picture fills everything above it — and
+   * wrong for a card with nothing behind it, which came out as a headline in
+   * the bottom third over half a frame of empty gradient. On a phone that
+   * emptiness is most of the screen.
+   *
+   * So a bare card sets its type much larger, allows more lines, and sits
+   * nearer the middle. A photo card is untouched. */
+  const bare = !S.bgImage && !S.videoLoaded;
+  const lift = bare
+    ? (S.ratio==='9:16' ? 0.26 : 0.16)
+    : (S.ratio==='9:16' ? 0.20 : 0.12);
+  const baseY=H-tickerH-Math.round(H*lift);
 
   // Entrance progress (staggered broadcast-style reveal)
   const tCat=introT(0,450), tLine=introT(150,500), tHl=introT(300,650), tSrc=introT(650,500);
@@ -1804,10 +1816,12 @@ function drawBreaking(theme) {
   // Shrink until the whole headline fits in at most MAXL lines. A news
   // graphic must never drop words: only if it still will not fit at the
   // smallest size is the last line ellipsised, so the cut is visible.
-  const MAXL=3;
-  let hlSz=88; ctx.font=`800 ${hlSz}px 'Space Grotesk'`;
+  const MAXL=bare?5:3;
+  const MINSZ=bare?64:44;
+  let hlSz=bare?(S.ratio==='9:16'?132:108):88;
+  ctx.font=`800 ${hlSz}px 'Space Grotesk'`;
   let hlLines=wrapLines(d.headline,hlW);
-  while(hlLines.length>MAXL&&hlSz>44){hlSz-=3;ctx.font=`800 ${hlSz}px 'Space Grotesk'`;hlLines=wrapLines(d.headline,hlW);}
+  while(hlLines.length>MAXL&&hlSz>MINSZ){hlSz-=3;ctx.font=`800 ${hlSz}px 'Space Grotesk'`;hlLines=wrapLines(d.headline,hlW);}
   let hlLines2=hlLines.slice(0,MAXL);
   if(hlLines.length>MAXL){
     let last=hlLines2[MAXL-1];

@@ -377,6 +377,32 @@ ok('the app sends the edition, and a hand-written approval without one is refuse
   const pin = (a?.jobs?.publish?.steps || []).find(st => /setOutput\('edition'/.test(st.with?.script || ''));
   return /names no edition/.test(pin?.with?.script || '');
 })());
+/* ── A card with no photograph behind it ─────────────────────────
+   The headline block is anchored to the bottom because in 9:16 the foot of a
+   Reel is covered by Instagram's own caption and audio row. That is right
+   over a photograph, which fills everything above it, and wrong over a
+   gradient: the first reel came out as a headline in the bottom third of a
+   frame that was otherwise empty.
+
+   A source check, not a pixel one — it proves the branch exists and that a
+   photo card still takes the original numbers. What it looks like was
+   checked by rendering it at both ratios and looking. */
+ok('a card with no photograph sets its headline larger and higher', (() => {
+  const html = fs.readFileSync(join(ROOT, 'index.html'), 'utf8');
+  const bare = /const bare\s*=\s*!S\.bgImage\s*&&\s*!S\.videoLoaded/.test(html);
+  const lift = /const lift\s*=\s*bare/.test(html);
+  const size = /let hlSz=bare\?/.test(html) && /const MAXL=bare\?/.test(html);
+  return bare && lift && size;
+})());
+ok('a card WITH a photograph keeps the numbers it had', (() => {
+  const html = fs.readFileSync(join(ROOT, 'index.html'), 'utf8');
+  // The photo branch of each ternary has to be the original value, or this
+  // "fix" quietly restyled every card in every carousel.
+  return /\?\s*\(S\.ratio==='9:16'\s*\?\s*0\.26\s*:\s*0\.16\)\s*:\s*\(S\.ratio==='9:16'\s*\?\s*0\.20\s*:\s*0\.12\)/.test(
+           html.replace(/\s+/g, ' ').replace(/ \?/g, '?').replace(/\? /g, '?'))
+    || /0\.20 : 0\.12/.test(html);
+})(), 'the photo card was correct and must not move');
+
 ok('the app offers an approve link rather than a credential', (() => {
   const html = fs.readFileSync(join(ROOT, 'index.html'), 'utf8');
   return /issues\/new/.test(html) && /encodeURIComponent\('\/approve /.test(html)
