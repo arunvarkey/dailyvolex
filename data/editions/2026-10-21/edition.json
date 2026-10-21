@@ -1,7 +1,7 @@
 {
   "id": "2026-10-21",
   "kind": "daily",
-  "builtAt": "2026-10-21T15:09:30.906Z",
+  "builtAt": "2026-10-21T17:27:55.118Z",
   "pool": 588,
   "feedErrors": [
     "indian-express: HTTP 403"
@@ -9,11 +9,11 @@
   "refusals": {
     "read": 588,
     "published": 9,
-    "refused": 240,
-    "consideredNotChosen": 339,
+    "refused": 241,
+    "consideredNotChosen": 338,
     "byRule": {
       "says nothing happened": {
-        "count": 124,
+        "count": 125,
         "samples": [
           {
             "title": "Trump and Zelensky at loggerheads despite new optimism",
@@ -28,6 +28,10 @@
             "source": "BBC News"
           },
           {
+            "title": "Catalonia’s new far right: How anti-Muslim sentiment is reshaping politics",
+            "source": "Al Jazeera"
+          },
+          {
             "title": "Are the UK, France being pulled into the Saudi-Houthi conflict?",
             "source": "Al Jazeera"
           },
@@ -36,15 +40,11 @@
             "source": "Al Jazeera"
           },
           {
-            "title": "Why are French protesters chanting ‘Bismillah, c’est les ténèbres’?",
-            "source": "Al Jazeera"
+            "title": "Booking.com under investigation by EU regulators over fake listings and scams",
+            "source": "The Guardian"
           },
           {
-            "title": "UK king welcomes Oman’s sultan in speech quoting Prophet Muhammad",
-            "source": "Al Jazeera"
-          },
-          {
-            "title": "Flavio Bolsonaro’s ‘corrupto’ stunt sparks viral meme before Brazil election runoff",
+            "title": "Troubled waters: life during wartime for Iranians on the strait of Hormuz",
             "source": "The Guardian"
           }
         ]
@@ -52,6 +52,10 @@
       "older than the window": {
         "count": 94,
         "samples": [
+          {
+            "title": "Swimmer, 65, killed in shark attack off South Africa's east coast",
+            "source": "BBC News"
+          },
           {
             "title": "North Korea publishes photos of Kim Jong Un - why do rumours of his death keep coming back?",
             "source": "BBC News"
@@ -79,19 +83,19 @@
           {
             "title": "Vinted blocks French looters listing stolen goods for sale",
             "source": "BBC News"
-          },
-          {
-            "title": "Ex-OpenAI worker accused of planting bug had Saudi support, claims prosecutors",
-            "source": "BBC News"
           }
         ]
       },
       "not news": {
-        "count": 9,
+        "count": 12,
         "samples": [
           {
-            "title": "Video. Latest news bulletin | October 21st, 2026 – Midday",
+            "title": "Video. Latest news bulletin | October 21st, 2026 – Evening",
             "source": "Euronews.com"
+          },
+          {
+            "title": "Watch: 'Inquilab Zindabad', CJP leaders Das & Ranka come out of Tihar Jail",
+            "source": "Times of India"
           },
           {
             "title": "Where India stands in Asian Para Games medal tally after 27-medal haul on Day 3",
@@ -106,20 +110,16 @@
             "source": "ESPN India"
           },
           {
+            "title": "When and where to watch IND vs NZ first T20I: Match date, time, venue and live streaming details",
+            "source": "The Times of India"
+          },
+          {
             "title": "New Zealand vs India T20 2026: Know series schedule, where to watch NZ vs IND live streaming and telecast",
             "source": "Olympics"
           },
           {
-            "title": "Watch: The SpaceX rocket science inside Tesla’s new Roadster | Business Matters",
-            "source": "The Hindu"
-          },
-          {
-            "title": "Watch: The SpaceX rocket science inside Tesla’s new Roadster | Business Matters",
-            "source": "The Hindu"
-          },
-          {
-            "title": "Dow Jones| Nasdaq | S&P 500 | US Stock Market Today |Live Updates: US stocks trade mixed as SpaceX, AI stocks rise while Netflix slips",
-            "source": "Economic Times"
+            "title": "Video. Dussehra: Giant effigies of demons go up in flames in India",
+            "source": "Euronews.com"
           }
         ]
       },
@@ -135,46 +135,20 @@
             "source": "Post Register"
           },
           {
-            "title": "India Hindu Festival",
-            "source": "WV News"
+            "title": "Belagavi Sub-Registrar office shifted",
+            "source": "The Hindu"
           },
           {
-            "title": "Recalibrating India–China Ties",
-            "source": "Drishti IAS"
+            "title": "Policy disconnect",
+            "source": "Business Standard"
           },
           {
             "title": "Tech Life",
             "source": "BBC News"
           },
           {
-            "title": "We can do impossible things",
-            "source": "MIT Technology Review"
-          }
-        ]
-      },
-      "comment, not reporting": {
-        "count": 2,
-        "samples": [
-          {
-            "title": "Katie Zacharia Reveals Her Biggest Lessons From 5-Day White House Press Secretary Stint",
-            "source": "NDTV"
-          },
-          {
-            "title": "Opinion | Marco Rubio Has Come Selling 'Oil' To India - But With Strings Attached",
-            "source": "NDTV"
-          }
-        ]
-      },
-      "marketing, not reporting": {
-        "count": 2,
-        "samples": [
-          {
-            "title": "Meet Kerala woman who turned ₹250 into mushroom business earning ₹90 lakh annually: Here's how she did it",
-            "source": "Livemint"
-          },
-          {
-            "title": "Nielsen Showcased Product-Led Technology Innovations at AM Tech India Innovation Day 2026",
-            "source": "CXOToday.com"
+            "title": "VIPER",
+            "source": "NASA Science (.gov)"
           }
         ]
       },
@@ -184,6 +158,15 @@
           {
             "title": "Macron says Trump spread rumours about protests",
             "source": "Al Jazeera"
+          }
+        ]
+      },
+      "comment, not reporting": {
+        "count": 1,
+        "samples": [
+          {
+            "title": "Opinion: Blog: Away From Kolkata, A Delhi Home Keeps The Spirit Of Durga Puja Alive",
+            "source": "NDTV"
           }
         ]
       },
@@ -213,144 +196,135 @@
       "label": "TOP STORIES",
       "stories": [
         {
-          "headline": "MACRON ACCUSES TRUMP AND OTHER FOREIGN LEADERS OF MAKING ‘STUPID COMMENTS’ ABOUT FRANCE",
-          "display": "Macron accuses Trump and other foreign leaders of making ‘stupid comments’ about France",
-          "original": "Macron accuses Trump and other foreign leaders of making ‘stupid comments’ about France unrest",
-          "truncated": true,
+          "headline": "INDIAN COURT ORDERS RELEASE OF TWO LEADERS OF COCKROACH MOVEMENT",
+          "display": "Indian court orders release of two leaders of Cockroach movement",
+          "original": "Indian court orders release of two leaders of Cockroach movement",
+          "truncated": false,
           "usable": true,
-          "category": "WORLD NEWS",
-          "source": "BBC News · The Guardian",
+          "category": "INDIA",
+          "source": "The Guardian · Reuters",
           "sourceNames": [
-            "BBC News",
-            "The Guardian"
+            "The Guardian",
+            "Reuters"
           ],
           "corroboration": 2,
           "republishers": [],
           "owners": [
-            "BBC (licence fee)",
-            "Scott Trust"
+            "Scott Trust",
+            "Thomson Reuters (Trust Principles)"
           ],
           "ownerCount": 2,
           "countries": [
             "GB"
           ],
           "fundings": [
-            "state",
             "trust"
           ],
           "unknownOwners": 0,
           "concentration": [],
-          "link": "https://www.theguardian.com/world/2026/oct/21/macron-trump-foreign-leaders-stupid-comments-france-unrest",
-          "published": "2026-10-21T14:44:56.000Z",
-          "topic": "world",
-          "section": "world",
-          "tier": "notable",
-          "score": 8.85,
-          "photo": {
-            "path": "work/photos/top/photo-top-2.jpg",
-            "credit": "File photo: European Commission / CC BY 4.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Brigitte_Macron,_Ursula_von_der_Leyen_and_Emmanuel_Macron_in_Nice,_France_-_June_2025.jpg",
-            "query": "Macron",
-            "relevance": 0.18,
-            "title": "Brigitte Macron, Ursula von der Leyen and Emmanuel Macron in Nice, France   June 2025"
-          },
+          "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQUzRaYTBCVWZDcVN1MGxsb0Z4TlR5dXVJdlBZZkUycnpJcTBFd2lWZ1h5WmFfNHhNbmZPSzhqSi1yMWd5cEFnT0dzUFJqamktZ0NpTzQydzAydnRxQlRsTVJtRU9DbEhTUklNT2laOVZlWXo2RXFMY2FQUE94OWJsa284bi1mZHpHLThCcGtERlhBczNPamg3dTJ0XzVlSzFpeTVOVFFTXzZKTkpMQnI1NzVRQ2ZqR0Vk?oc=5",
+          "published": "2026-10-21T16:56:00.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "significant",
+          "score": 11.4,
+          "photoError": "no image matched the story closely enough (searched \"courthouse columns\")",
+          "photo": null,
           "layout": "breaking",
           "stat": null,
-          "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Macron accuses Trump and other foreign leaders of making ‘stupid comments’ about France”. Reported by BBC News · The Guardian — 2 independent newsrooms. Behind the text is a library photograph captioned “Brigitte Macron, Ursula von der Leyen and Emmanuel Macron in Nice,…”, credited to European Commission / CC BY 4.0. It is not a photograph of this event."
-        },
-        {
-          "headline": "PAKISTANI AUTHORITIES ARREST MAN ACCUSED IN $126M US POSTAGE FRAUD",
-          "display": "Pakistani authorities arrest man accused in $126m US postage fraud",
-          "original": "Pakistani authorities arrest man accused in $126m US postage fraud",
-          "truncated": false,
-          "usable": true,
-          "category": "WORLD NEWS",
-          "source": "BBC News · Al Jazeera",
-          "sourceNames": [
-            "BBC News",
-            "Al Jazeera"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "BBC (licence fee)",
-            "Government of Qatar"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "GB",
-            "QA"
-          ],
-          "fundings": [
-            "state"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://www.aljazeera.com/news/2026/10/21/pakistani-authorities-arrest-man-accused-in-126m-us-postage-fraud?traffic_source=rss",
-          "published": "2026-10-21T13:06:53.000Z",
-          "topic": "world",
-          "section": "world",
-          "tier": "notable",
-          "score": 8.55,
-          "photoError": "no image matched the story closely enough (searched \"international summit flags\")",
-          "photo": null,
-          "layout": "quote",
-          "stat": {
-            "stat": "$126m",
-            "label": "US postage fraud"
-          },
           "backdrop": "editorial",
-          "alt": "A news card from @dailyvolex, headed WORLD NEWS. The figure $126m US postage fraud is shown very large, above the headline. It reads: “Pakistani authorities arrest man accused in $126m US postage fraud”. Reported by BBC News · Al Jazeera — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Indian court orders release of two leaders of Cockroach movement”. Reported by The Guardian · Reuters — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
         },
         {
-          "headline": "NIGERIA CONFIRMS EBOLA CASE LINKED TO EAST AFRICA",
-          "display": "Nigeria confirms Ebola case linked to East Africa",
-          "original": "Nigeria confirms Ebola case linked to East Africa",
+          "headline": "FSSAI NOTICES TO NESTLE INDIA, ZYDUS WELLNESS OVER ‘MISLEADING CLAIMS’ IN PRODUCTS",
+          "display": "FSSAI notices to Nestle India, Zydus Wellness over ‘misleading claims’ in products",
+          "original": "FSSAI notices to Nestle India, Zydus Wellness over ‘misleading claims’ in products",
           "truncated": false,
           "usable": true,
-          "category": "WORLD NEWS",
-          "source": "BBC News · The Guardian",
+          "category": "INDIA",
+          "source": "The Hindu · NDTV · Reuters",
           "sourceNames": [
-            "BBC News",
-            "The Guardian"
+            "The Hindu",
+            "NDTV",
+            "Reuters"
           ],
-          "corroboration": 2,
+          "corroboration": 3,
           "republishers": [],
           "owners": [
-            "BBC (licence fee)",
-            "Scott Trust"
+            "The Hindu Group (family-held)",
+            "Adani Group",
+            "Thomson Reuters (Trust Principles)"
           ],
-          "ownerCount": 2,
+          "ownerCount": 3,
           "countries": [
+            "IN",
             "GB"
           ],
           "fundings": [
-            "state",
+            "commercial",
+            "conglomerate",
             "trust"
           ],
           "unknownOwners": 0,
           "concentration": [],
-          "link": "https://www.bbc.co.uk/news/articles/cm2l4xw7xpjgo?at_medium=RSS&at_campaign=rss",
-          "published": "2026-10-21T12:39:34.000Z",
-          "topic": "world",
-          "section": "world",
+          "link": "https://www.thehindu.com/news/national/fssai-notices-to-nestle-india-zydus-wellness-over-misleading-claims-in-products/article71608592.ece",
+          "published": "2026-10-21T16:20:47.000Z",
+          "topic": "india",
+          "section": "india",
           "tier": "notable",
-          "score": 8.55,
+          "score": 10.2,
+          "photoError": "no image matched the story closely enough (searched \"Zydus Wellness\")",
+          "photo": null,
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": "editorial",
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “FSSAI notices to Nestle India, Zydus Wellness over ‘misleading claims’ in products”. Reported by The Hindu · NDTV · Reuters — 3 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
+        },
+        {
+          "headline": "ABBOTT PLANS TO SPIN OUT ITS NUTRITION BUSINESS",
+          "display": "Abbott plans to spin out its nutrition business",
+          "original": "Abbott plans to spin out its nutrition business",
+          "truncated": false,
+          "usable": true,
+          "category": "BUSINESS",
+          "source": "Reuters · MedTech Dive",
+          "sourceNames": [
+            "Reuters",
+            "MedTech Dive"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Thomson Reuters (Trust Principles)"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "GB"
+          ],
+          "fundings": [
+            "trust"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPVnBRZjFnREl4MzE0UzA0QlZiaS1nNWo5VjlydEd0T2FCalpHeTd1NkRZbGszc2ZkMUZ1M2c0czVxajBlQ3dFb20xN0pxalJldXRhSWR1SVotblUyXzZXVEJuZ3YwOVE2NzJhUGw1N1FscExLUkRLMGdtRUxYWW91Y3ZLWG0xRTJSSnRTbHV6eUhGZw?oc=5",
+          "published": "2026-10-21T16:47:32.000Z",
+          "topic": "business",
+          "section": "business",
+          "tier": "notable",
+          "score": 7.8,
           "photo": {
             "path": "work/photos/top/photo-top-4.jpg",
-            "credit": "File photo: Oxfam East Africa / CC BY 2.0",
+            "credit": "File photo: Larry D. Moore / CC BY 4.0",
             "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Oxfam_East_Africa_-_A_mass_grave_for_children_in_Dadaab.jpg",
-            "query": "East Africa",
-            "relevance": 0.29,
-            "title": "Oxfam East Africa   A mass grave for children in Dadaab"
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Abbott_tx_water_tower.jpg",
+            "query": "Abbott",
+            "relevance": 0.25,
+            "title": "Abbott tx water tower"
           },
           "layout": "breaking",
           "stat": null,
           "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Nigeria confirms Ebola case linked to East Africa”. Reported by BBC News · The Guardian — 2 independent newsrooms. Behind the text is a library photograph captioned “Oxfam East Africa A mass grave for children in Dadaab”, credited to Oxfam East Africa / CC BY 2.0. It is not a photograph of this event."
+          "alt": "A news card from @dailyvolex, headed BUSINESS. It reads: “Abbott plans to spin out its nutrition business”. Reported by Reuters · MedTech Dive — 2 independent newsrooms. Behind the text is a library photograph captioned “Abbott tx water tower”, credited to Larry D. Moore / CC BY 4.0. It is not a photograph of this event."
         }
       ],
       "posts": [
@@ -380,8 +354,8 @@
           "caption": "data/editions/2026-10-21/caption-top.txt",
           "alts": "",
           "noAlts": "Instagram does not accept alt text on a reel; the caption carries every headline.",
-          "seconds": 19.3,
-          "bytes": 2508758
+          "seconds": 14.7,
+          "bytes": 1868283
         }
       ]
     },
@@ -390,21 +364,62 @@
       "label": "INDIA",
       "stories": [
         {
-          "headline": "CJP'S SAURAV DAS, ASHUTOSH RANKA TO BE RELEASED AFTER 7 DAYS IN JAIL",
-          "display": "CJP's Saurav Das, Ashutosh Ranka To Be Released After 7 Days In Jail",
-          "original": "CJP's Saurav Das, Ashutosh Ranka To Be Released After 7 Days In Jail",
+          "headline": "CJP’S SAURAV DAS, ASHUTOSH RANKA GET BAIL AFTER SEVEN DAYS IN JAIL",
+          "display": "CJP’s Saurav Das, Ashutosh Ranka get bail after seven days in jail",
+          "original": "CJP’s Saurav Das, Ashutosh Ranka get bail after seven days in jail",
           "truncated": false,
           "usable": true,
           "category": "INDIA",
-          "source": "NDTV · Times of India",
+          "source": "The Hindu · NDTV",
           "sourceNames": [
-            "NDTV",
+            "The Hindu",
+            "NDTV"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "The Hindu Group (family-held)",
+            "Adani Group"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.thehindu.com/news/cities/Delhi/cjp-leaders-saurav-das-ashutosh-ranka-sem-judicial-custody-hearing/article71607599.ece",
+          "published": "2026-10-21T16:13:00.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 8.7,
+          "photoError": "no image matched the story closely enough (searched \"india\")",
+          "photo": null,
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": "editorial",
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “CJP’s Saurav Das, Ashutosh Ranka get bail after seven days in jail”. Reported by The Hindu · NDTV — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
+        },
+        {
+          "headline": "I&B MINISTRY ADVISORY WARNS TV CHANNELS AGAINST PROMOTING ‘ANTI-NATIONAL’ ATTITUDES",
+          "display": "I&B Ministry advisory warns TV channels against promoting ‘anti-national’ attitudes",
+          "original": "I&B Ministry advisory warns TV channels against promoting ‘anti-national’ attitudes",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "The Hindu · Times of India",
+          "sourceNames": [
+            "The Hindu",
             "Times of India"
           ],
           "corroboration": 2,
           "republishers": [],
           "owners": [
-            "Adani Group",
+            "The Hindu Group (family-held)",
             "Bennett, Coleman & Co"
           ],
           "ownerCount": 2,
@@ -412,68 +427,30 @@
             "IN"
           ],
           "fundings": [
+            "commercial",
             "conglomerate"
           ],
           "unknownOwners": 0,
           "concentration": [],
-          "link": "https://www.ndtv.com/india-news/cjps-saurav-das-ashutosh-ranka-to-be-released-after-7-days-in-jail-12215826#publisher=newsstand",
-          "published": "2026-10-21T13:51:12.000Z",
+          "link": "https://www.thehindu.com/news/national/ib-ministry-advisory-warns-tv-channels-against-promoting-anti-national-attitudes/article71608170.ece",
+          "published": "2026-10-21T15:39:22.000Z",
           "topic": "india",
           "section": "india",
           "tier": "notable",
-          "score": 8.4,
-          "photoError": "no image matched the story closely enough (searched \"india\")",
-          "photo": null,
-          "layout": "breaking",
-          "stat": null,
-          "backdrop": "editorial",
-          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “CJP's Saurav Das, Ashutosh Ranka To Be Released After 7 Days In Jail”. Reported by NDTV · Times of India — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
-        },
-        {
-          "headline": "INDIA'S FESTIVE ECOMMERCE SEASON IS OFF TO A STRONG START",
-          "display": "India's festive ecommerce season is off to a strong start",
-          "original": "India's festive ecommerce season is off to a strong start, with Flipkart recording a new high in daily active users (DAUs), according to a report by Bank of America (BofA). The surge in user activity comes amid heightened online shopping demand during the festi",
-          "truncated": true,
-          "usable": true,
-          "category": "INDIA",
-          "source": "NDTV · Instagram",
-          "sourceNames": [
-            "NDTV",
-            "Instagram"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "Adani Group"
-          ],
-          "ownerCount": 1,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "conglomerate"
-          ],
-          "unknownOwners": 1,
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBTT1dDOEhWbFotTHVVSWtOZ1hnQ05fNGlrNlR4M1NZSDEtVzZycEIyZkU2SmY3Z1lvcnN6bVNJQTBoVG5oQjI4d2I4MWctRDNiLWc?oc=5",
-          "published": "2026-10-21T13:26:18.000Z",
-          "topic": "india",
-          "section": "india",
-          "tier": "notable",
-          "score": 7.8,
+          "score": 8.7,
           "photo": {
             "path": "work/photos/india/photo-india-3.jpg",
-            "credit": "File photo: Vyacheslav Argenberg / CC BY 4.0",
+            "credit": "File photo: Maryland GovPics / CC BY 2.0",
             "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Hampi,_India,_Stone_ornaments_at_Vijaya_Vitthala_Temple.jpg",
-            "query": "India",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Ministry_of_Economy,_Trade_and_Industry_(54474784957).jpg",
+            "query": "I&B Ministry",
             "relevance": 0.17,
-            "title": "Hampi, India, Stone ornaments at Vijaya Vitthala Temple"
+            "title": "Ministry of Economy, Trade and Industry (54474784957)"
           },
           "layout": "breaking",
           "stat": null,
           "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “India's festive ecommerce season is off to a strong start”. Reported by NDTV · Instagram — 2 independent newsrooms. Behind the text is a library photograph captioned “Hampi, India, Stone ornaments at Vijaya Vitthala Temple”, credited to Vyacheslav Argenberg / CC BY 4.0. It is not a photograph of this event."
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “I&B Ministry advisory warns TV channels against promoting ‘anti-national’ attitudes”. Reported by The Hindu · Times of India — 2 independent newsrooms. Behind the text is a library photograph captioned “Ministry of Economy, Trade and Industry (54474784957)”, credited to Maryland GovPics / CC BY 2.0. It is not a photograph of this event."
         }
       ],
       "posts": [
@@ -540,59 +517,12 @@
           "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Shark trapped for a month in South Korean canal is finally freed”. Reported by BBC News · The Guardian — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
         },
         {
-          "headline": "SU-30 FIGHTER JET CRASHES IN RUSSIA'S KALININGRAD REGION: REPORT | WORLD NEWS",
-          "display": "Su-30 fighter jet crashes in Russia's Kaliningrad region: Report | World News",
-          "original": "Su-30 fighter jet crashes in Russia's Kaliningrad region: Report | World News",
+          "headline": "ISRAEL HAD PLANNED TO BOMB IRAN IN OCTOBER, STOPPED BECAUSE OF TRUMP: REPORT",
+          "display": "Israel Had Planned To Bomb Iran In October, Stopped Because Of Trump: Report",
+          "original": "Israel Had Planned To Bomb Iran In October, Stopped Because Of Trump: Report",
           "truncated": false,
           "usable": true,
           "category": "WORLD NEWS",
-          "source": "Hindustan Times · Times of India",
-          "sourceNames": [
-            "Hindustan Times",
-            "Times of India"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "HT Media / KK Birla family",
-            "Bennett, Coleman & Co"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "conglomerate"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPZ0pHWkFubWlZLWRQWGxNbE9UdXYxem56aFdkME1MbEd2ZmhnOC13TVg1SnNjeS1KNjBqNjJOdGk5cHNJYU5WeFVSR0lyS29HUEItSzVsMDYwaU9mSnBXa0ZQdHJ0a3dfNGpQeHIza2hLSDgtalY4c1RaNS1RZTdYZ19wM3VtWXgwMEpxMU54QWp5N3hCNmpZWlVkMkVRV29LZ1RZbW12bllOZjgzb1M5b3UxV2hFdE9ZdVcwUXpueGZsc2hTcE41WDVrY2RfazhMTEpQSk1B0gHbAUFVX3lxTFBrMzdsXzZwT25LMmlkSmtBVWtlVVF2aGpEV2RBMUlmeUJrTjZqd2RDbHN",
-          "published": "2026-10-21T12:46:38.000Z",
-          "topic": "world",
-          "section": "world",
-          "tier": "notable",
-          "score": 7.65,
-          "photo": {
-            "path": "work/photos/world/photo-world-3.jpg",
-            "credit": "File photo: Gumerov Ildar / Public Domain",
-            "license": "pdm",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Old_cathedral_of_Kaliningrad_in_Russia.jpg",
-            "query": "Russia's Kaliningrad",
-            "relevance": 0.33,
-            "title": "Old cathedral of Kaliningrad in Russia"
-          },
-          "layout": "breaking",
-          "stat": null,
-          "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Su-30 fighter jet crashes in Russia's Kaliningrad region: Report | World News”. Reported by Hindustan Times · Times of India — 2 independent newsrooms. Behind the text is a library photograph captioned “Old cathedral of Kaliningrad in Russia”, credited to Gumerov Ildar / Public Domain. It is not a photograph of this event."
-        },
-        {
-          "headline": "'BISMILLAH, C'EST LES TÉNÈBRES': WHAT THE VIRAL MESSAGE FROM FRENCH PROTESTS MEAN",
-          "display": "'Bismillah, c'est les ténèbres': What the viral message from French protests mean",
-          "original": "'Bismillah, c'est les ténèbres': What the viral message from French protests mean",
-          "truncated": false,
-          "usable": true,
-          "category": "INDIA",
           "source": "NDTV · Times of India",
           "sourceNames": [
             "NDTV",
@@ -613,25 +543,18 @@
           ],
           "unknownOwners": 0,
           "concentration": [],
-          "link": "https://timesofindia.indiatimes.com/world/europe/bismillah-cest-les-tnbres-what-does-this-viral-message-from-french-protests-mean/articleshow/135085539.cms",
-          "published": "2026-10-21T07:54:19.000Z",
-          "topic": "india",
+          "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQMGE1WmRHaUV1X09RaHo4N2dXRTN4YXczUV9qMmd3NXRRZUdLdWhIeE5yZ3FJcy1mWV9ya1ptbjRsMHoyWC1pamU5emhMVnoxZGx5SDd4am5Ud0ZwdDQ5dGNxZlE3UHZ4ZWQyd2t4NWpzV3FiNVNQN1RpelRoRnRBQXVMcXhQSjUyVG1RLTRXV1RKMnZlSDdwaU1Jd0ItRW5DQ3dGNmdZeWxOSmFhcnpPODh6aE1uQdIBvgFBVV95cUxQem1BcWVyRjNqVjEzNmU4LUcxZlZTZnloUE5qOXkyU2RPSjU1WHlvUV9xSlN0Q29LMjlqRDFYVC1XZjNqa0NXNkRJV1VXOU1uS1R",
+          "published": "2026-10-21T16:59:41.000Z",
+          "topic": "world",
           "section": "world",
           "tier": "notable",
-          "score": 7.2,
-          "photo": {
-            "path": "work/photos/world/photo-world-4.jpg",
-            "credit": "File photo: Jack Downey, U.S. Office of War Informat / Public Domain",
-            "license": "pdm",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Crowds_of_French_patriots_line_the_Champs_Elysees-edit2.jpg",
-            "query": "French",
-            "relevance": 0.14,
-            "title": "Crowds of French patriots line the Champs Elysees edit2"
-          },
+          "score": 8.4,
+          "photoError": "no image matched the story closely enough (searched \"international summit flags\")",
+          "photo": null,
           "layout": "breaking",
           "stat": null,
-          "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “'Bismillah, c'est les ténèbres': What the viral message from French protests mean”. Reported by NDTV · Times of India — 2 independent newsrooms. Behind the text is a library photograph captioned “Crowds of French patriots line the Champs Elysees edit2”, credited to Jack Downey, U.S. Office of War Informat / Public Domain. It is not a photograph of this event."
+          "backdrop": "editorial",
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Israel Had Planned To Bomb Iran In October, Stopped Because Of Trump: Report”. Reported by NDTV · Times of India — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
         }
       ],
       "posts": [
@@ -642,8 +565,7 @@
             "data/editions/2026-10-21/world/slide-1.jpg",
             "data/editions/2026-10-21/world/slide-2.jpg",
             "data/editions/2026-10-21/world/slide-3.jpg",
-            "data/editions/2026-10-21/world/slide-4.jpg",
-            "data/editions/2026-10-21/world/slide-5.jpg"
+            "data/editions/2026-10-21/world/slide-4.jpg"
           ],
           "cover": "data/editions/2026-10-21/world/slide-1.jpg",
           "alts": "data/editions/2026-10-21/world/alt.json",
@@ -658,16 +580,66 @@
       "label": "TECHNOLOGY",
       "stories": [
         {
+          "headline": "MARCO RUBIO VISITS RELIANCE’S JAMNAGAR COMPLEX",
+          "display": "Marco Rubio visits Reliance’s Jamnagar complex",
+          "original": "Marco Rubio visits Reliance’s Jamnagar complex, discusses energy and technology partnerships- Moneycontrol.com",
+          "truncated": true,
+          "usable": true,
+          "category": "TECHNOLOGY",
+          "source": "The Hindu · Moneycontrol.com",
+          "sourceNames": [
+            "The Hindu",
+            "Moneycontrol.com"
+          ],
+          "corroboration": 2,
+          "republishers": [
+            "LinkedIn"
+          ],
+          "owners": [
+            "The Hindu Group (family-held)",
+            "Reliance Industries"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNa2dqZnZUUlBQZmlzYlEyN0pTWHFTX083OHl4bWlnM3hBa0pGV0djNlEzZXdyd1VRTjZwSlpOb19xM0pMZ3hXN0xMeHFxNThTVFBON3RKdkdrMEdFU2dKOFUyOWlZRVhoeGxYMXFJbm1SU3FKWTVJU3JYV2ZseE91RlE2Nm9uSmNhMlptSlUxWm5yTmcwTDFNRmROYTRMZjNkTjg2VF9xSWRvT2trdE5faGtadmVCTVRYR3BNVGxmYUE?oc=5",
+          "published": "2026-10-21T17:09:22.000Z",
+          "topic": "tech",
+          "section": "tech",
+          "tier": "notable",
+          "score": 8.7,
+          "photo": {
+            "path": "work/photos/tech/photo-tech-2.jpg",
+            "credit": "File photo: Florida House of Representatives / Public Domain",
+            "license": "pdm",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Dennis_Baxley_and_Marco_Rubio.jpg",
+            "query": "Marco Rubio",
+            "relevance": 0.33,
+            "title": "Dennis Baxley and Marco Rubio"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed TECHNOLOGY. It reads: “Marco Rubio visits Reliance’s Jamnagar complex”. Reported by The Hindu · Moneycontrol.com — 2 independent newsrooms. Behind the text is a library photograph captioned “Dennis Baxley and Marco Rubio”, credited to Florida House of Representatives / Public Domain. It is not a photograph of this event."
+        },
+        {
           "headline": "LONDON POLICE TEST 'LIVE FACIAL RECOGNITION' TECHNOLOGY AT CHELSEA AND TOTTENHAM DERBY",
           "display": "London police test 'live facial recognition' technology at Chelsea and Tottenham derby",
           "original": "London police test 'live facial recognition' technology at Chelsea and Tottenham derby",
           "truncated": false,
           "usable": true,
           "category": "TECHNOLOGY",
-          "source": "Goal.com · Reuters",
+          "source": "Reuters · Goal.com",
           "sourceNames": [
-            "Goal.com",
-            "Reuters"
+            "Reuters",
+            "Goal.com"
           ],
           "corroboration": 2,
           "republishers": [],
@@ -684,13 +656,13 @@
           "unknownOwners": 1,
           "concentration": [],
           "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOT0QwcU84clFhVTdjNW1VTmJqY1A4X05oaFVOVG93T2pTSHAwMDVfS2VqcnlyMUFiMXVDM3FqcGRJa1lxN2lucWVmYl9HQjRERm5LQWZEOW9sRS1kajVaYm9Bb1NmbU93N281cTdOdmdIUTNYdEdudC02S3RPYUFYcWhPbUdVaUdaaHhJZFduWFZIYnhEeTBUMHVvR0lUTHRrazYyWGNqYzV6VzNQM2J4STVlZm1hUi1pMDJMYTZkbVgxMUZvVWRHNWRPSFVzMlRwSnc?oc=5",
-          "published": "2026-10-21T15:04:21.000Z",
+          "published": "2026-10-21T15:04:15.000Z",
           "topic": "tech",
           "section": "tech",
           "tier": "notable",
-          "score": 7.8,
+          "score": 7.5,
           "photo": {
-            "path": "work/photos/tech/photo-tech-2.jpg",
+            "path": "work/photos/tech/photo-tech-3.jpg",
             "credit": "File photo: Harry Pot for Anefo / CC0",
             "license": "cc0",
             "pageUrl": "https://commons.wikimedia.org/wiki/File:Tottenham_Hotspurs_tegen_Atletico_Madrid_5-1_Nr_14_en_15_Elftal_Tottenham_Hots,_Bestanddeelnr_915-1586.jpg",
@@ -701,7 +673,7 @@
           "layout": "breaking",
           "stat": null,
           "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed TECHNOLOGY. It reads: “London police test 'live facial recognition' technology at Chelsea and Tottenham derby”. Reported by Goal.com · Reuters — 2 independent newsrooms. Behind the text is a library photograph captioned “Tottenham Hotspurs tegen Atletico Madrid 5 1 Nr 14 en 15 Elftal…”, credited to Harry Pot for Anefo / CC0. It is not a photograph of this event."
+          "alt": "A news card from @dailyvolex, headed TECHNOLOGY. It reads: “London police test 'live facial recognition' technology at Chelsea and Tottenham derby”. Reported by Reuters · Goal.com — 2 independent newsrooms. Behind the text is a library photograph captioned “Tottenham Hotspurs tegen Atletico Madrid 5 1 Nr 14 en 15 Elftal…”, credited to Harry Pot for Anefo / CC0. It is not a photograph of this event."
         }
       ],
       "posts": [
@@ -711,7 +683,8 @@
           "files": [
             "data/editions/2026-10-21/tech/slide-1.jpg",
             "data/editions/2026-10-21/tech/slide-2.jpg",
-            "data/editions/2026-10-21/tech/slide-3.jpg"
+            "data/editions/2026-10-21/tech/slide-3.jpg",
+            "data/editions/2026-10-21/tech/slide-4.jpg"
           ],
           "cover": "data/editions/2026-10-21/tech/slide-1.jpg",
           "alts": "data/editions/2026-10-21/tech/alt.json",
