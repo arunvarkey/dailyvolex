@@ -201,6 +201,25 @@ ok('the architecture is written down', (() => {
     && /Corrections are posted, never deleted/.test(flat);
 })());
 
+/* ── A day with no news is not a failure ─────────────────────────
+   The editorial rules refuse most of what the feeds carry, and on a thin day
+   they can refuse all of it. That used to write an edition with no sections,
+   exit 0, and leave the render to die on it one second later — so the run
+   looked like a crash and opened a failure issue, which is the opposite of
+   what happened. */
+ok('an empty day stops the run without failing it', (() => {
+  const steps = docs['daily.yml']?.jobs?.build?.steps || [];
+  const pick = steps.find(st => /shortlist\.mjs/.test(st.run || ''));
+  const gated = steps.filter(st => /steps\.pick\.outputs\.empty != 'yes'/.test(st.if || ''));
+  // Everything between picking the stories and opening the issue.
+  return pick?.id === 'pick' && gated.length >= 6;
+})());
+ok('the reporter still runs on an empty day', (() => {
+  const step = (docs['daily.yml']?.jobs?.build?.steps || [])
+    .find(st => st.uses === './.github/actions/report-run');
+  return /always\(\)/.test(step?.if || '');
+})(), 'it closes the issue from the day it really did break');
+
 /* ── Editions, not a shared folder ────────────────────────────── */
 /* Every run used to rewrite data/pending. The watch fires every fifteen
    minutes, so an approval from an hour ago pointed at files that had since

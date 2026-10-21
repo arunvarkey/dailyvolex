@@ -43,25 +43,33 @@ jobs:
         with:
           node-version: '22'
 
+      # `empty=yes` means the editorial rules refused everything the feeds
+      # carried. That is the filters working, not a fault, so the rest of the
+      # run is skipped and nothing is reported as broken.
       - name: Pick today's stories
+        id: pick
         run: node automation/shortlist.mjs --count "${{ inputs.count || '3' }}"
 
       - name: Draw the cards
+        if: steps.pick.outputs.empty != 'yes'
         run: node automation/render.mjs --ratio 4:5
 
       - name: Write a caption for every section
+        if: steps.pick.outputs.empty != 'yes'
         run: node automation/caption.mjs --all
 
       # The history keeps every edition regardless — an approved post has to
       # stay fetchable from the commit it was pinned to — but a fresh
       # checkout has no use for three months of slides.
       - name: Keep the working tree to the last ten editions
+        if: steps.pick.outputs.empty != 'yes'
         run: node automation/dv.mjs prune
 
       # A reel reaches people a carousel does not. Never required: a day with
       # no reel is a day with a carousel, which is the post that matters, so
       # an ffmpeg problem must not cost the run.
       - name: Build a reel of the top stories
+        if: steps.pick.outputs.empty != 'yes'
         continue-on-error: true
         run: |
           # apt-get update first, or the install 404s on a runner whose
@@ -75,6 +83,7 @@ jobs:
           node automation/reel.mjs --section top
 
       - name: Publish the graphic so Instagram can fetch it
+        if: steps.pick.outputs.empty != 'yes'
         # Instagram pulls the image from a public URL rather than accepting an
         # upload, so the file has to be reachable before it can be posted.
         run: automation/push-data.sh "Shortlist for $(date -u +%Y-%m-%d)"
@@ -84,9 +93,11 @@ jobs:
       # that decides something is a decision nobody can run on a laptop, and
       # every expensive bug in this repo's history was in that layer.
       - name: Write the approval issue
+        if: steps.pick.outputs.empty != 'yes'
         run: node automation/dv.mjs offer --sha "$GITHUB_SHA" --out work/issue.json
 
       - name: Ask for approval
+        if: steps.pick.outputs.empty != 'yes'
         uses: actions/github-script@v7
         with:
           script: |

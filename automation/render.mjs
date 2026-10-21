@@ -351,7 +351,13 @@ async function main() {
   }
 
   const made = edition.sections.flatMap(s => s.posts);
-  if (!made.length) throw new Error('nothing rendered');
+  // Precise, because "nothing rendered" sent me hunting through a stubbed
+  // network for a bug that was not there: the edition was empty before the
+  // renderer ever saw it.
+  if (!made.length) throw new Error(
+    edition.sections.length
+      ? `${edition.sections.length} section(s) but no usable story in any of them`
+      : 'this edition has no sections — the shortlist found nothing to publish');
   await save(ROOT, edition);
 
   console.log(`\n${made.length} post(s) in ${dirFor(edition.id)}`);

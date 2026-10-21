@@ -223,6 +223,30 @@ async function main() {
     ? sections.reduce((n, s) => n + s.clusters.length, 0)
     : stories.length;
 
+  /* A day on which nothing cleared the bar is a real outcome, not a fault.
+   *
+   * The editorial rules refuse most of what the feeds carry, and on a thin
+   * day — or after a rule is tightened — they can refuse all of it. This
+   * used to write an edition with no sections in it, exit 0, and leave the
+   * render to die on it one second later with "nothing rendered". The run
+   * then looked like a crash and opened a failure issue, which is exactly
+   * the opposite of what happened: the filters worked and there was nothing
+   * worth publishing.
+   *
+   * So it says so, writes no edition, and tells the workflow to stop here. */
+  const usable = sections
+    ? sections.filter(sec => sec.clusters.length).length
+    : stories.length;
+  if (!usable) {
+    log(`\nnothing cleared the bar today: ${items.length} read, `
+      + `${rejected.length} refused by the editorial rules, none published.`);
+    log('No edition written. This is not a failure — it is the filters doing their job.');
+    if (process.env.GITHUB_OUTPUT)
+      await (await import('node:fs/promises'))
+        .appendFile(process.env.GITHUB_OUTPUT, 'empty=yes\n');
+    return;
+  }
+
   const edition = create({
     id: idFor({ kind: breaking ? 'breaking' : 'daily' }),
     kind: breaking ? 'breaking' : 'daily',
