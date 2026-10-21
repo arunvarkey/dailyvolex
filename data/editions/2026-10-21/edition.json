@@ -1,22 +1,30 @@
 {
   "id": "2026-10-21",
   "kind": "daily",
-  "builtAt": "2026-10-21T07:54:49.438Z",
-  "pool": 585,
+  "builtAt": "2026-10-21T14:45:18.071Z",
+  "pool": 588,
   "feedErrors": [
     "indian-express: HTTP 403"
   ],
   "refusals": {
-    "read": 585,
-    "published": 11,
-    "refused": 117,
-    "consideredNotChosen": 457,
+    "read": 588,
+    "published": 13,
+    "refused": 114,
+    "consideredNotChosen": 461,
     "byRule": {
       "older than the window": {
-        "count": 86,
+        "count": 93,
         "samples": [
           {
+            "title": "North Korea publishes photos of Kim Jong Un - why do rumours of his death keep coming back?",
+            "source": "BBC News"
+          },
+          {
             "title": "Tourist found guilty after stealing Las Vegas flamingo from enclosure",
+            "source": "BBC News"
+          },
+          {
+            "title": "Kenya cult leader's children still being starved weeks before trial, son says",
             "source": "BBC News"
           },
           {
@@ -38,75 +46,42 @@
           {
             "title": "Ex-OpenAI worker accused of planting bug had Saudi support, claims prosecutors",
             "source": "BBC News"
-          },
-          {
-            "title": "Exiled critic of Rwandan president found beheaded",
-            "source": "BBC News"
-          },
-          {
-            "title": "Obama blasts federal probe of Ilhan Omar as 'so appalling'",
-            "source": "BBC News"
           }
         ]
       },
       "not news": {
-        "count": 14,
+        "count": 8,
         "samples": [
           {
-            "title": "Explained: Why Musk Would Merge SpaceX And Tesla",
-            "source": "NDTV"
+            "title": "The night watch: the YouTubers who were guardians of a shark stuck in a South Korean canal",
+            "source": "The Guardian"
           },
           {
-            "title": "Video. Latest news bulletin | October 21st, 2026 – Morning",
+            "title": "Video. Latest news bulletin | October 21st, 2026 – Midday",
             "source": "Euronews.com"
           },
           {
-            "title": "Stock Market LIVE Updates, Sensex Today: Sensex Jumps 400 Points, Asian Shares Trade Higher",
-            "source": "NDTV"
-          },
-          {
-            "title": "Watch: Mamdani does garba with Indian community at New York Navratri celebrations",
+            "title": "Where India stands in Asian Para Games medal tally after 27-medal haul on Day 3",
             "source": "Times of India"
           },
           {
+            "title": "NZ vs IND 2026/27, NZ vs IND 1st T20I Match Preview - Jetlagged India brace for New Zealand challenge",
+            "source": "Cricinfo"
+          },
+          {
             "title": "New Zealand vs India T20 2026: Know series schedule, where to watch NZ vs IND live streaming and telecast",
-            "source": "www.olympics.com"
+            "source": "Olympics"
           },
           {
-            "title": "Watch: Marco Rubio says India-U.S. trade deal close; urges New Delhi to boost U.S. energy and defence buys",
-            "source": "The Hindu"
+            "title": "India at Asian Para Games 2026: Full schedule of medal events and fixtures on October 22",
+            "source": "ESPN India"
           },
           {
-            "title": "llm-d 1.0 hardens open-source AI inference for day 2 production operations",
-            "source": "IBM Research"
+            "title": "Dow Jones| Nasdaq | S&P 500 | US Stock Market Today |Live Updates: Nasdaq surges at open as SpaceX, SuperMicro results lift AI stocks",
+            "source": "Economic Times"
           },
           {
             "title": "Reliance Industries shares jump 3% as Jio’s Rs 30,213 crore IPO gets fully subscribed on Day 1. What lies ahead?",
-            "source": "Economic Times"
-          }
-        ]
-      },
-      "tips or price speculation": {
-        "count": 5,
-        "samples": [
-          {
-            "title": "Elon Musk says SpaceX and Tesla exploring largest merger in history",
-            "source": "Al Jazeera"
-          },
-          {
-            "title": "Musk confirms SpaceX and Tesla exploring merger",
-            "source": "Al Jazeera"
-          },
-          {
-            "title": "Is GSP Crop Science the Best Stock in Its Sector? A Look at the Numbers",
-            "source": "Univest"
-          },
-          {
-            "title": "Hindustan Zinc shares jump 4% after Q2 net profit more than doubles. Why Jefferies cut target price?",
-            "source": "Economic Times"
-          },
-          {
-            "title": "Why is market rising today? Sensex jumps 800 points, Nifty above 23,050. 5 key factors behind D-Street rebound",
             "source": "Economic Times"
           }
         ]
@@ -115,37 +90,24 @@
         "count": 5,
         "samples": [
           {
-            "title": "The ECI’s unfinished lessons",
-            "source": "The Hindu"
+            "title": "India Hindu Festival",
+            "source": "Post Register"
+          },
+          {
+            "title": "India Hindu Festival",
+            "source": "Post Register"
+          },
+          {
+            "title": "Recalibrating India–China Ties",
+            "source": "Drishti IAS"
           },
           {
             "title": "Tech Life",
             "source": "BBC News"
           },
           {
-            "title": "FX Daily Snapshot",
-            "source": "MUFG Research"
-          },
-          {
-            "title": "Strategy paper",
-            "source": "Research Professional News"
-          },
-          {
-            "title": "Reuters Science News Summary",
-            "source": "Devdiscourse"
-          }
-        ]
-      },
-      "unverified or rumour": {
-        "count": 2,
-        "samples": [
-          {
-            "title": "North Korea publishes photos of Kim Jong Un - why do rumours of his death keep coming back?",
-            "source": "BBC News"
-          },
-          {
-            "title": "Who is IPS Ankita Sharma? AK-47 video goes viral; UPSC AIR 203 on third attempt",
-            "source": "Times of India"
+            "title": "We can do impossible things",
+            "source": "MIT Technology Review"
           }
         ]
       },
@@ -157,8 +119,8 @@
             "source": "NDTV"
           },
           {
-            "title": "Continuity of care and service integration: lessons from local experiences to strengthen primary health care",
-            "source": "Pan American Health Organization (PAHO)"
+            "title": "Opinion | Marco Rubio Has Come Selling 'Oil' To India - But With Strings Attached",
+            "source": "NDTV"
           }
         ]
       },
@@ -166,20 +128,42 @@
         "count": 2,
         "samples": [
           {
-            "title": "Nielsen Showcased Product-Led Technology Innovations at AM Tech India Innovation Day 2026",
-            "source": "CXOToday.com"
+            "title": "Meet Kerala woman who turned ₹250 into mushroom business earning ₹90 lakh annually: Here's how she did it",
+            "source": "Livemint"
           },
           {
-            "title": "Takara Bio USA partners with SPT Labtech to deliver automation-ready NGS library preparation technologies - News-Medical",
-            "source": "Google News"
+            "title": "Nielsen Showcased Product-Led Technology Innovations at AM Tech India Innovation Day 2026",
+            "source": "CXOToday.com"
           }
         ]
       },
       "finance feed, not a finance story": {
+        "count": 2,
+        "samples": [
+          {
+            "title": "TVS ILP leases 80k sq ft at Visakhapatnam park in Andhra to Yokohoma group",
+            "source": "Economic Times"
+          },
+          {
+            "title": "Why are analysts still cautious despite Super Micro’s strong outlook?",
+            "source": "Economic Times"
+          }
+        ]
+      },
+      "unverified or rumour": {
         "count": 1,
         "samples": [
           {
-            "title": "Why are analysts still cautious despite Super Micro’s strong outlook?",
+            "title": "Macron says Trump spread rumours about protests",
+            "source": "Al Jazeera"
+          }
+        ]
+      },
+      "tips or price speculation": {
+        "count": 1,
+        "samples": [
+          {
+            "title": "Multibagger alert! PC Jeweller shares jump 6% to fresh 52-week high, rally over 100% in 2026",
             "source": "Economic Times"
           }
         ]
@@ -192,65 +176,109 @@
       "label": "TOP STORIES",
       "stories": [
         {
-          "headline": "TRUMP SAYS INDIA-US TRADE DEAL IS NEAR, RUBIO FLAGS FEW ISSUES LEFT",
-          "display": "Trump says India-US trade deal is near, Rubio flags few issues left",
-          "original": "Trump says India-US trade deal is near, Rubio flags few issues left",
+          "headline": "DRONE ATTACK IN DISPUTED SUDAN-SOUTH SUDAN BORDER REGION KILLS AT LEAST 153",
+          "display": "Drone attack in disputed Sudan-South Sudan border region kills at least 153",
+          "original": "Drone attack in disputed Sudan-South Sudan border region kills at least 153",
           "truncated": false,
           "usable": true,
-          "category": "INDIA",
-          "source": "The Hindu · DW.com",
+          "category": "WORLD NEWS",
+          "source": "Al Jazeera · NDTV",
           "sourceNames": [
-            "The Hindu",
-            "DW.com"
+            "Al Jazeera",
+            "NDTV"
           ],
           "corroboration": 2,
           "republishers": [],
           "owners": [
-            "The Hindu Group (family-held)"
+            "Government of Qatar",
+            "Adani Group"
           ],
-          "ownerCount": 1,
+          "ownerCount": 2,
           "countries": [
+            "QA",
             "IN"
           ],
           "fundings": [
-            "commercial"
+            "state",
+            "conglomerate"
           ],
-          "unknownOwners": 1,
+          "unknownOwners": 0,
           "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPbUJTUU5VRTJEYkRfeG93bXNNaW9tQUlYQ3dsa0RUYXd3RHR4LThycjBtcGRPbk8zalJidW96ajVwSU5veHA5cmxRME1lTmFjaXdRUUxVZWRpd3czUGQ2RXNNQmtVM0FjMlVPUzZiUlYxdlkyU1VNT21rU3RuM1BFZTV1Q0VCZ0JEWUdRREo2S1dTcElEclVjQjF3S2czRnI2X0xJejdMLUdmUnJJSWZhTDd4eDNiRHM4OVHSAcABQVVfeXFMTjY2U1VKbGJqMF9hY09GekNRY3BadmxLb0wtZGUtcnNndVhmRmRub18zd3hrQTBDeFdTSVNKaFlmQXo1Tlk4YWZBSDJOSlQ",
-          "published": "2026-10-21T06:54:46.000Z",
+          "link": "https://www.aljazeera.com/news/2026/10/21/drone-attack-in-disputed-sudan-south-sudan-border-region-kills-at-least-153?traffic_source=rss",
+          "published": "2026-10-21T08:25:45.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "lead",
+          "score": 14.65,
+          "photoError": "timed out (searched \"Sudan-South Sudan\")",
+          "photo": null,
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": "editorial",
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Drone attack in disputed Sudan-South Sudan border region kills at least 153”. Reported by Al Jazeera · NDTV — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
+        },
+        {
+          "headline": "INDIA, NEW ZEALAND SIGN DIGITAL TRADE PACT UNDER FTA: WHAT DOES IT MEAN?",
+          "display": "India, New Zealand sign digital trade pact under FTA: What does it mean?",
+          "original": "India, New Zealand sign digital trade pact under FTA: What does it mean?",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "India Today · The Guardian",
+          "sourceNames": [
+            "India Today",
+            "The Guardian"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Living Media",
+            "Scott Trust"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN",
+            "GB"
+          ],
+          "fundings": [
+            "commercial",
+            "trust"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOYzNYQU5oTS1sUGF2VndYR0NRNUExVWQxNllsTlNtUHRmVHV5RVlkSmx4VTc2UU9DZkMyVWVsN196WHFrWjV6bVNsejR5cHN6bTlMcld3RFFUWndUS0hhQ2pQanVMOXlDQm1ZaHZTWG1QMXAtNXB2Ty1HR0JoXzJYYkV2Q29mR19xeFRiX0dkOWRwQVM5RTNzZHF5UWVGakRaU3E2ckIzOUlYYTlVRjlQSVFFRDZIcC0yVlQxek1uY19fN3J6dTZYb9IBzgFBVV95cUxOVk1XUlNIRVhGcFNYenBsdWJVbUFjSXVWZk9VZ1ZLVFNrWTQ0dEZPVGl5elh2NGRMTzhvQlJwaFN",
+          "published": "2026-10-21T12:25:06.000Z",
           "topic": "india",
           "section": "india",
           "tier": "significant",
-          "score": 11.7,
+          "score": 10.8,
           "photo": {
-            "path": "work/photos/top/photo-top-2.jpg",
-            "credit": "File photo: Survey of India, Government of India / Public Domain",
-            "license": "pdm",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:1922_Index_of_Great_Trigonometrical_Survey_of_India.jpg",
-            "query": "India-US",
-            "relevance": 0.17,
-            "title": "1922 Index of Great Trigonometrical Survey of India"
+            "path": "work/photos/top/photo-top-3.jpg",
+            "credit": "File photo: Vyacheslav Argenberg / CC BY 4.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Hampi,_India,_Stone_ornaments_at_Vijaya_Vitthala_Temple.jpg",
+            "query": "India",
+            "relevance": 0.14,
+            "title": "Hampi, India, Stone ornaments at Vijaya Vitthala Temple"
           },
           "layout": "breaking",
           "stat": null,
           "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Trump says India-US trade deal is near, Rubio flags few issues left”. Reported by The Hindu · DW.com — 2 independent newsrooms. Behind the text is a library photograph captioned “1922 Index of Great Trigonometrical Survey of India”, credited to Survey of India, Government of India / Public Domain. It is not a photograph of this event."
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “India, New Zealand sign digital trade pact under FTA: What does it mean?”. Reported by India Today · The Guardian — 2 independent newsrooms. Behind the text is a library photograph captioned “Hampi, India, Stone ornaments at Vijaya Vitthala Temple”, credited to Vyacheslav Argenberg / CC BY 4.0. It is not a photograph of this event."
         },
         {
-          "headline": "SPACEX PROFITS SKYROCKET TO $4.4 BILLION AS REVENUE JUMPS 161%, AI BUSINESS SURGES 830%",
-          "display": "SpaceX profits skyrocket to $4.4 billion as revenue jumps 161%, AI business surges 830%",
-          "original": "SpaceX profits skyrocket to $4.4 billion as revenue jumps 161%, AI business surges 830%",
-          "truncated": false,
+          "headline": "ALL INDIA KISAN SABHA THREATENS GOVT OF 'MILITANT RESISTANCE' IF IT GOES AHEAD WITH US",
+          "display": "All India Kisan Sabha threatens govt of 'militant resistance' if it goes ahead with US",
+          "original": "All India Kisan Sabha threatens govt of 'militant resistance' if it goes ahead with US trade deal",
+          "truncated": true,
           "usable": true,
-          "category": "BUSINESS",
-          "source": "The Times of India · Open Magazine · TechCrunch",
+          "category": "INDIA",
+          "source": "The New Indian Express · The Times of India",
           "sourceNames": [
-            "The Times of India",
-            "Open Magazine",
-            "TechCrunch"
+            "The New Indian Express",
+            "The Times of India"
           ],
-          "corroboration": 3,
+          "corroboration": 2,
           "republishers": [],
           "owners": [
             "Bennett, Coleman & Co"
@@ -262,70 +290,20 @@
           "fundings": [
             "conglomerate"
           ],
-          "unknownOwners": 2,
+          "unknownOwners": 1,
           "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMiiAJBVV95cUxOTFZmYy02VGxzN2p5VV9ZbExKUHI1UWw3UG92eWJ5MUFvaDhyRE0wUExsalhUS0JmXzVSbWpibzJoOW9lRjJPZnNzX2NYMnI2Ylk1UmlQcDZ3M3lXbmx6RXdteFItV1l4Q1lEeklyU3lmNDdOY0M5ZGwzZXFwOTlmbnRaSTBLeUtVbm1GX2lPOUk4WllMMnoyZDVUQlJrcS1samdNNV84Mldsakx4Sm9HWXRXTEVNNEp1b01DR1hTRzk2QXg3cjRsS2ZzblFkZHhfNHNZUEpMdGtBbTQ4OE5vT3E2cWNkTHhSOHJoTEpxSDlxVmVTT2ItaE1iOWJld3JGQ01DZk81SEnSAY4",
-          "published": "2026-10-21T06:54:00.000Z",
-          "topic": "business",
-          "section": "business",
-          "tier": "notable",
-          "score": 9.3,
-          "photoError": "a chart illustrates this better than a photo (searched \"(chart)\")",
-          "photo": null,
-          "layout": "quote",
-          "stat": {
-            "stat": "$4.4 billion",
-            "label": ""
-          },
-          "backdrop": "chart",
-          "alt": "A news card from @dailyvolex, headed BUSINESS. The figure $4.4 billion is shown very large, above the headline. It reads: “SpaceX profits skyrocket to $4.4 billion as revenue jumps 161%, AI business surges 830%”. Reported by The Times of India · Open Magazine · TechCrunch — 3 independent newsrooms. Behind the text is a generated market chart. It is decorative, not real data."
-        },
-        {
-          "headline": "US RELATIONSHIP WITH PAKISTAN ‘WILL NEVER COME AT EXPENSE’ OF INDIA TIES",
-          "display": "US relationship with Pakistan ‘will never come at expense’ of India ties",
-          "original": "US relationship with Pakistan ‘will never come at expense’ of India ties, says Marco Rubio | India News",
-          "truncated": true,
-          "usable": true,
-          "category": "INDIA",
-          "source": "NDTV · Hindustan Times",
-          "sourceNames": [
-            "NDTV",
-            "Hindustan Times"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "Adani Group",
-            "HT Media / KK Birla family"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "conglomerate"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxOa0RiaERrQldXcnhTOFpINDBUWXdfWXluRFFRM0JhdFdXLW96RzJmREppN0s1S2ZJWGxoUU5xVF9xY29sZld6V04waG93YXY4WnJzZnJpbWNuRmxwMTZfQVdVX2lZbWRya2tQRGplN3pXUkc4dGRJNkE4Rk1HY01vY0lud2Q4SHhJOUlUdmp6UFBRT25nQTNncUJHYlRYOFZmR1NrekItdHBXMGY2c3dsZzNic3JkYTVWc0dKNHVMMnJZM1dXTDJMWk1RSjJ3cjFtMHNxU3l0bEZ2VUxvZVHSAeMBQVVfeXFMUEV4SXpCQXl5VkN4Y1dIX0ItcEx1Z3VJWFNaN0RFMWtaTUx",
-          "published": "2026-10-21T06:48:25.000Z",
+          "link": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxQTEI1ZjFLOXNVcEJKMFZRUEhUdkU1ZzJvODRqdDhmZ2diSHJCYnJrOGdaSTdRd0xna3YyeHlBaFpzeWpnRGU1aFh3TjFLMWNxMDJBOVYxNjR6UTZtNDNvQXFhVHNMZ1hfZVJDMld0R3NIaTJWQXVDNk9MVGtYcXRxREJRR2RQSV9MSEV6NnZ0RTl2aTY3RW9zRHVYcVZsVWprYmxYUnJLQWFmaG1UaVdUbGxXTFB3SjBhZ3d6Q3gyX1Y2QnoteTQyaVFIQms3bHl5SzBFZDZuajhYWmdpeFJhUVh0Vmgtc1pKU3FZWktqeVlQWGdDRnfSAfsBQVVfeXFMUGJXbExVR29uWFB",
+          "published": "2026-10-21T14:06:00.000Z",
           "topic": "india",
           "section": "india",
-          "tier": "notable",
-          "score": 8.4,
-          "photo": {
-            "path": "work/photos/top/photo-top-4.jpg",
-            "credit": "File photo: Habib 443 / CC0",
-            "license": "cc0",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Greater_Pakistan_1.png",
-            "query": "Pakistan",
-            "relevance": 0.14,
-            "title": "Greater Pakistan 1"
-          },
+          "tier": "significant",
+          "score": 10.8,
+          "photoError": "a library photograph would misrepresent a story about people in harm (searched \"(none)\")",
+          "photo": null,
           "layout": "breaking",
           "stat": null,
-          "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “US relationship with Pakistan ‘will never come at expense’ of India ties”. Reported by NDTV · Hindustan Times — 2 independent newsrooms. Behind the text is a library photograph captioned “Greater Pakistan 1”, credited to Habib 443 / CC0. It is not a photograph of this event."
+          "backdrop": "editorial",
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “All India Kisan Sabha threatens govt of 'militant resistance' if it goes ahead with US”. Reported by The New Indian Express · The Times of India — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
         }
       ],
       "posts": [
@@ -355,8 +333,8 @@
           "caption": "data/editions/2026-10-21/caption-top.txt",
           "alts": "",
           "noAlts": "Instagram does not accept alt text on a reel; the caption carries every headline.",
-          "seconds": 20,
-          "bytes": 3782109
+          "seconds": 20.3,
+          "bytes": 3117423
         }
       ]
     },
@@ -365,98 +343,56 @@
       "label": "INDIA",
       "stories": [
         {
-          "headline": "MORE TROUBLE FOR CJP LEADERS: ANOTHER FIR AGAINST DAS, RANKA TRANSFERRED TO CRIME BRANCH",
-          "display": "More trouble for CJP leaders: Another FIR against Das, Ranka transferred to Crime Branch",
-          "original": "More trouble for CJP leaders: Another FIR against Das, Ranka transferred to Crime Branch",
-          "truncated": false,
+          "headline": "WHERE INDIA STANDS IN ASIAN PARA GAMES MEDAL TALLY AFTER 27-MEDAL RUSH",
+          "display": "Where India stands in Asian Para Games medal tally after 27-medal rush",
+          "original": "Where India stands in Asian Para Games medal tally after 27-medal rush, including five golds",
+          "truncated": true,
           "usable": true,
           "category": "INDIA",
-          "source": "The Hindu · Times of India",
+          "source": "Times of India · Olympics · ESPN India",
           "sourceNames": [
-            "The Hindu",
-            "Times of India"
+            "Times of India",
+            "Olympics",
+            "ESPN India"
           ],
-          "corroboration": 2,
+          "corroboration": 3,
           "republishers": [],
           "owners": [
-            "The Hindu Group (family-held)",
             "Bennett, Coleman & Co"
           ],
-          "ownerCount": 2,
+          "ownerCount": 1,
           "countries": [
             "IN"
           ],
           "fundings": [
-            "commercial",
             "conglomerate"
           ],
-          "unknownOwners": 0,
+          "unknownOwners": 2,
           "concentration": [],
-          "link": "https://timesofindia.indiatimes.com/india/more-trouble-for-cjp-leaders-another-fir-against-saurav-das-ashutosh-ranka-transferred-to-crime-branch/articleshow/135082428.cms",
-          "published": "2026-10-21T05:12:52.000Z",
+          "link": "https://news.google.com/rss/articles/CBMijwJBVV95cUxOeXhLdE9aMmxnN3djOXhDcXlQR1RKSkpja2lLYzJFOWNTNDFuNmZVdjM0eTFUSEpVb2I4S0Voc25HSDE5ZW5uU1hxV2xTZ0lrRGNVR0ZMd1JWMVY5ZDlzdkgxOUI5OG9WWEhvVVdYTDFRaDJGVUtwUEhFRjg0YjhTYWxnTGFaLXJYd2wzYmJZMTJFU3hFUHMzU0VGSWZXTUFUVjNPcVNldFZfeXhoTkZzcWs1NTFsRTlqNTNRNEZ1TmxhNFNuM2JnOFVDNWNGQkszQWlLeFVHbUlvNGVsTHZuaGFLeHJXaXd6cWJ4ZTNxM2RVVUMyN09Mb3BTWC1JbkpjZjBlZ1h2Tk1TSU5",
+          "published": "2026-10-21T13:46:00.000Z",
           "topic": "india",
           "section": "india",
           "tier": "notable",
-          "score": 8.4,
-          "photoError": "no image matched the story closely enough (searched \"india\")",
-          "photo": null,
-          "layout": "breaking",
-          "stat": null,
-          "backdrop": "editorial",
-          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “More trouble for CJP leaders: Another FIR against Das, Ranka transferred to Crime Branch”. Reported by The Hindu · Times of India — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
-        },
-        {
-          "headline": "BILLIONAIRE MUKESH AMBANI'S JIO LAUNCHES INDIA'S BIGGEST SHARE SALE",
-          "display": "Billionaire Mukesh Ambani's Jio launches India's biggest share sale",
-          "original": "Billionaire Mukesh Ambani's Jio launches India's biggest share sale",
-          "truncated": false,
-          "usable": true,
-          "category": "INDIA",
-          "source": "The Guardian · BBC",
-          "sourceNames": [
-            "The Guardian",
-            "BBC"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "Scott Trust",
-            "BBC (licence fee)"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "GB"
-          ],
-          "fundings": [
-            "trust",
-            "state"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9aUm4yYlhoeVZmZGxFZlJ4SDlPemU3UEVDSTVfUUhKUVJnclJTS0Zzb1F4dVkwdTk0d2FaVlMyQVh4MG5wLVRHZnNXMUd2QlkzLWZtMThUT2dVUUU?oc=5",
-          "published": "2026-10-21T05:16:44.000Z",
-          "topic": "india",
-          "section": "india",
-          "tier": "notable",
-          "score": 8.1,
+          "score": 9.45,
           "photo": {
-            "path": "work/photos/india/photo-india-3.jpg",
-            "credit": "File photo: Bohoindian / CC BY 4.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Vantara-Ambani.jpg",
-            "query": "Billionaire Mukesh Ambani",
-            "relevance": 0.17,
-            "title": "Vantara Ambani"
+            "path": "work/photos/india/photo-india-2.jpg",
+            "credit": "File photo: Jess M. Escaros Jr. for the Philippine N / Public Domain",
+            "license": "pdm",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:2018_Asian_Para_Games_PH.jpg",
+            "query": "Asian Para Games",
+            "relevance": 0.38,
+            "title": "2018 Asian Para Games PH"
           },
           "layout": "breaking",
           "stat": null,
           "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Billionaire Mukesh Ambani's Jio launches India's biggest share sale”. Reported by The Guardian · BBC — 2 independent newsrooms. Behind the text is a library photograph captioned “Vantara Ambani”, credited to Bohoindian / CC BY 4.0. It is not a photograph of this event."
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Where India stands in Asian Para Games medal tally after 27-medal rush”. Reported by Times of India · Olympics · ESPN India — 3 independent newsrooms. Behind the text is a library photograph captioned “2018 Asian Para Games PH”, credited to Jess M. Escaros Jr. for the Philippine N / Public Domain. It is not a photograph of this event."
         },
         {
-          "headline": "JIO IPO OPENS TODAY: MINIMUM INVESTMENT, PRICE BAND, RISKS AND 10 KEY DETAILS",
-          "display": "Jio IPO Opens Today: Minimum Investment, Price Band, Risks And 10 Key Details",
-          "original": "Jio IPO Opens Today: Minimum Investment, Price Band, Risks And 10 Key Details",
+          "headline": "CJP'S SAURAV DAS, ASHUTOSH RANKA TO BE RELEASED AFTER 7 DAYS IN JAIL",
+          "display": "CJP's Saurav Das, Ashutosh Ranka To Be Released After 7 Days In Jail",
+          "original": "CJP's Saurav Das, Ashutosh Ranka To Be Released After 7 Days In Jail",
           "truncated": false,
           "usable": true,
           "category": "INDIA",
@@ -480,115 +416,18 @@
           ],
           "unknownOwners": 0,
           "concentration": [],
-          "link": "https://www.ndtv.com/business-news/jio-ipo-opens-today-gmp-minimum-investment-price-band-risks-listing-key-details-12213401#publisher=newsstand",
-          "published": "2026-10-21T04:48:04.000Z",
+          "link": "https://www.ndtv.com/india-news/cjps-saurav-das-ashutosh-ranka-to-be-released-after-7-days-in-jail-12215826#publisher=newsstand",
+          "published": "2026-10-21T13:51:12.000Z",
           "topic": "india",
           "section": "india",
           "tier": "notable",
-          "score": 8.1,
-          "photoError": "no image matched the story closely enough (searched \"trading floor\")",
+          "score": 8.4,
+          "photoError": "no image matched the story closely enough (searched \"india\")",
           "photo": null,
           "layout": "breaking",
           "stat": null,
-          "backdrop": "chart",
-          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Jio IPO Opens Today: Minimum Investment, Price Band, Risks And 10 Key Details”. Reported by NDTV · Times of India — 2 independent newsrooms. Behind the text is a generated market chart. It is decorative, not real data."
-        },
-        {
-          "headline": "SBI DATA LEAK: NEARLY 4,000 CUSTOMER RECORDS FOUND ON DARK WEB; WHAT WE KNOW SO FAR",
-          "display": "SBI data leak: Nearly 4,000 customer records found on dark web; what we know so far",
-          "original": "SBI data leak: Nearly 4,000 customer records found on dark web; what we know so far",
-          "truncated": false,
-          "usable": true,
-          "category": "INDIA",
-          "source": "Times of India · Business Standard",
-          "sourceNames": [
-            "Times of India",
-            "Business Standard"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "Bennett, Coleman & Co",
-            "Business Standard Pvt Ltd"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "conglomerate",
-            "commercial"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://timesofindia.indiatimes.com/business/india-business/sbi-data-leak-nearly-4000-customer-records-found-on-dark-web-what-we-know-so-far/articleshow/135083923.cms",
-          "published": "2026-10-21T06:42:40.000Z",
-          "topic": "india",
-          "section": "india",
-          "tier": "notable",
-          "score": 7.95,
-          "photo": {
-            "path": "work/photos/india/photo-india-5.jpg",
-            "credit": "File photo: Michael Bass-Deschenes (Commons User Mik / CC BY 2.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Cotton_boll_nearly_ready_for_harvest.jpg",
-            "query": "Nearly",
-            "relevance": 0.13,
-            "title": "Cotton boll nearly ready for harvest"
-          },
-          "layout": "quote",
-          "stat": {
-            "stat": "4,000",
-            "label": "customer records found"
-          },
-          "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed INDIA. The figure 4,000 customer records found is shown very large, above the headline. It reads: “SBI data leak: Nearly 4,000 customer records found on dark web; what we know so far”. Reported by Times of India · Business Standard — 2 independent newsrooms. Behind the text is a library photograph captioned “Cotton boll nearly ready for harvest”, credited to Michael Bass-Deschenes (Commons User Mik / CC BY 2.0. It is not a photograph of this event."
-        },
-        {
-          "headline": "'UN EXPERTS OR OXYMORON?': RUBIO QUESTIONS UN, REFUSES TO COMMENT ON PROTESTS IN INDIA",
-          "display": "'UN experts or oxymoron?': Rubio questions UN, refuses to comment on protests in India",
-          "original": "'UN experts or oxymoron?': Rubio questions UN, refuses to comment on protests in India",
-          "truncated": false,
-          "usable": true,
-          "category": "INDIA",
-          "source": "Times of India · The New Indian Express",
-          "sourceNames": [
-            "Times of India",
-            "The New Indian Express"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "Bennett, Coleman & Co"
-          ],
-          "ownerCount": 1,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "conglomerate"
-          ],
-          "unknownOwners": 1,
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxObzVKWE1taWpZSFUxbFI1WlRkNlhQUl9fcDExTU1xaW5FZDlfdE8zd1lLOG5tZmpUNWxUVjlxYzRZRjVXYXprMTlkNDM4dWExLWJEYktMYWJVdkgwY2dybEJlVEwwVHhKNlM0X2hNSE1BcmJUeWFrN3Q3RDdya3N5NlRULW1nZUxOYnQ0Vlh3ajZvSlhhenA2QTFiM1RUSjNDTlhtMVVBLVdXQ2stMUppMU83VUwtandId3RrbHZXR2R2dmliVkhkcnljRU_SAdoBQVVfeXFMT0ZZc0FHUnU0bEJvR2x1dXJmVG9aTTNubFRPdmptNGNnVm9lTnA3NUswRElRdE9pQjFvSUp",
-          "published": "2026-10-21T07:38:34.000Z",
-          "topic": "india",
-          "section": "india",
-          "tier": "notable",
-          "score": 7.95,
-          "photo": {
-            "path": "work/photos/india/photo-india-6.jpg",
-            "credit": "File photo: Florida House of Representatives / Public Domain",
-            "license": "pdm",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Dennis_Baxley_and_Marco_Rubio.jpg",
-            "query": "Rubio",
-            "relevance": 0.13,
-            "title": "Dennis Baxley and Marco Rubio"
-          },
-          "layout": "breaking",
-          "stat": null,
-          "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “'UN experts or oxymoron?': Rubio questions UN, refuses to comment on protests in India”. Reported by Times of India · The New Indian Express — 2 independent newsrooms. Behind the text is a library photograph captioned “Dennis Baxley and Marco Rubio”, credited to Florida House of Representatives / Public Domain. It is not a photograph of this event."
+          "backdrop": "editorial",
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “CJP's Saurav Das, Ashutosh Ranka To Be Released After 7 Days In Jail”. Reported by NDTV · Times of India — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
         }
       ],
       "posts": [
@@ -599,10 +438,7 @@
             "data/editions/2026-10-21/india/slide-1.jpg",
             "data/editions/2026-10-21/india/slide-2.jpg",
             "data/editions/2026-10-21/india/slide-3.jpg",
-            "data/editions/2026-10-21/india/slide-4.jpg",
-            "data/editions/2026-10-21/india/slide-5.jpg",
-            "data/editions/2026-10-21/india/slide-6.jpg",
-            "data/editions/2026-10-21/india/slide-7.jpg"
+            "data/editions/2026-10-21/india/slide-4.jpg"
           ],
           "cover": "data/editions/2026-10-21/india/slide-1.jpg",
           "alts": "data/editions/2026-10-21/india/alt.json",
@@ -613,62 +449,105 @@
       ]
     },
     {
-      "id": "business",
-      "label": "BUSINESS",
+      "id": "world",
+      "label": "WORLD",
       "stories": [
         {
-          "headline": "GOOGLE ROLLS OUT NEW GEMINI TOOLS TO HELP SMALL BUSINESSES SAVE TIME",
-          "display": "Google rolls out new Gemini tools to help small businesses save time",
-          "original": "Google rolls out new Gemini tools to help small businesses save time",
+          "headline": "AUSTRALIAN MP LOSES BOTH LEGS IN VEHICLE ATTACK AS SUSPECT APPEARS IN COURT",
+          "display": "Australian MP loses both legs in vehicle attack as suspect appears in court",
+          "original": "Australian MP loses both legs in vehicle attack as suspect appears in court",
           "truncated": false,
           "usable": true,
-          "category": "BUSINESS",
-          "source": "t2ONLINE · The Times of India",
+          "category": "WORLD NEWS",
+          "source": "BBC News · Al Jazeera · NDTV",
           "sourceNames": [
-            "t2ONLINE",
-            "The Times of India"
+            "BBC News",
+            "Al Jazeera",
+            "NDTV"
+          ],
+          "corroboration": 3,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Government of Qatar",
+            "Adani Group"
+          ],
+          "ownerCount": 3,
+          "countries": [
+            "GB",
+            "QA",
+            "IN"
+          ],
+          "fundings": [
+            "state",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.aljazeera.com/news/2026/10/21/australian-mp-loses-both-legs-in-vehicle-attack-as-suspect-appears-in-court?traffic_source=rss",
+          "published": "2026-10-21T08:34:37.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 9.6,
+          "photoError": "no image matched the story closely enough (searched \"courthouse columns\")",
+          "photo": null,
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": "editorial",
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Australian MP loses both legs in vehicle attack as suspect appears in court”. Reported by BBC News · Al Jazeera · NDTV — 3 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
+        },
+        {
+          "headline": "PAKISTANI AUTHORITIES ARREST MAN ACCUSED IN $126M US POSTAGE FRAUD",
+          "display": "Pakistani authorities arrest man accused in $126m US postage fraud",
+          "original": "Pakistani authorities arrest man accused in $126m US postage fraud",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "BBC News · Al Jazeera",
+          "sourceNames": [
+            "BBC News",
+            "Al Jazeera"
           ],
           "corroboration": 2,
           "republishers": [],
           "owners": [
-            "Bennett, Coleman & Co"
+            "BBC (licence fee)",
+            "Government of Qatar"
           ],
-          "ownerCount": 1,
+          "ownerCount": 2,
           "countries": [
-            "IN"
+            "GB",
+            "QA"
           ],
           "fundings": [
-            "conglomerate"
+            "state"
           ],
-          "unknownOwners": 1,
+          "unknownOwners": 0,
           "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPYkxmdENRUGZaUlhPWlRWVUZiVE5QallGcTd3a3dRZ1RneXJ2SXhaZndwSnNUeExiSnY5ekVVbEdVVWRfRGJRRVgyZmdEU1hha2h2SE02MUZ3ek1VQVI0X0JFbklMdU9PcnYyUWV6aE93dVpWc2lUVDNaTlhqREE2bjZCOFc2b3BLbHM1QnFDdmk2R1g2dGtXYmpSMDJxNnZqaDN6cjhiRmNUSl91SzZJUW4yUlByU2NMWjJKeFhsbUhROHc1UE1DNk9naWZrUWlKNDNMaU9jV2s4bVh4M3dhQ0RWQ2h6UdIB6wFBVV95cUxOczdMRWFPQlRTOTZ2OXF4c0FxZTk3d1VDc0h",
-          "published": "2026-10-21T06:58:00.000Z",
-          "topic": "business",
-          "section": "business",
+          "link": "https://www.aljazeera.com/news/2026/10/21/pakistani-authorities-arrest-man-accused-in-126m-us-postage-fraud?traffic_source=rss",
+          "published": "2026-10-21T13:06:53.000Z",
+          "topic": "world",
+          "section": "world",
           "tier": "notable",
-          "score": 7.8,
-          "photo": {
-            "path": "work/photos/business/photo-business-2.jpg",
-            "credit": "File photo: Google / Public Domain",
-            "license": "pdm",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Google_Gemini_screenshot.png",
-            "query": "Gemini",
-            "relevance": 0.22,
-            "title": "Google Gemini screenshot"
+          "score": 8.85,
+          "photoError": "no image matched the story closely enough (searched \"international summit flags\")",
+          "photo": null,
+          "layout": "quote",
+          "stat": {
+            "stat": "$126m",
+            "label": "US postage fraud"
           },
-          "layout": "breaking",
-          "stat": null,
-          "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed BUSINESS. It reads: “Google rolls out new Gemini tools to help small businesses save time”. Reported by t2ONLINE · The Times of India — 2 independent newsrooms. Behind the text is a library photograph captioned “Google Gemini screenshot”, credited to Google / Public Domain. It is not a photograph of this event."
+          "backdrop": "editorial",
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. The figure $126m US postage fraud is shown very large, above the headline. It reads: “Pakistani authorities arrest man accused in $126m US postage fraud”. Reported by BBC News · Al Jazeera — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
         },
         {
-          "headline": "PADDY POWER CUTS 1,400 JOBS AND BLAMES BETTING TAX RISES",
-          "display": "Paddy Power cuts 1,400 jobs and blames betting tax rises",
-          "original": "Paddy Power cuts 1,400 jobs and blames betting tax rises",
+          "headline": "NIGERIA CONFIRMS EBOLA CASE LINKED TO EAST AFRICA",
+          "display": "Nigeria confirms Ebola case linked to East Africa",
+          "original": "Nigeria confirms Ebola case linked to East Africa",
           "truncated": false,
           "usable": true,
-          "category": "BUSINESS",
+          "category": "WORLD NEWS",
           "source": "BBC News · The Guardian",
           "sourceNames": [
             "BBC News",
@@ -690,43 +569,137 @@
           ],
           "unknownOwners": 0,
           "concentration": [],
-          "link": "https://www.bbc.co.uk/news/articles/cqzrdpkm3g84o?at_medium=RSS&at_campaign=rss",
-          "published": "2026-10-20T15:53:13.000Z",
-          "topic": "business",
-          "section": "business",
+          "link": "https://www.bbc.co.uk/news/articles/cm2l4xw7xpjgo?at_medium=RSS&at_campaign=rss",
+          "published": "2026-10-21T12:39:34.000Z",
+          "topic": "world",
+          "section": "world",
           "tier": "notable",
-          "score": 7.275,
+          "score": 8.55,
           "photo": {
-            "path": "work/photos/business/photo-business-3.jpg",
-            "credit": "File photo: Marek Ślusarczyk ( Tupungato ) Photo gal / CC BY 2.5",
+            "path": "work/photos/world/photo-world-4.jpg",
+            "credit": "File photo: Oxfam East Africa / CC BY 2.0",
             "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Moore_Street_market,_Dublin.jpg",
-            "query": "Paddy Power",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Oxfam_East_Africa_-_A_mass_grave_for_children_in_Dadaab.jpg",
+            "query": "East Africa",
             "relevance": 0.29,
-            "title": "Moore Street market, Dublin"
+            "title": "Oxfam East Africa   A mass grave for children in Dadaab"
           },
-          "layout": "quote",
-          "stat": {
-            "stat": "1,400",
-            "label": "jobs"
-          },
+          "layout": "breaking",
+          "stat": null,
           "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed BUSINESS. The figure 1,400 jobs is shown very large, above the headline. It reads: “Paddy Power cuts 1,400 jobs and blames betting tax rises”. Reported by BBC News · The Guardian — 2 independent newsrooms. Behind the text is a library photograph captioned “Moore Street market, Dublin”, credited to Marek Ślusarczyk ( Tupungato ) Photo gal / CC BY 2.5. It is not a photograph of this event."
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Nigeria confirms Ebola case linked to East Africa”. Reported by BBC News · The Guardian — 2 independent newsrooms. Behind the text is a library photograph captioned “Oxfam East Africa A mass grave for children in Dadaab”, credited to Oxfam East Africa / CC BY 2.0. It is not a photograph of this event."
+        },
+        {
+          "headline": "SU-30 FIGHTER JET CRASHES IN RUSSIA'S KALININGRAD REGION: REPORT | WORLD NEWS",
+          "display": "Su-30 fighter jet crashes in Russia's Kaliningrad region: Report | World News",
+          "original": "Su-30 fighter jet crashes in Russia's Kaliningrad region: Report | World News",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "Hindustan Times · Times of India",
+          "sourceNames": [
+            "Hindustan Times",
+            "Times of India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "HT Media / KK Birla family",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPZ0pHWkFubWlZLWRQWGxNbE9UdXYxem56aFdkME1MbEd2ZmhnOC13TVg1SnNjeS1KNjBqNjJOdGk5cHNJYU5WeFVSR0lyS29HUEItSzVsMDYwaU9mSnBXa0ZQdHJ0a3dfNGpQeHIza2hLSDgtalY4c1RaNS1RZTdYZ19wM3VtWXgwMEpxMU54QWp5N3hCNmpZWlVkMkVRV29LZ1RZbW12bllOZjgzb1M5b3UxV2hFdE9ZdVcwUXpueGZsc2hTcE41WDVrY2RfazhMTEpQSk1B0gHbAUFVX3lxTFBrMzdsXzZwT25LMmlkSmtBVWtlVVF2aGpEV2RBMUlmeUJrTjZqd2RDbHN",
+          "published": "2026-10-21T12:46:38.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 7.95,
+          "photo": {
+            "path": "work/photos/world/photo-world-5.jpg",
+            "credit": "File photo: Gumerov Ildar / Public Domain",
+            "license": "pdm",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Old_cathedral_of_Kaliningrad_in_Russia.jpg",
+            "query": "Russia's Kaliningrad",
+            "relevance": 0.33,
+            "title": "Old cathedral of Kaliningrad in Russia"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Su-30 fighter jet crashes in Russia's Kaliningrad region: Report | World News”. Reported by Hindustan Times · Times of India — 2 independent newsrooms. Behind the text is a library photograph captioned “Old cathedral of Kaliningrad in Russia”, credited to Gumerov Ildar / Public Domain. It is not a photograph of this event."
+        },
+        {
+          "headline": "SCHOOL ASSEMBLY NEWS HEADLINES TODAY- OCTOBER 22: TOP NATIONAL",
+          "display": "School assembly news headlines today- October 22: Top national",
+          "original": "School assembly news headlines today- October 22: Top national, sports and world news curated for you",
+          "truncated": true,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "The Hindu · India Today",
+          "sourceNames": [
+            "The Hindu",
+            "India Today"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "The Hindu Group (family-held)",
+            "Living Media"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPRFpwbTYwekRJblBiaUNjM2paejdOQ1ZhelNsQVdpeklNM01QUXRvM0hBbEdibzk2R0NJckd2eGFDVE1NSnJ4eDcxdnAxTWJXLWZBYzBGc0NzMlpjV2RPX2l6d0RubEZpY3VZVXNLNndZQ3RjRmdpQzhTcU8wSUhEY2x0a2pPZmw3TGtlaUlaTU40SVRiYmpOUkdKTUI1bVd6ZkU2R090Q2tYd3ZrRkhmZnZVNWxkYTd5b0M0bjI5NFhBY3JadGdjMHdwLXloVldHb3pVUGZ2enFNVGJxa1J3RG5iVGhVZw?oc=5",
+          "published": "2026-10-21T12:01:34.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 7.5,
+          "photo": {
+            "path": "work/photos/world/photo-world-6.jpg",
+            "credit": "File photo: G. Edward Johnson / CC BY 3.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Walter_johnson_hs_20200812_094105_1_crop16x9.jpg",
+            "query": "School",
+            "relevance": 0.33,
+            "title": "Walter johnson hs 20200812 094105 1 crop16x9"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “School assembly news headlines today- October 22: Top national”. Reported by The Hindu · India Today — 2 independent newsrooms. Behind the text is a library photograph captioned “Walter johnson hs 20200812 094105 1 crop16x9”, credited to G. Edward Johnson / CC BY 3.0. It is not a photograph of this event."
         }
       ],
       "posts": [
         {
           "kind": "carousel",
-          "id": "business",
+          "id": "world",
           "files": [
-            "data/editions/2026-10-21/business/slide-1.jpg",
-            "data/editions/2026-10-21/business/slide-2.jpg",
-            "data/editions/2026-10-21/business/slide-3.jpg",
-            "data/editions/2026-10-21/business/slide-4.jpg"
+            "data/editions/2026-10-21/world/slide-1.jpg",
+            "data/editions/2026-10-21/world/slide-2.jpg",
+            "data/editions/2026-10-21/world/slide-3.jpg",
+            "data/editions/2026-10-21/world/slide-4.jpg",
+            "data/editions/2026-10-21/world/slide-5.jpg",
+            "data/editions/2026-10-21/world/slide-6.jpg",
+            "data/editions/2026-10-21/world/slide-7.jpg"
           ],
-          "cover": "data/editions/2026-10-21/business/slide-1.jpg",
-          "alts": "data/editions/2026-10-21/business/alt.json",
-          "caption": "data/editions/2026-10-21/caption-business.txt",
+          "cover": "data/editions/2026-10-21/world/slide-1.jpg",
+          "alts": "data/editions/2026-10-21/world/alt.json",
+          "caption": "data/editions/2026-10-21/caption-world.txt",
           "commentOn": "",
           "commentFile": ""
         }
@@ -737,50 +710,137 @@
       "label": "TECHNOLOGY",
       "stories": [
         {
-          "headline": "CHANDRABABU NAIDU CALLS FOR TECHNOLOGY-DRIVEN, HUMANE POLICING IN ANDHRA PRADESH",
-          "display": "Chandrababu Naidu calls for technology-driven, humane policing in Andhra Pradesh",
-          "original": "Chandrababu Naidu calls for technology-driven, humane policing in Andhra Pradesh",
-          "truncated": false,
+          "headline": "BADR DEFENCE DEAL: TURKEY HAS TECHNOLOGY, QATAR HAS MONEY",
+          "display": "Badr defence deal: Turkey has technology, Qatar has money",
+          "original": "Badr defence deal: Turkey has technology, Qatar has money, Indonesia has industrial ambitions. What does...",
+          "truncated": true,
           "usable": true,
           "category": "TECHNOLOGY",
-          "source": "India Today · ThePrint",
+          "source": "Times of India · Moneycontrol.com",
           "sourceNames": [
-            "India Today",
-            "ThePrint"
+            "Times of India",
+            "Moneycontrol.com"
           ],
           "corroboration": 2,
           "republishers": [],
           "owners": [
-            "Living Media"
+            "Bennett, Coleman & Co",
+            "Reliance Industries"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMikwJBVV95cUxQaUZ3TG45cjJwNkV5UjlkR3M1WnhvSFRLRUpCbGZoX2ZtU0tseUZYdnFrMHdPVkJoSm5jR1lhRkt3MnVhSjZ4X3N4dDBGXzBrbUstVHVheHB6WUEtYm1QUk9nbHB4S05ONFcxVzE2dE5MYW0wenNvY0JwZkhRc0JDcm1pZ29aOVBKc2xXMXJsbWpJTmpGMWtZUjZwelM5MzBCazgweTc0WnYxTzAtZ3FOREliSVRJenRhVGRERHdYaFB0dXd2UjI3ellaVjNLUTlCUExBbHVCTWpJWWpxbGZxNDBlOGQ0VGZGcXVnQ1NaZlMwVnh6UHRKMjFpdGh6MzgydTdLeUZfZGFnM0Z",
+          "published": "2026-10-21T14:06:19.000Z",
+          "topic": "tech",
+          "section": "tech",
+          "tier": "notable",
+          "score": 7.95,
+          "photo": {
+            "path": "work/photos/tech/photo-tech-2.jpg",
+            "credit": "File photo: Mostafameraji / CC0",
+            "license": "cc0",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Metropolitian_Istanbul_-_Landscapes_of_Turkey_12.jpg",
+            "query": "Turkey",
+            "relevance": 0.17,
+            "title": "Metropolitian Istanbul   Landscapes of Turkey 12"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed TECHNOLOGY. It reads: “Badr defence deal: Turkey has technology, Qatar has money”. Reported by Times of India · Moneycontrol.com — 2 independent newsrooms. Behind the text is a library photograph captioned “Metropolitian Istanbul Landscapes of Turkey 12”, credited to Mostafameraji / CC0. It is not a photograph of this event."
+        },
+        {
+          "headline": "PM MODI SHARES AN ARTICLE HIGHLIGHTING TECHNOLOGY AND RESEARCH IN TRANSFORMING FARMERS'",
+          "display": "PM Modi shares an article highlighting technology and research in transforming farmers'",
+          "original": "PM Modi shares an article highlighting technology and research in transforming farmers' lives, agriculture sector",
+          "truncated": true,
+          "usable": true,
+          "category": "TECHNOLOGY",
+          "source": "DD India · PM India",
+          "sourceNames": [
+            "DD India",
+            "PM India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Government of India"
           ],
           "ownerCount": 1,
           "countries": [
             "IN"
           ],
           "fundings": [
-            "commercial"
+            "state"
           ],
           "unknownOwners": 1,
           "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQaUYxZTlsMkdfMWR1dW5nUjdNZGVObmFoMjgxS3RNMEozWGl5UzhkRnhRQVhGZXgzMlRTRHFMMl80aWRETVdMUFNMMHQ5SHlUUnB0aVRnYzJIWGgxa0ZzTzBqVjNoSV9oOE4zVlo0SGdtRUJJRVpjUmN0Uk1sY1hsVGNGcUJFbC1HdERSWlM0c0xONmpEUHk4SzdKV3B2NWx1bVhTeW9PSndqQzVmakkzaUVhX2xUZ9IBuwFBVV95cUxPWm8xd0FuZG56Tm9WZmZMVmZPRVh0WmhVRnY1NTU1SmZ3VjZnbDFPdWRycFZWeFNFeHBCQTBlT2sxQWU0czd2RUtkaWxtbF9Wd1J",
-          "published": "2026-10-21T05:18:55.000Z",
+          "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxQeEpZbkdwT3I0VjBJcHlNaFpra2VKNXB1SEFEd1pFWTVEQ185clF4Znktb05PcGtFTU5lZ0JQejhUdjU2UFZXZXZXMTV4ak1jZWwyN25CdVV4NlFub044aXRGankydDlXZkFDYWRTaDBDVldpajRGeVpiTE1wWDByLXlVUlhKN1Q5YzdRS1NGUnM2R1owd2FYTS1PdU03RW96cllURWpqSE5Wb3VseU1qOXpsUzRrYnB0LWZ5X19DMkwyN3ptZ2RwQktMTGxqWkJzaXNHejRsNTdGUQ?oc=5",
+          "published": "2026-10-21T09:49:18.000Z",
+          "topic": "tech",
+          "section": "tech",
+          "tier": "notable",
+          "score": 7.65,
+          "photo": {
+            "path": "work/photos/tech/photo-tech-3.jpg",
+            "credit": "File photo: Wpcpey / CC BY 4.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:HKSTP_Data_Technology_Hub_202011.jpg",
+            "query": "technology data centre",
+            "relevance": 0.17,
+            "title": "HKSTP Data Technology Hub 202011"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed TECHNOLOGY. It reads: “PM Modi shares an article highlighting technology and research in transforming farmers'”. Reported by DD India · PM India — 2 independent newsrooms. Behind the text is a library photograph captioned “HKSTP Data Technology Hub 202011”, credited to Wpcpey / CC BY 4.0. It is not a photograph of this event."
+        },
+        {
+          "headline": "FUTURE OF SUSTAINABLE AVIATION FUEL (SAF) TECHNOLOGY",
+          "display": "Future of Sustainable Aviation Fuel (SAF) Technology",
+          "original": "Future of Sustainable Aviation Fuel (SAF) Technology: Key Trends, Growth Drivers and Opportunities",
+          "truncated": true,
+          "usable": true,
+          "category": "TECHNOLOGY",
+          "source": "MarketsandMarkets · IBEF",
+          "sourceNames": [
+            "MarketsandMarkets",
+            "IBEF"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [],
+          "ownerCount": 0,
+          "countries": [],
+          "fundings": [],
+          "unknownOwners": 2,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPbjhCeG1PT1Q3VlJPbVBoU2N0LXFRZF94dFdWVmdvdFRqT21RZTJKeGZzWWc1ZTBFdnJ1M3ZtWTBHbVlaMWJtZGVnTEI2amQxX3kyYllHcVFfT1lVSWpGQmEzVzRiUHI5YlQ5MXpTQjltbU9aN29ldU5uZ0EySm5qbGIyd211aDk5QlQtT0pRTWtBUzlKT1VtREhzUzF2RlFncXdEcjdrX0NUSEE4RmFhck1yQVBNM2hsTjR3bU9OVzVNRnNqQmdj?oc=5",
+          "published": "2026-10-21T12:18:19.000Z",
           "topic": "tech",
           "section": "tech",
           "tier": "notable",
           "score": 7.5,
           "photo": {
-            "path": "work/photos/tech/photo-tech-2.jpg",
-            "credit": "File photo: 456legend / CC BY 4.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Andhra_Pradesh_2024_TDP%2BJSP_seat_share.jpg",
-            "query": "Andhra Pradesh",
-            "relevance": 0.25,
-            "title": "Andhra Pradesh 2024 TDP+JSP seat share"
+            "path": "work/photos/tech/photo-tech-4.jpg",
+            "credit": "File photo: Ubahnverleih / CC0",
+            "license": "cc0",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Sustainable_Aviation_Fuel_advertisment_at_frankfurt_airport.jpg",
+            "query": "Sustainable Aviation Fuel",
+            "relevance": 0.75,
+            "title": "Sustainable Aviation Fuel advertisment at frankfurt airport"
           },
           "layout": "breaking",
           "stat": null,
           "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed TECHNOLOGY. It reads: “Chandrababu Naidu calls for technology-driven, humane policing in Andhra Pradesh”. Reported by India Today · ThePrint — 2 independent newsrooms. Behind the text is a library photograph captioned “Andhra Pradesh 2024 TDP+JSP seat share”, credited to 456legend / CC BY 4.0. It is not a photograph of this event."
+          "alt": "A news card from @dailyvolex, headed TECHNOLOGY. It reads: “Future of Sustainable Aviation Fuel (SAF) Technology”. Reported by MarketsandMarkets · IBEF — 2 independent newsrooms. Behind the text is a library photograph captioned “Sustainable Aviation Fuel advertisment at frankfurt airport”, credited to Ubahnverleih / CC0. It is not a photograph of this event."
         }
       ],
       "posts": [
@@ -790,7 +850,9 @@
           "files": [
             "data/editions/2026-10-21/tech/slide-1.jpg",
             "data/editions/2026-10-21/tech/slide-2.jpg",
-            "data/editions/2026-10-21/tech/slide-3.jpg"
+            "data/editions/2026-10-21/tech/slide-3.jpg",
+            "data/editions/2026-10-21/tech/slide-4.jpg",
+            "data/editions/2026-10-21/tech/slide-5.jpg"
           ],
           "cover": "data/editions/2026-10-21/tech/slide-1.jpg",
           "alts": "data/editions/2026-10-21/tech/alt.json",
