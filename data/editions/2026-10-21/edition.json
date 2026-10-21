@@ -1,22 +1,22 @@
 {
   "id": "2026-10-21",
   "kind": "daily",
-  "builtAt": "2026-10-21T18:51:37.612Z",
+  "builtAt": "2026-10-21T21:42:50.329Z",
   "pool": 588,
   "feedErrors": [
     "indian-express: HTTP 403"
   ],
   "refusals": {
     "read": 588,
-    "published": 3,
-    "refused": 229,
-    "consideredNotChosen": 356,
+    "published": 7,
+    "refused": 227,
+    "consideredNotChosen": 354,
     "byRule": {
       "says nothing happened": {
-        "count": 121,
+        "count": 114,
         "samples": [
           {
-            "title": "Trump and Zelensky at loggerheads despite new optimism",
+            "title": "Pope does not need further treatment after lung cancer surgery",
             "source": "BBC News"
           },
           {
@@ -28,36 +28,44 @@
             "source": "BBC News"
           },
           {
-            "title": "Catalonia’s new far right: How anti-Muslim sentiment is reshaping politics",
+            "title": "What happened to Australian politician Helen Haines?",
             "source": "Al Jazeera"
           },
           {
-            "title": "Are the UK, France being pulled into the Saudi-Houthi conflict?",
+            "title": "Iran determined to keep uranium amid increased war odds, flurry of meetings",
             "source": "Al Jazeera"
-          },
-          {
-            "title": "Booking.com under investigation by EU regulators over fake listings and scams",
-            "source": "The Guardian"
           },
           {
             "title": "Troubled waters: life during wartime for Iranians on the strait of Hormuz",
             "source": "The Guardian"
           },
           {
-            "title": "News from the world of Education: October 21, 2026",
-            "source": "The Hindu"
+            "title": "No surprise and lasting anger: families of people who died in care homes react to Covid inquiry report",
+            "source": "The Guardian"
+          },
+          {
+            "title": "Patch the Planet: global response coordination as agents uncover critical vulnerabilities",
+            "source": "OpenAI"
           }
         ]
       },
       "older than the window": {
-        "count": 91,
+        "count": 96,
         "samples": [
           {
             "title": "Sudan army drones hit mourners and fuel market killing more than 300 people, sources say",
             "source": "BBC News"
           },
           {
+            "title": "Trump and Zelensky at loggerheads despite new optimism",
+            "source": "BBC News"
+          },
+          {
             "title": "Swimmer, 65, killed in shark attack off South Africa's east coast",
+            "source": "BBC News"
+          },
+          {
+            "title": "Trump sued over Canadian tariffs in latest legal challenge",
             "source": "BBC News"
           },
           {
@@ -69,25 +77,17 @@
             "source": "BBC News"
           },
           {
+            "title": "Suspect arrested after historic town hall set alight - French media",
+            "source": "BBC News"
+          },
+          {
             "title": "Kenya cult leader's children still being starved weeks before trial, son says",
-            "source": "BBC News"
-          },
-          {
-            "title": "Mission blasts off for Mars to grab a piece of its moon",
-            "source": "BBC News"
-          },
-          {
-            "title": "Seventh day of violent clashes between Albanian protesters and police",
-            "source": "BBC News"
-          },
-          {
-            "title": "Tennis star Svitolina says emotional toll of Ukraine war led to Monfils separation",
             "source": "BBC News"
           }
         ]
       },
       "not news": {
-        "count": 11,
+        "count": 10,
         "samples": [
           {
             "title": "Video. Latest news bulletin | October 21st, 2026 – Evening",
@@ -95,10 +95,6 @@
           },
           {
             "title": "Watch: 'Inquilab Zindabad', CJP leaders Das & Ranka come out of Tihar Jail",
-            "source": "Times of India"
-          },
-          {
-            "title": "Where India stands in Asian Para Games medal tally after 27-medal haul on Day 3",
             "source": "Times of India"
           },
           {
@@ -110,16 +106,46 @@
             "source": "ESPN India"
           },
           {
-            "title": "New Zealand vs India T20 2026: Know series schedule, where to watch NZ vs IND live streaming and telecast",
-            "source": "Olympics"
+            "title": "India vs New Zealand 1st T20I predicted XI: Vaibhav Sooryavanshi unlikely to start ahead of Sanju Samson or Abhishek Sharma",
+            "source": "Yahoo Sports"
           },
           {
             "title": "Video. Dussehra: Giant effigies of demons go up in flames in India",
             "source": "Euronews.com"
           },
           {
-            "title": "Watch: The SpaceX rocket science inside Tesla’s new Roadster | Business Matters",
-            "source": "The Hindu"
+            "title": "NZ vs IND, 1st T20I preview: Sleep-deprived India face chilly Christchurch test",
+            "source": "India Today"
+          },
+          {
+            "title": "Cricket Coverage - New Zealand vs India 1st T20I 2026 Match Analysis, Reports",
+            "source": "ESPN India"
+          }
+        ]
+      },
+      "comment, not reporting": {
+        "count": 2,
+        "samples": [
+          {
+            "title": "Opinion | Elon Musk Blunders in the Indian Market",
+            "source": "WSJ"
+          },
+          {
+            "title": "Opinion: Two experts debate whether neoliberalism is to blame for U.S. health care problems - Harvard T.H. Chan School of Public Health",
+            "source": "Google News"
+          }
+        ]
+      },
+      "marketing, not reporting": {
+        "count": 2,
+        "samples": [
+          {
+            "title": "Meet Joe Popelas, who started an AI ebook business with just $500; two years later, it was valued at more",
+            "source": "The Economic Times"
+          },
+          {
+            "title": "Opella, Microsoft partner on AI platform for health content review",
+            "source": "MobiHealthNews"
           }
         ]
       },
@@ -127,30 +153,12 @@
         "count": 2,
         "samples": [
           {
-            "title": "News at a glance",
-            "source": "MillenniumPost"
+            "title": "Reuters Science News Summary",
+            "source": "Devdiscourse"
           },
           {
-            "title": "Tech Life",
-            "source": "BBC News"
-          }
-        ]
-      },
-      "comment, not reporting": {
-        "count": 1,
-        "samples": [
-          {
-            "title": "Opinion: Blog: Away From Kolkata, A Delhi Home Keeps The Spirit Of Durga Puja Alive",
-            "source": "NDTV"
-          }
-        ]
-      },
-      "marketing, not reporting": {
-        "count": 1,
-        "samples": [
-          {
-            "title": "Meet Joe Popelas, who started an AI ebook business with just $500; two years later, it was valued at more",
-            "source": "The Economic Times"
+            "title": "Accounting AI Research Lab",
+            "source": "Carnegie Mellon University"
           }
         ]
       },
@@ -159,15 +167,6 @@
         "samples": [
           {
             "title": "TVS ILP leases 80k sq ft at Visakhapatnam park in Andhra to Yokohoma group",
-            "source": "Economic Times"
-          }
-        ]
-      },
-      "tips or price speculation": {
-        "count": 1,
-        "samples": [
-          {
-            "title": "Multibagger alert! PC Jeweller shares jump 6% to fresh 52-week high, rally over 100% in 2026",
             "source": "Economic Times"
           }
         ]
@@ -180,28 +179,103 @@
       "label": "TOP STORIES",
       "stories": [
         {
-          "headline": "QATAR, TURKIYE, PAKISTAN AND INDONESIA SIGN ‘BADR’ DEFENCE PACT",
-          "display": "Qatar, Turkiye, Pakistan and Indonesia sign ‘Badr’ defence pact",
-          "original": "Qatar, Turkiye, Pakistan and Indonesia sign ‘Badr’ defence pact",
+          "headline": "MISSILES HIT KYIV AFTER RUSSIA AGREES TO US CALL TO RESUME UKRAINE PEACE TALKS",
+          "display": "Missiles hit Kyiv after Russia agrees to US call to resume Ukraine peace talks",
+          "original": "Missiles hit Kyiv after Russia agrees to US call to resume Ukraine peace talks",
           "truncated": false,
           "usable": true,
           "category": "WORLD NEWS",
-          "source": "Al Jazeera · Times of India · India Today",
+          "source": "BBC News · Al Jazeera · NDTV",
           "sourceNames": [
+            "BBC News",
             "Al Jazeera",
+            "NDTV"
+          ],
+          "corroboration": 3,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Government of Qatar",
+            "Adani Group"
+          ],
+          "ownerCount": 3,
+          "countries": [
+            "GB",
+            "QA",
+            "IN"
+          ],
+          "fundings": [
+            "state",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.bbc.co.uk/news/articles/cq3djn5nxx12o?at_medium=RSS&at_campaign=rss",
+          "summary": "Russia says it is \"ready in principle\" to resume peace talks and US President Donald Trump says the world is \"the closest we've been\" to ending the war.",
+          "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/abac/live/5ed152f0-cd8f-11f1-b1e7-39558e114359.jpg",
+          "sources": [
+            {
+              "link": "https://www.bbc.co.uk/news/articles/cq3djn5nxx12o?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/abac/live/5ed152f0-cd8f-11f1-b1e7-39558e114359.jpg"
+            },
+            {
+              "link": "https://www.aljazeera.com/video/newsfeed/2026/10/21/russia-willing-to-resume-peace-talks-with-ukraine-us-after-witkoff-visit?traffic_source=rss",
+              "source": "Al Jazeera",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNWm1jalB0SWFpb3ktcGZfM0FVbDZRN3kwVkJmSlVTRlppTW1nUWdIMVRCOC10elVmVjhXUGE3SlUwQ244NXRvR1hyR3ZySDJPREM4UnlMNVlOUzdDMEhtVGJhc2JrdGFBS29PUU5uaWdWT0RYX0tESEZCNklLeHkzU1daQnBMbVNGRGdnTzkxd3NqNEFqY3k5dDVWV0VJU0V6NzNGRDI0QmNQdEk3c3Z2SlVJbDM5TUdqTXBEdXdYbWxPdE9Id1d4TFl4dlJiSmhqN2sxd2ZSZGx5WVXSAeMBQVVfeXFMUHkyZm1MWktSbTZxREFzdHRwaGN0ajdScWlNMGJFeW1YVWY4NzZ",
+              "source": "NDTV",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9uR3lheURKOHZfRVVGclF1YVpoVE9QcXpBTTlkc2JjUXV2RTQ2bHY0SFZCa1hmTXVTWU1XTnRaVk8yWk1XX2lUbWl4LVNjQ0Ficm5UdEdMMDh0S1E?oc=5",
+              "source": "BBC",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-21T21:27:41.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 10.35,
+          "photo": {
+            "path": "work/photos/top/photo-top-2.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/cq3djn5nxx12o?at_medium=RSS&at_campaign=rss",
+            "query": "(the feed)",
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Missiles hit Kyiv after Russia agrees to US call to resume Ukraine peace talks”. Reported by BBC News · Al Jazeera · NDTV — 3 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        },
+        {
+          "headline": "META FINED $25BN FOR 'LIES' OVER USER DATA PRIVACY",
+          "display": "Meta fined $25bn for 'lies' over user data privacy",
+          "original": "Meta fined $25bn for 'lies' over user data privacy",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "BBC News · Times of India · India Today",
+          "sourceNames": [
+            "BBC News",
             "Times of India",
             "India Today"
           ],
           "corroboration": 3,
           "republishers": [],
           "owners": [
-            "Government of Qatar",
+            "BBC (licence fee)",
             "Bennett, Coleman & Co",
             "Living Media"
           ],
           "ownerCount": 3,
           "countries": [
-            "QA",
+            "GB",
             "IN"
           ],
           "fundings": [
@@ -211,183 +285,137 @@
           ],
           "unknownOwners": 0,
           "concentration": [],
-          "link": "https://www.aljazeera.com/video/newsfeed/2026/10/21/qatar-turkiye-pakistan-and-indonesia-sign-badr-defence-pact?traffic_source=rss",
-          "summary": "Al Jazeera’s Osama Bin Javaid reports on the ‘Badr’ Memorandum of Understanding.",
-          "feedImage": null,
+          "link": "https://www.bbc.co.uk/news/articles/cqdr8zxrr3dxo?at_medium=RSS&at_campaign=rss",
+          "summary": "The fine is the largest to date against Facebook's owner, larger than an $18bn deal with California.",
+          "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/6026/live/1fd68c80-cd78-11f1-bc2e-018d645d8d21.jpg",
           "sources": [
             {
-              "link": "https://www.aljazeera.com/video/newsfeed/2026/10/21/qatar-turkiye-pakistan-and-indonesia-sign-badr-defence-pact?traffic_source=rss",
-              "source": "Al Jazeera",
-              "feedImage": null
-            },
-            {
-              "link": "https://www.aljazeera.com/news/2026/10/21/how-qatar-turkiye-pakistan-and-indonesia-are-deepening-defence-ties?traffic_source=rss",
-              "source": "Al Jazeera",
-              "feedImage": null
-            },
-            {
-              "link": "https://timesofindia.indiatimes.com/world/rest-of-world/turkey-pakistan-qatar-and-indonesia-sign-defence-pact-to-boost-joint-arms-production/articleshow/135089701.cms",
-              "source": "Times of India",
-              "feedImage": "https://static.toiimg.com/photo/msid-135090037,imgsize-81444.cms"
-            },
-            {
-              "link": "https://news.google.com/rss/articles/CBMikgJBVV95cUxOZjU1d0xxTm04TzcwOHNKQ1FUU2dEUHVybV9rYlA2aUhtZFVZMzlNUTBYQ1NKbGEwQmxzWFBQTG9ibjlDcWRlMm9XWUNZY1JLOU5pUGp6dldlLTFITlNpam1wYUtkZGxQUGl0X2t5NFhVMmwzdVc0bzNIYURpQTVHNFpSbUZWOVAwcktOWF8zdzZ5LVpiNDBtSTlUUUE4VVJtNGdsZW1oMlBpRTRMMmcxN19PbjVtQnhfc241OERKVzQ4XzhzN0F4UGNKS012dVlLdUVYMlRCNmpHRUZwM0FnaWhBVDR4cG1WTXVrV3EzNnlXMlI3Sm5yNjdyMmFwQmVoYkpMc1NqZ2NPXzJ",
-              "source": "India Today",
-              "feedImage": null
-            }
-          ],
-          "published": "2026-10-21T18:35:42.000Z",
-          "topic": "world",
-          "section": "world",
-          "tier": "notable",
-          "score": 9.9,
-          "photo": {
-            "path": "work/photos/top/photo-top-2.jpg",
-            "credit": "Photo: Times of India",
-            "license": "publisher",
-            "pageUrl": "https://timesofindia.indiatimes.com/world/rest-of-world/turkey-pakistan-qatar-and-indonesia-sign-defence-pact-to-boost-joint-arms-production/articleshow/135089701.cms",
-            "query": "(the feed)",
-            "from": "article"
-          },
-          "layout": "breaking",
-          "stat": null,
-          "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Qatar, Turkiye, Pakistan and Indonesia sign ‘Badr’ defence pact”. Reported by Al Jazeera · Times of India · India Today — 3 independent newsrooms. Behind the text is a library photograph, Photo: Times of India. It is not a photograph of this event."
-        },
-        {
-          "headline": "THOUSANDS MARCH FOR SCHOOL FUNDING IN GREECE",
-          "display": "Thousands march for school funding in Greece",
-          "original": "Thousands march for school funding in Greece",
-          "truncated": false,
-          "usable": true,
-          "category": "WORLD NEWS",
-          "source": "Al Jazeera · The Guardian",
-          "sourceNames": [
-            "Al Jazeera",
-            "The Guardian"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "Government of Qatar",
-            "Scott Trust"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "QA",
-            "GB"
-          ],
-          "fundings": [
-            "state",
-            "trust"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://www.aljazeera.com/news/2026/10/21/thousands-march-for-school-funding-in-greece?traffic_source=rss",
-          "summary": "Teachers joined nationwide student protests amid growing youth-led demonstrations in Europe.",
-          "feedImage": null,
-          "sources": [
-            {
-              "link": "https://www.aljazeera.com/news/2026/10/21/thousands-march-for-school-funding-in-greece?traffic_source=rss",
-              "source": "Al Jazeera",
-              "feedImage": null
-            },
-            {
-              "link": "https://www.theguardian.com/world/live/2026/oct/21/us-russia-ukraine-putin-witkoff-zelenskyy-france-italy-protests-europe-latest-news-updates",
-              "source": "The Guardian",
-              "feedImage": "https://i.guim.co.uk/img/media/d748117c85bca5a45c4bd056e5fd3f2f780c280b/405_0_2953_2362/master/2953.jpg?width=140&quality=85&auto=format&fit=max&s=b4950ebe667b9b30c98517698e167fe9"
-            }
-          ],
-          "published": "2026-10-21T18:45:46.000Z",
-          "topic": "world",
-          "section": "world",
-          "tier": "notable",
-          "score": 8.4,
-          "photoError": "every candidate failed to download (only 6 KB — furniture, not a photograph; HTTP 401)",
-          "photo": null,
-          "layout": "breaking",
-          "stat": null,
-          "backdrop": "editorial",
-          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Thousands march for school funding in Greece”. Reported by Al Jazeera · The Guardian — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
-        },
-        {
-          "headline": "META ORDERED TO PAY $25 BILLION IN FINE LINKED TO 8-YEAR-OLD DATA PRIVACY SCANDAL",
-          "display": "Meta ordered to pay $25 billion in fine linked to 8-year-old data privacy scandal",
-          "original": "Meta ordered to pay $25 billion in fine linked to 8-year-old data privacy scandal",
-          "truncated": false,
-          "usable": true,
-          "category": "INDIA",
-          "source": "NDTV · Times of India",
-          "sourceNames": [
-            "NDTV",
-            "Times of India"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "Adani Group",
-            "Bennett, Coleman & Co"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "conglomerate"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://timesofindia.indiatimes.com/technology/tech-news/judge-orders-meta-to-pay-25-billion-in-trial-related-to-8-year-old-data-privacy-scandal/articleshow/135098967.cms",
-          "summary": "A New Mexico state court has imposed a $25 billion penalty on Meta following a legal battle. Jurors found Meta liable for deceiving residents about data privacy measures and harmful content management. The court reduced the initial $219.5 billion request, affirming the penalty's justification due to numerous violations. Meta's internal inquiry was deemed ineffective, failing to meet commitments ma",
-          "feedImage": "https://static.toiimg.com/photo/msid-135098976,imgsize-23760.cms",
-          "sources": [
-            {
-              "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOaXNMUjNhNVhOQkxnTzRmemFsS1BHZWEtQm9PbW9EVkdULU1mb05FTGxaWWd6X1BFMjQ5cWNIb1V2OUl0Z2d3NV9RZEdlQ0FVUWVjWUtBZnlrSW1UY2pISF9TVERPajlmZFpLNzczTkp3SkN1YnJsTXZiNEUwbVJwMnZla0x5dlVQNThwNS1YNHJPNjVELWI4WXZtVXhxNTk1RzFLVm91VdIBrwFBVV95cUxNdEE1SzZ4enpYV0tDMWhMbkNUTjhLb29PQnJNRTMtNldwdnp5aGlEOXJ3LUpuRlNNN1JzZnl6WTJOMFpJRzBKZURvWVBqTG82RU1pX2tqck1BN3ZXMXp2RlQ",
-              "source": "NDTV",
-              "feedImage": null
+              "link": "https://www.bbc.co.uk/news/articles/cqdr8zxrr3dxo?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/6026/live/1fd68c80-cd78-11f1-bc2e-018d645d8d21.jpg"
             },
             {
               "link": "https://timesofindia.indiatimes.com/technology/tech-news/judge-orders-meta-to-pay-25-billion-in-trial-related-to-8-year-old-data-privacy-scandal/articleshow/135098967.cms",
               "source": "Times of India",
               "feedImage": "https://static.toiimg.com/photo/msid-135098976,imgsize-23760.cms"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxPZlBvVElOc1NZQ0hNMEJtRTE1STlDTS15dnIzVU4wbU5KcEg3UzBlN2lOWFlUUjJLYVQ4d1BaZEFMYkFsa2JqNTg2WHg5Q3lJU2NleVg4Z0d1enEyVHRGRF9YSzVYQ3BobkxDclFIdmxkZVBiNzFDbVhhQ29OYk5VTXpTLTc5dUV1bXI4dHNNLWo4ZVlPb1hycUN1WTM2WHVvRXVkQm1Cd0dEa0NMTmFKVDNoSFAxVno4b0VtQ3JreFVtZHAwdzBQQkdDek1PNURqUTJUOGFTajZYQzhIU1h5MU1R0gHnAUFVX3lxTE5vWjhORGRnLUlRSjYyRWU1bEVEQVd6VkQ1ZVh6U25",
+              "source": "India Today",
+              "feedImage": null
             }
           ],
-          "published": "2026-10-21T18:27:53.000Z",
-          "topic": "india",
-          "section": "india",
+          "published": "2026-10-21T19:54:16.000Z",
+          "topic": "world",
+          "section": "world",
           "tier": "notable",
-          "score": 7.95,
+          "score": 10.35,
           "photo": {
-            "path": "work/photos/top/photo-top-4.jpg",
-            "credit": "Photo: Times of India",
+            "path": "work/photos/top/photo-top-3.jpg",
+            "credit": "Photo: BBC News",
             "license": "publisher",
-            "pageUrl": "https://timesofindia.indiatimes.com/technology/tech-news/judge-orders-meta-to-pay-25-billion-in-trial-related-to-8-year-old-data-privacy-scandal/articleshow/135098967.cms",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/cqdr8zxrr3dxo?at_medium=RSS&at_campaign=rss",
             "query": "(the feed)",
             "from": "article"
           },
-          "layout": "quote",
-          "stat": {
-            "stat": "$25 billion",
-            "label": ""
-          },
+          "layout": "breaking",
+          "stat": null,
           "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed INDIA. The figure $25 billion is shown very large, above the headline. It reads: “Meta ordered to pay $25 billion in fine linked to 8-year-old data privacy scandal”. Reported by NDTV · Times of India — 2 independent newsrooms. Behind the text is a library photograph, Photo: Times of India. It is not a photograph of this event."
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Meta fined $25bn for 'lies' over user data privacy”. Reported by BBC News · Times of India · India Today — 3 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        },
+        {
+          "headline": "BUSINESS - FRENCH BOND YIELDS HIT 24-YEAR HIGH AFTER UNREST",
+          "display": "Business - French bond yields hit 24-year high after unrest",
+          "original": "Business - French bond yields hit 24-year high after unrest",
+          "truncated": false,
+          "usable": true,
+          "category": "BUSINESS",
+          "source": "The Guardian · France 24",
+          "sourceNames": [
+            "The Guardian",
+            "France 24"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Scott Trust"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "GB"
+          ],
+          "fundings": [
+            "trust"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQVUV1clQ3c1lNMkRkWlZ4WjlremQ3OXE1V1BHVGw2WU5YQlZBZnAtUW5Mb1ZQQ1BaenlmckNndXdTY2JmX216VTdWTDJYMWlpWFp5S2o4RUpiMmREalRiU1BCR0Y4OUp6TFBockhzajdUZlJ3UHhLbnEtdUN3c3lMZ0dR?oc=5",
+          "summary": "Business - French bond yields hit 24-year high after unrest &nbsp;&nbsp; France 24",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.theguardian.com/business/2026/oct/21/french-borrowing-costs-failure-to-pass-budget-govenment-bonds-violent-street-protests",
+              "source": "The Guardian",
+              "feedImage": "https://i.guim.co.uk/img/media/f6bb8d4864e05b4447547f7813c2a697dc28b29a/432_0_4320_3456/master/4320.jpg?width=140&quality=85&auto=format&fit=max&s=212fae03a703c784f0b0b5b65623df66"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQVUV1clQ3c1lNMkRkWlZ4WjlremQ3OXE1V1BHVGw2WU5YQlZBZnAtUW5Mb1ZQQ1BaenlmckNndXdTY2JmX216VTdWTDJYMWlpWFp5S2o4RUpiMmREalRiU1BCR0Y4OUp6TFBockhzajdUZlJ3UHhLbnEtdUN3c3lMZ0dR?oc=5",
+              "source": "France 24",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-21T20:43:53.000Z",
+          "topic": "business",
+          "section": "business",
+          "tier": "notable",
+          "score": 8.1,
+          "photoError": "every candidate failed to download (only 4 KB — furniture, not a photograph; HTTP 401)",
+          "photo": null,
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": "chart",
+          "alt": "A news card from @dailyvolex, headed BUSINESS. It reads: “Business - French bond yields hit 24-year high after unrest”. Reported by The Guardian · France 24 — 2 independent newsrooms. Behind the text is a generated market chart. It is decorative, not real data."
         }
       ],
       "posts": [
         {
           "kind": "carousel",
-          "id": "top",
+          "id": "top-1",
+          "story": "Missiles hit Kyiv after Russia agrees to US call to resume Ukraine peace talks",
           "files": [
-            "data/editions/2026-10-21/top/slide-1.jpg",
-            "data/editions/2026-10-21/top/slide-2.jpg",
-            "data/editions/2026-10-21/top/slide-3.jpg",
-            "data/editions/2026-10-21/top/slide-4.jpg",
-            "data/editions/2026-10-21/top/slide-5.jpg"
+            "data/editions/2026-10-21/top/1/slide-1.jpg"
           ],
-          "cover": "data/editions/2026-10-21/top/slide-1.jpg",
-          "alts": "data/editions/2026-10-21/top/alt.json",
-          "caption": "data/editions/2026-10-21/caption-top.txt",
+          "cover": "data/editions/2026-10-21/top/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-21/top/1/alt.json",
+          "caption": "data/editions/2026-10-21/caption-top-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "top-2",
+          "story": "Meta fined $25bn for 'lies' over user data privacy",
+          "files": [
+            "data/editions/2026-10-21/top/2/slide-1.jpg",
+            "data/editions/2026-10-21/top/2/slide-2.jpg",
+            "data/editions/2026-10-21/top/2/slide-3.jpg"
+          ],
+          "cover": "data/editions/2026-10-21/top/2/slide-1.jpg",
+          "alts": "data/editions/2026-10-21/top/2/alt.json",
+          "caption": "data/editions/2026-10-21/caption-top-2.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "top-3",
+          "story": "Business - French bond yields hit 24-year high after unrest",
+          "files": [
+            "data/editions/2026-10-21/top/3/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-21/top/3/slide-1.jpg",
+          "alts": "data/editions/2026-10-21/top/3/alt.json",
+          "caption": "data/editions/2026-10-21/caption-top-3.txt",
           "commentOn": "",
           "commentFile": ""
         },
@@ -397,15 +425,325 @@
           "files": [
             "data/editions/2026-10-21/top/reel.mp4"
           ],
-          "cover": "data/editions/2026-10-21/top/slide-1.jpg",
-          "caption": "data/editions/2026-10-21/caption-top.txt",
+          "cover": "data/editions/2026-10-21/top/1/slide-1.jpg",
+          "caption": "data/editions/2026-10-21/caption-top-1.txt",
           "alts": "",
           "noAlts": "Instagram does not accept alt text on a reel; the caption carries the headline.",
-          "seconds": 13.8,
-          "bytes": 1070106,
-          "story": "Qatar, Turkiye, Pakistan and Indonesia sign ‘Badr’ defence pact",
+          "seconds": 20.1,
+          "bytes": 2345382,
+          "story": "Missiles hit Kyiv after Russia agrees to US call to resume Ukraine peace talks",
           "footage": "the photograph, pushed in",
-          "spoken": null
+          "spoken": "Daily Volex. Missiles hit Kyiv after Russia agrees to US call to resume Ukraine peace talks. Russia says it is \"ready in principle\" to resume peace talks and US President Donald Trump says the world is \"the closest we've been\" to ending the war. Reported by BBC News, Al Jazeera and NDTV."
+        }
+      ]
+    },
+    {
+      "id": "india",
+      "label": "INDIA",
+      "stories": [
+        {
+          "headline": "INDIA’S ‘COCKROACH’ LEADERS FREE AFTER A WEEK IN JAIL",
+          "display": "India’s ‘Cockroach’ leaders free after a week in jail",
+          "original": "India’s ‘Cockroach’ leaders free after a week in jail",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "BBC News · Al Jazeera",
+          "sourceNames": [
+            "BBC News",
+            "Al Jazeera"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Government of Qatar"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB",
+            "QA"
+          ],
+          "fundings": [
+            "state"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQaklDa0plV3NMcHI3SzNub3JyaGdXN0FmM2lXVVUxb2hZZ3oxQU1OLUNuNjFIRk5mX2hhbUJsUGNMRGoydXB0dDdMSlJFUE5VWGlpR0p4T0FpZnlDOThxQjBYcjIwakUwODA4cWtoQlE2TEFXRGlnVTJfZkJJV1VhN3RFYXlZM2ppanRtQ0l2UXAyT2EyODZ6V0ZHTi15cTZ2N2psadIBqgFBVV95cUxOa3Y4emFtV0JqMEZuQ18yeUFIcHI5TUVDa204dFR2ZldCX1ZfX1VYVFlTbHQ0dzlzOG5hVlg5MUlKcGN5Y0duVTBpdm9wU1kycVpmUy1DTEU4NWl2Ul9fMWRwWWh",
+          "summary": "India’s ‘Cockroach’ leaders free after a week in jail &nbsp;&nbsp; Al Jazeera",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.bbc.co.uk/news/articles/c674p0xepljeo?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/0c4c/live/6c343880-cd77-11f1-bc2e-018d645d8d21.jpg"
+            },
+            {
+              "link": "https://www.aljazeera.com/video/newsfeed/2026/10/21/indias-cockroach-leaders-free-after-a-week-in-jail?traffic_source=rss",
+              "source": "Al Jazeera",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQaklDa0plV3NMcHI3SzNub3JyaGdXN0FmM2lXVVUxb2hZZ3oxQU1OLUNuNjFIRk5mX2hhbUJsUGNMRGoydXB0dDdMSlJFUE5VWGlpR0p4T0FpZnlDOThxQjBYcjIwakUwODA4cWtoQlE2TEFXRGlnVTJfZkJJV1VhN3RFYXlZM2ppanRtQ0l2UXAyT2EyODZ6V0ZHTi15cTZ2N2psadIBqgFBVV95cUxOa3Y4emFtV0JqMEZuQ18yeUFIcHI5TUVDa204dFR2ZldCX1ZfX1VYVFlTbHQ0dzlzOG5hVlg5MUlKcGN5Y0duVTBpdm9wU1kycVpmUy1DTEU4NWl2Ul9fMWRwWWh",
+              "source": "Al Jazeera",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-21T19:18:09.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 8.55,
+          "photo": {
+            "path": "work/photos/india/photo-india-2.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/c674p0xepljeo?at_medium=RSS&at_campaign=rss",
+            "query": "(the feed)",
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “India’s ‘Cockroach’ leaders free after a week in jail”. Reported by BBC News · Al Jazeera — 2 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "india-1",
+          "story": "India’s ‘Cockroach’ leaders free after a week in jail",
+          "files": [
+            "data/editions/2026-10-21/india/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-21/india/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-21/india/1/alt.json",
+          "caption": "data/editions/2026-10-21/caption-india-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    },
+    {
+      "id": "world",
+      "label": "WORLD",
+      "stories": [
+        {
+          "headline": "MEXICO CHARGES PROSECUTOR WITH TREASON OVER US INVOLVEMENT IN DRUG RAID",
+          "display": "Mexico charges prosecutor with treason over US involvement in drug raid",
+          "original": "Mexico charges prosecutor with treason over US involvement in drug raid",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "BBC News · Al Jazeera",
+          "sourceNames": [
+            "BBC News",
+            "Al Jazeera"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Government of Qatar"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB",
+            "QA"
+          ],
+          "fundings": [
+            "state"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.aljazeera.com/news/2026/10/21/mexico-charges-prosecutor-with-treason-over-us-involvement-in-drug-raid?traffic_source=rss",
+          "summary": "The participation of US agents in an April drug operation has raised questions about whether Mexico's laws were upheld.",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.bbc.co.uk/news/articles/ckx2qpw4rjd7o?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/0463/live/f6cb33e0-cd86-11f1-b1e7-39558e114359.jpg"
+            },
+            {
+              "link": "https://www.aljazeera.com/news/2026/10/21/mexico-charges-prosecutor-with-treason-over-us-involvement-in-drug-raid?traffic_source=rss",
+              "source": "Al Jazeera",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-21T21:25:21.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.85,
+          "photo": {
+            "path": "work/photos/world/photo-world-2.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/ckx2qpw4rjd7o?at_medium=RSS&at_campaign=rss",
+            "query": "(the feed)",
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Mexico charges prosecutor with treason over US involvement in drug raid”. Reported by BBC News · Al Jazeera — 2 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        },
+        {
+          "headline": "HUGE CROWDS WATCH ATTEMPT TO RESCUE SHARK STRANDED IN SOUTH KOREAN CANAL",
+          "display": "Huge crowds watch attempt to rescue shark stranded in South Korean canal",
+          "original": "Huge crowds watch attempt to rescue shark stranded in South Korean canal",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "BBC News · The Guardian",
+          "sourceNames": [
+            "BBC News",
+            "The Guardian"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Scott Trust"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB"
+          ],
+          "fundings": [
+            "state",
+            "trust"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.bbc.co.uk/news/videos/ckq6n56e5qrqo?at_medium=RSS&at_campaign=rss",
+          "summary": "Early on Thursday morning local time, South Korea's oceans ministry said the shark had been successfully guided out of the canal.",
+          "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f8b7/live/2a48ce80-cd23-11f1-a64c-550be9e3c66b.jpg",
+          "sources": [
+            {
+              "link": "https://www.bbc.co.uk/news/videos/ckq6n56e5qrqo?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f8b7/live/2a48ce80-cd23-11f1-a64c-550be9e3c66b.jpg"
+            },
+            {
+              "link": "https://www.theguardian.com/world/2026/oct/21/youtube-watch-over-shark-stuck-south-korea-canal-busan-bukang-i",
+              "source": "The Guardian",
+              "feedImage": "https://i.guim.co.uk/img/media/19fbd10bc74cee193b7c558e29bd0dd821dc131c/229_0_4520_3618/master/4520.jpg?width=140&quality=85&auto=format&fit=max&s=3c8f8b61727eeed2cfb163b1bef8c5f6"
+            }
+          ],
+          "published": "2026-10-21T20:31:47.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.85,
+          "photo": {
+            "path": "work/photos/world/photo-world-3.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.bbc.co.uk/news/videos/ckq6n56e5qrqo?at_medium=RSS&at_campaign=rss",
+            "query": "(the feed)",
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Huge crowds watch attempt to rescue shark stranded in South Korean canal”. Reported by BBC News · The Guardian — 2 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        },
+        {
+          "headline": "PUTIN ORDERS RELEASE OF JAILED AMERICAN AS HE MEETS TRUMP ENVOY FOR UKRAINE TALKS",
+          "display": "Putin orders release of jailed American as he meets Trump envoy for Ukraine talks",
+          "original": "Putin orders release of jailed American as he meets Trump envoy for Ukraine talks",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "The Guardian · Reuters",
+          "sourceNames": [
+            "The Guardian",
+            "Reuters"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Scott Trust",
+            "Thomson Reuters (Trust Principles)"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB"
+          ],
+          "fundings": [
+            "trust"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.theguardian.com/world/2026/oct/21/putin-witkoff-russia-ukraine-trump-stephen-hubbard-release",
+          "summary": "Russia frees Stephen Hubbard after US request while Steve Witkoff praises Putin, wanted by ICC as war criminal, as a ‘humanitarian’ US politics live – latest updates Vladimir Putin ordered the release of an American man from a Russian jail as he met Donald Trump’s envoy Steve Witkoff in St Petersburg on Wednesday for fresh talks on ending the war in Ukraine, amid increasingly close relations betwe",
+          "feedImage": "https://i.guim.co.uk/img/media/3b6f9d48538efe71034a096db4868d7da488b502/460_0_4252_3402/master/4252.jpg?width=140&quality=85&auto=format&fit=max&s=77d8b605192fb8d8f410f5e70f9ab666",
+          "sources": [
+            {
+              "link": "https://www.theguardian.com/world/2026/oct/21/putin-witkoff-russia-ukraine-trump-stephen-hubbard-release",
+              "source": "The Guardian",
+              "feedImage": "https://i.guim.co.uk/img/media/3b6f9d48538efe71034a096db4868d7da488b502/460_0_4252_3402/master/4252.jpg?width=140&quality=85&auto=format&fit=max&s=77d8b605192fb8d8f410f5e70f9ab666"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9KcFExU3IzV0hqRVctRnF0cDJLUFFfN0hGRktMeVQyc0tmVUNrRHd5MVQ4R3RsVG1HS0xET0FjV0NnNU40RnYxLXR5bDhQMC1EczI4?oc=5",
+              "source": "Reuters",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-21T21:23:37.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.4,
+          "photoError": "every candidate failed to download (only 4 KB — furniture, not a photograph; HTTP 401)",
+          "photo": null,
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": "editorial",
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Putin orders release of jailed American as he meets Trump envoy for Ukraine talks”. Reported by The Guardian · Reuters — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "world-1",
+          "story": "Mexico charges prosecutor with treason over US involvement in drug raid",
+          "files": [
+            "data/editions/2026-10-21/world/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-21/world/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-21/world/1/alt.json",
+          "caption": "data/editions/2026-10-21/caption-world-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "world-2",
+          "story": "Huge crowds watch attempt to rescue shark stranded in South Korean canal",
+          "files": [
+            "data/editions/2026-10-21/world/2/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-21/world/2/slide-1.jpg",
+          "alts": "data/editions/2026-10-21/world/2/alt.json",
+          "caption": "data/editions/2026-10-21/caption-world-2.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "world-3",
+          "story": "Putin orders release of jailed American as he meets Trump envoy for Ukraine talks",
+          "files": [
+            "data/editions/2026-10-21/world/3/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-21/world/3/slide-1.jpg",
+          "alts": "data/editions/2026-10-21/world/3/alt.json",
+          "caption": "data/editions/2026-10-21/caption-world-3.txt",
+          "commentOn": "",
+          "commentFile": ""
         }
       ]
     }
