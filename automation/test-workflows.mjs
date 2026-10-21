@@ -403,6 +403,24 @@ ok('a card WITH a photograph keeps the numbers it had', (() => {
     || /0\.20 : 0\.12/.test(html);
 })(), 'the photo card was correct and must not move');
 
+/* The closing card. Its rows share the band evenly and stop at 80% of the
+   height, where Instagram's caption and audio row begin — that part was
+   right and is not a gap to close. What was wrong is that its body text was
+   sized for a 4:5 card and read as a smaller, weaker frame beside story
+   cards carrying a 132px headline. */
+ok('the closing card sizes its text per ratio', (() => {
+  const html = fs.readFileSync(join(ROOT, 'index.html'), 'utf8');
+  return /const bodyCap=S\.ratio==='9:16' \? 54 : 38/.test(html)
+    && /Math\.min\(bodyCap,/.test(html);
+})());
+ok('the band still stops clear of Instagram’s caption UI', (() => {
+  const html = fs.readFileSync(join(ROOT, 'index.html'), 'utf8');
+  // 0.20 of the height reserved at the foot of a 9:16 frame. Measured on a
+  // rendered card: content ends at 75%, the reserved band starts at 80%.
+  return /'9:16':\s*\{\s*top:0\.10,\s*bottom:0\.20/.test(html)
+    && /bottom:\s*Math\.min\(H\*\(1-z\.bottom\)/.test(html);
+})(), 'filling that space would put text under the caption');
+
 ok('the app offers an approve link rather than a credential', (() => {
   const html = fs.readFileSync(join(ROOT, 'index.html'), 'utf8');
   return /issues\/new/.test(html) && /encodeURIComponent\('\/approve /.test(html)

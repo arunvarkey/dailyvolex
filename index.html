@@ -1952,7 +1952,13 @@ function drawStories(theme) {
   const avail=band.bottom-y;
   const rowH=avail/items.length;
   const numW=64;
-  const bodySize=Math.max(26, Math.min(38, Math.round(rowH*0.30)));
+  /* 38px was sized for a 4:5 card. In 9:16 the rows are half as tall again
+     and the story cards beside this one carry a 132px headline, so a 38px
+     line reads as a weaker, smaller card rather than the same channel's
+     closing frame. The slot has the room — two lines at 54px use 136 of a
+     230px row. The cap is per ratio; the feed card keeps the size it had. */
+  const bodyCap=S.ratio==='9:16' ? 54 : 38;
+  const bodySize=Math.max(26, Math.min(bodyCap, Math.round(rowH*0.30)));
 
   items.forEach((headline,i)=>{
     const tr=introT(220+i*120,540);
