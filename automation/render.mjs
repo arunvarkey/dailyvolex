@@ -18,7 +18,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join, extname, normalize } from 'node:path';
 import { launchChrome, closeChrome, openPage } from './lib/cdp.mjs';
 import { findImage, downloadImage } from './lib/imagery.mjs';
-import { imageFromArticle, isFurniture,
+import { imageFromArticle, isFurniture, biggerVariants,
          creditFor as articleCredit } from './lib/articleimage.mjs';
 import { composeSection, backdropOf, toQuery } from './lib/compose.mjs';
 import { load, save, dirFor, attachPost } from './lib/edition.mjs';
@@ -152,23 +152,48 @@ function dropDuplicatePhotos(stories) {
  * declares no picture still has a chance of one. */
 async function findPhoto(story, opts) {
   if (!opts.noArticlePhotos) {
+    /* Every outlet that carried the story, not only the one whose wording
+       won. A story carried by Reuters and by Google News can end up led by
+       the Google item, whose link is a redirect to an interstitial with no
+       picture — so the Reuters link, which has one, was never tried. */
+    const carried = story.sources?.length
+      ? story.sources
+      : [{ link: story.link, source: story.source, feedImage: story.feedImage }];
+
     /* The feed's own picture first of all. It costs nothing — the feed was
        already fetched — and it cannot be refused: NDTV answers 403 to a
        request for its article page and names the same photograph in its RSS
-       without being asked. */
-    if (story.feedImage && !isFurniture(story.feedImage)) {
-      const credit = articleCredit(story.source, story.link || story.feedImage);
+       without being asked. Feeds hand over thumbnails, though, so the
+       bigger renditions go first and the thumbnail stays as the fallback. */
+    const fromFeed = carried.filter(c => c.feedImage && !isFurniture(c.feedImage));
+    if (fromFeed.length) {
+      const c = fromFeed[0];
+      const credit = articleCredit(c.source || story.source, c.link || c.feedImage);
       if (credit) return {
-        image: { url: story.feedImage, credit, licence: 'publisher',
-                 pageUrl: story.link || null,
-                 source: String(story.source || '').split('·')[0].trim() || null },
+        image: { url: c.feedImage, credit, licence: 'publisher', pageUrl: c.link || null,
+                 source: String(c.source || story.source || '').split('·')[0].trim() || null,
+                 alternatives: [
+                   // Bigger versions of this one, then whatever the other
+                   // outlets named.
+                   ...biggerVariants(c.feedImage).map(url => ({ url, credit, licence: 'publisher',
+                      pageUrl: c.link || null })),
+                   ...fromFeed.slice(1).flatMap(o => {
+                     const oc = articleCredit(o.source || story.source, o.link || o.feedImage);
+                     return oc ? [...biggerVariants(o.feedImage), o.feedImage]
+                       .map(url => ({ url, credit: oc, licence: 'publisher', pageUrl: o.link || null }))
+                       : [];
+                   }),
+                 ],
+               },
         query: '(the feed)', error: null,
       };
     }
 
-    const fromArticle = await imageFromArticle(story.link, { source: story.source });
-    if (fromArticle.image) return { image: fromArticle.image, query: '(the article)', error: null };
-    story.articlePhotoError = fromArticle.error;
+    for (const c of carried) {
+      const fromArticle = await imageFromArticle(c.link, { source: c.source || story.source });
+      if (fromArticle.image) return { image: fromArticle.image, query: '(the article)', error: null };
+      story.articlePhotoError = `${c.source || '?'}: ${fromArticle.error}`;
+    }
   }
 
   // The sensitivity rule applies to the LIBRARY only, and deliberately. It

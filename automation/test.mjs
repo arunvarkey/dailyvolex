@@ -12,7 +12,7 @@ import { altForStory, altForCover, altForEntry, altForClosing } from './lib/altt
 import { statFor, prefersStat } from './lib/statcard.mjs';
 import { looksLikeNews, hasNewsVerb, reportsNothing, NEWS_VERBS } from './lib/verbs.mjs';
 import { imageUrlFrom, isFurniture, creditFor as articleCredit,
-         imageFromArticle } from './lib/articleimage.mjs';
+         imageFromArticle, biggerVariants } from './lib/articleimage.mjs';
 import { secondsForStory, secondsForCover, SECONDS_FOR_CLOSING, reelTimings,
          totalSeconds, checkDuration, ffmpegArgs, MIN_SECONDS, MAX_SECONDS } from './lib/reelplan.mjs';
 import { create, attachPost, validate, posts, postById, idFor, dirFor,
@@ -2394,6 +2394,28 @@ ok('the feed picture reaches the item',
     + '<link>https://x.com/a</link>'
     + '<media:content url="https://i.x.com/a.jpg" type="image/jpeg"/></item></channel></rss>',
     { id: 'x', name: 'X', topic: 'world' })[0]?.feedImage === 'https://i.x.com/a.jpg');
+
+
+
+/* ── Feeds hand over thumbnails, not photographs ──────────────────
+   BBC named its picture in its RSS and it was 240 pixels wide — five
+   kilobytes, rejected as furniture, which was the right call about the wrong
+   thing. The size is in the URL, as it is for most news CDNs. */
+ok('a BBC thumbnail is asked for at a usable size',
+  biggerVariants('https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/808c/live/f04.jpg')[0]
+  === 'https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/808c/live/f04.jpg');
+ok('a width in the query is raised',
+  biggerVariants('https://i.ex.com/a.jpg?w=240&q=70')[0] === 'https://i.ex.com/a.jpg?w=1200&q=70');
+ok('a generated thumbnail falls back to its original',
+  biggerVariants('https://wp.ex.com/up/lead-150x150.jpg')[0] === 'https://wp.ex.com/up/lead.jpg');
+ok('a size segment in the path is raised',
+  biggerVariants('https://cdn.ex.com/thumb/320/story.jpg')[0] === 'https://cdn.ex.com/thumb/1200/story.jpg');
+ok('a plain url is left alone',
+  biggerVariants('https://plain.ex.com/photo.jpg').length === 0,
+  'a guess that 404s costs a request, so only guess where the pattern is known');
+ok('the original is never among the guesses',
+  biggerVariants('https://i.ex.com/a.jpg?w=240').every(u => u !== 'https://i.ex.com/a.jpg?w=240'),
+  'it stays as the fallback, it is not a bigger version of itself');
 
 
 console.log(`\n${passed} passed, ${failed} failed`);

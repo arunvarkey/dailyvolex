@@ -122,3 +122,36 @@ export async function imageFromArticle(link, {
     clearTimeout(timer);
   }
 }
+
+/* Feeds hand over thumbnails, not photographs.
+ *
+ * BBC named its picture in its RSS and it was 240 pixels wide — five
+ * kilobytes, rejected as furniture, which was the right call about the wrong
+ * thing. The size is in the URL, as it is for most news CDNs, so ask for a
+ * bigger one. A guess that 404s costs one request and falls through to the
+ * next candidate, which is why the original is always kept as the fallback.
+ */
+export function biggerVariants(url) {
+  const out = [];
+  const u = String(url || '');
+  if (!u) return out;
+
+  // BBC ichef: /ace/standard/240/cpsprodpb/... and /news/640/...
+  if (/ichef\.bbci\.co\.uk/.test(u)) {
+    const bumped = u.replace(/\/(\d{2,4})\/(?=cpsprodpb|ace|news)/, '/1024/')
+                    .replace(/\/(standard|news)\/(\d{2,4})\//, '/$1/1024/');
+    if (bumped !== u) out.push(bumped);
+  }
+  // A width in the query: ?w=240, &width=320
+  if (/[?&](w|width|size)=\d{2,4}\b/i.test(u))
+    out.push(u.replace(/([?&](?:w|width|size)=)\d{2,4}\b/gi, '$11200'));
+  // WordPress and friends: name-150x150.jpg is a generated thumbnail and the
+  // original sits beside it without the suffix.
+  if (/-\d{2,4}x\d{2,4}\.(jpe?g|png|webp)$/i.test(u))
+    out.push(u.replace(/-\d{2,4}x\d{2,4}(\.(?:jpe?g|png|webp))$/i, '$1'));
+  // A size segment in the path: /thumb/320/ or /resize/400/
+  if (/\/(thumb|thumbs|resize|crop|w)\/\d{2,4}\//i.test(u))
+    out.push(u.replace(/\/(thumb|thumbs|resize|crop|w)\/\d{2,4}\//i, '/$1/1200/'));
+
+  return [...new Set(out)].filter(x => x !== u);
+}

@@ -187,6 +187,15 @@ async function main() {
       // The picture the feed itself named, carried through so the renderer
       // does not have to fetch a page that may refuse it.
       feedImage: c.lead.feedImage || null,
+      /* Every outlet in the cluster, not only the one whose wording won.
+         A story carried by Reuters and by Google News can end up led by the
+         Google item, whose link is a redirect to an interstitial with no
+         picture in it — so the Reuters link, which has one, was never tried.
+         Deduplicated and capped, because this is a list of things to fetch. */
+      sources: [...new Map((c.items || [])
+        .filter(i => i.link)
+        .map(i => [i.link, { link: i.link, source: i.source, feedImage: i.feedImage || null }]))
+        .values()].slice(0, 4),
       published: c.newest ? new Date(c.newest).toISOString() : null,
       topic: c.lead.topic,
       section: sectionOf(c.lead.topic, c.lead.title),
