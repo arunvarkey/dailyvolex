@@ -18,6 +18,10 @@ on:
       count:
         description: 'How many stories to shortlist'
         default: '3'
+      measure:
+        description: 'Measure only — do not use up the day'
+        type: boolean
+        default: false
 
 permissions:
   contents: write           # commit the shortlist and the rendered graphic
@@ -48,7 +52,9 @@ jobs:
       # run is skipped and nothing is reported as broken.
       - name: Pick today's stories
         id: pick
-        run: node automation/shortlist.mjs --count "${{ inputs.count || '3' }}"
+        run: |
+          node automation/shortlist.mjs --count "${{ inputs.count || '3' }}" \
+            ${{ inputs.measure && '--no-record' || '' }}
 
       - name: Draw the cards
         if: steps.pick.outputs.empty != 'yes'

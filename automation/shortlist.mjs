@@ -5,6 +5,7 @@
  * every stage after this one reads. Safe to run as often as you like.
  *
  *   node automation/shortlist.mjs [--count 3] [--fixtures] [--quiet]
+ *                                 [--no-record]  measure without using the day up
  *                                 [--breaking] [--min-sources 3] [--max-age 1.5]
  *
  * --breaking is the watch mode: it looks only for a story that several
@@ -277,7 +278,14 @@ async function main() {
   // Never from fixtures: the sample build runs repeatedly, and a second run
   // that suppressed its own fixtures as "already offered" would render
   // nothing and fail CI for a reason that has nothing to do with the code.
-  if (!FLAG('fixtures')) {
+  /* --no-record is for measuring, not publishing.
+   *
+   * Every run remembers what it offered so the next one does not offer it
+   * again for 36 hours. That is right for a channel and wrong for testing: I
+   * triggered eight runs in an afternoon to measure picture coverage and
+   * suppressed twenty-nine stories doing it, until a run found nothing left
+   * and the day looked empty when it was only used up. */
+  if (!FLAG('fixtures') && !FLAG('no-record')) {
     await recordPosted(OFFERED, stories.map(s => ({
       title: s.display || s.headline, offeredAt: new Date().toISOString(),
     })));
