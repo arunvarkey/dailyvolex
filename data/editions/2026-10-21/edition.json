@@ -1,19 +1,19 @@
 {
   "id": "2026-10-21",
   "kind": "daily",
-  "builtAt": "2026-10-21T17:27:55.118Z",
+  "builtAt": "2026-10-21T17:35:21.297Z",
   "pool": 588,
   "feedErrors": [
     "indian-express: HTTP 403"
   ],
   "refusals": {
     "read": 588,
-    "published": 9,
-    "refused": 241,
-    "consideredNotChosen": 338,
+    "published": 7,
+    "refused": 239,
+    "consideredNotChosen": 342,
     "byRule": {
       "says nothing happened": {
-        "count": 125,
+        "count": 126,
         "samples": [
           {
             "title": "Trump and Zelensky at loggerheads despite new optimism",
@@ -50,8 +50,12 @@
         ]
       },
       "older than the window": {
-        "count": 94,
+        "count": 95,
         "samples": [
+          {
+            "title": "Sudan army drones hit mourners and fuel market killing more than 300 people, sources say",
+            "source": "BBC News"
+          },
           {
             "title": "Swimmer, 65, killed in shark attack off South Africa's east coast",
             "source": "BBC News"
@@ -78,10 +82,6 @@
           },
           {
             "title": "Tennis star Svitolina says emotional toll of Ukraine war led to Monfils separation",
-            "source": "BBC News"
-          },
-          {
-            "title": "Vinted blocks French looters listing stolen goods for sale",
             "source": "BBC News"
           }
         ]
@@ -124,20 +124,8 @@
         ]
       },
       "too thin to be a headline": {
-        "count": 6,
+        "count": 2,
         "samples": [
-          {
-            "title": "India Hindu Festival",
-            "source": "Post Register"
-          },
-          {
-            "title": "India Hindu Festival",
-            "source": "Post Register"
-          },
-          {
-            "title": "Belagavi Sub-Registrar office shifted",
-            "source": "The Hindu"
-          },
           {
             "title": "Policy disconnect",
             "source": "Business Standard"
@@ -145,10 +133,6 @@
           {
             "title": "Tech Life",
             "source": "BBC News"
-          },
-          {
-            "title": "VIPER",
-            "source": "NASA Science (.gov)"
           }
         ]
       },
@@ -196,173 +180,97 @@
       "label": "TOP STORIES",
       "stories": [
         {
-          "headline": "INDIAN COURT ORDERS RELEASE OF TWO LEADERS OF COCKROACH MOVEMENT",
-          "display": "Indian court orders release of two leaders of Cockroach movement",
-          "original": "Indian court orders release of two leaders of Cockroach movement",
+          "headline": "‘REAL WAY TO END IT’: ZELENSKY OPEN TO FREEZING UKRAINE-RUSSIA FRONT LINES TO END WAR",
+          "display": "‘Real way to end it’: Zelensky open to freezing Ukraine-Russia front lines to end war",
+          "original": "‘Real way to end it’: Zelensky open to freezing Ukraine-Russia front lines to end war",
           "truncated": false,
           "usable": true,
-          "category": "INDIA",
-          "source": "The Guardian · Reuters",
+          "category": "WORLD NEWS",
+          "source": "BBC News · Hindustan Times",
           "sourceNames": [
-            "The Guardian",
-            "Reuters"
+            "BBC News",
+            "Hindustan Times"
           ],
           "corroboration": 2,
           "republishers": [],
           "owners": [
-            "Scott Trust",
-            "Thomson Reuters (Trust Principles)"
+            "BBC (licence fee)",
+            "HT Media / KK Birla family"
           ],
           "ownerCount": 2,
           "countries": [
-            "GB"
+            "GB",
+            "IN"
           ],
           "fundings": [
-            "trust"
+            "state",
+            "conglomerate"
           ],
           "unknownOwners": 0,
           "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQUzRaYTBCVWZDcVN1MGxsb0Z4TlR5dXVJdlBZZkUycnpJcTBFd2lWZ1h5WmFfNHhNbmZPSzhqSi1yMWd5cEFnT0dzUFJqamktZ0NpTzQydzAydnRxQlRsTVJtRU9DbEhTUklNT2laOVZlWXo2RXFMY2FQUE94OWJsa284bi1mZHpHLThCcGtERlhBczNPamg3dTJ0XzVlSzFpeTVOVFFTXzZKTkpMQnI1NzVRQ2ZqR0Vk?oc=5",
-          "published": "2026-10-21T16:56:00.000Z",
-          "topic": "india",
-          "section": "india",
-          "tier": "significant",
-          "score": 11.4,
-          "photoError": "no image matched the story closely enough (searched \"courthouse columns\")",
+          "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQUzhyWW1kdTJPMUdHRXB4MXRXYU43YzY3aFJsSWR1VWFUNzZXS2xYV2VUclNVbjl3dHNVdDZJSzNyYWtRaGxGUld1b0h6RDhXQm05cVBOWGg1aFNfaDhucWQwWGN2ODNfQ3dia1AyamFQUk1lVnFsTmVYX2VKNjExZnpqLU11MDEwbk9vU0hPLTRubTVQdDYycXhyZkYxVWhnX2U2R09vQXBLZ0x0SE1keDBpbkFRYWNuc1RFRV9DVl9YQXVqUFpUOXNRYkI2b0J4SWtid2Z1TEdBTjV5YXc?oc=5",
+          "published": "2026-10-21T17:23:37.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.85,
+          "photoError": "a library photograph would misrepresent a story about people in harm (searched \"(none)\")",
           "photo": null,
           "layout": "breaking",
           "stat": null,
           "backdrop": "editorial",
-          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Indian court orders release of two leaders of Cockroach movement”. Reported by The Guardian · Reuters — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “‘Real way to end it’: Zelensky open to freezing Ukraine-Russia front lines to end war”. Reported by BBC News · Hindustan Times — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
         },
         {
-          "headline": "FSSAI NOTICES TO NESTLE INDIA, ZYDUS WELLNESS OVER ‘MISLEADING CLAIMS’ IN PRODUCTS",
-          "display": "FSSAI notices to Nestle India, Zydus Wellness over ‘misleading claims’ in products",
-          "original": "FSSAI notices to Nestle India, Zydus Wellness over ‘misleading claims’ in products",
-          "truncated": false,
+          "headline": "MARCO RUBIO VISITS RELIANCE’S JAMNAGAR COMPLEX",
+          "display": "Marco Rubio visits Reliance’s Jamnagar complex",
+          "original": "Marco Rubio visits Reliance’s Jamnagar complex, discusses energy and technology partnerships- Moneycontrol.com",
+          "truncated": true,
           "usable": true,
-          "category": "INDIA",
-          "source": "The Hindu · NDTV · Reuters",
+          "category": "TECHNOLOGY",
+          "source": "The Hindu · Moneycontrol.com",
           "sourceNames": [
             "The Hindu",
-            "NDTV",
-            "Reuters"
+            "Moneycontrol.com"
           ],
-          "corroboration": 3,
-          "republishers": [],
+          "corroboration": 2,
+          "republishers": [
+            "LinkedIn"
+          ],
           "owners": [
             "The Hindu Group (family-held)",
-            "Adani Group",
-            "Thomson Reuters (Trust Principles)"
+            "Reliance Industries"
           ],
-          "ownerCount": 3,
+          "ownerCount": 2,
           "countries": [
-            "IN",
-            "GB"
+            "IN"
           ],
           "fundings": [
             "commercial",
-            "conglomerate",
-            "trust"
+            "conglomerate"
           ],
           "unknownOwners": 0,
           "concentration": [],
-          "link": "https://www.thehindu.com/news/national/fssai-notices-to-nestle-india-zydus-wellness-over-misleading-claims-in-products/article71608592.ece",
-          "published": "2026-10-21T16:20:47.000Z",
-          "topic": "india",
-          "section": "india",
+          "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNa2dqZnZUUlBQZmlzYlEyN0pTWHFTX083OHl4bWlnM3hBa0pGV0djNlEzZXdyd1VRTjZwSlpOb19xM0pMZ3hXN0xMeHFxNThTVFBON3RKdkdrMEdFU2dKOFUyOWlZRVhoeGxYMXFJbm1SU3FKWTVJU3JYV2ZseE91RlE2Nm9uSmNhMlptSlUxWm5yTmcwTDFNRmROYTRMZjNkTjg2VF9xSWRvT2trdE5faGtadmVCTVRYR3BNVGxmYUE?oc=5",
+          "published": "2026-10-21T17:09:22.000Z",
+          "topic": "tech",
+          "section": "tech",
           "tier": "notable",
-          "score": 10.2,
-          "photoError": "no image matched the story closely enough (searched \"Zydus Wellness\")",
-          "photo": null,
-          "layout": "breaking",
-          "stat": null,
-          "backdrop": "editorial",
-          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “FSSAI notices to Nestle India, Zydus Wellness over ‘misleading claims’ in products”. Reported by The Hindu · NDTV · Reuters — 3 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
-        },
-        {
-          "headline": "ABBOTT PLANS TO SPIN OUT ITS NUTRITION BUSINESS",
-          "display": "Abbott plans to spin out its nutrition business",
-          "original": "Abbott plans to spin out its nutrition business",
-          "truncated": false,
-          "usable": true,
-          "category": "BUSINESS",
-          "source": "Reuters · MedTech Dive",
-          "sourceNames": [
-            "Reuters",
-            "MedTech Dive"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "Thomson Reuters (Trust Principles)"
-          ],
-          "ownerCount": 1,
-          "countries": [
-            "GB"
-          ],
-          "fundings": [
-            "trust"
-          ],
-          "unknownOwners": 1,
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPVnBRZjFnREl4MzE0UzA0QlZiaS1nNWo5VjlydEd0T2FCalpHeTd1NkRZbGszc2ZkMUZ1M2c0czVxajBlQ3dFb20xN0pxalJldXRhSWR1SVotblUyXzZXVEJuZ3YwOVE2NzJhUGw1N1FscExLUkRLMGdtRUxYWW91Y3ZLWG0xRTJSSnRTbHV6eUhGZw?oc=5",
-          "published": "2026-10-21T16:47:32.000Z",
-          "topic": "business",
-          "section": "business",
-          "tier": "notable",
-          "score": 7.8,
+          "score": 8.7,
           "photo": {
-            "path": "work/photos/top/photo-top-4.jpg",
-            "credit": "File photo: Larry D. Moore / CC BY 4.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Abbott_tx_water_tower.jpg",
-            "query": "Abbott",
-            "relevance": 0.25,
-            "title": "Abbott tx water tower"
+            "path": "work/photos/top/photo-top-3.jpg",
+            "credit": "File photo: Florida House of Representatives / Public Domain",
+            "license": "pdm",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Dennis_Baxley_and_Marco_Rubio.jpg",
+            "query": "Marco Rubio",
+            "relevance": 0.33,
+            "title": "Dennis Baxley and Marco Rubio"
           },
           "layout": "breaking",
           "stat": null,
           "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed BUSINESS. It reads: “Abbott plans to spin out its nutrition business”. Reported by Reuters · MedTech Dive — 2 independent newsrooms. Behind the text is a library photograph captioned “Abbott tx water tower”, credited to Larry D. Moore / CC BY 4.0. It is not a photograph of this event."
-        }
-      ],
-      "posts": [
-        {
-          "kind": "carousel",
-          "id": "top",
-          "files": [
-            "data/editions/2026-10-21/top/slide-1.jpg",
-            "data/editions/2026-10-21/top/slide-2.jpg",
-            "data/editions/2026-10-21/top/slide-3.jpg",
-            "data/editions/2026-10-21/top/slide-4.jpg",
-            "data/editions/2026-10-21/top/slide-5.jpg"
-          ],
-          "cover": "data/editions/2026-10-21/top/slide-1.jpg",
-          "alts": "data/editions/2026-10-21/top/alt.json",
-          "caption": "data/editions/2026-10-21/caption-top.txt",
-          "commentOn": "",
-          "commentFile": ""
+          "alt": "A news card from @dailyvolex, headed TECHNOLOGY. It reads: “Marco Rubio visits Reliance’s Jamnagar complex”. Reported by The Hindu · Moneycontrol.com — 2 independent newsrooms. Behind the text is a library photograph captioned “Dennis Baxley and Marco Rubio”, credited to Florida House of Representatives / Public Domain. It is not a photograph of this event."
         },
-        {
-          "kind": "reel",
-          "id": "top-reel",
-          "files": [
-            "data/editions/2026-10-21/top/reel.mp4"
-          ],
-          "cover": "data/editions/2026-10-21/top/slide-1.jpg",
-          "caption": "data/editions/2026-10-21/caption-top.txt",
-          "alts": "",
-          "noAlts": "Instagram does not accept alt text on a reel; the caption carries every headline.",
-          "seconds": 14.7,
-          "bytes": 1868283
-        }
-      ]
-    },
-    {
-      "id": "india",
-      "label": "INDIA",
-      "stories": [
         {
           "headline": "CJP’S SAURAV DAS, ASHUTOSH RANKA GET BAIL AFTER SEVEN DAYS IN JAIL",
           "display": "CJP’s Saurav Das, Ashutosh Ranka get bail after seven days in jail",
@@ -403,7 +311,44 @@
           "stat": null,
           "backdrop": "editorial",
           "alt": "A news card from @dailyvolex, headed INDIA. It reads: “CJP’s Saurav Das, Ashutosh Ranka get bail after seven days in jail”. Reported by The Hindu · NDTV — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "top",
+          "files": [
+            "data/editions/2026-10-21/top/slide-1.jpg",
+            "data/editions/2026-10-21/top/slide-2.jpg",
+            "data/editions/2026-10-21/top/slide-3.jpg",
+            "data/editions/2026-10-21/top/slide-4.jpg",
+            "data/editions/2026-10-21/top/slide-5.jpg"
+          ],
+          "cover": "data/editions/2026-10-21/top/slide-1.jpg",
+          "alts": "data/editions/2026-10-21/top/alt.json",
+          "caption": "data/editions/2026-10-21/caption-top.txt",
+          "commentOn": "",
+          "commentFile": ""
         },
+        {
+          "kind": "reel",
+          "id": "top-reel",
+          "files": [
+            "data/editions/2026-10-21/top/reel.mp4"
+          ],
+          "cover": "data/editions/2026-10-21/top/slide-1.jpg",
+          "caption": "data/editions/2026-10-21/caption-top.txt",
+          "alts": "",
+          "noAlts": "Instagram does not accept alt text on a reel; the caption carries every headline.",
+          "seconds": 15,
+          "bytes": 2210434
+        }
+      ]
+    },
+    {
+      "id": "india",
+      "label": "INDIA",
+      "stories": [
         {
           "headline": "I&B MINISTRY ADVISORY WARNS TV CHANNELS AGAINST PROMOTING ‘ANTI-NATIONAL’ ATTITUDES",
           "display": "I&B Ministry advisory warns TV channels against promoting ‘anti-national’ attitudes",
@@ -439,18 +384,18 @@
           "tier": "notable",
           "score": 8.7,
           "photo": {
-            "path": "work/photos/india/photo-india-3.jpg",
+            "path": "work/photos/india/photo-india-2.jpg",
             "credit": "File photo: Maryland GovPics / CC BY 2.0",
             "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Ministry_of_Economy,_Trade_and_Industry_(54474784957).jpg",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Ministry_of_Economy,_Trade_and_Industry_(54475902003).jpg",
             "query": "I&B Ministry",
             "relevance": 0.17,
-            "title": "Ministry of Economy, Trade and Industry (54474784957)"
+            "title": "Ministry of Economy, Trade and Industry (54475902003)"
           },
           "layout": "breaking",
           "stat": null,
           "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “I&B Ministry advisory warns TV channels against promoting ‘anti-national’ attitudes”. Reported by The Hindu · Times of India — 2 independent newsrooms. Behind the text is a library photograph captioned “Ministry of Economy, Trade and Industry (54474784957)”, credited to Maryland GovPics / CC BY 2.0. It is not a photograph of this event."
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “I&B Ministry advisory warns TV channels against promoting ‘anti-national’ attitudes”. Reported by The Hindu · Times of India — 2 independent newsrooms. Behind the text is a library photograph captioned “Ministry of Economy, Trade and Industry (54475902003)”, credited to Maryland GovPics / CC BY 2.0. It is not a photograph of this event."
         }
       ],
       "posts": [
@@ -460,8 +405,7 @@
           "files": [
             "data/editions/2026-10-21/india/slide-1.jpg",
             "data/editions/2026-10-21/india/slide-2.jpg",
-            "data/editions/2026-10-21/india/slide-3.jpg",
-            "data/editions/2026-10-21/india/slide-4.jpg"
+            "data/editions/2026-10-21/india/slide-3.jpg"
           ],
           "cover": "data/editions/2026-10-21/india/slide-1.jpg",
           "alts": "data/editions/2026-10-21/india/alt.json",
@@ -509,12 +453,19 @@
           "section": "world",
           "tier": "notable",
           "score": 8.55,
-          "photoError": "timed out (searched \"South Korean\")",
-          "photo": null,
+          "photo": {
+            "path": "work/photos/world/photo-world-2.jpg",
+            "credit": "File photo: MSDN.WhiteKnight / CC0",
+            "license": "cc0",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Shark_Yekaterinburg_2023.jpg",
+            "query": "Shark",
+            "relevance": 0.14,
+            "title": "Shark Yekaterinburg 2023"
+          },
           "layout": "breaking",
           "stat": null,
-          "backdrop": "editorial",
-          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Shark trapped for a month in South Korean canal is finally freed”. Reported by BBC News · The Guardian — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Shark trapped for a month in South Korean canal is finally freed”. Reported by BBC News · The Guardian — 2 independent newsrooms. Behind the text is a library photograph captioned “Shark Yekaterinburg 2023”, credited to MSDN.WhiteKnight / CC0. It is not a photograph of this event."
         },
         {
           "headline": "ISRAEL HAD PLANNED TO BOMB IRAN IN OCTOBER, STOPPED BECAUSE OF TRUMP: REPORT",
@@ -580,56 +531,6 @@
       "label": "TECHNOLOGY",
       "stories": [
         {
-          "headline": "MARCO RUBIO VISITS RELIANCE’S JAMNAGAR COMPLEX",
-          "display": "Marco Rubio visits Reliance’s Jamnagar complex",
-          "original": "Marco Rubio visits Reliance’s Jamnagar complex, discusses energy and technology partnerships- Moneycontrol.com",
-          "truncated": true,
-          "usable": true,
-          "category": "TECHNOLOGY",
-          "source": "The Hindu · Moneycontrol.com",
-          "sourceNames": [
-            "The Hindu",
-            "Moneycontrol.com"
-          ],
-          "corroboration": 2,
-          "republishers": [
-            "LinkedIn"
-          ],
-          "owners": [
-            "The Hindu Group (family-held)",
-            "Reliance Industries"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "commercial",
-            "conglomerate"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNa2dqZnZUUlBQZmlzYlEyN0pTWHFTX083OHl4bWlnM3hBa0pGV0djNlEzZXdyd1VRTjZwSlpOb19xM0pMZ3hXN0xMeHFxNThTVFBON3RKdkdrMEdFU2dKOFUyOWlZRVhoeGxYMXFJbm1SU3FKWTVJU3JYV2ZseE91RlE2Nm9uSmNhMlptSlUxWm5yTmcwTDFNRmROYTRMZjNkTjg2VF9xSWRvT2trdE5faGtadmVCTVRYR3BNVGxmYUE?oc=5",
-          "published": "2026-10-21T17:09:22.000Z",
-          "topic": "tech",
-          "section": "tech",
-          "tier": "notable",
-          "score": 8.7,
-          "photo": {
-            "path": "work/photos/tech/photo-tech-2.jpg",
-            "credit": "File photo: Florida House of Representatives / Public Domain",
-            "license": "pdm",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Dennis_Baxley_and_Marco_Rubio.jpg",
-            "query": "Marco Rubio",
-            "relevance": 0.33,
-            "title": "Dennis Baxley and Marco Rubio"
-          },
-          "layout": "breaking",
-          "stat": null,
-          "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed TECHNOLOGY. It reads: “Marco Rubio visits Reliance’s Jamnagar complex”. Reported by The Hindu · Moneycontrol.com — 2 independent newsrooms. Behind the text is a library photograph captioned “Dennis Baxley and Marco Rubio”, credited to Florida House of Representatives / Public Domain. It is not a photograph of this event."
-        },
-        {
           "headline": "LONDON POLICE TEST 'LIVE FACIAL RECOGNITION' TECHNOLOGY AT CHELSEA AND TOTTENHAM DERBY",
           "display": "London police test 'live facial recognition' technology at Chelsea and Tottenham derby",
           "original": "London police test 'live facial recognition' technology at Chelsea and Tottenham derby",
@@ -662,7 +563,7 @@
           "tier": "notable",
           "score": 7.5,
           "photo": {
-            "path": "work/photos/tech/photo-tech-3.jpg",
+            "path": "work/photos/tech/photo-tech-2.jpg",
             "credit": "File photo: Harry Pot for Anefo / CC0",
             "license": "cc0",
             "pageUrl": "https://commons.wikimedia.org/wiki/File:Tottenham_Hotspurs_tegen_Atletico_Madrid_5-1_Nr_14_en_15_Elftal_Tottenham_Hots,_Bestanddeelnr_915-1586.jpg",
@@ -683,8 +584,7 @@
           "files": [
             "data/editions/2026-10-21/tech/slide-1.jpg",
             "data/editions/2026-10-21/tech/slide-2.jpg",
-            "data/editions/2026-10-21/tech/slide-3.jpg",
-            "data/editions/2026-10-21/tech/slide-4.jpg"
+            "data/editions/2026-10-21/tech/slide-3.jpg"
           ],
           "cover": "data/editions/2026-10-21/tech/slide-1.jpg",
           "alts": "data/editions/2026-10-21/tech/alt.json",
