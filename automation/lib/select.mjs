@@ -264,6 +264,8 @@ export function similarity(a, b) {
 }                                                // a short headline inside a
                                                  // long one still counts.
 
+import { looksLikeNews } from './verbs.mjs';
+
 /* What a headline is ABOUT, as far as word counting can tell.
  *
  * A word that appears in two or three headlines out of a hundred is naming
@@ -456,6 +458,20 @@ export function rejectionReason(item, { now = Date.now(), maxAgeHours = 24 } = {
   if (isUnverified(title)) return 'unverified or rumour';
   if (isOpinion(title))    return 'comment, not reporting';
   if (isTooThin(title))    return 'too thin to be a headline';
+  /* Last, and the only rule that works the other way round.
+   *
+   * Everything above says no to something specific, and three live runs
+   * produced three different batches of non-stories, each answered with
+   * another regex. A blocklist never converges — there is no end to the ways
+   * a thing can fail to be a story. This one asks the headline to say that
+   * something happened, which a feature title never does: "Future of
+   * Sustainable Aviation Fuel (SAF) Technology" is a noun phrase with no
+   * verb in it anywhere.
+   *
+   * Last, so that a headline refused for a specific reason is logged under
+   * that reason rather than under this one. */
+  if (!looksLikeNews(title, { quoted: attributionOf(title) !== null }))
+    return 'says nothing happened';
   return null;
 }
 

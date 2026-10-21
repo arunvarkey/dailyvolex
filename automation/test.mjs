@@ -10,6 +10,7 @@ import { parseFeed } from './lib/rss.mjs';
 import { licenceFrom, toResult as commonsResult } from './lib/commons.mjs';
 import { altForStory, altForCover, altForEntry, altForClosing } from './lib/alttext.mjs';
 import { statFor, prefersStat } from './lib/statcard.mjs';
+import { looksLikeNews, hasNewsVerb, reportsNothing, NEWS_VERBS } from './lib/verbs.mjs';
 import { secondsForStory, secondsForCover, SECONDS_FOR_CLOSING, reelTimings,
          totalSeconds, checkDuration, ffmpegArgs, MIN_SECONDS, MAX_SECONDS } from './lib/reelplan.mjs';
 import { create, attachPost, validate, posts, postById, idFor, dirFor,
@@ -2090,6 +2091,92 @@ ok('every slide is still in the issue', (() => {
     .reduce((n, p) => n + p.files.length, 0);
   return shown === total;
 })(), 'the owner is approving what they can see');
+
+
+
+/* ── Does the headline say something happened? ────────────────────
+   The only rule that works the other way round. Three live runs produced
+   three different batches of non-stories, each answered with another regex;
+   a blocklist enumerating everything that is not news never converges. A
+   news headline reports an event and an event has a verb. A feature title is
+   a noun phrase and has none. */
+
+const news = t => looksLikeNews(t, { quoted: attributionOf(t) !== null });
+
+/* Every one of these is a real headline this channel published or refused. */
+const REAL_NEWS = [
+  'Earthquake kills at least 40 in northern Afghanistan',
+  'RBI cuts repo rate by 25 basis points',
+  'Paddy Power cuts 1,400 jobs and blames betting tax rises',
+  'Nigeria confirms Ebola case linked to East Africa',
+  'Australian MP loses both legs in vehicle attack as suspect appears',
+  'Pakistani authorities arrest man accused in $126m US postage fraud',
+  "Su-30 fighter jet crashes in Russia's Kaliningrad region: Report",
+  'India, New Zealand sign digital trade pact under FTA',
+  "Billionaire Mukesh Ambani's Jio launches India's biggest share sale",
+  'SBI confirms data leak involving 3,897 customer records on dark web',
+  'Anthropic posts $80bn loss in first half of 2026: WSJ',
+  "Elon Musk ordered Starlink slowdown that disrupted Ukraine's drones",
+  "DNB Exceeds Q3 Profit Forecast as Norway's Economy Stays Strong",
+  'Punjab CM Bhagwant Mann detained for 3 hours at Delhi airport',
+  'Cabinet clears port expansion scheme for the east coast',
+  'Rupee steadies against the dollar',
+  'Ceasefire talks resume in Geneva after months of stalemate',
+  'Heavy rain shuts schools across Kerala for a second day',
+  'Central bank governor resigns without notice',
+];
+const NOT_NEWS = [
+  'Future of Sustainable Aviation Fuel (SAF) Technology',
+  'School assembly news headlines today- October 22: Top national',
+  'Global Health Research in the America First Era',
+  'PM Modi shares an article highlighting technology and research in India',
+  'Badr defence deal: Turkey has technology, Qatar has money',
+  'The Future of Work',
+];
+
+ok('every real headline survives the test',
+  REAL_NEWS.every(news),
+  REAL_NEWS.filter(t => !news(t)).join(' | ') || 'none refused');
+ok('a feature title does not',
+  NOT_NEWS.every(t => !news(t)),
+  NOT_NEWS.filter(news).join(' | ') || 'none kept');
+
+ok('a noun phrase has no verb in it anywhere',
+  !hasNewsVerb('Future of Sustainable Aviation Fuel (SAF) Technology'));
+ok('somebody sharing a link reports nothing',
+  reportsNothing('PM Modi shares an article highlighting research'),
+  'it is grammatically a verb and journalistically nothing');
+
+/* A headline that attributes itself is reporting what someone said, and
+   saying something is an event — this one has no finite verb at all. */
+ok('a quoted headline qualifies on the attribution', (() => {
+  const quoted = 'Perfectly aligned with Delhi: Marco Rubio';
+  // No verb in it at all — it passes only because somebody is quoted, and
+  // saying something is an event.
+  return !looksLikeNews(quoted, { quoted: false })
+    && looksLikeNews(quoted, { quoted: true })
+    && news("Team Trump's Tariffs, Visa Curbs Not Targeted At India: Marco Rubio");
+})());
+
+ok('inflections are generated, so adding a verb means adding one word',
+  ['resign', 'resigns', 'resigned', 'resigning',
+   'deny', 'denies', 'denied', 'denying',
+   'say', 'says', 'said', 'win', 'won', 'cut', 'held', 'sought']
+    .every(w => NEWS_VERBS.has(w)));
+
+ok('the refusal is logged under its own name, and last', (() => {
+  // Last, so a headline refused for a specific reason is logged under that
+  // reason rather than swallowed by this one.
+  const press = rejectionReason({ title: 'Introducing Bulbul V4 Flash', published: Date.now() });
+  const none  = rejectionReason({ title: 'Future of Sustainable Aviation Fuel Technology',
+                                  published: Date.now() });
+  return press === 'marketing, not reporting' && none === 'says nothing happened';
+})());
+
+ok('a real story is not refused by the new rule',
+  REAL_NEWS.every(t => rejectionReason({ title: t, published: Date.now() })
+    !== 'says nothing happened'),
+  'the list is the rule, so it has to carry the ordinary vocabulary of a news page');
 
 
 console.log(`\n${passed} passed, ${failed} failed`);
