@@ -13,8 +13,11 @@ import { statFor, prefersStat } from './lib/statcard.mjs';
 import { looksLikeNews, hasNewsVerb, reportsNothing, NEWS_VERBS } from './lib/verbs.mjs';
 import { imageUrlFrom, isFurniture, creditFor as articleCredit,
          imageFromArticle, biggerVariants } from './lib/articleimage.mjs';
-import { secondsForStory, secondsForCover, SECONDS_FOR_CLOSING, reelTimings,
-         totalSeconds, checkDuration, ffmpegArgs, MIN_SECONDS, MAX_SECONDS } from './lib/reelplan.mjs';
+import { reelSeconds, checkDuration, ffmpegArgs,
+         MIN_SECONDS, MAX_SECONDS } from './lib/reelbuild.mjs';
+import { plainText, firstSentence, sourceLine as spokenSources, scriptFor,
+         sameThing, spokenSeconds, speakArgs } from './lib/voice.mjs';
+import { videoUrlFrom, kindOf, videoFromArticle } from './lib/articlevideo.mjs';
 import { create, attachPost, validate, posts, postById, idFor, dirFor,
          prune, save, load } from './lib/edition.mjs';
 import { composeStory, composeSection, backdropOf, toQuery } from './lib/compose.mjs';
@@ -1414,104 +1417,6 @@ ok(`${kind} caption is not a bare count`, !/^\d+ stories/.test(caption.trim()), 
 }
 
 
-/* ── Reel ─────────────────────────────────────────────────────────
-   A Reel reaches people a carousel does not, and the pacing is the only
-   craft in it: a card held too briefly is a card nobody read. */
-
-ok('a longer headline is held longer',
-  secondsForStory({ display: 'Earthquake kills at least 40 in northern Afghanistan, officials say' })
-  > secondsForStory({ display: 'Sensex plunges 876 points' }));
-ok('no card is held less than it takes to read one',
-  secondsForStory({ display: 'Fire out' }) >= 3.4);
-ok('no card holds the reel hostage',
-  secondsForStory({ display: 'word '.repeat(80) }) <= 6.5);
-ok('the cover grows with the number of headlines it lists',
-  secondsForCover(5) > secondsForCover(2) && secondsForCover(2) >= 2.6);
-
-const stories3 = [
-  { display: 'Earthquake kills at least 40 in northern Afghanistan' },
-  { display: 'Sensex plunges 876 points as banks drag the index lower' },
-  { display: 'RBI cuts repo rate by 25 basis points' },
-];
-/* A reel is a card per story then the closing card — no cover. The carousel
-   opens on a contents page because that is what earns the tap; a reel is
-   scrolled past, and four and a half seconds of contents page before any news
-   is a setup where the payoff should be. */
-const specs4 = [...stories3.map(story => ({ kind: 'story', story })), { kind: 'closing' }];
-const frames5 = ['a.png', 'b.png', 'c.png', 'd.png'];
-const t5 = reelTimings(frames5, specs4);
-ok('a reel opens on the lead story, not a contents page',
-  t5.map(t => t.kind).join(',') === 'story,story,story,closing', t5.map(t => t.kind).join(','));
-ok('the closing card is not paced as a headline',
-  t5[3].seconds === SECONDS_FOR_CLOSING);
-ok('every frame rendered is a frame timed', t5.length === frames5.length);
-ok('a frame with no card behind it is an error, not a guess', (() => {
-  try { reelTimings(['a.png', 'b.png'], specs4); return false; }
-  catch (e) { return /must match/.test(e.message); }
-})(), 'the kind used to be inferred from the position, which stopped being true');
-
-const fade = 0.45;
-const total = totalSeconds(t5, fade);
-ok('the crossfades are taken out of the running time',
-  Math.abs(total - (t5.reduce((n, t) => n + t.seconds, 0) - 3 * fade)) < 0.05, `${total}`);
-ok('a day of news fits where short video completes best',
-  total < 18, `${total}s — dropping the contents page took about four seconds off`);
-ok('a normal day is a reel Instagram will take',
-  total > MIN_SECONDS && total < MAX_SECONDS, `${total}s`);
-ok('a reel too short to publish is refused before the encode',
-  checkDuration(2) !== null && /under/.test(checkDuration(2)));
-ok('a reel over the limit is refused before the encode',
-  checkDuration(MAX_SECONDS + 1) !== null);
-ok('a publishable length is not refused', checkDuration(total) === null);
-
-const args = ffmpegArgs(t5, { out: 'out.mp4', fps: 30, fade });
-
-/* The bug this exists to stop: the image demuxer loops a still at 25fps
-   whatever the output rate is, so without an explicit input frame rate every
-   clip came out five sixths of its length, the crossfade offsets fell past
-   the end of the first clip, and ffmpeg exited 0 having written a
-   3.8-second video of one card. */
-ok('every still is fed at the output frame rate', (() => {
-  const inputs = args.reduce((n, a, i) => a === '-i' ? n + 1 : n, 0);
-  const rates = args.reduce((n, a, i) => a === '-framerate' && args[i + 1] === '30' ? n + 1 : n, 0);
-  return inputs === frames5.length + 1 && rates === frames5.length;
-})(), 'a clip shorter than its timing silently truncates the reel');
-
-const fc = args[args.indexOf('-filter_complex') + 1];
-ok('each card is crossfaded into the next',
-  (fc.match(/xfade=/g) || []).length === frames5.length - 1);
-ok('the crossfades start before the outgoing card runs out', (() => {
-  const offsets = [...fc.matchAll(/offset=([0-9.]+)/g)].map(m => Number(m[1]));
-  if (offsets.length !== t5.length - 1) return false;
-  // Each offset is the previous card's end less one fade, so they rise, and
-  // the last one leaves exactly room for the closing card.
-  const rising = offsets.every((o, i) => i === 0 || o > offsets[i - 1]);
-  const last = offsets[offsets.length - 1];
-  return rising && Math.abs(offsets[0] - (t5[0].seconds - fade)) < 0.05
-    && Math.abs(last + t5[t5.length - 1].seconds - total) < 0.05;
-})(), 'an offset past the end of a clip drops every card after it');
-ok('the frame is upright and the size Instagram wants',
-  fc.includes('1080x1920') && args.includes('-pix_fmt') && args[args.indexOf('-pix_fmt') + 1] === 'yuv420p');
-ok('the drift never scales a card up by more than a few per cent', (() => {
-  const zs = [...fc.matchAll(/z='([0-9.]+)-/g)].map(m => Number(m[1]));
-  return zs.length === frames5.length && zs.every(z => z <= 1.08);
-})(), 'type that shimmers is type nobody reads');
-ok('the output is cut to the length the cards add up to',
-  args[args.indexOf('-t') + 1] !== undefined
-  && Number(args[args.lastIndexOf('-t') + 1]) === total, `${args[args.lastIndexOf('-t') + 1]} vs ${total}`);
-ok('a reel carries an audio track',
-  args.includes('-c:a') && /anullsrc/.test(args.join(' ')),
-  'some of Meta processing treats a videoless-audio file as broken');
-ok('nothing in the ffmpeg call goes through a shell',
-  Array.isArray(args) && args.every(a => typeof a === 'string'));
-ok('a reel of one card still builds', (() => {
-  const one = reelTimings(['only.png'], []);
-  const a = ffmpegArgs(one, { out: 'x.mp4' });
-  return one.length === 1 && !/xfade/.test(a[a.indexOf('-filter_complex') + 1]);
-})());
-
-
-
 /* ── The edition, and what /approve means ─────────────────────────
    This is the only logic in the repository that decides what reaches the
    account. It used to live inside approve.yml, where it could only run on
@@ -2416,6 +2321,155 @@ ok('a plain url is left alone',
 ok('the original is never among the guesses',
   biggerVariants('https://i.ex.com/a.jpg?w=240').every(u => u !== 'https://i.ex.com/a.jpg?w=240'),
   'it stays as the fallback, it is not a bigger version of itself');
+
+
+
+/* ── One story, moving, with a voice over it ──────────────────────
+   The old reel was three still cards crossfading and a silent audio track:
+   a slideshow with a soundtrack of nothing. This is the other thing. */
+
+/* What it says. The rule does not bend here either — every spoken word was
+   published by somebody. A synthetic voice saying something no newsroom said
+   is the same invention as printing it, and harder to catch because it is
+   gone in a second. */
+const SHARK = {
+  display: 'Shark trapped for a month in South Korean canal is finally freed',
+  source: 'BBC News · The Guardian',
+  summary: '<p>The sand tiger shark had been stuck behind a sluice gate since '
+         + 'September, and was guided out to sea by divers on Tuesday.</p>',
+};
+
+ok('the outlet’s html is read as words',
+  plainText('<p>A shark &amp; a gate &hellip;</p>') === 'A shark & a gate …');
+ok('the script is the headline, the outlet’s sentence, and who reported it', (() => {
+  const s = scriptFor(SHARK);
+  return s.lines.length === 4
+    && s.lines[1].startsWith('Shark trapped')
+    && /sand tiger shark/.test(s.lines[2])
+    && s.lines[3] === 'Reported by BBC News and The Guardian.';
+})(), JSON.stringify(scriptFor(SHARK).lines));
+ok('nothing is said that no newsroom published', (() => {
+  const s = scriptFor(SHARK);
+  const spoken = s.lines.slice(1).join(' ');
+  const published = (SHARK.display + ' ' + plainText(SHARK.summary)
+    + ' Reported by BBC News and The Guardian.').toLowerCase();
+  // Every word spoken appears in what an outlet wrote, or in the credit.
+  return spoken.toLowerCase().replace(/[.,]/g, '').split(/\s+/)
+    .every(w => published.includes(w));
+})(), 'a voice inventing a sentence is the same invention as printing one');
+
+ok('a summary that only repeats the headline is not read twice', (() => {
+  const s = scriptFor({ display: 'Shark freed from canal', source: 'BBC News',
+                        summary: 'A shark has been freed from a canal.' });
+  return s.lines.length === 3;
+})(), 'a voice saying the same thing twice sounds broken');
+ok('a teaser that trails off is left out',
+  firstSentence('Something began to...') === '',
+  'a half sentence read aloud sounds like a fault');
+ok('a sentence has to be a sentence',
+  firstSentence('No full stop here') === ''
+  && firstSentence('Rescue teams reached the valley at first light.')
+     === 'Rescue teams reached the valley at first light.');
+ok('outlets are read as a presenter would say them',
+  spokenSources('BBC News · Al Jazeera · NDTV')
+  === 'Reported by BBC News, Al Jazeera and NDTV.',
+  'a middle dot is read aloud as nothing at all');
+ok('one outlet is not read as a list',
+  spokenSources('Reuters') === 'Reported by Reuters.');
+ok('two headlines saying the same thing are recognised',
+  sameThing('Shark freed from canal in South Korea', 'Shark is freed from a South Korean canal')
+  && !sameThing('Shark freed from canal', 'Earthquake kills forty in Afghanistan'));
+ok('a read is timed at about a news pace',
+  spokenSeconds('one two three four five six seven eight nine ten eleven') > 3
+  && spokenSeconds('one two three four five six seven eight nine ten eleven') < 6);
+
+ok('the speech engine is chosen, not assumed', (() => {
+  const p = speakArgs('piper', { text: 'hello', out: '/tmp/a.wav', model: '/m.onnx' });
+  const e = speakArgs('espeak', { text: 'hello', out: '/tmp/a.wav' });
+  return p.cmd === 'piper' && p.stdin === 'hello'
+    && e.cmd === 'espeak-ng' && e.args.includes('/tmp/a.wav');
+})());
+ok('piper without a voice model is an error, not a silent fallback', (() => {
+  try { speakArgs('piper', { text: 'x', out: '/tmp/a.wav' }); return false; }
+  catch (e) { return /voice model/.test(e.message); }
+})());
+
+/* What it shows. */
+ok('the article’s video is read from its metadata',
+  videoUrlFrom('<meta property="og:video:secure_url" content="https://v.bbc.co.uk/a.mp4">',
+               'https://bbc.co.uk/n') === 'https://v.bbc.co.uk/a.mp4');
+ok('an advert or a live channel is not the story',
+  videoUrlFrom('<meta property="og:video" content="https://v.x.com/preroll-advert.mp4">',
+               'https://x.com/a') === null);
+ok('a direct file and a page are told apart',
+  kindOf('https://v.x.com/a.mp4') === 'file'
+  && kindOf('https://www.youtube.com/watch?v=abc') === 'page'
+  && kindOf('https://v.x.com/a.m3u8') === 'stream');
+ok('a story with no link asks for no video', async () => {}, '');
+{
+  const none = await videoFromArticle('', { source: 'BBC News' });
+  ok('no link, no request', none.video === null && /no link/.test(none.error));
+  const found = await videoFromArticle('https://bbc.co.uk/n', {
+    source: 'BBC News',
+    fetchImpl: async () => ({ ok: true, url: 'https://bbc.co.uk/n',
+      text: async () => '<meta property="og:video" content="https://v.bbc.co.uk/a.mp4">' }),
+  });
+  ok('the outlet’s video is credited to the outlet',
+    found.video?.credit === 'Video: BBC News' && found.video.licence === 'publisher');
+}
+
+/* How long it runs: the voice sets it, not a number somebody picked. */
+ok('the reel is as long as the read, plus a beat each end',
+  reelSeconds(17.2) === 19 && reelSeconds(9) === 10.8);
+ok('a very short read still clears Instagram’s floor',
+  reelSeconds(0.2) >= MIN_SECONDS);
+ok('a very long read is capped', reelSeconds(600) === MAX_SECONDS);
+ok('a publishable length is not refused', checkDuration(19) === null);
+
+ok('footage is filled to the frame, never letterboxed', (() => {
+  const a = ffmpegArgs({ visual: 'f.mp4', overlay: 'c.png', voice: 'v.wav',
+                         out: 'o.mp4', seconds: 19, hasFootage: true });
+  const fc = a[a.indexOf('-filter_complex') + 1];
+  return /force_original_aspect_ratio=increase/.test(fc) && /crop=1080:1920/.test(fc)
+    && !/pad=/.test(fc);
+})(), 'black bars on a Reel read as a repost of somebody else’s landscape video');
+ok('a still is pushed in rather than held', (() => {
+  const a = ffmpegArgs({ visual: 'p.jpg', overlay: 'c.png', out: 'o.mp4', seconds: 12 });
+  return /zoompan/.test(a[a.indexOf('-filter_complex') + 1]);
+})());
+ok('the card is composited over whatever is moving', (() => {
+  const a = ffmpegArgs({ visual: 'f.mp4', overlay: 'c.png', out: 'o.mp4',
+                         seconds: 12, hasFootage: true });
+  return /\[bg\]\[card\]overlay=0:0/.test(a[a.indexOf('-filter_complex') + 1]);
+})());
+ok('with neither footage nor a photograph the card is the picture', (() => {
+  const a = ffmpegArgs({ visual: 'card.png', overlay: null, out: 'o.mp4', seconds: 12 });
+  const fc = a[a.indexOf('-filter_complex') + 1];
+  return !/overlay=/.test(fc) && /zoompan/.test(fc);
+})(), 'a day with no reel is worse than a plain one');
+ok('the voice starts a beat in and is levelled', (() => {
+  const a = ffmpegArgs({ visual: 'f.mp4', overlay: 'c.png', voice: 'v.wav',
+                         out: 'o.mp4', seconds: 19, hasFootage: true });
+  const fc = a[a.indexOf('-filter_complex') + 1];
+  return /adelay=600\|600/.test(fc) && /loudnorm/.test(fc) && /apad/.test(fc);
+})(), 'so the first frame is seen before it is talked over');
+ok('a silent reel still has an audio track', (() => {
+  const a = ffmpegArgs({ visual: 'f.mp4', overlay: 'c.png', out: 'o.mp4',
+                         seconds: 12, hasFootage: true });
+  return /anullsrc/.test(a.join(' ')) && a.includes('-c:a');
+})());
+ok('the voice input is numbered right whether or not there is a card', (() => {
+  const withCard = ffmpegArgs({ visual: 'f.mp4', overlay: 'c.png', voice: 'v.wav',
+                               out: 'o.mp4', seconds: 12, hasFootage: true });
+  const without = ffmpegArgs({ visual: 'c.png', overlay: null, voice: 'v.wav',
+                               out: 'o.mp4', seconds: 12 });
+  return /\[2:a\]/.test(withCard[withCard.indexOf('-filter_complex') + 1])
+    && /\[1:a\]/.test(without[without.indexOf('-filter_complex') + 1]);
+})(), 'an off-by-one here maps silence over the voice');
+ok('nothing in the ffmpeg call goes through a shell', (() => {
+  const a = ffmpegArgs({ visual: 'f.mp4', overlay: 'c.png', out: 'o.mp4', seconds: 12 });
+  return Array.isArray(a) && a.every(x => typeof x === 'string');
+})());
 
 
 console.log(`\n${passed} passed, ${failed} failed`);

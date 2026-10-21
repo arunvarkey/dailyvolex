@@ -1093,6 +1093,7 @@ const S = {
   tickerFreeze: false,   // still exports hold the ticker at its start
   backdrop: 'particles', // or 'chart' — a generated market chart behind the text
   bgImage: null,         // a licensed photograph, when one was found
+  overlayOnly: false,    // draw the card with nothing behind it, for video
   bgCredit: '',          // its attribution — never shown without this
   videoLoaded: false,
   videoLook: 'cinematic',
@@ -2196,7 +2197,13 @@ function drawGuides(theme) {
    clean frame synchronously with the guides suppressed. */
 function drawScene(theme, withGuides) {
   ctx.clearRect(0,0,cv.width,cv.height);
-  drawBG(theme);
+  /* `overlay` draws the card with nothing behind it — no gradient, no
+     backdrop, no photograph — so the PNG keeps its alpha and ffmpeg can
+     composite it over moving footage. The scrim and the type are still
+     drawn, which is exactly what has to sit over the video. A card is
+     already a photograph with a scrim and text on it; this just lets the
+     photograph move. */
+  if (!S.overlayOnly) drawBG(theme);
   drawPhotoCredit(theme);
   drawBranding(theme);
   switch(S.layout) {
@@ -3934,6 +3941,8 @@ function applyUrlStory() {
   set('layout', v => { if (['breaking','stories','facts','quote'].includes(v)) S.layout = v; });
   set('handle', v => S.brand.handle = v.slice(0,40));
   set('bg', v => { if (['particles','chart','editorial'].includes(v)) S.backdrop = v; });
+  // Draw the card with nothing behind it, so ffmpeg can lay it over footage.
+  set('overlay', v => { S.overlayOnly = v === '1' || v === 'true'; });
 
   // A photograph, with the credit it must carry. Same-origin paths only: this
   // page is rendered headlessly and must not be made to fetch arbitrary hosts.

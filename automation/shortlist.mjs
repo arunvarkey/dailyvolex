@@ -185,6 +185,11 @@ async function main() {
       unknownOwners: c.unknownOwners ?? 0,
       concentration: c.concentration || [],
       link: c.lead.link,
+      // The outlet's own opening sentence. The reel's voiceover reads it,
+      // and it is the only source of words beyond the headline that this
+      // channel is allowed to speak — everything said out loud was published
+      // by somebody.
+      summary: c.lead.summary || null,
       // The picture the feed itself named, carried through so the renderer
       // does not have to fetch a page that may refuse it.
       feedImage: c.lead.feedImage || null,

@@ -446,6 +446,21 @@ ok('the app offers an approve link rather than a credential', (() => {
     && !/IG_ACCESS_TOKEN/.test(html);
 })(), 'a static page cannot hold a secret and must not look as though it does');
 
+ok('every third-party action used by the reel is pinned too', (() => {
+  const steps = docs['daily.yml']?.jobs?.build?.steps || [];
+  return steps.filter(st => st.uses && !st.uses.startsWith('./'))
+    .every(st => /@v\d+$/.test(st.uses));
+})());
+ok('the voice model is cached rather than fetched every run', (() => {
+  const steps = docs['daily.yml']?.jobs?.build?.steps || [];
+  return steps.some(st => /actions\/cache@/.test(st.uses || '') && /piper/.test(JSON.stringify(st.with || {})));
+})(), 'it is 63 MB and it does not change');
+ok('a reel still speaks when the neural voice cannot be fetched', (() => {
+  const step = (docs['daily.yml']?.jobs?.build?.steps || [])
+    .find(st => /reel\.mjs/.test(st.run || ''));
+  // piper when the model arrived, espeak-ng when it did not.
+  return /--voice piper/.test(step?.run || '') && /--voice espeak/.test(step?.run || '');
+})());
 ok('a reel is built where it cannot cost the run', (() => {
   const step = (docs['daily.yml']?.jobs?.build?.steps || [])
     .find(st => /reel\.mjs/.test(st.run || ''));
