@@ -1,19 +1,56 @@
 {
   "id": "2026-10-21",
   "kind": "daily",
-  "builtAt": "2026-10-21T14:45:18.071Z",
-  "pool": 588,
+  "builtAt": "2026-10-21T14:58:43.776Z",
+  "pool": 584,
   "feedErrors": [
     "indian-express: HTTP 403"
   ],
   "refusals": {
-    "read": 588,
-    "published": 13,
-    "refused": 114,
-    "consideredNotChosen": 461,
+    "read": 584,
+    "published": 11,
+    "refused": 229,
+    "consideredNotChosen": 344,
     "byRule": {
+      "says nothing happened": {
+        "count": 118,
+        "samples": [
+          {
+            "title": "Trump and Zelensky at loggerheads despite new optimism",
+            "source": "BBC News"
+          },
+          {
+            "title": "Why is Elon Musk plotting a mega-merger of SpaceX and Tesla?",
+            "source": "BBC News"
+          },
+          {
+            "title": "Haitian migrants changed this US town - Trump's deportation drive is reshaping it again",
+            "source": "BBC News"
+          },
+          {
+            "title": "'Trash Island' or DC landmark? How a golf course got Trump in a messy legal dispute",
+            "source": "BBC News"
+          },
+          {
+            "title": "How Qatar, Turkiye, Pakistan and Indonesia are deepening defence ties",
+            "source": "Al Jazeera"
+          },
+          {
+            "title": "How war in Lebanon has cost young people with autism and ADHD",
+            "source": "Al Jazeera"
+          },
+          {
+            "title": "Are the UK, France being pulled into the Saudi-Houthi conflict?",
+            "source": "Al Jazeera"
+          },
+          {
+            "title": "From one house to villages: Israeli settlers have Palestinians surrounded",
+            "source": "Al Jazeera"
+          }
+        ]
+      },
       "older than the window": {
-        "count": 93,
+        "count": 90,
         "samples": [
           {
             "title": "North Korea publishes photos of Kim Jong Un - why do rumours of his death keep coming back?",
@@ -50,12 +87,8 @@
         ]
       },
       "not news": {
-        "count": 8,
+        "count": 9,
         "samples": [
-          {
-            "title": "The night watch: the YouTubers who were guardians of a shark stuck in a South Korean canal",
-            "source": "The Guardian"
-          },
           {
             "title": "Video. Latest news bulletin | October 21st, 2026 – Midday",
             "source": "Euronews.com"
@@ -69,19 +102,23 @@
             "source": "Cricinfo"
           },
           {
-            "title": "New Zealand vs India T20 2026: Know series schedule, where to watch NZ vs IND live streaming and telecast",
-            "source": "Olympics"
-          },
-          {
             "title": "India at Asian Para Games 2026: Full schedule of medal events and fixtures on October 22",
             "source": "ESPN India"
           },
           {
-            "title": "Dow Jones| Nasdaq | S&P 500 | US Stock Market Today |Live Updates: Nasdaq surges at open as SpaceX, SuperMicro results lift AI stocks",
-            "source": "Economic Times"
+            "title": "New Zealand vs India T20 2026: Know series schedule, where to watch NZ vs IND live streaming and telecast",
+            "source": "Olympics"
           },
           {
-            "title": "Reliance Industries shares jump 3% as Jio’s Rs 30,213 crore IPO gets fully subscribed on Day 1. What lies ahead?",
+            "title": "Watch: The SpaceX rocket science inside Tesla’s new Roadster | Business Matters",
+            "source": "The Hindu"
+          },
+          {
+            "title": "Watch: The SpaceX rocket science inside Tesla’s new Roadster | Business Matters",
+            "source": "The Hindu"
+          },
+          {
+            "title": "Dow Jones| Nasdaq | S&P 500 | US Stock Market Today |Live Updates: Nasdaq surges at open as SpaceX, SuperMicro results lift AI stocks",
             "source": "Economic Times"
           }
         ]
@@ -106,8 +143,8 @@
             "source": "BBC News"
           },
           {
-            "title": "We can do impossible things",
-            "source": "MIT Technology Review"
+            "title": "VIPER",
+            "source": "NASA Science (.gov)"
           }
         ]
       },
@@ -132,21 +169,8 @@
             "source": "Livemint"
           },
           {
-            "title": "Nielsen Showcased Product-Led Technology Innovations at AM Tech India Innovation Day 2026",
-            "source": "CXOToday.com"
-          }
-        ]
-      },
-      "finance feed, not a finance story": {
-        "count": 2,
-        "samples": [
-          {
-            "title": "TVS ILP leases 80k sq ft at Visakhapatnam park in Andhra to Yokohoma group",
-            "source": "Economic Times"
-          },
-          {
-            "title": "Why are analysts still cautious despite Super Micro’s strong outlook?",
-            "source": "Economic Times"
+            "title": "Press Release Distribution India",
+            "source": "Business Wire India"
           }
         ]
       },
@@ -156,6 +180,15 @@
           {
             "title": "Macron says Trump spread rumours about protests",
             "source": "Al Jazeera"
+          }
+        ]
+      },
+      "finance feed, not a finance story": {
+        "count": 1,
+        "samples": [
+          {
+            "title": "TVS ILP leases 80k sq ft at Visakhapatnam park in Andhra to Yokohoma group",
+            "source": "Economic Times"
           }
         ]
       },
@@ -176,25 +209,74 @@
       "label": "TOP STORIES",
       "stories": [
         {
-          "headline": "DRONE ATTACK IN DISPUTED SUDAN-SOUTH SUDAN BORDER REGION KILLS AT LEAST 153",
-          "display": "Drone attack in disputed Sudan-South Sudan border region kills at least 153",
-          "original": "Drone attack in disputed Sudan-South Sudan border region kills at least 153",
+          "headline": "INDIA NEWS: INDIA-US TRADE DEAL 'PRETTY CLOSE,' SAYS TRUMP",
+          "display": "India news: India-US trade deal 'pretty close,' says Trump",
+          "original": "India news: India-US trade deal 'pretty close,' says Trump",
           "truncated": false,
           "usable": true,
-          "category": "WORLD NEWS",
-          "source": "Al Jazeera · NDTV",
+          "category": "INDIA",
+          "source": "DW.com · The Hindu",
           "sourceNames": [
-            "Al Jazeera",
-            "NDTV"
+            "DW.com",
+            "The Hindu"
           ],
           "corroboration": 2,
           "republishers": [],
           "owners": [
+            "The Hindu Group (family-held)"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPUEY0SkRUOWg3NTVURVZFSGM2NEd5T2xtczhhUHpQMlBrVXZGSkZGTFFCcEJ4eW5sSzNidnJSWjg0MjM4NmVfNUpGdUYyMmxiS2xaX3c3YXppZ0hYMEZHWlhwR3lVZk1CbllSU1JKSlVDS3FzTmRuUUtkc0NWWFBPSEtNYTVUUm8wSV9reUI5NE9PVlI3?oc=5",
+          "published": "2026-10-21T12:32:21.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "significant",
+          "score": 10.5,
+          "photo": {
+            "path": "work/photos/top/photo-top-2.jpg",
+            "credit": "File photo: Survey of India, Government of India / Public Domain",
+            "license": "pdm",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:1922_Index_of_Great_Trigonometrical_Survey_of_India.jpg",
+            "query": "India-US",
+            "relevance": 0.25,
+            "title": "1922 Index of Great Trigonometrical Survey of India"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “India news: India-US trade deal 'pretty close,' says Trump”. Reported by DW.com · The Hindu — 2 independent newsrooms. Behind the text is a library photograph captioned “1922 Index of Great Trigonometrical Survey of India”, credited to Survey of India, Government of India / Public Domain. It is not a photograph of this event."
+        },
+        {
+          "headline": "AUSTRALIAN MP LOSES BOTH LEGS IN VEHICLE ATTACK AS SUSPECT APPEARS IN COURT",
+          "display": "Australian MP loses both legs in vehicle attack as suspect appears in court",
+          "original": "Australian MP loses both legs in vehicle attack as suspect appears in court",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "BBC News · Al Jazeera · NDTV",
+          "sourceNames": [
+            "BBC News",
+            "Al Jazeera",
+            "NDTV"
+          ],
+          "corroboration": 3,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
             "Government of Qatar",
             "Adani Group"
           ],
-          "ownerCount": 2,
+          "ownerCount": 3,
           "countries": [
+            "GB",
             "QA",
             "IN"
           ],
@@ -204,106 +286,59 @@
           ],
           "unknownOwners": 0,
           "concentration": [],
-          "link": "https://www.aljazeera.com/news/2026/10/21/drone-attack-in-disputed-sudan-south-sudan-border-region-kills-at-least-153?traffic_source=rss",
-          "published": "2026-10-21T08:25:45.000Z",
+          "link": "https://www.aljazeera.com/news/2026/10/21/australian-mp-loses-both-legs-in-vehicle-attack-as-suspect-appears-in-court?traffic_source=rss",
+          "published": "2026-10-21T08:34:37.000Z",
           "topic": "world",
           "section": "world",
-          "tier": "lead",
-          "score": 14.65,
-          "photoError": "timed out (searched \"Sudan-South Sudan\")",
+          "tier": "notable",
+          "score": 9.6,
+          "photoError": "no image matched the story closely enough (searched \"courthouse columns\")",
           "photo": null,
           "layout": "breaking",
           "stat": null,
           "backdrop": "editorial",
-          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Drone attack in disputed Sudan-South Sudan border region kills at least 153”. Reported by Al Jazeera · NDTV — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Australian MP loses both legs in vehicle attack as suspect appears in court”. Reported by BBC News · Al Jazeera · NDTV — 3 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
         },
         {
-          "headline": "INDIA, NEW ZEALAND SIGN DIGITAL TRADE PACT UNDER FTA: WHAT DOES IT MEAN?",
-          "display": "India, New Zealand sign digital trade pact under FTA: What does it mean?",
-          "original": "India, New Zealand sign digital trade pact under FTA: What does it mean?",
+          "headline": "US ENVOY WITKOFF CALLS RUSSIA’S PUTIN A ‘HUMANITARIAN’",
+          "display": "US envoy Witkoff calls Russia’s Putin a ‘humanitarian’",
+          "original": "US envoy Witkoff calls Russia’s Putin a ‘humanitarian’",
           "truncated": false,
           "usable": true,
-          "category": "INDIA",
-          "source": "India Today · The Guardian",
+          "category": "WORLD NEWS",
+          "source": "BBC News · Al Jazeera",
           "sourceNames": [
-            "India Today",
-            "The Guardian"
+            "BBC News",
+            "Al Jazeera"
           ],
           "corroboration": 2,
           "republishers": [],
           "owners": [
-            "Living Media",
-            "Scott Trust"
+            "BBC (licence fee)",
+            "Government of Qatar"
           ],
           "ownerCount": 2,
           "countries": [
-            "IN",
-            "GB"
+            "GB",
+            "QA"
           ],
           "fundings": [
-            "commercial",
-            "trust"
+            "state"
           ],
           "unknownOwners": 0,
           "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOYzNYQU5oTS1sUGF2VndYR0NRNUExVWQxNllsTlNtUHRmVHV5RVlkSmx4VTc2UU9DZkMyVWVsN196WHFrWjV6bVNsejR5cHN6bTlMcld3RFFUWndUS0hhQ2pQanVMOXlDQm1ZaHZTWG1QMXAtNXB2Ty1HR0JoXzJYYkV2Q29mR19xeFRiX0dkOWRwQVM5RTNzZHF5UWVGakRaU3E2ckIzOUlYYTlVRjlQSVFFRDZIcC0yVlQxek1uY19fN3J6dTZYb9IBzgFBVV95cUxOVk1XUlNIRVhGcFNYenBsdWJVbUFjSXVWZk9VZ1ZLVFNrWTQ0dEZPVGl5elh2NGRMTzhvQlJwaFN",
-          "published": "2026-10-21T12:25:06.000Z",
-          "topic": "india",
-          "section": "india",
-          "tier": "significant",
-          "score": 10.8,
-          "photo": {
-            "path": "work/photos/top/photo-top-3.jpg",
-            "credit": "File photo: Vyacheslav Argenberg / CC BY 4.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Hampi,_India,_Stone_ornaments_at_Vijaya_Vitthala_Temple.jpg",
-            "query": "India",
-            "relevance": 0.14,
-            "title": "Hampi, India, Stone ornaments at Vijaya Vitthala Temple"
-          },
-          "layout": "breaking",
-          "stat": null,
-          "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “India, New Zealand sign digital trade pact under FTA: What does it mean?”. Reported by India Today · The Guardian — 2 independent newsrooms. Behind the text is a library photograph captioned “Hampi, India, Stone ornaments at Vijaya Vitthala Temple”, credited to Vyacheslav Argenberg / CC BY 4.0. It is not a photograph of this event."
-        },
-        {
-          "headline": "ALL INDIA KISAN SABHA THREATENS GOVT OF 'MILITANT RESISTANCE' IF IT GOES AHEAD WITH US",
-          "display": "All India Kisan Sabha threatens govt of 'militant resistance' if it goes ahead with US",
-          "original": "All India Kisan Sabha threatens govt of 'militant resistance' if it goes ahead with US trade deal",
-          "truncated": true,
-          "usable": true,
-          "category": "INDIA",
-          "source": "The New Indian Express · The Times of India",
-          "sourceNames": [
-            "The New Indian Express",
-            "The Times of India"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "Bennett, Coleman & Co"
-          ],
-          "ownerCount": 1,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "conglomerate"
-          ],
-          "unknownOwners": 1,
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxQTEI1ZjFLOXNVcEJKMFZRUEhUdkU1ZzJvODRqdDhmZ2diSHJCYnJrOGdaSTdRd0xna3YyeHlBaFpzeWpnRGU1aFh3TjFLMWNxMDJBOVYxNjR6UTZtNDNvQXFhVHNMZ1hfZVJDMld0R3NIaTJWQXVDNk9MVGtYcXRxREJRR2RQSV9MSEV6NnZ0RTl2aTY3RW9zRHVYcVZsVWprYmxYUnJLQWFmaG1UaVdUbGxXTFB3SjBhZ3d6Q3gyX1Y2QnoteTQyaVFIQms3bHl5SzBFZDZuajhYWmdpeFJhUVh0Vmgtc1pKU3FZWktqeVlQWGdDRnfSAfsBQVVfeXFMUGJXbExVR29uWFB",
-          "published": "2026-10-21T14:06:00.000Z",
-          "topic": "india",
-          "section": "india",
-          "tier": "significant",
-          "score": 10.8,
+          "link": "https://www.aljazeera.com/video/newsfeed/2026/10/21/us-envoy-witkoff-calls-russias-putin-a?traffic_source=rss",
+          "published": "2026-10-21T14:39:08.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.85,
           "photoError": "a library photograph would misrepresent a story about people in harm (searched \"(none)\")",
           "photo": null,
           "layout": "breaking",
           "stat": null,
           "backdrop": "editorial",
-          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “All India Kisan Sabha threatens govt of 'militant resistance' if it goes ahead with US”. Reported by The New Indian Express · The Times of India — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “US envoy Witkoff calls Russia’s Putin a ‘humanitarian’”. Reported by BBC News · Al Jazeera — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
         }
       ],
       "posts": [
@@ -333,8 +368,8 @@
           "caption": "data/editions/2026-10-21/caption-top.txt",
           "alts": "",
           "noAlts": "Instagram does not accept alt text on a reel; the caption carries every headline.",
-          "seconds": 20.3,
-          "bytes": 3117423
+          "seconds": 19.2,
+          "bytes": 3634620
         }
       ]
     },
@@ -342,53 +377,6 @@
       "id": "india",
       "label": "INDIA",
       "stories": [
-        {
-          "headline": "WHERE INDIA STANDS IN ASIAN PARA GAMES MEDAL TALLY AFTER 27-MEDAL RUSH",
-          "display": "Where India stands in Asian Para Games medal tally after 27-medal rush",
-          "original": "Where India stands in Asian Para Games medal tally after 27-medal rush, including five golds",
-          "truncated": true,
-          "usable": true,
-          "category": "INDIA",
-          "source": "Times of India · Olympics · ESPN India",
-          "sourceNames": [
-            "Times of India",
-            "Olympics",
-            "ESPN India"
-          ],
-          "corroboration": 3,
-          "republishers": [],
-          "owners": [
-            "Bennett, Coleman & Co"
-          ],
-          "ownerCount": 1,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "conglomerate"
-          ],
-          "unknownOwners": 2,
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMijwJBVV95cUxOeXhLdE9aMmxnN3djOXhDcXlQR1RKSkpja2lLYzJFOWNTNDFuNmZVdjM0eTFUSEpVb2I4S0Voc25HSDE5ZW5uU1hxV2xTZ0lrRGNVR0ZMd1JWMVY5ZDlzdkgxOUI5OG9WWEhvVVdYTDFRaDJGVUtwUEhFRjg0YjhTYWxnTGFaLXJYd2wzYmJZMTJFU3hFUHMzU0VGSWZXTUFUVjNPcVNldFZfeXhoTkZzcWs1NTFsRTlqNTNRNEZ1TmxhNFNuM2JnOFVDNWNGQkszQWlLeFVHbUlvNGVsTHZuaGFLeHJXaXd6cWJ4ZTNxM2RVVUMyN09Mb3BTWC1JbkpjZjBlZ1h2Tk1TSU5",
-          "published": "2026-10-21T13:46:00.000Z",
-          "topic": "india",
-          "section": "india",
-          "tier": "notable",
-          "score": 9.45,
-          "photo": {
-            "path": "work/photos/india/photo-india-2.jpg",
-            "credit": "File photo: Jess M. Escaros Jr. for the Philippine N / Public Domain",
-            "license": "pdm",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:2018_Asian_Para_Games_PH.jpg",
-            "query": "Asian Para Games",
-            "relevance": 0.38,
-            "title": "2018 Asian Para Games PH"
-          },
-          "layout": "breaking",
-          "stat": null,
-          "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Where India stands in Asian Para Games medal tally after 27-medal rush”. Reported by Times of India · Olympics · ESPN India — 3 independent newsrooms. Behind the text is a library photograph captioned “2018 Asian Para Games PH”, credited to Jess M. Escaros Jr. for the Philippine N / Public Domain. It is not a photograph of this event."
-        },
         {
           "headline": "CJP'S SAURAV DAS, ASHUTOSH RANKA TO BE RELEASED AFTER 7 DAYS IN JAIL",
           "display": "CJP's Saurav Das, Ashutosh Ranka To Be Released After 7 Days In Jail",
@@ -437,8 +425,7 @@
           "files": [
             "data/editions/2026-10-21/india/slide-1.jpg",
             "data/editions/2026-10-21/india/slide-2.jpg",
-            "data/editions/2026-10-21/india/slide-3.jpg",
-            "data/editions/2026-10-21/india/slide-4.jpg"
+            "data/editions/2026-10-21/india/slide-3.jpg"
           ],
           "cover": "data/editions/2026-10-21/india/slide-1.jpg",
           "alts": "data/editions/2026-10-21/india/alt.json",
@@ -453,49 +440,52 @@
       "label": "WORLD",
       "stories": [
         {
-          "headline": "AUSTRALIAN MP LOSES BOTH LEGS IN VEHICLE ATTACK AS SUSPECT APPEARS IN COURT",
-          "display": "Australian MP loses both legs in vehicle attack as suspect appears in court",
-          "original": "Australian MP loses both legs in vehicle attack as suspect appears in court",
-          "truncated": false,
+          "headline": "MACRON ACCUSES TRUMP AND OTHER FOREIGN LEADERS OF MAKING ‘STUPID COMMENTS’ ABOUT FRANCE",
+          "display": "Macron accuses Trump and other foreign leaders of making ‘stupid comments’ about France",
+          "original": "Macron accuses Trump and other foreign leaders of making ‘stupid comments’ about France unrest",
+          "truncated": true,
           "usable": true,
           "category": "WORLD NEWS",
-          "source": "BBC News · Al Jazeera · NDTV",
+          "source": "BBC News · The Guardian",
           "sourceNames": [
             "BBC News",
-            "Al Jazeera",
-            "NDTV"
+            "The Guardian"
           ],
-          "corroboration": 3,
+          "corroboration": 2,
           "republishers": [],
           "owners": [
             "BBC (licence fee)",
-            "Government of Qatar",
-            "Adani Group"
+            "Scott Trust"
           ],
-          "ownerCount": 3,
+          "ownerCount": 2,
           "countries": [
-            "GB",
-            "QA",
-            "IN"
+            "GB"
           ],
           "fundings": [
             "state",
-            "conglomerate"
+            "trust"
           ],
           "unknownOwners": 0,
           "concentration": [],
-          "link": "https://www.aljazeera.com/news/2026/10/21/australian-mp-loses-both-legs-in-vehicle-attack-as-suspect-appears-in-court?traffic_source=rss",
-          "published": "2026-10-21T08:34:37.000Z",
+          "link": "https://www.theguardian.com/world/2026/oct/21/macron-trump-foreign-leaders-stupid-comments-france-unrest",
+          "published": "2026-10-21T14:44:56.000Z",
           "topic": "world",
           "section": "world",
           "tier": "notable",
-          "score": 9.6,
-          "photoError": "no image matched the story closely enough (searched \"courthouse columns\")",
-          "photo": null,
+          "score": 8.85,
+          "photo": {
+            "path": "work/photos/world/photo-world-2.jpg",
+            "credit": "File photo: European Commission / CC BY 4.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Brigitte_Macron,_Ursula_von_der_Leyen_and_Emmanuel_Macron_in_Nice,_France_-_June_2025.jpg",
+            "query": "Macron",
+            "relevance": 0.18,
+            "title": "Brigitte Macron, Ursula von der Leyen and Emmanuel Macron in Nice, France   June 2025"
+          },
           "layout": "breaking",
           "stat": null,
-          "backdrop": "editorial",
-          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Australian MP loses both legs in vehicle attack as suspect appears in court”. Reported by BBC News · Al Jazeera · NDTV — 3 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Macron accuses Trump and other foreign leaders of making ‘stupid comments’ about France”. Reported by BBC News · The Guardian — 2 independent newsrooms. Behind the text is a library photograph captioned “Brigitte Macron, Ursula von der Leyen and Emmanuel Macron in Nice,…”, credited to European Commission / CC BY 4.0. It is not a photograph of this event."
         },
         {
           "headline": "PAKISTANI AUTHORITIES ARREST MAN ACCUSED IN $126M US POSTAGE FRAUD",
@@ -542,6 +532,53 @@
           "alt": "A news card from @dailyvolex, headed WORLD NEWS. The figure $126m US postage fraud is shown very large, above the headline. It reads: “Pakistani authorities arrest man accused in $126m US postage fraud”. Reported by BBC News · Al Jazeera — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
         },
         {
+          "headline": "'BISMILLAH, C'EST LES TÉNÈBRES': WHAT THE VIRAL MESSAGE FROM FRENCH PROTESTS MEAN",
+          "display": "'Bismillah, c'est les ténèbres': What the viral message from French protests mean",
+          "original": "'Bismillah, c'est les ténèbres': What the viral message from French protests mean",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "NDTV · Times of India",
+          "sourceNames": [
+            "NDTV",
+            "Times of India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Adani Group",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://timesofindia.indiatimes.com/world/europe/bismillah-cest-les-tnbres-what-does-this-viral-message-from-french-protests-mean/articleshow/135085539.cms",
+          "published": "2026-10-21T07:54:19.000Z",
+          "topic": "india",
+          "section": "world",
+          "tier": "notable",
+          "score": 7.2,
+          "photo": {
+            "path": "work/photos/world/photo-world-4.jpg",
+            "credit": "File photo: Jack Downey, U.S. Office of War Informat / Public Domain",
+            "license": "pdm",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Crowds_of_French_patriots_line_the_Champs_Elysees-edit2.jpg",
+            "query": "French",
+            "relevance": 0.14,
+            "title": "Crowds of French patriots line the Champs Elysees edit2"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “'Bismillah, c'est les ténèbres': What the viral message from French protests mean”. Reported by NDTV · Times of India — 2 independent newsrooms. Behind the text is a library photograph captioned “Crowds of French patriots line the Champs Elysees edit2”, credited to Jack Downey, U.S. Office of War Informat / Public Domain. It is not a photograph of this event."
+        },
+        {
           "headline": "NIGERIA CONFIRMS EBOLA CASE LINKED TO EAST AFRICA",
           "display": "Nigeria confirms Ebola case linked to East Africa",
           "original": "Nigeria confirms Ebola case linked to East Africa",
@@ -576,7 +613,7 @@
           "tier": "notable",
           "score": 8.55,
           "photo": {
-            "path": "work/photos/world/photo-world-4.jpg",
+            "path": "work/photos/world/photo-world-5.jpg",
             "credit": "File photo: Oxfam East Africa / CC BY 2.0",
             "license": "by",
             "pageUrl": "https://commons.wikimedia.org/wiki/File:Oxfam_East_Africa_-_A_mass_grave_for_children_in_Dadaab.jpg",
@@ -588,6 +625,47 @@
           "stat": null,
           "backdrop": null,
           "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Nigeria confirms Ebola case linked to East Africa”. Reported by BBC News · The Guardian — 2 independent newsrooms. Behind the text is a library photograph captioned “Oxfam East Africa A mass grave for children in Dadaab”, credited to Oxfam East Africa / CC BY 2.0. It is not a photograph of this event."
+        },
+        {
+          "headline": "SHARK TRAPPED FOR A MONTH IN SOUTH KOREAN CANAL IS FINALLY FREED",
+          "display": "Shark trapped for a month in South Korean canal is finally freed",
+          "original": "Shark trapped for a month in South Korean canal is finally freed",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "BBC News · The Guardian",
+          "sourceNames": [
+            "BBC News",
+            "The Guardian"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Scott Trust"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB"
+          ],
+          "fundings": [
+            "state",
+            "trust"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.theguardian.com/world/2026/oct/21/youtube-watch-over-shark-stuck-south-korea-canal-busan-bukang-i",
+          "published": "2026-10-21T11:41:48.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.55,
+          "photoError": "timed out (searched \"South Korean\")",
+          "photo": null,
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": "editorial",
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Shark trapped for a month in South Korean canal is finally freed”. Reported by BBC News · The Guardian — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
         },
         {
           "headline": "SU-30 FIGHTER JET CRASHES IN RUSSIA'S KALININGRAD REGION: REPORT | WORLD NEWS",
@@ -621,9 +699,9 @@
           "topic": "world",
           "section": "world",
           "tier": "notable",
-          "score": 7.95,
+          "score": 7.65,
           "photo": {
-            "path": "work/photos/world/photo-world-5.jpg",
+            "path": "work/photos/world/photo-world-7.jpg",
             "credit": "File photo: Gumerov Ildar / Public Domain",
             "license": "pdm",
             "pageUrl": "https://commons.wikimedia.org/wiki/File:Old_cathedral_of_Kaliningrad_in_Russia.jpg",
@@ -635,53 +713,6 @@
           "stat": null,
           "backdrop": null,
           "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Su-30 fighter jet crashes in Russia's Kaliningrad region: Report | World News”. Reported by Hindustan Times · Times of India — 2 independent newsrooms. Behind the text is a library photograph captioned “Old cathedral of Kaliningrad in Russia”, credited to Gumerov Ildar / Public Domain. It is not a photograph of this event."
-        },
-        {
-          "headline": "SCHOOL ASSEMBLY NEWS HEADLINES TODAY- OCTOBER 22: TOP NATIONAL",
-          "display": "School assembly news headlines today- October 22: Top national",
-          "original": "School assembly news headlines today- October 22: Top national, sports and world news curated for you",
-          "truncated": true,
-          "usable": true,
-          "category": "WORLD NEWS",
-          "source": "The Hindu · India Today",
-          "sourceNames": [
-            "The Hindu",
-            "India Today"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "The Hindu Group (family-held)",
-            "Living Media"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "commercial"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPRFpwbTYwekRJblBiaUNjM2paejdOQ1ZhelNsQVdpeklNM01QUXRvM0hBbEdibzk2R0NJckd2eGFDVE1NSnJ4eDcxdnAxTWJXLWZBYzBGc0NzMlpjV2RPX2l6d0RubEZpY3VZVXNLNndZQ3RjRmdpQzhTcU8wSUhEY2x0a2pPZmw3TGtlaUlaTU40SVRiYmpOUkdKTUI1bVd6ZkU2R090Q2tYd3ZrRkhmZnZVNWxkYTd5b0M0bjI5NFhBY3JadGdjMHdwLXloVldHb3pVUGZ2enFNVGJxa1J3RG5iVGhVZw?oc=5",
-          "published": "2026-10-21T12:01:34.000Z",
-          "topic": "world",
-          "section": "world",
-          "tier": "notable",
-          "score": 7.5,
-          "photo": {
-            "path": "work/photos/world/photo-world-6.jpg",
-            "credit": "File photo: G. Edward Johnson / CC BY 3.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Walter_johnson_hs_20200812_094105_1_crop16x9.jpg",
-            "query": "School",
-            "relevance": 0.33,
-            "title": "Walter johnson hs 20200812 094105 1 crop16x9"
-          },
-          "layout": "breaking",
-          "stat": null,
-          "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “School assembly news headlines today- October 22: Top national”. Reported by The Hindu · India Today — 2 independent newsrooms. Behind the text is a library photograph captioned “Walter johnson hs 20200812 094105 1 crop16x9”, credited to G. Edward Johnson / CC BY 3.0. It is not a photograph of this event."
         }
       ],
       "posts": [
@@ -695,7 +726,8 @@
             "data/editions/2026-10-21/world/slide-4.jpg",
             "data/editions/2026-10-21/world/slide-5.jpg",
             "data/editions/2026-10-21/world/slide-6.jpg",
-            "data/editions/2026-10-21/world/slide-7.jpg"
+            "data/editions/2026-10-21/world/slide-7.jpg",
+            "data/editions/2026-10-21/world/slide-8.jpg"
           ],
           "cover": "data/editions/2026-10-21/world/slide-1.jpg",
           "alts": "data/editions/2026-10-21/world/alt.json",
@@ -706,113 +738,20 @@
       ]
     },
     {
-      "id": "tech",
-      "label": "TECHNOLOGY",
+      "id": "health",
+      "label": "HEALTH",
       "stories": [
         {
-          "headline": "BADR DEFENCE DEAL: TURKEY HAS TECHNOLOGY, QATAR HAS MONEY",
-          "display": "Badr defence deal: Turkey has technology, Qatar has money",
-          "original": "Badr defence deal: Turkey has technology, Qatar has money, Indonesia has industrial ambitions. What does...",
+          "headline": "SPECIAL OLYMPICS CHIEF HEALTH OFFICER DR. DIMITRI CHRISTAKIS ELECTED INTO THE NATIONAL",
+          "display": "Special Olympics Chief Health Officer Dr. Dimitri Christakis Elected into the National",
+          "original": "Special Olympics Chief Health Officer Dr. Dimitri Christakis Elected into the National Academy of Medicine",
           "truncated": true,
           "usable": true,
-          "category": "TECHNOLOGY",
-          "source": "Times of India · Moneycontrol.com",
+          "category": "HEALTH",
+          "source": "Duke Today · Special Olympics",
           "sourceNames": [
-            "Times of India",
-            "Moneycontrol.com"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "Bennett, Coleman & Co",
-            "Reliance Industries"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "conglomerate"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMikwJBVV95cUxQaUZ3TG45cjJwNkV5UjlkR3M1WnhvSFRLRUpCbGZoX2ZtU0tseUZYdnFrMHdPVkJoSm5jR1lhRkt3MnVhSjZ4X3N4dDBGXzBrbUstVHVheHB6WUEtYm1QUk9nbHB4S05ONFcxVzE2dE5MYW0wenNvY0JwZkhRc0JDcm1pZ29aOVBKc2xXMXJsbWpJTmpGMWtZUjZwelM5MzBCazgweTc0WnYxTzAtZ3FOREliSVRJenRhVGRERHdYaFB0dXd2UjI3ellaVjNLUTlCUExBbHVCTWpJWWpxbGZxNDBlOGQ0VGZGcXVnQ1NaZlMwVnh6UHRKMjFpdGh6MzgydTdLeUZfZGFnM0Z",
-          "published": "2026-10-21T14:06:19.000Z",
-          "topic": "tech",
-          "section": "tech",
-          "tier": "notable",
-          "score": 7.95,
-          "photo": {
-            "path": "work/photos/tech/photo-tech-2.jpg",
-            "credit": "File photo: Mostafameraji / CC0",
-            "license": "cc0",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Metropolitian_Istanbul_-_Landscapes_of_Turkey_12.jpg",
-            "query": "Turkey",
-            "relevance": 0.17,
-            "title": "Metropolitian Istanbul   Landscapes of Turkey 12"
-          },
-          "layout": "breaking",
-          "stat": null,
-          "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed TECHNOLOGY. It reads: “Badr defence deal: Turkey has technology, Qatar has money”. Reported by Times of India · Moneycontrol.com — 2 independent newsrooms. Behind the text is a library photograph captioned “Metropolitian Istanbul Landscapes of Turkey 12”, credited to Mostafameraji / CC0. It is not a photograph of this event."
-        },
-        {
-          "headline": "PM MODI SHARES AN ARTICLE HIGHLIGHTING TECHNOLOGY AND RESEARCH IN TRANSFORMING FARMERS'",
-          "display": "PM Modi shares an article highlighting technology and research in transforming farmers'",
-          "original": "PM Modi shares an article highlighting technology and research in transforming farmers' lives, agriculture sector",
-          "truncated": true,
-          "usable": true,
-          "category": "TECHNOLOGY",
-          "source": "DD India · PM India",
-          "sourceNames": [
-            "DD India",
-            "PM India"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "Government of India"
-          ],
-          "ownerCount": 1,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "state"
-          ],
-          "unknownOwners": 1,
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxQeEpZbkdwT3I0VjBJcHlNaFpra2VKNXB1SEFEd1pFWTVEQ185clF4Znktb05PcGtFTU5lZ0JQejhUdjU2UFZXZXZXMTV4ak1jZWwyN25CdVV4NlFub044aXRGankydDlXZkFDYWRTaDBDVldpajRGeVpiTE1wWDByLXlVUlhKN1Q5YzdRS1NGUnM2R1owd2FYTS1PdU03RW96cllURWpqSE5Wb3VseU1qOXpsUzRrYnB0LWZ5X19DMkwyN3ptZ2RwQktMTGxqWkJzaXNHejRsNTdGUQ?oc=5",
-          "published": "2026-10-21T09:49:18.000Z",
-          "topic": "tech",
-          "section": "tech",
-          "tier": "notable",
-          "score": 7.65,
-          "photo": {
-            "path": "work/photos/tech/photo-tech-3.jpg",
-            "credit": "File photo: Wpcpey / CC BY 4.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:HKSTP_Data_Technology_Hub_202011.jpg",
-            "query": "technology data centre",
-            "relevance": 0.17,
-            "title": "HKSTP Data Technology Hub 202011"
-          },
-          "layout": "breaking",
-          "stat": null,
-          "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed TECHNOLOGY. It reads: “PM Modi shares an article highlighting technology and research in transforming farmers'”. Reported by DD India · PM India — 2 independent newsrooms. Behind the text is a library photograph captioned “HKSTP Data Technology Hub 202011”, credited to Wpcpey / CC BY 4.0. It is not a photograph of this event."
-        },
-        {
-          "headline": "FUTURE OF SUSTAINABLE AVIATION FUEL (SAF) TECHNOLOGY",
-          "display": "Future of Sustainable Aviation Fuel (SAF) Technology",
-          "original": "Future of Sustainable Aviation Fuel (SAF) Technology: Key Trends, Growth Drivers and Opportunities",
-          "truncated": true,
-          "usable": true,
-          "category": "TECHNOLOGY",
-          "source": "MarketsandMarkets · IBEF",
-          "sourceNames": [
-            "MarketsandMarkets",
-            "IBEF"
+            "Duke Today",
+            "Special Olympics"
           ],
           "corroboration": 2,
           "republishers": [],
@@ -822,41 +761,39 @@
           "fundings": [],
           "unknownOwners": 2,
           "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPbjhCeG1PT1Q3VlJPbVBoU2N0LXFRZF94dFdWVmdvdFRqT21RZTJKeGZzWWc1ZTBFdnJ1M3ZtWTBHbVlaMWJtZGVnTEI2amQxX3kyYllHcVFfT1lVSWpGQmEzVzRiUHI5YlQ5MXpTQjltbU9aN29ldU5uZ0EySm5qbGIyd211aDk5QlQtT0pRTWtBUzlKT1VtREhzUzF2RlFncXdEcjdrX0NUSEE4RmFhck1yQVBNM2hsTjR3bU9OVzVNRnNqQmdj?oc=5",
-          "published": "2026-10-21T12:18:19.000Z",
-          "topic": "tech",
-          "section": "tech",
+          "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxNem5EbDFOZlNfUHdBVGNJYW9seEZ4VktKLXFwU1ZRQlBvc1pLaW03TWhUYWwyUDF0dW50aXJMbjM5ZDlIZjI0Q0d4V1NWNUtNTW5yT3ZmZDBaOWk5MFRvTWstdnhMTEV2QWRIMXhtQzlQUVZxREcyY0Y3cVNqTERieERnQ2toUUZ6c3Nfa2ZhLXY2YVhuMmFXV3ZkS0tMT0NPM0ZvV2liVlNFa1lyTS10Z1NOWndTd195bE81MngwZFhHcE0xUVctRWtFTnZoekMyLUR5MV84LUpFdGVHTERIcHhiUTY?oc=5",
+          "published": "2026-10-21T14:44:33.000Z",
+          "topic": "health",
+          "section": "health",
           "tier": "notable",
-          "score": 7.5,
+          "score": 7.95,
           "photo": {
-            "path": "work/photos/tech/photo-tech-4.jpg",
-            "credit": "File photo: Ubahnverleih / CC0",
-            "license": "cc0",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Sustainable_Aviation_Fuel_advertisment_at_frankfurt_airport.jpg",
-            "query": "Sustainable Aviation Fuel",
-            "relevance": 0.75,
-            "title": "Sustainable Aviation Fuel advertisment at frankfurt airport"
+            "path": "work/photos/health/photo-health-2.jpg",
+            "credit": "File photo: U.S. Navy photo by Chief Mass Communicat / Public Domain",
+            "license": "pdm",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:US_Navy_081108-N-8816D-396_Chief_Equipment_Operator_Rick_Chafee_assists_his_athlete_during_the_wheelchair_race_during_the_Special_Olympics_at_the_Kadena_Air_Base_in_Okinawa.jpg",
+            "query": "Special Olympics Chief",
+            "relevance": 0.43,
+            "title": "US Navy 081108 N 8816D 396 Chief Equipment Operator Rick Chafee assists his athlete during the wheelchair race during the Special Olympics at the Kadena Air Base in Okinawa"
           },
           "layout": "breaking",
           "stat": null,
           "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed TECHNOLOGY. It reads: “Future of Sustainable Aviation Fuel (SAF) Technology”. Reported by MarketsandMarkets · IBEF — 2 independent newsrooms. Behind the text is a library photograph captioned “Sustainable Aviation Fuel advertisment at frankfurt airport”, credited to Ubahnverleih / CC0. It is not a photograph of this event."
+          "alt": "A news card from @dailyvolex, headed HEALTH. It reads: “Special Olympics Chief Health Officer Dr. Dimitri Christakis Elected into the National”. Reported by Duke Today · Special Olympics — 2 independent newsrooms. Behind the text is a library photograph captioned “US Navy 081108 N 8816D 396 Chief Equipment Operator Rick Chafee…”, credited to U.S. Navy photo by Chief Mass Communicat / Public Domain. It is not a photograph of this event."
         }
       ],
       "posts": [
         {
           "kind": "carousel",
-          "id": "tech",
+          "id": "health",
           "files": [
-            "data/editions/2026-10-21/tech/slide-1.jpg",
-            "data/editions/2026-10-21/tech/slide-2.jpg",
-            "data/editions/2026-10-21/tech/slide-3.jpg",
-            "data/editions/2026-10-21/tech/slide-4.jpg",
-            "data/editions/2026-10-21/tech/slide-5.jpg"
+            "data/editions/2026-10-21/health/slide-1.jpg",
+            "data/editions/2026-10-21/health/slide-2.jpg",
+            "data/editions/2026-10-21/health/slide-3.jpg"
           ],
-          "cover": "data/editions/2026-10-21/tech/slide-1.jpg",
-          "alts": "data/editions/2026-10-21/tech/alt.json",
-          "caption": "data/editions/2026-10-21/caption-tech.txt",
+          "cover": "data/editions/2026-10-21/health/slide-1.jpg",
+          "alts": "data/editions/2026-10-21/health/alt.json",
+          "caption": "data/editions/2026-10-21/caption-health.txt",
           "commentOn": "",
           "commentFile": ""
         }
