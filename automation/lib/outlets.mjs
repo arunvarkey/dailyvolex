@@ -127,6 +127,11 @@ const NOT_NEWSROOMS = [
   'marketscreener', 'simply wall st', 'insider monkey', 'aol',
   'prnewswire', 'pr newswire', 'businesswire', 'business wire',
   'globenewswire', 'globe newswire', 'accesswire', 'einpresswire', 'prweb',
+  // Platforms. "India's festive ecommerce season is off to a strong start"
+  // was corroborated by "NDTV · Instagram" — a post is not a newsroom, and
+  // whoever wrote it is the subject, not a second check on the story.
+  'instagram', 'facebook', 'x', 'twitter', 'youtube', 'reddit', 'tiktok',
+  'threads', 'linkedin', 'telegram', 'whatsapp', 'medium', 'substack',
 ];
 
 /* Strip a masthead down to something comparable: "The Times of India",

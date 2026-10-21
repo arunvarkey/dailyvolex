@@ -1969,6 +1969,9 @@ ok('a company blog reporting its own company is not a second newsroom',
   'blog.google was corroborating a story about a Google report');
 ok('a press release wire is not a newsroom',
   isRepublisher('PR Newswire') && isRepublisher('GlobeNewswire'));
+ok('a platform is not a newsroom',
+  ['Instagram', 'X', 'Facebook', 'YouTube', 'Reddit'].every(isRepublisher),
+  'a post is not reporting, and whoever wrote it is the subject');
 ok('a real newsroom is still a newsroom',
   !isRepublisher('Reuters') && !isRepublisher('BBC News') && !isRepublisher('The Hindu'));
 ok('the aggregator is named in the attribution but not in the count', (() => {
