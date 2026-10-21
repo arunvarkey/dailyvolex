@@ -1,56 +1,27 @@
 {
   "id": "2026-10-21",
   "kind": "daily",
-  "builtAt": "2026-10-21T17:35:21.297Z",
-  "pool": 588,
+  "builtAt": "2026-10-21T18:00:56.438Z",
+  "pool": 348,
   "feedErrors": [
-    "indian-express: HTTP 403"
+    "reuters-world: HTTP 503",
+    "ap-world: HTTP 503",
+    "gnews-world: HTTP 503",
+    "indian-express: HTTP 403",
+    "gnews-india: HTTP 503",
+    "gnews-business: HTTP 503",
+    "gnews-tech: HTTP 503",
+    "gnews-science: HTTP 503",
+    "gnews-health: HTTP 503"
   ],
   "refusals": {
-    "read": 588,
-    "published": 7,
-    "refused": 239,
-    "consideredNotChosen": 342,
+    "read": 348,
+    "published": 3,
+    "refused": 150,
+    "consideredNotChosen": 195,
     "byRule": {
-      "says nothing happened": {
-        "count": 126,
-        "samples": [
-          {
-            "title": "Trump and Zelensky at loggerheads despite new optimism",
-            "source": "BBC News"
-          },
-          {
-            "title": "Why is Elon Musk plotting a mega-merger of SpaceX and Tesla?",
-            "source": "BBC News"
-          },
-          {
-            "title": "'Trash Island' or DC landmark? How a golf course got Trump in a messy legal dispute",
-            "source": "BBC News"
-          },
-          {
-            "title": "Catalonia’s new far right: How anti-Muslim sentiment is reshaping politics",
-            "source": "Al Jazeera"
-          },
-          {
-            "title": "Are the UK, France being pulled into the Saudi-Houthi conflict?",
-            "source": "Al Jazeera"
-          },
-          {
-            "title": "Iran’s enriched uranium re-emerges as point of contention in US talks",
-            "source": "Al Jazeera"
-          },
-          {
-            "title": "Booking.com under investigation by EU regulators over fake listings and scams",
-            "source": "The Guardian"
-          },
-          {
-            "title": "Troubled waters: life during wartime for Iranians on the strait of Hormuz",
-            "source": "The Guardian"
-          }
-        ]
-      },
       "older than the window": {
-        "count": 95,
+        "count": 93,
         "samples": [
           {
             "title": "Sudan army drones hit mourners and fuel market killing more than 300 people, sources say",
@@ -86,13 +57,46 @@
           }
         ]
       },
-      "not news": {
-        "count": 12,
+      "says nothing happened": {
+        "count": 49,
         "samples": [
           {
-            "title": "Video. Latest news bulletin | October 21st, 2026 – Evening",
-            "source": "Euronews.com"
+            "title": "Trump and Zelensky at loggerheads despite new optimism",
+            "source": "BBC News"
           },
+          {
+            "title": "Why is Elon Musk plotting a mega-merger of SpaceX and Tesla?",
+            "source": "BBC News"
+          },
+          {
+            "title": "'Trash Island' or DC landmark? How a golf course got Trump in a messy legal dispute",
+            "source": "BBC News"
+          },
+          {
+            "title": "Catalonia’s new far right: How anti-Muslim sentiment is reshaping politics",
+            "source": "Al Jazeera"
+          },
+          {
+            "title": "Are the UK, France being pulled into the Saudi-Houthi conflict?",
+            "source": "Al Jazeera"
+          },
+          {
+            "title": "Iran’s enriched uranium re-emerges as point of contention in US talks",
+            "source": "Al Jazeera"
+          },
+          {
+            "title": "Booking.com under investigation by EU regulators over fake listings and scams",
+            "source": "The Guardian"
+          },
+          {
+            "title": "Troubled waters: life during wartime for Iranians on the strait of Hormuz",
+            "source": "The Guardian"
+          }
+        ]
+      },
+      "not news": {
+        "count": 3,
+        "samples": [
           {
             "title": "Watch: 'Inquilab Zindabad', CJP leaders Das & Ranka come out of Tihar Jail",
             "source": "Times of India"
@@ -102,37 +106,8 @@
             "source": "Times of India"
           },
           {
-            "title": "NZ vs IND 2026/27, NZ vs IND 1st T20I Match Preview - Jetlagged India brace for New Zealand challenge",
-            "source": "Cricinfo"
-          },
-          {
-            "title": "India at Asian Para Games 2026: Full schedule of medal events and fixtures on October 22",
-            "source": "ESPN India"
-          },
-          {
-            "title": "When and where to watch IND vs NZ first T20I: Match date, time, venue and live streaming details",
-            "source": "The Times of India"
-          },
-          {
-            "title": "New Zealand vs India T20 2026: Know series schedule, where to watch NZ vs IND live streaming and telecast",
-            "source": "Olympics"
-          },
-          {
-            "title": "Video. Dussehra: Giant effigies of demons go up in flames in India",
-            "source": "Euronews.com"
-          }
-        ]
-      },
-      "too thin to be a headline": {
-        "count": 2,
-        "samples": [
-          {
-            "title": "Policy disconnect",
-            "source": "Business Standard"
-          },
-          {
-            "title": "Tech Life",
-            "source": "BBC News"
+            "title": "Dow Jones| Nasdaq | S&P 500 | US Stock Market Today |Live Updates: Nasdaq surges 1% as SpaceX, AI stocks rise while Netflix slips",
+            "source": "Economic Times"
           }
         ]
       },
@@ -151,6 +126,15 @@
           {
             "title": "Opinion: Blog: Away From Kolkata, A Delhi Home Keeps The Spirit Of Durga Puja Alive",
             "source": "NDTV"
+          }
+        ]
+      },
+      "too thin to be a headline": {
+        "count": 1,
+        "samples": [
+          {
+            "title": "Tech Life",
+            "source": "BBC News"
           }
         ]
       },
@@ -180,191 +164,21 @@
       "label": "TOP STORIES",
       "stories": [
         {
-          "headline": "‘REAL WAY TO END IT’: ZELENSKY OPEN TO FREEZING UKRAINE-RUSSIA FRONT LINES TO END WAR",
-          "display": "‘Real way to end it’: Zelensky open to freezing Ukraine-Russia front lines to end war",
-          "original": "‘Real way to end it’: Zelensky open to freezing Ukraine-Russia front lines to end war",
-          "truncated": false,
-          "usable": true,
-          "category": "WORLD NEWS",
-          "source": "BBC News · Hindustan Times",
-          "sourceNames": [
-            "BBC News",
-            "Hindustan Times"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "BBC (licence fee)",
-            "HT Media / KK Birla family"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "GB",
-            "IN"
-          ],
-          "fundings": [
-            "state",
-            "conglomerate"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQUzhyWW1kdTJPMUdHRXB4MXRXYU43YzY3aFJsSWR1VWFUNzZXS2xYV2VUclNVbjl3dHNVdDZJSzNyYWtRaGxGUld1b0h6RDhXQm05cVBOWGg1aFNfaDhucWQwWGN2ODNfQ3dia1AyamFQUk1lVnFsTmVYX2VKNjExZnpqLU11MDEwbk9vU0hPLTRubTVQdDYycXhyZkYxVWhnX2U2R09vQXBLZ0x0SE1keDBpbkFRYWNuc1RFRV9DVl9YQXVqUFpUOXNRYkI2b0J4SWtid2Z1TEdBTjV5YXc?oc=5",
-          "published": "2026-10-21T17:23:37.000Z",
-          "topic": "world",
-          "section": "world",
-          "tier": "notable",
-          "score": 8.85,
-          "photoError": "a library photograph would misrepresent a story about people in harm (searched \"(none)\")",
-          "photo": null,
-          "layout": "breaking",
-          "stat": null,
-          "backdrop": "editorial",
-          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “‘Real way to end it’: Zelensky open to freezing Ukraine-Russia front lines to end war”. Reported by BBC News · Hindustan Times — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
-        },
-        {
-          "headline": "MARCO RUBIO VISITS RELIANCE’S JAMNAGAR COMPLEX",
-          "display": "Marco Rubio visits Reliance’s Jamnagar complex",
-          "original": "Marco Rubio visits Reliance’s Jamnagar complex, discusses energy and technology partnerships- Moneycontrol.com",
-          "truncated": true,
-          "usable": true,
-          "category": "TECHNOLOGY",
-          "source": "The Hindu · Moneycontrol.com",
-          "sourceNames": [
-            "The Hindu",
-            "Moneycontrol.com"
-          ],
-          "corroboration": 2,
-          "republishers": [
-            "LinkedIn"
-          ],
-          "owners": [
-            "The Hindu Group (family-held)",
-            "Reliance Industries"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "commercial",
-            "conglomerate"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNa2dqZnZUUlBQZmlzYlEyN0pTWHFTX083OHl4bWlnM3hBa0pGV0djNlEzZXdyd1VRTjZwSlpOb19xM0pMZ3hXN0xMeHFxNThTVFBON3RKdkdrMEdFU2dKOFUyOWlZRVhoeGxYMXFJbm1SU3FKWTVJU3JYV2ZseE91RlE2Nm9uSmNhMlptSlUxWm5yTmcwTDFNRmROYTRMZjNkTjg2VF9xSWRvT2trdE5faGtadmVCTVRYR3BNVGxmYUE?oc=5",
-          "published": "2026-10-21T17:09:22.000Z",
-          "topic": "tech",
-          "section": "tech",
-          "tier": "notable",
-          "score": 8.7,
-          "photo": {
-            "path": "work/photos/top/photo-top-3.jpg",
-            "credit": "File photo: Florida House of Representatives / Public Domain",
-            "license": "pdm",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Dennis_Baxley_and_Marco_Rubio.jpg",
-            "query": "Marco Rubio",
-            "relevance": 0.33,
-            "title": "Dennis Baxley and Marco Rubio"
-          },
-          "layout": "breaking",
-          "stat": null,
-          "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed TECHNOLOGY. It reads: “Marco Rubio visits Reliance’s Jamnagar complex”. Reported by The Hindu · Moneycontrol.com — 2 independent newsrooms. Behind the text is a library photograph captioned “Dennis Baxley and Marco Rubio”, credited to Florida House of Representatives / Public Domain. It is not a photograph of this event."
-        },
-        {
-          "headline": "CJP’S SAURAV DAS, ASHUTOSH RANKA GET BAIL AFTER SEVEN DAYS IN JAIL",
-          "display": "CJP’s Saurav Das, Ashutosh Ranka get bail after seven days in jail",
-          "original": "CJP’s Saurav Das, Ashutosh Ranka get bail after seven days in jail",
+          "headline": "ISRAEL HAD PLANNED TO BOMB IRAN IN OCTOBER, STOPPED BECAUSE OF TRUMP: REPORT",
+          "display": "Israel Had Planned To Bomb Iran In October, Stopped Because Of Trump: Report",
+          "original": "Israel Had Planned To Bomb Iran In October, Stopped Because Of Trump: Report",
           "truncated": false,
           "usable": true,
           "category": "INDIA",
-          "source": "The Hindu · NDTV",
+          "source": "NDTV · Times of India",
           "sourceNames": [
-            "The Hindu",
-            "NDTV"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "The Hindu Group (family-held)",
-            "Adani Group"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "commercial",
-            "conglomerate"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://www.thehindu.com/news/cities/Delhi/cjp-leaders-saurav-das-ashutosh-ranka-sem-judicial-custody-hearing/article71607599.ece",
-          "published": "2026-10-21T16:13:00.000Z",
-          "topic": "india",
-          "section": "india",
-          "tier": "notable",
-          "score": 8.7,
-          "photoError": "no image matched the story closely enough (searched \"india\")",
-          "photo": null,
-          "layout": "breaking",
-          "stat": null,
-          "backdrop": "editorial",
-          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “CJP’s Saurav Das, Ashutosh Ranka get bail after seven days in jail”. Reported by The Hindu · NDTV — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
-        }
-      ],
-      "posts": [
-        {
-          "kind": "carousel",
-          "id": "top",
-          "files": [
-            "data/editions/2026-10-21/top/slide-1.jpg",
-            "data/editions/2026-10-21/top/slide-2.jpg",
-            "data/editions/2026-10-21/top/slide-3.jpg",
-            "data/editions/2026-10-21/top/slide-4.jpg",
-            "data/editions/2026-10-21/top/slide-5.jpg"
-          ],
-          "cover": "data/editions/2026-10-21/top/slide-1.jpg",
-          "alts": "data/editions/2026-10-21/top/alt.json",
-          "caption": "data/editions/2026-10-21/caption-top.txt",
-          "commentOn": "",
-          "commentFile": ""
-        },
-        {
-          "kind": "reel",
-          "id": "top-reel",
-          "files": [
-            "data/editions/2026-10-21/top/reel.mp4"
-          ],
-          "cover": "data/editions/2026-10-21/top/slide-1.jpg",
-          "caption": "data/editions/2026-10-21/caption-top.txt",
-          "alts": "",
-          "noAlts": "Instagram does not accept alt text on a reel; the caption carries every headline.",
-          "seconds": 15,
-          "bytes": 2210434
-        }
-      ]
-    },
-    {
-      "id": "india",
-      "label": "INDIA",
-      "stories": [
-        {
-          "headline": "I&B MINISTRY ADVISORY WARNS TV CHANNELS AGAINST PROMOTING ‘ANTI-NATIONAL’ ATTITUDES",
-          "display": "I&B Ministry advisory warns TV channels against promoting ‘anti-national’ attitudes",
-          "original": "I&B Ministry advisory warns TV channels against promoting ‘anti-national’ attitudes",
-          "truncated": false,
-          "usable": true,
-          "category": "INDIA",
-          "source": "The Hindu · Times of India",
-          "sourceNames": [
-            "The Hindu",
+            "NDTV",
             "Times of India"
           ],
           "corroboration": 2,
           "republishers": [],
           "owners": [
-            "The Hindu Group (family-held)",
+            "Adani Group",
             "Bennett, Coleman & Co"
           ],
           "ownerCount": 2,
@@ -372,53 +186,24 @@
             "IN"
           ],
           "fundings": [
-            "commercial",
             "conglomerate"
           ],
           "unknownOwners": 0,
           "concentration": [],
-          "link": "https://www.thehindu.com/news/national/ib-ministry-advisory-warns-tv-channels-against-promoting-anti-national-attitudes/article71608170.ece",
-          "published": "2026-10-21T15:39:22.000Z",
+          "link": "https://www.ndtv.com/world-news/israel-had-planned-to-bomb-iran-in-october-stopped-because-of-trump-report-12216972#publisher=newsstand",
+          "published": "2026-10-21T16:59:41.000Z",
           "topic": "india",
-          "section": "india",
+          "section": "world",
           "tier": "notable",
-          "score": 8.7,
-          "photo": {
-            "path": "work/photos/india/photo-india-2.jpg",
-            "credit": "File photo: Maryland GovPics / CC BY 2.0",
-            "license": "by",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Ministry_of_Economy,_Trade_and_Industry_(54475902003).jpg",
-            "query": "I&B Ministry",
-            "relevance": 0.17,
-            "title": "Ministry of Economy, Trade and Industry (54475902003)"
-          },
+          "score": 8.4,
+          "articlePhotoError": "HTTP 403",
+          "photoError": "no image matched the story closely enough (searched \"india\")",
+          "photo": null,
           "layout": "breaking",
           "stat": null,
-          "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “I&B Ministry advisory warns TV channels against promoting ‘anti-national’ attitudes”. Reported by The Hindu · Times of India — 2 independent newsrooms. Behind the text is a library photograph captioned “Ministry of Economy, Trade and Industry (54475902003)”, credited to Maryland GovPics / CC BY 2.0. It is not a photograph of this event."
-        }
-      ],
-      "posts": [
-        {
-          "kind": "carousel",
-          "id": "india",
-          "files": [
-            "data/editions/2026-10-21/india/slide-1.jpg",
-            "data/editions/2026-10-21/india/slide-2.jpg",
-            "data/editions/2026-10-21/india/slide-3.jpg"
-          ],
-          "cover": "data/editions/2026-10-21/india/slide-1.jpg",
-          "alts": "data/editions/2026-10-21/india/alt.json",
-          "caption": "data/editions/2026-10-21/caption-india.txt",
-          "commentOn": "",
-          "commentFile": ""
-        }
-      ]
-    },
-    {
-      "id": "world",
-      "label": "WORLD",
-      "stories": [
+          "backdrop": "editorial",
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Israel Had Planned To Bomb Iran In October, Stopped Because Of Trump: Report”. Reported by NDTV · Times of India — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
+        },
         {
           "headline": "SHARK TRAPPED FOR A MONTH IN SOUTH KOREAN CANAL IS FINALLY FREED",
           "display": "Shark trapped for a month in South Korean canal is finally freed",
@@ -452,145 +237,98 @@
           "topic": "world",
           "section": "world",
           "tier": "notable",
-          "score": 8.55,
+          "score": 8.1,
           "photo": {
-            "path": "work/photos/world/photo-world-2.jpg",
-            "credit": "File photo: MSDN.WhiteKnight / CC0",
-            "license": "cc0",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Shark_Yekaterinburg_2023.jpg",
-            "query": "Shark",
-            "relevance": 0.14,
-            "title": "Shark Yekaterinburg 2023"
+            "path": "work/photos/top/photo-top-3.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.theguardian.com/world/2026/oct/21/youtube-watch-over-shark-stuck-south-korea-canal-busan-bukang-i",
+            "query": "(the article)",
+            "from": "article"
           },
           "layout": "breaking",
           "stat": null,
           "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Shark trapped for a month in South Korean canal is finally freed”. Reported by BBC News · The Guardian — 2 independent newsrooms. Behind the text is a library photograph captioned “Shark Yekaterinburg 2023”, credited to MSDN.WhiteKnight / CC0. It is not a photograph of this event."
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Shark trapped for a month in South Korean canal is finally freed”. Reported by BBC News · The Guardian — 2 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
         },
         {
-          "headline": "ISRAEL HAD PLANNED TO BOMB IRAN IN OCTOBER, STOPPED BECAUSE OF TRUMP: REPORT",
-          "display": "Israel Had Planned To Bomb Iran In October, Stopped Because Of Trump: Report",
-          "original": "Israel Had Planned To Bomb Iran In October, Stopped Because Of Trump: Report",
+          "headline": "US CONGRESSIONAL CANDIDATE BRAD LANDER FREED AFTER WEST BANK DETENTION",
+          "display": "US congressional candidate Brad Lander freed after West Bank detention",
+          "original": "US congressional candidate Brad Lander freed after West Bank detention",
           "truncated": false,
           "usable": true,
           "category": "WORLD NEWS",
-          "source": "NDTV · Times of India",
+          "source": "Al Jazeera · The Guardian",
           "sourceNames": [
-            "NDTV",
-            "Times of India"
+            "Al Jazeera",
+            "The Guardian"
           ],
           "corroboration": 2,
           "republishers": [],
           "owners": [
-            "Adani Group",
-            "Bennett, Coleman & Co"
+            "Government of Qatar",
+            "Scott Trust"
           ],
           "ownerCount": 2,
           "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "conglomerate"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQMGE1WmRHaUV1X09RaHo4N2dXRTN4YXczUV9qMmd3NXRRZUdLdWhIeE5yZ3FJcy1mWV9ya1ptbjRsMHoyWC1pamU5emhMVnoxZGx5SDd4am5Ud0ZwdDQ5dGNxZlE3UHZ4ZWQyd2t4NWpzV3FiNVNQN1RpelRoRnRBQXVMcXhQSjUyVG1RLTRXV1RKMnZlSDdwaU1Jd0ItRW5DQ3dGNmdZeWxOSmFhcnpPODh6aE1uQdIBvgFBVV95cUxQem1BcWVyRjNqVjEzNmU4LUcxZlZTZnloUE5qOXkyU2RPSjU1WHlvUV9xSlN0Q29LMjlqRDFYVC1XZjNqa0NXNkRJV1VXOU1uS1R",
-          "published": "2026-10-21T16:59:41.000Z",
-          "topic": "world",
-          "section": "world",
-          "tier": "notable",
-          "score": 8.4,
-          "photoError": "no image matched the story closely enough (searched \"international summit flags\")",
-          "photo": null,
-          "layout": "breaking",
-          "stat": null,
-          "backdrop": "editorial",
-          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Israel Had Planned To Bomb Iran In October, Stopped Because Of Trump: Report”. Reported by NDTV · Times of India — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
-        }
-      ],
-      "posts": [
-        {
-          "kind": "carousel",
-          "id": "world",
-          "files": [
-            "data/editions/2026-10-21/world/slide-1.jpg",
-            "data/editions/2026-10-21/world/slide-2.jpg",
-            "data/editions/2026-10-21/world/slide-3.jpg",
-            "data/editions/2026-10-21/world/slide-4.jpg"
-          ],
-          "cover": "data/editions/2026-10-21/world/slide-1.jpg",
-          "alts": "data/editions/2026-10-21/world/alt.json",
-          "caption": "data/editions/2026-10-21/caption-world.txt",
-          "commentOn": "",
-          "commentFile": ""
-        }
-      ]
-    },
-    {
-      "id": "tech",
-      "label": "TECHNOLOGY",
-      "stories": [
-        {
-          "headline": "LONDON POLICE TEST 'LIVE FACIAL RECOGNITION' TECHNOLOGY AT CHELSEA AND TOTTENHAM DERBY",
-          "display": "London police test 'live facial recognition' technology at Chelsea and Tottenham derby",
-          "original": "London police test 'live facial recognition' technology at Chelsea and Tottenham derby",
-          "truncated": false,
-          "usable": true,
-          "category": "TECHNOLOGY",
-          "source": "Reuters · Goal.com",
-          "sourceNames": [
-            "Reuters",
-            "Goal.com"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "Thomson Reuters (Trust Principles)"
-          ],
-          "ownerCount": 1,
-          "countries": [
+            "QA",
             "GB"
           ],
           "fundings": [
+            "state",
             "trust"
           ],
-          "unknownOwners": 1,
+          "unknownOwners": 0,
           "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOT0QwcU84clFhVTdjNW1VTmJqY1A4X05oaFVOVG93T2pTSHAwMDVfS2VqcnlyMUFiMXVDM3FqcGRJa1lxN2lucWVmYl9HQjRERm5LQWZEOW9sRS1kajVaYm9Bb1NmbU93N281cTdOdmdIUTNYdEdudC02S3RPYUFYcWhPbUdVaUdaaHhJZFduWFZIYnhEeTBUMHVvR0lUTHRrazYyWGNqYzV6VzNQM2J4STVlZm1hUi1pMDJMYTZkbVgxMUZvVWRHNWRPSFVzMlRwSnc?oc=5",
-          "published": "2026-10-21T15:04:15.000Z",
-          "topic": "tech",
-          "section": "tech",
+          "link": "https://www.aljazeera.com/news/2026/10/21/us-congressional-candidate-brad-lander-freed-after-west-bank-detention?traffic_source=rss",
+          "published": "2026-10-21T14:12:15.000Z",
+          "topic": "world",
+          "section": "world",
           "tier": "notable",
-          "score": 7.5,
+          "score": 8.1,
           "photo": {
-            "path": "work/photos/tech/photo-tech-2.jpg",
-            "credit": "File photo: Harry Pot for Anefo / CC0",
-            "license": "cc0",
-            "pageUrl": "https://commons.wikimedia.org/wiki/File:Tottenham_Hotspurs_tegen_Atletico_Madrid_5-1_Nr_14_en_15_Elftal_Tottenham_Hots,_Bestanddeelnr_915-1586.jpg",
-            "query": "Tottenham",
-            "relevance": 0.13,
-            "title": "Tottenham Hotspurs tegen Atletico Madrid 5 1 Nr 14 en 15 Elftal Tottenham Hots, Bestanddeelnr 915 1586"
+            "path": "work/photos/top/photo-top-4.jpg",
+            "credit": "Photo: Al Jazeera",
+            "license": "publisher",
+            "pageUrl": "https://www.aljazeera.com/news/2026/10/21/us-congressional-candidate-brad-lander-freed-after-west-bank-detention?traffic_source=rss",
+            "query": "(the article)",
+            "from": "article"
           },
           "layout": "breaking",
           "stat": null,
           "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed TECHNOLOGY. It reads: “London police test 'live facial recognition' technology at Chelsea and Tottenham derby”. Reported by Reuters · Goal.com — 2 independent newsrooms. Behind the text is a library photograph captioned “Tottenham Hotspurs tegen Atletico Madrid 5 1 Nr 14 en 15 Elftal…”, credited to Harry Pot for Anefo / CC0. It is not a photograph of this event."
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “US congressional candidate Brad Lander freed after West Bank detention”. Reported by Al Jazeera · The Guardian — 2 independent newsrooms. Behind the text is a library photograph, Photo: Al Jazeera. It is not a photograph of this event."
         }
       ],
       "posts": [
         {
           "kind": "carousel",
-          "id": "tech",
+          "id": "top",
           "files": [
-            "data/editions/2026-10-21/tech/slide-1.jpg",
-            "data/editions/2026-10-21/tech/slide-2.jpg",
-            "data/editions/2026-10-21/tech/slide-3.jpg"
+            "data/editions/2026-10-21/top/slide-1.jpg",
+            "data/editions/2026-10-21/top/slide-2.jpg",
+            "data/editions/2026-10-21/top/slide-3.jpg",
+            "data/editions/2026-10-21/top/slide-4.jpg",
+            "data/editions/2026-10-21/top/slide-5.jpg"
           ],
-          "cover": "data/editions/2026-10-21/tech/slide-1.jpg",
-          "alts": "data/editions/2026-10-21/tech/alt.json",
-          "caption": "data/editions/2026-10-21/caption-tech.txt",
+          "cover": "data/editions/2026-10-21/top/slide-1.jpg",
+          "alts": "data/editions/2026-10-21/top/alt.json",
+          "caption": "data/editions/2026-10-21/caption-top.txt",
           "commentOn": "",
           "commentFile": ""
+        },
+        {
+          "kind": "reel",
+          "id": "top-reel",
+          "files": [
+            "data/editions/2026-10-21/top/reel.mp4"
+          ],
+          "cover": "data/editions/2026-10-21/top/slide-1.jpg",
+          "caption": "data/editions/2026-10-21/caption-top.txt",
+          "alts": "",
+          "noAlts": "Instagram does not accept alt text on a reel; the caption carries every headline.",
+          "seconds": 15.2,
+          "bytes": 2286145
         }
       ]
     }
