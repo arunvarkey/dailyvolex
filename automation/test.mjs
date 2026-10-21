@@ -6,7 +6,7 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { parseFeed } from './lib/rss.mjs';
+import { parseFeed, imageIn } from './lib/rss.mjs';
 import { licenceFrom, toResult as commonsResult } from './lib/commons.mjs';
 import { altForStory, altForCover, altForEntry, altForClosing } from './lib/alttext.mjs';
 import { statFor, prefersStat } from './lib/statcard.mjs';
@@ -2364,6 +2364,36 @@ ok('a story with no link is handled, not thrown', async () => {}, '');
   ok('a page with no picture is reported as such',
     bare.image === null && /declares no picture/.test(bare.error));
 }
+
+
+
+/* ── The picture the feed already handed us ───────────────────────
+   NDTV answers 403 to a request for its article page and names the same
+   photograph in its RSS without being asked. Reading it costs nothing: the
+   feed is already in hand, so there is no second request to be refused. */
+ok('media:content is read',
+  imageIn('<item><media:content url="https://i.ndtv.com/a.jpg" type="image/jpeg"/></item>')
+  === 'https://i.ndtv.com/a.jpg');
+ok('media:thumbnail is read',
+  imageIn('<item><media:thumbnail url="https://i.x.com/t.jpg"/></item>') === 'https://i.x.com/t.jpg');
+ok('an image enclosure is read, in either attribute order',
+  imageIn('<item><enclosure url="https://i.x.com/e.jpg" type="image/jpeg"/></item>')
+  === 'https://i.x.com/e.jpg'
+  && imageIn('<item><enclosure type="image/jpeg" url="https://i.x.com/f.jpg"/></item>')
+  === 'https://i.x.com/f.jpg');
+ok('a picture buried in the description is found',
+  imageIn('<item><description><img src="https://i.x.com/d.jpg"></description></item>')
+  === 'https://i.x.com/d.jpg');
+ok('a feed naming no picture yields none',
+  imageIn('<item><title>no picture here</title></item>') === null);
+ok('an audio enclosure is not a picture',
+  imageIn('<item><enclosure url="https://x.com/ep.mp3" type="audio/mpeg"/></item>') === null,
+  'a podcast feed would otherwise put an mp3 on a card');
+ok('the feed picture reaches the item',
+  parseFeed('<rss><channel><item><title>A real headline about something</title>'
+    + '<link>https://x.com/a</link>'
+    + '<media:content url="https://i.x.com/a.jpg" type="image/jpeg"/></item></channel></rss>',
+    { id: 'x', name: 'X', topic: 'world' })[0]?.feedImage === 'https://i.x.com/a.jpg');
 
 
 console.log(`\n${passed} passed, ${failed} failed`);

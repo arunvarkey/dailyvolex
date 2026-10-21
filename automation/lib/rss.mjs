@@ -71,6 +71,32 @@ function splitPublisher(title) {
   return { title: title.slice(0, m.index).trim(), publisher };
 }
 
+/* The picture the feed itself carries.
+ *
+ * Most news feeds name the story's photograph inline — <media:content>,
+ * <media:thumbnail> or an <enclosure>. Reading it here costs nothing: the
+ * feed has already been fetched, so there is no second request, and nothing
+ * to be blocked. NDTV answers 403 to a request for its article page and
+ * hands over the same photograph in its RSS without being asked.
+ */
+export function imageIn(block) {
+  const patterns = [
+    /<media:content[^>]+url=["']([^"']+)["']/i,
+    /<media:thumbnail[^>]+url=["']([^"']+)["']/i,
+    /<enclosure[^>]+url=["']([^"']+)["'][^>]*type=["']image\//i,
+    /<enclosure[^>]+type=["']image\/[^"']*["'][^>]*url=["']([^"']+)["']/i,
+    // Some feeds put the picture in the description's HTML and nowhere else.
+    /<img[^>]+src=["']([^"']+\.(?:jpe?g|png|webp)[^"']*)["']/i,
+  ];
+  for (const re of patterns) {
+    const m = String(block || '').match(re);
+    if (!m) continue;
+    const url = m[1].trim().replace(/&amp;/g, '&');
+    if (/^https?:\/\//i.test(url)) return url;
+  }
+  return null;
+}
+
 export function parseFeed(xml, feed) {
   if (!xml || typeof xml !== 'string') return [];
   const out = [];
@@ -100,6 +126,9 @@ export function parseFeed(xml, feed) {
       // stale item win the freshness ranking. Treat it as old instead.
       published: Number.isFinite(published) ? published : 0,
       source,
+      // The photograph the feed named, if it named one. Free: the feed is
+      // already in hand, so there is no second request to be refused.
+      feedImage: imageIn(block),
       feedId: feed.id,
       topic: feed.topic,
       requireTopical: !!feed.requireTopical,

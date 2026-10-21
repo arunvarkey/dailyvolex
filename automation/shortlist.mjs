@@ -184,6 +184,9 @@ async function main() {
       unknownOwners: c.unknownOwners ?? 0,
       concentration: c.concentration || [],
       link: c.lead.link,
+      // The picture the feed itself named, carried through so the renderer
+      // does not have to fetch a page that may refuse it.
+      feedImage: c.lead.feedImage || null,
       published: c.newest ? new Date(c.newest).toISOString() : null,
       topic: c.lead.topic,
       section: sectionOf(c.lead.topic, c.lead.title),

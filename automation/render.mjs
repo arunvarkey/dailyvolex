@@ -18,7 +18,8 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join, extname, normalize } from 'node:path';
 import { launchChrome, closeChrome, openPage } from './lib/cdp.mjs';
 import { findImage, downloadImage } from './lib/imagery.mjs';
-import { imageFromArticle } from './lib/articleimage.mjs';
+import { imageFromArticle, isFurniture,
+         creditFor as articleCredit } from './lib/articleimage.mjs';
 import { composeSection, backdropOf, toQuery } from './lib/compose.mjs';
 import { load, save, dirFor, attachPost } from './lib/edition.mjs';
 
@@ -151,6 +152,20 @@ function dropDuplicatePhotos(stories) {
  * declares no picture still has a chance of one. */
 async function findPhoto(story, opts) {
   if (!opts.noArticlePhotos) {
+    /* The feed's own picture first of all. It costs nothing — the feed was
+       already fetched — and it cannot be refused: NDTV answers 403 to a
+       request for its article page and names the same photograph in its RSS
+       without being asked. */
+    if (story.feedImage && !isFurniture(story.feedImage)) {
+      const credit = articleCredit(story.source, story.link || story.feedImage);
+      if (credit) return {
+        image: { url: story.feedImage, credit, licence: 'publisher',
+                 pageUrl: story.link || null,
+                 source: String(story.source || '').split('·')[0].trim() || null },
+        query: '(the feed)', error: null,
+      };
+    }
+
     const fromArticle = await imageFromArticle(story.link, { source: story.source });
     if (fromArticle.image) return { image: fromArticle.image, query: '(the article)', error: null };
     story.articlePhotoError = fromArticle.error;
