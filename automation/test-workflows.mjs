@@ -47,8 +47,17 @@ const on = d => d?.on ?? d?.[true];
 
 const a = docs['approve.yml'];
 const cond = a?.jobs?.publish?.if || '';
-ok('publishing triggers only on an issue comment',
-  JSON.stringify(Object.keys(on(a) || {})) === '["issue_comment"]');
+/* The property that matters is not how many triggers there are, it is that
+   none of them can fire without a person: no schedule, no push, no dispatch.
+   Approving from the app added a second trigger, and a test pinned to the
+   exact list would have read as a safety failure when nothing unsafe had
+   changed. */
+ok('publishing can only be triggered by a person', (() => {
+  const triggers = Object.keys(on(a) || {});
+  const machine = ['schedule', 'push', 'workflow_dispatch', 'repository_dispatch',
+                   'workflow_run', 'pull_request', 'pull_request_target'];
+  return triggers.length > 0 && !triggers.some(t => machine.includes(t));
+})(), JSON.stringify(Object.keys(on(a) || {})));
 ok('publishing requires the repository owner',
   /comment\.user\.login == github\.repository_owner/.test(cond));
 ok('publishing requires the word /approve',
@@ -334,12 +343,45 @@ ok('publishing is driven by the plan the module wrote', (() => {
     && steps.some(st => /publish\.mjs --plan work\/plan\.json/.test(st.run || ''));
 })());
 
-ok('the approval comment never passes through a shell', (() => {
+ok('the approval words never pass through a shell', (() => {
   const steps = docs['approve.yml']?.jobs?.publish?.steps || [];
-  // github-script writes it to a file; the planner reads that file.
-  return !steps.some(st => /github\.event\.comment\.body/.test(st.run || ''))
+  // github-script writes them to a file; the planner reads that file. True
+  // of an issue title as well as a comment body now.
+  return !steps.some(st => /github\.event\.(comment\.body|issue\.title)/.test(st.run || ''))
     && steps.some(st => /--comment-file/.test(st.run || ''));
 })());
+
+/* ── Approving from the app ───────────────────────────────────────
+   A page served from GitHub Pages holds no credential and must not pretend
+   to. It hands GitHub a prefilled issue and the owner taps Submit; the gate
+   is the same one, and authorship is what enforces it. */
+ok('an issue the owner opens can approve', (() => {
+  const on = Object.keys(a?.on ?? a?.[true] ?? {});
+  return on.includes('issues') && on.includes('issue_comment');
+})());
+ok('only the owner can approve, by either route', (() => {
+  const c = a?.jobs?.publish?.if || '';
+  return /github\.event\.comment\.user\.login == github\.repository_owner/.test(c)
+    && /github\.event\.issue\.user\.login == github\.repository_owner/.test(c);
+})(), 'authorship IS the gate when there is no approval issue to label');
+ok('a comment still needs an open, labelled approval issue', (() => {
+  const c = a?.jobs?.publish?.if || '';
+  return /awaiting-approval/.test(c) && /issue\.state == 'open'/.test(c);
+})());
+ok('an approval from the app still pins the commit it was offered at', (() => {
+  const steps = a?.jobs?.publish?.steps || [];
+  return steps.some(st => /git log -1 --format=%H -- "data\/editions/.test(st.run || ''))
+    && (steps[0]?.with || {})['fetch-depth'] === 0;
+})(), 'a re-run can rebuild the same edition id with different stories');
+ok('the app sends the edition, and a hand-written approval without one is refused', (() => {
+  const pin = (a?.jobs?.publish?.steps || []).find(st => /setOutput\('edition'/.test(st.with?.script || ''));
+  return /names no edition/.test(pin?.with?.script || '');
+})());
+ok('the app offers an approve link rather than a credential', (() => {
+  const html = fs.readFileSync(join(ROOT, 'index.html'), 'utf8');
+  return /issues\/new/.test(html) && /encodeURIComponent\('\/approve /.test(html)
+    && !/IG_ACCESS_TOKEN/.test(html);
+})(), 'a static page cannot hold a secret and must not look as though it does');
 
 ok('a reel is built where it cannot cost the run', (() => {
   const step = (docs['daily.yml']?.jobs?.build?.steps || [])

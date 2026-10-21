@@ -264,6 +264,39 @@ export function similarity(a, b) {
 }                                                // a short headline inside a
                                                  // long one still counts.
 
+/* What a headline is ABOUT, as far as word counting can tell.
+ *
+ * A word that appears in two or three headlines out of a hundred is naming
+ * something — "Jio", "Starlink", "Rubio". A word in forty of them is not.
+ * This is document frequency and nothing cleverer, which is enough: the point
+ * is only to notice that three headlines are about the same subject.
+ *
+ * Numbers are excluded. "2" being rare says nothing about what a story is.
+ */
+export function documentFrequency(titles) {
+  const df = new Map();
+  for (const t of titles)
+    for (const w of keyWords(t)) df.set(w, (df.get(w) || 0) + 1);
+  return df;
+}
+
+export function subjectsOf(title, df, { min = 2, max = 4 } = {}) {
+  const out = new Set();
+  for (const w of keyWords(title)) {
+    if (/^\d+$/.test(w)) continue;
+    const n = df.get(w) || 0;
+    if (n >= min && n <= max) out.add(w);
+  }
+  return out;
+}
+
+export function sharesSubject(a, b, df, opts) {
+  const A = subjectsOf(a, df, opts);
+  if (!A.size) return false;
+  for (const w of subjectsOf(b, df, opts)) if (A.has(w)) return true;
+  return false;
+}
+
 /* Who a headline is quoting, when it says so in the usual places: a trailing
    ": Marco Rubio", or "…, says Marco Rubio". Null when nobody is named. */
 export function attributionOf(title) {

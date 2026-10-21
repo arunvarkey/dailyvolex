@@ -104,7 +104,19 @@ function dailyIssue(edition, { raw, read }) {
         + (reel ? ` · with the reel: <code>/approve ${section.id} reel</code>` : '')
         + '</summary>',
       '',
-      slides.map((p, i) => `![${section.id} slide ${i + 1}](${raw(p)})`).join('\n'),
+      // The cover, and the rest behind a fold. Every slide still has to be
+      // visible — the owner is approving what they can see — but a page of
+      // thirty-one full-size images is not something anyone reads on a
+      // phone, and an interface nobody reads is not an approval.
+      slides.length ? `![${section.id} slide 1](${raw(slides[0])})` : '',
+      slides.length > 1 ? [
+        '',
+        `<details><summary>the other ${slides.length - 1} slide${slides.length > 2 ? 's' : ''}</summary>`,
+        '',
+        slides.slice(1).map((p, i) => `![${section.id} slide ${i + 2}](${raw(p)})`).join('\n'),
+        '',
+        '</details>',
+      ].join('\n') : '',
       '',
       // GitHub plays a video only from an upload, not from a raw link, so the
       // reel is offered as a link with its length; the slides above are the

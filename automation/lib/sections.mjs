@@ -12,6 +12,8 @@
  * means something to somebody already inside the subject.
  */
 
+import { documentFrequency, sharesSubject } from './select.mjs';
+
 /* Ordered by prominence, the way a front page is: Top first, then home news,
    then the world, then the rest. The order here is the order the posts are
    offered in. */
@@ -86,6 +88,17 @@ export function sortIntoSections(ranked, {
 
   const out = [{ id: 'top', label: 'TOP STORIES', clusters: top }];
 
+  /* One story per subject, per section.
+   *
+   * INDIA went out with three cards about the Jio IPO: the share sale, the
+   * price band, and the subscription figure. Clustering cannot catch that —
+   * their wording overlaps less than an unrelated Jio story does, so any
+   * threshold that merged them would merge things that are not the same
+   * story. Counting which words are rare across the day's headlines can:
+   * "jio" in three of them is a subject, and a section does not need the
+   * same subject three times. */
+  const df = documentFrequency(ranked.map(c => c.lead.title));
+
   for (const section of SECTIONS) {
     if (section.id === 'top') continue;
     const chosen = [];
@@ -97,6 +110,11 @@ export function sortIntoSections(ranked, {
         if (taken.has(c)) continue;
         if (sectionOf(c.lead.topic, c.lead.title) !== section.id) continue;
         if (capped && (perTopic.get(c.lead.topic) || 0) >= maxPerTopic) continue;
+        // Unlike the topic cap, this one is NOT dropped when filling the
+        // remaining slots. A shorter section is better than the same story
+        // told three times — that is what the second pass is for, and it is
+        // how all three Jio cards got in.
+        if (chosen.some(x => sharesSubject(c.lead.title, x.lead.title, df))) continue;
         // A minor story never publishes — not in Top, and not riding along in
         // a section either. The old rule only required one story above minor
         // per section, so a product launch still went out beside real news.

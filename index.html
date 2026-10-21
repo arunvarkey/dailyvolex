@@ -295,6 +295,12 @@ canvas#cv{display:block;image-rendering:crisp-edges;position:relative;z-index:1}
 .today-btn+.today-btn{margin-top:.4rem}
 .today-btn:disabled{opacity:.55}
 .today-btn.ghost{background:transparent;border:1px solid var(--ui-border);color:var(--ui-text)}
+/* Approving is the one thing this tab exists for, so it does not look
+   like the other buttons. */
+.today-approve{background:linear-gradient(135deg,#166534,#14532d);border:1px solid #22c55e;
+  color:#dcfce7;font-weight:700;text-decoration:none;letter-spacing:.01em}
+.today-approve:hover{filter:brightness(1.15)}
+.today-checks summary{color:#fca5a5}
 .today-empty{color:var(--ui-muted);font-size:.76rem;text-align:center;padding:1.6rem .6rem;line-height:1.6}
 
 .right-panel{
@@ -4083,6 +4089,27 @@ async function loadToday() {
   const tierPill = t => !t ? '' :
     `<span class="today-tier t-${esc(t)}">${esc(t)}</span>`;
 
+  /* Approving, from a phone, without typing a command into a 22,000-character
+     GitHub issue.
+     
+     A page served from GitHub Pages holds no credential and can hold none, so
+     it cannot publish and must not pretend to. What it can do is hand GitHub a
+     prefilled issue: the title IS the command, the body names the edition, and
+     the owner taps Submit. The publish workflow accepts an issue the owner
+     opened exactly as it accepts a comment the owner wrote — same gate, two
+     taps, no typing. */
+  const approveUrl = (words) =>
+    `https://github.com/${REPO}/issues/new`
+    + `?title=${encodeURIComponent('/approve ' + words)}`
+    + `&body=${encodeURIComponent(`edition: ${data.id}\n\nApproved from the DailyVolex app.`)}`;
+
+  const approveBtn = (post) => {
+    if (!post.images.length) return '';
+    const what = post.section + (post.reel ? ' reel' : '');
+    return `<a class="today-btn today-approve" target="_blank" rel="noopener"
+       href="${approveUrl(what)}">Approve &amp; post${post.reel ? ' (with the reel)' : ''}</a>`;
+  };
+
   let flat = -1;
   const blocks = posts.map((post, pi) => {
     const stories = post.stories || [post];
@@ -4111,25 +4138,48 @@ async function loadToday() {
 
     return `<details class="today-post" ${pi === 0 ? 'open' : ''}>
       <summary><b>${esc(label)}</b><span class="today-count">${stories.length} ${
-        stories.length === 1 ? 'story' : 'stories'}${slides.length ? ` · ${slides.length} slides` : ''}</span></summary>
+        stories.length === 1 ? 'story' : 'stories'}${slides.length ? ` · ${slides.length} slides` : ''}${
+        post.reel ? ' · reel' : ''}</span></summary>
       ${slides.length ? `<div class="today-slides">${slides.map((p,i)=>
         `<img src="${esc(p)}${bust}" alt="${esc(label)} slide ${i+1}" loading="lazy">`).join('')}</div>` : ''}
       ${storyHtml}
       ${cap ? `<div class="today-cap">${esc(cap)}</div>
         <button class="today-btn ghost today-copy" data-post="${pi}">Copy caption</button>` : ''}
-      ${slides.length ? `<button class="today-btn today-save" data-post="${pi}">Save ${
+      ${approveBtn(post)}
+      ${slides.length ? `<button class="today-btn ghost today-save" data-post="${pi}">Save ${
         slides.length > 1 ? `all ${slides.length} slides` : 'the image'} to Photos</button>` : ''}
     </details>`;
   }).join('');
+
+  /* What the approval issue would warn about, in front of the button rather
+     than buried under it. The pipeline's confidence is not evidence, and the
+     person tapping Approve is the one deciding. */
+  const checks = [];
+  for (const p of posts) for (const st of p.stories) {
+    if ((st.corroboration || 1) < 2)
+      checks.push(`Only one newsroom behind "${(st.display || '').slice(0, 40)}…"`);
+    for (const c of (st.concentration || [])) checks.push(c);
+  }
+  if ((data.feedErrors || []).length)
+    checks.push(`${data.feedErrors.length} feed${data.feedErrors.length > 1 ? 's' : ''} failed to load`);
+  const warnHtml = checks.length
+    ? `<details class="today-post today-checks"><summary><b>Check before you post</b>
+         <span class="today-count">${checks.length}</span></summary>
+       ${checks.map(c => `<div class="today-warn">${esc(c)}</div>`).join('')}</details>`
+    : '';
 
   body.innerHTML = `
     <div class="today-head">
       <h2>${posts.length === 1 ? "Today's post" : `Today — ${posts.length} posts`}</h2>
       <span class="today-when">${esc(freshness(when))}</span>
     </div>
+    ${warnHtml}
     ${blocks}
+    ${posts.length > 1 ? `<a class="today-btn today-approve" target="_blank" rel="noopener"
+       href="${approveUrl('all' + (posts.some(p => p.reel) ? ' reel' : ''))}">Approve all ${
+       posts.length} posts</a>` : ''}
     <a class="today-btn ghost" target="_blank" rel="noopener"
-       href="https://github.com/${REPO}/issues?q=is%3Aopen+label%3Aawaiting-approval">Approve &amp; post from GitHub</a>
+       href="https://github.com/${REPO}/issues?q=is%3Aopen+label%3Aawaiting-approval">Open the approval issue</a>
     <button class="today-btn ghost" id="refreshToday">Check for a newer post</button>`;
 
   // Saving to Photos and pasting the caption is the whole manual route: it

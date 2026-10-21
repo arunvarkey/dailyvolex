@@ -1,12 +1,20 @@
 name: Publish on approval
 
-# The ONLY path that posts to Instagram. It runs when the repository owner
-# comments /approve on an approval issue — never on a schedule, and never from
-# anyone else's comment.
+# The ONLY path that posts to Instagram. It runs when the repository OWNER
+# approves — never on a schedule, and never from anyone else.
+#
+# Two ways to approve, both the owner's:
+#   · comment  /approve top reel  on the approval issue
+#   · open an issue titled  /approve top reel  — which is what the Approve
+#     button in the app does, because a static page cannot hold a credential
+#     and GitHub will prefill a new issue from a link. Two taps, no typing,
+#     and the gate is the same one.
 
 on:
   issue_comment:
     types: [created]
+  issues:
+    types: [opened]
 
 permissions:
   contents: write
@@ -18,14 +26,20 @@ concurrency:
 
 jobs:
   publish:
-    # Three gates, all required: an approval issue, the word /approve, and the
-    # comment coming from the person who owns the repository. Without the last
-    # one, anybody who can comment on an issue could publish to the account.
+    # The owner, and the word /approve. For a comment, also an open approval
+    # issue — without that gate anybody who can comment could publish to the
+    # account. For a new issue, authorship IS the gate: only the owner can
+    # open an issue that this will act on.
     if: >
-      github.event.issue.state == 'open' &&
-      contains(github.event.issue.labels.*.name, 'awaiting-approval') &&
-      startsWith(github.event.comment.body, '/approve') &&
-      github.event.comment.user.login == github.repository_owner
+      (github.event_name == 'issue_comment' &&
+       github.event.issue.state == 'open' &&
+       contains(github.event.issue.labels.*.name, 'awaiting-approval') &&
+       startsWith(github.event.comment.body, '/approve') &&
+       github.event.comment.user.login == github.repository_owner)
+      ||
+      (github.event_name == 'issues' &&
+       startsWith(github.event.issue.title, '/approve') &&
+       github.event.issue.user.login == github.repository_owner)
 
     runs-on: ubuntu-latest
     # A reel container is transcoded by Meta before it can be published,
@@ -34,53 +48,76 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          # The whole history, so the commit an edition was published at can
+          # be found from the edition itself. It is 1.2 MB since the prune.
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
 
-      # What posts has to be what the issue showed, not whatever happens to be
-      # in data/ when the approval arrives. The two are not the same thing:
-      # the breaking watch rewrites data/ every fifteen minutes, so approving
-      # an issue from an hour ago used to publish a different post entirely.
-      # The images in the issue body are pinned to the commit they were
-      # rendered at, so that commit is the one to read.
-      # What posts has to be what the issue showed, not whatever happens to
-      # be in data/ when the approval arrives. The two are not the same
-      # thing: the breaking watch builds an edition of its own every fifteen
-      # minutes and moves the "latest" pointer with it, so approving an issue
-      # from an hour ago would otherwise publish a different edition
-      # entirely. The images in the issue body name both the commit and the
-      # edition, so both are read from there and neither is guessed.
-      - name: Find the edition and commit this issue is showing
+      # What posts has to be what was offered, not whatever is newest. A
+      # re-run can rebuild the same edition id with different stories — this
+      # morning's did — so the commit matters as well as the id.
+      #
+      # A comment carries both in its image URLs. A new issue from the app
+      # carries only the id, and the commit is found from it: the last commit
+      # that touched that edition's directory is the one it was offered at.
+      - name: Work out what is being approved
         id: pin
         uses: actions/github-script@v7
         with:
           script: |
-            const body = context.payload.issue.body || '';
-            const m = body.match(new RegExp(
-              `raw\\.githubusercontent\\.com/${context.repo.owner}/${context.repo.repo}`
-              + `/([0-9a-f]{40})/data/editions/([A-Za-z0-9_.-]+)/`, 'i'));
-            if (!m) return core.setFailed(
-              'this issue does not name a commit and an edition — refusing to guess what it meant');
-            core.setOutput('sha', m[1]);
-            core.setOutput('edition', m[2]);
-            core.notice(`approving edition ${m[2]} as rendered at ${m[1]}`);
-
-      - name: Check out exactly what was approved
-        run: |
-          git fetch --depth=1 origin "${{ steps.pin.outputs.sha }}"
-          git checkout "${{ steps.pin.outputs.sha }}" -- data/
-
-      # The comment goes to a file, never through a shell: a person wrote it
-      # and it must not be interpolated into a command line on its way here.
-      - name: Take down what was asked for
-        uses: actions/github-script@v7
-        with:
-          script: |
             const fs = require('fs');
+            const byComment = context.eventName === 'issue_comment';
+            const words = byComment
+              ? context.payload.comment.body
+              : context.payload.issue.title;
+
+            let sha = '', edition = '';
+            if (byComment) {
+              const body = context.payload.issue.body || '';
+              const m = body.match(new RegExp(
+                `raw\\.githubusercontent\\.com/${context.repo.owner}/${context.repo.repo}`
+                + `/([0-9a-f]{40})/data/editions/([A-Za-z0-9_.-]+)/`, 'i'));
+              if (!m) return core.setFailed(
+                'this issue does not name a commit and an edition — refusing to guess what it meant');
+              sha = m[1];
+              edition = m[2];
+            } else {
+              const m = (context.payload.issue.body || '').match(/edition:\s*([A-Za-z0-9_.-]+)/i);
+              if (!m) return core.setFailed(
+                'this approval names no edition — the app fills that in, so it was written by hand');
+              edition = m[1];
+            }
+
+            // Never through a shell: a person wrote these words.
             fs.mkdirSync('work', { recursive: true });
-            fs.writeFileSync('work/comment.txt', context.payload.comment.body || '', 'utf8');
+            fs.writeFileSync('work/comment.txt', words, 'utf8');
+
+            core.setOutput('sha', sha);
+            core.setOutput('edition', edition);
+            core.notice(`approving ${edition}${sha ? ` as offered at ${sha}` : ''}: ${words.trim()}`);
+
+      # When the approval named a commit, take data/ from it. When it came
+      # from the app it named only the edition, so find the commit that last
+      # touched that edition's directory — that is the one it was offered at,
+      # and it is exact rather than "whatever is newest".
+      - name: Check out exactly what was approved
+        id: at
+        env:
+          SHA: ${{ steps.pin.outputs.sha }}
+          EDITION: ${{ steps.pin.outputs.edition }}
+        run: |
+          set -e
+          if [ -z "$SHA" ]; then
+            SHA=$(git log -1 --format=%H -- "data/editions/$EDITION")
+            [ -n "$SHA" ] || { echo "no commit has ever carried edition $EDITION"; exit 1; }
+            echo "edition $EDITION was offered at $SHA"
+          fi
+          git checkout "$SHA" -- data/
+          echo "sha=$SHA" >> "$GITHUB_OUTPUT"
 
       # What `/approve top business` means is decided by automation/lib/plan.mjs,
       # which is pure and tested directly. It used to live in this file, where
@@ -93,7 +130,7 @@ jobs:
           node automation/dv.mjs plan \
             --comment-file work/comment.txt \
             --edition "${{ steps.pin.outputs.edition }}" \
-            --sha "${{ steps.pin.outputs.sha }}" \
+            --sha "${{ steps.at.outputs.sha }}" \
             --out work/plan.json
           node -e "
             const p = require('./work/plan.json');

@@ -22,8 +22,8 @@ import { tierOf, isCryptoVertical, TIER_POINTS } from './lib/importance.mjs';
 import { similarity, cluster, selectStories, selectSections, isRepeat, isTopical, isAdvice,
          isSpeculation, isJunk, isPressRelease, isUnverified, isOpinion, isTooThin,
          rankClusters, rankEligible, rejectionReason, cluster as clusterBy,
-         attributionOf } from './lib/select.mjs';
-import { sectionOf, sectionLabel, SECTIONS } from './lib/sections.mjs';
+         attributionOf, documentFrequency, subjectsOf, sharesSubject } from './lib/select.mjs';
+import { sectionOf, sectionLabel, SECTIONS, sortIntoSections } from './lib/sections.mjs';
 import { makeHeadline, tidy, sourceLine, categoryFor } from './lib/headline.mjs';
 import { canonicalSource, isRepublisher, independentSources,
          ownerOf, concentrationWarnings } from './lib/outlets.mjs';
@@ -2031,6 +2031,65 @@ ok('no stat label ends on a word that cannot end one', (() => {
           'RBI cuts repo rate by 25 basis points']
     .every(h => !BAD.test(statFor(h)?.label || ''));
 })());
+
+
+
+/* ── One story per subject, per section ───────────────────────────
+   INDIA went out with three cards about the Jio IPO. Clustering cannot catch
+   that: their wording overlaps LESS than an unrelated Jio story does — 0.11
+   and 0.20 between the IPO headlines, 0.14 between one of them and a Jio
+   broadband story — so any threshold that merged them would merge things
+   that are not the same story. */
+
+const JIO = [
+  "Billionaire Mukesh Ambani's Jio launches India's biggest share sale",
+  'Jio IPO Opens Today: Minimum Investment, Price Band, Risks And 10 Key Details',
+  'Jio IPO: QIB portion fully subscribed at over 2x demand within minutes',
+  'Punjab CM Bhagwant Mann detained for 3 hours at Delhi airport, says BJP',
+  'Parvinder Singh Jhota murder case: CBI takes over probe in Chandigarh',
+  'More trouble for CJP leaders: Another FIR against Das in Bengaluru',
+];
+const JDF = documentFrequency(JIO);
+
+ok('a word in a few headlines names a subject',
+  subjectsOf(JIO[1], JDF).has('jio') && subjectsOf(JIO[1], JDF).has('ipo'));
+ok('a word in only one headline is not a shared subject',
+  !subjectsOf(JIO[3], JDF).size, [...subjectsOf(JIO[3], JDF)].join(','));
+ok('a number is never a subject',
+  ![...subjectsOf('Jio IPO opens at 10 with 2x demand', JDF)].some(w => /^\d+$/.test(w)),
+  '"2" being rare says nothing about what a story is');
+ok('three headlines about one subject share it',
+  sharesSubject(JIO[0], JIO[1], JDF) && sharesSubject(JIO[1], JIO[2], JDF));
+ok('unrelated stories share no subject',
+  !sharesSubject(JIO[3], JIO[4], JDF) && !sharesSubject(JIO[0], JIO[5], JDF));
+
+ok('a section takes one story per subject', (() => {
+  const ranked = JIO.map(t => ({ lead: { title: t, topic: 'india' }, tier: 'notable' }));
+  const india = sortIntoSections(ranked, { perSection: 6 }).find(s => s.id === 'india');
+  const jio = india.clusters.filter(c => /jio/i.test(c.lead.title));
+  return jio.length === 1 && india.clusters.length === 4;
+})(), 'three Jio cards in one section is a feed, not a section');
+
+ok('the subject cap survives the pass that fills empty slots', (() => {
+  // The topic cap is dropped when filling, which is how all three got in.
+  const ranked = JIO.slice(0, 3).map(t => ({ lead: { title: t, topic: 'india' }, tier: 'notable' }));
+  const india = sortIntoSections(ranked, { perSection: 6 }).find(s => s.id === 'india');
+  return india.clusters.length === 1;
+})(), 'a shorter section is better than the same story three times');
+
+/* ── The approval issue a person actually reads ──────────────────── */
+ok('only the cover is shown up front', (() => {
+  const b = approvalIssue(ed, { owner: 'o', repo: 'r', sha: 'a', read: () => '' }).body;
+  const before = b.slice(0, b.indexOf('<details><summary>the other'));
+  return (before.match(/!\[/g) || []).length === 1;
+})(), 'thirty-one full-size images is not something anyone reads on a phone');
+ok('every slide is still in the issue', (() => {
+  const b = approvalIssue(ed, { owner: 'o', repo: 'r', sha: 'a', read: () => '' }).body;
+  const shown = (b.match(/!\[[^\]]*slide [0-9]+\]/g) || []).length;
+  const total = posts(ed).filter(p => p.kind === 'carousel')
+    .reduce((n, p) => n + p.files.length, 0);
+  return shown === total;
+})(), 'the owner is approving what they can see');
 
 
 console.log(`\n${passed} passed, ${failed} failed`);
