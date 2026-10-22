@@ -1,0 +1,1233 @@
+{
+  "id": "2026-10-22",
+  "kind": "daily",
+  "builtAt": "2026-10-22T07:50:56.290Z",
+  "pool": 583,
+  "feedErrors": [
+    "indian-express: HTTP 403"
+  ],
+  "refusals": {
+    "read": 583,
+    "published": 13,
+    "refused": 221,
+    "consideredNotChosen": 349,
+    "byRule": {
+      "says nothing happened": {
+        "count": 115,
+        "samples": [
+          {
+            "title": "What is PHP and why did it spark a global cyber-security scramble?",
+            "source": "BBC News"
+          },
+          {
+            "title": "Pope does not need further treatment after lung cancer surgery",
+            "source": "BBC News"
+          },
+          {
+            "title": "The real reasons US politicians are getting older",
+            "source": "BBC News"
+          },
+          {
+            "title": "Japan is known for world-class events - but the Asian Games were chaotic",
+            "source": "BBC News"
+          },
+          {
+            "title": "Why is Elon Musk plotting a mega-merger of SpaceX and Tesla?",
+            "source": "BBC News"
+          },
+          {
+            "title": "Wrong national anthems played three times at Asian Para Games in Japan",
+            "source": "Al Jazeera"
+          },
+          {
+            "title": "In Israel election, Palestinian citizens weigh fear against disillusionment",
+            "source": "Al Jazeera"
+          },
+          {
+            "title": "US universities are failing to protect victims of sexual assault",
+            "source": "Al Jazeera"
+          }
+        ]
+      },
+      "older than the window": {
+        "count": 77,
+        "samples": [
+          {
+            "title": "Pakistan arrests man wanted by US over $126m postage fraud case",
+            "source": "BBC News"
+          },
+          {
+            "title": "Sudan army drones hit mourners and fuel market killing more than 300 people, sources say",
+            "source": "BBC News"
+          },
+          {
+            "title": "Trump and Zelensky at loggerheads despite new optimism",
+            "source": "BBC News"
+          },
+          {
+            "title": "Alberta's decisive decision to stay in Canada gives Carney backing to take on Trump",
+            "source": "BBC News"
+          },
+          {
+            "title": "Swimmer, 65, killed in shark attack off South Africa's east coast",
+            "source": "BBC News"
+          },
+          {
+            "title": "Trump sued over Canadian tariffs in latest legal challenge",
+            "source": "BBC News"
+          },
+          {
+            "title": "Katya Adler: France divided over who to blame for riots and what to learn from them",
+            "source": "BBC News"
+          },
+          {
+            "title": "Haitian migrants changed this US town - Trump's deportation drive is reshaping it again",
+            "source": "BBC News"
+          }
+        ]
+      },
+      "not news": {
+        "count": 19,
+        "samples": [
+          {
+            "title": "Thursday news quiz: Liz is absurd, Apu finds words and a bloke steals a bird",
+            "source": "The Guardian"
+          },
+          {
+            "title": "Video. Latest news bulletin | October 22nd, 2026 – Morning",
+            "source": "Euronews.com"
+          },
+          {
+            "title": "NDTV World Summit 2026 LIVE Updates: Industry Experts Decode India's Growing Role In Shaping Future At NDTV World Summit",
+            "source": "NDTV"
+          },
+          {
+            "title": "Stock Market LIVE Updates, Sensex Today: Sensex Opens 500 Points Lower Amid Mixed Global Cues, Oil Price Rise",
+            "source": "NDTV"
+          },
+          {
+            "title": "ICAI CA Inter September 2026 result declared: Check scorecard and pass percentage",
+            "source": "Times of India"
+          },
+          {
+            "title": "IND vs NZ first T20I: Reddy, Mayank return as India elects to field against New Zealand",
+            "source": "The Hindu"
+          },
+          {
+            "title": "Fixtures, Schedule | Sri Lanka in India",
+            "source": "Cricinfo"
+          },
+          {
+            "title": "Video: Quantum Computing: Challenges, Breakthroughs and the Future of Technology",
+            "source": "Kashmir Observer"
+          }
+        ]
+      },
+      "marketing, not reporting": {
+        "count": 3,
+        "samples": [
+          {
+            "title": "Nielsen Showcased Product-Led Technology Innovations at AM Tech India Innovation Day 2026",
+            "source": "Bisinfotech"
+          },
+          {
+            "title": "Meet Alekha Goldberg, a California seventh-grader who tested a potential brain-injury treatment on 350 fr",
+            "source": "The Times of India"
+          },
+          {
+            "title": "Abu Dhabi Biobank partners with AstraZeneca to advance predictive healthcare",
+            "source": "مكتب أبوظبي الإعلامي"
+          }
+        ]
+      },
+      "comment, not reporting": {
+        "count": 3,
+        "samples": [
+          {
+            "title": "Next-generation warfare: Rethinking defence procurement, technological sovereignty and military capability d..",
+            "source": "ET Government"
+          },
+          {
+            "title": "Opinion | India’s Progress in Space Science and Its Growing Global Role",
+            "source": "The Global Kashmir"
+          },
+          {
+            "title": "Opinion: Two experts debate whether neoliberalism is to blame for U.S. health care problems - Harvard T.H. Chan School of Public Health",
+            "source": "Google News"
+          }
+        ]
+      },
+      "too thin to be a headline": {
+        "count": 2,
+        "samples": [
+          {
+            "title": "Job’s worth",
+            "source": "Research Professional News"
+          },
+          {
+            "title": "Reuters Science News Summary",
+            "source": "Devdiscourse"
+          }
+        ]
+      },
+      "finance feed, not a finance story": {
+        "count": 1,
+        "samples": [
+          {
+            "title": "Deepinder Goyal’s Dark.ai could be Eternal’s dark horse, but is it too early to bet?",
+            "source": "Economic Times"
+          }
+        ]
+      },
+      "tips or price speculation": {
+        "count": 1,
+        "samples": [
+          {
+            "title": "Why is market falling today? Sensex drops 600 points, Nifty below 22,600. Key factors behind Rs 5 lakh crore rout",
+            "source": "Economic Times"
+          }
+        ]
+      }
+    }
+  },
+  "sections": [
+    {
+      "id": "top",
+      "label": "TOP STORIES",
+      "stories": [
+        {
+          "headline": "INDIAN NATIONAL AMONG 2 KILLED IN ATTACK ON SAUDI ARABIA’S KING FAHD AIRPORT | WORLD NEWS",
+          "display": "Indian national among 2 killed in attack on Saudi Arabia’s King Fahd airport | World News",
+          "original": "Indian national among 2 killed in attack on Saudi Arabia’s King Fahd airport | World News",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "Al Jazeera · NDTV · The Indian Express",
+          "sourceNames": [
+            "Al Jazeera",
+            "NDTV",
+            "The Indian Express",
+            "Hindustan Times"
+          ],
+          "corroboration": 4,
+          "republishers": [],
+          "owners": [
+            "Government of Qatar",
+            "Adani Group",
+            "Indian Express Group",
+            "HT Media / KK Birla family"
+          ],
+          "ownerCount": 4,
+          "countries": [
+            "QA",
+            "IN"
+          ],
+          "fundings": [
+            "state",
+            "conglomerate",
+            "commercial"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMikwJBVV95cUxQLXhndWdyeTR0NnJNRG1hNm1LQ2xoWFBYaS1HVHhtMHNhbThvLUExbkdHMnA4YWRXU2U1bHdlU1JfbC0wanlJU0loT2hYYW5sVi1nakw4S2FQLUZVQWtCZThQMW5rLXk5TlJWbDdoTjlSbTJuM0hTajlmei1YbnBmWTZLNHctRzZzamJ2b01fcmdyR0NLOHRtWGFaYV9rX25USUJjMVFkYTAxZ1NDMXdiRGVzZU1ZWlBWal9hLTFHcUszSTFLRVdSTEV6NmtLSXZCdnB5TEtfNWZhdVNELTJCQzF2ZFFTdXQzT2V4QVlNWFhVX3NPVlRvNFExdzUxVU03LXdBeW96UVc1Mml",
+          "summary": "Indian national among 2 killed in attack on Saudi Arabia’s King Fahd airport | World News &nbsp;&nbsp; Hindustan Times",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.aljazeera.com/news/2026/10/22/one-killed-eight-injured-in-attack-on-saudi-arabias-king-fahd-airport-2?traffic_source=rss",
+              "source": "Al Jazeera",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNbFp4dFhyTWt2Nk9IQzJpU0ptWEdIcjJ5b3dVaDQ5YkR2aDk5RW1uSmNZeUJ6SzB1Y0pwMnlQSUdGRW5BQ2Yzel9jdFlFYVczSlUyOWFGTXpYUXotdzctV2M2YjlMTlljNTN3c1NGNThFaXBZa1YxMjVPMHVZYUJ4aUYwc0xuTUFqOWVDVEtWMEZ0Qk1VRmNCcWh1bmV1alpISFNzdVk4THN6b1Vw0gG0AUFVX3lxTFB1NGFhT3V2a2Mza0JmQW54azZBZkktVHlUV1F6UHAyRXJjM1NJN0lNNzM4U2lnaTl3M3RCeHVjMHlFUHFRUkQ0OE00NGdCZkFWVW5OR09Falk1S09",
+              "source": "NDTV",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPa05ubG1XRHJpeWpnWXpIdDdIdlZXVmRyUllTSnE5NGxoWGRSampIYkJSbW1CN1llYzhNX0Qzd25vZi1KUkNzLTRmNWhzU21TR0x1cFVNMEtXSW1tT1F2aFBReWt3RmNNUC1SMXowc1JnZk1TTl9iSHY5RzBxeTRONFJMRG1idHNUV0JySVBVbmZhMzAxT2UzZWN4dS1CUFFrQnVBZTdlMjQ4RktVWVQ00gG2AUFVX3lxTE1Iem5OZE9URWV1ODd3TUROODBGWGRvTmRkYTNISzRfQ0dsVWFTTzhYLW1Wb1B0UXMwa29RaDE2MGx2ZXZKcEg1ZzAtVUIyVlA2MWQ2QWFnbkg",
+              "source": "The Indian Express",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMikwJBVV95cUxQLXhndWdyeTR0NnJNRG1hNm1LQ2xoWFBYaS1HVHhtMHNhbThvLUExbkdHMnA4YWRXU2U1bHdlU1JfbC0wanlJU0loT2hYYW5sVi1nakw4S2FQLUZVQWtCZThQMW5rLXk5TlJWbDdoTjlSbTJuM0hTajlmei1YbnBmWTZLNHctRzZzamJ2b01fcmdyR0NLOHRtWGFaYV9rX25USUJjMVFkYTAxZ1NDMXdiRGVzZU1ZWlBWal9hLTFHcUszSTFLRVdSTEV6NmtLSXZCdnB5TEtfNWZhdVNELTJCQzF2ZFFTdXQzT2V4QVlNWFhVX3NPVlRvNFExdzUxVU03LXdBeW96UVc1Mml",
+              "source": "Hindustan Times",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-22T06:54:24.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "lead",
+          "score": 18.4,
+          "photo": {
+            "path": "work/photos/top/photo-top-2.jpg",
+            "credit": "Photo: Al Jazeera",
+            "license": "publisher",
+            "pageUrl": "https://www.aljazeera.com/news/2026/10/22/one-killed-eight-injured-in-attack-on-saudi-arabias-king-fahd-airport-2?traffic_source=rss",
+            "query": "(the article)",
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Indian national among 2 killed in attack on Saudi Arabia’s King Fahd airport | World News”. Reported by Al Jazeera · NDTV · The Indian Express — 4 independent newsrooms. Behind the text is a library photograph, Photo: Al Jazeera. It is not a photograph of this event."
+        },
+        {
+          "headline": "US ORDERS SOME DIPLOMATS TO LEAVE SAUDI ARABIA AS HOUTHI ATTACKS ESCALATE",
+          "display": "US orders some diplomats to leave Saudi Arabia as Houthi attacks escalate",
+          "original": "US orders some diplomats to leave Saudi Arabia as Houthi attacks escalate",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "BBC News · The Guardian · NDTV",
+          "sourceNames": [
+            "BBC News",
+            "The Guardian",
+            "NDTV"
+          ],
+          "corroboration": 3,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Scott Trust",
+            "Adani Group"
+          ],
+          "ownerCount": 3,
+          "countries": [
+            "GB",
+            "IN"
+          ],
+          "fundings": [
+            "state",
+            "trust",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.bbc.co.uk/news/articles/c6x2vpk93770o?at_medium=RSS&at_campaign=rss",
+          "summary": "The warning to US officials comes as at least three people die in the latest strikes at an airport and an oil field.",
+          "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/6998/live/cec97250-cdb1-11f1-bc2e-018d645d8d21.jpg",
+          "sources": [
+            {
+              "link": "https://www.bbc.co.uk/news/articles/c6x2vpk93770o?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/6998/live/cec97250-cdb1-11f1-bc2e-018d645d8d21.jpg"
+            },
+            {
+              "link": "https://www.theguardian.com/world/2026/oct/22/us-diplomats-told-to-leave-saudi-arabia-amid-houthi-attacks",
+              "source": "The Guardian",
+              "feedImage": "https://i.guim.co.uk/img/media/ad0d9a1d652695e1b6e3636cdcd6f787bc705218/926_113_3873_3100/master/3873.jpg?width=140&quality=85&auto=format&fit=max&s=325339a1818bde4ca846b76fcd7f0570"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNdWFxSEVGamE4V09CbS04cXRIQnNHZjFhcnRPcHBLM3FKblNZVFRsTmdtTFFnQzhFTlFFN1pHNG5yQVdhOHlCZ18yUmxsZzBRVnVSU2lLeWRTQWs3dUxlRnF6ZHZyWnF0V1hscHRCVmJ1VkVPc1pzWGVVQVRqRWtxV0xLaVlMWTZFczNRNnAzRTBmYTAzUnFpMW5NUGtMN0Nxa3ZFWV9FSXR3ZnFaUzJwWllteF_SAbwBQVVfeXFMTlppTnN0NFVoX05CZWxuU1N1TUg2eXRFZzhfUFZuSGw0N1REdV9ET0Z1WElReWgxYWw2aEIySENlNkxLMVo3VTRzamE1R0dfTmRBYTF",
+              "source": "NDTV",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-22T01:07:34.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "significant",
+          "score": 12.6,
+          "photo": {
+            "path": "work/photos/top/photo-top-3.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/c6x2vpk93770o?at_medium=RSS&at_campaign=rss",
+            "query": "(the feed)",
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “US orders some diplomats to leave Saudi Arabia as Houthi attacks escalate”. Reported by BBC News · The Guardian · NDTV — 3 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        },
+        {
+          "headline": "‘FINDING A PLACE TO BELONG’: SONIA GANDHI MAKES INSTA DEBUT, SHARES FIRST LOOK OF MEMOIR",
+          "display": "‘Finding a place to belong’: Sonia Gandhi makes Insta debut, shares first look of memoir",
+          "original": "‘Finding a place to belong’: Sonia Gandhi makes Insta debut, shares first look of memoir",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "The Hindu · Times of India",
+          "sourceNames": [
+            "The Hindu",
+            "Times of India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "The Hindu Group (family-held)",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://timesofindia.indiatimes.com/india/finding-a-place-to-belong-sonia-gandhi-makes-instagram-debut-shares-first-look-of-memoir/articleshow/135108732.cms",
+          "summary": "Sonia Gandhi has joined Instagram to share the first look of her upcoming memoir titled 'Belonging: A Journey of Love'. The memoir will be released internationally on November 10 and recounts her personal journey from Italy to India. It includes reflections on her relationship with Rajiv Gandhi and family tragedies. Due to a publishing dispute in India, HarperCollins India will now publish the dom",
+          "feedImage": "https://static.toiimg.com/photo/msid-135109243,imgsize-806514.cms",
+          "sources": [
+            {
+              "link": "https://www.thehindu.com/news/national/sonia-gandhi-joins-instagram-introduces-her-memoir/article71610194.ece",
+              "source": "The Hindu",
+              "feedImage": "https://th-i.thgim.com/public/incoming/70vvt/article71610199.ece/alternates/LANDSCAPE_1200/20260930255L.jpg"
+            },
+            {
+              "link": "https://timesofindia.indiatimes.com/india/finding-a-place-to-belong-sonia-gandhi-makes-instagram-debut-shares-first-look-of-memoir/articleshow/135108732.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135109243,imgsize-806514.cms"
+            }
+          ],
+          "published": "2026-10-22T06:01:22.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 8.7,
+          "photo": {
+            "path": "work/photos/top/photo-top-4.jpg",
+            "credit": "Photo: The Hindu",
+            "license": "publisher",
+            "pageUrl": "https://www.thehindu.com/news/national/sonia-gandhi-joins-instagram-introduces-her-memoir/article71610194.ece",
+            "query": "(the feed)",
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “‘Finding a place to belong’: Sonia Gandhi makes Insta debut, shares first look of memoir”. Reported by The Hindu · Times of India — 2 independent newsrooms. Behind the text is a library photograph, Photo: The Hindu. It is not a photograph of this event."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "top-1",
+          "story": "Indian national among 2 killed in attack on Saudi Arabia’s King Fahd airport | World News",
+          "files": [
+            "data/editions/2026-10-22/top/1/slide-1.jpg",
+            "data/editions/2026-10-22/top/1/slide-2.jpg",
+            "data/editions/2026-10-22/top/1/slide-3.jpg"
+          ],
+          "cover": "data/editions/2026-10-22/top/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-22/top/1/alt.json",
+          "caption": "data/editions/2026-10-22/caption-top-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "top-2",
+          "story": "US orders some diplomats to leave Saudi Arabia as Houthi attacks escalate",
+          "files": [
+            "data/editions/2026-10-22/top/2/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-22/top/2/slide-1.jpg",
+          "alts": "data/editions/2026-10-22/top/2/alt.json",
+          "caption": "data/editions/2026-10-22/caption-top-2.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "top-3",
+          "story": "‘Finding a place to belong’: Sonia Gandhi makes Insta debut, shares first look of memoir",
+          "files": [
+            "data/editions/2026-10-22/top/3/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-22/top/3/slide-1.jpg",
+          "alts": "data/editions/2026-10-22/top/3/alt.json",
+          "caption": "data/editions/2026-10-22/caption-top-3.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "reel",
+          "id": "top-reel",
+          "files": [
+            "data/editions/2026-10-22/top/reel.mp4"
+          ],
+          "cover": "data/editions/2026-10-22/top/1/slide-1.jpg",
+          "caption": "data/editions/2026-10-22/caption-top-1.txt",
+          "alts": "",
+          "noAlts": "Instagram does not accept alt text on a reel; the caption carries the headline.",
+          "seconds": 12.9,
+          "bytes": 1894660,
+          "story": "Indian national among 2 killed in attack on Saudi Arabia’s King Fahd airport | World News",
+          "footage": "the photograph, pushed in",
+          "spoken": "Daily Volex. Indian national among 2 killed in attack on Saudi Arabia’s King Fahd airport | World News. Reported by Al Jazeera, NDTV and The Indian Express."
+        }
+      ]
+    },
+    {
+      "id": "india",
+      "label": "INDIA",
+      "stories": [
+        {
+          "headline": "‘STOP WHINING’: VANCE TELLS REPUBLICANS TO BACK VIVEK RAMASWAMY AMID AD CONTROVERSY",
+          "display": "‘Stop whining’: Vance tells Republicans to back Vivek Ramaswamy amid ad controversy",
+          "original": "‘Stop whining’: Vance tells Republicans to back Vivek Ramaswamy amid ad controversy",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "BBC News · Times of India",
+          "sourceNames": [
+            "BBC News",
+            "Times of India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB",
+            "IN"
+          ],
+          "fundings": [
+            "state",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://timesofindia.indiatimes.com/world/us/us-mid-term-elections/news/stop-whining-vance-tells-republicans-to-back-vivek-ramaswamy-amid-ad-controversy/articleshow/135106559.cms",
+          "summary": null,
+          "feedImage": "https://static.toiimg.com/photo/msid-135106736,imgsize-107888.cms",
+          "sources": [
+            {
+              "link": "https://www.bbc.co.uk/news/articles/cm98zn3l2rn7o?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/4fc8/live/64f8e290-cda0-11f1-96a8-11b361e3c25f.jpg"
+            },
+            {
+              "link": "https://timesofindia.indiatimes.com/world/us/us-mid-term-elections/news/stop-whining-vance-tells-republicans-to-back-vivek-ramaswamy-amid-ad-controversy/articleshow/135106559.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135106736,imgsize-107888.cms"
+            }
+          ],
+          "published": "2026-10-22T04:02:54.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 8.55,
+          "photo": {
+            "path": "work/photos/india/photo-india-2.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/cm98zn3l2rn7o?at_medium=RSS&at_campaign=rss",
+            "query": "(the feed)",
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “‘Stop whining’: Vance tells Republicans to back Vivek Ramaswamy amid ad controversy”. Reported by BBC News · Times of India — 2 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        },
+        {
+          "headline": "INDIA REJECTS UN RAPPORTEUR'S 'INDIA-BASED' LABEL FOR DAWOOD IBRAHIM'S D-COMPANY",
+          "display": "India rejects UN rapporteur's 'India-based' label for Dawood Ibrahim's D-Company",
+          "original": "India rejects UN rapporteur's 'India-based' label for Dawood Ibrahim's D-Company",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "NDTV · The Hindu",
+          "sourceNames": [
+            "NDTV",
+            "The Hindu"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Adani Group",
+            "The Hindu Group (family-held)"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate",
+            "commercial"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.thehindu.com/news/national/india-rejects-un-rapporteurs-india-based-label-for-dawood-ibrahims-d-company/article71610134.ece",
+          "summary": "Raghoo Puri said this presents member states with a fait accompli, an unfortunate situation for an organisation already facing challenges to its legitimacy",
+          "feedImage": "https://th-i.thgim.com/public/incoming/6u36bl/article71610195.ece/alternates/LANDSCAPE_1200/PTI10_22_2026_000014B.jpg",
+          "sources": [
+            {
+              "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQYjlwb0EwSlJsMjF3SXlJQmt4MGNLRTN4ZWV4UDl0b2xlY29qaEZmMV80VjEwdml2akFpdEVkRHpadW0wQWVWVF9OY2xhMVZzbnlXMEY3LV8zc2pPYmZyTEV0cjF2SG9fbGxJTVdObk1mNXNEbmFScnlQYVRSUllMNlBQbDNBdnRGTW43NkZGOVcxUnptY09mWjJrTE54UXM3a1hkQjM3eDM3OHFhaXFOOEVpRU9jWlAxTnR1U2pVX1h5TXE1ckRUVG9VY9IB0wFBVV95cUxQaW56bzVvR1k0Szc4NDRIdEY3QlBDQXU1ODRpeFU0MmlsZWwxcGdIdzVzSGRSX2hHS0F2dm0",
+              "source": "NDTV",
+              "feedImage": null
+            },
+            {
+              "link": "https://www.thehindu.com/news/national/india-rejects-un-rapporteurs-india-based-label-for-dawood-ibrahims-d-company/article71610134.ece",
+              "source": "The Hindu",
+              "feedImage": "https://th-i.thgim.com/public/incoming/6u36bl/article71610195.ece/alternates/LANDSCAPE_1200/PTI10_22_2026_000014B.jpg"
+            },
+            {
+              "link": "https://www.ndtv.com/world-news/dawood-ibrahim-lives-in-pakistan-like-osama-bin-laden-used-to-india-corrects-un-rapporteur-12218289#publisher=newsstand",
+              "source": "NDTV",
+              "feedImage": "https://i.ndtvimg.com/i/2015-05/dawood-ibrahim-ap-650_650x400_61430819235.jpg?im=FeatureCrop,algorithm=dnn,width=1280,height=720"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPOEVpZFN6R1B4WXR5NFVZWXIzM0ljbEJ2RUZKbWx3SW1weXNpc1pTaTFlcThaMGczVTgzU1doSzhZS0tORjZiSTRibWI4NEo0REhLR19hbTF0X014T0ZZYTdGSHctam1ZQ3l4eWMyUTYtMzZSNGc1QVN1Yk5SdHU3WnYxVUkzckR4TEloSVJ6SXJOOS1RU3dHcjhSa3MyN3dTUm1IOTJHRmdJWm00ZUozd3R6SGkwR1BYOGpya01LVEhWZmp5RVhsOUtMNHBxYmpX0gHXAUFVX3lxTE0zNTFXRFFMcF85M194WHh1b0ZMMG15a2dTSXc0V1VGV3llbTBZUTV6U3QxUjJsYS1",
+              "source": "The Hindu",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-22T05:30:44.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 8.4,
+          "photo": {
+            "path": "work/photos/india/photo-india-3.jpg",
+            "credit": "Photo: The Hindu",
+            "license": "publisher",
+            "pageUrl": "https://www.thehindu.com/news/national/india-rejects-un-rapporteurs-india-based-label-for-dawood-ibrahims-d-company/article71610134.ece",
+            "query": "(the feed)",
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “India rejects UN rapporteur's 'India-based' label for Dawood Ibrahim's D-Company”. Reported by NDTV · The Hindu — 2 independent newsrooms. Behind the text is a library photograph, Photo: The Hindu. It is not a photograph of this event."
+        },
+        {
+          "headline": "HANDS TIED BETWEEN WINDOWS, UP MAN DRAGGED FOR 1.5 KM ON CAR ROOF, DIES",
+          "display": "Hands Tied Between Windows, UP Man Dragged For 1.5 km On Car Roof, Dies",
+          "original": "Hands Tied Between Windows, UP Man Dragged For 1.5 km On Car Roof, Dies",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "NDTV · Times of India",
+          "sourceNames": [
+            "NDTV",
+            "Times of India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Adani Group",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.ndtv.com/india-news/hands-tied-between-windows-up-man-dragged-for-1-5-km-on-car-roof-dies-12218650#publisher=newsstand",
+          "summary": null,
+          "feedImage": "https://c.ndtvimg.com/2026-10/arj0vfvg_kanpur-man-dragged-on-car_625x300_22_October_26.jpg?im=FeatureCrop,algorithm=dnn,width=1280,height=720",
+          "sources": [
+            {
+              "link": "https://www.ndtv.com/india-news/hands-tied-between-windows-up-man-dragged-for-1-5-km-on-car-roof-dies-12218650#publisher=newsstand",
+              "source": "NDTV",
+              "feedImage": "https://c.ndtvimg.com/2026-10/arj0vfvg_kanpur-man-dragged-on-car_625x300_22_October_26.jpg?im=FeatureCrop,algorithm=dnn,width=1280,height=720"
+            },
+            {
+              "link": "https://timesofindia.indiatimes.com/city/kanpur/video-kanpur-man-dies-after-attackers-trap-hands-in-car-windows-drag-him-on-roof-for-1-5km/articleshow/135106079.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135106174,imgsize-12713594.cms"
+            }
+          ],
+          "published": "2026-10-22T06:03:29.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 8.4,
+          "photoError": "every candidate failed to download (HTTP 403; not an image (image/gif))",
+          "photo": null,
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": "editorial",
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Hands Tied Between Windows, UP Man Dragged For 1.5 km On Car Roof, Dies”. Reported by NDTV · Times of India — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
+        },
+        {
+          "headline": "TIGER SHROFF FIRING: ACCUSED PRACTISED SHOOTING NEAR MUMBAI, BULLET HIT HOTEL BED",
+          "display": "Tiger Shroff firing: Accused practised shooting near Mumbai, bullet hit hotel bed",
+          "original": "Tiger Shroff firing: Accused practised shooting near Mumbai, bullet hit hotel bed",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "NDTV · Times of India",
+          "sourceNames": [
+            "NDTV",
+            "Times of India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Adani Group",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://timesofindia.indiatimes.com/city/mumbai/tiger-shroff-firing-accused-practised-shooting-near-mumbai-before-attack-bullet-hit-bed-during-accidental-discharge-in-andheri-hotel-room/articleshow/135109352.cms",
+          "summary": "Following the alarming shooting incident involving Tiger Shroff, authorities have apprehended multiple suspects. Investigations revealed a nearby location in Mumbai where these individuals honed their shooting skills. The police are now exploring potential ties between the arrested parties and the incident itself. Furthermore, an audio recording containing a threatening message aimed at Shroff is ",
+          "feedImage": "https://static.toiimg.com/photo/msid-135109536,imgsize-1397276.cms",
+          "sources": [
+            {
+              "link": "https://www.ndtv.com/india-news/lets-visit-mumbai-temple-how-tiger-shroff-shooting-accused-babita-was-tricked-by-radha-tiger-shroff-attacked-mumbai-juhu-12218356#publisher=newsstand",
+              "source": "NDTV",
+              "feedImage": "https://c.ndtvimg.com/2026-10/kq6os0k_tiger-shroff_625x300_22_October_26.jpg?im=FeatureCrop,algorithm=dnn,width=1280,height=720"
+            },
+            {
+              "link": "https://timesofindia.indiatimes.com/city/mumbai/tiger-shroff-firing-accused-practised-shooting-near-mumbai-before-attack-bullet-hit-bed-during-accidental-discharge-in-andheri-hotel-room/articleshow/135109352.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135109536,imgsize-1397276.cms"
+            }
+          ],
+          "published": "2026-10-22T06:14:32.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 8.4,
+          "photo": {
+            "path": "work/photos/india/photo-india-5.jpg",
+            "credit": "Photo: Times of India",
+            "license": "publisher",
+            "pageUrl": "https://timesofindia.indiatimes.com/city/mumbai/tiger-shroff-firing-accused-practised-shooting-near-mumbai-before-attack-bullet-hit-bed-during-accidental-discharge-in-andheri-hotel-room/articleshow/135109352.cms",
+            "query": "(the feed)",
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Tiger Shroff firing: Accused practised shooting near Mumbai, bullet hit hotel bed”. Reported by NDTV · Times of India — 2 independent newsrooms. Behind the text is a library photograph, Photo: Times of India. It is not a photograph of this event."
+        },
+        {
+          "headline": "INDIA'S WEST ASIA OIL IMPORTS RETURN TO PRE-WAR LEVELS IN SEPTEMBER",
+          "display": "India's West Asia oil imports return to pre-war levels in September",
+          "original": "India's West Asia oil imports return to pre-war levels in September",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "The Hindu · Reuters",
+          "sourceNames": [
+            "The Hindu",
+            "Reuters"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "The Hindu Group (family-held)",
+            "Thomson Reuters (Trust Principles)"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN",
+            "GB"
+          ],
+          "fundings": [
+            "commercial",
+            "trust"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPTTg1MXJUNVlGbXFjdDc0bWVScG9LZ090eHRVWVlEVUtESmxGakFtRV9YYkI5NmZKNjNtYmFUZDhEQU51M1FfMll0cmszem9UXzhObEVSaUVtTHJqT2hzclhQZUR1aFUzNTRUbVowOTZYVU8wX005aWNrMlB1b05idjBfT0lhd3EwYUdlOVBhbWg0S0Nlby0zSGM1RHI1emNRaVpnSGVGXzA4TncwZUNhT2tpWnBObFM3QThpWDdMLXpXaVRLTjNB0gHOAUFVX3lxTFBSYmJBY2IzWm9rMnZJQ2FZclZCTzBmQlBIbjI4SXppZWZjcnd3dVZPTG1Ma1JiRTZMc0FTRzVsWTU",
+          "summary": "India's West Asia oil imports return to pre-war levels in September &nbsp;&nbsp; The Hindu",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPTTg1MXJUNVlGbXFjdDc0bWVScG9LZ090eHRVWVlEVUtESmxGakFtRV9YYkI5NmZKNjNtYmFUZDhEQU51M1FfMll0cmszem9UXzhObEVSaUVtTHJqT2hzclhQZUR1aFUzNTRUbVowOTZYVU8wX005aWNrMlB1b05idjBfT0lhd3EwYUdlOVBhbWg0S0Nlby0zSGM1RHI1emNRaVpnSGVGXzA4TncwZUNhT2tpWnBObFM3QThpWDdMLXpXaVRLTjNB0gHOAUFVX3lxTFBSYmJBY2IzWm9rMnZJQ2FZclZCTzBmQlBIbjI4SXppZWZjcnd3dVZPTG1Ma1JiRTZMc0FTRzVsWTU",
+              "source": "The Hindu",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNRl9GVUFVbTBqSFIzbnJpZmJ0c3Q5ZFJlQ0hQUkkwZW5aVDdVWTMwczBlRFRTbF9zM0NNODcyWG9PUTg5WXZKOXRfSUdJSXhHM1FPcFhUOTVmb0pIUHh5Rl9tYldSWDd1all5UV9fV2VMSmNxSUU4anJpUVVvMkFadHpQcmwxdFhRSHlvSXhpMEY1bXNkV2NnUnVNelltUHVRQjFzWE14TWZVVnhrRndv?oc=5",
+              "source": "Reuters",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-22T07:30:32.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 7.8,
+          "articlePhotoError": "Reuters: the article declares no picture",
+          "photoError": "a library photograph would misrepresent a story about people in harm (searched \"(none)\")",
+          "photo": null,
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": "editorial",
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “India's West Asia oil imports return to pre-war levels in September”. Reported by The Hindu · Reuters — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "india-1",
+          "story": "‘Stop whining’: Vance tells Republicans to back Vivek Ramaswamy amid ad controversy",
+          "files": [
+            "data/editions/2026-10-22/india/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-22/india/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-22/india/1/alt.json",
+          "caption": "data/editions/2026-10-22/caption-india-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "india-2",
+          "story": "India rejects UN rapporteur's 'India-based' label for Dawood Ibrahim's D-Company",
+          "files": [
+            "data/editions/2026-10-22/india/2/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-22/india/2/slide-1.jpg",
+          "alts": "data/editions/2026-10-22/india/2/alt.json",
+          "caption": "data/editions/2026-10-22/caption-india-2.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "india-3",
+          "story": "Hands Tied Between Windows, UP Man Dragged For 1.5 km On Car Roof, Dies",
+          "files": [
+            "data/editions/2026-10-22/india/3/slide-1.jpg",
+            "data/editions/2026-10-22/india/3/slide-2.jpg",
+            "data/editions/2026-10-22/india/3/slide-3.jpg"
+          ],
+          "cover": "data/editions/2026-10-22/india/3/slide-1.jpg",
+          "alts": "data/editions/2026-10-22/india/3/alt.json",
+          "caption": "data/editions/2026-10-22/caption-india-3.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "india-4",
+          "story": "Tiger Shroff firing: Accused practised shooting near Mumbai, bullet hit hotel bed",
+          "files": [
+            "data/editions/2026-10-22/india/4/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-22/india/4/slide-1.jpg",
+          "alts": "data/editions/2026-10-22/india/4/alt.json",
+          "caption": "data/editions/2026-10-22/caption-india-4.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "india-5",
+          "story": "India's West Asia oil imports return to pre-war levels in September",
+          "files": [
+            "data/editions/2026-10-22/india/5/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-22/india/5/slide-1.jpg",
+          "alts": "data/editions/2026-10-22/india/5/alt.json",
+          "caption": "data/editions/2026-10-22/caption-india-5.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    },
+    {
+      "id": "world",
+      "label": "WORLD",
+      "stories": [
+        {
+          "headline": "META FACES AUSTRALIAN LAWSUIT OVER ALLEGED SOCIAL MEDIA HARM TO CHILDREN",
+          "display": "Meta faces Australian lawsuit over alleged social media harm to children",
+          "original": "Meta faces Australian lawsuit over alleged social media harm to children",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "Al Jazeera · NDTV",
+          "sourceNames": [
+            "Al Jazeera",
+            "NDTV"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Government of Qatar",
+            "Adani Group"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "QA",
+            "IN"
+          ],
+          "fundings": [
+            "state",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.aljazeera.com/news/2026/10/22/meta-faces-australian-lawsuit-over-alleged-social-media-harm-to-children?traffic_source=rss",
+          "summary": "Class action could be first in Australia to blame social media for harming its users.",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.aljazeera.com/news/2026/10/22/meta-faces-australian-lawsuit-over-alleged-social-media-harm-to-children?traffic_source=rss",
+              "source": "Al Jazeera",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPQ2syRDBsUUIxT3o1bE9mc01LOXBvT1h2endLZkd1dE5GXzVKSElHWTdDMFlsdnZCNDFYMHhhaUNnSXIwczdaSFBRQlh3b0xxamxPZmtCWmxleWhBSjZyQ1ZoVEtPand4NE5JUDFsUnBFeTFteE91UXVHd0dGTHlIb0s0TWtLYlpQSjVqc3JSS3Z0V1U0M21oV29ER1BEM0dOTU9yRXh0dXBaV0FFeWRTRjFSNXhhTVF0YlFPb0UwWdIBxwFBVV95cUxPVW9OcF9MTlVjYTFRUGYxcWFYSVdGXzdTTm96ZFBQWGRrYzdWdUxMeDlIQjNZUk91aS1kaHZZSmdEWHE2N01pcXZ",
+              "source": "NDTV",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-22T07:23:12.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.4,
+          "photo": {
+            "path": "work/photos/world/photo-world-2.jpg",
+            "credit": "Photo: Al Jazeera",
+            "license": "publisher",
+            "pageUrl": "https://www.aljazeera.com/news/2026/10/22/meta-faces-australian-lawsuit-over-alleged-social-media-harm-to-children?traffic_source=rss",
+            "query": "(the article)",
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Meta faces Australian lawsuit over alleged social media harm to children”. Reported by Al Jazeera · NDTV — 2 independent newsrooms. Behind the text is a library photograph, Photo: Al Jazeera. It is not a photograph of this event."
+        },
+        {
+          "headline": "NORTH KOREA TO RESUME PROPAGANDA BROADCASTS, SOUTH KOREA URGES DIALOGUE",
+          "display": "North Korea to resume propaganda broadcasts, South Korea urges dialogue",
+          "original": "North Korea to resume propaganda broadcasts, South Korea urges dialogue",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "Al Jazeera · The Guardian",
+          "sourceNames": [
+            "Al Jazeera",
+            "The Guardian"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Government of Qatar",
+            "Scott Trust"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "QA",
+            "GB"
+          ],
+          "fundings": [
+            "state",
+            "trust"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.aljazeera.com/news/2026/10/22/north-korea-to-resume-propaganda-broadcasts-south-korea-urges-dialogue?traffic_source=rss",
+          "summary": "Pyongyang plans to resume broadcasting anti-South Korea propaganda along the armed border.",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.aljazeera.com/news/2026/10/22/north-korea-to-resume-propaganda-broadcasts-south-korea-urges-dialogue?traffic_source=rss",
+              "source": "Al Jazeera",
+              "feedImage": null
+            },
+            {
+              "link": "https://www.theguardian.com/world/2026/oct/22/north-korea-to-restart-propaganda-loudspeakers-south-korea",
+              "source": "The Guardian",
+              "feedImage": "https://i.guim.co.uk/img/media/713bcd9ff1654fe9c89a51939a324229100d3767/0_125_3728_2984/master/3728.jpg?width=140&quality=85&auto=format&fit=max&s=6214d8633e19ac1fd959d6bb83d748bd"
+            }
+          ],
+          "published": "2026-10-22T04:45:41.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.1,
+          "photoError": "every candidate failed to download (only 5 KB — furniture, not a photograph; HTTP 401)",
+          "photo": null,
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": "editorial",
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “North Korea to resume propaganda broadcasts, South Korea urges dialogue”. Reported by Al Jazeera · The Guardian — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "world-1",
+          "story": "Meta faces Australian lawsuit over alleged social media harm to children",
+          "files": [
+            "data/editions/2026-10-22/world/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-22/world/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-22/world/1/alt.json",
+          "caption": "data/editions/2026-10-22/caption-world-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "world-2",
+          "story": "North Korea to resume propaganda broadcasts, South Korea urges dialogue",
+          "files": [
+            "data/editions/2026-10-22/world/2/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-22/world/2/slide-1.jpg",
+          "alts": "data/editions/2026-10-22/world/2/alt.json",
+          "caption": "data/editions/2026-10-22/caption-world-2.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    },
+    {
+      "id": "science",
+      "label": "SCIENCE",
+      "stories": [
+        {
+          "headline": "SBI RESEARCH STICKS TO 50-BPS DECEMBER RATE HIKE FORECAST AS INFLATION PRESSURES WIDEN",
+          "display": "SBI Research sticks to 50-bps December rate hike forecast as inflation pressures widen",
+          "original": "SBI Research sticks to 50-bps December rate hike forecast as inflation pressures widen",
+          "truncated": false,
+          "usable": true,
+          "category": "SCIENCE",
+          "source": "Firstpost · BusinessLine",
+          "sourceNames": [
+            "Firstpost",
+            "BusinessLine"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Reliance Industries"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQemNpY3NZVjhxOHZ3NXlUdnVPWktyeWg3bnYzTFp2N29pREo0QUVMQ1JaSWxPeU9vUnNFT2FJR3JjVUpBNENHRnBXMXZ3ZUdvTzY1dTJONFhVYzl5cXdwR1lCYlhCemUyQXc4aUxBd3NwUDJzYTVxaDItTGQ4WUdRUGI1VDBLX1M3UFNZd0szalYyVGR1aHNEY0xud0x3UE05VGxzX0liN2ctR194NDFoaGFMOWE2SGRQUllybXFCVXVTRjdmZ2tPM2ZhSmg0RzFZ0gHWAUFVX3lxTFBLdGlnNUNJMGJITnFjUUNEdjdQRGNOVjBiUE9rWkhUenRJNUcxZTR2MUd6SF80Y0x",
+          "summary": "SBI Research sticks to 50-bps December rate hike forecast as inflation pressures widen &nbsp;&nbsp; Firstpost",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQemNpY3NZVjhxOHZ3NXlUdnVPWktyeWg3bnYzTFp2N29pREo0QUVMQ1JaSWxPeU9vUnNFT2FJR3JjVUpBNENHRnBXMXZ3ZUdvTzY1dTJONFhVYzl5cXdwR1lCYlhCemUyQXc4aUxBd3NwUDJzYTVxaDItTGQ4WUdRUGI1VDBLX1M3UFNZd0szalYyVGR1aHNEY0xud0x3UE05VGxzX0liN2ctR194NDFoaGFMOWE2SGRQUllybXFCVXVTRjdmZ2tPM2ZhSmg0RzFZ0gHWAUFVX3lxTFBLdGlnNUNJMGJITnFjUUNEdjdQRGNOVjBiUE9rWkhUenRJNUcxZTR2MUd6SF80Y0x",
+              "source": "Firstpost",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxOSTJLMWZuQlBhcW1BNzhueVREeXBJNFRKVlpvNnB4RW1scWlvcUpYbU40RHN6dVFOdUVOMTdfMlhkdUU4Z3R4WU9wN3R0YWx5cUFqMEtZUXdHVlVMR3B1NFJMOVpiaUVoeW5KNEwtdG1oRWNsYXpUR1BaMHFXSW9JV19QeGxUOWxnYVBCQTdtcEJld2ZXVEQ5VEd3Y0VDX085dDV2QWEtenJxWW9VWW5uTUJtbWpyLTQxTzI2dVNKQXJ5U2wzTndWREU5WXJYdzduOWlKQzhQWm1qZUEtVHp6allobTRoa0pTd1hNM2k0SkYxY2xUa3lXTFYyQVY3QdIBhAJBVV95cUxQS2V",
+              "source": "BusinessLine",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-22T06:31:27.000Z",
+          "topic": "science",
+          "section": "science",
+          "tier": "notable",
+          "score": 7.95,
+          "articlePhotoError": "BusinessLine: HTTP 400",
+          "photoError": "no image matched the story closely enough (searched \"SBI\")",
+          "photo": null,
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": "chart",
+          "alt": "A news card from @dailyvolex, headed SCIENCE. It reads: “SBI Research sticks to 50-bps December rate hike forecast as inflation pressures widen”. Reported by Firstpost · BusinessLine — 2 independent newsrooms. Behind the text is a generated market chart. It is decorative, not real data."
+        },
+        {
+          "headline": "ONLINE RESEARCH INFLUENCES 40% OF INSURANCE SALES IN INDIA AS DICA BUYERS SURGE: GOOGLE",
+          "display": "Online research influences 40% of insurance sales in India as DICA buyers surge: Google",
+          "original": "Online research influences 40% of insurance sales in India as DICA buyers surge: Google",
+          "truncated": false,
+          "usable": true,
+          "category": "SCIENCE",
+          "source": "MediaNews4U · Business Standard",
+          "sourceNames": [
+            "MediaNews4U",
+            "Business Standard"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Business Standard Pvt Ltd"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNZzlKMHZCTWNBeHIxcGZQbDRfRFFwRkxDNWEwb0dfY0NkMEJIVHlxNFA3b1JneWRFbHVDWWdoWHlINnkyanZlY0F0LUZocHE3YXpsbER5MnNmbF9kbURRYnoxakJpSWIxQWpnX0xCbXZCZVIzZl9ieFU5WUJRV3ViSmtuYmQtWkJEa3dXal9mT0c1bl8xRHV1N28wa1ZyQ2IwQUNCd0JjalVyOVJrWTFiMWhiTXE?oc=5",
+          "summary": "Online research influences 40% of insurance sales in India as DICA buyers surge: Google &nbsp;&nbsp; MediaNews4U",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNZzlKMHZCTWNBeHIxcGZQbDRfRFFwRkxDNWEwb0dfY0NkMEJIVHlxNFA3b1JneWRFbHVDWWdoWHlINnkyanZlY0F0LUZocHE3YXpsbER5MnNmbF9kbURRYnoxakJpSWIxQWpnX0xCbXZCZVIzZl9ieFU5WUJRV3ViSmtuYmQtWkJEa3dXal9mT0c1bl8xRHV1N28wa1ZyQ2IwQUNCd0JjalVyOVJrWTFiMWhiTXE?oc=5",
+              "source": "MediaNews4U",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxOVnhXUm9IUlNyVEhvY3N5VGoyZ0VHY0U0TjAycEh5OVpIWWd2U2toQ1dseWwwbFVxVWhWM0FpeEVIVGRvaHY3RUtDdzd1dmIwakRLN245ZFFuYlFhWEFsdjQ5Q2VqYlFkRjRUN0VhYnY0RF9aMklQcVlVVzE3R1QyWFg1dDV0TmFqOURDY3RIR1c1NDc4Qm9xbFZka0RTOEE5OEo5ZE9xWU9kNGVwNTZPOVYxbHR5RWpyUk15Y2JIYldkVU5qNWgxQkF1MUI2bkhST1VwYkV30gHbAUFVX3lxTFA1ejNfWHhYNEE4dmpxTWYwSnBYaGJ0eUdWOGdET2VSYTZmb3FiRFFSSDB",
+              "source": "Business Standard",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-22T06:35:28.000Z",
+          "topic": "science",
+          "section": "science",
+          "tier": "notable",
+          "score": 7.95,
+          "articlePhotoError": "Business Standard: HTTP 400",
+          "photo": {
+            "path": "work/photos/science/photo-science-3.jpg",
+            "credit": "File photo: Pieter Brueghel the Elder / Public Domain",
+            "license": "pdm",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Pieter_Brueghel_the_Elder_-_The_Dutch_Proverbs_-_Google_Art_Project.jpg",
+            "query": "Google",
+            "relevance": 0.11,
+            "title": "Pieter Brueghel the Elder   The Dutch Proverbs   Google Art Project",
+            "from": "library"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed SCIENCE. It reads: “Online research influences 40% of insurance sales in India as DICA buyers surge: Google”. Reported by MediaNews4U · Business Standard — 2 independent newsrooms. Behind the text is a library photograph captioned “Pieter Brueghel the Elder The Dutch Proverbs Google Art Project”, credited to Pieter Brueghel the Elder / Public Domain. It is not a photograph of this event."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "science-1",
+          "story": "SBI Research sticks to 50-bps December rate hike forecast as inflation pressures widen",
+          "files": [
+            "data/editions/2026-10-22/science/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-22/science/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-22/science/1/alt.json",
+          "caption": "data/editions/2026-10-22/caption-science-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "science-2",
+          "story": "Online research influences 40% of insurance sales in India as DICA buyers surge: Google",
+          "files": [
+            "data/editions/2026-10-22/science/2/slide-1.jpg",
+            "data/editions/2026-10-22/science/2/slide-2.jpg",
+            "data/editions/2026-10-22/science/2/slide-3.jpg"
+          ],
+          "cover": "data/editions/2026-10-22/science/2/slide-1.jpg",
+          "alts": "data/editions/2026-10-22/science/2/alt.json",
+          "caption": "data/editions/2026-10-22/caption-science-2.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    },
+    {
+      "id": "health",
+      "label": "HEALTH",
+      "stories": [
+        {
+          "headline": "NIGERIA’S FIRST EBOLA CASE MATCHES DR CONGO STRAIN, HEALTH OFFICIALS SAY",
+          "display": "Nigeria’s first Ebola case matches DR Congo strain, health officials say",
+          "original": "Nigeria’s first Ebola case matches DR Congo strain, health officials say",
+          "truncated": false,
+          "usable": true,
+          "category": "HEALTH",
+          "source": "BBC News · Al Jazeera",
+          "sourceNames": [
+            "BBC News",
+            "Al Jazeera"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Government of Qatar"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB",
+            "QA"
+          ],
+          "fundings": [
+            "state"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxObTRGVDVjSTJ1eVBaY3lGTWJoczd2d09UNkxseWpkMUVDMWhNZTZkSnV1Q0ZqUnE3Szk3Qy11NzdfbGwyTmhLUzFxNkJjRzQ0YkNzclp6ZmhfTTRlUU9rNHBUOTFlUkJMY01YczYtS3ZBcUFQb1BsU050b0hIVDFnOEsxckVTcXU1c21LT2cxTXBBM2g2c2FCang2Y3M3N1dCN2VEZllsTjY4aExnY2QwWW1R0gG3AUFVX3lxTFB2NURHZ09GZHVsLXk1TjM2dGM1Vy01MGFFOEpqN2hNdlI0YlNWYU96LWV0eUJURjQxVDdvUHc0TkFLc0RVNHJmYVczMEZIZ2RmdkplSnZ",
+          "summary": "Nigeria’s first Ebola case matches DR Congo strain, health officials say &nbsp;&nbsp; Al Jazeera",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.bbc.co.uk/news/articles/c62kepvg2x9lo?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9bc3/live/125ed250-cd83-11f1-9a39-31b474234113.jpg"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxObTRGVDVjSTJ1eVBaY3lGTWJoczd2d09UNkxseWpkMUVDMWhNZTZkSnV1Q0ZqUnE3Szk3Qy11NzdfbGwyTmhLUzFxNkJjRzQ0YkNzclp6ZmhfTTRlUU9rNHBUOTFlUkJMY01YczYtS3ZBcUFQb1BsU050b0hIVDFnOEsxckVTcXU1c21LT2cxTXBBM2g2c2FCang2Y3M3N1dCN2VEZllsTjY4aExnY2QwWW1R0gG3AUFVX3lxTFB2NURHZ09GZHVsLXk1TjM2dGM1Vy01MGFFOEpqN2hNdlI0YlNWYU96LWV0eUJURjQxVDdvUHc0TkFLc0RVNHJmYVczMEZIZ2RmdkplSnZ",
+              "source": "Al Jazeera",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-21T23:36:05.000Z",
+          "topic": "health",
+          "section": "health",
+          "tier": "notable",
+          "score": 8.1,
+          "photo": {
+            "path": "work/photos/health/photo-health-2.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/c62kepvg2x9lo?at_medium=RSS&at_campaign=rss",
+            "query": "(the feed)",
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed HEALTH. It reads: “Nigeria’s first Ebola case matches DR Congo strain, health officials say”. Reported by BBC News · Al Jazeera — 2 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "health-1",
+          "story": "Nigeria’s first Ebola case matches DR Congo strain, health officials say",
+          "files": [
+            "data/editions/2026-10-22/health/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-22/health/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-22/health/1/alt.json",
+          "caption": "data/editions/2026-10-22/caption-health-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    }
+  ]
+}
