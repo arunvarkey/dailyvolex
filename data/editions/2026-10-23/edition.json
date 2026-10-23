@@ -1,0 +1,1320 @@
+{
+  "id": "2026-10-23",
+  "kind": "daily",
+  "builtAt": "2026-10-23T07:50:15.613Z",
+  "pool": 578,
+  "feedErrors": [
+    "indian-express: HTTP 403"
+  ],
+  "refusals": {
+    "read": 578,
+    "published": 14,
+    "refused": 222,
+    "consideredNotChosen": 342,
+    "byRule": {
+      "says nothing happened": {
+        "count": 114,
+        "samples": [
+          {
+            "title": "Newborn twins fight for survival as conflict fuels Yemen's hunger crisis",
+            "source": "BBC News"
+          },
+          {
+            "title": "'This is despicable': Amy Acton responds to Ohio attack ad featuring her estranged mother",
+            "source": "BBC News"
+          },
+          {
+            "title": "What is PHP and why did it spark a global cyber-security scramble?",
+            "source": "BBC News"
+          },
+          {
+            "title": "Keeping Madhubala alive: The fight for Karachi’s captive elephants",
+            "source": "Al Jazeera"
+          },
+          {
+            "title": "Trump backs Ramaswamy ad featuring rival Amy Acton’s estranged mother",
+            "source": "Al Jazeera"
+          },
+          {
+            "title": "Will ICE agents play a role in the 2026 US midterm elections?",
+            "source": "Al Jazeera"
+          },
+          {
+            "title": "Tibet rocked by 7.0-magnitude earthquake",
+            "source": "Al Jazeera"
+          },
+          {
+            "title": "Iran war live: European, Middle East FMs in Istanbul for security talks",
+            "source": "Al Jazeera"
+          }
+        ]
+      },
+      "older than the window": {
+        "count": 78,
+        "samples": [
+          {
+            "title": "Why is a peat fire so bad? BBC is in Indonesia to find out",
+            "source": "BBC News"
+          },
+          {
+            "title": "How Arab parties could hold critical balance of power in Israeli election",
+            "source": "BBC News"
+          },
+          {
+            "title": "The real reasons there are so few young politicians in the US",
+            "source": "BBC News"
+          },
+          {
+            "title": "Rosenberg: Russia agrees to Ukraine talks but sees little to talk about in new peace push",
+            "source": "BBC News"
+          },
+          {
+            "title": "Controversial US-backed vaccine trial in African newborns halted",
+            "source": "The Guardian"
+          },
+          {
+            "title": "Severely ill ICE detainees face imminent deportation to unknown African states, advocates say",
+            "source": "The Guardian"
+          },
+          {
+            "title": "Nigeria confirms Ebola case as outbreak spreads into western Africa",
+            "source": "The Guardian"
+          },
+          {
+            "title": "RFK Jr’s ‘deities of vaccine research’ raided by police in Guinea-Bissau",
+            "source": "The Guardian"
+          }
+        ]
+      },
+      "not news": {
+        "count": 17,
+        "samples": [
+          {
+            "title": "Video. Latest news bulletin | October 23rd, 2026 – Morning",
+            "source": "Euronews"
+          },
+          {
+            "title": "News in Pics | October 23, 2026: Best photos from around the world",
+            "source": "Deccan Herald"
+          },
+          {
+            "title": "Watch: Pidari Ekaveeri: a fierce Goddess, a captivating smile, and Raja Raja’s mother-in-law’s grant",
+            "source": "The Hindu"
+          },
+          {
+            "title": "Watch: Saraswati without a veena: Early South Indian temple art offers a different vision of the Goddess",
+            "source": "The Hindu"
+          },
+          {
+            "title": "NDTV World Summit 2026 LIVE Updates: \"US And Israel Have Killed Innocent People\": Iranian Diplomat",
+            "source": "NDTV"
+          },
+          {
+            "title": "Stock Market LIVE Updates, Sensex Today: Sensex Drops 600 Points Lower, Trading Session Remains Volatile",
+            "source": "NDTV"
+          },
+          {
+            "title": "Ishan ruled out of 2nd T20I, paves way for Sooryavanshi's return to playing XI",
+            "source": "Times of India"
+          },
+          {
+            "title": "Video | Can AI Become A Substitute For God? Brahmavihari Swamiji On Faith And Technology",
+            "source": "NDTV"
+          }
+        ]
+      },
+      "too thin to be a headline": {
+        "count": 6,
+        "samples": [
+          {
+            "title": "Europe needs a war economy",
+            "source": "Al Jazeera"
+          },
+          {
+            "title": "Economics beyond the individual",
+            "source": "The Hindu"
+          },
+          {
+            "title": "El Niño Then and Now",
+            "source": "NASA Science (.gov)"
+          },
+          {
+            "title": "Business brainstorming",
+            "source": "Research Professional News"
+          },
+          {
+            "title": "Reuters Science News Summary",
+            "source": "Devdiscourse"
+          },
+          {
+            "title": "【Report】Frontiers in Two-Dimensional Materials｜MANA",
+            "source": "国立研究開発法人物質・材料研究機構"
+          }
+        ]
+      },
+      "tips or price speculation": {
+        "count": 5,
+        "samples": [
+          {
+            "title": "Crude oil up 85% in 2026 poses threat to global economy; Brent may hit $120",
+            "source": "Business Standard"
+          },
+          {
+            "title": "Pakistan’s Economy Is Stabilizing, but Can It Grow Fast Enough to Triple Incomes by 2050?",
+            "source": "Devdiscourse"
+          },
+          {
+            "title": "Ola Electric shares dip 5% after Goldman Sachs downgrades stock to Sell. Here’s why",
+            "source": "Economic Times"
+          },
+          {
+            "title": "Swiggy shares crash 14%, hit 52-week low after Q2 results. Here’s why Jefferies, Nomura, Bernstein cut target price",
+            "source": "Economic Times"
+          },
+          {
+            "title": "HPCL shares in focus as Q1 net profit slips 6% YoY, revenue rises 26%. Should you buy?",
+            "source": "Economic Times"
+          }
+        ]
+      },
+      "marketing, not reporting": {
+        "count": 1,
+        "samples": [
+          {
+            "title": "Amadeus, Nvidia to partner on AI-assisted flight search technology",
+            "source": "Telecompaper"
+          }
+        ]
+      },
+      "finance feed, not a finance story": {
+        "count": 1,
+        "samples": [
+          {
+            "title": "Christopher Wood swapped Nvidia for a Greek infrastructure stock. The bet is paying off",
+            "source": "Economic Times"
+          }
+        ]
+      }
+    }
+  },
+  "sections": [
+    {
+      "id": "top",
+      "label": "TOP STORIES",
+      "stories": [
+        {
+          "headline": "MAGNITUDE-7 EARTHQUAKE HITS CHINA’S TIBET",
+          "display": "Magnitude-7 earthquake hits China’s Tibet",
+          "original": "Magnitude-7 earthquake hits China’s Tibet, killing at least 16 and destroying hundreds of homes",
+          "truncated": true,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "BBC News · The Guardian",
+          "sourceNames": [
+            "BBC News",
+            "The Guardian"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Scott Trust"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB"
+          ],
+          "fundings": [
+            "state",
+            "trust"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQdUtOSEdwSTJqY1JkdWdqbHJndkp2SGcwYzY2RVRodDFkUmw2UmZadGFRcEZzUHBFWFJCVS1sODlUOU5KQTd3bWZNSkNyTWM5UkJzTjV2OHpjSEhJUUtmV1A1eU9TOURFRDBGMlZ0RmNwQjNtLTRtZ2xacWo1YmdPak1wQy1SWHdIRHdmWTlB?oc=5",
+          "summary": "Magnitude-7 earthquake hits China’s Tibet, killing at least 16 and destroying hundreds of homes &nbsp;&nbsp; The Guardian",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.bbc.co.uk/news/articles/ck5ynd1z6e83o?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d9bb/live/35523df0-ce6f-11f1-a64c-550be9e3c66b.jpg"
+            },
+            {
+              "link": "https://www.theguardian.com/world/2026/oct/23/magnitude-7-earthquake-hits-china-tibet",
+              "source": "The Guardian",
+              "feedImage": "https://i.guim.co.uk/img/media/2b752e0d59c4399c02caaf09d97ac8759514aa0f/195_0_1350_1080/master/1350.jpg?width=140&quality=85&auto=format&fit=max&s=18029119ac7f4c1991918da68f4e0039"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQdUtOSEdwSTJqY1JkdWdqbHJndkp2SGcwYzY2RVRodDFkUmw2UmZadGFRcEZzUHBFWFJCVS1sODlUOU5KQTd3bWZNSkNyTWM5UkJzTjV2OHpjSEhJUUtmV1A1eU9TOURFRDBGMlZ0RmNwQjNtLTRtZ2xacWo1YmdPak1wQy1SWHdIRHdmWTlB?oc=5",
+              "source": "The Guardian",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-23T06:01:00.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "lead",
+          "score": 15.85,
+          "photo": {
+            "path": "work/photos/top/photo-top-2.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/ck5ynd1z6e83o?at_medium=RSS&at_campaign=rss",
+            "query": "(the feed)",
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Magnitude-7 earthquake hits China’s Tibet”. Reported by BBC News · The Guardian — 2 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        },
+        {
+          "headline": "PAKISTAN REFUSED TO ACCEPT BODIES OF ITS OWN SOLDIERS KILLED IN KARGIL WAR: INDIA AT UN",
+          "display": "Pakistan refused to accept bodies of its own soldiers killed in Kargil war: India at UN",
+          "original": "Pakistan refused to accept bodies of its own soldiers killed in Kargil war: India at UN",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "NDTV · The Hindu",
+          "sourceNames": [
+            "NDTV",
+            "The Hindu"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Adani Group",
+            "The Hindu Group (family-held)"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate",
+            "commercial"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.thehindu.com/news/national/pakistan-refused-to-accept-bodies-of-its-own-soldiers-killed-in-kargil-war-india-at-un/article71614773.ece",
+          "summary": "Ms. Mangalanandan added that burial rights for terrorists are being justified by indicating that States may restrict funeral rights of terrorists, but only within legal limits",
+          "feedImage": "https://th-i.thgim.com/public/incoming/mydttd/article71614843.ece/alternates/LANDSCAPE_1200/IMG_Indian_diplomat_Bhav_2_1_28DD2VAS.jpg",
+          "sources": [
+            {
+              "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNMk8xdFBubldJZnB0ajBQRmtwLS1icWJEWjlHcU9SNlQyU0dKS0dUOVFyZ0tPSWtpWjlaZUJ3VThQOHB3VHlCU0FQbUp0M1NDWXc1RW1GbFpLR1F6N1RrY3NDNWozb3ZncXk4c00tMjc5Y0RRNXpLcmxpd2l1ZENweXN5TUpKdDNnSzhPc2J5bG1PUURjYnJuV1NqNmNaM1B3WFpXdW5ZcV95aDRwQ2NSZWtESHVzQm83a2NMUGRDVzVpN2VYSm9pa3ZwUdIB0wFBVV95cUxPOERuZlNWR0RNQ1cwRUt0dzJDdkZ2TndxaTNpRGpqMGJRMURPTHR5ekJ0U25FVVJlYzlNdk9",
+              "source": "NDTV",
+              "feedImage": null
+            },
+            {
+              "link": "https://www.thehindu.com/news/national/pakistan-refused-to-accept-bodies-of-its-own-soldiers-killed-in-kargil-war-india-at-un/article71614773.ece",
+              "source": "The Hindu",
+              "feedImage": "https://th-i.thgim.com/public/incoming/mydttd/article71614843.ece/alternates/LANDSCAPE_1200/IMG_Indian_diplomat_Bhav_2_1_28DD2VAS.jpg"
+            }
+          ],
+          "published": "2026-10-23T07:35:21.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "lead",
+          "score": 15.7,
+          "photo": {
+            "path": "work/photos/top/photo-top-3.jpg",
+            "credit": "Photo: The Hindu",
+            "license": "publisher",
+            "pageUrl": "https://www.thehindu.com/news/national/pakistan-refused-to-accept-bodies-of-its-own-soldiers-killed-in-kargil-war-india-at-un/article71614773.ece",
+            "query": "(the feed)",
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Pakistan refused to accept bodies of its own soldiers killed in Kargil war: India at UN”. Reported by NDTV · The Hindu — 2 independent newsrooms. Behind the text is a library photograph, Photo: The Hindu. It is not a photograph of this event."
+        },
+        {
+          "headline": "GERMAN BUSINESS ACTIVITY GROWTH SOFTENS IN OCTOBER, PMI SHOWS",
+          "display": "German business activity growth softens in October, PMI shows",
+          "original": "German business activity growth softens in October, PMI shows By Reuters",
+          "truncated": false,
+          "usable": true,
+          "category": "BUSINESS",
+          "source": "Reuters · Firstpost · ANI News",
+          "sourceNames": [
+            "Reuters",
+            "Firstpost",
+            "ANI News",
+            "The Economic Times"
+          ],
+          "corroboration": 4,
+          "republishers": [
+            "Investing.com"
+          ],
+          "owners": [
+            "Thomson Reuters (Trust Principles)",
+            "Reliance Industries",
+            "ANI Media Pvt Ltd",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 4,
+          "countries": [
+            "GB",
+            "IN"
+          ],
+          "fundings": [
+            "trust",
+            "conglomerate",
+            "commercial"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQbm5fTDhCRTVYbWhzVWg1ZFQ3eW8xT2h1ZWwxN05ZaUNGUkZVR2V5alZta3BxejJhcUxtWFptX19hQjhMRHBkNHRvc1VNUkxVUGpTMkNoWTV2R2k4eXZUNldUQlh0YjZ4ZmRjNWY1cHlfNWw2M18ycHBrV0hhalBSY2syQ0F1bFFJdHN4WEtQVVRVNXQ3NU1CbU9IV1M2Yk5PQjd0NmplUnlJNlhZcmlQRHY4RXd4cHFfOExn?oc=5",
+          "summary": "German business activity growth softens in October, PMI shows By Reuters &nbsp;&nbsp; Investing.com",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOOVd1UzNhOV9iT2JldWFINDZ2Y3VrQTRuYXRCNzdpNjhpS2RLSW9WNmwyTVZOa0hlWEhoNXdSVU53cnowMENfRmJVbktqME9PNTRaTDlubVg1S2F2TnVoWm5aSXZ3b1prOGRBY1RiYnZFeVBMcFNoSnZLT0szTmVDT0tvREs4ZTloVWlPUmVrUUJCaUZGR0R3NlF1TDRjaklfWkhfNDZXRmcwRWZTenQxeWptemhGN2xwUjhj?oc=5",
+              "source": "Reuters",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOQ25QLVR3YjlaOXJnNThhNFptZlhTRkRsWjF1d1FLblZxVEpQaFlZenMtbURqczBzZVZrOHA3R0U2cmpabHk5QlhoUmVDblNhb1JESW1fSFM2alVwdGFFUXo1OEtORm9ULVAxNEVhQTFmSzNKTzd4bVJzYi1LS1pndkI0ZkpRdW83UkJQWDRuS2VTNHRWNFVEUTA0d0EtX0lna0RVR1dLOGJiM001d0VPSHVROFRJdW940gG-AUFVX3lxTE1XT09zZWlzcmh6Z0x2a1l3NEphLVhXdjR6RUx2SG4tOG5QU3pvel85WXBqVHBxZno1cG1UOENrZlpDMzNyRi1RdmFYMzBmUUZ",
+              "source": "Firstpost",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOUkJwcGo3VmpkT1ZOdzhyeDBCa1ZYcVd1RWlYaE1pQU9qd1RVczUyMEhYZ2NjSng1Ym5haHFTa0RqS3M1VFlSaW13Uy1McHQzOHNsV21WSDRGMnJoS3RmajV5N1VfYklva3oyaUR4UG13NUxWd1JCWFJnRFZoM2pNSHlEalpid3VITTA1cXpjZ2plRV9yMmtEeUxjQXJ3N2VNSWlGRHI2bU16ZVM3c2VIRkc4TGR3UV9zc202a3VrMGFMZnlCWEE?oc=5",
+              "source": "ANI News",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxOU3pGUlN5aHNsYkpFZEt2MkR4eTZxMENHUmNjR1pOTlhQdVFIT1BjWnJNMkdKVm02YU56azFDdkdjbnp4SFpDNkMtcnhfUGliT1cyZk9BSWR5YXZWelBTVjdralZYa05NcWx0T01PZm9XVnBrMzFSdG1YQWpjY0x4ZkM2Rkd0YVFKTXRRejhnaVJfWjVDQWFKNWhyRG01a0xsVXFmSFFnXzNxazFpSEh3TzJLTTJlbGluQy11TXNtSnVlOHZvdjVQc1BWYjdhWVhyc2ozMmR0NEpPdllDYWlhNG1RUjVhZjh4RmpaSVZadw?oc=5",
+              "source": "The Economic Times",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-23T07:41:45.000Z",
+          "topic": "business",
+          "section": "business",
+          "tier": "notable",
+          "score": 10.8,
+          "articlePhotoError": "The Economic Times: the article declares no picture",
+          "photo": {
+            "path": "work/photos/top/photo-top-4.jpg",
+            "credit": "File photo: Pikkupapupata / CC0",
+            "license": "cc0",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:German-language_areas_in_Europe_v1.png",
+            "query": "German",
+            "relevance": 0.2,
+            "title": "German language areas in Europe v1",
+            "from": "library"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed BUSINESS. It reads: “German business activity growth softens in October, PMI shows”. Reported by Reuters · Firstpost · ANI News — 4 independent newsrooms. Behind the text is a library photograph captioned “German language areas in Europe v1”, credited to Pikkupapupata / CC0. It is not a photograph of this event."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "top-1",
+          "story": "Magnitude-7 earthquake hits China’s Tibet",
+          "files": [
+            "data/editions/2026-10-23/top/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-23/top/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-23/top/1/alt.json",
+          "caption": "data/editions/2026-10-23/caption-top-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "top-2",
+          "story": "Pakistan refused to accept bodies of its own soldiers killed in Kargil war: India at UN",
+          "files": [
+            "data/editions/2026-10-23/top/2/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-23/top/2/slide-1.jpg",
+          "alts": "data/editions/2026-10-23/top/2/alt.json",
+          "caption": "data/editions/2026-10-23/caption-top-2.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "top-3",
+          "story": "German business activity growth softens in October, PMI shows",
+          "files": [
+            "data/editions/2026-10-23/top/3/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-23/top/3/slide-1.jpg",
+          "alts": "data/editions/2026-10-23/top/3/alt.json",
+          "caption": "data/editions/2026-10-23/caption-top-3.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    },
+    {
+      "id": "india",
+      "label": "INDIA",
+      "stories": [
+        {
+          "headline": "TOP US BANKS BLOCK AI AGENTS AS BOTS ACCESS CUSTOMER ACCOUNTS WITHOUT CONSENT",
+          "display": "Top US Banks Block AI Agents As Bots Access Customer Accounts Without Consent",
+          "original": "Top US Banks Block AI Agents As Bots Access Customer Accounts Without Consent",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "NDTV · Times of India",
+          "sourceNames": [
+            "NDTV",
+            "Times of India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Adani Group",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.ndtv.com/world-news/top-us-banks-block-ai-agents-as-bots-access-customer-accounts-without-consent-12223847#publisher=newsstand",
+          "summary": "An Axios report on Thursday said some AI agents attempted to take actions that appeared to be independent of user instructions, citing people familiar with the matter.",
+          "feedImage": "https://c.ndtvimg.com/2026-10/ci6dc4eg_ai-agents-us-banks-reuters_625x300_23_October_26.jpeg",
+          "sources": [
+            {
+              "link": "https://www.ndtv.com/world-news/top-us-banks-block-ai-agents-as-bots-access-customer-accounts-without-consent-12223847#publisher=newsstand",
+              "source": "NDTV",
+              "feedImage": "https://c.ndtvimg.com/2026-10/ci6dc4eg_ai-agents-us-banks-reuters_625x300_23_October_26.jpeg"
+            },
+            {
+              "link": "https://timesofindia.indiatimes.com/world/us/why-us-banks-including-jpmorgan-and-morgan-stanley-are-blocking-ai-agents-from-customer-accounts/articleshow/135131817.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135132189,imgsize-538793.cms"
+            }
+          ],
+          "published": "2026-10-23T06:11:40.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "significant",
+          "score": 11.4,
+          "photo": {
+            "path": "work/photos/india/photo-india-2.jpg",
+            "credit": "Photo: Times of India",
+            "license": "publisher",
+            "pageUrl": "https://timesofindia.indiatimes.com/world/us/why-us-banks-including-jpmorgan-and-morgan-stanley-are-blocking-ai-agents-from-customer-accounts/articleshow/135131817.cms",
+            "query": "(the feed)",
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Top US Banks Block AI Agents As Bots Access Customer Accounts Without Consent”. Reported by NDTV · Times of India — 2 independent newsrooms. Behind the text is a library photograph, Photo: Times of India. It is not a photograph of this event."
+        },
+        {
+          "headline": "NEW ZEALAND MILITARY CHIEF ADMITS TO 'INAPPROPRIATE RELATIONSHIP', RESIGNS",
+          "display": "New Zealand Military Chief Admits To 'Inappropriate Relationship', Resigns",
+          "original": "New Zealand Military Chief Admits To 'Inappropriate Relationship', Resigns",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "NDTV · Times of India",
+          "sourceNames": [
+            "NDTV",
+            "Times of India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Adani Group",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.ndtv.com/world-news/new-zealand-military-chief-air-marshal-tony-davies-resigns-admits-to-inappropriate-relationship-12223732#publisher=newsstand",
+          "summary": "The military said in a statement that it wouldn't comment further. The matter has been referred to an independent inspector-general who investigates military conduct.",
+          "feedImage": "https://c.ndtvimg.com/2026-10/rfa8md38_new-zealand-military-chief-reuters_625x300_23_October_26.jpeg",
+          "sources": [
+            {
+              "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPS3c2THYtNGVsQW1Vd3o2QXdBeE9uWE8yMVZyZFFNbURyRk4zRVZGWlRtTEx3YURwaHdIdVBuV0tBUzloRGdSMTh6MlZZdzhneExtUlJXc3RUYUJQME5OMVF1ODFzMENBQlFFU0pqZkpQSXdPQ1BsYUtaWUFGQnhUTTJCYlNxcWpPWEtMODN2UkgxWExYTjZvUUFsbFdpTndRRWh1MWVFWmxMUzFmRHFteHpaYWpfeWhXaGtnSVdRd0pGek82MmNleTVxU3JhcncxVkHSAdoBQVVfeXFMUG1iNFF4SkhZMFBJN0xEMTEzNUNLeXNqNVlIUF9VX1hvQ0lhTktxdE9TN0pqa09",
+              "source": "NDTV",
+              "feedImage": null
+            },
+            {
+              "link": "https://www.ndtv.com/world-news/new-zealand-military-chief-air-marshal-tony-davies-resigns-admits-to-inappropriate-relationship-12223732#publisher=newsstand",
+              "source": "NDTV",
+              "feedImage": "https://c.ndtvimg.com/2026-10/rfa8md38_new-zealand-military-chief-reuters_625x300_23_October_26.jpeg"
+            },
+            {
+              "link": "https://timesofindia.indiatimes.com/world/rest-of-world/new-zealand-military-chief-resigns-over-undisclosed-inappropriate-relationship/articleshow/135133904.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135133952,imgsize-70566.cms"
+            }
+          ],
+          "published": "2026-10-23T05:26:11.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 8.1,
+          "photo": {
+            "path": "work/photos/india/photo-india-3.jpg",
+            "credit": "Photo: Times of India",
+            "license": "publisher",
+            "pageUrl": "https://timesofindia.indiatimes.com/world/rest-of-world/new-zealand-military-chief-resigns-over-undisclosed-inappropriate-relationship/articleshow/135133904.cms",
+            "query": "(the feed)",
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “New Zealand Military Chief Admits To 'Inappropriate Relationship', Resigns”. Reported by NDTV · Times of India — 2 independent newsrooms. Behind the text is a library photograph, Photo: Times of India. It is not a photograph of this event."
+        },
+        {
+          "headline": "RED CORNER NOTICE ISSUED AGAINST RUSSIAN WOMAN WHO FLED INDIA WITH MINOR SON",
+          "display": "Red Corner Notice Issued Against Russian Woman Who Fled India With Minor Son",
+          "original": "Red Corner Notice Issued Against Russian Woman Who Fled India With Minor Son",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "Times of India · NDTV",
+          "sourceNames": [
+            "Times of India",
+            "NDTV"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Bennett, Coleman & Co",
+            "Adani Group"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOeC0yZ0o4YjhiYzlXYXhwR09DVzdlR2lrRWN3UW1Hcm5QaWkwcDRxaWZvQlcydEVVTW1VdXZZT3czMVVXQnEyX2EzWHFMSml2bFpuM3hjQTQ3X3kzUEpJdlc2VTZzZEZfNVNWeUZTX2F6RjY3OU84VmNBX296czJrRXA5TU9NWTVVc0Q2ZjZFU29XRGY4NW9HT0p4ZTFWMjR4SVF1V0kyOGw1QmVLYXhtWnd0bWYzVUg1Z1F0T0VpNHY5SWc4N2MwM3JHTdIB0wFBVV95cUxOTDZmS1lyTkdSRURMQUVsYVdHbXJkVEN2cG9seEttMlF5YlpUMDJ3OUtnTDFuOTBaWlJuTFY",
+          "summary": "Red Corner Notice Issued Against Russian Woman Who Fled India With Minor Son &nbsp;&nbsp; NDTV",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://timesofindia.indiatimes.com/city/delhi/red-corner-notice-issued-against-russian-woman-who-allegedly-fled-with-child/articleshow/135124959.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135132256,imgsize-490205.cms"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOeC0yZ0o4YjhiYzlXYXhwR09DVzdlR2lrRWN3UW1Hcm5QaWkwcDRxaWZvQlcydEVVTW1VdXZZT3czMVVXQnEyX2EzWHFMSml2bFpuM3hjQTQ3X3kzUEpJdlc2VTZzZEZfNVNWeUZTX2F6RjY3OU84VmNBX296czJrRXA5TU9NWTVVc0Q2ZjZFU29XRGY4NW9HT0p4ZTFWMjR4SVF1V0kyOGw1QmVLYXhtWnd0bWYzVUg1Z1F0T0VpNHY5SWc4N2MwM3JHTdIB0wFBVV95cUxOTDZmS1lyTkdSRURMQUVsYVdHbXJkVEN2cG9seEttMlF5YlpUMDJ3OUtnTDFuOTBaWlJuTFY",
+              "source": "NDTV",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-23T04:20:50.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 7.65,
+          "photo": {
+            "path": "work/photos/india/photo-india-4.jpg",
+            "credit": "Photo: Times of India",
+            "license": "publisher",
+            "pageUrl": "https://timesofindia.indiatimes.com/city/delhi/red-corner-notice-issued-against-russian-woman-who-allegedly-fled-with-child/articleshow/135124959.cms",
+            "query": "(the feed)",
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Red Corner Notice Issued Against Russian Woman Who Fled India With Minor Son”. Reported by Times of India · NDTV — 2 independent newsrooms. Behind the text is a library photograph, Photo: Times of India. It is not a photograph of this event."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "india-1",
+          "story": "Top US Banks Block AI Agents As Bots Access Customer Accounts Without Consent",
+          "files": [
+            "data/editions/2026-10-23/india/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-23/india/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-23/india/1/alt.json",
+          "caption": "data/editions/2026-10-23/caption-india-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "india-2",
+          "story": "New Zealand Military Chief Admits To 'Inappropriate Relationship', Resigns",
+          "files": [
+            "data/editions/2026-10-23/india/2/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-23/india/2/slide-1.jpg",
+          "alts": "data/editions/2026-10-23/india/2/alt.json",
+          "caption": "data/editions/2026-10-23/caption-india-2.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "india-3",
+          "story": "Red Corner Notice Issued Against Russian Woman Who Fled India With Minor Son",
+          "files": [
+            "data/editions/2026-10-23/india/3/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-23/india/3/slide-1.jpg",
+          "alts": "data/editions/2026-10-23/india/3/alt.json",
+          "caption": "data/editions/2026-10-23/caption-india-3.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    },
+    {
+      "id": "world",
+      "label": "WORLD",
+      "stories": [
+        {
+          "headline": "MARADONA DEATH: VERDICT IN TRIAL TO BE DELIVERED ON DECEMBER 22",
+          "display": "Maradona death: Verdict in trial to be delivered on December 22",
+          "original": "Maradona death: Verdict in trial to be delivered on December 22",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "Al Jazeera · NDTV",
+          "sourceNames": [
+            "Al Jazeera",
+            "NDTV"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Government of Qatar",
+            "Adani Group"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "QA",
+            "IN"
+          ],
+          "fundings": [
+            "state",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.aljazeera.com/sports/2026/10/23/maradona-death-verdict-in-trial-to-be-delivered-on-december-22?traffic_source=rss",
+          "summary": "The trial of seven healthcare professionals accused of negligence in Maradona's death concludes, December verdict set.",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.aljazeera.com/sports/2026/10/23/maradona-death-verdict-in-trial-to-be-delivered-on-december-22?traffic_source=rss",
+              "source": "Al Jazeera",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQUTZJOW5NZU5TQzBrWFM1ejVxaFRqNDRIMHl0YW9LbTVtVEgtZC1ldEtSbzRScTlYTXpqTVl5YXlxd2pueXM1SGh2SW1XdE4yYm9qZURwLVQ1Wk9HdjJzU2RIRUZLNE1VeV9NY2ItOHljdVlvWTd1RVRoY2VpeFB5c3hvN0JkMmNXZlJtTTU2T0VlUXZ2RlNpcnVRWdIBowFBVV95cUxOWGo0Sk4zbVdiTzlQUEpTUFl6OW5qWDVRaFh2alFIcFNVaDFKQkJpYi1HNTRhYlVHNlZjVjB2VG43UDU3Z3dkNWV1TGRpdGdjTXJOSUQwX3VPajQ4bEpRSnRGRjJqLTlLcmdwNUF",
+              "source": "NDTV",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-23T06:55:21.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "lead",
+          "score": 15.4,
+          "photo": {
+            "path": "work/photos/world/photo-world-2.jpg",
+            "credit": "Photo: Al Jazeera",
+            "license": "publisher",
+            "pageUrl": "https://www.aljazeera.com/sports/2026/10/23/maradona-death-verdict-in-trial-to-be-delivered-on-december-22?traffic_source=rss",
+            "query": "(the article)",
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Maradona death: Verdict in trial to be delivered on December 22”. Reported by Al Jazeera · NDTV — 2 independent newsrooms. Behind the text is a library photograph, Photo: Al Jazeera. It is not a photograph of this event."
+        },
+        {
+          "headline": "GRENADES SPARKED CANADIAN MILITARY BASE FIRE THAT KILLED 4",
+          "display": "Grenades Sparked Canadian Military Base Fire That Killed 4",
+          "original": "Grenades Sparked Canadian Military Base Fire That Killed 4",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "Al Jazeera · NDTV",
+          "sourceNames": [
+            "Al Jazeera",
+            "NDTV"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Government of Qatar",
+            "Adani Group"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "QA",
+            "IN"
+          ],
+          "fundings": [
+            "state",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.ndtv.com/world-news/grenades-sparked-canadian-military-base-fire-albertathat-killed-4-12224018#publisher=newsstand",
+          "summary": "Due to the blaze being in the \"permanent danger area\" of the range, firefighters were unable to directly combat it, an official said.",
+          "feedImage": "https://c.ndtvimg.com/2026-10/kcioujvk_canada-fire-reuters_625x300_23_October_26.jpeg",
+          "sources": [
+            {
+              "link": "https://www.aljazeera.com/news/2026/10/23/grenade-exercise-sparked-deadly-fire-at-canada-military-base-army-says?traffic_source=rss",
+              "source": "Al Jazeera",
+              "feedImage": null
+            },
+            {
+              "link": "https://www.ndtv.com/world-news/grenades-sparked-canadian-military-base-fire-albertathat-killed-4-12224018#publisher=newsstand",
+              "source": "NDTV",
+              "feedImage": "https://c.ndtvimg.com/2026-10/kcioujvk_canada-fire-reuters_625x300_23_October_26.jpeg"
+            }
+          ],
+          "published": "2026-10-23T06:38:53.000Z",
+          "topic": "india",
+          "section": "world",
+          "tier": "lead",
+          "score": 15.4,
+          "photoError": "every candidate failed to download (HTTP 403)",
+          "photo": null,
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": "editorial",
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Grenades Sparked Canadian Military Base Fire That Killed 4”. Reported by Al Jazeera · NDTV — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
+        },
+        {
+          "headline": "ZUCKERBERG STRIKES META DEAL TO COVER POTENTIAL CALIFORNIA BILLIONAIRE TAX",
+          "display": "Zuckerberg strikes Meta deal to cover potential California billionaire tax",
+          "original": "Zuckerberg strikes Meta deal to cover potential California billionaire tax",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "BBC News · Business Standard · The Guardian",
+          "sourceNames": [
+            "BBC News",
+            "Business Standard",
+            "The Guardian"
+          ],
+          "corroboration": 3,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Business Standard Pvt Ltd",
+            "Scott Trust"
+          ],
+          "ownerCount": 3,
+          "countries": [
+            "GB",
+            "IN"
+          ],
+          "fundings": [
+            "state",
+            "commercial",
+            "trust"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNSnJvRzdPN095blBHeF9QY2c0dXpIaXZIMlY2TTQ0V0kxRkhKTzRDWUtZQ3NrVkJYWFlwQ1VGMngzWTRZUFd4a1U1Mi02Ny1uOEcwbnVOYXBFck43dXM0aGdDY2ZyODR4MjVjeTRVR0dQRG01TlR5M3JmcUtiMmVFSm9vQ0dGQzJ5aXZsbmFleTFMclFPbGJfNEFfUWpVcmxmeGpaV1BPYzlmVGNUV1Uya04yMllkUU5nMVduZm14VEw2bVR2c055VU9xRG5Scmk0ckRiN1ZR0gHbAUFVX3lxTFBzRHFJdjBLbjk4NHFhcjJmNzB1MDNPcGtQVDgzNmVqeEhpemZ0Ty16Sjd",
+          "summary": "Zuckerberg strikes Meta deal to cover potential California billionaire tax &nbsp;&nbsp; Business Standard",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.bbc.co.uk/news/articles/cky83vwnyglno?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/0031/live/77724130-ce2e-11f1-9f18-490cec60aa0f.jpg"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNSnJvRzdPN095blBHeF9QY2c0dXpIaXZIMlY2TTQ0V0kxRkhKTzRDWUtZQ3NrVkJYWFlwQ1VGMngzWTRZUFd4a1U1Mi02Ny1uOEcwbnVOYXBFck43dXM0aGdDY2ZyODR4MjVjeTRVR0dQRG01TlR5M3JmcUtiMmVFSm9vQ0dGQzJ5aXZsbmFleTFMclFPbGJfNEFfUWpVcmxmeGpaV1BPYzlmVGNUV1Uya04yMllkUU5nMVduZm14VEw2bVR2c055VU9xRG5Scmk0ckRiN1ZR0gHbAUFVX3lxTFBzRHFJdjBLbjk4NHFhcjJmNzB1MDNPcGtQVDgzNmVqeEhpemZ0Ty16Sjd",
+              "source": "Business Standard",
+              "feedImage": null
+            },
+            {
+              "link": "https://www.theguardian.com/technology/2026/oct/22/meta-mark-zuckerberg-california-wealth-tax",
+              "source": "The Guardian",
+              "feedImage": "https://i.guim.co.uk/img/media/2e6040371e8498c68a3ec60ae6efac595ffa4c7a/209_3_4321_3459/master/4321.jpg?width=140&quality=85&auto=format&fit=max&s=f2994e7e56e0732dda3ffe99b529e393"
+            }
+          ],
+          "published": "2026-10-23T02:50:00.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 10.05,
+          "photo": {
+            "path": "work/photos/world/photo-world-4.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/cky83vwnyglno?at_medium=RSS&at_campaign=rss",
+            "query": "(the feed)",
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Zuckerberg strikes Meta deal to cover potential California billionaire tax”. Reported by BBC News · Business Standard · The Guardian — 3 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        },
+        {
+          "headline": "FACE-OFF WITH CHINA CONTINUES IN ARUNACHAL: BORDER POLICE FORCE CHIEF",
+          "display": "Face-Off With China Continues In Arunachal: Border Police Force Chief",
+          "original": "Face-Off With China Continues In Arunachal: Border Police Force Chief",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "NDTV · Times of India · Firstpost",
+          "sourceNames": [
+            "NDTV",
+            "Times of India",
+            "Firstpost"
+          ],
+          "corroboration": 3,
+          "republishers": [],
+          "owners": [
+            "Adani Group",
+            "Bennett, Coleman & Co",
+            "Reliance Industries"
+          ],
+          "ownerCount": 3,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [
+            "Every outlet carrying this is a IN conglomerate-owned newsroom — no wire service, trust-owned or reader-funded outlet has it."
+          ],
+          "link": "https://www.ndtv.com/india-news/face-off-with-china-continues-at-multiple-locations-along-arunachal-border-indo-tibetan-border-police-chief-shatrujeet-kapur-12223984#publisher=newsstand",
+          "summary": "The ITBP chief added that a new combat team, the Shaurya commandos, has been raised. This team displayed its skills during the \"ongoing\" faceoff with the Chinese PLA troops at multiple places in Arunachal Pradesh, he said.",
+          "feedImage": "https://c.ndtvimg.com/2026-10/8c1earu_itbp-_625x300_23_October_26.jpg?im=FeatureCrop,algorithm=dnn,width=1280,height=720",
+          "sources": [
+            {
+              "link": "https://www.ndtv.com/india-news/face-off-with-china-continues-at-multiple-locations-along-arunachal-border-indo-tibetan-border-police-chief-shatrujeet-kapur-12223984#publisher=newsstand",
+              "source": "NDTV",
+              "feedImage": "https://c.ndtvimg.com/2026-10/8c1earu_itbp-_625x300_23_October_26.jpg?im=FeatureCrop,algorithm=dnn,width=1280,height=720"
+            },
+            {
+              "link": "https://timesofindia.indiatimes.com/india/shaurya-commandos-prepared-itbp-chief-flags-ongoing-china-faceoff-along-arunachal-border/articleshow/135134031.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135134506,imgsize-62574.cms"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxNT3NyR0tOeXVfUzBjbjNiSHhqa0dvZzloVnZ2OUJuQThGM1pzTE5GbXB3NDZuU2R0OVVoVjlMQ1RoT0Q4WlJMN2NFZVBvMDBQUDM4cno4aWxkWnpqQUxvRGNPVnN2Z2Y1aXBjSkt6U0I5V1kwNERxU1NmZWtBNWlRZE5CbUZjQzJtbHRhd3ZNUGsyWDQ0cGktSUtSOGl4bGhYTngzZnRxNG5TY3BfNUc3alNCMTUzR2VjbE1WR053OFZyZncwb0VwZERlZjBUdzE3c1Jfcm5pX2JxbjdYNjU2X19fY2JqQU8teEJ0aNIB8gFBVV95cUxQVzZ2STYxQzFvWmhZRElZcndRaUF",
+              "source": "The Times of India",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxQWmpVaTkxTEhDS2tNZWtJQWN5cGhNTFpPdnB5NEhOMi1MVi1wUERNby1GRlBrNzFqZ0k3VW80dzhWMnVKVmxwS25PQ3IwQ1kzZ0o4Z2UyS252ZDJRRkxIZEp0VVQyb2JwWXdzdnFRbmNSUlc0Z2NfQnRlUGY5b0hmOTFreVJSZHRoRkZ6MS16M1NWVWlNTHVEOEFvYkEtMmVBblVxN3F1eG0xTGtlZlZoeHZZMENWbkpySm1yYlBuNngzSXlsZWQya3JTNjFmTllBS0RheXB3ZkVkMGxiaHh6bzczRTdxS1U2QjhHUnJR0gHzAUFVX3lxTE1CT1VyS1BFVnNnUHNvS2lxUWg",
+              "source": "Firstpost",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-23T06:42:12.000Z",
+          "topic": "india",
+          "section": "world",
+          "tier": "notable",
+          "score": 9.9,
+          "photo": {
+            "path": "work/photos/world/photo-world-5.jpg",
+            "credit": "Photo: Times of India",
+            "license": "publisher",
+            "pageUrl": "https://timesofindia.indiatimes.com/india/shaurya-commandos-prepared-itbp-chief-flags-ongoing-china-faceoff-along-arunachal-border/articleshow/135134031.cms",
+            "query": "(the feed)",
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Face-Off With China Continues In Arunachal: Border Police Force Chief”. Reported by NDTV · Times of India · Firstpost — 3 independent newsrooms. Behind the text is a library photograph, Photo: Times of India. It is not a photograph of this event."
+        },
+        {
+          "headline": "AUSTRALIAN REPORTER AND BYSTANDER JUMP INTO FLOODWATERS TO RESCUE MAN FROM SINKING CAR",
+          "display": "Australian Reporter And Bystander Jump Into Floodwaters To Rescue Man From Sinking Car",
+          "original": "Australian Reporter And Bystander Jump Into Floodwaters To Rescue Man From Sinking Car",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "BBC News · NDTV",
+          "sourceNames": [
+            "BBC News",
+            "NDTV"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Adani Group"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB",
+            "IN"
+          ],
+          "fundings": [
+            "state",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNMF8yMXJMRmxmWnNQUUpqLXF4aFMzeGxZbnZmRzVSd3VZeE1OaFdzTWJabWVDb3E0d0lxTlVSQlA3WG8zbTdueEVXMGdPMVRELTR0blhxRGUwOTAyVk5jdnY2MXFGeTdVaWNzSTJiM05xa04yZk1RZTBDNEJ1Uk1LMjJxc0FTX0ptMFdteVpUTkJwUzRzZnVMUlBReGZlb1ZsVUJEd0s5QVptVU5kT195TXlxWkdOS0Rva01UYzFGa2dCdDNEWjc0Z9IB0AFBVV95cUxNaVV6amdqRi1sOWlFd3J4RHltZ21TWUpqd1IyRlBMSGRxajlWSExvdExSWlktbk1LLWdDU1JFb2Z",
+          "summary": "Australian Reporter And Bystander Jump Into Floodwaters To Rescue Man From Sinking Car &nbsp;&nbsp; NDTV",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.bbc.co.uk/news/videos/cwdr8zm3r5gko?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f4a2/live/9b70e050-ce1f-11f1-a64c-550be9e3c66b.png"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNMF8yMXJMRmxmWnNQUUpqLXF4aFMzeGxZbnZmRzVSd3VZeE1OaFdzTWJabWVDb3E0d0lxTlVSQlA3WG8zbTdueEVXMGdPMVRELTR0blhxRGUwOTAyVk5jdnY2MXFGeTdVaWNzSTJiM05xa04yZk1RZTBDNEJ1Uk1LMjJxc0FTX0ptMFdteVpUTkJwUzRzZnVMUlBReGZlb1ZsVUJEd0s5QVptVU5kT195TXlxWkdOS0Rva01UYzFGa2dCdDNEWjc0Z9IB0AFBVV95cUxNaVV6amdqRi1sOWlFd3J4RHltZ21TWUpqd1IyRlBMSGRxajlWSExvdExSWlktbk1LLWdDU1JFb2Z",
+              "source": "NDTV",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-23T05:01:22.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.55,
+          "photo": {
+            "path": "work/photos/world/photo-world-6.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.bbc.co.uk/news/videos/cwdr8zm3r5gko?at_medium=RSS&at_campaign=rss",
+            "query": "(the feed)",
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Australian Reporter And Bystander Jump Into Floodwaters To Rescue Man From Sinking Car”. Reported by BBC News · NDTV — 2 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        },
+        {
+          "headline": "MICROSOFT AI BEATS DOCTORS IN DIAGNOSING COMPLEX MEDICAL CASES: STUDY",
+          "display": "Microsoft AI Beats Doctors In Diagnosing Complex Medical Cases: Study",
+          "original": "Microsoft AI Beats Doctors In Diagnosing Complex Medical Cases: Study",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "NDTV · The Indian Express",
+          "sourceNames": [
+            "NDTV",
+            "The Indian Express"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Adani Group",
+            "Indian Express Group"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate",
+            "commercial"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQc0I0QzdRZDdvUnNadUdveEdmTENIMnFHZ0NOcktibXFNalhUbGR1U2FqWjVlckJ4elQyX3J1QzZjQjNRU0hqT2lWRlIyeFotVjBLeV8wc1h1ZERoWFlLZUpBdldDcWF0Rjh6WjcyQ0RaV042cFJRZEE1X0J2VlB4QUpXMUxCSVdUMnM2QlpsanpRbWZNNXRyNWhtU2FMWndtVEl2RWo3RVItTUhrLWfSAbYBQVVfeXFMUFRYck9BUndiNnA0VjIxQjItSjVCamhvQWJTVmp6MTdhSGFkUUNyMkJHdUJ0cVd2aGpydVF3SmFIdTI5LUNiVnhobEdZaWFKX0xQdkdSdUUtYXh",
+          "summary": "Microsoft AI Beats Doctors In Diagnosing Complex Medical Cases: Study &nbsp;&nbsp; NDTV",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQc0I0QzdRZDdvUnNadUdveEdmTENIMnFHZ0NOcktibXFNalhUbGR1U2FqWjVlckJ4elQyX3J1QzZjQjNRU0hqT2lWRlIyeFotVjBLeV8wc1h1ZERoWFlLZUpBdldDcWF0Rjh6WjcyQ0RaV042cFJRZEE1X0J2VlB4QUpXMUxCSVdUMnM2QlpsanpRbWZNNXRyNWhtU2FMWndtVEl2RWo3RVItTUhrLWfSAbYBQVVfeXFMUFRYck9BUndiNnA0VjIxQjItSjVCamhvQWJTVmp6MTdhSGFkUUNyMkJHdUJ0cVd2aGpydVF3SmFIdTI5LUNiVnhobEdZaWFKX0xQdkdSdUUtYXh",
+              "source": "NDTV",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxNUVJDV2VaM19yVVVsdkdNX2c5NVpHeExxTWpnLUQ0cEFJelVLM1RFYzdZb0M0V05aaFdiQl9oZXdiVkg4cERrSnpLOTVfZXgtQjEwckgxRU1zR3VQMDZTbFhBYU10elpQTzR3bDRhZ2VBR25FdlZrbUt4M0NoRlNLdTlUMFNUYXZ2LURmeWo1QWFjT2NjY2NLRHlQU3MxdzB3SXFnQ0ZERk5Dc2tEZzNhc0ZoLU1DTXVHTTFoZTlueVkxWmdkbGtIWXVvT2wwZDF0RkcxWkljdHp6QW1pcGlaMllmdVVYYWowb3JiStIB8wFBVV95cUxPRmJtLU9PMUc4Z0xkM0s0MXIyUjg",
+              "source": "The Indian Express",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-23T03:01:25.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 7.5,
+          "articlePhotoError": "The Indian Express: HTTP 400",
+          "photoError": "no image matched the story closely enough (searched \"international summit flags\")",
+          "photo": null,
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": "editorial",
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Microsoft AI Beats Doctors In Diagnosing Complex Medical Cases: Study”. Reported by NDTV · The Indian Express — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "world-1",
+          "story": "Maradona death: Verdict in trial to be delivered on December 22",
+          "files": [
+            "data/editions/2026-10-23/world/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-23/world/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-23/world/1/alt.json",
+          "caption": "data/editions/2026-10-23/caption-world-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "world-2",
+          "story": "Grenades Sparked Canadian Military Base Fire That Killed 4",
+          "files": [
+            "data/editions/2026-10-23/world/2/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-23/world/2/slide-1.jpg",
+          "alts": "data/editions/2026-10-23/world/2/alt.json",
+          "caption": "data/editions/2026-10-23/caption-world-2.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "world-3",
+          "story": "Zuckerberg strikes Meta deal to cover potential California billionaire tax",
+          "files": [
+            "data/editions/2026-10-23/world/3/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-23/world/3/slide-1.jpg",
+          "alts": "data/editions/2026-10-23/world/3/alt.json",
+          "caption": "data/editions/2026-10-23/caption-world-3.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "world-4",
+          "story": "Face-Off With China Continues In Arunachal: Border Police Force Chief",
+          "files": [
+            "data/editions/2026-10-23/world/4/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-23/world/4/slide-1.jpg",
+          "alts": "data/editions/2026-10-23/world/4/alt.json",
+          "caption": "data/editions/2026-10-23/caption-world-4.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "world-5",
+          "story": "Australian Reporter And Bystander Jump Into Floodwaters To Rescue Man From Sinking Car",
+          "files": [
+            "data/editions/2026-10-23/world/5/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-23/world/5/slide-1.jpg",
+          "alts": "data/editions/2026-10-23/world/5/alt.json",
+          "caption": "data/editions/2026-10-23/caption-world-5.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "world-6",
+          "story": "Microsoft AI Beats Doctors In Diagnosing Complex Medical Cases: Study",
+          "files": [
+            "data/editions/2026-10-23/world/6/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-23/world/6/slide-1.jpg",
+          "alts": "data/editions/2026-10-23/world/6/alt.json",
+          "caption": "data/editions/2026-10-23/caption-world-6.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    },
+    {
+      "id": "business",
+      "label": "BUSINESS",
+      "stories": [
+        {
+          "headline": "TRUMP, MUSK, ZELENSKYY: WHO IS BLAMING WHO IN THE UKRAINE-STARLINK ROW?",
+          "display": "Trump, Musk, Zelenskyy: who is blaming who in the Ukraine-Starlink row?",
+          "original": "Trump, Musk, Zelenskyy: who is blaming who in the Ukraine-Starlink row?",
+          "truncated": false,
+          "usable": true,
+          "category": "BUSINESS",
+          "source": "BBC News · Al Jazeera · The Guardian",
+          "sourceNames": [
+            "BBC News",
+            "Al Jazeera",
+            "The Guardian"
+          ],
+          "corroboration": 3,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Government of Qatar",
+            "Scott Trust"
+          ],
+          "ownerCount": 3,
+          "countries": [
+            "GB",
+            "QA"
+          ],
+          "fundings": [
+            "state",
+            "trust"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.theguardian.com/world/2026/oct/23/trump-musk-zelenskyy-who-is-blaming-who-in-ukraine-starlink-row",
+          "summary": "A war of words has erupted over who is responsible for the restrictions on Starshield access in Ukraine A war of words has erupted between the Trump administration, officials in Kyiv and Elon Musk over who is to blame for limiting Ukraine’s access to Space X’s military-grade version of Starlink. The restrictions to Starshield have rendered many of the drones used by Kyiv to strike behind the front",
+          "feedImage": "https://i.guim.co.uk/img/media/398fbe7a2cfa405c88293bdfbef4824ba232cfd6/0_0_5000_4000/master/5000.jpg?width=140&quality=85&auto=format&fit=max&s=c832faf1f1a283004f66c3ff04a1f9f0",
+          "sources": [
+            {
+              "link": "https://www.bbc.co.uk/news/articles/cq74pjpmx0e8o?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/4438/live/13dc7b20-ce53-11f1-a7e5-1bf3b637cfc1.jpg"
+            },
+            {
+              "link": "https://www.aljazeera.com/news/2026/10/23/trump-says-musk-restored-ukraines-starlink-access-amid-russia-war?traffic_source=rss",
+              "source": "Al Jazeera",
+              "feedImage": null
+            },
+            {
+              "link": "https://www.theguardian.com/world/2026/oct/23/trump-musk-zelenskyy-who-is-blaming-who-in-ukraine-starlink-row",
+              "source": "The Guardian",
+              "feedImage": "https://i.guim.co.uk/img/media/398fbe7a2cfa405c88293bdfbef4824ba232cfd6/0_0_5000_4000/master/5000.jpg?width=140&quality=85&auto=format&fit=max&s=c832faf1f1a283004f66c3ff04a1f9f0"
+            }
+          ],
+          "published": "2026-10-23T02:16:26.000Z",
+          "topic": "business",
+          "section": "business",
+          "tier": "notable",
+          "score": 10.05,
+          "photo": {
+            "path": "work/photos/business/photo-business-2.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/cq74pjpmx0e8o?at_medium=RSS&at_campaign=rss",
+            "query": "(the feed)",
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed BUSINESS. It reads: “Trump, Musk, Zelenskyy: who is blaming who in the Ukraine-Starlink row?”. Reported by BBC News · Al Jazeera · The Guardian — 3 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        },
+        {
+          "headline": "RACE TO REARM: TELFORD GUN HALL BRINGS TANK BARREL PRODUCTION BACK TO THE UK",
+          "display": "Race to rearm: Telford gun hall brings tank barrel production back to the UK",
+          "original": "Race to rearm: Telford gun hall brings tank barrel production back to the UK",
+          "truncated": false,
+          "usable": true,
+          "category": "BUSINESS",
+          "source": "BBC News · The Guardian",
+          "sourceNames": [
+            "BBC News",
+            "The Guardian"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Scott Trust"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB"
+          ],
+          "fundings": [
+            "state",
+            "trust"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.theguardian.com/business/2026/oct/22/telford-gun-hall-tank-barrel-production-back-uk-rheinmetall",
+          "summary": "Defence secretary says Britain must manufacture at scale as Germany’s Rheinmetall opens Midlands factory For the last 20 years, Britain was unable to put a barrel on its tanks without buying from abroad. Relying on foreign allies seemed like a reasonable choice during years of relative security (for wealthy countries at least) after the end of the cold war. But Russia’s full-scale invasion of Ukra",
+          "feedImage": "https://i.guim.co.uk/img/media/ccadcadb795d2525bb230602bdb274ef632f5f9a/648_0_6990_5592/master/6990.jpg?width=140&quality=85&auto=format&fit=max&s=621c64037a0df79fb7569b006f38c068",
+          "sources": [
+            {
+              "link": "https://www.bbc.co.uk/news/articles/cm70pj51zdk4o?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/57ea/live/ff2243b0-ce05-11f1-8991-296181d7e3de.jpg"
+            },
+            {
+              "link": "https://www.theguardian.com/business/2026/oct/22/telford-gun-hall-tank-barrel-production-back-uk-rheinmetall",
+              "source": "The Guardian",
+              "feedImage": "https://i.guim.co.uk/img/media/ccadcadb795d2525bb230602bdb274ef632f5f9a/648_0_6990_5592/master/6990.jpg?width=140&quality=85&auto=format&fit=max&s=621c64037a0df79fb7569b006f38c068"
+            }
+          ],
+          "published": "2026-10-22T16:59:54.000Z",
+          "topic": "business",
+          "section": "business",
+          "tier": "notable",
+          "score": 7.275,
+          "photo": {
+            "path": "work/photos/business/photo-business-3.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/cm70pj51zdk4o?at_medium=RSS&at_campaign=rss",
+            "query": "(the feed)",
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed BUSINESS. It reads: “Race to rearm: Telford gun hall brings tank barrel production back to the UK”. Reported by BBC News · The Guardian — 2 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "business-1",
+          "story": "Trump, Musk, Zelenskyy: who is blaming who in the Ukraine-Starlink row?",
+          "files": [
+            "data/editions/2026-10-23/business/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-23/business/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-23/business/1/alt.json",
+          "caption": "data/editions/2026-10-23/caption-business-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "business-2",
+          "story": "Race to rearm: Telford gun hall brings tank barrel production back to the UK",
+          "files": [
+            "data/editions/2026-10-23/business/2/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-23/business/2/slide-1.jpg",
+          "alts": "data/editions/2026-10-23/business/2/alt.json",
+          "caption": "data/editions/2026-10-23/caption-business-2.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    }
+  ]
+}
