@@ -1,22 +1,38 @@
 {
   "id": "2026-10-25",
   "kind": "daily",
-  "builtAt": "2026-10-25T07:44:59.886Z",
-  "pool": 583,
+  "builtAt": "2026-10-25T21:23:18.314Z",
+  "pool": 578,
   "feedErrors": [
     "indian-express: HTTP 403"
   ],
   "refusals": {
-    "read": 583,
+    "read": 578,
     "published": 8,
-    "refused": 293,
-    "consideredNotChosen": 282,
+    "refused": 275,
+    "consideredNotChosen": 295,
     "byRule": {
       "older than the window": {
-        "count": 147,
+        "count": 138,
         "samples": [
           {
+            "title": "Vanessa Trump says she is cancer-free six months after revealing diagnosis",
+            "source": "BBC News"
+          },
+          {
+            "title": "Man arrested after fire at Hitler's mountaintop Eagle's Nest retreat",
+            "source": "BBC News"
+          },
+          {
+            "title": "Woman, 65, becomes second patient to die of Ebola in Kenya",
+            "source": "BBC News"
+          },
+          {
             "title": "Australian MP's condition improves after alleged car attack",
+            "source": "BBC News"
+          },
+          {
+            "title": "Three released without charge after fatal arson attack in Ireland",
             "source": "BBC News"
           },
           {
@@ -30,32 +46,12 @@
           {
             "title": "White House lifts tariffs on some Canadian goods as midterm elections loom",
             "source": "BBC News"
-          },
-          {
-            "title": "Trump administration sues to block certification of upcoming Alaska election",
-            "source": "BBC News"
-          },
-          {
-            "title": "Minneapolis withdrawal was 'surrender', Trump's ex-border patrol chief tells BBC",
-            "source": "BBC News"
-          },
-          {
-            "title": "White House says Melania Trump brokered truce for Ukraine city 'on brink of disaster'",
-            "source": "BBC News"
-          },
-          {
-            "title": "Seven shot dead by gunmen at church funeral in Jordan, officials say",
-            "source": "BBC News"
           }
         ]
       },
       "says nothing happened": {
-        "count": 114,
+        "count": 123,
         "samples": [
-          {
-            "title": "Voters in Brazil to choose between Lula and Bolsonaro's son",
-            "source": "BBC News"
-          },
           {
             "title": "Who are the candidates in Brazil's presidential election?",
             "source": "BBC News"
@@ -73,107 +69,83 @@
             "source": "BBC News"
           },
           {
-            "title": "Israeli elections: What are the possible outcomes?",
+            "title": "The narrative battle over France’s unrest",
             "source": "Al Jazeera"
           },
           {
-            "title": "Election posters, mass tourism and property: Israel’s footprint in Cyprus",
+            "title": "When is the 2026 Ballon d’Or, who are the favourites, and how can you watch it?",
             "source": "Al Jazeera"
           },
           {
-            "title": "Bots, deepfakes and surveillance: Israel’s election goes to war online",
+            "title": "US and Israel elections: New leaders, same policies?",
+            "source": "Al Jazeera"
+          },
+          {
+            "title": "Israel’s ‘Generation Right’ could shape Netanyahu’s future",
             "source": "Al Jazeera"
           }
         ]
       },
       "too thin to be a headline": {
-        "count": 16,
+        "count": 7,
         "samples": [
           {
-            "title": "Serbia Election",
+            "title": "Albania Protests",
             "source": "Post Register"
           },
           {
-            "title": "Bulgaria Election",
-            "source": "Post Register"
-          },
-          {
-            "title": "Serbia Election",
-            "source": "Post Register"
-          },
-          {
-            "title": "Bulgaria Election",
-            "source": "Post Register"
-          },
-          {
-            "title": "Germany Daily Life",
-            "source": "Post Register"
-          },
-          {
-            "title": "Bulgaria Election",
-            "source": "WV News"
-          },
-          {
-            "title": "China US AI Blocs",
+            "title": "Israel Elections",
             "source": "Post Register"
           },
           {
             "title": "Serbia Election",
-            "source": "WV News"
+            "source": "Post Register"
+          },
+          {
+            "title": "Albania Protests",
+            "source": "Post Register"
+          },
+          {
+            "title": "PIB Backgrounder",
+            "source": "Press Information Bureau"
+          },
+          {
+            "title": "Is AI On The Way Down?",
+            "source": "MillenniumPost"
+          },
+          {
+            "title": "Science Jigsaw",
+            "source": "Scientific American"
           }
         ]
       },
       "not news": {
-        "count": 11,
+        "count": 3,
         "samples": [
           {
-            "title": "Video: Donald Trump, Wife Melania Cast Vote For High-Stake US Midterms",
-            "source": "NDTV"
+            "title": "Video. Latest news bulletin | October 25th, 2026 – Midday",
+            "source": "Euronews.com"
           },
           {
-            "title": "Video: Superheroes 'Black Panther', 'Captain America' Join France Protests",
-            "source": "NDTV"
+            "title": "Health Wrap Episode 56 discusses early-onset Alzheimer’s, cancer research paper mills and more",
+            "source": "The Hindu"
           },
           {
-            "title": "Video: Superheroes 'Black Panther', 'Captain America' Join France Protests",
-            "source": "NDTV"
-          },
-          {
-            "title": "Watch: Protesters launch fireworks at police as fiery clashes take place in Albania",
-            "source": "Times of India"
-          },
-          {
-            "title": "Watch: IAF's Surya Kiran team paints skies over Varanasi during ‘Wings over Ganges’",
-            "source": "Times of India"
-          },
-          {
-            "title": "Workflow, ecosystems, AI: Test your business creativity with Edition 255 of our weekly quiz!",
-            "source": "YourStory.com"
-          },
-          {
-            "title": "Explained: Why Himachal’s apple economy is at a crossroads?",
-            "source": "Tehelka"
-          },
-          {
-            "title": "Weekly Health Horoscope Predictions, October 25 to October 31, 2026: Tips for wellness and balance based",
-            "source": "The Times of India"
+            "title": "Health Wrap Episode 56 discusses early-onset Alzheimer’s, cancer research paper mills and more",
+            "source": "The Hindu"
           }
         ]
       },
       "comment, not reporting": {
-        "count": 3,
+        "count": 2,
         "samples": [
           {
-            "title": "279 Km Metro Expansion: What Delhi's Transport Plan Means For Commuters",
-            "source": "NDTV"
+            "title": "Opinion: Uncounted and Unprotected — India’s seasonal migrants and Digital Census",
+            "source": "Telangana Today"
           },
           {
-            "title": "Column | Carolyn Hax: Her parents know all their business. That’s weird, right?",
-            "source": "The Washington Post"
-          },
-          {
-            "title": "Millions in Finland are watching six puppies on live stream. The science of its appeal and the case for ‘slow TV’ | HT Explainers",
-            "source": "Hindustan Times"
+            "title": "3 Lessons From Building a Venture Fund That Can Help You Make Smarter Business Decisions.",
+            "source": "Entrepreneur"
           }
         ]
       },
@@ -198,200 +170,219 @@
       "label": "TOP STORIES",
       "stories": [
         {
-          "headline": "ALMOST 1,000 ARRESTED AS CLASHES FOLLOW ANOTHER DAY OF MASS PROTESTS ACROSS FRANCE",
-          "display": "Almost 1,000 arrested as clashes follow another day of mass protests across France",
-          "original": "Almost 1,000 arrested as clashes follow another day of mass protests across France",
+          "headline": "BRAZIL ELECTION RESULTS 2026 LIVE: LULA-BOLSONARO VOTING EXTENDED BY 2 HOURS",
+          "display": "Brazil election results 2026 live: Lula-Bolsonaro voting extended by 2 hours",
+          "original": "Brazil election results 2026 live: Lula-Bolsonaro voting extended by 2 hours",
           "truncated": false,
           "usable": true,
           "category": "WORLD NEWS",
-          "source": "BBC News · Al Jazeera",
+          "source": "Al Jazeera · The New York Times",
           "sourceNames": [
-            "BBC News",
-            "Al Jazeera"
+            "Al Jazeera",
+            "The New York Times"
           ],
           "corroboration": 2,
           "republishers": [],
           "owners": [
-            "BBC (licence fee)",
-            "Government of Qatar"
+            "Government of Qatar",
+            "New York Times Company"
           ],
           "ownerCount": 2,
           "countries": [
-            "GB",
-            "QA"
+            "QA",
+            "US"
           ],
           "fundings": [
-            "state"
+            "state",
+            "commercial"
           ],
           "unknownOwners": 0,
           "concentration": [],
-          "link": "https://www.bbc.co.uk/news/articles/c95ynd587ynzo?at_medium=RSS&at_campaign=rss",
-          "summary": "Hundreds of thousands took part in demonstrations in France, with protests also taking place in other European countries.",
-          "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/3d00/live/edf93830-cffb-11f1-b444-6fb1f13f8d87.jpg",
+          "link": "https://www.aljazeera.com/news/liveblog/2026/10/25/brazil-election-results-2026-live-polls-close-in-lula-bolsonaro-face-off?traffic_source=rss",
+          "summary": "Brazilian President Luiz Inacio Lula da Silva and Senator Flavio Bolsonaro square off in closely watched election.",
+          "feedImage": null,
           "sources": [
             {
-              "link": "https://www.bbc.co.uk/news/articles/c95ynd587ynzo?at_medium=RSS&at_campaign=rss",
-              "source": "BBC News",
-              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/3d00/live/edf93830-cffb-11f1-b444-6fb1f13f8d87.jpg"
+              "link": "https://www.aljazeera.com/news/liveblog/2026/10/25/brazil-election-results-2026-live-polls-close-in-lula-bolsonaro-face-off?traffic_source=rss",
+              "source": "Al Jazeera",
+              "feedImage": null
             },
             {
-              "link": "https://www.aljazeera.com/video/newsfeed/2026/10/25/10-25-sv-europe-protests-wrap?traffic_source=rss",
-              "source": "Al Jazeera",
+              "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOSWVKSmduNEt4S0w3X2x2M0NjZGhTYVRHU3BGUGRvT2hnQXZVMFdHcW5wekU3ZFdrbUhESk5UV25sOHc5SnJnWEQzeUYyUXRIRlJVYW44TDE0dk5XLUJtNDVQRUQxWXpqZnpXdVpVc3dTeGdLTTJIaEFfM0toai1xZ0Q5Y3AxWVNwc3kzNU5n?oc=5",
+              "source": "The New York Times",
               "feedImage": null
             }
           ],
-          "published": "2026-10-25T04:16:52.000Z",
+          "published": "2026-10-25T20:00:04.000Z",
           "topic": "world",
           "section": "world",
-          "tier": "significant",
-          "score": 11.55,
+          "tier": "lead",
+          "score": 15.4,
           "photo": {
             "path": "work/photos/top/photo-top-2.jpg",
-            "credit": "Photo: BBC News",
+            "credit": "Photo: Al Jazeera",
             "license": "publisher",
-            "pageUrl": "https://www.bbc.co.uk/news/articles/c95ynd587ynzo?at_medium=RSS&at_campaign=rss",
-            "query": "(the feed)",
+            "pageUrl": "https://www.aljazeera.com/news/liveblog/2026/10/25/brazil-election-results-2026-live-polls-close-in-lula-bolsonaro-face-off?traffic_source=rss",
+            "query": "(the article)",
+            "url": "https://www.aljazeera.com/wp-content/uploads/2026/10/AFP__20261025__D4DV4RZ__v1__HighRes__BrazilElectionRunoffVote-1792962610.jpg?resize=1920%2C1440",
+            "size": "1920×1440",
+            "edge": 1920,
             "from": "article"
           },
           "layout": "breaking",
           "stat": null,
           "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Almost 1,000 arrested as clashes follow another day of mass protests across France”. Reported by BBC News · Al Jazeera — 2 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Brazil election results 2026 live: Lula-Bolsonaro voting extended by 2 hours”. Reported by Al Jazeera · The New York Times — 2 independent newsrooms. Behind the text is a library photograph, Photo: Al Jazeera. It is not a photograph of this event."
         },
         {
-          "headline": "‘UKRAINE VIOLATED STARLINK TERMS, USED IT TO KILL PEOPLE’",
-          "display": "‘Ukraine violated Starlink terms, used it to kill people’",
-          "original": "‘Ukraine violated Starlink terms, used it to kill people’: Elon Musk admits imposing curbs after Kyiv's access restored | World News",
-          "truncated": true,
-          "usable": true,
-          "category": "WORLD NEWS",
-          "source": "Hindustan Times · NDTV",
-          "sourceNames": [
-            "Hindustan Times",
-            "NDTV"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "HT Media / KK Birla family",
-            "Adani Group"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "IN"
-          ],
-          "fundings": [
-            "conglomerate"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxOTHYwZnF0MjhKN09WTUVkT3h0S3F0a05DSEYwLVdZWGhKQk5SRmVULVRaVjdoV09XNmFNbnlMRUZldHFaMnVLd0tNYm9GaWplb3NQNm1sYWJkblIycVprZnk5MENxVHhzcVVXX2h2NHROMGNhQ2pvazh0YlJucTF5YUIwVXVQbkZjMV8wcFo3MWJIc1RLNThvU3RYaTU5MVJZR1lSNkhEQVZCTDF4YjRwcHUzYUZtRWpQQ1BIT2hUR01CS2RaVW1neWVfbGltMWV3ejI4ekRheFFaN2VqSExYSXNNNmkzTGxYQ2lIcmU5SmxxMkZpWV83X1VMc19nd9IBgwJBVV95cUxQYXN",
-          "summary": "‘Ukraine violated Starlink terms, used it to kill people’: Elon Musk admits imposing curbs after Kyiv's access restored | World News &nbsp;&nbsp; Hindustan Times",
-          "feedImage": null,
-          "sources": [
-            {
-              "link": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxOTHYwZnF0MjhKN09WTUVkT3h0S3F0a05DSEYwLVdZWGhKQk5SRmVULVRaVjdoV09XNmFNbnlMRUZldHFaMnVLd0tNYm9GaWplb3NQNm1sYWJkblIycVprZnk5MENxVHhzcVVXX2h2NHROMGNhQ2pvazh0YlJucTF5YUIwVXVQbkZjMV8wcFo3MWJIc1RLNThvU3RYaTU5MVJZR1lSNkhEQVZCTDF4YjRwcHUzYUZtRWpQQ1BIT2hUR01CS2RaVW1neWVfbGltMWV3ejI4ekRheFFaN2VqSExYSXNNNmkzTGxYQ2lIcmU5SmxxMkZpWV83X1VMc19nd9IBgwJBVV95cUxQYXN",
-              "source": "Hindustan Times",
-              "feedImage": null
-            },
-            {
-              "link": "https://www.ndtv.com/world-news/ukraine-violated-starlink-used-it-to-kill-people-elon-musk-as-speed-restores-starshield-12231802#publisher=newsstand",
-              "source": "NDTV",
-              "feedImage": "https://c.ndtvimg.com/2026-10/gju3i77k_starlink-reuters_625x300_25_October_26.png?im=FeatureCrop,algorithm=dnn,width=1280,height=720"
-            }
-          ],
-          "published": "2026-10-25T05:35:40.000Z",
-          "topic": "world",
-          "section": "world",
-          "tier": "significant",
-          "score": 11.1,
-          "photoError": "every candidate failed to download (HTTP 403)",
-          "photo": null,
-          "layout": "breaking",
-          "stat": null,
-          "backdrop": "editorial",
-          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “‘Ukraine violated Starlink terms, used it to kill people’”. Reported by Hindustan Times · NDTV — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
-        },
-        {
-          "headline": "ISRAEL TO CLOSE OCCUPIED WEST BANK CROSSINGS AS HEBRON LOCKDOWN CONTINUES",
-          "display": "Israel to close occupied West Bank crossings as Hebron lockdown continues",
-          "original": "Israel to close occupied West Bank crossings as Hebron lockdown continues",
+          "headline": "BJP CALLS FOR NATIONWIDE PROTEST OVER KHARGE’S ‘BAAP’ REMARK",
+          "display": "BJP calls for nationwide protest over Kharge’s ‘baap’ remark",
+          "original": "BJP calls for nationwide protest over Kharge’s ‘baap’ remark",
           "truncated": false,
           "usable": true,
-          "category": "WORLD NEWS",
-          "source": "BBC News · Al Jazeera · Hindustan Times",
+          "category": "INDIA",
+          "source": "The Hindu · NDTV · Times of India",
           "sourceNames": [
-            "BBC News",
-            "Al Jazeera",
-            "Hindustan Times"
+            "The Hindu",
+            "NDTV",
+            "Times of India"
           ],
           "corroboration": 3,
           "republishers": [],
           "owners": [
-            "BBC (licence fee)",
-            "Government of Qatar",
-            "HT Media / KK Birla family"
+            "The Hindu Group (family-held)",
+            "Adani Group",
+            "Bennett, Coleman & Co"
           ],
           "ownerCount": 3,
           "countries": [
-            "GB",
-            "QA",
             "IN"
           ],
           "fundings": [
-            "state",
+            "commercial",
             "conglomerate"
           ],
           "unknownOwners": 0,
           "concentration": [],
-          "link": "https://www.aljazeera.com/news/2026/10/25/israel-to-close-occupied-west-bank-crossings-as-hebron-lockdown-continues?traffic_source=rss",
-          "summary": "Israel says it will close all land crossings with the occupied West Bank when it holds a general election on Tuesday.",
-          "feedImage": null,
+          "link": "https://timesofindia.indiatimes.com/india/bjp-calls-protest-over-kharges-baap-remark/articleshow/135197490.cms",
+          "summary": "Congress president Mallikarjun Kharge's comment about Prime Minister Narendra Modi's father sparked widespread outrage among BJP members. Following the incident, the BJP announced nationwide protests against Kharge's remarks, labeling them indecent and offensive. Union home minister Amit Shah criticized Congress for personal attacks and blamed it on their electoral disappointments. Kharge also con",
+          "feedImage": "https://static.toiimg.com/photo/msid-135197501,imgsize-104164.cms",
           "sources": [
             {
-              "link": "https://www.bbc.co.uk/news/articles/c6y93ylpl5p2o?at_medium=RSS&at_campaign=rss",
-              "source": "BBC News",
-              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/5815/live/ca832c30-d019-11f1-b441-2b33b063138f.jpg"
+              "link": "https://www.thehindu.com/news/national/bjp-to-hold-nationwide-protest-on-october-26-against-kharges-baap-remark-for-modi/article71624386.ece",
+              "source": "The Hindu",
+              "feedImage": "https://th-i.thgim.com/public/incoming/tchhkq/article71624409.ece/alternates/LANDSCAPE_1200/20261025253L.jpg"
             },
             {
-              "link": "https://www.aljazeera.com/news/2026/10/25/israel-to-close-occupied-west-bank-crossings-as-hebron-lockdown-continues?traffic_source=rss",
-              "source": "Al Jazeera",
-              "feedImage": null
+              "link": "https://www.ndtv.com/india-news/bjp-to-launch-nationwide-protests-against-mallikarjun-kharge-over-remarks-on-pm-modi-12234707#publisher=newsstand",
+              "source": "NDTV",
+              "feedImage": "https://c.ndtvimg.com/2024-07/9bm0hrh8_modi-kharge_625x300_14_July_24.jpg?im=FeatureCrop,algorithm=dnn,width=1280,height=720"
             },
             {
-              "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQa3laMG9PMkcwZ1l3dzdIQVRlSXplOVVCVS1pNlA2QmxHU0RWN1NFeEpMeF9iTUx1eG41aGhIaEp2MDZIT1FYSWVKbk5FZDVCU0tROGpMeUJ3U2NEM1VUel80cFRGallSOFEwWWZLcXIxN3hmVk5HSXlJa0p3Znd3RDFTSXB4STYtVUgwY2xWbm41UTFzQ0JyQVNIdkxEcVZET2U0bzFtaV9WbWNDRE1BWE9reE1SZm83a1VUZmV6WUdLeFdQMk1pOW5jUVBZUW9TRnQ4NdIB2gFBVV95cUxOeFZERElWTGRrdUIyWmtNSGZTS2xOWGRMZ3Q2M2FrUV9OVzJNMXFZakdiZzA",
-              "source": "Hindustan Times",
-              "feedImage": null
+              "link": "https://timesofindia.indiatimes.com/india/bjp-calls-protest-over-kharges-baap-remark/articleshow/135197490.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135197501,imgsize-104164.cms"
+            },
+            {
+              "link": "https://timesofindia.indiatimes.com/india/mallikarjun-kharges-baap-remark-on-pm-modi-sparks-row-bjp-hits-back/articleshow/135191593.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135192582,imgsize-104164.cms"
             }
           ],
-          "published": "2026-10-25T07:20:36.000Z",
-          "topic": "world",
-          "section": "world",
-          "tier": "notable",
-          "score": 10.35,
+          "published": "2026-10-25T20:22:12.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "significant",
+          "score": 13.2,
           "photo": {
-            "path": "work/photos/top/photo-top-4.jpg",
-            "credit": "Photo: BBC News",
+            "path": "work/photos/top/photo-top-3.jpg",
+            "credit": "Photo: The Hindu",
             "license": "publisher",
-            "pageUrl": "https://www.bbc.co.uk/news/articles/c6y93ylpl5p2o?at_medium=RSS&at_campaign=rss",
+            "pageUrl": "https://www.thehindu.com/news/national/bjp-to-hold-nationwide-protest-on-october-26-against-kharges-baap-remark-for-modi/article71624386.ece",
             "query": "(the feed)",
+            "url": "https://th-i.thgim.com/public/incoming/tchhkq/article71624409.ece/alternates/LANDSCAPE_1200/20261025253L.jpg",
+            "size": "1200×675",
+            "edge": 1200,
             "from": "article"
           },
           "layout": "breaking",
           "stat": null,
           "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Israel to close occupied West Bank crossings as Hebron lockdown continues”. Reported by BBC News · Al Jazeera · Hindustan Times — 3 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “BJP calls for nationwide protest over Kharge’s ‘baap’ remark”. Reported by The Hindu · NDTV · Times of India — 3 independent newsrooms. Behind the text is a library photograph, Photo: The Hindu. It is not a photograph of this event."
+        },
+        {
+          "headline": "PM MODI SAYS CYBERATTACKS CAN TARGET INDIA’S ECONOMY, CALLS FOR STRONGER BANKING SECURITY",
+          "display": "PM Modi Says Cyberattacks Can Target India’s Economy, Calls for Stronger Banking Security",
+          "original": "PM Modi Says Cyberattacks Can Target India’s Economy, Calls for Stronger Banking Security",
+          "truncated": false,
+          "usable": true,
+          "category": "BUSINESS",
+          "source": "Business Standard · Gujarat Samachar",
+          "sourceNames": [
+            "Business Standard",
+            "Gujarat Samachar"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Business Standard Pvt Ltd"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxPQzJLeGRlV3lkOEhHVWdvM3c0d1dzSmtPWmxPMV9nczhLU1FhRFMwd19ENTZQRFRUei10WlMtaU03aU5QZlVNVE56MjlOckJQNGhlcnctYVItTm9mS09tVW5zY0lCWUVHRkNIMHN3SWJORk1mQnZuX2FxcmI0S0dVMXpoeGsxVE9CZmdwcjQ4cUVFUnNNMndDQmoxaHdQb3paUlNMZ2ZIUC1mcjRjWTBjRE0tRVhZcF9WUzBzeE1fWFpWRC05TXpUeG9xRUFKdzFFTnNnWWswTmc0SUVjV0w2M2pXMA?oc=5",
+          "summary": "PM Modi Says Cyberattacks Can Target India’s Economy, Calls for Stronger Banking Security &nbsp;&nbsp; Gujarat Samachar",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPZzdPUUc5NWZqYVNCWU95dnlHRnhuSVdRV3g0dU01RHZ4cFRlMmptb205ZDdyQmRwTWdGSmpCVU85UWQ1a1J5dF9DRjk0NzkydEI4T2ctYUpHclhHYWxnSlQwVFltcEFiVVkzbU1zTW9pd0owMFdhRF95OE44N29XZ3ZrWUlMWlV6WmhwX0FJRW80TXJORHEyZ0ZkcjdFbkJ5QlMyWERBMTl2U3RaeWtrRE1QTUItSmRlRzQxOWV3SUx1Qi1uZnBHYXZ3N1Q3a2JLQnJBMzJB0gHbAUFVX3lxTFBCWkdjZEZaOTVTbjZuTXJXZ2laOGItYUxldE4tRl9rM3RVVi0zWFRFb3A",
+              "source": "Business Standard",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxPQzJLeGRlV3lkOEhHVWdvM3c0d1dzSmtPWmxPMV9nczhLU1FhRFMwd19ENTZQRFRUei10WlMtaU03aU5QZlVNVE56MjlOckJQNGhlcnctYVItTm9mS09tVW5zY0lCWUVHRkNIMHN3SWJORk1mQnZuX2FxcmI0S0dVMXpoeGsxVE9CZmdwcjQ4cUVFUnNNMndDQmoxaHdQb3paUlNMZ2ZIUC1mcjRjWTBjRE0tRVhZcF9WUzBzeE1fWFpWRC05TXpUeG9xRUFKdzFFTnNnWWswTmc0SUVjV0w2M2pXMA?oc=5",
+              "source": "Gujarat Samachar",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-25T14:58:18.000Z",
+          "topic": "business",
+          "section": "business",
+          "tier": "notable",
+          "score": 7.05,
+          "articlePhotoError": "Gujarat Samachar: the article declares no picture",
+          "photo": {
+            "path": "work/photos/top/photo-top-4.jpg",
+            "credit": "File photo: DesiBoy101 / CC BY 4.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Corner_facade_of_Standard_Chartered_Bank_Building,_Mumbai.jpg",
+            "query": "bank building facade",
+            "relevance": 0.14,
+            "title": "Corner facade of Standard Chartered Bank Building, Mumbai",
+            "url": "https://upload.wikimedia.org/wikipedia/commons/f/fd/Corner_facade_of_Standard_Chartered_Bank_Building%2C_Mumbai.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "size": "1920×1440",
+            "edge": 1920,
+            "from": "library"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed BUSINESS. It reads: “PM Modi Says Cyberattacks Can Target India’s Economy, Calls for Stronger Banking Security”. Reported by Business Standard · Gujarat Samachar — 2 independent newsrooms. Behind the text is a library photograph captioned “Corner facade of Standard Chartered Bank Building, Mumbai”, credited to DesiBoy101 / CC BY 4.0. It is not a photograph of this event."
         }
       ],
       "posts": [
         {
           "kind": "carousel",
           "id": "top-1",
-          "story": "Almost 1,000 arrested as clashes follow another day of mass protests across France",
+          "story": "Brazil election results 2026 live: Lula-Bolsonaro voting extended by 2 hours",
           "files": [
-            "data/editions/2026-10-25/top/1/slide-1.jpg",
-            "data/editions/2026-10-25/top/1/slide-2.jpg",
-            "data/editions/2026-10-25/top/1/slide-3.jpg"
+            "data/editions/2026-10-25/top/1/slide-1.jpg"
           ],
           "cover": "data/editions/2026-10-25/top/1/slide-1.jpg",
           "alts": "data/editions/2026-10-25/top/1/alt.json",
@@ -402,7 +393,7 @@
         {
           "kind": "carousel",
           "id": "top-2",
-          "story": "‘Ukraine violated Starlink terms, used it to kill people’",
+          "story": "BJP calls for nationwide protest over Kharge’s ‘baap’ remark",
           "files": [
             "data/editions/2026-10-25/top/2/slide-1.jpg"
           ],
@@ -415,7 +406,7 @@
         {
           "kind": "carousel",
           "id": "top-3",
-          "story": "Israel to close occupied West Bank crossings as Hebron lockdown continues",
+          "story": "PM Modi Says Cyberattacks Can Target India’s Economy, Calls for Stronger Banking Security",
           "files": [
             "data/editions/2026-10-25/top/3/slide-1.jpg"
           ],
@@ -432,76 +423,71 @@
       "label": "INDIA",
       "stories": [
         {
-          "headline": "12, INCLUDING 6 CHILDREN, INJURED IN SHOOTING NEAR FLORIDA UNIVERSITY",
-          "display": "12, Including 6 Children, Injured In Shooting Near Florida University",
-          "original": "12, Including 6 Children, Injured In Shooting Near Florida University",
+          "headline": "HARMANPREET, DEEPTI ON FIRE AS INDIA SEALS EMPHATIC SERIES WIN",
+          "display": "Harmanpreet, Deepti on fire as India seals emphatic series win",
+          "original": "Harmanpreet, Deepti on fire as India seals emphatic series win",
           "truncated": false,
           "usable": true,
           "category": "INDIA",
-          "source": "NDTV · Times of India",
+          "source": "Cricinfo · The Hindu · Cricbuzz",
           "sourceNames": [
-            "NDTV",
-            "Times of India"
+            "Cricinfo",
+            "The Hindu",
+            "Cricbuzz"
           ],
-          "corroboration": 2,
+          "corroboration": 3,
           "republishers": [],
           "owners": [
-            "Adani Group",
-            "Bennett, Coleman & Co"
+            "The Hindu Group (family-held)"
           ],
-          "ownerCount": 2,
+          "ownerCount": 1,
           "countries": [
             "IN"
           ],
           "fundings": [
-            "conglomerate"
+            "commercial"
           ],
-          "unknownOwners": 0,
+          "unknownOwners": 2,
           "concentration": [],
-          "link": "https://www.ndtv.com/world-news/shooting-near-florida-a-m-university-tallahassee-12-including-6-children-injured-us-12232354#publisher=newsstand",
-          "summary": "In a statement, police said the preliminary investigation indicates that a fight broke out prior to the shooting. It followed a football game in a crowded area.",
-          "feedImage": "https://c.ndtvimg.com/2026-10/m2mqbqn_florida-shooting-afp_625x300_25_October_26.jpeg",
+          "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOMnBwY2JaeS0yNWxPYUFCZHV2MzBXVVRURjdZNTV1MDZiUlBpT0dzVjV1dHhuZVp2Ym1sbjc5bnVaQ0J1azdYQ2Vhc1M1YmVjRThPYVN3SVB6RHItdDU3SEhMaWFPVFg5NkdqOThidXdVU1BCY0JIVlpfNDNVOUJNckFDcXpVN2xleGNSaS1HWWpFeE80b3B1ZnhEazlFTkFmYzhrTjJuOXFzYTVzWUxhc1lDQ016SmtIZE15YtIBwwFBVV95cUxPRVpNNU4tNHNhQVVNb2pwT3JrcS1tZEY4a3l6NldZNFZlU3ZGanl1X2ZjcldHbWR2QUFQOVhwc29Nb0JoV0ZJRjZJOEZ",
+          "summary": "Harmanpreet, Deepti on fire as India seals emphatic series win &nbsp;&nbsp; The Hindu",
+          "feedImage": null,
           "sources": [
             {
-              "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQX3N6cmYyeFVUWXpXSjhtcjR4VllxbVRScVdzYlhLNE9RNE5iMEVCSlA1T2tGUGNUOVZNZTMxTlFnUnl2YmJ3VkxDLWJBVHM5a1Zld2lsSXdRNDBCWnA3aGFWcnV4azJxRTJTMkRxVXhDRndqQ0t1QnhkN1JiX253cGpmSUVCNzhza01xM04xVHRiWWx4TGFzMFQxNW51V0tiMUVOeEs5cWZ4ZVFCTzlJNHI2OWNqc2FHY3hpU24wNm5Fd9IBygFBVV95cUxQLVRYZkpKLS1HbnVCMjBhQ2RIQmdSd0NiX3l0Q0QxakJVRTFKNGJqSURNRzRHd2NrS1luc28yV1dpV3RRVDN",
-              "source": "NDTV",
+              "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQbEd2MjZoQ1g1R2VnLXo1TG9VeGRzZ0ZKYzZCMWNRRFIxd1UyY3kyckxGeTZEZ1g5RWdiQXFpRUZNMHg5SktWN1IyLWRXTkltUkkxLU03REc2QjZXR3o5dDVuTEl5V3l2aVNQY0habVJzeF80aVhqa2Q1NndfNHA2anJsaU1KUTdtV09QUmdpLTY3YlZacWJpNVNKWVdtdWJDQy1EemNvVUJBRDQwWHB1a3djb0NMRndfcVZXRGhDVFZpdXRlTGFlLW5n?oc=5",
+              "source": "Cricinfo",
               "feedImage": null
             },
             {
-              "link": "https://www.ndtv.com/world-news/shooting-near-florida-a-m-university-tallahassee-12-including-6-children-injured-us-12232354#publisher=newsstand",
-              "source": "NDTV",
-              "feedImage": "https://c.ndtvimg.com/2026-10/m2mqbqn_florida-shooting-afp_625x300_25_October_26.jpeg"
+              "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOMnBwY2JaeS0yNWxPYUFCZHV2MzBXVVRURjdZNTV1MDZiUlBpT0dzVjV1dHhuZVp2Ym1sbjc5bnVaQ0J1azdYQ2Vhc1M1YmVjRThPYVN3SVB6RHItdDU3SEhMaWFPVFg5NkdqOThidXdVU1BCY0JIVlpfNDNVOUJNckFDcXpVN2xleGNSaS1HWWpFeE80b3B1ZnhEazlFTkFmYzhrTjJuOXFzYTVzWUxhc1lDQ016SmtIZE15YtIBwwFBVV95cUxPRVpNNU4tNHNhQVVNb2pwT3JrcS1tZEY4a3l6NldZNFZlU3ZGanl1X2ZjcldHbWR2QUFQOVhwc29Nb0JoV0ZJRjZJOEZ",
+              "source": "The Hindu",
+              "feedImage": null
             },
             {
-              "link": "https://timesofindia.indiatimes.com/world/us/6-children-among-12-injured-in-shooting-near-florida-university-stadium/articleshow/135183905.cms",
-              "source": "Times of India",
-              "feedImage": "https://static.toiimg.com/photo/msid-135183923,imgsize-248166.cms"
+              "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNNWVCSXplemZLaVZ6YTljMW52Q09ySkFlcE9nU3UyZTdWandmdzctbDNFZ3A4SEdrVmJuWDNsVndmR2txVHM4em9kMElkWmNJUXB0QWZTLTJ6emszV19uT3RkVDF3SVFFUWxBRDEzZHo3c1lRcjBWU3VRR0ZmNEMtanJTa2tCbzBhajBVa3ItSWM3RkdwUTFvQkpJVk4?oc=5",
+              "source": "Cricbuzz",
+              "feedImage": null
             }
           ],
-          "published": "2026-10-25T05:28:10.000Z",
+          "published": "2026-10-25T18:11:41.000Z",
           "topic": "india",
           "section": "india",
           "tier": "notable",
-          "score": 8.1,
-          "photo": {
-            "path": "work/photos/india/photo-india-2.jpg",
-            "credit": "Photo: Times of India",
-            "license": "publisher",
-            "pageUrl": "https://timesofindia.indiatimes.com/world/us/6-children-among-12-injured-in-shooting-near-florida-university-stadium/articleshow/135183905.cms",
-            "query": "(the feed)",
-            "from": "article"
-          },
+          "score": 9,
+          "articlePhotoError": "Cricbuzz: the article declares no picture",
+          "photoError": "no unused image left (searched \"Harmanpreet\")",
+          "photo": null,
           "layout": "breaking",
           "stat": null,
-          "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “12, Including 6 Children, Injured In Shooting Near Florida University”. Reported by NDTV · Times of India — 2 independent newsrooms. Behind the text is a library photograph, Photo: Times of India. It is not a photograph of this event."
+          "backdrop": "editorial",
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Harmanpreet, Deepti on fire as India seals emphatic series win”. Reported by Cricinfo · The Hindu · Cricbuzz — 3 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
         }
       ],
       "posts": [
         {
           "kind": "carousel",
           "id": "india-1",
-          "story": "12, Including 6 Children, Injured In Shooting Near Florida University",
+          "story": "Harmanpreet, Deepti on fire as India seals emphatic series win",
           "files": [
             "data/editions/2026-10-25/india/1/slide-1.jpg"
           ],
@@ -518,264 +504,232 @@
       "label": "WORLD",
       "stories": [
         {
-          "headline": "GUNMEN KILL AT LEAST 10 VILLAGERS AND LOOT SHOPS IN NORTH-EAST NIGERIA",
-          "display": "Gunmen kill at least 10 villagers and loot shops in north-east Nigeria",
-          "original": "Gunmen kill at least 10 villagers and loot shops in north-east Nigeria",
+          "headline": "EXILED OPPOSITION LEADER MARÍA CORINA MACHADO RETURNS TO VENEZUELA",
+          "display": "Exiled opposition leader María Corina Machado returns to Venezuela",
+          "original": "Exiled opposition leader María Corina Machado returns to Venezuela",
           "truncated": false,
           "usable": true,
           "category": "WORLD NEWS",
-          "source": "BBC News · Al Jazeera",
+          "source": "BBC News · Al Jazeera · The Guardian",
           "sourceNames": [
             "BBC News",
-            "Al Jazeera"
+            "Al Jazeera",
+            "The Guardian",
+            "Times of India"
           ],
-          "corroboration": 2,
+          "corroboration": 4,
           "republishers": [],
           "owners": [
             "BBC (licence fee)",
-            "Government of Qatar"
+            "Government of Qatar",
+            "Scott Trust",
+            "Bennett, Coleman & Co"
           ],
-          "ownerCount": 2,
+          "ownerCount": 4,
           "countries": [
             "GB",
-            "QA"
+            "QA",
+            "IN"
           ],
           "fundings": [
-            "state"
+            "state",
+            "trust",
+            "conglomerate"
           ],
           "unknownOwners": 0,
           "concentration": [],
-          "link": "https://www.bbc.co.uk/news/articles/cq1kdlm1ze7do?at_medium=RSS&at_campaign=rss",
-          "summary": "Police are searching for other casualties, with officials warning the actual death toll could rise further.",
-          "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/db2e/live/b3593830-d017-11f1-b0c1-71a61e4adacb.jpg",
+          "link": "https://www.theguardian.com/world/2026/oct/25/exiled-venezuelan-opposition-leader-maria-corina-machado-announces-her-return",
+          "summary": "Nobel peace prize winner’s return after almost a year in exile is unlikely to please interim president Delcy Rodríguez The Venezuelan opposition leader, María Corina Machado, has announced she has returned to Venezuela almost a year after she left the country to receive the Nobel peace prize. “I’m here. With you,” she wrote on X on Sunday lunchtime. Continue reading...",
+          "feedImage": "https://i.guim.co.uk/img/media/5c5ab30ea955929fb72173cbb1ba8b4c7d6ac7b4/90_0_900_720/master/900.jpg?width=140&quality=85&auto=format&fit=max&s=2d90dd031edfa4cf233133243b5f187e",
           "sources": [
             {
-              "link": "https://www.bbc.co.uk/news/articles/cq1kdlm1ze7do?at_medium=RSS&at_campaign=rss",
+              "link": "https://www.bbc.co.uk/news/articles/cq8ez592pp0eo?at_medium=RSS&at_campaign=rss",
               "source": "BBC News",
-              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/db2e/live/b3593830-d017-11f1-b0c1-71a61e4adacb.jpg"
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/116f/live/8cce05e0-d096-11f1-b441-2b33b063138f.jpg"
             },
             {
-              "link": "https://www.aljazeera.com/news/2026/10/24/gunmen-kill-at-least-10-people-in-eastern-nigeria-police-say?traffic_source=rss",
+              "link": "https://www.aljazeera.com/news/2026/10/25/venezuelas-opposition-leader-maria-corina-machado-returns-from-exile?traffic_source=rss",
               "source": "Al Jazeera",
               "feedImage": null
+            },
+            {
+              "link": "https://www.theguardian.com/world/2026/oct/25/exiled-venezuelan-opposition-leader-maria-corina-machado-announces-her-return",
+              "source": "The Guardian",
+              "feedImage": "https://i.guim.co.uk/img/media/5c5ab30ea955929fb72173cbb1ba8b4c7d6ac7b4/90_0_900_720/master/900.jpg?width=140&quality=85&auto=format&fit=max&s=2d90dd031edfa4cf233133243b5f187e"
+            },
+            {
+              "link": "https://timesofindia.indiatimes.com/world/rest-of-world/i-am-here-with-you-nobel-laureate-venezuela-opposition-leader-machado-returns-after-nearly-a-year-in-exile/articleshow/135197260.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135197389,imgsize-105982.cms"
             }
           ],
-          "published": "2026-10-25T03:20:16.000Z",
+          "published": "2026-10-25T19:56:56.000Z",
           "topic": "world",
           "section": "world",
           "tier": "notable",
-          "score": 8.55,
+          "score": 11.85,
           "photo": {
             "path": "work/photos/world/photo-world-2.jpg",
             "credit": "Photo: BBC News",
             "license": "publisher",
-            "pageUrl": "https://www.bbc.co.uk/news/articles/cq1kdlm1ze7do?at_medium=RSS&at_campaign=rss",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/cq8ez592pp0eo?at_medium=RSS&at_campaign=rss",
             "query": "(the feed)",
+            "url": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/116f/live/8cce05e0-d096-11f1-b441-2b33b063138f.jpg",
+            "size": "1024×576",
+            "edge": 1024,
             "from": "article"
           },
           "layout": "breaking",
           "stat": null,
           "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Gunmen kill at least 10 villagers and loot shops in north-east Nigeria”. Reported by BBC News · Al Jazeera — 2 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Exiled opposition leader María Corina Machado returns to Venezuela”. Reported by BBC News · Al Jazeera · The Guardian — 4 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
         },
         {
-          "headline": "UKRAINE’S MILITARY SAYS STARLINK SATELLITE CONNECTION STABLE AFTER RECENT RESTRICTIONS",
-          "display": "Ukraine’s military says Starlink satellite connection stable after recent restrictions",
-          "original": "Ukraine’s military says Starlink satellite connection stable after recent restrictions",
+          "headline": "AHMEDABAD TO HOST SENIOR WORLD WEIGHTLIFTING CHAMPIONSHIPS IN 2029",
+          "display": "Ahmedabad to host Senior World Weightlifting Championships in 2029",
+          "original": "Ahmedabad to host Senior World Weightlifting Championships in 2029",
           "truncated": false,
           "usable": true,
           "category": "WORLD NEWS",
-          "source": "BBC News · The Guardian",
+          "source": "News On AIR · BBC · Olympics",
           "sourceNames": [
-            "BBC News",
-            "The Guardian"
+            "News On AIR",
+            "BBC",
+            "Olympics"
           ],
-          "corroboration": 2,
+          "corroboration": 3,
           "republishers": [],
           "owners": [
-            "BBC (licence fee)",
-            "Scott Trust"
+            "Government of India",
+            "BBC (licence fee)"
           ],
           "ownerCount": 2,
           "countries": [
+            "IN",
             "GB"
           ],
           "fundings": [
-            "state",
-            "trust"
+            "state"
           ],
-          "unknownOwners": 0,
+          "unknownOwners": 1,
           "concentration": [],
-          "link": "https://www.theguardian.com/world/2026/oct/24/ukraine-zelenskyy-military-starlink-satellite-connection-stable-after-restrictions",
-          "summary": "But Elon Musk, whose company SpaceX owns Starlink, accuses Ukrainian military of violating ⁠the company’s terms Ukraine’s military has a “stable connection to Starlink”, the Ukrainian government said, 10 days after its ability to use the satellite communications system was suddenly restricted . But hours after the announcement, SpaceX CEO Elon Musk, whose company owns Starlink, accused the Ukraini",
-          "feedImage": "https://i.guim.co.uk/img/media/0d51da8a70a218cd186de054b9f5706103605242/86_0_3672_2937/master/3672.jpg?width=140&quality=85&auto=format&fit=max&s=6187a5581088a8f821a4738282f531ab",
+          "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQekxid29hQXo1dUpqRXZLMWprMEo3TUdkSGpwWS1ySEtDQ2NicW1fbHNvSXBEVVozZ1haUmRvRUoxU01yQlJYLW9Mc3ZGTmRaMWNJTDhxa1RSX1hGT0VUN0xHdnZCXzNtaTIyUUo2U0ZocE13LWhVRDRBTEUxTXRtTzNta185M2VTZWRRQUtzWTVsXzlRZjZR?oc=5",
+          "summary": "Ahmedabad to host Senior World Weightlifting Championships in 2029 &nbsp;&nbsp; News On AIR",
+          "feedImage": null,
           "sources": [
             {
-              "link": "https://www.bbc.co.uk/news/articles/cwkg5md14j8go?at_medium=RSS&at_campaign=rss",
-              "source": "BBC News",
-              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/6049/live/9c0d0c10-cf9a-11f1-b441-2b33b063138f.jpg"
+              "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQekxid29hQXo1dUpqRXZLMWprMEo3TUdkSGpwWS1ySEtDQ2NicW1fbHNvSXBEVVozZ1haUmRvRUoxU01yQlJYLW9Mc3ZGTmRaMWNJTDhxa1RSX1hGT0VUN0xHdnZCXzNtaTIyUUo2U0ZocE13LWhVRDRBTEUxTXRtTzNta185M2VTZWRRQUtzWTVsXzlRZjZR?oc=5",
+              "source": "News On AIR",
+              "feedImage": null
             },
             {
-              "link": "https://www.theguardian.com/world/2026/oct/24/ukraine-zelenskyy-military-starlink-satellite-connection-stable-after-restrictions",
-              "source": "The Guardian",
-              "feedImage": "https://i.guim.co.uk/img/media/0d51da8a70a218cd186de054b9f5706103605242/86_0_3672_2937/master/3672.jpg?width=140&quality=85&auto=format&fit=max&s=6187a5581088a8f821a4738282f531ab"
+              "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE51S0g5SWhnMHNzdXVrMUlHQzNIOWhTUFV1Yy12TFZSa09rM0JhQm5HMzdYRW1sZ3BTekxCMThPc0lyOVk2NEVUYUx4Wmg3ZHltazg4TlhxSDMzLWdVMDJmWGc2cWhLTW1S?oc=5",
+              "source": "BBC",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxORHFGSXJNbFpSLUxreTcxLUVFbzBoZ3Q2NllqTGVad1JtT0R4N2doWEcwdDNVOExVN25fZmVJaF8xZ3pRT0FqekZWVS1leWo1TGxVbExQSjVqZWpNWERnWU56WnRZdGE2d2wtUGVVV0VRcFYyVVZwV2x3MUg4eVJIU1hsOFZ1Nkh2di0xdU1zQXpXMTBHU2Vj?oc=5",
+              "source": "Olympics",
+              "feedImage": null
             }
           ],
-          "published": "2026-10-24T21:25:58.000Z",
+          "published": "2026-10-25T16:42:55.000Z",
           "topic": "world",
           "section": "world",
           "tier": "notable",
-          "score": 8.1,
+          "score": 9,
+          "articlePhotoError": "Olympics: the article declares no picture",
           "photo": {
             "path": "work/photos/world/photo-world-3.jpg",
-            "credit": "Photo: BBC News",
-            "license": "publisher",
-            "pageUrl": "https://www.bbc.co.uk/news/articles/cwkg5md14j8go?at_medium=RSS&at_campaign=rss",
-            "query": "(the feed)",
-            "from": "article"
+            "credit": "File photo: Various / Public Domain",
+            "license": "pdm",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Ahmedabad_1855.jpg",
+            "query": "Ahmedabad",
+            "relevance": 0.14,
+            "title": "Ahmedabad 1855",
+            "url": "https://upload.wikimedia.org/wikipedia/commons/3/35/Ahmedabad_1855.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "size": "1920×1309",
+            "edge": 1920,
+            "from": "library"
           },
           "layout": "breaking",
           "stat": null,
           "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Ukraine’s military says Starlink satellite connection stable after recent restrictions”. Reported by BBC News · The Guardian — 2 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Ahmedabad to host Senior World Weightlifting Championships in 2029”. Reported by News On AIR · BBC · Olympics — 3 independent newsrooms. Behind the text is a library photograph captioned “Ahmedabad 1855”, credited to Various / Public Domain. It is not a photograph of this event."
         },
         {
-          "headline": "FIRE ENGULFS HITLER'S MOUNTAINTOP EAGLE'S NEST RETREAT",
-          "display": "Fire engulfs Hitler's mountaintop Eagle's Nest retreat",
-          "original": "Fire engulfs Hitler's mountaintop Eagle's Nest retreat",
+          "headline": "SERBIA'S VUČIĆ CONCEDES ELECTION DEFEAT TO STUDENT-LED PROTEST MOVEMENT",
+          "display": "Serbia's Vučić concedes election defeat to student-led protest movement",
+          "original": "Serbia's Vučić concedes election defeat to student-led protest movement",
           "truncated": false,
           "usable": true,
           "category": "WORLD NEWS",
-          "source": "BBC News · The Guardian",
+          "source": "BBC News · Business Standard",
           "sourceNames": [
             "BBC News",
-            "The Guardian"
+            "Business Standard"
           ],
           "corroboration": 2,
           "republishers": [],
           "owners": [
             "BBC (licence fee)",
-            "Scott Trust"
+            "Business Standard Pvt Ltd"
           ],
           "ownerCount": 2,
           "countries": [
-            "GB"
+            "GB",
+            "IN"
           ],
           "fundings": [
             "state",
-            "trust"
+            "commercial"
           ],
           "unknownOwners": 0,
           "concentration": [],
-          "link": "https://www.bbc.co.uk/news/videos/cq98z9xxy2n2o?at_medium=RSS&at_campaign=rss",
-          "summary": "Police in the southern German state of Bavaria have detained a 33-year-old German man following the fire.",
-          "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/bfba/live/f1443bc0-cfbf-11f1-93e1-3b657b665bcf.jpg",
+          "link": "https://www.bbc.co.uk/news/articles/cw5yn3xlprpmo?at_medium=RSS&at_campaign=rss",
+          "summary": "The country's populist right-wing leader of 12 years says it is \"clear\" his Serbian Progressive Party has lost.",
+          "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/1a2d/live/537ff930-6139-11ee-b101-6f93d6dfbcc2.png",
           "sources": [
             {
-              "link": "https://www.bbc.co.uk/news/articles/cr93zwjw1k4qo?at_medium=RSS&at_campaign=rss",
+              "link": "https://www.bbc.co.uk/news/articles/cw5yn3xlprpmo?at_medium=RSS&at_campaign=rss",
               "source": "BBC News",
-              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/723c/live/ca5c07b0-cfc2-11f1-b441-2b33b063138f.jpg"
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/1a2d/live/537ff930-6139-11ee-b101-6f93d6dfbcc2.png"
             },
             {
-              "link": "https://www.bbc.co.uk/news/videos/cq98z9xxy2n2o?at_medium=RSS&at_campaign=rss",
-              "source": "BBC News",
-              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/bfba/live/f1443bc0-cfbf-11f1-93e1-3b657b665bcf.jpg"
-            },
-            {
-              "link": "https://www.theguardian.com/world/2026/oct/24/blaze-engulfs-hitlers-eagles-nest-mountain-retreat-in-bavaria",
-              "source": "The Guardian",
-              "feedImage": "https://i.guim.co.uk/img/media/805a631469b67764a663280793d3d243bb83ede6/292_0_858_686/master/858.jpg?width=140&quality=85&auto=format&fit=max&s=a49ab17407cea9638e10af4c984cf697"
+              "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxNYjQ1UGgtVDIySG5tT084VmZJYTdvVExOclVZQWR5Ukx2dnJlTzd0ZzhmeVZQT2FxdjNfeXRPbUhEMHFZamRHcEJYbzhQNGJqblg0NE9vNVF3Z1BFU0E0UmtZZ2lWM053bmVOdkhUZXU0Rl81VUVLS3Bld283UnFZN3ppY0YySkJxcjYyMHF6V3VvREFkWTh5S244bUw1ejZWRkdhSG41cDFSQi15MnI2NkY0NjBQWWs3OFc0X3RKejlQNDNhMGZ4Mm5OY0k5TUNHVy1r0gHYAUFVX3lxTE9fTXl3VzNuakQzMFhPaVVzZ3pUNFdsak42SVZYS181WEI2UHZSNWR0RFdNY1F",
+              "source": "Business Standard",
+              "feedImage": null
             }
           ],
-          "published": "2026-10-24T15:56:48.000Z",
+          "published": "2026-10-25T21:10:47.000Z",
           "topic": "world",
           "section": "world",
           "tier": "notable",
-          "score": 7.725,
+          "score": 8.85,
           "photo": {
             "path": "work/photos/world/photo-world-4.jpg",
             "credit": "Photo: BBC News",
             "license": "publisher",
-            "pageUrl": "https://www.bbc.co.uk/news/articles/cr93zwjw1k4qo?at_medium=RSS&at_campaign=rss",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/cw5yn3xlprpmo?at_medium=RSS&at_campaign=rss",
             "query": "(the feed)",
+            "url": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/1a2d/live/537ff930-6139-11ee-b101-6f93d6dfbcc2.png",
+            "size": "1024×576",
+            "edge": 1024,
             "from": "article"
           },
           "layout": "breaking",
           "stat": null,
           "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Fire engulfs Hitler's mountaintop Eagle's Nest retreat”. Reported by BBC News · The Guardian — 2 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
-        },
-        {
-          "headline": "BRITISH WOMAN DIES AFTER TRYING TO RESCUE SONS SWEPT AWAY AT SEA IN THE BAHAMAS",
-          "display": "British woman dies after trying to rescue sons swept away at sea in the Bahamas",
-          "original": "British woman dies after trying to rescue sons swept away at sea in the Bahamas",
-          "truncated": false,
-          "usable": true,
-          "category": "WORLD NEWS",
-          "source": "BBC News · The Guardian",
-          "sourceNames": [
-            "BBC News",
-            "The Guardian"
-          ],
-          "corroboration": 2,
-          "republishers": [],
-          "owners": [
-            "BBC (licence fee)",
-            "Scott Trust"
-          ],
-          "ownerCount": 2,
-          "countries": [
-            "GB"
-          ],
-          "fundings": [
-            "state",
-            "trust"
-          ],
-          "unknownOwners": 0,
-          "concentration": [],
-          "link": "https://www.bbc.co.uk/news/articles/cm86z5n0yvy6o?at_medium=RSS&at_campaign=rss",
-          "summary": "Nathan Gregory says the loss of childhood sweetheart Leanne \"is unimaginable for our family\".",
-          "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8b9f/live/09596b60-cfc8-11f1-b441-2b33b063138f.jpg",
-          "sources": [
-            {
-              "link": "https://www.bbc.co.uk/news/articles/cm86z5n0yvy6o?at_medium=RSS&at_campaign=rss",
-              "source": "BBC News",
-              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8b9f/live/09596b60-cfc8-11f1-b441-2b33b063138f.jpg"
-            },
-            {
-              "link": "https://www.theguardian.com/world/2026/oct/24/british-woman-dies-trying-to-save-sons-on-bahamas-snorkelling-trip",
-              "source": "The Guardian",
-              "feedImage": "https://i.guim.co.uk/img/media/8aab2c6d270e81625bcb385b9817033d361e1ea0/252_0_3780_3024/master/3780.jpg?width=140&quality=85&auto=format&fit=max&s=ee5e9e53781191ecd66c4803e2746425"
-            }
-          ],
-          "published": "2026-10-24T17:11:56.000Z",
-          "topic": "world",
-          "section": "world",
-          "tier": "notable",
-          "score": 7.725,
-          "photo": {
-            "path": "work/photos/world/photo-world-5.jpg",
-            "credit": "Photo: BBC News",
-            "license": "publisher",
-            "pageUrl": "https://www.bbc.co.uk/news/articles/cm86z5n0yvy6o?at_medium=RSS&at_campaign=rss",
-            "query": "(the feed)",
-            "from": "article"
-          },
-          "layout": "breaking",
-          "stat": null,
-          "backdrop": null,
-          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “British woman dies after trying to rescue sons swept away at sea in the Bahamas”. Reported by BBC News · The Guardian — 2 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Serbia's Vučić concedes election defeat to student-led protest movement”. Reported by BBC News · Business Standard — 2 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
         }
       ],
       "posts": [
         {
           "kind": "carousel",
           "id": "world-1",
-          "story": "Gunmen kill at least 10 villagers and loot shops in north-east Nigeria",
+          "story": "Exiled opposition leader María Corina Machado returns to Venezuela",
           "files": [
-            "data/editions/2026-10-25/world/1/slide-1.jpg",
-            "data/editions/2026-10-25/world/1/slide-2.jpg",
-            "data/editions/2026-10-25/world/1/slide-3.jpg"
+            "data/editions/2026-10-25/world/1/slide-1.jpg"
           ],
           "cover": "data/editions/2026-10-25/world/1/slide-1.jpg",
           "alts": "data/editions/2026-10-25/world/1/alt.json",
@@ -786,7 +740,7 @@
         {
           "kind": "carousel",
           "id": "world-2",
-          "story": "Ukraine’s military says Starlink satellite connection stable after recent restrictions",
+          "story": "Ahmedabad to host Senior World Weightlifting Championships in 2029",
           "files": [
             "data/editions/2026-10-25/world/2/slide-1.jpg"
           ],
@@ -799,7 +753,7 @@
         {
           "kind": "carousel",
           "id": "world-3",
-          "story": "Fire engulfs Hitler's mountaintop Eagle's Nest retreat",
+          "story": "Serbia's Vučić concedes election defeat to student-led protest movement",
           "files": [
             "data/editions/2026-10-25/world/3/slide-1.jpg"
           ],
@@ -808,17 +762,95 @@
           "caption": "data/editions/2026-10-25/caption-world-3.txt",
           "commentOn": "",
           "commentFile": ""
-        },
+        }
+      ]
+    },
+    {
+      "id": "tech",
+      "label": "TECHNOLOGY",
+      "stories": [
+        {
+          "headline": "21ST U’KHAND STATE SCIENCE AND TECHNOLOGY CONGRESS BEGINS IN DOON",
+          "display": "21st U’khand State Science and Technology Congress begins in Doon",
+          "original": "21st U’khand State Science and Technology Congress begins in Doon",
+          "truncated": false,
+          "usable": true,
+          "category": "TECHNOLOGY",
+          "source": "Garhwal Post · The Times of India",
+          "sourceNames": [
+            "Garhwal Post",
+            "The Times of India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxQT3ViUEtoMFU0Q1FPRVRkSnJ6XzhHQXhZeDdmbVVrdUFtMkRwSGY0UDB4bU1lOVBjeVZ2ejR1NHNsNFNzRC1rbmRKZHBtamRyRXp5Und0NTluZHNoeGNVNU1pWVdhc25ZYUptdDgwb2JhYjRBeU4wVW9zcTQ0ODZaTk9XZ0l3ZTdrUXNTRlJZempheUlwSjlIV2NwZWlrcFZyQ2h6X1c4UXpiRE51bXVvZ2U0SXZGTnhiUy1lV2pyMFBpa3VvbHJVMGQycFlBQThCd2IzSkxTeGwxVXRw0gHcAUFVX3lxTFBPdWJQS2gwVTRDUU9FVGRKcnpfOEdBeFl4N2ZtVWt1QW0yRHB",
+          "summary": "21st U’khand State Science and Technology Congress begins in Doon &nbsp;&nbsp; The Times of India",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQdk11aGpRbURhYUxKQXZzWFlyWkJiV0NaUTctQXB4bU8zSHNtckxIMzJLOHptbDFTOW9hUFR2UWVuN2Z2dGVfaFV5MmdWMmV2LVVFVnBWX2tXZ19FZVZCdldZZjlCZG91V3hvbEQ5MUlZUVJGczVDUGk3R18zcHRxbXBkV2ZKR2pBXzBwMUYwUEFGM1VhdFVhdlMtRQ?oc=5",
+              "source": "Garhwal Post",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxQT3ViUEtoMFU0Q1FPRVRkSnJ6XzhHQXhZeDdmbVVrdUFtMkRwSGY0UDB4bU1lOVBjeVZ2ejR1NHNsNFNzRC1rbmRKZHBtamRyRXp5Und0NTluZHNoeGNVNU1pWVdhc25ZYUptdDgwb2JhYjRBeU4wVW9zcTQ0ODZaTk9XZ0l3ZTdrUXNTRlJZempheUlwSjlIV2NwZWlrcFZyQ2h6X1c4UXpiRE51bXVvZ2U0SXZGTnhiUy1lV2pyMFBpa3VvbHJVMGQycFlBQThCd2IzSkxTeGwxVXRw0gHcAUFVX3lxTFBPdWJQS2gwVTRDUU9FVGRKcnpfOEdBeFl4N2ZtVWt1QW0yRHB",
+              "source": "The Times of India",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQU3l3Z0w2eFplbVdFeEZDQ3hvQW85bTlZYkZDUENvalI5cjlfa203dDdJR28ydkVPeHJnX0FQTXY3UDFlUUhBQS1SVkU4VzNGUmJDZi1MT01EWlhhcXhfTFlzRjJ1NWNRMkpHa0h2c3g5TzRqT3JpNjRfa2ozMDBFYWVqVUtkb2RrNUZBb3RlSV81SDBPV0VldktCanIza0RtN0hCY0NLazI0U0RHMFFiMkdSUzJUX1k2VGxOV1k0a205cmJPbzlvTmctanptanJqTmtJQ2l4UdIB3AFBVV95cUxQT3ViUEtoMFU0Q1FPRVRkSnJ6XzhHQXhZeDdmbVVrdUFtMkRwSGY0UDB",
+              "source": "The Times of India",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-25T17:00:00.000Z",
+          "topic": "tech",
+          "section": "tech",
+          "tier": "notable",
+          "score": 7.65,
+          "articlePhotoError": "The Times of India: HTTP 400",
+          "photo": {
+            "path": "work/photos/tech/photo-tech-2.jpg",
+            "credit": "File photo: Cdmeek / CC0",
+            "license": "cc0",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:SoldierStrong_Co-Founder_Chris_Meek_testifying_to_Congress_on_the_need_for_better_technology_to_veterans.jpg",
+            "query": "Technology Congress",
+            "relevance": 0.29,
+            "title": "SoldierStrong Co Founder Chris Meek testifying to Congress on the need for better technology to veterans",
+            "url": "https://upload.wikimedia.org/wikipedia/commons/5/52/SoldierStrong_Co-Founder_Chris_Meek_testifying_to_Congress_on_the_need_for_better_technology_to_veterans.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "size": "1487×990",
+            "edge": 1487,
+            "from": "library"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed TECHNOLOGY. It reads: “21st U’khand State Science and Technology Congress begins in Doon”. Reported by Garhwal Post · The Times of India — 2 independent newsrooms. Behind the text is a library photograph captioned “SoldierStrong Co Founder Chris Meek testifying to Congress on the…”, credited to Cdmeek / CC0. It is not a photograph of this event."
+        }
+      ],
+      "posts": [
         {
           "kind": "carousel",
-          "id": "world-4",
-          "story": "British woman dies after trying to rescue sons swept away at sea in the Bahamas",
+          "id": "tech-1",
+          "story": "21st U’khand State Science and Technology Congress begins in Doon",
           "files": [
-            "data/editions/2026-10-25/world/4/slide-1.jpg"
+            "data/editions/2026-10-25/tech/1/slide-1.jpg"
           ],
-          "cover": "data/editions/2026-10-25/world/4/slide-1.jpg",
-          "alts": "data/editions/2026-10-25/world/4/alt.json",
-          "caption": "data/editions/2026-10-25/caption-world-4.txt",
+          "cover": "data/editions/2026-10-25/tech/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-25/tech/1/alt.json",
+          "caption": "data/editions/2026-10-25/caption-tech-1.txt",
           "commentOn": "",
           "commentFile": ""
         }
