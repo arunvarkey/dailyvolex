@@ -126,5 +126,24 @@ export function plan(edition, comment, {
     error: `missing at the approved commit: ${[...new Set(missing)].join(', ')}`,
   };
 
-  return { posts: out, asked, labels: out.map(p => p.label).join(', ') };
+  /* What this approval leaves behind.
+   *
+   * A section used to be one post, so approving was always all-or-nothing and
+   * the workflow closed the issue afterwards. With a post per story that is
+   * wrong: approving `top-1` closed the issue and the other six posts became
+   * unreachable, because a comment can only approve an issue that is still
+   * open. The issue stays open while it still offers something. */
+  const taken = new Set(out.map(p => p.id));
+  const left = carousels.filter(p => !taken.has(p.id));
+
+  return {
+    posts: out, asked, labels: out.map(p => p.label).join(', '),
+    remaining: left.map(p => ({ id: p.id, label: p.story || p.sectionLabel })),
+    /* Written here rather than in the workflow, because what `/approve`
+       means is decided in this file and nowhere else. */
+    remainingNote: left.length
+      ? `Still offered — comment ${left.map(p => `\`/approve ${p.id}\``).join(' · ')}`
+        + `, or \`/approve all\` for the rest.`
+      : '',
+  };
 }

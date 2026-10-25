@@ -7,6 +7,7 @@
  * on a laptop. So they were always first executed in production.
  *
  *   node automation/dv.mjs offer --sha <sha> [--out work/issue.json]
+ *   node automation/dv.mjs supersede --open <path> --number <n> [--out work/supersede.json]
  *   node automation/dv.mjs plan  --comment-file <path> [--sha <sha>] [--out work/plan.json]
  *   node automation/dv.mjs record --issue <n> [--plan work/plan.json]
  *   node automation/dv.mjs prune [--keep 10]
@@ -27,7 +28,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { readJson } from './lib/store.mjs';
 import { load, validate, posts, prune, KEEP_EDITIONS } from './lib/edition.mjs';
-import { approvalIssue, warningsFor } from './lib/offer.mjs';
+import { approvalIssue, warningsFor, superseded } from './lib/offer.mjs';
 import { plan } from './lib/plan.mjs';
 import { record } from './lib/ledger.mjs';
 
@@ -80,6 +81,21 @@ async function cmdOffer() {
   if (issue.body.length >= 65536)
     throw new Error(`the issue body is ${issue.body.length} characters; GitHub takes 65536`);
   await write(arg('out'), issue);
+}
+
+/* Which older offers this one replaces. The workflow lists the open issues
+   and closes what this names; which ones are stale is decided here. */
+async function cmdSupersede() {
+  const edition = await loadEdition();
+  const open = await readJson(join(ROOT, arg('open', 'work/open-issues.json')), []);
+  const n = arg('number', null);
+  const close = superseded(edition, Array.isArray(open) ? open : [], {
+    number: n == null ? null : Number(n),
+  });
+  console.log(close.length
+    ? `superseding ${close.map(c => `#${c.number} (${c.edition})`).join(', ')}`
+    : 'nothing older is still open');
+  await write(arg('out'), { close });
 }
 
 async function cmdPlan() {
@@ -162,7 +178,8 @@ async function cmdPrune() {
   console.log(gone.length ? `removed ${gone.length}: ${gone.join(', ')}` : `nothing to remove (keeping ${keep})`);
 }
 
-const COMMANDS = { offer: cmdOffer, plan: cmdPlan, record: cmdRecord, prune: cmdPrune, day: cmdDay };
+const COMMANDS = { offer: cmdOffer, supersede: cmdSupersede, plan: cmdPlan,
+                   record: cmdRecord, prune: cmdPrune, day: cmdDay };
 
 async function main() {
   const name = process.argv[2];

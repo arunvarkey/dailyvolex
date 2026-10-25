@@ -23,7 +23,8 @@ import { create, attachPost, validate, posts, postById, idFor, dirFor,
 import { composeStory, composeSection, composeStoryPost,
          backdropOf, toQuery } from './lib/compose.mjs';
 import { plan } from './lib/plan.mjs';
-import { approvalIssue, warningsFor } from './lib/offer.mjs';
+import { approvalIssue, warningsFor, superseded,
+         editionIdIn, kindOfEdition } from './lib/offer.mjs';
 import { record } from './lib/ledger.mjs';
 import { tierOf, isCryptoVertical, TIER_POINTS } from './lib/importance.mjs';
 import { similarity, cluster, selectStories, selectSections, isRepeat, isTopical, isAdvice,
@@ -1896,6 +1897,89 @@ ok('a post with only library pictures says nothing about licences', (() => {
     approvalIssue(e, { owner: 'o', repo: 'r', sha: 'a', read: () => '' }).body);
 })());
 ok('the body is within GitHub limits', issue.body.length < 65536, `${issue.body.length}`);
+
+/* ── Offers that are no longer live ──────────────────────────────
+   Three runs in one evening left three open offers, each a live invitation
+   to post a different version of the same day. Nothing ever withdrew them. */
+{
+  const bodyFor = id =>
+    `![top-1 card 1](https://raw.githubusercontent.com/arunvarkey/dailyvolex/`
+    + `${'a'.repeat(40)}/data/editions/${id}/top/1/slide-1.jpg)`;
+
+  ok('an issue says which edition it is offering',
+     editionIdIn(bodyFor('2026-10-20')) === '2026-10-20');
+  ok('an approval opened from the app says so in words',
+     editionIdIn('/approve top-2\n\nedition: 2026-10-20-breaking-0915')
+       === '2026-10-20-breaking-0915');
+  ok('an issue that names no edition is unreadable, not empty',
+     editionIdIn('please post the nice one') === null);
+  ok('an edition is named for what it is',
+     kindOfEdition('2026-10-20') === 'daily'
+     && kindOfEdition('2026-10-20-breaking-0915') === 'breaking'
+     && kindOfEdition('2026-10-20-correction-1100') === 'correction');
+
+  const today = { id: '2026-10-21', kind: 'daily' };
+  const open = [
+    { number: 39, body: bodyFor('2026-10-21') },        // this morning's rebuild
+    { number: 40, body: bodyFor('2026-10-20') },        // yesterday, never approved
+    { number: 41, body: bodyFor('2026-10-21-breaking-1830') },
+    { number: 43, body: bodyFor('2026-10-21') },        // opened AFTER this one
+    { number: 44, body: 'post the top one please' },    // not an offer at all
+  ];
+  const close = superseded(today, open, { number: 42 });
+  const closed = close.map(c => c.number).sort((a, b) => a - b);
+
+  ok('a new daily withdraws the older daily offers',
+     closed.join(',') === '39,40', closed.join(','));
+  ok('it does not withdraw a breaking story that is still live',
+     !closed.includes(41),
+     'two stories breaking in one afternoon are two offers, not one');
+  ok('it never withdraws an offer newer than itself',
+     !closed.includes(43), 'a re-run of an older edition must not undo the newer one');
+  ok('an issue whose edition cannot be read is left alone',
+     !closed.includes(44),
+     'closing something we could not identify withdraws an offer nobody meant to');
+  ok('it never withdraws itself',
+     !superseded(today, [{ number: 42, body: bodyFor('2026-10-21') }], { number: 42 }).length);
+  ok('the withdrawal says what replaced it, and that nothing was posted',
+     close.every(c => /Superseded by #42/.test(c.comment) && /Nothing was posted/.test(c.comment)));
+
+  ok('a correction withdraws nothing', (() => {
+    const corr = { id: '2026-10-21-correction-1100', kind: 'correction' };
+    return superseded(corr, open, { number: 42 }).length === 0;
+  })(), 'a correction is owed to a reader, not scheduled');
+
+  ok('a breaking edition withdraws only a rebuild of itself', (() => {
+    const br = { id: '2026-10-21-breaking-1830', kind: 'breaking' };
+    return superseded(br, open, { number: 42 }).map(c => c.number).join(',') === '41';
+  })());
+
+  ok('nothing open means nothing to withdraw',
+     superseded(today, [], { number: 42 }).length === 0);
+}
+
+/* A section used to be one post, so an approval was the whole issue. With a
+   post per story, closing it on a partial approval made the rest
+   unreachable — a comment can only approve an issue that is still open. */
+{
+  const one = plan(ed, '/approve top-1');
+  ok('a partial approval says what it leaves behind',
+     one.remaining.map(r => r.id).join(',') === 'top-2,business-1',
+     one.remaining.map(r => r.id).join(','));
+  ok('what is left is every post, not just the rest of that section',
+     one.remaining.some(r => r.id.startsWith('business')),
+     'the issue offered them all and none of them has been posted');
+  ok('and says the words that would post it',
+     /\/approve top-2/.test(one.remainingNote), one.remainingNote);
+  ok('approving everything leaves nothing',
+     plan(ed, '/approve all').remaining.length === 0);
+  ok('and then says so by saying nothing',
+     plan(ed, '/approve all').remainingNote === '');
+  ok('a reel is not something left over',
+     !plan(ed, '/approve top-1').remaining.some(r => /reel/.test(r.id)),
+     'a reel never goes out alone, so it is not an offer of its own');
+}
+
 /* A one-section edition — a breaking story or a correction. Both are a
    single card set, and both still have to be approvable. */
 function soloEdition({ kind, id, section, label, story, files, extra = {} }) {

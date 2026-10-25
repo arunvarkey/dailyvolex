@@ -141,12 +141,52 @@ jobs:
         run: node automation/dv.mjs offer --sha "$GITHUB_SHA" --out work/issue.json
 
       - name: Ask for approval
+        id: ask
         if: steps.pick.outputs.empty != 'yes'
         uses: actions/github-script@v7
         with:
           script: |
+            const fs = require('fs');
             const issue = require(`${process.env.GITHUB_WORKSPACE}/work/issue.json`);
-            await github.rest.issues.create({ ...context.repo, ...issue });
+            // The offers already open, read BEFORE this one joins them.
+            const { data: open } = await github.rest.issues.listForRepo({
+              ...context.repo, state: 'open', labels: 'awaiting-approval', per_page: 100,
+            });
+            const { data: made } = await github.rest.issues.create({ ...context.repo, ...issue });
+            fs.writeFileSync('work/open-issues.json',
+              JSON.stringify(open.map(i => ({ number: i.number, body: i.body }))), 'utf8');
+            core.setOutput('number', made.number);
+            core.notice(`opened #${made.number}`);
+
+      # Three runs in one evening left three open offers, each pinned to its
+      # own commit, and nothing ever withdrew the stale ones. WHICH of them a
+      # new edition replaces is a decision, so lib/offer.mjs makes it; these
+      # two steps only read the list and carry the answer out.
+      - name: Work out which older offers this one replaces
+        if: steps.pick.outputs.empty != 'yes'
+        run: |
+          node automation/dv.mjs supersede \
+            --open work/open-issues.json \
+            --number "${{ steps.ask.outputs.number }}" \
+            --out work/supersede.json
+
+      - name: Withdraw them
+        if: steps.pick.outputs.empty != 'yes'
+        # Today's offer is open and correct whatever happens here; a failure
+        # to tidy up yesterday's must not mark the run as broken.
+        continue-on-error: true
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { close } = require(`${process.env.GITHUB_WORKSPACE}/work/supersede.json`);
+            for (const old of close) {
+              await github.rest.issues.createComment({
+                ...context.repo, issue_number: old.number, body: old.comment });
+              await github.rest.issues.update({
+                ...context.repo, issue_number: old.number,
+                state: 'closed', state_reason: 'not_planned' });
+              core.notice(`closed #${old.number} — superseded`);
+            }
 
       # Unattended automation that fails quietly is not automation. Runs on
       # success too, so the issue closes itself when things recover.

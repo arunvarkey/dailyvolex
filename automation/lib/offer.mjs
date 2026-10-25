@@ -260,3 +260,81 @@ export function approvalIssue(edition, {
   if (edition.kind === 'breaking')   return breakingIssue(edition, ctx);
   return dailyIssue(edition, ctx);
 }
+
+/* ── Offers that are no longer live ───────────────────────────────
+ *
+ * An approval issue is an offer to post one edition, pinned to the commit it
+ * was built at. When a newer edition is offered the old one is out of date —
+ * the same stories at an older commit, or yesterday's news — and approving it
+ * would post something nobody looked at today. Three runs in one evening left
+ * three open offers; eight open offers is not a choice, it is a pile.
+ *
+ * Deliberately narrow. Only the daily slot is exclusive: there is one daily
+ * post a day, so a new daily replaces every older daily offer. A breaking
+ * story replaces only a rebuild of ITSELF — two stories breaking in one
+ * afternoon are two offers, and closing one because the other arrived would
+ * drop a story silently, which is the failure this whole repository is built
+ * to avoid. A correction replaces nothing and is replaced by nothing: it is
+ * owed to a reader, not scheduled.
+ */
+
+/* The edition an open issue is offering. A built issue carries it in the
+   image URLs; one opened from the app carries it as "edition: <id>". */
+export function editionIdIn(body) {
+  const text = String(body || '');
+  const url = text.match(
+    /raw\.githubusercontent\.com\/[^/\s]+\/[^/\s]+\/[0-9a-f]{40}\/data\/editions\/([A-Za-z0-9_.-]+)\//i);
+  if (url) return url[1];
+  const named = text.match(/\bedition:\s*([A-Za-z0-9_.-]+)/i);
+  return named ? named[1] : null;
+}
+
+/* Editions are named for what they are: 2026-10-21, 2026-10-21-breaking-0915,
+   2026-10-21-correction-1100. */
+export function kindOfEdition(id) {
+  const s = String(id || '');
+  if (/^\d{4}-\d{2}-\d{2}$/.test(s)) return 'daily';
+  const m = s.match(/^\d{4}-\d{2}-\d{2}-([a-z]+)-/i);
+  return m ? m[1].toLowerCase() : null;
+}
+
+/* Which of the open approval issues this edition's offer replaces.
+ *
+ * `open`   [{ number, body }] — the offers that were open before this one
+ * `number` the issue just opened, so it never closes itself
+ */
+export function superseded(edition, open = [], { number = null } = {}) {
+  const mine = kindOfEdition(edition?.id) || edition?.kind || null;
+  if (mine !== 'daily' && mine !== 'breaking') return [];
+
+  const out = [];
+  for (const issue of open || []) {
+    if (!issue || issue.number == null) continue;
+    if (number != null && issue.number === number) continue;
+    // Never newer than this offer: a re-run that rebuilds an older edition
+    // must not close the offer that replaced it.
+    if (number != null && issue.number > number) continue;
+
+    /* An issue whose edition cannot be read is left alone. Closing something
+       we could not identify is how an offer nobody meant to withdraw gets
+       withdrawn — and this runs unattended, every morning. */
+    const id = editionIdIn(issue.body);
+    if (!id) continue;
+    if (id > String(edition.id)) continue;
+
+    if (mine === 'daily'    && kindOfEdition(id) !== 'daily') continue;
+    if (mine === 'breaking' && id !== String(edition.id)) continue;
+
+    out.push({
+      number: issue.number,
+      edition: id,
+      comment: number
+        ? `Superseded by #${number}.\n\n`
+          + 'A newer edition was built, so this offer is out of date —'
+          + ' approving it would post what was shortlisted at an older commit.'
+          + ' Nothing was posted from it.'
+        : 'Superseded by a newer edition. Nothing was posted from this offer.',
+    });
+  }
+  return out;
+}

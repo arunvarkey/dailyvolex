@@ -356,6 +356,58 @@ ok('the approval issue comes from a module', (() => {
     && steps.some(st => /issue\.json/.test(st.with?.script || ''));
 })());
 
+/* Withdrawing a stale offer is a decision — which ones, and what to say —
+   so it belongs in a module like every other one. The workflow may read the
+   list and carry the answer out. */
+ok('no workflow decides which offers are stale', (() => {
+  // Not a ban on the word "edition" — approve.yml has to read one out of the
+  // issue to pin the commit. The rule is that the step which closes an issue
+  // does not work out WHICH, and does not write what gets said on it: both
+  // come out of the file the module wrote.
+  const steps = docs['daily.yml']?.jobs?.build?.steps || [];
+  const closer = steps.find(st => /supersede\.json/.test(st.with?.script || ''));
+  const body = closer?.with?.script || '';
+  return /body:\s*old\.comment/.test(body)
+    && !/kindOfEdition|data\/editions/.test(body);
+})(), 'the withdrawal goes on somebody’s issue — a workflow must not compose it');
+
+ok('a new offer withdraws the older ones', (() => {
+  const steps = docs['daily.yml']?.jobs?.build?.steps || [];
+  return steps.some(st => /dv\.mjs supersede/.test(st.run || ''))
+    && steps.some(st => /supersede\.json/.test(st.with?.script || ''))
+    && steps.some(st => /listForRepo/.test(st.with?.script || ''));
+})(), 'three runs in one evening left three live invitations to post');
+
+ok('tidying up yesterday cannot fail today', (() => {
+  const steps = docs['daily.yml']?.jobs?.build?.steps || [];
+  const closer = steps.find(st => /supersede\.json/.test(st.with?.script || ''));
+  return closer?.['continue-on-error'] === true;
+})(), 'today’s offer is open and correct whatever happens to the old ones');
+
+ok('the open offers are read before the new one joins them', (() => {
+  const steps = docs['daily.yml']?.jobs?.build?.steps || [];
+  const ask = steps.find(st => /issue\.json/.test(st.with?.script || ''));
+  const body = ask?.with?.script || '';
+  return body.indexOf('listForRepo') > 0
+    && body.indexOf('listForRepo') < body.indexOf('issues.create');
+})(), 'listing afterwards finds the new issue and closes it immediately');
+
+/* A section used to be one post, so an approval was the whole issue. With a
+   post per story, closing it on a partial approval made the rest
+   unreachable: a comment can only approve an issue that is still open. */
+ok('an issue that still offers something stays open', (() => {
+  const steps = docs['approve.yml']?.jobs?.publish?.steps || [];
+  const say = steps.find(st => /issues\.update/.test(st.with?.script || ''));
+  const body = say?.with?.script || '';
+  return /remaining/.test(body) && /work\/plan\.json/.test(body);
+})(), 'approving one story must not withdraw the other six');
+
+ok('what is left to approve is decided by the planner', (() => {
+  const steps = docs['approve.yml']?.jobs?.publish?.steps || [];
+  // The workflow may read `remaining`; it may not work out what it is.
+  return steps.every(st => !/carousels|allPosts|kind === /.test(st.with?.script || ''));
+})());
+
 ok('publishing is driven by the plan the module wrote', (() => {
   const steps = docs['approve.yml']?.jobs?.publish?.steps || [];
   return steps.some(st => /dv\.mjs plan/.test(st.run || ''))

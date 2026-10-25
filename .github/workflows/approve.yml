@@ -158,24 +158,38 @@ jobs:
             --edition "${{ steps.pin.outputs.edition }}"
           automation/push-data.sh "Posted $(date -u +%Y-%m-%d)" data/ledger.json
 
-      - name: Say so on the issue and close it
+      # Closed only when there is nothing left to offer.
+      #
+      # A section used to be one post, so an approval was always the whole
+      # issue and closing it afterwards was right. With a post per story it
+      # was not: approving one story closed the issue, and because a comment
+      # can only approve an issue that is still open, the other six posts
+      # became unreachable. What is left is worked out by lib/plan.mjs — this
+      # step reads the answer.
+      - name: Say so on the issue
         if: always()
         uses: actions/github-script@v7
         with:
           script: |
             const ok = '${{ job.status }}' === 'success';
             const what = `${{ steps.plan.outputs.labels }}` || 'the post';
+            let left = { remaining: [], remainingNote: '' };
+            try { left = require(`${process.env.GITHUB_WORKSPACE}/work/plan.json`); } catch (e) {}
+            const more = ok && left.remainingNote ? `\n\n${left.remainingNote}` : '';
             await github.rest.issues.createComment({
               owner: context.repo.owner, repo: context.repo.repo,
               issue_number: context.issue.number,
               body: ok
-                ? `✅ Posted to Instagram: **${what}**.`
+                ? `✅ Posted to Instagram: **${what}**.${more}`
                 : `❌ Publishing failed — see [the run](${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}).`
-                  + ` Any section already posted before the failure stayed posted; the rest did not go out.`,
+                  + ` Anything already posted before the failure stayed posted; the rest did not go out.`,
             });
-            if (ok) {
+            if (ok && !(left.remaining || []).length) {
               await github.rest.issues.update({
                 owner: context.repo.owner, repo: context.repo.repo,
                 issue_number: context.issue.number, state: 'closed',
               });
+              core.notice('everything offered has been posted — issue closed');
+            } else if (ok) {
+              core.notice(`${left.remaining.length} post(s) still offered — issue left open`);
             }
