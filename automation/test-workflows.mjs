@@ -179,8 +179,12 @@ ok('no source photograph is written where it would be committed', (() => {
   const r = fs.readFileSync(join(ROOT, 'automation/render.mjs'), 'utf8');
   // The download destination and the path recorded on the story must both be
   // under work/, and neither may name data/pending.
-  return /downloadImage\(url, join\(WORK_PHOTOS/.test(r)
+  // Holding a candidate while a bigger one is looked for added a second
+  // write, so this checks every destination, not just the download's.
+  return /const dest = join\(WORK_PHOTOS/.test(r)
+    && /downloadImage\(url, dest\)/.test(r)
     && /path: `work\/photos\//.test(r)
+    && !/renameSync\([^)]*data\//.test(r)
     && !/photo-\$\{index\}[^\n]*data\/pending/.test(r);
 })());
 
@@ -458,13 +462,61 @@ ok('the app sends the edition, and a hand-written approval without one is refuse
    A source check, not a pixel one — it proves the branch exists and that a
    photo card still takes the original numbers. What it looks like was
    checked by rendering it at both ratios and looking. */
+/* The type scale used to be six numbers spread through the drawing code,
+   each changed on its own when a card looked wrong, and they had drifted into
+   five lines of 108px caps filling a 4:5 frame edge to edge. It is one table
+   now, so these read it out and check the claims rather than the spelling of
+   the code that used to hold them. */
+function headlineScale() {
+  const html = fs.readFileSync(join(ROOT, 'index.html'), 'utf8');
+  const m = html.match(/const HEADLINE = \{[\s\S]*?\n\};/);
+  if (!m) return null;
+  try { return new Function(`${m[0]} return HEADLINE;`)(); } catch { return null; }
+}
+const SCALE = headlineScale();
+
+ok('the type scale is in one table, not scattered through the drawing',
+  SCALE && SCALE.bare && SCALE.photo && SCALE.gutter,
+  'six numbers in six places is how it drifted into a wall of type');
+
 ok('a card with no photograph sets its headline larger and higher', (() => {
   const html = fs.readFileSync(join(ROOT, 'index.html'), 'utf8');
   const bare = /const bare\s*=\s*!S\.bgImage\s*&&\s*!S\.videoLoaded/.test(html);
   const lift = /const lift\s*=\s*bare/.test(html);
-  const size = /let hlSz=bare\?/.test(html) && /const MAXL=bare\?/.test(html);
-  return bare && lift && size;
+  if (!bare || !lift || !SCALE) return false;
+  // Larger and allowed more lines than the same card with a picture on it.
+  return ['4:5', '9:16'].every(r =>
+    SCALE.bare[r].size > SCALE.photo[r].size && SCALE.bare[r].max >= SCALE.photo[r].max);
 })());
+
+ok('a headline does not fill the frame edge to edge', (() => {
+  if (!SCALE) return false;
+  // 4 lines of 96px at 1.03 is 395px of a 1350px card — a third of it, which
+  // leaves the picture, the kicker and the attribution somewhere to be.
+  const h = SCALE.bare['4:5'];
+  return h.size * h.leading * h.max < 1350 * 0.45;
+})(), 'five lines of 108px read as shouting, not as a newsroom');
+
+ok('the leading is tight enough to read as one block', (() => SCALE
+  && [SCALE.bare['4:5'], SCALE.bare['9:16'], SCALE.photo['4:5'], SCALE.photo['9:16']]
+     .every(h => h.leading <= 1.06))(),
+  'loose leading turns a stack of large type into several separate lines');
+
+ok('a headline is never dropped, only shrunk then visibly cut', (() => {
+  const html = fs.readFileSync(join(ROOT, 'index.html'), 'utf8');
+  return /while\(hlLines\.length>MAXL&&hlSz>MINSZ\)/.test(html) && /\+'…'/.test(html);
+})());
+
+ok('the backdrop’s rule sits on the headline’s own gutter', (() => {
+  const html = fs.readFileSync(join(ROOT, 'index.html'), 'utf8');
+  return /const mx = HEADLINE\.gutter\[S\.ratio\]/.test(html);
+})(), 'two bars on a margin of their own read as a rendering fault');
+
+ok('case is applied when the card is drawn, not on the way in', (() => {
+  const html = fs.readFileSync(join(ROOT, 'index.html'), 'utf8');
+  return /set\('headline', v => S\.breaking\.headline = v\.slice\(0,160\)\);/.test(html)
+    && /d\.headline\.toUpperCase\(\)/.test(html);
+})(), '"NDTV" does not survive being uppercased and then lowercased again');
 ok('a card WITH a photograph keeps the numbers it had', (() => {
   const html = fs.readFileSync(join(ROOT, 'index.html'), 'utf8');
   // The photo branch of each ternary has to be the original value, or this

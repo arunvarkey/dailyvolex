@@ -14,6 +14,7 @@
 
 import { createServer } from 'node:http';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { readFileSync, renameSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, extname, normalize } from 'node:path';
 import { launchChrome, closeChrome, openPage } from './lib/cdp.mjs';
@@ -21,6 +22,7 @@ import { findImage, downloadImage } from './lib/imagery.mjs';
 import { imageFromArticle, isFurniture, biggerVariants,
          creditFor as articleCredit } from './lib/articleimage.mjs';
 import { composeStoryPost, backdropOf, toQuery } from './lib/compose.mjs';
+import { pixelSize, tooSmall } from './lib/pixels.mjs';
 import { load, save, dirFor, attachPost } from './lib/edition.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -232,6 +234,25 @@ async function imageFor(story, index, opts, dir = '') {
   const candidates = [found.image, ...(found.image.alternatives || [])];
   const failures = [];
 
+  /* A small picture is held, not used.
+   *
+   * A feed hands over a thumbnail and names the full-size rendition one URL
+   * along, so the first thing that downloads is often not the one to put on
+   * the card: a 320-pixel photograph stretched to 1080 is soft and blocky,
+   * and the channel was publishing them, because the only size test anywhere
+   * was a byte count and a small picture of a busy scene outweighs a large
+   * one of a clear sky. So a small one waits while the rest are tried, and is
+   * used only if nothing bigger turns up — a story with a small photograph
+   * still beats a story with none. */
+  const heldPath = join(WORK_PHOTOS, dir, `held-${name}`);
+  let held = null;
+  const hold = what => {
+    if (held && held.edge >= what.edge) return;
+    // Under its own name, so the next candidate's download cannot overwrite it.
+    renameSync(join(WORK_PHOTOS, dir, name), heldPath);
+    held = what;
+  };
+
   for (const cand of candidates) {
     // The 1600-pixel rendition first, the master only if it is missing. Both
     // the search and this download were written knowing a master buys nothing
@@ -239,26 +260,50 @@ async function imageFor(story, index, opts, dir = '') {
     // the channel downloaded an 18 MB JPEG to put 1080 pixels of it on a card.
     for (const url of [cand.smallerUrl, cand.url].filter(Boolean)) {
     try {
-      const { bytes } = await downloadImage(url, join(WORK_PHOTOS, dir, name));
+      const dest = join(WORK_PHOTOS, dir, name);
+      const { bytes } = await downloadImage(url, dest);
       // A masthead or a share icon declared as og:image comes back a few
       // kilobytes. A photograph does not, and a card wearing a newspaper's
       // logo looks like a mistake because it is one.
       if (bytes < 12_000) throw new Error(`only ${(bytes/1024).toFixed(0)} KB — furniture, not a photograph`);
-      usedPhotos.add(cand.url);
-      console.log(`  photo: "${found.query}" · match ${cand.relevance ?? '?'}`
-        + ` · ${cand.credit} · ${(bytes/1024).toFixed(0)} KB`
-        + (failures.length ? `  (after ${failures.length} dead link${failures.length>1?'s':''})` : ''));
-      return { path: `work/photos/${relDir}${name}`, credit: cand.credit,
+
+      const size = pixelSize(readFileSync(dest));
+      const got = { path: `work/photos/${relDir}${name}`, credit: cand.credit,
                license: cand.license ?? cand.licence ?? null, pageUrl: cand.pageUrl,
                query: found.query, relevance: cand.relevance, title: cand.title,
+               url: cand.url,
+               size: size ? `${size.width}×${size.height}` : null,
+               // Unknown counts as big enough: refusing a picture because its
+               // header was unfamiliar would quietly cost stories their photo.
+               edge: size ? Math.max(size.width, size.height) : Infinity,
                // Where it came from, so the approval issue can say so and the
                // record of what was published is honest about it.
                from: cand.licence === 'publisher' ? 'article' : 'library' };
+
+      const small = tooSmall(size);
+      if (small) { failures.push(small); hold(got); continue; }
+
+      usedPhotos.add(cand.url);
+      console.log(`  photo: "${found.query}" · match ${cand.relevance ?? '?'}`
+        + ` · ${cand.credit} · ${(bytes/1024).toFixed(0)} KB${got.size ? ` · ${got.size}` : ''}`
+        + (failures.length ? `  (after ${failures.length} rejected)` : ''));
+      return got;
     } catch (e) {
       failures.push(e.message);
     }
     }
     usedPhotos.add(cand.url);            // do not retry a dead link elsewhere
+  }
+
+  // Nothing was big enough. The best of the small ones still beats no picture,
+  // and the approval issue says it was small so the owner can judge.
+  if (held) {
+    renameSync(heldPath, join(WORK_PHOTOS, dir, name));
+    usedPhotos.add(held.url);
+    console.log(`  photo: "${found.query}" · ${held.credit} · ${held.size}`
+      + ' — the largest any outlet offered, and smaller than the card');
+    story.photoSmall = held.size;
+    return held;
   }
 
   story.photoError = `every candidate failed to download (${failures.join('; ')})`;

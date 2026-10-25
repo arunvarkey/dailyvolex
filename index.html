@@ -1046,7 +1046,10 @@ const S = {
     // it used to be a Bitcoin rally with a crypto price ticker — which told
     // them, before they typed anything, that this is a crypto channel. It is
     // a general news channel.
-    headline: 'EARTHQUAKE KILLS AT LEAST 40 IN NORTHERN AFGHANISTAN',
+    headline: 'Earthquake kills at least 40 in northern Afghanistan',
+    // Caps are the house style and are applied when the card is drawn, so the
+    // outlet's own capitalisation survives as far as the pixels.
+    textCase: 'upper',
     source:   'BBC News · Reuters',
     ticker:   'DAILYVOLEX  ···  TODAY\u2019S NEWS  ···  ',
     showTicker: true,
@@ -1526,13 +1529,19 @@ function drawEditorialBackdrop(theme, seedText) {
   }
   ctx.restore();
 
-  // Two brand rules high in the frame, on the headline's own left margin —
-  // the same device as the rule under the category label, enlarged. A long
-  // diagonal was tried here and read as a trend line, which is the one thing
-  // this backdrop exists to avoid.
+  /* A masthead rule high in the frame, on the headline's own left margin —
+   * the same device as the rule under the category label. A long diagonal was
+   * tried here and read as a trend line, which is the one thing this backdrop
+   * exists to avoid.
+   *
+   * It was two solid bars at 85% and 45%, 11 and 5 pixels deep, on a margin
+   * of its own. With nothing near them they read as a rendering fault or a
+   * redaction, not as a mark — the first thing anyone asked about the card.
+   * Quieter, thinner, and on the same gutter as everything below, they do
+   * what they were for: say the type starts here. */
   ctx.save();
-  const mx = W * 0.067;
-  for (const [w, h, y, a] of [[W * 0.2, 11, 0.135, 0.85], [W * 0.1, 5, 0.172, 0.45]]) {
+  const mx = HEADLINE.gutter[S.ratio] || HEADLINE.gutter['4:5'];
+  for (const [w, h, y, a] of [[W * 0.145, 5, 0.135, 0.5], [W * 0.062, 3, 0.168, 0.26]]) {
     ctx.fillStyle = `rgba(${theme.pr},${a * strength})`;
     ctx.fillRect(mx, H * y, w, h);
   }
@@ -1556,29 +1565,44 @@ function drawPhotoBackdrop(theme) {
 
   const ir = iw / ih, cr = W / H;
   let sx, sy, sw, sh;
+  /* Cropped above centre, not through it.
+   *
+   * A press photograph is composed for a landscape frame and the thing it is
+   * of — a face, a crowd, a building — sits above the middle, with ground or
+   * foreground below. Taking the exact centre of a 16:9 frame for a 4:5 card
+   * cut the heads off a protest picture and kept the road. 0.38 is the
+   * ordinary editorial crop: a little off the top, more off the bottom. */
   if (ir > cr) { sh = ih; sw = sh * cr; sx = (iw - sw) / 2; sy = 0; }
-  else         { sw = iw; sh = sw / cr; sx = 0; sy = (ih - sh) / 2; }
+  else         { sw = iw; sh = sw / cr; sx = 0; sy = (ih - sh) * 0.38; }
 
   ctx.imageSmoothingEnabled = true;
   ctx.imageSmoothingQuality = 'high';
-  // Graded down, not put out. At brightness 60% across the whole frame a
-  // Dussehra effigy scene came out as grey haze with the subject invisible,
-  // which is no better than having found no picture at all. The darkening the
-  // headline needs is done by the gradient below, where it is needed.
-  ctx.filter = 'grayscale(38%) contrast(128%) brightness(80%)';
+  /* Graded, not put out.
+   *
+   * This was grayscale(38%) contrast(128%) brightness(80%) and a heavy wash
+   * on top, and the two together took 41% of the light out of the picture
+   * before the headline's own scrim had been drawn. A photograph of smoke at
+   * dusk — which is most protest photography — came out as a grey smear that
+   * told the reader nothing, and a card like that is no better than one with
+   * no picture at all. Measured on a rendered card: the picture area keeps
+   * 88% of the source's luminance where it kept 59%, and twice the colour.
+   *
+   * The darkening the headline needs is done where the headline is, by the
+   * layout's own scrim, and nowhere else. */
+  ctx.filter = 'grayscale(14%) contrast(112%) brightness(98%)';
   ctx.drawImage(img, sx, sy, sw, sh, 0, 0, W, H);
   ctx.filter = 'none';
 
   // Brand wash, so a photograph from anywhere still looks like this channel.
-  // Light across the top half, where the picture is, and heavy from the point
-  // the headline block starts.
+  // A tint across the picture, not a curtain over it: enough to carry the
+  // channel's colour, light enough that the photograph is still a photograph.
   ctx.save();
   ctx.globalCompositeOperation = 'multiply';
   const wash = ctx.createLinearGradient(0, 0, 0, H);
-  wash.addColorStop(0,   `rgba(${theme.pr},.22)`);
-  wash.addColorStop(.42, 'rgba(14,14,18,.4)');
-  wash.addColorStop(.72, 'rgba(11,11,15,.88)');
-  wash.addColorStop(1,   'rgba(10,10,14,.97)');
+  wash.addColorStop(0,   `rgba(${theme.pr},.10)`);
+  wash.addColorStop(.42, 'rgba(14,14,18,.12)');
+  wash.addColorStop(.72, 'rgba(11,11,15,.55)');
+  wash.addColorStop(1,   'rgba(10,10,14,.9)');
   ctx.fillStyle = wash; ctx.fillRect(0, 0, W, H);
   ctx.restore();
   return true;
@@ -1687,10 +1711,15 @@ function drawBranding(theme) {
   const mark = (S.brand.handle || S.brand.name || '').trim();
   if (mark) {
     ctx.save();
-    ctx.fillStyle='rgba(255,255,255,.34)';
+    /* Quiet, but present. At 34% over the old heavily-darkened photograph it
+       read; over a photograph that is now allowed to keep its light it
+       vanished into a bright sky, so the channel's own name was missing from
+       its own card. Lifted, and given a shadow that holds it against
+       anything. */
+    ctx.fillStyle='rgba(255,255,255,.48)';
     ctx.font=`600 24px 'JetBrains Mono'`;
     ctx.textAlign='left'; ctx.textBaseline='middle';
-    ctx.shadowColor='rgba(0,0,0,.75)'; ctx.shadowBlur=10;
+    ctx.shadowColor='rgba(0,0,0,.9)'; ctx.shadowBlur=14;
     ctx.fillText(mark, pad, y);
     ctx.restore();
   }
@@ -1764,10 +1793,34 @@ function drawTicker(tickerText, theme) {
 /* ═══════════════════════════════════════════════
    LAYOUT: BREAKING NEWS — floating text, no panel
    ═══════════════════════════════════════════════ */
+/* The type scale, in one place.
+ *
+ * It used to be six numbers buried in the drawing code, each changed on its
+ * own when a card looked wrong, and they had drifted into a wall: five lines
+ * of 108px caps filled a 4:5 frame edge to edge, which reads as shouting
+ * rather than as a newsroom. A headline is the loudest thing on the card
+ * whatever size it is set at; what makes it look authoritative is the space
+ * around it and the leading inside it, not the point size.
+ *
+ * `gutter` is the margin, `max` the lines a headline may take, `size` where
+ * it starts before it is shrunk to fit, `floor` how small it may go, and
+ * `leading` the line height as a multiple of the size. Tight leading is what
+ * makes a stack of large type read as one block instead of several.
+ */
+const HEADLINE = {
+  gutter:  { '4:5': 80,  '9:16': 76 },
+  // With no photograph the headline IS the card and may take more of it.
+  bare:    { '4:5': { size: 96,  max: 4, floor: 56, leading: 1.03 },
+             '9:16': { size: 116, max: 5, floor: 66, leading: 1.03 } },
+  // Over a photograph it shares the frame, so it stays a caption to a picture.
+  photo:   { '4:5': { size: 80,  max: 4, floor: 44, leading: 1.05 },
+             '9:16': { size: 92,  max: 4, floor: 48, leading: 1.05 } },
+};
+
 function drawBreaking(theme) {
   const W=cv.width, H=cv.height, d=S.breaking;
   const tickerH=d.showTicker?56:0;
-  const pad=72;
+  const pad=HEADLINE.gutter[S.ratio] || HEADLINE.gutter['4:5'];
 
   // Deep scrim only at bottom half — video breathes above. Drawn BEFORE the
   // content shift: it is part of the frame, and moving it with the text left a
@@ -1803,11 +1856,13 @@ function drawBreaking(theme) {
   // Entrance progress (staggered broadcast-style reveal)
   const tCat=introT(0,450), tLine=introT(150,500), tHl=introT(300,650), tSrc=introT(650,500);
 
-  // Source — smallest, at very bottom, fades in last
+  // Source — smallest, at very bottom, fades in last. At 32% it was a grey
+  // line nobody could read, and it is the attribution: who reported this.
   ctx.save();
   ctx.globalAlpha=tSrc;
-  ctx.fillStyle='rgba(255,255,255,.32)'; ctx.font=`400 26px 'JetBrains Mono'`;
+  ctx.fillStyle='rgba(255,255,255,.46)'; ctx.font=`400 24px 'JetBrains Mono'`;
   ctx.textAlign='left'; ctx.textBaseline='bottom';
+  ctx.shadowColor='rgba(0,0,0,.8)'; ctx.shadowBlur=10;
   ctx.fillText(d.source, pad, baseY);
   ctx.restore();
 
@@ -1817,12 +1872,24 @@ function drawBreaking(theme) {
   // Shrink until the whole headline fits in at most MAXL lines. A news
   // graphic must never drop words: only if it still will not fit at the
   // smallest size is the last line ellipsised, so the cut is visible.
-  const MAXL=bare?5:3;
-  const MINSZ=bare?64:44;
-  let hlSz=bare?(S.ratio==='9:16'?132:108):88;
-  ctx.font=`800 ${hlSz}px 'Space Grotesk'`;
-  let hlLines=wrapLines(d.headline,hlW);
-  while(hlLines.length>MAXL&&hlSz>MINSZ){hlSz-=3;ctx.font=`800 ${hlSz}px 'Space Grotesk'`;hlLines=wrapLines(d.headline,hlW);}
+  const scale=(bare?HEADLINE.bare:HEADLINE.photo)[S.ratio]
+    || (bare?HEADLINE.bare:HEADLINE.photo)['4:5'];
+  const MAXL=scale.max;
+  const MINSZ=scale.floor;
+  // Caps are the house style; sentence case is there so the two can be
+  // compared on a real headline rather than argued about.
+  const weight=d.textCase==='sentence'?700:800;
+  /* Uppercased here rather than on the way in.
+   *
+   * It used to be uppercased by the setter, which threw the outlet's own
+   * capitalisation away before anything could use it — and "NDTV" cannot be
+   * recovered from "NDTV" once it has been through a lowercase pass. Case is
+   * presentation, so it is applied where the presenting happens. */
+  const text=d.textCase==='sentence'?d.headline:d.headline.toUpperCase();
+  let hlSz=scale.size;
+  ctx.font=`${weight} ${hlSz}px 'Space Grotesk'`;
+  let hlLines=wrapLines(text,hlW);
+  while(hlLines.length>MAXL&&hlSz>MINSZ){hlSz-=3;ctx.font=`${weight} ${hlSz}px 'Space Grotesk'`;hlLines=wrapLines(text,hlW);}
   let hlLines2=hlLines.slice(0,MAXL);
   if(hlLines.length>MAXL){
     let last=hlLines2[MAXL-1];
@@ -1834,7 +1901,7 @@ function drawBreaking(theme) {
   ctx.fillStyle='#ffffff';
   ctx.textAlign='left'; ctx.textBaseline='bottom';
   ctx.shadowColor='rgba(0,0,0,.95)'; ctx.shadowBlur=28; ctx.shadowOffsetY=3;
-  const lineH=hlSz*1.12;
+  const lineH=hlSz*scale.leading;
   const hlBlockH=hlLines2.length*lineH;
   const hlBaseY=baseY-36;
   hlLines2.reverse().forEach((l,i)=>{
@@ -3966,7 +4033,11 @@ function applyUrlStory() {
   }
 
   set('category', v => S.breaking.category = v.slice(0,40).toUpperCase());
-  set('headline', v => S.breaking.headline = v.slice(0,160).toUpperCase());
+  // Not uppercased here: case is presentation and is applied when the card is
+  // drawn. Doing it on the way in threw the outlet's own capitalisation away
+  // before anything could use it, and "NDTV" does not survive the round trip.
+  set('headline', v => S.breaking.headline = v.slice(0,160));
+  set('case', v => S.breaking.textCase = v === 'sentence' ? 'sentence' : 'upper');
   // The attribution belongs on whichever layout is used, not only on the
   // breaking card. A stat card was showing the sample data's sources.
   set('source',   v => { S.breaking.source = S.quote.source = v.slice(0,80); });
@@ -4300,7 +4371,7 @@ async function loadToday() {
       if (!st) return;
       S.layout = 'breaking';
       S.breaking.category = (st.category || 'BREAKING NEWS').toUpperCase();
-      S.breaking.headline = (st.display || st.headline || '').toUpperCase();
+      S.breaking.headline = st.display || st.headline || '';
       S.breaking.source   = st.source || 'DailyVolex';
       S.introStart = performance.now();
       setLayout('breaking');

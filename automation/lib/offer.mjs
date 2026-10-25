@@ -39,6 +39,11 @@ export function warningsFor(edition) {
       for (const c of (story.concentration || [])) out.push(`${tag}${c}`);
       if (story.truncated) out.push(`${who} was shortened to fit the card.`);
       if (story.photoError) out.push(`${tag}no photo — ${story.photoError}`);
+      // Used anyway, because a small photograph beats none — but said, because
+      // it will look soft on the card and the owner is the one approving it.
+      if (story.photoSmall)
+        out.push(`${tag}the only picture any outlet offered is ${story.photoSmall}`
+          + ' — smaller than the card, so it will look soft.');
     }
   }
   if (edition.feedErrors?.length) out.push(`Feeds that failed: ${edition.feedErrors.join('; ')}`);

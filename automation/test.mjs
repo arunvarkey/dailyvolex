@@ -20,6 +20,7 @@ import { plainText, firstSentence, sourceLine as spokenSources, scriptFor,
 import { videoUrlFrom, kindOf, videoFromArticle } from './lib/articlevideo.mjs';
 import { create, attachPost, validate, posts, postById, idFor, dirFor,
          prune, save, load } from './lib/edition.mjs';
+import { pixelSize, tooSmall } from './lib/pixels.mjs';
 import { composeStory, composeSection, composeStoryPost,
          backdropOf, toQuery } from './lib/compose.mjs';
 import { plan } from './lib/plan.mjs';
@@ -1400,6 +1401,72 @@ ok('the search honours the exclusion list', second.image?.url === 'https://x/b.j
 const stubDown = async () => { throw new Error('network is down'); };
 const downed = await findImage('x', { fetchImpl: stubDown });
 ok('a failed search is not fatal', downed.image === null && /network/.test(downed.error), downed.error);
+
+/* ── How big the picture really is ────────────────────────────────
+   The only size test anywhere was a byte count, which catches a masthead and
+   misses a thumbnail: a small picture of a busy scene outweighs a large one
+   of a clear sky. So 320-pixel photographs were being stretched to fill a
+   1080-pixel card, which is soft, blocky and obvious.
+
+   Headers built by hand rather than read from files: these ARE the bytes the
+   reader looks at, and a test that needs ffmpeg to make its fixtures is a
+   test that does not run. Checked against real ffmpeg output for JPEG
+   (baseline and progressive), PNG, lossy and lossless WebP and GIF. */
+{
+  const jpeg = (w, h) => {
+    const b = Buffer.alloc(22);
+    b.writeUInt16BE(0xFFD8, 0);
+    b.writeUInt16BE(0xFFE0, 2); b.writeUInt16BE(6, 4);   // APP0, skipped by length
+    b.writeUInt16BE(0xFFC0, 10); b.writeUInt16BE(11, 12);
+    b[14] = 8; b.writeUInt16BE(h, 15); b.writeUInt16BE(w, 17);
+    return b;
+  };
+  const png = (w, h) => {
+    const b = Buffer.alloc(24);
+    b.writeUInt32BE(0x89504E47, 0); b.writeUInt32BE(0x0D0A1A0A, 4);
+    b.write('IHDR', 12, 'ascii'); b.writeUInt32BE(w, 16); b.writeUInt32BE(h, 20);
+    return b;
+  };
+  const webp = (w, h) => {
+    const b = Buffer.alloc(30);
+    b.write('RIFF', 0, 'ascii'); b.write('WEBP', 8, 'ascii'); b.write('VP8 ', 12, 'ascii');
+    b[23] = 0x9D; b[24] = 0x01; b[25] = 0x2A;
+    b.writeUInt16LE(w, 26); b.writeUInt16LE(h, 28);
+    return b;
+  };
+  const gif = (w, h) => {
+    const b = Buffer.alloc(10);
+    b.write('GIF89a', 0, 'ascii'); b.writeUInt16LE(w, 6); b.writeUInt16LE(h, 8);
+    return b;
+  };
+
+  const is = (bytes, w, h) => {
+    const s = pixelSize(bytes);
+    return s && s.width === w && s.height === h;
+  };
+  ok('a JPEG states its size in its frame header', is(jpeg(1600, 900), 1600, 900));
+  ok('a JPEG’s size is found past the headers in front of it',
+     is(jpeg(1024, 768), 1024, 768),
+     'stepping a fixed number of bytes in reads the EXIF block as a frame');
+  ok('a PNG states its size in IHDR', is(png(1200, 1200), 1200, 1200));
+  ok('a WebP states its size after the start code', is(webp(640, 360), 640, 360));
+  ok('a GIF states its size in the screen descriptor', is(gif(900, 600), 900, 600));
+
+  ok('bytes that are not a picture say so, rather than guessing',
+     pixelSize(Buffer.from('<html>404 not found</html>')) === null);
+  ok('no bytes at all say so too', pixelSize(Buffer.alloc(0)) === null);
+
+  ok('a thumbnail is too small for a 1080-pixel card',
+     /320×180/.test(tooSmall(pixelSize(jpeg(320, 180))) || ''));
+  ok('a picture bigger than the card is not',
+     tooSmall(pixelSize(jpeg(1600, 900))) === null);
+  ok('the long edge is what counts, not the short one',
+     tooSmall(pixelSize(jpeg(900, 400))) === null,
+     'a wide crop is still a big photograph');
+  ok('a size nobody could read is not treated as small',
+     tooSmall(null) === null,
+     'refusing a picture because its header was unfamiliar costs the story its photo');
+}
 
 /* ── Caption ──────────────────────────────────────────────────── */
 
