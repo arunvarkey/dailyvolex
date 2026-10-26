@@ -517,6 +517,21 @@ ok('case is applied when the card is drawn, not on the way in', (() => {
   return /set\('headline', v => S\.breaking\.headline = v\.slice\(0,160\)\);/.test(html)
     && /d\.headline\.toUpperCase\(\)/.test(html);
 })(), '"NDTV" does not survive being uppercased and then lowercased again');
+
+ok('a headline is set in sentence case, as a newspaper sets one', (() => {
+  const html = fs.readFileSync(join(ROOT, 'index.html'), 'utf8');
+  // The default, and the switch back, both have to be there: caps at the size
+  // a headline is set reads as shouting, but the old way must stay renderable.
+  return /textCase: 'sentence'/.test(html)
+    && /v === 'upper' \? 'upper' : 'sentence'/.test(html);
+})());
+
+ok('the outlet’s own capitalisation reaches the card', (() => {
+  const html = fs.readFileSync(join(ROOT, 'index.html'), 'utf8');
+  // Nothing may uppercase or lowercase a headline on its way through the app.
+  return !/breaking\.headline = [^\n]*\.toUpperCase\(\)/.test(html)
+    && !/breaking\.headline = [^\n]*\.toLowerCase\(\)/.test(html);
+})(), 'sentence case is only honest if "BJP" and "NDTV" survive it');
 ok('a card WITH a photograph keeps the numbers it had', (() => {
   const html = fs.readFileSync(join(ROOT, 'index.html'), 'utf8');
   // The photo branch of each ternary has to be the original value, or this

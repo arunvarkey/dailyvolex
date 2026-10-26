@@ -1047,9 +1047,14 @@ const S = {
     // them, before they typed anything, that this is a crypto channel. It is
     // a general news channel.
     headline: 'Earthquake kills at least 40 in northern Afghanistan',
-    // Caps are the house style and are applied when the card is drawn, so the
-    // outlet's own capitalisation survives as far as the pixels.
-    textCase: 'upper',
+    /* Sentence case, as a newspaper sets a headline.
+     *
+     * It was caps, which at the size a headline is set reads as shouting
+     * rather than as reporting — and caps are measurably slower to read,
+     * because the word shapes all become the same rectangle. `case=upper`
+     * still renders the old way; the two were rendered side by side on a
+     * real headline and this is the one that was chosen. */
+    textCase: 'sentence',
     source:   'BBC News · Reuters',
     ticker:   'DAILYVOLEX  ···  TODAY\u2019S NEWS  ···  ',
     showTicker: true,
@@ -4037,7 +4042,7 @@ function applyUrlStory() {
   // drawn. Doing it on the way in threw the outlet's own capitalisation away
   // before anything could use it, and "NDTV" does not survive the round trip.
   set('headline', v => S.breaking.headline = v.slice(0,160));
-  set('case', v => S.breaking.textCase = v === 'sentence' ? 'sentence' : 'upper');
+  set('case', v => S.breaking.textCase = v === 'upper' ? 'upper' : 'sentence');
   // The attribution belongs on whichever layout is used, not only on the
   // breaking card. A stat card was showing the sample data's sources.
   set('source',   v => { S.breaking.source = S.quote.source = v.slice(0,80); });

@@ -134,6 +134,28 @@ const JUNK = [
   // 3rd T20I" was published as news; it is a line in a schedule.
   /\bvs\.?\b[^.]*\b(\d+(st|nd|rd|th)\s+)?(t20i?|odi|test|match|leg|round|final|semi|quarter)\b/i,
   /\b(live\s+(score|blog|updates)|scorecard|playing\s+xi|match\s+(preview|report)|day\s+[1-5]\b)/i,
+  /* A live blog is not a story.
+   *
+   * "Brazil election results 2026 live: Lula-Bolsonaro voting extended by 2
+   * hours" went out on a card. It is a page that is still being written: what
+   * it says now is not what it will say in an hour, and this channel pins a
+   * card to a commit and posts it later. The headline above it is a running
+   * state, not something that happened.
+   *
+   * The rule above wanted the words "live blog" or "live updates" together.
+   * An outlet more often writes "live" on its own, as a label in front of a
+   * separator, which is why that one missed it.
+   *
+   * Narrow, because "live" is an ordinary word. It counts only as a label —
+   * immediately before a colon, pipe or spaced dash, or bracketed — or in
+   * front of the words a live page actually uses. "Residents live in fear
+   * after the blast" and "Live music returns to the city" keep their place. */
+  /\blive\s*[:|]/i,
+  /\blive\s+[-–—]\s/i,
+  /\blive\s+(updates?|blog|coverage|tracker|reporting|stream)\b/i,
+  /[[(]\s*live\s*[\])]/i,
+  /\bas it happened\b/i,
+  /\blatest updates\b/i,
   /\b(full\s+squad|probable\s+xi|head\s+to\s+head|points\s+table|fixtures?)\b/i,
   // A machine printing prices is not reporting. "Bitcoin End Price (Previous
   // Epoch): $64,990 Current Price (C…" went out in a BUSINESS section.

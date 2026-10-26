@@ -442,6 +442,32 @@ ok('one subject cannot fill a whole section', (() => {
 ok('a podcast running order is not a story',
   isJunk('PODCAST: Ukraine intelligence sharing, France reels and Alberta’s vote')
   && isJunk('WATCH: Protesters gather outside parliament'));
+
+/* A live blog is a page that is still being written. What it says now is not
+   what it will say in an hour, and this channel pins a card to a commit and
+   posts it later — so the headline above one is a running state, not
+   something that happened. This went out on a card:
+     "Brazil election results 2026 live: Lula-Bolsonaro voting extended by 2
+      hours"
+   The rule that existed wanted the words "live blog" or "live updates"
+   together; an outlet more often writes "live" on its own, as a label. */
+ok('a live blog is not a story', [
+  'Brazil election results 2026 live: Lula-Bolsonaro voting extended by 2 hours',
+  'Budget 2026 LIVE Updates: Finance minister presents the bill',
+  'Election results live | Counting under way in 12 states',
+  'Cyclone Ditwah (LIVE): Landfall expected by evening',
+  'Ukraine peace talks live – Zelensky arrives in Geneva',
+  'Trump impeachment vote - as it happened',
+  'Ukraine war latest updates',
+].every(isJunk));
+
+/* "live" is an ordinary word and the rule has to stay out of its way. */
+ok('a headline that merely contains the word "live" is left alone', [
+  'Residents live in fear after the blast',
+  'Live music returns to the city after two years',
+  'Half of all Indians live within 50km of a coast',
+  'Serbia’s Vučić concedes election defeat to student movement',
+].every(t => !isJunk(t)), 'a blocklist that eats real news is worse than none');
 ok('a product launch notice is a press release, not news',
   isPressRelease('Introducing Bulbul V4 Flash text-to-speech for India')
   && isPressRelease('Siemens partners with NVIDIA to advance AI-driven factories')
