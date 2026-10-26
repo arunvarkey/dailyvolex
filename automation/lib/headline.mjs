@@ -164,10 +164,21 @@ export function makeHeadline(raw, { max = MAX } = {}) {
   const truncated = out !== tidied;
 
   return {
-    headline: out.toUpperCase(),     // Breaking layout sets headlines in caps
-    // As the outlet wrote it, for lists. Re-casing destroys proper nouns —
-    // "Federal Reserve" became "Federal reserve", "SEC" became "Sec" — and
-    // guessing at capitalisation is one more way to misrepresent a source.
+    /* As the outlet wrote it. Re-casing destroys proper nouns — "Federal
+     * Reserve" became "Federal reserve", "SEC" became "Sec" — and guessing at
+     * capitalisation is one more way to misrepresent a source.
+     *
+     * This used to be uppercased here, because the Breaking layout set
+     * headlines in caps. Case is a decision the card makes when it draws, and
+     * carrying a pre-shouted copy through the whole pipeline meant that when
+     * the card was switched to sentence case it kept rendering caps — it was
+     * handed caps and had nothing left to go back to. Nothing downstream
+     * needs it: the only thing that ever wanted caps is the one thing that
+     * can still apply them. */
+    headline: out,
+    // The same string. Kept because the edition schema, the ledger and the
+    // approval issue all name it, and a field that quietly changes meaning is
+    // worse than one that is briefly redundant.
     display: out,
     original: raw,
     truncated,

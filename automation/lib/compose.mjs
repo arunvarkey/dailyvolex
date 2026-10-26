@@ -63,7 +63,8 @@ export function composeStory(story, opts = {}) {
     theme: opts.theme,
     ratio: opts.ratio,
     category: story.category,
-    headline: story.headline,
+    // The outlet's own capitalisation. The card decides whether to shout it.
+    headline: story.display || story.headline,
     source: story.source,
     ticker: opts.ticker,
     bg: story.backdrop || opts.bg,

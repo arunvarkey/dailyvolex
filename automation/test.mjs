@@ -297,8 +297,18 @@ ok('a headline never ends on a dangling word', (() => {
 const cased = makeHeadline('SEC approves spot Solana ETF applications');
 ok('display keeps the outlet\'s capitalisation',
   cased.display === 'SEC approves spot Solana ETF applications', cased.display);
-ok('headline is upper case for the Breaking layout',
-  cased.headline === cased.headline.toUpperCase());
+/* It used to be uppercased here, for the Breaking layout. Carrying a
+   pre-shouted copy through the pipeline meant that when the card was switched
+   to sentence case it went on rendering caps: it was handed caps and had
+   nothing to go back to. Case is applied where the drawing happens. */
+ok('nothing is shouted before the card decides to shout it',
+  cased.headline === 'SEC approves spot Solana ETF applications', cased.headline);
+ok('the card is handed the outlet’s own capitalisation', (() => {
+  const story = { headline: 'SEC approves spot Solana ETF applications',
+                  display: 'SEC approves spot Solana ETF applications', source: 'Reuters' };
+  return composeStory(story, {}).params.headline
+    === 'SEC approves spot Solana ETF applications';
+})(), 'a card given caps cannot render anything else');
 
 ok('a headline only ever loses words, never gains them', (() => {
   const src = 'Fed cuts rates by 25 basis points';
