@@ -1,0 +1,883 @@
+{
+  "id": "2026-10-26",
+  "kind": "daily",
+  "builtAt": "2026-10-26T01:26:57.926Z",
+  "pool": 580,
+  "feedErrors": [
+    "indian-express: HTTP 403"
+  ],
+  "refusals": {
+    "read": 580,
+    "published": 8,
+    "refused": 278,
+    "consideredNotChosen": 294,
+    "byRule": {
+      "older than the window": {
+        "count": 125,
+        "samples": [
+          {
+            "title": "Vanessa Trump says she is cancer-free six months after revealing diagnosis",
+            "source": "BBC News"
+          },
+          {
+            "title": "Man arrested after fire at Hitler's mountaintop Eagle's Nest retreat",
+            "source": "BBC News"
+          },
+          {
+            "title": "Woman, 65, becomes second patient to die of Ebola in Kenya",
+            "source": "BBC News"
+          },
+          {
+            "title": "Australian MP's condition improves after alleged car attack",
+            "source": "BBC News"
+          },
+          {
+            "title": "From Russian cages to Irish sanctuary: The five-year rescue journey of Bu and Tyapa",
+            "source": "BBC News"
+          },
+          {
+            "title": "Three released without charge after fatal arson attack in Ireland",
+            "source": "BBC News"
+          },
+          {
+            "title": "Father who killed Oregon school gunman describes anguish over children he couldn't save",
+            "source": "BBC News"
+          },
+          {
+            "title": "Student movement takes Serbia's Vučić to the wire in neck-and-neck election",
+            "source": "BBC News"
+          }
+        ]
+      },
+      "says nothing happened": {
+        "count": 118,
+        "samples": [
+          {
+            "title": "Why Israel's election is one of the most important in its history",
+            "source": "BBC News"
+          },
+          {
+            "title": "Why is Ukraine so reliant on Starlink and can Europe plug the gap?",
+            "source": "BBC News"
+          },
+          {
+            "title": "Ballon d’Or 2026: Can Barcelona phenom Lamine Yamal become youngest winner?",
+            "source": "Al Jazeera"
+          },
+          {
+            "title": "The narrative battle over France’s unrest",
+            "source": "Al Jazeera"
+          },
+          {
+            "title": "When is the 2026 Ballon d’Or, who are the favourites, and how can you watch it?",
+            "source": "Al Jazeera"
+          },
+          {
+            "title": "Serbian leader Aleksandar Vučić ousted by student movement in seismic election",
+            "source": "The Guardian"
+          },
+          {
+            "title": "Israeli soldiers raze neighbourhood in Hebron, driving families from homes",
+            "source": "The Guardian"
+          },
+          {
+            "title": "Two dead and 160,000 properties without power as Storm Boelo batters UK",
+            "source": "The Guardian"
+          }
+        ]
+      },
+      "too thin to be a headline": {
+        "count": 14,
+        "samples": [
+          {
+            "title": "Trump VS California",
+            "source": "Al Jazeera"
+          },
+          {
+            "title": "Bulgaria Election",
+            "source": "Post Register"
+          },
+          {
+            "title": "Brazil Election",
+            "source": "Post Register"
+          },
+          {
+            "title": "Brazil Election",
+            "source": "Post Register"
+          },
+          {
+            "title": "Brazil Election",
+            "source": "Post Register"
+          },
+          {
+            "title": "Venezuela Machado",
+            "source": "Post Register"
+          },
+          {
+            "title": "Brazil Election",
+            "source": "Post Register"
+          },
+          {
+            "title": "Serbia Election",
+            "source": "Post Register"
+          }
+        ]
+      },
+      "not news": {
+        "count": 13,
+        "samples": [
+          {
+            "title": "Iran war live: Trump rules out strikes ‘today’; Israeli forces raid Hebron",
+            "source": "Al Jazeera"
+          },
+          {
+            "title": "Brazil election results 2026 live: Lula beats Bolsonaro in tight race",
+            "source": "Al Jazeera"
+          },
+          {
+            "title": "Brazil runoff live updates: Lula prepares to speak after historic victory over Flávio Bolsonaro",
+            "source": "The Guardian"
+          },
+          {
+            "title": "Australia politics live: Steggall calls Helen Haines ‘matriarch of crossbench’ as parliament hears emotional tributes to MP",
+            "source": "The Guardian"
+          },
+          {
+            "title": "‘Door to EU is open’ new Serbian government told after Vučić concedes election – Europe live as it happened",
+            "source": "The Guardian"
+          },
+          {
+            "title": "News in Pics | October 26, 2026: Best photos from around the world",
+            "source": "Deccan Herald"
+          },
+          {
+            "title": "Monsoon tracker LIVE: Depression over Bay of Bengal set to become ‘very severe cyclonic storm’, cross A.P. coast by October 28",
+            "source": "The Hindu"
+          },
+          {
+            "title": "Gemini Horoscope Today: October 26, 2026",
+            "source": "Vogue India"
+          }
+        ]
+      },
+      "finance feed, not a finance story": {
+        "count": 6,
+        "samples": [
+          {
+            "title": "Dr Reddy's bets on generic semaglutide, biosimilars",
+            "source": "Economic Times"
+          },
+          {
+            "title": "Insurance commission: NBFCs seek 5-year transition period to reduce selling fee",
+            "source": "Economic Times"
+          },
+          {
+            "title": "Insurance commission: IRDAI extends time for feedback to October 31",
+            "source": "Economic Times"
+          },
+          {
+            "title": "AI narrative needs to change for India: K Balasubramanian, CEO, Citibank India",
+            "source": "Economic Times"
+          },
+          {
+            "title": "Swiggy may rebound to Rs 190, but charts do not signal a trend reversal: LKP’s Vatsal Bhuva",
+            "source": "Economic Times"
+          },
+          {
+            "title": "Sebi to revamp short-selling, securities lending rules",
+            "source": "Economic Times"
+          }
+        ]
+      },
+      "marketing, not reporting": {
+        "count": 2,
+        "samples": [
+          {
+            "title": "Meet the South Asian leaders transforming finance and business",
+            "source": "Financial News London"
+          },
+          {
+            "title": "Introducing Lab Rats: A Mint series on India’s biotech startups",
+            "source": "Livemint"
+          }
+        ]
+      }
+    }
+  },
+  "sections": [
+    {
+      "id": "top",
+      "label": "TOP STORIES",
+      "stories": [
+        {
+          "headline": "AFGHANISTAN HIT BY 5.5 MAGNITUDE EARTHQUAKE",
+          "display": "Afghanistan hit by 5.5 magnitude earthquake",
+          "original": "Afghanistan hit by 5.5 magnitude earthquake",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "Times of India · India Today",
+          "sourceNames": [
+            "Times of India",
+            "India Today"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Bennett, Coleman & Co",
+            "Living Media"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate",
+            "commercial"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://timesofindia.indiatimes.com/world/south-asia/magnitude-5-5-earthquake-strikes-afghanistan/articleshow/135196524.cms",
+          "summary": null,
+          "feedImage": "https://static.toiimg.com/photo/msid-135196578,imgsize-116518.cms",
+          "sources": [
+            {
+              "link": "https://timesofindia.indiatimes.com/world/south-asia/magnitude-5-5-earthquake-strikes-afghanistan/articleshow/135196524.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135196578,imgsize-116518.cms"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOd2laak1SMnpNang1dWthS0MzdGMwRGd2eVZrM0Z5aERQajI2WS1nTWhiMGNhSnVURE5vN1Q0VDJNNmY5VWdTM1RCeGllSW9EdUxLcm16eEF2NXZWVC1NazhIeEJJUXpOZ2JfVXBMa3paaElqd25VRUVhQ2o4ZEpNNlNCYmtlY0RiZkRoR0JveW5UWmE5WGxyNXdva3YyYnJ2UUNhUE10TUEycHRUV3ZlNEJDUENzdnfSAbwBQVVfeXFMTWhLNXhkcjBaSmlucE93cmc3OUg2b3ZFcllrYkFZcl82aUJsY2NHbi01S0IyM05KN1pNbDZ2SlFGZFpjYWpNeG91RnZZamh1Smt",
+              "source": "India Today",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-25T18:22:03.000Z",
+          "topic": "india",
+          "section": "world",
+          "tier": "lead",
+          "score": 14.2,
+          "photo": {
+            "path": "work/photos/top/photo-top-2.jpg",
+            "credit": "Photo: Times of India",
+            "license": "publisher",
+            "pageUrl": "https://timesofindia.indiatimes.com/world/south-asia/magnitude-5-5-earthquake-strikes-afghanistan/articleshow/135196524.cms",
+            "query": "(the feed)",
+            "url": "https://static.toiimg.com/photo/msid-135196578,imgsize-116518.cms",
+            "size": "1280×720",
+            "edge": 1280,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Afghanistan hit by 5.5 magnitude earthquake”. Reported by Times of India · India Today — 2 independent newsrooms. Behind the text is a library photograph, Photo: Times of India. It is not a photograph of this event."
+        },
+        {
+          "headline": "VENEZUELAN OPPOSITION LEADER MARÍA MACHADO RETURNS AFTER MONTHS IN EXILE",
+          "display": "Venezuelan opposition leader María Machado returns after months in exile",
+          "original": "Venezuelan opposition leader María Machado returns after months in exile",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "BBC News · Al Jazeera · The Guardian",
+          "sourceNames": [
+            "BBC News",
+            "Al Jazeera",
+            "The Guardian",
+            "Times of India"
+          ],
+          "corroboration": 4,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Government of Qatar",
+            "Scott Trust",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 4,
+          "countries": [
+            "GB",
+            "QA",
+            "IN"
+          ],
+          "fundings": [
+            "state",
+            "trust",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.bbc.co.uk/news/articles/cq8ez592pp0eo?at_medium=RSS&at_campaign=rss",
+          "summary": "Machado had left the country just a month before the US government seized Venezuelan President Nicolás Maduro.",
+          "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/116f/live/8cce05e0-d096-11f1-b441-2b33b063138f.jpg",
+          "sources": [
+            {
+              "link": "https://www.bbc.co.uk/news/articles/cq8ez592pp0eo?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/116f/live/8cce05e0-d096-11f1-b441-2b33b063138f.jpg"
+            },
+            {
+              "link": "https://www.aljazeera.com/video/newsfeed/2026/10/25/venezuelas-opposition-leader-machado-returns-after-months-in-exile?traffic_source=rss",
+              "source": "Al Jazeera",
+              "feedImage": null
+            },
+            {
+              "link": "https://www.aljazeera.com/news/2026/10/25/venezuelas-opposition-leader-maria-corina-machado-returns-from-exile?traffic_source=rss",
+              "source": "Al Jazeera",
+              "feedImage": null
+            },
+            {
+              "link": "https://www.theguardian.com/world/2026/oct/25/exiled-venezuelan-opposition-leader-maria-corina-machado-announces-her-return",
+              "source": "The Guardian",
+              "feedImage": "https://i.guim.co.uk/img/media/5c5ab30ea955929fb72173cbb1ba8b4c7d6ac7b4/90_0_900_720/master/900.jpg?width=140&quality=85&auto=format&fit=max&s=2d90dd031edfa4cf233133243b5f187e"
+            }
+          ],
+          "published": "2026-10-25T23:33:14.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 11.85,
+          "photo": {
+            "path": "work/photos/top/photo-top-3.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/cq8ez592pp0eo?at_medium=RSS&at_campaign=rss",
+            "query": "(the feed)",
+            "url": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/116f/live/8cce05e0-d096-11f1-b441-2b33b063138f.jpg",
+            "size": "1024×576",
+            "edge": 1024,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Venezuelan opposition leader María Machado returns after months in exile”. Reported by BBC News · Al Jazeera · The Guardian — 4 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        },
+        {
+          "headline": "ELATION ACROSS SERBIA AFTER VETERAN RULER VUČIĆ CONCEDES TO STUDENT-LED PROTEST MOVEMENT",
+          "display": "Elation across Serbia after veteran ruler Vučić concedes to student-led protest movement",
+          "original": "Elation across Serbia after veteran ruler Vučić concedes to student-led protest movement",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "BBC News · Al Jazeera · Times of India",
+          "sourceNames": [
+            "BBC News",
+            "Al Jazeera",
+            "Times of India"
+          ],
+          "corroboration": 3,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Government of Qatar",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 3,
+          "countries": [
+            "GB",
+            "QA",
+            "IN"
+          ],
+          "fundings": [
+            "state",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.bbc.co.uk/news/articles/cw5yn3xlprpmo?at_medium=RSS&at_campaign=rss",
+          "summary": "The populist right-wing leader of 12 years says it is \"clear\" his party has lost the vote billed as a referendum on the country's future.",
+          "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/e676/live/8534e970-d0c8-11f1-b441-2b33b063138f.jpg",
+          "sources": [
+            {
+              "link": "https://www.bbc.co.uk/news/articles/cw5yn3xlprpmo?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/e676/live/8534e970-d0c8-11f1-b441-2b33b063138f.jpg"
+            },
+            {
+              "link": "https://www.aljazeera.com/news/2026/10/25/serbia-voter-turnout-highest-in-decades-as-students-oppose-longtime-leader?traffic_source=rss",
+              "source": "Al Jazeera",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9RUTY3aGtlQW5HbEd2OE92dEJnQmk3OXFORlVoNGJWS2lzT1NpRzJLbHhWUmFsRDdOYWtlRTMtLVp3bF9hQnExWjNhYnlXNjZUR3piZXFCeDMyVkE?oc=5",
+              "source": "BBC",
+              "feedImage": null
+            },
+            {
+              "link": "https://timesofindia.indiatimes.com/world/europe/serbias-vucic-concedes-defeat-as-student-led-movement-wins-parliamentary-election/articleshow/135199388.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135199427,imgsize-94148.cms"
+            }
+          ],
+          "published": "2026-10-26T01:07:05.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 10.35,
+          "photo": {
+            "path": "work/photos/top/photo-top-4.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/cw5yn3xlprpmo?at_medium=RSS&at_campaign=rss",
+            "query": "(the feed)",
+            "url": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/e676/live/8534e970-d0c8-11f1-b441-2b33b063138f.jpg",
+            "size": "1024×576",
+            "edge": 1024,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Elation across Serbia after veteran ruler Vučić concedes to student-led protest movement”. Reported by BBC News · Al Jazeera · Times of India — 3 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "top-1",
+          "story": "Afghanistan hit by 5.5 magnitude earthquake",
+          "files": [
+            "data/editions/2026-10-26/top/1/slide-1.jpg",
+            "data/editions/2026-10-26/top/1/slide-2.jpg",
+            "data/editions/2026-10-26/top/1/slide-3.jpg"
+          ],
+          "cover": "data/editions/2026-10-26/top/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-26/top/1/alt.json",
+          "caption": "data/editions/2026-10-26/caption-top-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "top-2",
+          "story": "Venezuelan opposition leader María Machado returns after months in exile",
+          "files": [
+            "data/editions/2026-10-26/top/2/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-26/top/2/slide-1.jpg",
+          "alts": "data/editions/2026-10-26/top/2/alt.json",
+          "caption": "data/editions/2026-10-26/caption-top-2.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "top-3",
+          "story": "Elation across Serbia after veteran ruler Vučić concedes to student-led protest movement",
+          "files": [
+            "data/editions/2026-10-26/top/3/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-26/top/3/slide-1.jpg",
+          "alts": "data/editions/2026-10-26/top/3/alt.json",
+          "caption": "data/editions/2026-10-26/caption-top-3.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    },
+    {
+      "id": "india",
+      "label": "INDIA",
+      "stories": [
+        {
+          "headline": "HARMANPREET, DEEPTI ON FIRE AS INDIA SEALS EMPHATIC SERIES WIN",
+          "display": "Harmanpreet, Deepti on fire as India seals emphatic series win",
+          "original": "Harmanpreet, Deepti on fire as India seals emphatic series win",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "Cricinfo · The Hindu",
+          "sourceNames": [
+            "Cricinfo",
+            "The Hindu"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "The Hindu Group (family-held)"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOMnBwY2JaeS0yNWxPYUFCZHV2MzBXVVRURjdZNTV1MDZiUlBpT0dzVjV1dHhuZVp2Ym1sbjc5bnVaQ0J1azdYQ2Vhc1M1YmVjRThPYVN3SVB6RHItdDU3SEhMaWFPVFg5NkdqOThidXdVU1BCY0JIVlpfNDNVOUJNckFDcXpVN2xleGNSaS1HWWpFeE80b3B1ZnhEazlFTkFmYzhrTjJuOXFzYTVzWUxhc1lDQ016SmtIZE15YtIBwwFBVV95cUxPRVpNNU4tNHNhQVVNb2pwT3JrcS1tZEY4a3l6NldZNFZlU3ZGanl1X2ZjcldHbWR2QUFQOVhwc29Nb0JoV0ZJRjZJOEZ",
+          "summary": "Harmanpreet, Deepti on fire as India seals emphatic series win &nbsp;&nbsp; The Hindu",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQbEd2MjZoQ1g1R2VnLXo1TG9VeGRzZ0ZKYzZCMWNRRFIxd1UyY3kyckxGeTZEZ1g5RWdiQXFpRUZNMHg5SktWN1IyLWRXTkltUkkxLU03REc2QjZXR3o5dDVuTEl5V3l2aVNQY0habVJzeF80aVhqa2Q1NndfNHA2anJsaU1KUTdtV09QUmdpLTY3YlZacWJpNVNKWVdtdWJDQy1EemNvVUJBRDQwWHB1a3djb0NMRndfcVZXRGhDVFZpdXRlTGFlLW5n?oc=5",
+              "source": "Cricinfo",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOMnBwY2JaeS0yNWxPYUFCZHV2MzBXVVRURjdZNTV1MDZiUlBpT0dzVjV1dHhuZVp2Ym1sbjc5bnVaQ0J1azdYQ2Vhc1M1YmVjRThPYVN3SVB6RHItdDU3SEhMaWFPVFg5NkdqOThidXdVU1BCY0JIVlpfNDNVOUJNckFDcXpVN2xleGNSaS1HWWpFeE80b3B1ZnhEazlFTkFmYzhrTjJuOXFzYTVzWUxhc1lDQ016SmtIZE15YtIBwwFBVV95cUxPRVpNNU4tNHNhQVVNb2pwT3JrcS1tZEY4a3l6NldZNFZlU3ZGanl1X2ZjcldHbWR2QUFQOVhwc29Nb0JoV0ZJRjZJOEZ",
+              "source": "The Hindu",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-25T18:11:41.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 7.05,
+          "articlePhotoError": "The Hindu: HTTP 400",
+          "photoError": "no unused image left (searched \"Harmanpreet\")",
+          "photo": null,
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": "editorial",
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Harmanpreet, Deepti on fire as India seals emphatic series win”. Reported by Cricinfo · The Hindu — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "india-1",
+          "story": "Harmanpreet, Deepti on fire as India seals emphatic series win",
+          "files": [
+            "data/editions/2026-10-26/india/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-26/india/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-26/india/1/alt.json",
+          "caption": "data/editions/2026-10-26/caption-india-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    },
+    {
+      "id": "world",
+      "label": "WORLD",
+      "stories": [
+        {
+          "headline": "LULA WINS FOURTH TERM AS BRAZIL PRESIDENT AFTER HISTORIC UPSET OVER FAR-RIGHT FLÁVIO",
+          "display": "Lula wins fourth term as Brazil president after historic upset over far-right Flávio",
+          "original": "Lula wins fourth term as Brazil president after historic upset over far-right Flávio Bolsonaro",
+          "truncated": true,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "Al Jazeera · The Guardian · The New York Times",
+          "sourceNames": [
+            "Al Jazeera",
+            "The Guardian",
+            "The New York Times"
+          ],
+          "corroboration": 3,
+          "republishers": [],
+          "owners": [
+            "Government of Qatar",
+            "Scott Trust",
+            "New York Times Company"
+          ],
+          "ownerCount": 3,
+          "countries": [
+            "QA",
+            "GB",
+            "US"
+          ],
+          "fundings": [
+            "state",
+            "trust",
+            "commercial"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9OQktJel9IeWJxVVc3Xy04WF9Dd3N1eFY3SUUzdnlBQVRNWlNNWm43M25saHBLMXVEXzltLXFxdGtkNFdMOEpoRmpsZFRJQ1JYNThjYU9sQ1E2ZmN4b25LQ1ZDeWloa0o1Nm5JdlgxbG5fSGdBN2xwcFVybw?oc=5",
+          "summary": "Lula wins fourth term as Brazil president after historic upset over far-right Flávio Bolsonaro &nbsp;&nbsp; The Guardian",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.aljazeera.com/news/2026/10/26/lula-holds-off-far-right-with-victory-in-brazil-presidential-election?traffic_source=rss",
+              "source": "Al Jazeera",
+              "feedImage": null
+            },
+            {
+              "link": "https://www.theguardian.com/world/2026/oct/26/lula-wins-brazil-election",
+              "source": "The Guardian",
+              "feedImage": "https://i.guim.co.uk/img/media/bead94b31547db304e7ffba0a1a723a386e5d2a8/299_122_7048_5638/master/7048.jpg?width=140&quality=85&auto=format&fit=max&s=e1fb4cc3f02a719e509501f883dab442"
+            },
+            {
+              "link": "https://www.theguardian.com/world/2026/oct/25/lula-da-silva-flavio-bolsonaro-brazil-presidential-election",
+              "source": "The Guardian",
+              "feedImage": "https://i.guim.co.uk/img/media/d1353a7e5254aa2f3a8330bdb3468e28a934e47d/391_195_3258_2605/master/3258.jpg?width=140&quality=85&auto=format&fit=max&s=e5232bcd4ae47d48b4819a16fe368da2"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOSWVKSmduNEt4S0w3X2x2M0NjZGhTYVRHU3BGUGRvT2hnQXZVMFdHcW5wekU3ZFdrbUhESk5UV25sOHc5SnJnWEQzeUYyUXRIRlJVYW44TDE0dk5XLUJtNDVQRUQxWXpqZnpXdVpVc3dTeGdLTTJIaEFfM0toai1xZ0Q5Y3AxWVNwc3kzNU5n?oc=5",
+              "source": "The New York Times",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-26T00:26:00.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 9.9,
+          "photoError": "every candidate failed to download (only 6 KB — furniture, not a photograph; HTTP 401; HTTP 401; only 4 KB — furniture, not a photograph)",
+          "photo": null,
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": "editorial",
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Lula wins fourth term as Brazil president after historic upset over far-right Flávio”. Reported by Al Jazeera · The Guardian · The New York Times — 3 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
+        },
+        {
+          "headline": "ISRAEL PRESSES AHEAD WITH WEST BANK OPERATION AS ELECTION APPROACHES",
+          "display": "Israel presses ahead with West Bank operation as election approaches",
+          "original": "Israel presses ahead with West Bank operation as election approaches",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "BBC News · The Journal Gazette",
+          "sourceNames": [
+            "BBC News",
+            "The Journal Gazette"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "GB"
+          ],
+          "fundings": [
+            "state"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxQQVhTczh1QU1UV2doZWRrcGRqanczMHJoR2dxb21aQkZzRF9xcmstd3AtVmVxSE9pdEpMVlBhVXpuSFRndTFLX2kzeUFyR2twUFVJZ1NFWUg2YVRDSDViUFVua0tPR0pzcWNQWTl3RVZBaVltTW1FT096RkpLWE5EcjJjelE5bUU3MThmbjRDbS1hY0RjN2pYZktGLWNaRm5XbkNnak5HSF84ZXJucmN5NWZxRGFLQmVvTUoxNEo4ZFA1RVBQejAxX250bkF3SzF6ZXlTT0Q5c2laTFJGazZjZTJKMlYtRlRRemZXc3R1SkoyUQ?oc=5",
+          "summary": "Israel presses ahead with West Bank operation as election approaches &nbsp;&nbsp; The Journal Gazette",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.bbc.co.uk/news/articles/c6y93ylpl5p2o?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/5815/live/ca832c30-d019-11f1-b441-2b33b063138f.jpg"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxQQVhTczh1QU1UV2doZWRrcGRqanczMHJoR2dxb21aQkZzRF9xcmstd3AtVmVxSE9pdEpMVlBhVXpuSFRndTFLX2kzeUFyR2twUFVJZ1NFWUg2YVRDSDViUFVua0tPR0pzcWNQWTl3RVZBaVltTW1FT096RkpLWE5EcjJjelE5bUU3MThmbjRDbS1hY0RjN2pYZktGLWNaRm5XbkNnak5HSF84ZXJucmN5NWZxRGFLQmVvTUoxNEo4ZFA1RVBQejAxX250bkF3SzF6ZXlTT0Q5c2laTFJGazZjZTJKMlYtRlRRemZXc3R1SkoyUQ?oc=5",
+              "source": "The Journal Gazette",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-25T23:30:00.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.85,
+          "photo": {
+            "path": "work/photos/world/photo-world-3.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/c6y93ylpl5p2o?at_medium=RSS&at_campaign=rss",
+            "query": "(the feed)",
+            "url": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/5815/live/ca832c30-d019-11f1-b441-2b33b063138f.jpg",
+            "size": "1024×576",
+            "edge": 1024,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Israel presses ahead with West Bank operation as election approaches”. Reported by BBC News · The Journal Gazette — 2 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        },
+        {
+          "headline": "THOUSANDS PROTEST IN PRAGUE AGAINST PUBLIC MEDIA FUNDING REFORMS",
+          "display": "Thousands protest in Prague against public media funding reforms",
+          "original": "Thousands protest in Prague against public media funding reforms",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "Al Jazeera · U.S. News & World Report",
+          "sourceNames": [
+            "Al Jazeera",
+            "U.S. News & World Report"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Government of Qatar"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "QA"
+          ],
+          "fundings": [
+            "state"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://www.aljazeera.com/news/2026/10/25/thousands-protest-in-prague-against-public-media-funding-reforms?traffic_source=rss",
+          "summary": "Demonstrators allege Prime Minister Andrej Babis and his coalition's proposed reforms pose a threat to press freedom.",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.aljazeera.com/news/2026/10/25/thousands-protest-in-prague-against-public-media-funding-reforms?traffic_source=rss",
+              "source": "Al Jazeera",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNS0NZTTZOaUc4OWg3Sy1pTmJIczYyRWJDMTRESDh5VFFkWDVRcll4Zm9xVGVOeE51cEZsRXYteHA4ZjZqVGN4UEJiVHdmcnlyaWZ3ZGlFSlVtdHFmQWx3TWpiakoyemdUR1M5Z09VYlh6c0gyMklpa0pQRGo3QkJNTGFmRnVxNlZvazU0Mmg0N3hBemNjSmd2cFdnUVR2MFVsU2Z0Vk5TUHQ5Y2hqczBjckRXUTV1VU0yR255czk3S3VKSHh0TkJBWQ?oc=5",
+              "source": "U.S. News & World Report",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-25T23:29:13.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.4,
+          "photo": {
+            "path": "work/photos/world/photo-world-4.jpg",
+            "credit": "Photo: Al Jazeera",
+            "license": "publisher",
+            "pageUrl": "https://www.aljazeera.com/news/2026/10/25/thousands-protest-in-prague-against-public-media-funding-reforms?traffic_source=rss",
+            "query": "(the article)",
+            "url": "https://www.aljazeera.com/wp-content/uploads/2026/10/getty_6ade7e134d-1792966163.jpg?resize=1920%2C1440",
+            "size": "1920×1440",
+            "edge": 1920,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Thousands protest in Prague against public media funding reforms”. Reported by Al Jazeera · U.S. News & World Report — 2 independent newsrooms. Behind the text is a library photograph, Photo: Al Jazeera. It is not a photograph of this event."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "world-1",
+          "story": "Lula wins fourth term as Brazil president after historic upset over far-right Flávio",
+          "files": [
+            "data/editions/2026-10-26/world/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-26/world/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-26/world/1/alt.json",
+          "caption": "data/editions/2026-10-26/caption-world-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "world-2",
+          "story": "Israel presses ahead with West Bank operation as election approaches",
+          "files": [
+            "data/editions/2026-10-26/world/2/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-26/world/2/slide-1.jpg",
+          "alts": "data/editions/2026-10-26/world/2/alt.json",
+          "caption": "data/editions/2026-10-26/caption-world-2.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "world-3",
+          "story": "Thousands protest in Prague against public media funding reforms",
+          "files": [
+            "data/editions/2026-10-26/world/3/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-26/world/3/slide-1.jpg",
+          "alts": "data/editions/2026-10-26/world/3/alt.json",
+          "caption": "data/editions/2026-10-26/caption-world-3.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    },
+    {
+      "id": "tech",
+      "label": "TECHNOLOGY",
+      "stories": [
+        {
+          "headline": "21ST U’KHAND STATE SCIENCE AND TECHNOLOGY CONGRESS BEGINS IN DOON",
+          "display": "21st U’khand State Science and Technology Congress begins in Doon",
+          "original": "21st U’khand State Science and Technology Congress begins in Doon",
+          "truncated": false,
+          "usable": true,
+          "category": "TECHNOLOGY",
+          "source": "Garhwal Post · The Times of India",
+          "sourceNames": [
+            "Garhwal Post",
+            "The Times of India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQU3l3Z0w2eFplbVdFeEZDQ3hvQW85bTlZYkZDUENvalI5cjlfa203dDdJR28ydkVPeHJnX0FQTXY3UDFlUUhBQS1SVkU4VzNGUmJDZi1MT01EWlhhcXhfTFlzRjJ1NWNRMkpHa0h2c3g5TzRqT3JpNjRfa2ozMDBFYWVqVUtkb2RrNUZBb3RlSV81SDBPV0VldktCanIza0RtN0hCY0NLazI0U0RHMFFiMkdSUzJUX1k2VGxOV1k0a205cmJPbzlvTmctanptanJqTmtJQ2l4UdIB3AFBVV95cUxQT3ViUEtoMFU0Q1FPRVRkSnJ6XzhHQXhZeDdmbVVrdUFtMkRwSGY0UDB",
+          "summary": "21st U’khand State Science and Technology Congress begins in Doon &nbsp;&nbsp; The Times of India",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQdk11aGpRbURhYUxKQXZzWFlyWkJiV0NaUTctQXB4bU8zSHNtckxIMzJLOHptbDFTOW9hUFR2UWVuN2Z2dGVfaFV5MmdWMmV2LVVFVnBWX2tXZ19FZVZCdldZZjlCZG91V3hvbEQ5MUlZUVJGczVDUGk3R18zcHRxbXBkV2ZKR2pBXzBwMUYwUEFGM1VhdFVhdlMtRQ?oc=5",
+              "source": "Garhwal Post",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQU3l3Z0w2eFplbVdFeEZDQ3hvQW85bTlZYkZDUENvalI5cjlfa203dDdJR28ydkVPeHJnX0FQTXY3UDFlUUhBQS1SVkU4VzNGUmJDZi1MT01EWlhhcXhfTFlzRjJ1NWNRMkpHa0h2c3g5TzRqT3JpNjRfa2ozMDBFYWVqVUtkb2RrNUZBb3RlSV81SDBPV0VldktCanIza0RtN0hCY0NLazI0U0RHMFFiMkdSUzJUX1k2VGxOV1k0a205cmJPbzlvTmctanptanJqTmtJQ2l4UdIB3AFBVV95cUxQT3ViUEtoMFU0Q1FPRVRkSnJ6XzhHQXhZeDdmbVVrdUFtMkRwSGY0UDB",
+              "source": "The Times of India",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-25T17:00:00.000Z",
+          "topic": "tech",
+          "section": "tech",
+          "tier": "notable",
+          "score": 7.2,
+          "articlePhotoError": "The Times of India: HTTP 400",
+          "photo": {
+            "path": "work/photos/tech/photo-tech-2.jpg",
+            "credit": "File photo: Cdmeek / CC0",
+            "license": "cc0",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:SoldierStrong_Co-Founder_Chris_Meek_testifying_to_Congress_on_the_need_for_better_technology_to_veterans.jpg",
+            "query": "Technology Congress",
+            "relevance": 0.29,
+            "title": "SoldierStrong Co Founder Chris Meek testifying to Congress on the need for better technology to veterans",
+            "url": "https://upload.wikimedia.org/wikipedia/commons/5/52/SoldierStrong_Co-Founder_Chris_Meek_testifying_to_Congress_on_the_need_for_better_technology_to_veterans.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "size": "1487×990",
+            "edge": 1487,
+            "from": "library"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed TECHNOLOGY. It reads: “21st U’khand State Science and Technology Congress begins in Doon”. Reported by Garhwal Post · The Times of India — 2 independent newsrooms. Behind the text is a library photograph captioned “SoldierStrong Co Founder Chris Meek testifying to Congress on the…”, credited to Cdmeek / CC0. It is not a photograph of this event."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "tech-1",
+          "story": "21st U’khand State Science and Technology Congress begins in Doon",
+          "files": [
+            "data/editions/2026-10-26/tech/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-26/tech/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-26/tech/1/alt.json",
+          "caption": "data/editions/2026-10-26/caption-tech-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    }
+  ]
+}
