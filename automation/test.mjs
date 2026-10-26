@@ -2329,6 +2329,49 @@ ok('the subject cap survives the pass that fills empty slots', (() => {
   return india.clusters.length === 1;
 })(), 'a shorter section is better than the same story three times');
 
+/* Top never had the subject rule, and Top is the post people see. It went
+   out with three cards about one Brazilian election, written three ways by
+   three outlets. Clustering cannot catch that: the three share 0.38 to 0.44
+   of their words, LESS than two genuinely different Brazil stories would, so
+   no threshold merges these without merging those. The name does it. */
+{
+  const LULA = [
+    'Lula wins fourth term as Brazil president after historic upset over far-right rival',
+    'Brazil’s Lula wins re-election, defeating Trump ally Bolsonaro',
+    'Lula beats Bolsonaro in Brazil runoff, securing fourth presidential term',
+    'Israel presses ahead with West Bank operation as election approaches',
+    'Thousands protest in Prague against public media funding reforms',
+  ];
+  const items = LULA.flatMap((title, i) => ['BBC News', 'Reuters'].map(source => ({
+    title, source, link: `https://x/${i}-${source}`,
+    published: Date.now() - 3600000, topic: 'world',
+  })));
+
+  ok('the front page takes one story per subject', (() => {
+    const picked = selectStories(items, { count: 3, maxAgeHours: 99999 });
+    return picked.filter(c => /lula/i.test(c.lead.title)).length === 1;
+  })(), 'one election, three cards, is what the channel looked like');
+
+  ok('and still fills the rest of the front page', (() => {
+    const picked = selectStories(items, { count: 3, maxAgeHours: 99999 });
+    return picked.length === 3;
+  })(), 'the subject rule must not cost Top the stories that are different');
+
+  ok('two different stories are not merged by a shared country', (() => {
+    // "brazil" is in two of these and nothing else is. If a bare country name
+    // were enough, a day with two real Brazil stories would publish one.
+    const two = [
+      'Brazil’s central bank raises rates to 12 percent',
+      'Brazil charges 40 over an attempted coup',
+      'Thousands protest in Prague against public media funding reforms',
+    ].flatMap((title, i) => ['BBC News', 'Reuters'].map(source => ({
+      title, source, link: `https://y/${i}-${source}`,
+      published: Date.now() - 3600000, topic: 'world',
+    })));
+    return selectStories(two, { count: 3, maxAgeHours: 99999 }).length;
+  })() >= 2, 'a rule that eats real news is worse than three duplicate cards');
+}
+
 /* ── The approval issue a person actually reads ──────────────────── */
 ok('only the first card is shown up front', (() => {
   const b = approvalIssue(ed, { owner: 'o', repo: 'r', sha: 'a', read: () => '' }).body;

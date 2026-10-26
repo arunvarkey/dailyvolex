@@ -528,6 +528,21 @@ export function selectStories(items, { history = [], count = 3, now = Date.now()
   const perTopic = new Map();
   const perBeat = new Map();
 
+  /* One story per subject, on the front page too.
+   *
+   * The sections have had this since the INDIA post went out with three Jio
+   * cards; Top never did, and Top is the post people actually see. It went
+   * out with three:
+   *     "Lula wins fourth term as Brazil president after historic upset"
+   *     "Brazil's Lula wins re-election, defeating Trump ally Bolsonaro"
+   *     "Lula beats Bolsonaro in Brazil runoff, securing fourth term"
+   * One election, three cards. Clustering cannot catch it — the three share
+   * 0.38 to 0.44 of their words, less than two genuinely different Brazil
+   * stories would, so no threshold merges these without merging those. What
+   * they do share is a name that is rare across the day: "lula" in three
+   * headlines out of a few hundred is a subject. */
+  const df = documentFrequency(ranked.map(c => c.lead.title));
+
   // Top stories is the front page. A product launch or a coin moving does
   // not belong on it however many outlets carried it and however fresh it is
   // — that was exactly how two of three top stories came out crypto.
@@ -541,7 +556,10 @@ export function selectStories(items, { history = [], count = 3, now = Date.now()
     && c.knownSources >= 1
     && (allowMinorInTop || c.tier !== TIERS.MINOR)
     && !isRepeat(c.lead.title, history)
-    && !isRepeat(c.lead.title, takenTitles.map(t => ({ title: t })));
+    && !isRepeat(c.lead.title, takenTitles.map(t => ({ title: t })))
+    // Not dropped on the second pass, the same as in the sections: a shorter
+    // Top is better than one story told three times.
+    && !takenTitles.some(t => sharesSubject(c.lead.title, t, df));
 
   const take = c => {
     chosen.push(c);
