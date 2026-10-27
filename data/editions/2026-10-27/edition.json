@@ -1,0 +1,1491 @@
+{
+  "id": "2026-10-27",
+  "kind": "daily",
+  "builtAt": "2026-10-27T08:13:43.406Z",
+  "pool": 582,
+  "feedErrors": [
+    "indian-express: HTTP 403"
+  ],
+  "refusals": {
+    "read": 582,
+    "published": 16,
+    "refused": 209,
+    "consideredNotChosen": 357,
+    "byRule": {
+      "says nothing happened": {
+        "count": 100,
+        "samples": [
+          {
+            "title": "Lula's comeback in Brazil dents Trump's ambitions for Latin America",
+            "source": "BBC News"
+          },
+          {
+            "title": "Pope's South American trip to go ahead as planned after lung cancer surgery",
+            "source": "BBC News"
+          },
+          {
+            "title": "'Maxxing' selected as Dictionary.com word of the year",
+            "source": "BBC News"
+          },
+          {
+            "title": "Sydney's new $5bn airport has one big problem: Getting there is tough",
+            "source": "BBC News"
+          },
+          {
+            "title": "Crowds welcome Venezuela's María Machado after months in exile",
+            "source": "BBC News"
+          },
+          {
+            "title": "Israel and the US are both going to the polls - the consequences will be global",
+            "source": "BBC News"
+          },
+          {
+            "title": "Who is Lula? From ex-worker and prisoner to Brazil's president again",
+            "source": "BBC News"
+          },
+          {
+            "title": "Qatar’s path to defence autonomy",
+            "source": "Al Jazeera"
+          }
+        ]
+      },
+      "older than the window": {
+        "count": 72,
+        "samples": [
+          {
+            "title": "Australian murderer loses bid to eat Vegemite in prison",
+            "source": "BBC News"
+          },
+          {
+            "title": "Watch: How President Lula turned it around to beat Flávio Bolsonaro",
+            "source": "BBC News"
+          },
+          {
+            "title": "Why Israel's election is one of the most important in its history",
+            "source": "BBC News"
+          },
+          {
+            "title": "Fireworks and tear gas as protesters and riot police clash in Paris",
+            "source": "BBC News"
+          },
+          {
+            "title": "Who should win the men's Ballon d'Or? BBC Sport pundits have their say",
+            "source": "BBC News"
+          },
+          {
+            "title": "China's big political meeting could see Xi 'tighten discipline' in party",
+            "source": "BBC News"
+          },
+          {
+            "title": "UK poised to miss reduced aid spending target of 0.3% of national income",
+            "source": "The Guardian"
+          },
+          {
+            "title": "Mystery over source of Ebola infection in Nigeria fuels concern about spread of virus",
+            "source": "The Guardian"
+          }
+        ]
+      },
+      "not news": {
+        "count": 22,
+        "samples": [
+          {
+            "title": "Israel election 2026 live: Polls open as Netanyahu faces tough test",
+            "source": "Al Jazeera"
+          },
+          {
+            "title": "Brazil runoff as it happened: world leaders congratulate Lula on historic election win as Bolsonaro refuses to concede",
+            "source": "The Guardian"
+          },
+          {
+            "title": "Bridget McKenzie fears MPs will ‘retreat from the public square’ following alleged attack on Helen Haines – as it happened",
+            "source": "The Guardian"
+          },
+          {
+            "title": "Israel election live: polls open in most consequential vote in country’s history",
+            "source": "The Guardian"
+          },
+          {
+            "title": "Video. Latest news bulletin | October 27th, 2026 – Morning",
+            "source": "Euronews.com"
+          },
+          {
+            "title": "Cyclone ‘Arnab’ LIVE updates | IMD raises wind forecast to 150 km ph gusts; landfall near Yanam; 61 trains cancelled",
+            "source": "The Hindu"
+          },
+          {
+            "title": "CEC row LIVE: SC defers hearing on pleas against CEC Gyanesh Kumar, decisions during SIR",
+            "source": "The Hindu"
+          },
+          {
+            "title": "Stock Market LIVE Updates, Sensex Today: Sensex, Nifty Trade Flat, Asian Shares Trade Higher",
+            "source": "NDTV"
+          }
+        ]
+      },
+      "too thin to be a headline": {
+        "count": 6,
+        "samples": [
+          {
+            "title": "Is China’s economy broken?",
+            "source": "Brookings"
+          },
+          {
+            "title": "Economy, not ideology",
+            "source": "The Times of India"
+          },
+          {
+            "title": "Economy, not ideology",
+            "source": "The Times of India"
+          },
+          {
+            "title": "Immersive Technologies",
+            "source": "Odisha Diary"
+          },
+          {
+            "title": "Heart health and tea",
+            "source": "Rediff"
+          },
+          {
+            "title": "Is Maca Root Good for You?",
+            "source": "Cleveland Clinic Health Essentials"
+          }
+        ]
+      },
+      "tips or price speculation": {
+        "count": 3,
+        "samples": [
+          {
+            "title": "Anthropic warns TSMC disruptions could hit AI chip supply, threaten business",
+            "source": "ANI News"
+          },
+          {
+            "title": "Urban Company: Motilal Oswal Upgrades Rating To 'Buy' As Core Business Gains Momentum; Check Target Price",
+            "source": "NDTV Profit"
+          },
+          {
+            "title": "Tata Consumer shares rally over 4% after Q2 results. Why brokerages remain bullish despite target price cuts",
+            "source": "Economic Times"
+          }
+        ]
+      },
+      "comment, not reporting": {
+        "count": 2,
+        "samples": [
+          {
+            "title": "What María Corina Machado’s Return Means for Venezuela",
+            "source": "Hindustan Times"
+          },
+          {
+            "title": "Opinion | India's Bond Market Is Bleeding. And The Worst May Not Be Over Yet",
+            "source": "NDTV"
+          }
+        ]
+      },
+      "marketing, not reporting": {
+        "count": 2,
+        "samples": [
+          {
+            "title": "Meet Arun Chauhan: Haryana farmer says sweet corn earns him Rs 25 lakh a year",
+            "source": "Times of India"
+          },
+          {
+            "title": "Abu Dhabi government partners with Merck to advance fertility education, research and innovation",
+            "source": "BioSpectrum Asia"
+          }
+        ]
+      },
+      "finance feed, not a finance story": {
+        "count": 2,
+        "samples": [
+          {
+            "title": "In Investing portfolios, one size does not fit all: Jiraaf Founder, Saurav Ghosh.",
+            "source": "Economic Times"
+          },
+          {
+            "title": "Will Rs 5 lakh crore bet on Jio open floodgates for India's mega IPOs?",
+            "source": "Economic Times"
+          }
+        ]
+      }
+    }
+  },
+  "sections": [
+    {
+      "id": "top",
+      "label": "TOP STORIES",
+      "stories": [
+        {
+          "headline": "Sixty Christians killed in Ethiopia’s Oromia region",
+          "display": "Sixty Christians killed in Ethiopia’s Oromia region",
+          "original": "Sixty Christians killed in Ethiopia’s Oromia region",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "BBC News · Al Jazeera",
+          "sourceNames": [
+            "BBC News",
+            "Al Jazeera"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Government of Qatar"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB",
+            "QA"
+          ],
+          "fundings": [
+            "state"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.aljazeera.com/news/2026/10/27/sixty-christians-killed-in-ethiopias-oromia-region?traffic_source=rss",
+          "summary": "Church officials say more than 20 people have been injured, while 20 homes have burned down as religious tensions flare.",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.bbc.co.uk/news/articles/cm4g175dgdx2o?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/ea02/live/3f6f54a0-d147-11f1-9eb5-811878e0f07d.jpg"
+            },
+            {
+              "link": "https://www.aljazeera.com/news/2026/10/27/sixty-christians-killed-in-ethiopias-oromia-region?traffic_source=rss",
+              "source": "Al Jazeera",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-27T06:49:45.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "lead",
+          "score": 15.85,
+          "photo": {
+            "path": "work/photos/top/photo-top-2.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/cm4g175dgdx2o?at_medium=RSS&at_campaign=rss",
+            "query": "(the feed)",
+            "url": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/ea02/live/3f6f54a0-d147-11f1-9eb5-811878e0f07d.jpg",
+            "size": "1024×576",
+            "edge": 1024,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Sixty Christians killed in Ethiopia’s Oromia region”. Reported by BBC News · Al Jazeera — 2 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        },
+        {
+          "headline": "OpenAI claims three new AI breakthroughs in math, physics and computer science",
+          "display": "OpenAI claims three new AI breakthroughs in math, physics and computer science",
+          "original": "OpenAI claims three new AI breakthroughs in math, physics and computer science",
+          "truncated": false,
+          "usable": true,
+          "category": "SCIENCE",
+          "source": "Al Jazeera · Firstpost · India Today",
+          "sourceNames": [
+            "Al Jazeera",
+            "Firstpost",
+            "India Today",
+            "Hindustan Times"
+          ],
+          "corroboration": 4,
+          "republishers": [],
+          "owners": [
+            "Government of Qatar",
+            "Reliance Industries",
+            "Living Media",
+            "HT Media / KK Birla family"
+          ],
+          "ownerCount": 4,
+          "countries": [
+            "QA",
+            "IN"
+          ],
+          "fundings": [
+            "state",
+            "conglomerate",
+            "commercial"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNME0yQzNjUjBvbks2N3o2Yno5dFdrMXdldnBrSEtZdWRqa0FxakliVk00bVFNQ29EM2QwRTl1OFBaU2oxMHdsZEpnM0ZoV1NNN3JwTDFQbnVuTzczZW1hdmV5X3J4VG04Y2JEY2RhOHdmWm8yZTZvblYtOWprMGVWV0hUT1Rqd01FMkZGWEZ1ZngzN0w3dVdtaGUwZjZLYzAxSFJubmVFVlRCUWs4Nkdzc0NWbGgyOU54RXJsX0NCRdIBxAFBVV95cUxPWUszaXhBOEtzNjV1SGo5SnRWZWJub183TlZ3cW1MeDA0WTZwLVlkVlh6Njl5d0s1ZWM2Z1VDaEpzczFQT3pvX2V",
+          "summary": "OpenAI claims three new AI breakthroughs in math, physics and computer science &nbsp;&nbsp; Firstpost",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.aljazeera.com/economy/2026/10/27/ai-makes-discoveries-in-mathematics-computer-science-physics-openai-says?traffic_source=rss",
+              "source": "Al Jazeera",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQN3ZUWTh4RW5uQUFNdlBLdHNZZnRDUUcwOWl2WVBsejlET1hpYWFheW1yaTAtRlNsOEFDRW9UbFliY0VuVDR0SW9YaXp1eTdJbk5kN2ExbGgtSTA0V1ItQmM2RzJ6ZzlqZndnRTBoeDlhS2F4aDk1eW5tVVdZRmtaazBTNUpmZUEzZ0Q1NjlfUGxmX3ZNQnkzWkNrdDRQYkVEa2NHcDVuZENKck9XMHp1MXRvX2p4RWFi0gG-AUFVX3lxTE9JeVZjeGd4RTdGeEJEQnJYcGVnWXJzdnJqLXVBczBTSXI3WEJQMmZBbmV5N050Wko5WkFCZEZfX0ljdlR0MlNITnZpeVNPUzh",
+              "source": "Al Jazeera",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNME0yQzNjUjBvbks2N3o2Yno5dFdrMXdldnBrSEtZdWRqa0FxakliVk00bVFNQ29EM2QwRTl1OFBaU2oxMHdsZEpnM0ZoV1NNN3JwTDFQbnVuTzczZW1hdmV5X3J4VG04Y2JEY2RhOHdmWm8yZTZvblYtOWprMGVWV0hUT1Rqd01FMkZGWEZ1ZngzN0w3dVdtaGUwZjZLYzAxSFJubmVFVlRCUWs4Nkdzc0NWbGgyOU54RXJsX0NCRdIBxAFBVV95cUxPWUszaXhBOEtzNjV1SGo5SnRWZWJub183TlZ3cW1MeDA0WTZwLVlkVlh6Njl5d0s1ZWM2Z1VDaEpzczFQT3pvX2V",
+              "source": "Firstpost",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxPS3QwZVpIMFp0aEFRN0htS1RhTDdYVUxJc1RSSVJNV05Za2RSNG96ZDRUblB2MGdvdHpXU1I4ZUVSR3VjRWpwdEhHN1JoUG5MZ21iZWk0N21Gd0s0MUl2S3RhSEZBUXViMzZPczNvbDV2N2g4RE0xdHR0OVR0am9yTmNaaVJFR3JrVGVlY2ZDWXZMNHZzaFRybXZYU2gxVm9kX1g2NDE5UENaeXFyRTg2ZUZVQmNLTXJMalJsc1RxVmc5QmxOWFBLR1o5WHdLMUpDMnE2Z0tWdE9USWZsa0VwSmIzTy1Ibnc5OEHSAe8BQVVfeXFMTXQtVHdzM3oxWWl0Z2hzMGJmbEdhN21",
+              "source": "India Today",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-27T06:00:01.000Z",
+          "topic": "science",
+          "section": "science",
+          "tier": "notable",
+          "score": 11.1,
+          "photo": {
+            "path": "work/photos/top/photo-top-3.jpg",
+            "credit": "Photo: Al Jazeera",
+            "license": "publisher",
+            "pageUrl": "https://www.aljazeera.com/economy/2026/10/27/ai-makes-discoveries-in-mathematics-computer-science-physics-openai-says?traffic_source=rss",
+            "query": "(the article)",
+            "url": "https://www.aljazeera.com/wp-content/uploads/2026/10/AP26272792510419-1793062165_29dd33-1793062908.jpg?resize=1200%2C630&quality=80",
+            "size": "1200×630",
+            "edge": 1200,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed SCIENCE. It reads: “OpenAI claims three new AI breakthroughs in math, physics and computer science”. Reported by Al Jazeera · Firstpost · India Today — 4 independent newsrooms. Behind the text is a library photograph, Photo: Al Jazeera. It is not a photograph of this event."
+        },
+        {
+          "headline": "India reiterates demand for UN Security Council reforms",
+          "display": "India reiterates demand for UN Security Council reforms",
+          "original": "India reiterates demand for UN Security Council reforms",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "NDTV · News On AIR",
+          "sourceNames": [
+            "NDTV",
+            "News On AIR"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Adani Group",
+            "Government of India"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate",
+            "state"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOTG55QTZoT0hfdDd2ZHZMdXVZTkhEMnVSU2hjbm0tRkJKRGVLZm8zS2NUVXhWejJrcnVmbXdSMXYxRGlKV3dfX0w1cTczMHhDWUJrbWEtdkRlSERlLXlZUVo1Wjl3eVZOLTBhSEFLQU01VHcyQUVKTDllY2dTMV9FZUc5SFh0YmpW?oc=5",
+          "summary": "India reiterates demand for UN Security Council reforms &nbsp;&nbsp; News On AIR",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOS2lhZlNrbWZzQ0FSYXIyVWcyMlY4b2ljNTVKUWthVUpabDltcjIwamp0VzR0cTNSMWZOSzRtQm5kSzg0WEVBX0tGV0RseWJ6cFRfRElpSDZoQV9XN0JLSFZTYjhyOVhoa1I1VFk0MlZWUzA4RkhPRUlvT3IweWhZdkRJMWV0ZVdYTkVINnljQVByNmZjTUMydmRJOUQ1cURpZEdZVE1aekxxVUt4SWp1Q2dsWnc3d2Iw0gHAAUFVX3lxTE5KTmdybTJpZGhlUFBmMWxCWHNyTG5hb0RDTjdjajc0TEtpVnFtN1Qwc3Q5SnlyTE1RakNlUUlqcXNFZlRvS3dFMzRtb0ZHdVV",
+              "source": "NDTV",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOTG55QTZoT0hfdDd2ZHZMdXVZTkhEMnVSU2hjbm0tRkJKRGVLZm8zS2NUVXhWejJrcnVmbXdSMXYxRGlKV3dfX0w1cTczMHhDWUJrbWEtdkRlSERlLXlZUVo1Wjl3eVZOLTBhSEFLQU01VHcyQUVKTDllY2dTMV9FZUc5SFh0YmpW?oc=5",
+              "source": "News On AIR",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-27T04:42:00.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "significant",
+          "score": 10.5,
+          "articlePhotoError": "News On AIR: the article declares no picture",
+          "photo": {
+            "path": "work/photos/top/photo-top-4.jpg",
+            "credit": "File photo: U.S. Department of State from United Sta / Public Domain",
+            "license": "pdm",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Secretary_Blinken_Participates_in_the_UN_Security_Council_Meeting_on_Climate_and_Security_(51507096186).jpg",
+            "query": "UN Security Council",
+            "relevance": 0.33,
+            "title": "Secretary Blinken Participates in the UN Security Council Meeting on Climate and Security (51507096186)",
+            "url": "https://upload.wikimedia.org/wikipedia/commons/b/be/Secretary_Blinken_Participates_in_the_UN_Security_Council_Meeting_on_Climate_and_Security_%2851507096186%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "size": "1920×1280",
+            "edge": 1920,
+            "from": "library"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “India reiterates demand for UN Security Council reforms”. Reported by NDTV · News On AIR — 2 independent newsrooms. Behind the text is a library photograph captioned “Secretary Blinken Participates in the UN Security Council Meeting on…”, credited to U.S. Department of State from United Sta / Public Domain. It is not a photograph of this event."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "top-1",
+          "story": "Sixty Christians killed in Ethiopia’s Oromia region",
+          "files": [
+            "data/editions/2026-10-27/top/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-27/top/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-27/top/1/alt.json",
+          "caption": "data/editions/2026-10-27/caption-top-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "top-2",
+          "story": "OpenAI claims three new AI breakthroughs in math, physics and computer science",
+          "files": [
+            "data/editions/2026-10-27/top/2/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-27/top/2/slide-1.jpg",
+          "alts": "data/editions/2026-10-27/top/2/alt.json",
+          "caption": "data/editions/2026-10-27/caption-top-2.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "top-3",
+          "story": "India reiterates demand for UN Security Council reforms",
+          "files": [
+            "data/editions/2026-10-27/top/3/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-27/top/3/slide-1.jpg",
+          "alts": "data/editions/2026-10-27/top/3/alt.json",
+          "caption": "data/editions/2026-10-27/caption-top-3.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    },
+    {
+      "id": "india",
+      "label": "INDIA",
+      "stories": [
+        {
+          "headline": "Fireworks and celebrations as student-led movement wins in Serbia; can they deliver?",
+          "display": "Fireworks and celebrations as student-led movement wins in Serbia; can they deliver?",
+          "original": "Fireworks and celebrations as student-led movement wins in Serbia; can they deliver?",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "BBC News · Times of India",
+          "sourceNames": [
+            "BBC News",
+            "Times of India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB",
+            "IN"
+          ],
+          "fundings": [
+            "state",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://timesofindia.indiatimes.com/world/europe/fireworks-flags-and-celebrations-as-student-led-movement-wins-in-serbia-can-they-deliver-reforms/articleshow/135226330.cms",
+          "summary": null,
+          "feedImage": "https://static.toiimg.com/photo/msid-135227018,imgsize-7948154.cms",
+          "sources": [
+            {
+              "link": "https://www.bbc.co.uk/news/articles/cw5yn3xlprpmo?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f0c7/live/712973e0-d110-11f1-b441-2b33b063138f.jpg"
+            },
+            {
+              "link": "https://timesofindia.indiatimes.com/world/europe/fireworks-flags-and-celebrations-as-student-led-movement-wins-in-serbia-can-they-deliver-reforms/articleshow/135226330.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135227018,imgsize-7948154.cms"
+            }
+          ],
+          "published": "2026-10-27T06:54:19.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 8.85,
+          "photo": {
+            "path": "work/photos/india/photo-india-2.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/cw5yn3xlprpmo?at_medium=RSS&at_campaign=rss",
+            "query": "(the feed)",
+            "url": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/f0c7/live/712973e0-d110-11f1-b441-2b33b063138f.jpg",
+            "size": "1024×576",
+            "edge": 1024,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Fireworks and celebrations as student-led movement wins in Serbia; can they deliver?”. Reported by BBC News · Times of India — 2 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        },
+        {
+          "headline": "Delhi traders flag potential impact on 21 markets from November 1 Congress rally",
+          "display": "Delhi traders flag potential impact on 21 markets from November 1 Congress rally",
+          "original": "Delhi traders flag potential impact on 21 markets from November 1 Congress rally, seek postponement",
+          "truncated": true,
+          "usable": true,
+          "category": "INDIA",
+          "source": "The Hindu · ET Government",
+          "sourceNames": [
+            "The Hindu",
+            "ET Government"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "The Hindu Group (family-held)"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://www.thehindu.com/news/cities/Delhi/delhi-traders-flag-potential-impact-on-21-markets-from-november-1-congress-rally-seek-postponement/article71630172.ece",
+          "summary": "It projected that the November 1 rally could bring commercial activity across Old Delhi to a standstill, resulting in losses of up to ₹10,000 crore",
+          "feedImage": "https://th-i.thgim.com/public/incoming/wqbonl/article71630274.ece/alternates/LANDSCAPE_1200/CHANDNI%20CHOWK%20%20MARKET%20DELHI%202026_08_08_4.jpg",
+          "sources": [
+            {
+              "link": "https://www.thehindu.com/news/cities/Delhi/delhi-traders-flag-potential-impact-on-21-markets-from-november-1-congress-rally-seek-postponement/article71630172.ece",
+              "source": "The Hindu",
+              "feedImage": "https://th-i.thgim.com/public/incoming/wqbonl/article71630274.ece/alternates/LANDSCAPE_1200/CHANDNI%20CHOWK%20%20MARKET%20DELHI%202026_08_08_4.jpg"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxOeFFETGFmbTRBWHEyZnYtV0R0bGhZR0pWNDZpNDVXMUZMNjFiOVBYcFFySFI1alV1d29MX1FfYXctZE1SeVBBQXRlLWh2VUZxNEJra1Vwb21GWVpzaGRtUExLakJISzZ2YlJmdzBSN2NzUjdsLTdoQTg4VWZpUThoREs0NG1CQ3pjajlScV9FV1RQYkNCeVgzRkxtd2lrMU12THdLUDZfTkJiMUR5Nm1RcmZWZm5hV0M5UVJxNFFiUi00UkV5bVItNEVKbWw5OWZLS211QnRhOTFqb1BMb1VqSkQ3eUxNMHVZS1RHZlRCUFZLbzJfZTVJ0gH7AUFVX3lxTE5xUU5vYnFUZjJ",
+              "source": "ET Government",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-27T07:41:51.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 8.7,
+          "photo": {
+            "path": "work/photos/india/photo-india-3.jpg",
+            "credit": "Photo: The Hindu",
+            "license": "publisher",
+            "pageUrl": "https://www.thehindu.com/news/cities/Delhi/delhi-traders-flag-potential-impact-on-21-markets-from-november-1-congress-rally-seek-postponement/article71630172.ece",
+            "query": "(the feed)",
+            "url": "https://th-i.thgim.com/public/incoming/wqbonl/article71630274.ece/alternates/LANDSCAPE_1200/CHANDNI%20CHOWK%20%20MARKET%20DELHI%202026_08_08_4.jpg",
+            "size": "1200×675",
+            "edge": 1200,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Delhi traders flag potential impact on 21 markets from November 1 Congress rally”. Reported by The Hindu · ET Government — 2 independent newsrooms. Behind the text is a library photograph, Photo: The Hindu. It is not a photograph of this event."
+        },
+        {
+          "headline": "Anup Bagchi takes charge as HDFC Bank CEO and MD",
+          "display": "Anup Bagchi takes charge as HDFC Bank CEO and MD",
+          "original": "Anup Bagchi takes charge as HDFC Bank CEO and MD",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "The Hindu · ETV Bharat",
+          "sourceNames": [
+            "The Hindu",
+            "ETV Bharat"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "The Hindu Group (family-held)"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://www.thehindu.com/business/anup-bagchi-takes-charge-as-hdfc-bank-ceo-and-md/article71630082.ece",
+          "summary": "Anup Bagchi, an ICICI Group veteran, becomes the first outsider to head HDFC Bank in its three-decade history, succeeding Sashidhar Jagdishan amid governance concerns",
+          "feedImage": "https://th-i.thgim.com/public/incoming/eb11bc/article71630215.ece/alternates/LANDSCAPE_1200/6610_27-7-2016_16-20-44_ANUPBAGCHI5.JPG",
+          "sources": [
+            {
+              "link": "https://www.thehindu.com/business/anup-bagchi-takes-charge-as-hdfc-bank-ceo-and-md/article71630082.ece",
+              "source": "The Hindu",
+              "feedImage": "https://th-i.thgim.com/public/incoming/eb11bc/article71630215.ece/alternates/LANDSCAPE_1200/6610_27-7-2016_16-20-44_ANUPBAGCHI5.JPG"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOS3MzVVRxbjB3WkgxR0tMaVVHSmo4VEpZd19XTWxpZlQwdHk4dEM2RXNmWTVyT1RsSkxqQW1OQUdfck15V1dENVJWRXVrQjVMU1FESEs0YThRWVJmeHZqNUd5RGpwN0lYYk9DYWJHTzMyLWFVQ0hZOFRlR3FVczZvZW1UYVRmWElCR0tzYW5zSk5rUVdFdjdSUjUyM3IwY3FuZTBj0gGoAUFVX3lxTE5PYnd6ZnJ4QWNlRjhTRkxSYkNsM3JoRmpSLU9kei1WWEtjU2k3cDlFQUFsRnJ6SlRzOFRVNzAzYjhWQklEbUNWWV9NOXVrSXFnZy1UelF1VEZNOXJDcExWV3R1MTd",
+              "source": "ETV Bharat",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-27T07:28:53.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 8.7,
+          "photo": {
+            "path": "work/photos/india/photo-india-4.jpg",
+            "credit": "Photo: The Hindu",
+            "license": "publisher",
+            "pageUrl": "https://www.thehindu.com/business/anup-bagchi-takes-charge-as-hdfc-bank-ceo-and-md/article71630082.ece",
+            "query": "(the feed)",
+            "url": "https://th-i.thgim.com/public/incoming/eb11bc/article71630215.ece/alternates/LANDSCAPE_1200/6610_27-7-2016_16-20-44_ANUPBAGCHI5.JPG",
+            "size": "1200×675",
+            "edge": 1200,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Anup Bagchi takes charge as HDFC Bank CEO and MD”. Reported by The Hindu · ETV Bharat — 2 independent newsrooms. Behind the text is a library photograph, Photo: The Hindu. It is not a photograph of this event."
+        },
+        {
+          "headline": "'Breaking Bad' to 'Prison Break': Stalin's swipe at Vijay govt after 17 flee jail",
+          "display": "'Breaking Bad' to 'Prison Break': Stalin's swipe at Vijay govt after 17 flee jail",
+          "original": "'Breaking Bad' to 'Prison Break': Stalin's swipe at Vijay govt after 17 flee jail",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "Times of India · NDTV",
+          "sourceNames": [
+            "Times of India",
+            "NDTV"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Bennett, Coleman & Co",
+            "Adani Group"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://timesofindia.indiatimes.com/india/breaking-bad-to-prison-break-stalin-takes-fresh-swipe-at-vijay-govt-after-17-inmates-flee-jail/articleshow/135226975.cms",
+          "summary": null,
+          "feedImage": "https://static.toiimg.com/photo/msid-135227167,imgsize-1099826.cms",
+          "sources": [
+            {
+              "link": "https://timesofindia.indiatimes.com/india/breaking-bad-to-prison-break-stalin-takes-fresh-swipe-at-vijay-govt-after-17-inmates-flee-jail/articleshow/135226975.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135227167,imgsize-1099826.cms"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxOeUFOQlRFNVZELWE5M3lMd205Y2d4Yk81U2ZJSGZHOGlXaGpOTDRrNXRWU0tZM3g4cXUzREE0a0NuV05tdXJqRTAwbHVXZnFubDhna1QxRUJnQ0JtZENSQnlqNXBfV1VreUQzeXAxcFZ1b2hnQTU3cXBxNlVLLTFmUWRLUnFWSUNteVdtZFFoeDFsTzFPeXFKTHR1VE5ySllxZFlFdmYySEQ5b2xEaUJhdmtqTzgzbnFqSkJsTldtLVRIM0psd1pISVgtbDRhUWYwVXdF0gHbAUFVX3lxTFBHZVJqS2J1cTB1V2EwMGNlc015WkYzNUtlUEtYS2tBZENJY19IeGgyYmtQbXZ",
+              "source": "NDTV",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-27T07:03:24.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 7.95,
+          "photo": {
+            "path": "work/photos/india/photo-india-5.jpg",
+            "credit": "Photo: Times of India",
+            "license": "publisher",
+            "pageUrl": "https://timesofindia.indiatimes.com/india/breaking-bad-to-prison-break-stalin-takes-fresh-swipe-at-vijay-govt-after-17-inmates-flee-jail/articleshow/135226975.cms",
+            "query": "(the feed)",
+            "url": "https://static.toiimg.com/photo/msid-135227167,imgsize-1099826.cms",
+            "size": "1280×720",
+            "edge": 1280,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “'Breaking Bad' to 'Prison Break': Stalin's swipe at Vijay govt after 17 flee jail”. Reported by Times of India · NDTV — 2 independent newsrooms. Behind the text is a library photograph, Photo: Times of India. It is not a photograph of this event."
+        },
+        {
+          "headline": "Arunachal Pradesh faces fresh violence amid anti-dam protests",
+          "display": "Arunachal Pradesh faces fresh violence amid anti-dam protests",
+          "original": "India news: Arunachal Pradesh faces fresh violence amid anti-dam protests",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "Times of India · DW.com",
+          "sourceNames": [
+            "Times of India",
+            "DW.com"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Bennett, Coleman & Co",
+            "Government of Germany"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN",
+            "DE"
+          ],
+          "fundings": [
+            "conglomerate",
+            "state"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNM1NJN3M5bkFWdzZyUUdFeVAzdEkxWGpjanRZNEZnQmVJS3pzVDZ2Y3VJLWRtRUlQaGg0ZTQtNFU4SHBJS1J0ODYxRkZWUXFQQVNlOTlIRS00QWhEaTBYOFFLbUhGT0MxYmdhZFZBanVQUW84Y3pYY0VlVjN3RG5lS2RUNjhieGpIS04zUXdOamFLTHA3aEs2eVBR?oc=5",
+          "summary": "India news: Arunachal Pradesh faces fresh violence amid anti-dam protests &nbsp;&nbsp; DW.com",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://timesofindia.indiatimes.com/city/guwahati/centres-siang-dam-push-turning-region-into-india-china-flashpoint/articleshow/135218133.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135225023,imgsize-155680.cms"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNM1NJN3M5bkFWdzZyUUdFeVAzdEkxWGpjanRZNEZnQmVJS3pzVDZ2Y3VJLWRtRUlQaGg0ZTQtNFU4SHBJS1J0ODYxRkZWUXFQQVNlOTlIRS00QWhEaTBYOFFLbUhGT0MxYmdhZFZBanVQUW84Y3pYY0VlVjN3RG5lS2RUNjhieGpIS04zUXdOamFLTHA3aEs2eVBR?oc=5",
+              "source": "DW.com",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-27T07:27:17.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 7.95,
+          "photo": {
+            "path": "work/photos/india/photo-india-6.jpg",
+            "credit": "Photo: Times of India",
+            "license": "publisher",
+            "pageUrl": "https://timesofindia.indiatimes.com/city/guwahati/centres-siang-dam-push-turning-region-into-india-china-flashpoint/articleshow/135218133.cms",
+            "query": "(the feed)",
+            "url": "https://static.toiimg.com/photo/msid-135225023,imgsize-155680.cms",
+            "size": "1280×720",
+            "edge": 1280,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Arunachal Pradesh faces fresh violence amid anti-dam protests”. Reported by Times of India · DW.com — 2 independent newsrooms. Behind the text is a library photograph, Photo: Times of India. It is not a photograph of this event."
+        },
+        {
+          "headline": "Microsoft offers voluntary exits to 60,000 employees",
+          "display": "Microsoft offers voluntary exits to 60,000 employees",
+          "original": "Microsoft offers voluntary exits to 60,000 employees: What's in it, who qualifies and will India’s 23,000-",
+          "truncated": true,
+          "usable": true,
+          "category": "INDIA",
+          "source": "The Indian Express · The Economic Times",
+          "sourceNames": [
+            "The Indian Express",
+            "The Economic Times"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Indian Express Group",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMirwJBVV95cUxOSWF1SVdMbFJSQ0ZOZzZodEUyaFVQd1E3d2Y3NngwTFoyLUpyMC1ETE9Ma3FIZ29nVjl5RjR5UFpwdlludDJ4MjFuYllTLUtrLTlPSFZVbGRJeHBrU3hybEJMSDdLWXpqcll3bzJMQXdkUE5oV0UzZmo4M3BmSy1XRnhLd2hmZFVEOWZlcWk2emdQSG0tOGg2Rm1VZlRNSC1qNnZIZEtvczNzYzRXajN3RDVqUW5IMjlka3BfaHRYelJRblBxOGxHVmpsREQzbGZYSE90Y0tZRXJjS2Z2Uk9EdkZqclpOampwUFdXSWE1NUJuajhqRFhNUzBKM24tOTllUjFHNk51Q3AydTR",
+          "summary": "Microsoft offers voluntary exits to 60,000 employees: What's in it, who qualifies and will India’s 23,000- &nbsp;&nbsp; The Economic Times",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQbVE3RmVvM1FDMnNpdS0zdWZRQ3o2UWEtZGp3UFZncElxMGU4MTBKM3FPS2Q3aG5oVG9JX283eWRPZFA1RFJ4YnhndFh5YThaaHNldVdBV01FUklMZ2FQRGVBUTBBblNJcUQwazhHMEJJenFNVWZuZDRKMEl4V3h3VlQteFJXWTNKQmtnN1l6ZXNtSUxIZ09PaVZGY0llSk1Md1MwemdaU3I1b3l1YlNNUG85WXhrZm1zQTUwaWJUc1RPa3JfZ1J6VFRR0gHQAUFVX3lxTE5HSjVtRkhGWXZfaGlpYUg4WkI2SFNvQ0gzRm43TXpDcWVsc0MtUl9lT1FnaURtazExMVFnQVd",
+              "source": "The Indian Express",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMirwJBVV95cUxOSWF1SVdMbFJSQ0ZOZzZodEUyaFVQd1E3d2Y3NngwTFoyLUpyMC1ETE9Ma3FIZ29nVjl5RjR5UFpwdlludDJ4MjFuYllTLUtrLTlPSFZVbGRJeHBrU3hybEJMSDdLWXpqcll3bzJMQXdkUE5oV0UzZmo4M3BmSy1XRnhLd2hmZFVEOWZlcWk2emdQSG0tOGg2Rm1VZlRNSC1qNnZIZEtvczNzYzRXajN3RDVqUW5IMjlka3BfaHRYelJRblBxOGxHVmpsREQzbGZYSE90Y0tZRXJjS2Z2Uk9EdkZqclpOampwUFdXSWE1NUJuajhqRFhNUzBKM24tOTllUjFHNk51Q3AydTR",
+              "source": "The Economic Times",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-27T07:21:14.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 7.8,
+          "articlePhotoError": "The Economic Times: HTTP 400",
+          "photo": {
+            "path": "work/photos/india/photo-india-7.jpg",
+            "credit": "File photo: Mike Mozart / CC BY 2.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Microsoft_Policies.jpg",
+            "query": "Microsoft",
+            "relevance": 0.2,
+            "title": "Microsoft Policies",
+            "url": "https://upload.wikimedia.org/wikipedia/commons/8/89/Microsoft_Policies.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "size": "1920×1345",
+            "edge": 1920,
+            "from": "library"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Microsoft offers voluntary exits to 60,000 employees”. Reported by The Indian Express · The Economic Times — 2 independent newsrooms. Behind the text is a library photograph captioned “Microsoft Policies”, credited to Mike Mozart / CC BY 2.0. It is not a photograph of this event."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "india-1",
+          "story": "Fireworks and celebrations as student-led movement wins in Serbia; can they deliver?",
+          "files": [
+            "data/editions/2026-10-27/india/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-27/india/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-27/india/1/alt.json",
+          "caption": "data/editions/2026-10-27/caption-india-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "india-2",
+          "story": "Delhi traders flag potential impact on 21 markets from November 1 Congress rally",
+          "files": [
+            "data/editions/2026-10-27/india/2/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-27/india/2/slide-1.jpg",
+          "alts": "data/editions/2026-10-27/india/2/alt.json",
+          "caption": "data/editions/2026-10-27/caption-india-2.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "india-3",
+          "story": "Anup Bagchi takes charge as HDFC Bank CEO and MD",
+          "files": [
+            "data/editions/2026-10-27/india/3/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-27/india/3/slide-1.jpg",
+          "alts": "data/editions/2026-10-27/india/3/alt.json",
+          "caption": "data/editions/2026-10-27/caption-india-3.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "india-4",
+          "story": "'Breaking Bad' to 'Prison Break': Stalin's swipe at Vijay govt after 17 flee jail",
+          "files": [
+            "data/editions/2026-10-27/india/4/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-27/india/4/slide-1.jpg",
+          "alts": "data/editions/2026-10-27/india/4/alt.json",
+          "caption": "data/editions/2026-10-27/caption-india-4.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "india-5",
+          "story": "Arunachal Pradesh faces fresh violence amid anti-dam protests",
+          "files": [
+            "data/editions/2026-10-27/india/5/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-27/india/5/slide-1.jpg",
+          "alts": "data/editions/2026-10-27/india/5/alt.json",
+          "caption": "data/editions/2026-10-27/caption-india-5.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "india-6",
+          "story": "Microsoft offers voluntary exits to 60,000 employees",
+          "files": [
+            "data/editions/2026-10-27/india/6/slide-1.jpg",
+            "data/editions/2026-10-27/india/6/slide-2.jpg",
+            "data/editions/2026-10-27/india/6/slide-3.jpg"
+          ],
+          "cover": "data/editions/2026-10-27/india/6/slide-1.jpg",
+          "alts": "data/editions/2026-10-27/india/6/alt.json",
+          "caption": "data/editions/2026-10-27/caption-india-6.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    },
+    {
+      "id": "world",
+      "label": "WORLD",
+      "stories": [
+        {
+          "headline": "Jordan carries out deadly strike in Syria in retaliation for church attack",
+          "display": "Jordan carries out deadly strike in Syria in retaliation for church attack",
+          "original": "Jordan carries out deadly strike in Syria in retaliation for church attack",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "BBC News · The Guardian",
+          "sourceNames": [
+            "BBC News",
+            "The Guardian"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Scott Trust"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB"
+          ],
+          "fundings": [
+            "state",
+            "trust"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.bbc.co.uk/news/articles/cq8ezg6dy6xlo?at_medium=RSS&at_campaign=rss",
+          "summary": "The attack on a village in Syria killed five people, including women and children, Syrian health officials said.",
+          "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/309b/live/f7a08cb0-d1a1-11f1-9ca8-7ff2fe25f975.jpg",
+          "sources": [
+            {
+              "link": "https://www.bbc.co.uk/news/articles/cq8ezg6dy6xlo?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/309b/live/f7a08cb0-d1a1-11f1-9ca8-7ff2fe25f975.jpg"
+            },
+            {
+              "link": "https://www.theguardian.com/world/2026/oct/26/jordan-attacks-militants-syria-retaliation-for-last-week-church-attack",
+              "source": "The Guardian",
+              "feedImage": "https://i.guim.co.uk/img/media/64332ec0d49e7efed321c759c9a426f587b9848b/461_0_4610_3688/master/4610.jpg?width=140&quality=85&auto=format&fit=max&s=24001820a6d5bb71f1395ce87d57319a"
+            }
+          ],
+          "published": "2026-10-27T02:40:17.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.55,
+          "photo": {
+            "path": "work/photos/world/photo-world-2.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/cq8ezg6dy6xlo?at_medium=RSS&at_campaign=rss",
+            "query": "(the feed)",
+            "url": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/309b/live/f7a08cb0-d1a1-11f1-9ca8-7ff2fe25f975.jpg",
+            "size": "1024×575",
+            "edge": 1024,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Jordan carries out deadly strike in Syria in retaliation for church attack”. Reported by BBC News · The Guardian — 2 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        },
+        {
+          "headline": "Ex-FBI chief Comey defiant in the face of third prosecution",
+          "display": "Ex-FBI chief Comey defiant in the face of third prosecution",
+          "original": "Ex-FBI chief Comey defiant in the face of third prosecution",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "BBC News · Al Jazeera",
+          "sourceNames": [
+            "BBC News",
+            "Al Jazeera"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Government of Qatar"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB",
+            "QA"
+          ],
+          "fundings": [
+            "state"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.aljazeera.com/video/newsfeed/2026/10/27/ex-fbi-chief-comey-defiant-in-the-face-of-third-prosecution?traffic_source=rss",
+          "summary": "Ex-FBI Director James Comey denies US Justice Department's new charges.",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.bbc.co.uk/news/articles/ckly0xqjnlwvo?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/21c9/live/16bb9ba0-d187-11f1-8d7e-c9ff4ede405b.jpg"
+            },
+            {
+              "link": "https://www.aljazeera.com/video/newsfeed/2026/10/27/ex-fbi-chief-comey-defiant-in-the-face-of-third-prosecution?traffic_source=rss",
+              "source": "Al Jazeera",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-27T03:17:40.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.55,
+          "photo": {
+            "path": "work/photos/world/photo-world-3.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/ckly0xqjnlwvo?at_medium=RSS&at_campaign=rss",
+            "query": "(the feed)",
+            "url": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/21c9/live/16bb9ba0-d187-11f1-8d7e-c9ff4ede405b.jpg",
+            "size": "1024×576",
+            "edge": 1024,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Ex-FBI chief Comey defiant in the face of third prosecution”. Reported by BBC News · Al Jazeera — 2 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        },
+        {
+          "headline": "Netanyahu Pushed For Attack On Iran Ahead Of Israeli Election: Report",
+          "display": "Netanyahu Pushed For Attack On Iran Ahead Of Israeli Election: Report",
+          "original": "Netanyahu Pushed For Attack On Iran Ahead Of Israeli Election: Report",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "The Guardian · NDTV",
+          "sourceNames": [
+            "The Guardian",
+            "NDTV"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Scott Trust",
+            "Adani Group"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB",
+            "IN"
+          ],
+          "fundings": [
+            "trust",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.ndtv.com/world-news/benjamin-netanyahu-pushed-for-attack-on-iran-ahead-of-israeli-election-report-12241014#publisher=newsstand",
+          "summary": "Israeli Prime Minister Benjamin Netanyahu started pushing for a separate action against Iran that fell short of an overt strike but met with resistance.",
+          "feedImage": "https://c.ndtvimg.com/2026-05/h3h27vtk_benjamin-netanyahu-photographer-kobi-wolfbloomberg_625x300_11_May_26.jpg?im=FeatureCrop,algorithm=dnn,width=1280,height=720",
+          "sources": [
+            {
+              "link": "https://www.theguardian.com/world/2026/oct/26/netanyahu-reportedly-pressured-israel-military-attack-iran-runup-to-election",
+              "source": "The Guardian",
+              "feedImage": "https://i.guim.co.uk/img/media/f096c8d4947f607c4643153917ab8903ff877046/0_0_5417_4334/master/5417.jpg?width=140&quality=85&auto=format&fit=max&s=4a8d73f244abf0edd2c99dd2943f3cc7"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPbnQ5alJRMTlQZlh6SWwxOWlValJlWk1xamp0R21ZNk1KQXJFOG5SZmJ2ZUpFWkRGNVBVMlk1UGQ1cGJZUzcxZ2ZJWDBCSlRfYWZxcnNmTkliQ0RhT3lBbkcxNE9CSlV5aWFuMjAwQXo0NTZILWRSY2hFMTRRdUF5bWdDcjY4bEJ6WnQ1RXhJNDRtaGdnenZlZHVNRGU0YTZDUm9uMFhRbUxsR25RVnNSdFY4Z290dUk3WXfSAcIBQVVfeXFMTl9MUmx0Ry1KbE1XVUZndlFzcHlhRVl6am5QS3dYR0Z5aFNYTzg2TlZxTDVIMloya1lkaUNoUGdlbGswM0U5akxjSUxPUEw",
+              "source": "NDTV",
+              "feedImage": null
+            },
+            {
+              "link": "https://www.ndtv.com/world-news/benjamin-netanyahu-pushed-for-attack-on-iran-ahead-of-israeli-election-report-12241014#publisher=newsstand",
+              "source": "NDTV",
+              "feedImage": "https://c.ndtvimg.com/2026-05/h3h27vtk_benjamin-netanyahu-photographer-kobi-wolfbloomberg_625x300_11_May_26.jpg?im=FeatureCrop,algorithm=dnn,width=1280,height=720"
+            }
+          ],
+          "published": "2026-10-27T06:53:27.000Z",
+          "topic": "india",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.4,
+          "photoError": "every candidate failed to download (only 6 KB — furniture, not a photograph; HTTP 401; HTTP 403)",
+          "photo": null,
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": "editorial",
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Netanyahu Pushed For Attack On Iran Ahead Of Israeli Election: Report”. Reported by The Guardian · NDTV — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
+        },
+        {
+          "headline": "Sudan drone strikes kill 21, cause mass outages in east | World News",
+          "display": "Sudan drone strikes kill 21, cause mass outages in east | World News",
+          "original": "Sudan drone strikes kill 21, cause mass outages in east | World News",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "The Guardian · Hindustan Times",
+          "sourceNames": [
+            "The Guardian",
+            "Hindustan Times"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Scott Trust",
+            "HT Media / KK Birla family"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB",
+            "IN"
+          ],
+          "fundings": [
+            "trust",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOSFUyWC1oWHBTLVNiSENNVVA1SkVhblp5a2tZOV9laGlPZHNQQUo3OF9YdzJJWTVMS25icmtKaWpmMnZGdzlBUVZzd1RwSFVBemJkRzJUR1ZVT3BqUTZqSmJGNE5LekRZSG96eGZWWUpoUkdRYV9nRDA5ODhNU2psTVplSnNFallkWDRYREVDSXVKdkNfMEdmSkVYZEpGU213SE82MDJRXzBUajVaandMaDR6aDdEVGJz0gG-AUFVX3lxTE5aRUM1T0Z0OENSWm5DYnB4dzBudjNGRVp5dFJ2aDZ0UzlJRkZ1UXZ3azNDQ1lBTUxZam81Vmx5V3hRYWNiTUlJZFRiT2czNHR",
+          "summary": "Sudan drone strikes kill 21, cause mass outages in east | World News &nbsp;&nbsp; Hindustan Times",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.theguardian.com/world/2026/oct/26/sudan-paramilitary-drone-strikes-rapid-support-forces-power-cuts-eastern-states",
+              "source": "The Guardian",
+              "feedImage": "https://i.guim.co.uk/img/media/01da2c62d76761f8f011d8881a3751607009102c/216_0_2446_1957/master/2446.jpg?width=140&quality=85&auto=format&fit=max&s=36d61eccf7ea4657be712b8fb32bf9fd"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOSFUyWC1oWHBTLVNiSENNVVA1SkVhblp5a2tZOV9laGlPZHNQQUo3OF9YdzJJWTVMS25icmtKaWpmMnZGdzlBUVZzd1RwSFVBemJkRzJUR1ZVT3BqUTZqSmJGNE5LekRZSG96eGZWWUpoUkdRYV9nRDA5ODhNU2psTVplSnNFallkWDRYREVDSXVKdkNfMEdmSkVYZEpGU213SE82MDJRXzBUajVaandMaDR6aDdEVGJz0gG-AUFVX3lxTE5aRUM1T0Z0OENSWm5DYnB4dzBudjNGRVp5dFJ2aDZ0UzlJRkZ1UXZ3azNDQ1lBTUxZam81Vmx5V3hRYWNiTUlJZFRiT2czNHR",
+              "source": "Hindustan Times",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-27T07:29:24.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.4,
+          "photoError": "every candidate failed to download (only 5 KB — furniture, not a photograph; HTTP 401)",
+          "photo": null,
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": "editorial",
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Sudan drone strikes kill 21, cause mass outages in east | World News”. Reported by The Guardian · Hindustan Times — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
+        },
+        {
+          "headline": "Saudi-led coalition says it downed Houthi missiles, drones aimed at kingdom",
+          "display": "Saudi-led coalition says it downed Houthi missiles, drones aimed at kingdom",
+          "original": "Saudi-led coalition says it downed Houthi missiles, drones aimed at kingdom",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "Al Jazeera · NDTV",
+          "sourceNames": [
+            "Al Jazeera",
+            "NDTV"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Government of Qatar",
+            "Adani Group"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "QA",
+            "IN"
+          ],
+          "fundings": [
+            "state",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.aljazeera.com/news/2026/10/27/saudi-led-coalition-destroys-four-houthi-drones?traffic_source=rss",
+          "summary": "The attacks come as top officials from Saudi Arabia, Turkiye, Pakistan and Iran meet in Tehran to de-escalate conflict.",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.aljazeera.com/news/2026/10/27/saudi-led-coalition-destroys-four-houthi-drones?traffic_source=rss",
+              "source": "Al Jazeera",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOUFRFVGZGS3RGYW1NZXJndHZPRzVpWFZqRUhmS3lJMVNNUmxRcjI5TjBpNmNQU2RHTXFFRXZIcVRlajZuanQ3cG9LWTNuSXN5cks1R1AzSE5Td2l1Z1lzblhGS2p5ZDZtbDhzYXEta1B3YnM4NHJXcWFibXZHY3Jyd2RjNDdqUkV4VnpMak9HMzUzenBhZmZzcHdfZ1cxdUlUcklVRFA1dVdUOWMyNzF0MFNaUTfSAbwBQVVfeXFMTVpfbFRaRGFURFVsY1lhSHlQODQwUU9wNHJhOFZhaFMxUkdONFB3V1lPa0xVZk1mNldrdzlqaTYwRTRkd2JwNWJtM0p6eER5VDI3NUt",
+              "source": "NDTV",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-27T04:54:26.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.1,
+          "photo": {
+            "path": "work/photos/world/photo-world-6.jpg",
+            "credit": "Photo: Al Jazeera",
+            "license": "publisher",
+            "pageUrl": "https://www.aljazeera.com/news/2026/10/27/saudi-led-coalition-destroys-four-houthi-drones?traffic_source=rss",
+            "query": "(the article)",
+            "url": "https://www.aljazeera.com/wp-content/uploads/2026/10/2026-10-09T144448Z_533596701_RC2OZNAIE9JB_RTRMADP_3_IRAN-CRISIS-YEMEN-HOUTHIS-1793084327.jpg?resize=1920%2C1440",
+            "size": "1920×1440",
+            "edge": 1920,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Saudi-led coalition says it downed Houthi missiles, drones aimed at kingdom”. Reported by Al Jazeera · NDTV — 2 independent newsrooms. Behind the text is a library photograph, Photo: Al Jazeera. It is not a photograph of this event."
+        },
+        {
+          "headline": "Israel heads to the polls as shift to the right dominates critical election",
+          "display": "Israel heads to the polls as shift to the right dominates critical election",
+          "original": "Israel heads to the polls as shift to the right dominates critical election",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "Al Jazeera · NDTV",
+          "sourceNames": [
+            "Al Jazeera",
+            "NDTV"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Government of Qatar",
+            "Adani Group"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "QA",
+            "IN"
+          ],
+          "fundings": [
+            "state",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.aljazeera.com/news/2026/10/27/israel-heads-to-the-polls-as-shift-to-the-right-dominates-critical-election?traffic_source=rss",
+          "summary": "Netanyahu seeks to extend rule at helm of far right alliance facing off against predominantly right-wing bloc.",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.aljazeera.com/news/2026/10/27/israel-heads-to-the-polls-as-shift-to-the-right-dominates-critical-election?traffic_source=rss",
+              "source": "Al Jazeera",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQVDFoM1pKMi1lUzg2eHFTN3ZWbG9yRnhpdU40dDBzdU1RWFNYdXRWMWFwQUM2NDVpbE9Pd2QyMTlyZG5RMWdSMHY1dzNLeHhPYXQzbWJpLXZENC15YUFwekxadnhpY05TcDJDdXRuMnA3dnFWcmtrbE5GNUFMaDNJZDZweldnR2NDWDRnSEx1eTPSAZgBQVVfeXFMT3FfSzBDYW5wU0VJbTRMWGdNaUhtLXRHZEpYa2lpeWMyZlBweUVSVlQyT01fUTMwdmQtTEVJNDZtb01BSUszY3JxM3FUOHVmUnJGMTQ1OXhkT0l1aWlQQUw2T3RTa0J5SGM1Zk1JeHlFT2pEVWtWeUt",
+              "source": "NDTV",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-27T04:44:14.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.1,
+          "photo": {
+            "path": "work/photos/world/photo-world-7.jpg",
+            "credit": "Photo: Al Jazeera",
+            "license": "publisher",
+            "pageUrl": "https://www.aljazeera.com/news/2026/10/27/israel-heads-to-the-polls-as-shift-to-the-right-dominates-critical-election?traffic_source=rss",
+            "query": "(the article)",
+            "url": "https://www.aljazeera.com/wp-content/uploads/2026/10/getty_6ac26efa5e-1791127290.jpg?resize=1920%2C1440",
+            "size": "1920×1440",
+            "edge": 1920,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Israel heads to the polls as shift to the right dominates critical election”. Reported by Al Jazeera · NDTV — 2 independent newsrooms. Behind the text is a library photograph, Photo: Al Jazeera. It is not a photograph of this event."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "world-1",
+          "story": "Jordan carries out deadly strike in Syria in retaliation for church attack",
+          "files": [
+            "data/editions/2026-10-27/world/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-27/world/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-27/world/1/alt.json",
+          "caption": "data/editions/2026-10-27/caption-world-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "world-2",
+          "story": "Ex-FBI chief Comey defiant in the face of third prosecution",
+          "files": [
+            "data/editions/2026-10-27/world/2/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-27/world/2/slide-1.jpg",
+          "alts": "data/editions/2026-10-27/world/2/alt.json",
+          "caption": "data/editions/2026-10-27/caption-world-2.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "world-3",
+          "story": "Netanyahu Pushed For Attack On Iran Ahead Of Israeli Election: Report",
+          "files": [
+            "data/editions/2026-10-27/world/3/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-27/world/3/slide-1.jpg",
+          "alts": "data/editions/2026-10-27/world/3/alt.json",
+          "caption": "data/editions/2026-10-27/caption-world-3.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "world-4",
+          "story": "Sudan drone strikes kill 21, cause mass outages in east | World News",
+          "files": [
+            "data/editions/2026-10-27/world/4/slide-1.jpg",
+            "data/editions/2026-10-27/world/4/slide-2.jpg",
+            "data/editions/2026-10-27/world/4/slide-3.jpg"
+          ],
+          "cover": "data/editions/2026-10-27/world/4/slide-1.jpg",
+          "alts": "data/editions/2026-10-27/world/4/alt.json",
+          "caption": "data/editions/2026-10-27/caption-world-4.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "world-5",
+          "story": "Saudi-led coalition says it downed Houthi missiles, drones aimed at kingdom",
+          "files": [
+            "data/editions/2026-10-27/world/5/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-27/world/5/slide-1.jpg",
+          "alts": "data/editions/2026-10-27/world/5/alt.json",
+          "caption": "data/editions/2026-10-27/caption-world-5.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "world-6",
+          "story": "Israel heads to the polls as shift to the right dominates critical election",
+          "files": [
+            "data/editions/2026-10-27/world/6/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-27/world/6/slide-1.jpg",
+          "alts": "data/editions/2026-10-27/world/6/alt.json",
+          "caption": "data/editions/2026-10-27/caption-world-6.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    },
+    {
+      "id": "science",
+      "label": "SCIENCE",
+      "stories": [
+        {
+          "headline": "IIT Mandi Launches Science on Wheels in Himachal Pradesh",
+          "display": "IIT Mandi Launches Science on Wheels in Himachal Pradesh",
+          "original": "IIT Mandi Launches Science on Wheels in Himachal Pradesh",
+          "truncated": false,
+          "usable": true,
+          "category": "SCIENCE",
+          "source": "The Indian Express · GK Today · Hindustan Times",
+          "sourceNames": [
+            "The Indian Express",
+            "GK Today",
+            "Hindustan Times"
+          ],
+          "corroboration": 3,
+          "republishers": [],
+          "owners": [
+            "Indian Express Group",
+            "HT Media / KK Birla family"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial",
+            "conglomerate"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQdzJxOXFxakxXa0ZMRm0zY1Y0dWQ1LWxUbFRXUlZobEJ6Y3Q0T2o0bmF3R25xMkRxTVlOT1ZfbVZ3UmxrWGJNOE9kSVZ0TmtCLVVULU5kMDAxSy1RcXF0anhUV0RUQ2o3NGdiSDVJX0RtTWZSb3FoRXN1VUZwbUZVMXBOX2ZlSHM?oc=5",
+          "summary": "IIT Mandi Launches Science on Wheels in Himachal Pradesh &nbsp;&nbsp; GK Today",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOSDh2TnFIRTUwUHZFOS1BWWlyT0RZMEdmeEpRZ21ydXBZVTJNcjlnb1RzMzhkelBsOUZGalJtMUxTZnNfMklpU0l0YWJnMUFCam9VNEZYaFdDME5vQmlPNVY3c3k3SS0xbVVRZnZDRE9MS1VWT3VIUVlsbDhrTGR2WmdLZDhNSHdxdGZLMkd4OUVzMkRmdFpKVmhua2pDYnlQOUQyN1BPbk5LcnRQOTl3cTMzODY0YUgwM3BJR2JHeEVEMHpsUVE1ODN30gHQAUFVX3lxTE1PVGxTU1FqcHhPeXg5QjRyTmRubTA4Nm5ZcjNMUjFXV2E0alJmOGI0Y295OWFuT2dPNndkdS1",
+              "source": "The Indian Express",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQdzJxOXFxakxXa0ZMRm0zY1Y0dWQ1LWxUbFRXUlZobEJ6Y3Q0T2o0bmF3R25xMkRxTVlOT1ZfbVZ3UmxrWGJNOE9kSVZ0TmtCLVVULU5kMDAxSy1RcXF0anhUV0RUQ2o3NGdiSDVJX0RtTWZSb3FoRXN1VUZwbUZVMXBOX2ZlSHM?oc=5",
+              "source": "GK Today",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxNN1pHQmthSEhkMnRWNUtFb29JZlVQVHlHd1Y2Z3BKZHJuMndrNVlqdDVqSVU3LS1GSlFPS01PX1hIYS1JMDlpTEJnU2hlaUtfZFYwM2pWZ3R0VlE2SVNPOVlOWXE2eVlGUVF2MnNkMlpKSUlmOWNsaUItQzFLMzNfdDJOV0Vwc3B1ajRKWFNYbXJqZzM5MkgxMk00eEdoeVR5TXBmRFhHTkhxcEtCYmFwSFprM0h1ZktSSTc1bHBabnBPUEFPM2FaTnM1ZUVkVTRSYXFXNElnanZTM0x5MWw1ZU9BUW9nbGV1cFJ6SFN0NlFBQdIB9wFBVV95cUxQR3ltSnNUSmtJM1NjNUp",
+              "source": "Hindustan Times",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-27T08:08:52.000Z",
+          "topic": "science",
+          "section": "science",
+          "tier": "notable",
+          "score": 9.45,
+          "articlePhotoError": "Hindustan Times: HTTP 400",
+          "photoError": "no image matched the story closely enough (searched \"newspapers\")",
+          "photo": null,
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": "editorial",
+          "alt": "A news card from @dailyvolex, headed SCIENCE. It reads: “IIT Mandi Launches Science on Wheels in Himachal Pradesh”. Reported by The Indian Express · GK Today · Hindustan Times — 3 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "science-1",
+          "story": "IIT Mandi Launches Science on Wheels in Himachal Pradesh",
+          "files": [
+            "data/editions/2026-10-27/science/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-27/science/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-27/science/1/alt.json",
+          "caption": "data/editions/2026-10-27/caption-science-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    }
+  ]
+}
