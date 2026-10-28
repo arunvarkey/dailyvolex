@@ -1,0 +1,1681 @@
+{
+  "id": "2026-10-28",
+  "kind": "daily",
+  "builtAt": "2026-10-28T08:51:59.904Z",
+  "pool": 565,
+  "feedErrors": [
+    "indian-express: HTTP 403"
+  ],
+  "refusals": {
+    "read": 565,
+    "published": 17,
+    "refused": 250,
+    "consideredNotChosen": 298,
+    "byRule": {
+      "says nothing happened": {
+        "count": 147,
+        "samples": [
+          {
+            "title": "Ghanaian twin brothers and US woman plead guilty to $9m romance scam",
+            "source": "BBC News"
+          },
+          {
+            "title": "Mbappé sorry for 'ill-judged' Mao remark after backlash in China",
+            "source": "BBC News"
+          },
+          {
+            "title": "What we know about Ukraine-Russia truce in Oleshky, brokered by Melania Trump",
+            "source": "BBC News"
+          },
+          {
+            "title": "What does Israel's election mean for Gaza and the wider world?",
+            "source": "BBC News"
+          },
+          {
+            "title": "A bust-up between mathematicians is fuelling fears that AI could undermine science",
+            "source": "BBC News"
+          },
+          {
+            "title": "Why is the system failing France’s younger generation?",
+            "source": "Al Jazeera"
+          },
+          {
+            "title": "Why the US midterms matter even if you don’t live in America",
+            "source": "Al Jazeera"
+          },
+          {
+            "title": "Cyclone Arnab makes landfall in India’s Andhra Pradesh",
+            "source": "Al Jazeera"
+          }
+        ]
+      },
+      "older than the window": {
+        "count": 69,
+        "samples": [
+          {
+            "title": "Lula's comeback in Brazil dents Trump's ambitions for Latin America",
+            "source": "BBC News"
+          },
+          {
+            "title": "UK sanctions Sudanese military leaders implicated in El Fasher ‘campaign of rape’",
+            "source": "The Guardian"
+          },
+          {
+            "title": "US forces accused of ‘weaponising’ Somalia’s floods by trapping women and children in the path of El Niño",
+            "source": "The Guardian"
+          },
+          {
+            "title": "Sudan paramilitary drone strikes cause mass power cuts in eastern states",
+            "source": "The Guardian"
+          },
+          {
+            "title": "UK poised to miss reduced aid spending target of 0.3% of national income",
+            "source": "The Guardian"
+          },
+          {
+            "title": "Mystery over source of Ebola infection in Nigeria fuels concern about spread of virus",
+            "source": "The Guardian"
+          },
+          {
+            "title": "Chinese markets lose trillions as race for AI supremacy with US takes its toll",
+            "source": "The Guardian"
+          },
+          {
+            "title": "US bans vehicles from China’s BYD at Japan military base, calling them ‘unacceptable’ risk",
+            "source": "The Guardian"
+          }
+        ]
+      },
+      "not news": {
+        "count": 14,
+        "samples": [
+          {
+            "title": "Watch: What happens now after close vote in Israeli election?",
+            "source": "BBC News"
+          },
+          {
+            "title": "Watch: The Mbappé-Chairman Mao controversy explained",
+            "source": "BBC News"
+          },
+          {
+            "title": "Coalition MP ejected from question time after swearing at PM – as it happened",
+            "source": "The Guardian"
+          },
+          {
+            "title": "Kyiv hopes for ‘new momentum’ in peace talks after Finnish and Norwegian leaders’ call with Putin – as it happened",
+            "source": "The Guardian"
+          },
+          {
+            "title": "Israel election results live: vote count continues as exit polls suggest no clear winner",
+            "source": "The Guardian"
+          },
+          {
+            "title": "Major Israeli TV networks revise polling projections – as it happened",
+            "source": "The Guardian"
+          },
+          {
+            "title": "Video. Latest news bulletin | October 28th, 2026 – Morning",
+            "source": "Euronews.com"
+          },
+          {
+            "title": "Israel Election Results Live: Netanyahu Bloc Ahead With 55 Seats After Half Of Votes Counted",
+            "source": "NDTV"
+          }
+        ]
+      },
+      "too thin to be a headline": {
+        "count": 8,
+        "samples": [
+          {
+            "title": "India JIO",
+            "source": "Post Register"
+          },
+          {
+            "title": "India JIO",
+            "source": "Post Register"
+          },
+          {
+            "title": "India Daily Life",
+            "source": "Post Register"
+          },
+          {
+            "title": "Rebalancing India’s trade deficits",
+            "source": "EY"
+          },
+          {
+            "title": "PIB Backgrounder",
+            "source": "Press Information Bureau"
+          },
+          {
+            "title": "Tech Life",
+            "source": "BBC News"
+          },
+          {
+            "title": "FX Daily Snapshot",
+            "source": "MUFG Research"
+          },
+          {
+            "title": "Opinion Review",
+            "source": "Baishideng Publishing Group"
+          }
+        ]
+      },
+      "tips or price speculation": {
+        "count": 4,
+        "samples": [
+          {
+            "title": "Ayushman Bharat Data Could Transform India's Healthcare, Says NITI Aayog Member",
+            "source": "NDTV"
+          },
+          {
+            "title": "Maruti Suzuki shares see target price cuts by Jefferies, Nomura, other brokerages after Q2 net profit drops 26% YoY. What’s ahead?",
+            "source": "Economic Times"
+          },
+          {
+            "title": "Jio Platforms shares get 3 Buy calls on Day 1 as Nomura, Motilal and Elara initiate coverage. Check target price",
+            "source": "Economic Times"
+          },
+          {
+            "title": "L&T shares rally 6% after Q2 net profit jumps 33% YoY. Why Jefferies cut target price?",
+            "source": "Economic Times"
+          }
+        ]
+      },
+      "finance feed, not a finance story": {
+        "count": 4,
+        "samples": [
+          {
+            "title": "Jio effect! Reliance beats Tata to become India's most valued conglomerate",
+            "source": "Economic Times"
+          },
+          {
+            "title": "'Fully subscribed in 95 minutes’: Jio listing leaves with greater responsibility, says Akash Ambani",
+            "source": "Economic Times"
+          },
+          {
+            "title": "‘Jio Mere Laal’: Anant Ambani’s emotional words leave Mukesh Ambani teary-eyed",
+            "source": "Economic Times"
+          },
+          {
+            "title": "Akash Ambani announces Jio’s next big mission after data: Bring AI, cloud and space connectivity to every Indian",
+            "source": "Economic Times"
+          }
+        ]
+      },
+      "comment, not reporting": {
+        "count": 3,
+        "samples": [
+          {
+            "title": "Analysis: India Needs Sector-Specific AI Rules, Not Omnibus Law",
+            "source": "NDTV"
+          },
+          {
+            "title": "Analysis: India Needs Sector-Specific AI Rules, Not Omnibus Law",
+            "source": "NDTV"
+          },
+          {
+            "title": "Rethinking the concept of ‘no direct benefit’ in clinical research",
+            "source": "Nature"
+          }
+        ]
+      },
+      "marketing, not reporting": {
+        "count": 1,
+        "samples": [
+          {
+            "title": "Dialog Axiata, IIT Madras partner on applied research, technology development in Sri Lanka",
+            "source": "Telecompaper"
+          }
+        ]
+      }
+    }
+  },
+  "sections": [
+    {
+      "id": "top",
+      "label": "TOP STORIES",
+      "stories": [
+        {
+          "headline": "India evacuates over 180,000 as Cyclone Arnab hits coast",
+          "display": "India evacuates over 180,000 as Cyclone Arnab hits coast",
+          "original": "India evacuates over 180,000 as Cyclone Arnab hits coast",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "U.S. News & World Report · AP News · NBC News",
+          "sourceNames": [
+            "U.S. News & World Report",
+            "AP News",
+            "NBC News",
+            "Euronews.com",
+            "Le Monde.fr",
+            "Reuters"
+          ],
+          "corroboration": 6,
+          "republishers": [],
+          "owners": [
+            "AP (member cooperative)",
+            "Thomson Reuters (Trust Principles)"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "US",
+            "GB"
+          ],
+          "fundings": [
+            "cooperative",
+            "trust"
+          ],
+          "unknownOwners": 4,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNLVRtLXJzalYxQXpZTUpESkIwMXZjSWtfMC1WZHZNODd4d19lMVFoTFFlNXZpRFJJQkV5RW5nU3NzUXhfTEd3ckFJcEszQjVvRTZRQ0xOZXlOSmlod3VDR0liaE1KM193QVZEWkdnbTE0Q3dtS2pRaTM3Y3ZOTWc4bW1uYlM2Vm5zN1lvMXBQdXMwMEp1LXZ6aA?oc=5",
+          "summary": "India evacuates over 180,000 as Cyclone Arnab hits coast &nbsp;&nbsp; NBC News",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPUm95RzNpb0FyTGZ2R2RRM09ERHdoRjFVS2xsOTFqYjIzV1M0U09HVGREMEFTQW94QVJtRnV4czBjZ3JaODhDNU04X2dYdmpiYk5scXdPN3dQYjRxcm8zcDdvUUpNZWZxUmpHQ3MtMTUxb19HQjdNTUVUZW1MTmY5MEpDZUFveGNOcXNmZGpBakI5NE1RSW0zaDNhMVZwUkpJeHhFeHVvbDQ0RUJoMUlTalpiZ1YxRjhsd2o4V1NIMHFvaWJnMHBLdXRn?oc=5",
+              "source": "U.S. News & World Report",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNeTRJYjlRQXg4aVJpOFg3eWdoNGV0ZWpXaWFXeDlHNnpHbG1YQ0c2RGF2a0xWUnZFZ0R2YTU3WjRxSDZ2b3RIVVpuQWNOalFUSVdKaVlLOUtJcGdoRW5lZFNHejJwQ3pjb1NKcUJpNlBNMXdfQzhUMnctenZXOEVxaldwZEtXUHdMLUVYQTgydTdxZ0N3dUxFVExqX1AzZ1VERzBn?oc=5",
+              "source": "AP News",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNLVRtLXJzalYxQXpZTUpESkIwMXZjSWtfMC1WZHZNODd4d19lMVFoTFFlNXZpRFJJQkV5RW5nU3NzUXhfTEd3ckFJcEszQjVvRTZRQ0xOZXlOSmlod3VDR0liaE1KM193QVZEWkdnbTE0Q3dtS2pRaTM3Y3ZOTWc4bW1uYlM2Vm5zN1lvMXBQdXMwMEp1LXZ6aA?oc=5",
+              "source": "NBC News",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQZm85b1ZPRmhxOFN2OXF3eHpmcm8wdER2aERRTkotTFo2eGZTaks3SnNfN3l2dkpXZC1rZWhscDFUUkwyd1pUbzFUV3dSSExrQkFKS0FONm45RE9rT0JoOGxDYUVHSU1SQ2MxQWRjWGw4NGpDaFgzSGRLRXZKRzFxeTU1TmVCeWo1aEZBTHg3MmRxU09la0lsWmJLVC1DdnFCSTJF?oc=5",
+              "source": "Euronews.com",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-28T07:35:28.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "lead",
+          "score": 20.8,
+          "articlePhotoError": "Euronews.com: the article declares no picture",
+          "photoError": "a library photograph would misrepresent a story about people in harm (searched \"(none)\")",
+          "photo": null,
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": "editorial",
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “India evacuates over 180,000 as Cyclone Arnab hits coast”. Reported by U.S. News & World Report · AP News · NBC News — 6 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
+        },
+        {
+          "headline": "Asian Para Games gold medallist Neeraj Yadav found dead",
+          "display": "Asian Para Games gold medallist Neeraj Yadav found dead",
+          "original": "Asian Para Games gold medallist Neeraj Yadav found dead",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "The Hindu · Times of India",
+          "sourceNames": [
+            "The Hindu",
+            "Times of India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "The Hindu Group (family-held)",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.thehindu.com/sport/neeraj-yadav-indias-top-para-athlete-found-dead/article71634829.ece",
+          "summary": "The 42-year-old Yadav, who won three gold medals in the 2018 Jakarta Games, had missed the recent Para Games in Aichi-Nagoya due to a doping suspension",
+          "feedImage": "https://th-i.thgim.com/public/incoming/m5lf4y/article71634847.ece/alternates/LANDSCAPE_1200/IMG_TH19NEERAJ_2_1_GIC1IN2T.jpg",
+          "sources": [
+            {
+              "link": "https://www.thehindu.com/sport/neeraj-yadav-indias-top-para-athlete-found-dead/article71634829.ece",
+              "source": "The Hindu",
+              "feedImage": "https://th-i.thgim.com/public/incoming/m5lf4y/article71634847.ece/alternates/LANDSCAPE_1200/IMG_TH19NEERAJ_2_1_GIC1IN2T.jpg"
+            },
+            {
+              "link": "https://timesofindia.indiatimes.com/sports/more-sports/others/three-time-asian-para-games-gold-medallist-neeraj-yadav-commits-suicide/articleshow/135252919.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135252993,imgsize-71167.cms"
+            }
+          ],
+          "published": "2026-10-28T07:56:15.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "lead",
+          "score": 15.7,
+          "photo": {
+            "path": "work/photos/top/photo-top-3.jpg",
+            "credit": "Photo: The Hindu",
+            "license": "publisher",
+            "pageUrl": "https://www.thehindu.com/sport/neeraj-yadav-indias-top-para-athlete-found-dead/article71634829.ece",
+            "query": "(the feed)",
+            "url": "https://th-i.thgim.com/public/incoming/m5lf4y/article71634847.ece/alternates/LANDSCAPE_1200/IMG_TH19NEERAJ_2_1_GIC1IN2T.jpg",
+            "size": "1200×675",
+            "edge": 1200,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Asian Para Games gold medallist Neeraj Yadav found dead”. Reported by The Hindu · Times of India — 2 independent newsrooms. Behind the text is a library photograph, Photo: The Hindu. It is not a photograph of this event."
+        },
+        {
+          "headline": "Jio Platforms delivers biggest listing gain among India’s 5 largest IPOs",
+          "display": "Jio Platforms delivers biggest listing gain among India’s 5 largest IPOs",
+          "original": "Jio Platforms delivers biggest listing gain among India’s 5 largest IPOs, jumps 21% on debut",
+          "truncated": true,
+          "usable": true,
+          "category": "INDIA MARKETS",
+          "source": "Bloomberg.com · TechCrunch · Economic Times",
+          "sourceNames": [
+            "Bloomberg.com",
+            "TechCrunch",
+            "Economic Times"
+          ],
+          "corroboration": 3,
+          "republishers": [],
+          "owners": [
+            "Bloomberg LP",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "US",
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://economictimes.indiatimes.com/markets/stocks/news/jio-platforms-delivers-biggest-listing-gain-among-indias-5-largest-ipos-jumps-21-on-debut/articleshow/135256268.cms",
+          "summary": "Jio Platforms shares listed at a 21.35% premium to the IPO price of Rs 1,119, delivering the biggest listing-day gain among India’s five largest IPOs by issue size. Brokerages Nomura, Motilal Oswal and Elara Capital initiated coverage with Buy ratings, citing tariff hikes, subscriber monetisation and digital services growth.",
+          "feedImage": "https://img.etimg.com/photo/msid-135256268,imgsize-2434011.cms",
+          "sources": [
+            {
+              "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOYVRka0hBSzF4NVMwNlFwTHlIMVdEcGFqMTh4UGtBVXdGX18tNVkzeS1KdnMweXRCazF5UllNUGlHRFNaQUcxX2w5eWVkeE1mTjJRYmtTZUtlMFl6X084X2xzT0MtUmlJMEU0WENRZE42Y3FRLXNFdU9EX1lYcERlR000NnE4SVhMRVNQbm5kWHJkbVVnZUIyUThMTTRUMkx1VVlQbGV4OXZud3hERXc?oc=5",
+              "source": "Bloomberg.com",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOTVpoRE52cE44TzItYzBYN0FIUVY4dVp2b01XOVJ3dWR4VFZ5TnpRdHBtOW5ydElVSW1NbFpFdlNEZDNWbkhKZDZmOTQ4OEd5NDBSQVZUR3V0QXBmLTdKX3dSN1RiSlVMUGg5MWduN2ZzQlBPU2Rka3RjeGgtZ3g1b1Z6QkdrU0w5aE8xamZ3Tm1ISFVoUzNvaUFONEdqdnpmUWNudktNWk5fV2hwOWpxY1ZQV2MteTR4Q2cwSUpmalExZC1OSVZIdml3?oc=5",
+              "source": "Bloomberg.com",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPUkozOENxTExJSm9xVl9IXzkwWlhlclE5bnpKemg5T1BhZWxaVm9zejI5SHdRZzlibndTNTVNVGlxUXNGVkVadkxwTmZFWHpaWklGOU1PTlREdG1rTC1Uc0pZZkRiM05ERjloZGVkeXZlWjAwOGVrbmViTFZCZk9fS0NNOGZXQXFQVDVxNFNNd0RvaV9NOHZwOUNmVXRtUHM?oc=5",
+              "source": "TechCrunch",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNVTF0djdpNkdYem1HRlZiVlhjLWdaOWp5Z0lXaW9GWjNDcTlFZ0NESktIaFpfMGFDdmQtZUh5a0VuNUtILUhCSW0tbjMtajRadlkyUldxU2t4a29lLXhNTGxGNXNxRW1fRXQtSVlhVjNiUGhuSjRGUzcyRmtRckJFVUl5dW9jbzB1NDZpdnVYY0hVLWtkaUtwUGVEMWFEN21iajRwMjQ3NnUtbXg5cHdMMXgzaUttQQ?oc=5",
+              "source": "Bloomberg.com",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-28T07:18:18.000Z",
+          "topic": "markets-india",
+          "section": "business",
+          "tier": "notable",
+          "score": 9.3,
+          "articlePhotoError": "Bloomberg.com: the article declares no picture",
+          "photo": {
+            "path": "work/photos/top/photo-top-4.jpg",
+            "credit": "File photo: Vyacheslav Argenberg / CC BY 4.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Hampi,_India,_Stone_ornaments_at_Vijaya_Vitthala_Temple.jpg",
+            "query": "India",
+            "relevance": 0.13,
+            "title": "Hampi, India, Stone ornaments at Vijaya Vitthala Temple",
+            "url": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Hampi%2C_India%2C_Stone_ornaments_at_Vijaya_Vitthala_Temple.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "size": "1920×1280",
+            "edge": 1920,
+            "from": "library"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA MARKETS. It reads: “Jio Platforms delivers biggest listing gain among India’s 5 largest IPOs”. Reported by Bloomberg.com · TechCrunch · Economic Times — 3 independent newsrooms. Behind the text is a library photograph captioned “Hampi, India, Stone ornaments at Vijaya Vitthala Temple”, credited to Vyacheslav Argenberg / CC BY 4.0. It is not a photograph of this event."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "top-1",
+          "story": "India evacuates over 180,000 as Cyclone Arnab hits coast",
+          "files": [
+            "data/editions/2026-10-28/top/1/slide-1.jpg",
+            "data/editions/2026-10-28/top/1/slide-2.jpg",
+            "data/editions/2026-10-28/top/1/slide-3.jpg"
+          ],
+          "cover": "data/editions/2026-10-28/top/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-28/top/1/alt.json",
+          "caption": "data/editions/2026-10-28/caption-top-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "top-2",
+          "story": "Asian Para Games gold medallist Neeraj Yadav found dead",
+          "files": [
+            "data/editions/2026-10-28/top/2/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-28/top/2/slide-1.jpg",
+          "alts": "data/editions/2026-10-28/top/2/alt.json",
+          "caption": "data/editions/2026-10-28/caption-top-2.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "top-3",
+          "story": "Jio Platforms delivers biggest listing gain among India’s 5 largest IPOs",
+          "files": [
+            "data/editions/2026-10-28/top/3/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-28/top/3/slide-1.jpg",
+          "alts": "data/editions/2026-10-28/top/3/alt.json",
+          "caption": "data/editions/2026-10-28/caption-top-3.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "reel",
+          "id": "top-reel",
+          "files": [
+            "data/editions/2026-10-28/top/reel.mp4"
+          ],
+          "cover": "data/editions/2026-10-28/top/1/slide-1.jpg",
+          "caption": "data/editions/2026-10-28/caption-top-1.txt",
+          "alts": "",
+          "noAlts": "Instagram does not accept alt text on a reel; the caption carries the headline.",
+          "seconds": 13.9,
+          "bytes": 1472478,
+          "story": "India evacuates over 180,000 as Cyclone Arnab hits coast",
+          "footage": "the photograph, pushed in",
+          "spoken": "Daily Volex. India evacuates over 180,000 as Cyclone Arnab hits coast. Reported by U.S. News & World Report, AP News and NBC News."
+        }
+      ]
+    },
+    {
+      "id": "india",
+      "label": "INDIA",
+      "stories": [
+        {
+          "headline": "Rahul Gandhi alleges Tata Group ‘being criminally destroyed’",
+          "display": "Rahul Gandhi alleges Tata Group ‘being criminally destroyed’",
+          "original": "Rahul Gandhi alleges Tata Group ‘being criminally destroyed’, says will ensure justice for ‘crimes’",
+          "truncated": true,
+          "usable": true,
+          "category": "INDIA",
+          "source": "The Hindu · Times of India · The New Indian Express",
+          "sourceNames": [
+            "The Hindu",
+            "Times of India",
+            "The New Indian Express",
+            "NDTV Profit",
+            "Hindustan Times"
+          ],
+          "corroboration": 5,
+          "republishers": [],
+          "owners": [
+            "The Hindu Group (family-held)",
+            "Bennett, Coleman & Co",
+            "Adani Group",
+            "HT Media / KK Birla family"
+          ],
+          "ownerCount": 4,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial",
+            "conglomerate"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://www.thehindu.com/news/national/tata-group-being-destroyed-conflict-business-leader-rahul-gandhi-congress-remarks/article71634362.ece",
+          "summary": "The Leader of Opposition in Lok Sabha questioned business leaders’ silence, saying “Indian business is not Modi and Shah’s plaything”",
+          "feedImage": "https://th-i.thgim.com/public/incoming/ek3rc9/article71634415.ece/alternates/LANDSCAPE_1200/PTI08_13_2026_000509A.jpg",
+          "sources": [
+            {
+              "link": "https://www.thehindu.com/news/national/tata-group-being-destroyed-conflict-business-leader-rahul-gandhi-congress-remarks/article71634362.ece",
+              "source": "The Hindu",
+              "feedImage": "https://th-i.thgim.com/public/incoming/ek3rc9/article71634415.ece/alternates/LANDSCAPE_1200/PTI08_13_2026_000509A.jpg"
+            },
+            {
+              "link": "https://timesofindia.indiatimes.com/india/tata-is-being-criminally-destroyed-rahul-gandhi-targets-pm-modi-amit-shah-amid-boardroom-feud/articleshow/135252759.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135252798,imgsize-50374.cms"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxOT1dIRXAtOVdhNlVleGQtRlpBc0tkUVROZUFRTXFuTkRoUlBIVFFkbWNabGRvRzVEYWFqTWhEQjFHaDF0dnlzWVZJWUJNUHZVcmVfYmhmSVpvUmlLbXZGM01IMXdrQlU5WEZMdTRqNU5EV1pRUlFzU0pnUk1oM3cyNlNOMDF5eVpKYmszbTI4Nng3bm03ZVZYWFJYVDFpSXNLSVNkTGFSX3BJWHdNaW9EVjIwSFV1N1VRN0ladzhyQ2VabUNFWmozNnpZNm1OSHV0MXhTVTVURld3VmvSAegBQVVfeXFMTUp4UUVIUVNjLUE0bkhpanJFYVNCNzI2dzZhaWZlU0U0TVJ4V2p",
+              "source": "The New Indian Express",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPaGlwSkNDMGZScFVxcmEzRmJZSTdCRTRZcXV0a0NJQV9ldHlNTl9JeXJ1Z3NiR2lSQkhEbXU4M0pydi03MGZwWXgxam83a2w4TWI4cmtmeE13Xy1Td1NSVEhtRTc0QkZEWmFFTGozRnRSRHA0am5pX0xFSERPbnRrcW40X0ZCOUw4ZE02ZmRhQzhGbFBmVXhoYlNMb3FMd2ttSk1oUDR3aE5WN1c2Y05oOTR2ZE1DZVpsYnZ0UDdWZVFpTnZZNEVLeNIB0AFBVV95cUxQSzBvQUhNaXBCQkpFWkg4Y1lTVERXSEQ5Sml4aUNrSmZxNTN4YnpjdTZqT1hwZnpKRHpxU3NXY1R",
+              "source": "NDTV Profit",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-28T08:07:38.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 13.2,
+          "photo": {
+            "path": "work/photos/india/photo-india-2.jpg",
+            "credit": "Photo: The Hindu",
+            "license": "publisher",
+            "pageUrl": "https://www.thehindu.com/news/national/tata-group-being-destroyed-conflict-business-leader-rahul-gandhi-congress-remarks/article71634362.ece",
+            "query": "(the feed)",
+            "url": "https://th-i.thgim.com/public/incoming/ek3rc9/article71634415.ece/alternates/LANDSCAPE_1200/PTI08_13_2026_000509A.jpg",
+            "size": "1200×675",
+            "edge": 1200,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Rahul Gandhi alleges Tata Group ‘being criminally destroyed’”. Reported by The Hindu · Times of India · The New Indian Express — 5 independent newsrooms. Behind the text is a library photograph, Photo: The Hindu. It is not a photograph of this event."
+        },
+        {
+          "headline": "Jio makes strong debut at 21% premium to become India's second-most valuable firm",
+          "display": "Jio makes strong debut at 21% premium to become India's second-most valuable firm",
+          "original": "Jio makes strong debut at 21% premium to become India's second-most valuable firm",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "Times of India · Reuters · Moneycontrol.com",
+          "sourceNames": [
+            "Times of India",
+            "Reuters",
+            "Moneycontrol.com"
+          ],
+          "corroboration": 3,
+          "republishers": [],
+          "owners": [
+            "Bennett, Coleman & Co",
+            "Thomson Reuters (Trust Principles)",
+            "Reliance Industries"
+          ],
+          "ownerCount": 3,
+          "countries": [
+            "IN",
+            "GB"
+          ],
+          "fundings": [
+            "conglomerate",
+            "trust"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://timesofindia.indiatimes.com/business/india-business/jio-share-price-jpl-makes-strong-debut-at-21-premium-becomes-indias-second-most-valuable-firm-all-you-need-to-know/articleshow/135253566.cms",
+          "summary": "Jio Platforms celebrated a remarkable stock market entry, debuting at Rs 1,358 per share. The IPO attracted an impressive 22.19 times oversubscription, with bids surpassing Rs 7.4 lakh crore. Following this, the firm's market capitalisation soared to around Rs 12.5 lakh crore, securing its position as India's second most valuable company.",
+          "feedImage": "https://static.toiimg.com/photo/msid-135254928,imgsize-90466.cms",
+          "sources": [
+            {
+              "link": "https://timesofindia.indiatimes.com/business/india-business/jio-share-price-jpl-makes-strong-debut-at-21-premium-becomes-indias-second-most-valuable-firm-all-you-need-to-know/articleshow/135253566.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135254928,imgsize-90466.cms"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPMnBsQUVaem9YZkdBUHZ0aFRjRFVadWg5ektvU0ozc3VOWmhpXzRQcmJjY3BZaS0yRERZa1hTdjZxSjkwdFRlWWhuUnJIRk9HMUVjdzdibExtbnJIbnFUVzZKM1BhemljWDI3MTlTTEZHUmEzX1dkWC1RcHd6TjIxMVBxUDAzS1VUMjIzZkpIaHlLbHpJVGtpcUVLTERnWklieDJlVldNUkplUnJjNjFZVkMzYjRpaXpJQ3B3?oc=5",
+              "source": "Reuters",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQMDVNSE5IOVlGbzRWb1pPNnRucl9oY2gxbW1OZjhZejhSSnIwRjlkTEVlMVFqMEV6OFdoQXM1a1VJUHpSWHR1SkVqTkw4Y1JWNl90WVNzLWIwYUk0YTRSZnBjSVFwOUpnaFIzcWs4VEdrY0Y0bXdIRDNXUUpDMnlicGdHdnpremdlWW83UkNKTHppZWhKV2xWQkpwV0RiUVgxbkFnLVVrOFZMZHd1N1ZleEdzdEpHTmdOY2V4NFhGd0pfTEVrMzNGTHhhcDlZZmRaUWJEN1BseWxrazl4MEHSAeMBQVVfeXFMUDhwMGJpTjJKM3MtaHJpVUw2eE8xd2dOOHF5TFlCeVZQV0V",
+              "source": "Moneycontrol.com",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-28T06:29:11.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 9.15,
+          "photo": {
+            "path": "work/photos/india/photo-india-3.jpg",
+            "credit": "Photo: Times of India",
+            "license": "publisher",
+            "pageUrl": "https://timesofindia.indiatimes.com/business/india-business/jio-share-price-jpl-makes-strong-debut-at-21-premium-becomes-indias-second-most-valuable-firm-all-you-need-to-know/articleshow/135253566.cms",
+            "query": "(the feed)",
+            "url": "https://static.toiimg.com/photo/msid-135254928,imgsize-90466.cms",
+            "size": "1280×720",
+            "edge": 1280,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Jio makes strong debut at 21% premium to become India's second-most valuable firm”. Reported by Times of India · Reuters · Moneycontrol.com — 3 independent newsrooms. Behind the text is a library photograph, Photo: Times of India. It is not a photograph of this event."
+        },
+        {
+          "headline": "Indian Captain Smit Machchhar, flydubai crew honoured by UAE President for bravery during",
+          "display": "Indian Captain Smit Machchhar, flydubai crew honoured by UAE President for bravery during",
+          "original": "Indian Captain Smit Machchhar, flydubai crew honoured by UAE President for bravery during mid-air attack",
+          "truncated": true,
+          "usable": true,
+          "category": "INDIA",
+          "source": "NDTV · The Hindu",
+          "sourceNames": [
+            "NDTV",
+            "The Hindu"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Adani Group",
+            "The Hindu Group (family-held)"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate",
+            "commercial"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.thehindu.com/news/national/indian-captain-smit-machchhar-flydubai-crew-honoured-by-uae-president-for-bravery-during-mid-air-attack/article71634465.ece",
+          "summary": "The medals were presented by His Highness Sheikh Hamdan bin Mohammed bin Rashid Al Maktoum, Crown Prince of Dubai, Deputy Prime Minister and Minister of Defence",
+          "feedImage": "https://th-i.thgim.com/public/incoming/4a8isd/article71634574.ece/alternates/LANDSCAPE_1200/PTI10_28_2026_000009B.jpg",
+          "sources": [
+            {
+              "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNc09udG9rYUVaWHNYY0w2R1cyYWg2eU53UWhISzdONm5SeEhMUFFXUmZtQlIwbk05cTZWVzVtZFdEM3hSazNOQ2haeDNFUExadW1Wemh5aGZKazVRTnF4UXVNRUY1MnFpZEM2WEVndUdST0pHNEt0LW43WlBwYmFZdEZkZXZIaWtMY21EamZWQU9UbTZ6UVZRUDZsRDZOcS1xaDNKVTFYY3NRaTFHSDVRZ3pvVzhEb0VTalZNWmdybDNjZnhWTnfSAc4BQVVfeXFMTVc0MEZRV2Qya3Y0X2h6UDQxLVBFakN4Tm5HYWlPaEI4WVk4Z3JGaVc3NkJWNTBYXzhic2x0MWhWVW5",
+              "source": "NDTV",
+              "feedImage": null
+            },
+            {
+              "link": "https://www.thehindu.com/news/national/indian-captain-smit-machchhar-flydubai-crew-honoured-by-uae-president-for-bravery-during-mid-air-attack/article71634465.ece",
+              "source": "The Hindu",
+              "feedImage": "https://th-i.thgim.com/public/incoming/4a8isd/article71634574.ece/alternates/LANDSCAPE_1200/PTI10_28_2026_000009B.jpg"
+            }
+          ],
+          "published": "2026-10-28T07:21:46.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 8.7,
+          "photo": {
+            "path": "work/photos/india/photo-india-4.jpg",
+            "credit": "Photo: The Hindu",
+            "license": "publisher",
+            "pageUrl": "https://www.thehindu.com/news/national/indian-captain-smit-machchhar-flydubai-crew-honoured-by-uae-president-for-bravery-during-mid-air-attack/article71634465.ece",
+            "query": "(the feed)",
+            "url": "https://th-i.thgim.com/public/incoming/4a8isd/article71634574.ece/alternates/LANDSCAPE_1200/PTI10_28_2026_000009B.jpg",
+            "size": "1200×675",
+            "edge": 1200,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Indian Captain Smit Machchhar, flydubai crew honoured by UAE President for bravery during”. Reported by NDTV · The Hindu — 2 independent newsrooms. Behind the text is a library photograph, Photo: The Hindu. It is not a photograph of this event."
+        },
+        {
+          "headline": "Karnataka Council polls: Upset for Congress as it loses Bengaluru Teachers’ constituency",
+          "display": "Karnataka Council polls: Upset for Congress as it loses Bengaluru Teachers’ constituency",
+          "original": "Karnataka Council polls: Upset for Congress as it loses Bengaluru Teachers’ constituency",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "The Hindu · NDTV",
+          "sourceNames": [
+            "The Hindu",
+            "NDTV"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "The Hindu Group (family-held)",
+            "Adani Group"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.thehindu.com/news/national/karnataka/karnataka-council-polls-upset-for-congress-as-it-loses-bengaluru-teachers-constituency/article71632930.ece",
+          "summary": "The result could be a shot in the arm for the NDA partners after having been jolted by cross voting of 11 of its MLAs during the poll to seven Legislative Council seats in June.",
+          "feedImage": "https://th-i.thgim.com/public/incoming/kzd6ok/article71632991.ece/alternates/LANDSCAPE_1200/ALL_6858.JPG",
+          "sources": [
+            {
+              "link": "https://www.thehindu.com/news/national/karnataka/karnataka-council-polls-upset-for-congress-as-it-loses-bengaluru-teachers-constituency/article71632930.ece",
+              "source": "The Hindu",
+              "feedImage": "https://th-i.thgim.com/public/incoming/kzd6ok/article71632991.ece/alternates/LANDSCAPE_1200/ALL_6858.JPG"
+            },
+            {
+              "link": "https://www.ndtv.com/india-news/bjp-jabs-dk-shivakumar-after-congress-loses-karnataka-legislative-council-mlc-polls-2026-its-done-bro-12247265#publisher=newsstand",
+              "source": "NDTV",
+              "feedImage": "https://c.ndtvimg.com/2026-10/9ts4r0es_dk-shivakumar_625x300_28_October_26.jpeg"
+            }
+          ],
+          "published": "2026-10-28T08:18:46.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 8.7,
+          "photo": {
+            "path": "work/photos/india/photo-india-5.jpg",
+            "credit": "Photo: The Hindu",
+            "license": "publisher",
+            "pageUrl": "https://www.thehindu.com/news/national/karnataka/karnataka-council-polls-upset-for-congress-as-it-loses-bengaluru-teachers-constituency/article71632930.ece",
+            "query": "(the feed)",
+            "url": "https://th-i.thgim.com/public/incoming/kzd6ok/article71632991.ece/alternates/LANDSCAPE_1200/ALL_6858.JPG",
+            "size": "1200×675",
+            "edge": 1200,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Karnataka Council polls: Upset for Congress as it loses Bengaluru Teachers’ constituency”. Reported by The Hindu · NDTV — 2 independent newsrooms. Behind the text is a library photograph, Photo: The Hindu. It is not a photograph of this event."
+        },
+        {
+          "headline": "Kochi City Police Commissioner removed amid Cheranalloor luxury car crash probe involving",
+          "display": "Kochi City Police Commissioner removed amid Cheranalloor luxury car crash probe involving",
+          "original": "Kochi City Police Commissioner removed amid Cheranalloor luxury car crash probe involving judge’s minor son",
+          "truncated": true,
+          "usable": true,
+          "category": "INDIA",
+          "source": "The Hindu · Times of India",
+          "sourceNames": [
+            "The Hindu",
+            "Times of India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "The Hindu Group (family-held)",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.thehindu.com/news/national/kerala/kochi-city-police-commissioner-removed-amid-cheranalloor-luxury-car-crash-probe-involving-judges-minor-son/article71634476.ece",
+          "summary": "Kaliraj Mahesh Kumar likely to be replaced by R. Nishanthini, who is currently serving as IGP (South Zone). Move comes a day after govt suspended four police officers attached to Cheranalloor police station",
+          "feedImage": "https://th-i.thgim.com/public/incoming/bcb4yl/article71634576.ece/alternates/LANDSCAPE_1200/PTI10_26_2026_000310B.jpg",
+          "sources": [
+            {
+              "link": "https://www.thehindu.com/news/national/kerala/kochi-city-police-commissioner-removed-amid-cheranalloor-luxury-car-crash-probe-involving-judges-minor-son/article71634476.ece",
+              "source": "The Hindu",
+              "feedImage": "https://th-i.thgim.com/public/incoming/bcb4yl/article71634576.ece/alternates/LANDSCAPE_1200/PTI10_26_2026_000310B.jpg"
+            },
+            {
+              "link": "https://timesofindia.indiatimes.com/city/kochi/mercedes-hit-and-run-kochi-police-commissioner-removed-after-crash-involving-judges-minor-son-4-cops-suspended/articleshow/135254296.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135255178,imgsize-140403.cms"
+            }
+          ],
+          "published": "2026-10-28T07:22:14.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 8.7,
+          "photo": {
+            "path": "work/photos/india/photo-india-6.jpg",
+            "credit": "Photo: The Hindu",
+            "license": "publisher",
+            "pageUrl": "https://www.thehindu.com/news/national/kerala/kochi-city-police-commissioner-removed-amid-cheranalloor-luxury-car-crash-probe-involving-judges-minor-son/article71634476.ece",
+            "query": "(the feed)",
+            "url": "https://th-i.thgim.com/public/incoming/bcb4yl/article71634576.ece/alternates/LANDSCAPE_1200/PTI10_26_2026_000310B.jpg",
+            "size": "1200×675",
+            "edge": 1200,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Kochi City Police Commissioner removed amid Cheranalloor luxury car crash probe involving”. Reported by The Hindu · Times of India — 2 independent newsrooms. Behind the text is a library photograph, Photo: The Hindu. It is not a photograph of this event."
+        },
+        {
+          "headline": "Alexander brothers sentenced to 30 years in prison in sex trafficking case",
+          "display": "Alexander brothers sentenced to 30 years in prison in sex trafficking case",
+          "original": "Alexander brothers sentenced to 30 years in prison in sex trafficking case",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "BBC News · Times of India",
+          "sourceNames": [
+            "BBC News",
+            "Times of India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB",
+            "IN"
+          ],
+          "fundings": [
+            "state",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://timesofindia.indiatimes.com/world/us/conduct-monstrousalexander-brothers-sentenced-to-30-years-in-prison-in-sex-trafficking-case/articleshow/135250407.cms",
+          "summary": "Tal Alexander and his twin brothers, Oren and Alon Alexander, have been sentenced to 30 years in prison following their convictions for drugging and sexually assaulting multiple women. The victims articulated their emotional trauma during the trial, prompting prosecutors to call for maximum penalties. The defense, however, pleaded for leniency, referencing family commitments. Despite their claims ",
+          "feedImage": "https://static.toiimg.com/photo/msid-135250554,imgsize-164572.cms",
+          "sources": [
+            {
+              "link": "https://www.bbc.co.uk/news/articles/cqn498mng08ro?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/c228/live/e6371090-d249-11f1-8ba3-9fd3e261415f.jpg"
+            },
+            {
+              "link": "https://timesofindia.indiatimes.com/world/us/conduct-monstrousalexander-brothers-sentenced-to-30-years-in-prison-in-sex-trafficking-case/articleshow/135250407.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135250554,imgsize-164572.cms"
+            }
+          ],
+          "published": "2026-10-28T03:12:43.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 8.55,
+          "photo": {
+            "path": "work/photos/india/photo-india-7.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/cqn498mng08ro?at_medium=RSS&at_campaign=rss",
+            "query": "(the feed)",
+            "url": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/c228/live/e6371090-d249-11f1-8ba3-9fd3e261415f.jpg",
+            "size": "1024×576",
+            "edge": 1024,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Alexander brothers sentenced to 30 years in prison in sex trafficking case”. Reported by BBC News · Times of India — 2 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "india-1",
+          "story": "Rahul Gandhi alleges Tata Group ‘being criminally destroyed’",
+          "files": [
+            "data/editions/2026-10-28/india/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-28/india/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-28/india/1/alt.json",
+          "caption": "data/editions/2026-10-28/caption-india-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "india-2",
+          "story": "Jio makes strong debut at 21% premium to become India's second-most valuable firm",
+          "files": [
+            "data/editions/2026-10-28/india/2/slide-1.jpg",
+            "data/editions/2026-10-28/india/2/slide-2.jpg",
+            "data/editions/2026-10-28/india/2/slide-3.jpg"
+          ],
+          "cover": "data/editions/2026-10-28/india/2/slide-1.jpg",
+          "alts": "data/editions/2026-10-28/india/2/alt.json",
+          "caption": "data/editions/2026-10-28/caption-india-2.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "india-3",
+          "story": "Indian Captain Smit Machchhar, flydubai crew honoured by UAE President for bravery during",
+          "files": [
+            "data/editions/2026-10-28/india/3/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-28/india/3/slide-1.jpg",
+          "alts": "data/editions/2026-10-28/india/3/alt.json",
+          "caption": "data/editions/2026-10-28/caption-india-3.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "india-4",
+          "story": "Karnataka Council polls: Upset for Congress as it loses Bengaluru Teachers’ constituency",
+          "files": [
+            "data/editions/2026-10-28/india/4/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-28/india/4/slide-1.jpg",
+          "alts": "data/editions/2026-10-28/india/4/alt.json",
+          "caption": "data/editions/2026-10-28/caption-india-4.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "india-5",
+          "story": "Kochi City Police Commissioner removed amid Cheranalloor luxury car crash probe involving",
+          "files": [
+            "data/editions/2026-10-28/india/5/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-28/india/5/slide-1.jpg",
+          "alts": "data/editions/2026-10-28/india/5/alt.json",
+          "caption": "data/editions/2026-10-28/caption-india-5.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "india-6",
+          "story": "Alexander brothers sentenced to 30 years in prison in sex trafficking case",
+          "files": [
+            "data/editions/2026-10-28/india/6/slide-1.jpg",
+            "data/editions/2026-10-28/india/6/slide-2.jpg",
+            "data/editions/2026-10-28/india/6/slide-3.jpg"
+          ],
+          "cover": "data/editions/2026-10-28/india/6/slide-1.jpg",
+          "alts": "data/editions/2026-10-28/india/6/alt.json",
+          "caption": "data/editions/2026-10-28/caption-india-6.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    },
+    {
+      "id": "world",
+      "label": "WORLD",
+      "stories": [
+        {
+          "headline": "Israel exit polls show tight contest between Netanyahu and Eisenkot",
+          "display": "Israel exit polls show tight contest between Netanyahu and Eisenkot",
+          "original": "Israel exit polls show tight contest between Netanyahu and Eisenkot",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "Business Standard · The Guardian",
+          "sourceNames": [
+            "Business Standard",
+            "The Guardian"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Business Standard Pvt Ltd",
+            "Scott Trust"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN",
+            "GB"
+          ],
+          "fundings": [
+            "commercial",
+            "trust"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxORnREZkhyOHdCNlBPWFhzY1hTVi1Ra0pocWRwUGQyUTZ3NFVOVXlETG1fRHhFaVRLWU5hd0tzc1pIb3lDX0xQQzc5MGZEcU90SGxjUmRRbDZ2cWZJclJFMFZHT2RMQjAzc2c1ZUhxemdTaWVmZ19rNlgxU1JfbV9PaGpidGMwSDJnNHpabkRwZUpyQ1pmUWNWbEtLUWp2d1NzS1Q3TWJEaGZsZWlEOGJESUJWNlRGQl83WkNUWnp3U25UVkhxaGtrZy1FS2bSAdIBQVVfeXFMT0lzbFlMbl9SVjNTMjk5bXdoclZETHE0NnlRMDYteGVUR3dEWlhFOUNqclVjRmtCSTh6dlV",
+          "summary": "Israel exit polls show tight contest between Netanyahu and Eisenkot &nbsp;&nbsp; Business Standard",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxORnREZkhyOHdCNlBPWFhzY1hTVi1Ra0pocWRwUGQyUTZ3NFVOVXlETG1fRHhFaVRLWU5hd0tzc1pIb3lDX0xQQzc5MGZEcU90SGxjUmRRbDZ2cWZJclJFMFZHT2RMQjAzc2c1ZUhxemdTaWVmZ19rNlgxU1JfbV9PaGpidGMwSDJnNHpabkRwZUpyQ1pmUWNWbEtLUWp2d1NzS1Q3TWJEaGZsZWlEOGJESUJWNlRGQl83WkNUWnp3U25UVkhxaGtrZy1FS2bSAdIBQVVfeXFMT0lzbFlMbl9SVjNTMjk5bXdoclZETHE0NnlRMDYteGVUR3dEWlhFOUNqclVjRmtCSTh6dlV",
+              "source": "Business Standard",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOelFFWmFuekprX1FVZU04b2pJbmUxdVJ3ZEMtLWU1SVh5ZTd2alA5TXpONHh6WkptcXlIS1NTNjFYTjlUZnVIMFNjYnoyMnlZcmp2ZzBLT0o1cnN5X0VJTzBUb0tHR1JBc05jZmxPYkJqLThtVHlWVDhHbW5JdkNiQnhOUWJscGhNbXhwdy1mMlZBaUd0a2prb0M4QnpVWS1yUU5Nc3F2cWZDV3lKUnhKNWJ4aWVnWVd6?oc=5",
+              "source": "The Guardian",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-28T07:16:21.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "lead",
+          "score": 14.8,
+          "articlePhotoError": "The Guardian: the article declares no picture",
+          "photo": {
+            "path": "work/photos/world/photo-world-2.jpg",
+            "credit": "File photo: Rick Gilbert/Hudson Institute / CC BY 2.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Benjamin_Netanyahu_30287429620.jpg",
+            "query": "Netanyahu",
+            "relevance": 0.11,
+            "title": "Benjamin Netanyahu 30287429620",
+            "url": "https://upload.wikimedia.org/wikipedia/commons/3/31/Benjamin_Netanyahu_30287429620.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "size": "1920×1280",
+            "edge": 1920,
+            "from": "library"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Israel exit polls show tight contest between Netanyahu and Eisenkot”. Reported by Business Standard · The Guardian — 2 independent newsrooms. Behind the text is a library photograph captioned “Benjamin Netanyahu 30287429620”, credited to Rick Gilbert/Hudson Institute / CC BY 2.0. It is not a photograph of this event."
+        },
+        {
+          "headline": "Luxury cruise passengers stranded in Cambodia due to soaring fuel costs",
+          "display": "Luxury cruise passengers stranded in Cambodia due to soaring fuel costs",
+          "original": "Luxury cruise passengers stranded in Cambodia due to soaring fuel costs",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "BBC News · NDTV",
+          "sourceNames": [
+            "BBC News",
+            "NDTV"
+          ],
+          "corroboration": 2,
+          "republishers": [
+            "Google News"
+          ],
+          "owners": [
+            "BBC (licence fee)",
+            "Adani Group"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB",
+            "IN"
+          ],
+          "fundings": [
+            "state",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.bbc.co.uk/news/articles/cwj342k62exyo?at_medium=RSS&at_campaign=rss",
+          "summary": "The Villa Vie Odyssey suspended its voyage and is working with passengers on \"temporary living arrangements\".",
+          "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7eaf/live/69ded4d0-d26f-11f1-a4f1-4fff2e6cf5f3.jpg",
+          "sources": [
+            {
+              "link": "https://www.bbc.co.uk/news/articles/cwj342k62exyo?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7eaf/live/69ded4d0-d26f-11f1-a4f1-4fff2e6cf5f3.jpg"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNeGhFSkx0RVBCejY2RkJxM2hJS3BONFRPeGs4cGFEdGtuNGRfVFl0WHRyWk5kcVlsTC0yNXlFR1JBcU1PWjY1QS1QcEtIdDI2U0VkNWJFR3FUSE9VSFlJbXpLWWNDejFiSGZDT21VaHNmWU5EY3A4c2EyVHh2MVkwTUpjVHhZdmx0eFp4VDdXYW9aRE1hak1pYWE2enotNXh0VXdrazh2MmI5ZmxKVkE4VEU0R3g5a25jWkdkUkhaN1BFcEt0NkHSAc4BQVVfeXFMTkJvTnd5NlZ5Um9PQWZ2NzUycHBQVDJ2clJRUXBSY2llUmtlcmRqTzVWS1dUalhiZGZmdjhhNGVOWXY",
+              "source": "NDTV",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQdmg1UXpiaGRvNlpNVEVJc1h2bE13ZGdHSHJRanBaWVpDczJlWjNBY2tPbFNmV1l1ejNTTE5hb3Z6UGw5bWFpZlNfLTZMYkl6b0JhcmJ0dUZoQmNBR0dmSHNCbmNxTXNIVXRQNV96ejVJSnc2ME9iaUdMc0tObjc4UFlxakN2dWZoZDE3dWdQb3cxTU5CeVHSAZsBQVVfeXFMTTV2OWJxUHk3NTNtZU9uUnpERFNMODVlSnJtTXROLTBOQ3BjRzZ3Q0lpMTZDSlE2TWRFcFh2S01YTHpjRjBtSG8yVUVLZUhYZ1I4a3gxZ012bnRveU5JSENVTDBSMXhlSGY3UmZkMmpMMmx",
+              "source": "Google News",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-28T07:53:20.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.85,
+          "photo": {
+            "path": "work/photos/world/photo-world-3.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/cwj342k62exyo?at_medium=RSS&at_campaign=rss",
+            "query": "(the feed)",
+            "url": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/7eaf/live/69ded4d0-d26f-11f1-a4f1-4fff2e6cf5f3.jpg",
+            "size": "1024×576",
+            "edge": 1024,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Luxury cruise passengers stranded in Cambodia due to soaring fuel costs”. Reported by BBC News · NDTV — 2 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        },
+        {
+          "headline": "Trump Approves Flavio Bolsonaro's US Entry After He Flees Brazil",
+          "display": "Trump Approves Flavio Bolsonaro's US Entry After He Flees Brazil",
+          "original": "Trump Approves Flavio Bolsonaro's US Entry After He Flees Brazil",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "NDTV · Times of India",
+          "sourceNames": [
+            "NDTV",
+            "Times of India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Adani Group",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.ndtv.com/world-news/donald-trump-approves-flavio-bolsonaros-us-entry-after-he-flees-brazil-losing-election-12247039#publisher=newsstand",
+          "summary": "Flavio Bolsonaro left Brazil after refusing to comply with a Supreme Court order to surrender his passports.",
+          "feedImage": "https://c.ndtvimg.com/2026-10/bvqidk1o_us-brazil-reuters_625x300_28_October_26.jpeg",
+          "sources": [
+            {
+              "link": "https://www.ndtv.com/world-news/donald-trump-approves-flavio-bolsonaros-us-entry-after-he-flees-brazil-losing-election-12247039#publisher=newsstand",
+              "source": "NDTV",
+              "feedImage": "https://c.ndtvimg.com/2026-10/bvqidk1o_us-brazil-reuters_625x300_28_October_26.jpeg"
+            },
+            {
+              "link": "https://timesofindia.indiatimes.com/world/rest-of-world/flavio-bolsonaro-flees-brazil-after-lula-defeat-us-offers-visas-to-family/articleshow/135247888.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135247962,imgsize-73080.cms"
+            }
+          ],
+          "published": "2026-10-28T06:51:29.000Z",
+          "topic": "india",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.1,
+          "photo": {
+            "path": "work/photos/world/photo-world-4.jpg",
+            "credit": "Photo: Times of India",
+            "license": "publisher",
+            "pageUrl": "https://timesofindia.indiatimes.com/world/rest-of-world/flavio-bolsonaro-flees-brazil-after-lula-defeat-us-offers-visas-to-family/articleshow/135247888.cms",
+            "query": "(the feed)",
+            "url": "https://static.toiimg.com/photo/msid-135247962,imgsize-73080.cms",
+            "size": "1280×720",
+            "edge": 1280,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Trump Approves Flavio Bolsonaro's US Entry After He Flees Brazil”. Reported by NDTV · Times of India — 2 independent newsrooms. Behind the text is a library photograph, Photo: Times of India. It is not a photograph of this event."
+        },
+        {
+          "headline": "Norway and Finland leaders hold rare call with Putin",
+          "display": "Norway and Finland leaders hold rare call with Putin",
+          "original": "Norway and Finland leaders hold rare call with Putin",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "BBC News · The Guardian",
+          "sourceNames": [
+            "BBC News",
+            "The Guardian"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Scott Trust"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB"
+          ],
+          "fundings": [
+            "state",
+            "trust"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.bbc.co.uk/news/articles/c6vgj813mlelo?at_medium=RSS&at_campaign=rss",
+          "summary": "An end to the conflict in Ukraine \"will not be achieved through silence,\" Finland's President Alexander Stubb said.",
+          "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/62a7/live/0a738c90-d1fa-11f1-8c9f-8d21fef6ffad.jpg",
+          "sources": [
+            {
+              "link": "https://www.bbc.co.uk/news/articles/c6vgj813mlelo?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/62a7/live/0a738c90-d1fa-11f1-8c9f-8d21fef6ffad.jpg"
+            },
+            {
+              "link": "https://www.theguardian.com/world/2026/oct/27/oleshky-truce-ukraine-russia-putin",
+              "source": "The Guardian",
+              "feedImage": "https://i.guim.co.uk/img/media/4a7e69582a0f73261c44fb0b1afe74d2f9175797/1163_0_7097_5681/master/7097.jpg?width=140&quality=85&auto=format&fit=max&s=4c0bfcdecca8d7f5ca070b4350f9bc12"
+            }
+          ],
+          "published": "2026-10-27T18:28:23.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 7.725,
+          "photo": {
+            "path": "work/photos/world/photo-world-5.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/c6vgj813mlelo?at_medium=RSS&at_campaign=rss",
+            "query": "(the feed)",
+            "url": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/62a7/live/0a738c90-d1fa-11f1-8c9f-8d21fef6ffad.jpg",
+            "size": "1024×576",
+            "edge": 1024,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Norway and Finland leaders hold rare call with Putin”. Reported by BBC News · The Guardian — 2 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "world-1",
+          "story": "Israel exit polls show tight contest between Netanyahu and Eisenkot",
+          "files": [
+            "data/editions/2026-10-28/world/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-28/world/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-28/world/1/alt.json",
+          "caption": "data/editions/2026-10-28/caption-world-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "world-2",
+          "story": "Luxury cruise passengers stranded in Cambodia due to soaring fuel costs",
+          "files": [
+            "data/editions/2026-10-28/world/2/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-28/world/2/slide-1.jpg",
+          "alts": "data/editions/2026-10-28/world/2/alt.json",
+          "caption": "data/editions/2026-10-28/caption-world-2.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "world-3",
+          "story": "Trump Approves Flavio Bolsonaro's US Entry After He Flees Brazil",
+          "files": [
+            "data/editions/2026-10-28/world/3/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-28/world/3/slide-1.jpg",
+          "alts": "data/editions/2026-10-28/world/3/alt.json",
+          "caption": "data/editions/2026-10-28/caption-world-3.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "world-4",
+          "story": "Norway and Finland leaders hold rare call with Putin",
+          "files": [
+            "data/editions/2026-10-28/world/4/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-28/world/4/slide-1.jpg",
+          "alts": "data/editions/2026-10-28/world/4/alt.json",
+          "caption": "data/editions/2026-10-28/caption-world-4.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    },
+    {
+      "id": "business",
+      "label": "BUSINESS",
+      "stories": [
+        {
+          "headline": "‘Will disrupt business during Diwali’: Delhi traders' body writes to Rahul Gandhi",
+          "display": "‘Will disrupt business during Diwali’: Delhi traders' body writes to Rahul Gandhi",
+          "original": "‘Will disrupt business during Diwali’: Delhi traders' body writes to Rahul Gandhi over November 1 Ramlila Maidan march",
+          "truncated": true,
+          "usable": true,
+          "category": "BUSINESS",
+          "source": "Times of India · Livemint",
+          "sourceNames": [
+            "Times of India",
+            "Livemint"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Bennett, Coleman & Co",
+            "HT Media / KK Birla family"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxNYWhQM2lrRkMyNjhwQ2pDZzQ4T1M0Z0xwSDlmLTRFeUNFeTRNVnlra0hjRDNmemhyR2JQNEVPREs5V0E2OFc2ZWR5cmNLVFNjSUZha3BObnh1WTBXNlZWQ3JpSndBZXBEZnRNeGpXTXZPOG02aTBYbGtib1p1NVRId3NYWTJQYlFsZGUzb3QzSDk0YWZwWktaOGEzUDc4dTlvOUZYbkFQSE5IQ041eVJTb0pUNW1sQnZlNDJGS2N1cFhVQTBROGlDMXhPaG16SnBTQmdTc2hSZnZEc3JSQm5ueTFMWUw2bW9uT1hubm1aOVRlNUdWQm1JdG8tNNIBgAJBVV95cUxQcFU2NVB",
+          "summary": "‘Will disrupt business during Diwali’: Delhi traders' body writes to Rahul Gandhi over November 1 Ramlila Maidan march &nbsp;&nbsp; Livemint",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://timesofindia.indiatimes.com/india/we-dont-want-a-fight-delhi-traders-body-writes-to-rahul-gandhi-again-over-november-1-rally/articleshow/135255502.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135255764,imgsize-1133962.cms"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxNYWhQM2lrRkMyNjhwQ2pDZzQ4T1M0Z0xwSDlmLTRFeUNFeTRNVnlra0hjRDNmemhyR2JQNEVPREs5V0E2OFc2ZWR5cmNLVFNjSUZha3BObnh1WTBXNlZWQ3JpSndBZXBEZnRNeGpXTXZPOG02aTBYbGtib1p1NVRId3NYWTJQYlFsZGUzb3QzSDk0YWZwWktaOGEzUDc4dTlvOUZYbkFQSE5IQ041eVJTb0pUNW1sQnZlNDJGS2N1cFhVQTBROGlDMXhPaG16SnBTQmdTc2hSZnZEc3JSQm5ueTFMWUw2bW9uT1hubm1aOVRlNUdWQm1JdG8tNNIBgAJBVV95cUxQcFU2NVB",
+              "source": "Livemint",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-28T08:20:53.000Z",
+          "topic": "business",
+          "section": "business",
+          "tier": "notable",
+          "score": 7.95,
+          "photo": {
+            "path": "work/photos/business/photo-business-2.jpg",
+            "credit": "Photo: Times of India",
+            "license": "publisher",
+            "pageUrl": "https://timesofindia.indiatimes.com/india/we-dont-want-a-fight-delhi-traders-body-writes-to-rahul-gandhi-again-over-november-1-rally/articleshow/135255502.cms",
+            "query": "(the feed)",
+            "url": "https://static.toiimg.com/photo/msid-135255764,imgsize-1133962.cms",
+            "size": "1280×720",
+            "edge": 1280,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed BUSINESS. It reads: “‘Will disrupt business during Diwali’: Delhi traders' body writes to Rahul Gandhi”. Reported by Times of India · Livemint — 2 independent newsrooms. Behind the text is a library photograph, Photo: Times of India. It is not a photograph of this event."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "business-1",
+          "story": "‘Will disrupt business during Diwali’: Delhi traders' body writes to Rahul Gandhi",
+          "files": [
+            "data/editions/2026-10-28/business/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-28/business/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-28/business/1/alt.json",
+          "caption": "data/editions/2026-10-28/caption-business-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    },
+    {
+      "id": "tech",
+      "label": "TECHNOLOGY",
+      "stories": [
+        {
+          "headline": "PM Modi Calls for India to Lead the World in Creating Future Technologies at ESTIC 2026",
+          "display": "PM Modi Calls for India to Lead the World in Creating Future Technologies at ESTIC 2026",
+          "original": "PM Modi Calls for India to Lead the World in Creating Future Technologies at ESTIC 2026",
+          "truncated": false,
+          "usable": true,
+          "category": "TECHNOLOGY",
+          "source": "News On AIR · www.nationpathindia.com",
+          "sourceNames": [
+            "News On AIR",
+            "www.nationpathindia.com"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Government of India"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "state"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQdm1kdnJROS1DSFhTSklaR05zTWZhcDFTNEVFczh4MlpnYUR6bHJJWUVPbzNGeGVFUElQNDVidmY3cWZLamoxSFI5SG9pQ0NuaVdDTFNsZ09XeWtkOW4wcWdRWmZxSkJCVEJpbTZZS2lRN1Bkb3UyeG1VZlpfV1pTYUhqRGphYU9nLVlfSzJoTGRjUQ?oc=5",
+          "summary": "PM Modi Calls for India to Lead the World in Creating Future Technologies at ESTIC 2026 &nbsp;&nbsp; www.nationpathindia.com",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPTHdUVnFwdWEzNjJublV4TFlhYzd5NHIzRzRqbGFIaXRIQk8yaFVCeExjMG1qOG5NZkN6SFV4YzBJWHZldmoxX3BHTEFteWs3a1lILWU3V0Z6WDYtTDYxbm5hX0pUWnByQVcxcm1MeXhad0doREpoN0JTVVcxcDh6X2xQaWMxY3prU2IyRGNkVURWQXkyYm1tUEtxNnVyRU9JOGxJS2Q5dXBrWThyWTRrNw?oc=5",
+              "source": "News On AIR",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQdm1kdnJROS1DSFhTSklaR05zTWZhcDFTNEVFczh4MlpnYUR6bHJJWUVPbzNGeGVFUElQNDVidmY3cWZLamoxSFI5SG9pQ0NuaVdDTFNsZ09XeWtkOW4wcWdRWmZxSkJCVEJpbTZZS2lRN1Bkb3UyeG1VZlpfV1pTYUhqRGphYU9nLVlfSzJoTGRjUQ?oc=5",
+              "source": "www.nationpathindia.com",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-28T08:30:02.000Z",
+          "topic": "tech",
+          "section": "tech",
+          "tier": "notable",
+          "score": 7.8,
+          "articlePhotoError": "www.nationpathindia.com: the article declares no picture",
+          "photoError": "no image matched the story closely enough (searched \"technology data centre\")",
+          "photo": null,
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": "editorial",
+          "alt": "A news card from @dailyvolex, headed TECHNOLOGY. It reads: “PM Modi Calls for India to Lead the World in Creating Future Technologies at ESTIC 2026”. Reported by News On AIR · www.nationpathindia.com — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "tech-1",
+          "story": "PM Modi Calls for India to Lead the World in Creating Future Technologies at ESTIC 2026",
+          "files": [
+            "data/editions/2026-10-28/tech/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-28/tech/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-28/tech/1/alt.json",
+          "caption": "data/editions/2026-10-28/caption-tech-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    },
+    {
+      "id": "science",
+      "label": "SCIENCE",
+      "stories": [
+        {
+          "headline": "RFK Jr under fire for saying Arabs Muslims don’t produce science or win Nobel Prizes",
+          "display": "RFK Jr under fire for saying Arabs Muslims don’t produce science or win Nobel Prizes",
+          "original": "RFK Jr under fire for saying Arabs Muslims don’t produce science or win Nobel Prizes",
+          "truncated": false,
+          "usable": true,
+          "category": "SCIENCE",
+          "source": "Al Jazeera · Open Magazine",
+          "sourceNames": [
+            "Al Jazeera",
+            "Open Magazine"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Government of Qatar"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "QA"
+          ],
+          "fundings": [
+            "state"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQRHJMZGhuWlBYcDFZbHh4ZzhOdWI0NjdUaFo5bzBJM2lKdldmdzZqcl8waUpHWUtlXzZ0YnozeVRxUGRmNnhFTWlhOE4zXzk3QUFIOWY3SVFNTDJpWmFZMHNWOWJRVW5GVVE3MDc2ZWZjMFR2LTFGVGhUak1sT2sxWWNoWHBoMVpiTDNpMzhSb3hMZkZCTlNBSkpGYXlEQ3Z5b0xodmlIQXhzT21IdWUzMnlzM2J1YlBN?oc=5",
+          "summary": "RFK Jr under fire for saying Arabs Muslims don’t produce science or win Nobel Prizes &nbsp;&nbsp; Open Magazine",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOZTVJd2ZMcXlQRTd0VDFmbGswTW1CVHNBRHdUelBWMXpTejh6OEpjbk5JSC1RcHM2aWxmNlJtNUdzRkY0M0RDQ1BramYwM2xhUklGNWlpRG5Wc21nTDBfcG9vUU1zQTE0Q2g3YlZPbHFlV0FaNTF0SVBSTmtURHlsZjdHWkRMSjA1TlVuTUE3VlhWaC12WjA4RmNESzVQaXBsWGtKc1licmpqbjZia3lB0gG0AUFVX3lxTFBsZllWZEJ1bzYyU3dtNGhlSnBPblNnS0lRNmZwVU52RnJ0ZE1nY2pCWHNUaVBLb0xpc1lRV1huWHBBcTJPWklwYnJBNkRfTEdDVGRWRWlXeWZ",
+              "source": "Al Jazeera",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQRHJMZGhuWlBYcDFZbHh4ZzhOdWI0NjdUaFo5bzBJM2lKdldmdzZqcl8waUpHWUtlXzZ0YnozeVRxUGRmNnhFTWlhOE4zXzk3QUFIOWY3SVFNTDJpWmFZMHNWOWJRVW5GVVE3MDc2ZWZjMFR2LTFGVGhUak1sT2sxWWNoWHBoMVpiTDNpMzhSb3hMZkZCTlNBSkpGYXlEQ3Z5b0xodmlIQXhzT21IdWUzMnlzM2J1YlBN?oc=5",
+              "source": "Open Magazine",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-28T08:18:23.000Z",
+          "topic": "science",
+          "section": "science",
+          "tier": "notable",
+          "score": 7.95,
+          "articlePhotoError": "Open Magazine: the article declares no picture",
+          "photo": {
+            "path": "work/photos/science/photo-science-2.jpg",
+            "credit": "File photo: Levi Clancy / CC0",
+            "license": "cc0",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Muslims_praying_in_the_Deira_neighborhood_of_Dubai,_on_a_Friday._DSF0134.RAF.jpg",
+            "query": "Arabs Muslims",
+            "relevance": 0.13,
+            "title": "Muslims praying in the Deira neighborhood of Dubai, on a Friday. DSF0134.RAF",
+            "url": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Muslims_praying_in_the_Deira_neighborhood_of_Dubai%2C_on_a_Friday._DSF0134.RAF.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "size": "1920×1280",
+            "edge": 1920,
+            "from": "library"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed SCIENCE. It reads: “RFK Jr under fire for saying Arabs Muslims don’t produce science or win Nobel Prizes”. Reported by Al Jazeera · Open Magazine — 2 independent newsrooms. Behind the text is a library photograph captioned “Muslims praying in the Deira neighborhood of Dubai, on a Friday.…”, credited to Levi Clancy / CC0. It is not a photograph of this event."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "science-1",
+          "story": "RFK Jr under fire for saying Arabs Muslims don’t produce science or win Nobel Prizes",
+          "files": [
+            "data/editions/2026-10-28/science/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-28/science/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-28/science/1/alt.json",
+          "caption": "data/editions/2026-10-28/caption-science-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    },
+    {
+      "id": "health",
+      "label": "HEALTH",
+      "stories": [
+        {
+          "headline": "Climate Change Must Be Declared A 'Global Health Emergency': Lancet Study",
+          "display": "Climate Change Must Be Declared A 'Global Health Emergency': Lancet Study",
+          "original": "Climate Change Must Be Declared A 'Global Health Emergency': Lancet Study",
+          "truncated": false,
+          "usable": true,
+          "category": "HEALTH",
+          "source": "NDTV · Euronews.com",
+          "sourceNames": [
+            "NDTV",
+            "Euronews.com"
+          ],
+          "corroboration": 2,
+          "republishers": [
+            "Google News"
+          ],
+          "owners": [
+            "Adani Group"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPcnRPMmlnUWpXcFd1aWV0T215aHhnX094VFdORmxPSDdOV0RBX2t3cHJjUnZvWUM5d3NSQ0ZXUUtvZ1lEanJkUFRlOHVvNnNaUTFleTVfSV9Yekg5RmhmUTFScGotTVpxYkNHdldDb3pYTDdEOS1KX3BsYUQtZW1SOTMyZnMzYUhwYUhRYUhWb25hMGxJLTRLcERiR0UyUW1yQ09ldXdrVThzUGc?oc=5",
+          "summary": "Climate Change Must Be Declared A 'Global Health Emergency': Lancet Study &nbsp;&nbsp; NDTV",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOQ0Q0Smt4cGF0N2FpclVsYW5qQkR0V0FzRF9vQXZ1OWVoNkF0WVBfdGRHZDBWZkFtSUJKdWxzd1VWTEJJNzVTVXUwUW1zbnBfV3NzdHR0ZkM3TXoyd2dOSVpSWjdwbDA5LTN1XzFVdXJJOHM5a0JYY1diRk1McGdwenFuVzE0QU5OQV9WWTVGWUM4ZEtkT2l6RmNaTGxtUFJWX2hYNU5B0gGuAUFVX3lxTFBaZFVDdWRmaXg0WmN2eHpQV3g0ZEY4RERQSXhfNUF5TEltRFRMc0lKdndMdWNUSldONHQtNGhyWFVTSlVEYnY4MzhhZUxYM2FXMTJmWjFkdU9SVG9HZ2YwRnd",
+              "source": "NDTV",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQZGM0UWYzSVgtaGRrd3NLbzdLYzM4X1dNTERqSmItaEVJZHJ4a1hJd3ZmM2dGaEVodnZqRjg0UDVZTkxyUGxvaFo2dy1EbjNPaUxCME1XRjFmTXpNNng2TzFBdGZWcVJoN0pxTTM3RFNha0JuS3AzbHFhbW1EZ0lZM0FjNFc0YzNXOHhrRGxsSlEwMWcyZTRWeUVyTG00eFJ4UUU2MkNtUDBWY0g2dFROUTRpY1h3anFoSXhkd1BsVEVaQQ?oc=5",
+              "source": "Google News",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPYVBael9ZS1MxN2NTZFF2bFFwRG02T1hKREZ0UmFBcWhEUXJQNUJmU2ZFVXp5OTRDdXBaRFBLRGFjeWJOMmpQMjkyTmFkQzA3SmxLU1h1TVR0SUlwTUhoRldYa0hLX2lyTmxIR2lDNWREMGw0Q1Z0a0VadElHaGE0RXFpU09rN1lCWVE2V0ZCa050WGNQeDBuTWdwRHV2VDZUd2RUWFJ0blNzWEozR3k0em9wX0R2aEc3YlowYzhJaWVUVmpH?oc=5",
+              "source": "Euronews.com",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNR0RmVVk5R0R1SlZ5bmxUd0kzbW43UDl0ckZYMUprTl9aMzZ3Mzl1NkM5bUdaUTlkMk51eUludThnbFAydUFfekFtMUcwT2pjVUVGS1YtN1JKS0ZGMjRJMUVOTzJna2ZzOXJIb2NHRE9YMmlUSXI0ZTRRaWlMeGxCa2dPdGNzZGFCUWVqRmR5aHBuU1hRc2VCc0FpUnFwRGVmM2lCRnJBaXNUUdIBrwFBVV95cUxOQVdGZGZhNXpYX1dYYVJkWVpEVXQ3cUF3aVF0TDhLQWJCZU9zWHhBb0dIa2NMTk5SWC1fem9OV3FBVWI2VjI1eEJ5SFhjZEtLano0TzlWT1hxVFpqYlN",
+              "source": "Google News",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-28T05:36:31.000Z",
+          "topic": "health",
+          "section": "health",
+          "tier": "significant",
+          "score": 10.65,
+          "articlePhotoError": "Google News: HTTP 400",
+          "photo": {
+            "path": "work/photos/health/photo-health-2.jpg",
+            "credit": "File photo: Johan Schiff /Miljöpartiet de gröna / CC0",
+            "license": "cc0",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Isabella_L%C3%B6vin_signing_climate_law_referral.jpg",
+            "query": "Climate",
+            "relevance": 0.2,
+            "title": "Isabella Lövin signing climate law referral",
+            "url": "https://upload.wikimedia.org/wikipedia/commons/0/07/Isabella_L%C3%B6vin_signing_climate_law_referral.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "size": "1920×1215",
+            "edge": 1920,
+            "from": "library"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed HEALTH. It reads: “Climate Change Must Be Declared A 'Global Health Emergency': Lancet Study”. Reported by NDTV · Euronews.com — 2 independent newsrooms. Behind the text is a library photograph captioned “Isabella Lövin signing climate law referral”, credited to Johan Schiff /Miljöpartiet de gröna / CC0. It is not a photograph of this event."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "health-1",
+          "story": "Climate Change Must Be Declared A 'Global Health Emergency': Lancet Study",
+          "files": [
+            "data/editions/2026-10-28/health/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-28/health/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-28/health/1/alt.json",
+          "caption": "data/editions/2026-10-28/caption-health-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    }
+  ]
+}
