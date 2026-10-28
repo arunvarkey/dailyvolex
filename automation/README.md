@@ -64,6 +64,11 @@ You can also run the whole thing from the Actions tab — **Daily shortlist** �
 
 ## Instagram setup (one-off, ~15 minutes)
 
+> Doing this for the first time? **[SETUP.md](SETUP.md)** is the same thing
+> written out click by click, with what to check after each part and what the
+> common errors mean. The summary below assumes you already know the Meta
+> developer site.
+
 Instagram only allows posting to **Business** or **Creator** accounts, through
 a Facebook Page. A personal account cannot be posted to by any legitimate tool.
 
@@ -122,14 +127,28 @@ The check reports `this token does not expire` when you have it right.
 Each story card gets a real photograph where one can legally be used, and a
 generated market chart where it cannot. Both are automatic.
 
-**What is deliberately NOT used: the outlet's own article photo.** It is the
-obvious option and it is copyright infringement — those images belong to
-Reuters, AP, Getty or the publisher, and reposting them is what gets a news
-account struck or sued. The whole asset here is credibility, so it is not a
-shortcut worth taking.
+**The outlet's own article photograph is used first, and it is not licensed.**
+This is the owner's explicit decision, taken twice and in those words: the
+story is what matters, and a library picture of something else is not the
+story. Those images belong to Reuters, AP, Getty or the publisher, and a
+rights holder can issue a takedown against any of them. The approval issue
+states it on every run — "N of M pictures are the outlets' own photographs,
+used without a licence and credited to them by name" — so whoever approves a
+post sees the position restated rather than having to remember it.
 
-Photographs come from [Openverse](https://openverse.org), which indexes openly
-licensed work, filtered to the licences that permit commercial reuse:
+This paragraph used to say the opposite, and said it for weeks after the
+decision had been made and the code had been changed. A README that
+contradicts the behaviour is worse than no README: it is the document someone
+reads instead of the code.
+
+Order of preference: the picture in the outlet's own feed, then the one its
+article declares as `og:image`, then the openly licensed library below, then a
+generated backdrop. A picture smaller than the card is held back while bigger
+ones are tried, and used only if nothing bigger exists.
+
+The library, when it is reached, is [Openverse](https://openverse.org), which
+indexes openly licensed work, filtered to the licences that permit commercial
+reuse:
 
 | Licence | Used | Why |
 |---|---|---|
