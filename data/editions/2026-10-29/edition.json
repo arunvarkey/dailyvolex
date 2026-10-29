@@ -1,0 +1,1279 @@
+{
+  "id": "2026-10-29",
+  "kind": "daily",
+  "builtAt": "2026-10-29T08:45:39.580Z",
+  "pool": 578,
+  "feedErrors": [
+    "indian-express: HTTP 403"
+  ],
+  "refusals": {
+    "read": 578,
+    "published": 13,
+    "refused": 205,
+    "consideredNotChosen": 360,
+    "byRule": {
+      "says nothing happened": {
+        "count": 112,
+        "samples": [
+          {
+            "title": "Details of thousands of US immigration agents leaked in major hack",
+            "source": "BBC News"
+          },
+          {
+            "title": "'Like cutting up a Picasso': AI microdrama edit of Neighbours worries actors and crew",
+            "source": "BBC News"
+          },
+          {
+            "title": "Tanzania celebrates first natural gas discovery in more than 10 years",
+            "source": "BBC News"
+          },
+          {
+            "title": "Israel's election result is messy - here's why",
+            "source": "BBC News"
+          },
+          {
+            "title": "'I live with a ghost': Japan's haunted homes attract bargain hunters",
+            "source": "BBC News"
+          },
+          {
+            "title": "What European students can learn from their Serbian peers",
+            "source": "Al Jazeera"
+          },
+          {
+            "title": "Europe’s wealth gap: Older households eight times richer than young ones",
+            "source": "Al Jazeera"
+          },
+          {
+            "title": "Can Turkiye’s Libya breakthrough reshape Eastern Mediterranean diplomacy?",
+            "source": "Al Jazeera"
+          }
+        ]
+      },
+      "older than the window": {
+        "count": 60,
+        "samples": [
+          {
+            "title": "Anger in Kenya over extradition hearing delay for ex-British soldier accused of murdering woman",
+            "source": "BBC News"
+          },
+          {
+            "title": "Ceasefire extended across Ukraine's Kherson region, officials say",
+            "source": "BBC News"
+          },
+          {
+            "title": "What we know about Ukraine-Russia truce in Oleshky, brokered by Melania Trump",
+            "source": "BBC News"
+          },
+          {
+            "title": "China's families are now supporting more old people than kids",
+            "source": "BBC News"
+          },
+          {
+            "title": "A bust-up between mathematicians is fuelling fears that AI could undermine science",
+            "source": "BBC News"
+          },
+          {
+            "title": "UK sanctions Sudanese military leaders implicated in El Fasher ‘campaign of rape’",
+            "source": "The Guardian"
+          },
+          {
+            "title": "US forces accused of ‘weaponising’ Somalia’s floods by trapping women and children in the path of El Niño",
+            "source": "The Guardian"
+          },
+          {
+            "title": "Sudan paramilitary drone strikes cause mass power cuts in eastern states",
+            "source": "The Guardian"
+          }
+        ]
+      },
+      "not news": {
+        "count": 15,
+        "samples": [
+          {
+            "title": "Watch: King dances in the streets of the Bahamas capital",
+            "source": "BBC News"
+          },
+          {
+            "title": "Watch: At the scene of Spain's deadly train crash",
+            "source": "BBC News"
+          },
+          {
+            "title": "Lambie scolded by ADF chief over hidden camera revelation – as it happened",
+            "source": "The Guardian"
+          },
+          {
+            "title": "Death toll rises to 68 with dozens injured after high-speed train collision in Spain – as it happened",
+            "source": "The Guardian"
+          },
+          {
+            "title": "Israel election results live: count of absentee ballots under way as coalition talks set to begin",
+            "source": "The Guardian"
+          },
+          {
+            "title": "Netanyahu bloc loses majority as most ballots counted – as it happened",
+            "source": "The Guardian"
+          },
+          {
+            "title": "Video. Latest news bulletin | October 29th, 2026 – Morning",
+            "source": "Euronews.com"
+          },
+          {
+            "title": "The Fed’s AI Puzzle: Will High Rates Slow the Boom?",
+            "source": "Hindustan Times"
+          }
+        ]
+      },
+      "too thin to be a headline": {
+        "count": 6,
+        "samples": [
+          {
+            "title": "Spain Train Crash",
+            "source": "Post Register"
+          },
+          {
+            "title": "Germany Daily Life",
+            "source": "Post Register"
+          },
+          {
+            "title": "Arnab Strikes India",
+            "source": "NASA Science (.gov)"
+          },
+          {
+            "title": "Arnab Strikes India",
+            "source": "NASA Science (.gov)"
+          },
+          {
+            "title": "FX Daily Snapshot",
+            "source": "MUFG Research"
+          },
+          {
+            "title": "Small change",
+            "source": "Research Professional News"
+          }
+        ]
+      },
+      "tips or price speculation": {
+        "count": 5,
+        "samples": [
+          {
+            "title": "Africa’s ‘unprecedented’ Ebola outbreak could reach UK, says top health official",
+            "source": "The Guardian"
+          },
+          {
+            "title": "HUL shares rise 3% after Q2 results. Jefferies, Nomura cut target price but forecast 29% upside potential",
+            "source": "Economic Times"
+          },
+          {
+            "title": "Why is market rising today? Sensex jumps 600 points, Nifty nears 22,900. 6 key factors behind Rs 3 lakh crore gains",
+            "source": "Economic Times"
+          },
+          {
+            "title": "CarTrade Tech shares tank over 6% after Q2 results, but Nomura raises target price to Rs 3,377. Here’s why",
+            "source": "Economic Times"
+          },
+          {
+            "title": "Meesho shares fall 3% even as Q2 loss narrows to Rs 132 cr. Why Jefferies raised target price but Nomura remains cautious",
+            "source": "Economic Times"
+          }
+        ]
+      },
+      "marketing, not reporting": {
+        "count": 4,
+        "samples": [
+          {
+            "title": "Meet Seiji Iigaya, 14, from New Jersey, used Python to model 100 violin bow-string contact points and uncover the physics of expressive playing, winning a $3,500 national science award",
+            "source": "The Times of India"
+          },
+          {
+            "title": "Meet the science teacher turned technician",
+            "source": "RSC Education"
+          },
+          {
+            "title": "Meet Aniket Bera: Indian-origin researcher builds an AI-powered drone that can track people through dense",
+            "source": "The Times of India"
+          },
+          {
+            "title": "IITM Pravartak partners with Dialog Axiata to advance research and innovation in Sri Lanka",
+            "source": "Education Times"
+          }
+        ]
+      },
+      "finance feed, not a finance story": {
+        "count": 2,
+        "samples": [
+          {
+            "title": "Microsoft beats expectations fueled by Azure cloud business",
+            "source": "Economic Times"
+          },
+          {
+            "title": "Charlie Munger skipped insurance on his mansion, said all intelligent people ‘do it my way’. What did he mean?",
+            "source": "Economic Times"
+          }
+        ]
+      },
+      "unverified or rumour": {
+        "count": 1,
+        "samples": [
+          {
+            "title": "Global Market: ECB rate decision in focus as Lagarde exit speculation grows",
+            "source": "Economic Times"
+          }
+        ]
+      }
+    }
+  },
+  "sections": [
+    {
+      "id": "top",
+      "label": "TOP STORIES",
+      "stories": [
+        {
+          "headline": "Spain begins mourning period after deadly train crash",
+          "display": "Spain begins mourning period after deadly train crash",
+          "original": "Spain begins mourning period after deadly train crash",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "BBC News · The Guardian · Times of India",
+          "sourceNames": [
+            "BBC News",
+            "The Guardian",
+            "Times of India"
+          ],
+          "corroboration": 3,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Scott Trust",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 3,
+          "countries": [
+            "GB",
+            "IN"
+          ],
+          "fundings": [
+            "state",
+            "trust",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPZEcxSmMxR0cxZjVYbEpQeEVPWEQ2QWJJcEYwdjJ2VUxydk94aEdsWTVzb2dzQzVzelE2b0JGY3BacXB5YWk5UlliNEd1Y0hsajQ5LUk1aG0tZUxINnJtVFB5UDctNDN1c2JQYmd2bmVMRU1xVWJkc0p1UVVWQzEzOE44dG1NSTJMOE9xT3FuRQ?oc=5",
+          "summary": "Spain begins mourning period after deadly train crash &nbsp;&nbsp; The Guardian",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.bbc.co.uk/news/articles/cm8xz7pkd0jjo?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/81f7/live/e4acc800-d302-11f1-a701-fddedf244c16.jpg"
+            },
+            {
+              "link": "https://www.theguardian.com/world/2026/oct/29/spain-mourning-period-deadly-train-crash",
+              "source": "The Guardian",
+              "feedImage": "https://i.guim.co.uk/img/media/7787b9a3881b94f6241158ce4d8c191265d48bc2/211_87_4424_3539/master/4424.jpg?width=140&quality=85&auto=format&fit=max&s=61ad51dcff99bd6ae9d4e1247c3119f3"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPZEcxSmMxR0cxZjVYbEpQeEVPWEQ2QWJJcEYwdjJ2VUxydk94aEdsWTVzb2dzQzVzelE2b0JGY3BacXB5YWk5UlliNEd1Y0hsajQ5LUk1aG0tZUxINnJtVFB5UDctNDN1c2JQYmd2bmVMRU1xVWJkc0p1UVVWQzEzOE44dG1NSTJMOE9xT3FuRQ?oc=5",
+              "source": "The Guardian",
+              "feedImage": null
+            },
+            {
+              "link": "https://timesofindia.indiatimes.com/world/europe/red-signal-system-failure-fatal-impact-how-spains-train-collision-unfolded/articleshow/135285991.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135286074,imgsize-288898.cms"
+            }
+          ],
+          "published": "2026-10-29T08:40:00.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "lead",
+          "score": 17.35,
+          "photo": {
+            "path": "work/photos/top/photo-top-2.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/cm8xz7pkd0jjo?at_medium=RSS&at_campaign=rss",
+            "query": "(the feed)",
+            "url": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/81f7/live/e4acc800-d302-11f1-a701-fddedf244c16.jpg",
+            "size": "1024×576",
+            "edge": 1024,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Spain begins mourning period after deadly train crash”. Reported by BBC News · The Guardian · Times of India — 3 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        },
+        {
+          "headline": "India Weather Update: Heavy Rain Alert In Six States As Cyclone Arnab Weakens",
+          "display": "India Weather Update: Heavy Rain Alert In Six States As Cyclone Arnab Weakens",
+          "original": "India Weather Update: Heavy Rain Alert In Six States As Cyclone Arnab Weakens; Delhi-NCR Braces For Hailstorms",
+          "truncated": true,
+          "usable": true,
+          "category": "INDIA",
+          "source": "U.S. News & World Report · Reuters · ETV Bharat",
+          "sourceNames": [
+            "U.S. News & World Report",
+            "Reuters",
+            "ETV Bharat"
+          ],
+          "corroboration": 3,
+          "republishers": [],
+          "owners": [
+            "Thomson Reuters (Trust Principles)"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "GB"
+          ],
+          "fundings": [
+            "trust"
+          ],
+          "unknownOwners": 2,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxNbVJtaWV2cXZGQkZ4cWlxbHlKd0hUOEtwaGszZGtCVTE4X0I1R083MEphdFFYZkF4blUxcVptdlRzMUdlVjJ0MnFFMWQtb0FLc2lwMUZZVHZkSEE2aHBzQV9mTlhDTW5lNEVrNFd3azEySVUtZWk5eklTRnZrTFo2VU4zTmNQdFMxcmN6OEg5LVdtOGhUNEd1T3QxaXU3ejRDM0s4Zk9vb3h3ZGh3ZU9uSURLbjNib25nZEQ2Ymxkc1FaVm5fZ0hHQ2ZnZkE3VDREQkplU2ptaWtaNklrRFRLSldTRHMzT2hWc1FBSEpRTDPSAfYBQVVfeXFMTjJrRjVpeEVxYWh0MFRFVnZ",
+          "summary": "India Weather Update: Heavy Rain Alert In Six States As Cyclone Arnab Weakens; Delhi-NCR Braces For Hailstorms &nbsp;&nbsp; ETV Bharat",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOeVVJdDRkU3hScmZQQjRtT210YWFhZG8wdFZSb1RneHRyV1lneTFobVgxd01yMzVDcFprSUhjVWxHeGYySzFHdVdaWkJoR3RzZy1nRVp2UE9jc3E1dzJJam9PQXRLcHpsd0JfaExrNnF1dzhlVjRXU29icF9qY1BfejdIN0QxWE5VbnBidkFNU1B1YU1QLVNLd2JFYUJxZjIwQXc?oc=5",
+              "source": "U.S. News & World Report",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQSkY3UnV6Sm91dGRaTlVTTHlJbmJEN2pBYjBtdW5BcmtWR2d0eUZTUXdyUjRVd3pYYU96cHlLWml1YlZITk1KSWNQUkxfZ1FKTW9YNU1LMllGLTRsTndqOTM3N1hkWERaN0xIR0hreEFvazA5QjFZazlSeFcyMzhWNE5TU3hqNFJNTVlfaFo4YnA0SlNHYURheFBCejdMWlZ6SFE?oc=5",
+              "source": "Reuters",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxNbVJtaWV2cXZGQkZ4cWlxbHlKd0hUOEtwaGszZGtCVTE4X0I1R083MEphdFFYZkF4blUxcVptdlRzMUdlVjJ0MnFFMWQtb0FLc2lwMUZZVHZkSEE2aHBzQV9mTlhDTW5lNEVrNFd3azEySVUtZWk5eklTRnZrTFo2VU4zTmNQdFMxcmN6OEg5LVdtOGhUNEd1T3QxaXU3ejRDM0s4Zk9vb3h3ZGh3ZU9uSURLbjNib25nZEQ2Ymxkc1FaVm5fZ0hHQ2ZnZkE3VDREQkplU2ptaWtaNklrRFRLSldTRHMzT2hWc1FBSEpRTDPSAfYBQVVfeXFMTjJrRjVpeEVxYWh0MFRFVnZ",
+              "source": "ETV Bharat",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-29T06:47:50.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "lead",
+          "score": 16.3,
+          "articlePhotoError": "ETV Bharat: HTTP 400",
+          "photoError": "a library photograph would misrepresent a story about people in harm (searched \"(none)\")",
+          "photo": null,
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": "editorial",
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “India Weather Update: Heavy Rain Alert In Six States As Cyclone Arnab Weakens”. Reported by U.S. News & World Report · Reuters · ETV Bharat — 3 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
+        },
+        {
+          "headline": "U.S. Fed Holds Interest Rates Steady, Warsh Says Economy Not Running Too Hot",
+          "display": "U.S. Fed Holds Interest Rates Steady, Warsh Says Economy Not Running Too Hot",
+          "original": "U.S. Fed Holds Interest Rates Steady, Warsh Says Economy Not Running Too Hot",
+          "truncated": false,
+          "usable": true,
+          "category": "BUSINESS",
+          "source": "The Guardian · Moneycontrol.com · Economic Times",
+          "sourceNames": [
+            "The Guardian",
+            "Moneycontrol.com",
+            "Economic Times"
+          ],
+          "corroboration": 3,
+          "republishers": [],
+          "owners": [
+            "Scott Trust",
+            "Reliance Industries",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 3,
+          "countries": [
+            "GB",
+            "IN"
+          ],
+          "fundings": [
+            "trust",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNQ25QemNGbHNMNVZ6WXV4bHdGUndZS29JRnhkZE9oanRNR1pWa0dKbXY4TW40NmR6UHotRVozcTctS293R3hFdURUZkV5WnVjbV94STloTUdsUm9YY3g4UXAxdVg4bE9seElJVC1PWkY0WkFJT1hZcjJjTEtKa1ByRDdCeEJrZHZxdnl5TnVwZ0JyQ1NvdHhkWXB0WU5zYkI2VS16OTBHbmtEdmhYam9UNGJlV1drQUwwODBvQmdpTVZoYWt3LTlfN2JCMWxVd9IB0wFBVV95cUxNdFlEMGc5UXZGcndmRzVkaWtFSDZBMUdIVDlEOFUxX2tYSGFuMmlEZ3dtQzJVaERkRVJ",
+          "summary": "U.S. Fed Holds Interest Rates Steady, Warsh Says Economy Not Running Too Hot &nbsp;&nbsp; Moneycontrol.com",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.theguardian.com/business/2026/oct/28/fed-interest-rates-midterms",
+              "source": "The Guardian",
+              "feedImage": "https://i.guim.co.uk/img/media/7880dcf74afd8e1464e25cee2da4b52881ed5e8e/1146_740_2868_2294/master/2868.jpg?width=140&quality=85&auto=format&fit=max&s=a275695d23d6cd43252182d5bfeaad61"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNQ25QemNGbHNMNVZ6WXV4bHdGUndZS29JRnhkZE9oanRNR1pWa0dKbXY4TW40NmR6UHotRVozcTctS293R3hFdURUZkV5WnVjbV94STloTUdsUm9YY3g4UXAxdVg4bE9seElJVC1PWkY0WkFJT1hZcjJjTEtKa1ByRDdCeEJrZHZxdnl5TnVwZ0JyQ1NvdHhkWXB0WU5zYkI2VS16OTBHbmtEdmhYam9UNGJlV1drQUwwODBvQmdpTVZoYWt3LTlfN2JCMWxVd9IB0wFBVV95cUxNdFlEMGc5UXZGcndmRzVkaWtFSDZBMUdIVDlEOFUxX2tYSGFuMmlEZ3dtQzJVaERkRVJ",
+              "source": "Moneycontrol.com",
+              "feedImage": null
+            },
+            {
+              "link": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/us-market-fed-holds-rates-steady-but-bond-investors-remain-concerned-over-inflation/articleshow/135296667.cms",
+              "source": "Economic Times",
+              "feedImage": "https://img.etimg.com/photo/msid-135296667,imgsize-2556622.cms"
+            }
+          ],
+          "published": "2026-10-29T08:07:03.000Z",
+          "topic": "business",
+          "section": "business",
+          "tier": "notable",
+          "score": 9.6,
+          "photo": {
+            "path": "work/photos/top/photo-top-4.jpg",
+            "credit": "Photo: Economic Times",
+            "license": "publisher",
+            "pageUrl": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/us-market-fed-holds-rates-steady-but-bond-investors-remain-concerned-over-inflation/articleshow/135296667.cms",
+            "query": "(the feed)",
+            "url": "https://img.etimg.com/photo/msid-135296667,imgsize-2556622.cms",
+            "size": "1536×1024",
+            "edge": 1536,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed BUSINESS. It reads: “U.S. Fed Holds Interest Rates Steady, Warsh Says Economy Not Running Too Hot”. Reported by The Guardian · Moneycontrol.com · Economic Times — 3 independent newsrooms. Behind the text is a library photograph, Photo: Economic Times. It is not a photograph of this event."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "top-1",
+          "story": "Spain begins mourning period after deadly train crash",
+          "files": [
+            "data/editions/2026-10-29/top/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-29/top/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-29/top/1/alt.json",
+          "caption": "data/editions/2026-10-29/caption-top-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "top-2",
+          "story": "India Weather Update: Heavy Rain Alert In Six States As Cyclone Arnab Weakens",
+          "files": [
+            "data/editions/2026-10-29/top/2/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-29/top/2/slide-1.jpg",
+          "alts": "data/editions/2026-10-29/top/2/alt.json",
+          "caption": "data/editions/2026-10-29/caption-top-2.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "top-3",
+          "story": "U.S. Fed Holds Interest Rates Steady, Warsh Says Economy Not Running Too Hot",
+          "files": [
+            "data/editions/2026-10-29/top/3/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-29/top/3/slide-1.jpg",
+          "alts": "data/editions/2026-10-29/top/3/alt.json",
+          "caption": "data/editions/2026-10-29/caption-top-3.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    },
+    {
+      "id": "india",
+      "label": "INDIA",
+      "stories": [
+        {
+          "headline": "India ready to share 'battle-tested' anti-terror expertise with ASEAN",
+          "display": "India ready to share 'battle-tested' anti-terror expertise with ASEAN",
+          "original": "India ready to share 'battle-tested' anti-terror expertise with ASEAN, its dialogue partners: Rajnath Singh",
+          "truncated": true,
+          "usable": true,
+          "category": "INDIA",
+          "source": "The Hindu · DD India",
+          "sourceNames": [
+            "The Hindu",
+            "DD India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "The Hindu Group (family-held)",
+            "Government of India"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial",
+            "state"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.thehindu.com/news/national/rajnath-singh-india-asean-defence-ministers-meeting-plus-conclave-philippines/article71639347.ece",
+          "summary": "The Defence Minister flagged concerns over disruptions in certain maritime trade routes and asserted that India will continue to act as a \"trusted net security provider\" in the Indian Ocean region and the wider Indo-Pacific",
+          "feedImage": "https://th-i.thgim.com/public/incoming/gm5j7x/article71639374.ece/alternates/LANDSCAPE_1200/20261029009L.jpg",
+          "sources": [
+            {
+              "link": "https://www.thehindu.com/news/national/rajnath-singh-india-asean-defence-ministers-meeting-plus-conclave-philippines/article71639347.ece",
+              "source": "The Hindu",
+              "feedImage": "https://th-i.thgim.com/public/incoming/gm5j7x/article71639374.ece/alternates/LANDSCAPE_1200/20261029009L.jpg"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQMkVZYU12ZnNTUk9oMDd1RGlUUG1ta1J1ZURoQU1qcHpsVWFCUzY2ZHBsNmpoeXo0ZUtxQnRBOWVfa2p0SXh0RXBLajlwOXhhMmdxX3lpNGlETEp0NFNFd0pHeUs4MEVTRTg5aDlBNVdNVElfVUZCRmFfYzlGZ2VnVU9RNlg5VnprU0Z2VmU2SU1BQVlDQk9maDNPd0VlV2Z2N2MtRldaMEotYXBkdjNQTmxublBzUWV3ZE1yRzhzR2ExdTltcGlUcDQtS1pNX3VEV1HSAdgBQVVfeXFMTUM4RllKVEJZZkNPc0VvMFdNYWpqOFlyZVdCTFdJdU5PcGxFckJkMDdvQm5uaFJ",
+              "source": "The Hindu",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNWGxUb1N2Z2ZDaGdSQmNpNUtMMzdZM2ZZUk9zY29xWkpENTZjREJhYnQ2NWFTZjBSOHlJdFBtRFQtX0ZQcGNZOHVNajRrNkxyTWo1SkVNY3lxazlZaDRGRV9VMmlYMzFEZWNLNDFZaEFaeEhpd3lIS29FbmVSYS1uNzc2ak94djFOLWpYNjlfQ0JWR01KNEs5TzV3N19HaFZEYlExcm5hUkRxaG9Mdk5XZVVjanFNOFA4NVVwNk55Z04zamFObVo0?oc=5",
+              "source": "DD India",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-29T07:25:21.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 8.7,
+          "photo": {
+            "path": "work/photos/india/photo-india-2.jpg",
+            "credit": "Photo: The Hindu",
+            "license": "publisher",
+            "pageUrl": "https://www.thehindu.com/news/national/rajnath-singh-india-asean-defence-ministers-meeting-plus-conclave-philippines/article71639347.ece",
+            "query": "(the feed)",
+            "url": "https://th-i.thgim.com/public/incoming/gm5j7x/article71639374.ece/alternates/LANDSCAPE_1200/20261029009L.jpg",
+            "size": "1200×675",
+            "edge": 1200,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “India ready to share 'battle-tested' anti-terror expertise with ASEAN”. Reported by The Hindu · DD India — 2 independent newsrooms. Behind the text is a library photograph, Photo: The Hindu. It is not a photograph of this event."
+        },
+        {
+          "headline": "Elon Musk \"Truly A Genius\": Putin's Big Praise Has A Starlink Connection",
+          "display": "Elon Musk \"Truly A Genius\": Putin's Big Praise Has A Starlink Connection",
+          "original": "Elon Musk \"Truly A Genius\": Putin's Big Praise Has A Starlink Connection",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "NDTV · The Guardian",
+          "sourceNames": [
+            "NDTV",
+            "The Guardian"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Adani Group",
+            "Scott Trust"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN",
+            "GB"
+          ],
+          "fundings": [
+            "conglomerate",
+            "trust"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.ndtv.com/world-news/elon-musk-truly-a-genius-vladimir-putins-big-praise-has-a-starlink-connection-12251919#publisher=newsstand",
+          "summary": "Putin's comments come amid a spat between Ukraine and the United States over access to Starshield, a military-grade satellite network powered by Musk's SpaceX.",
+          "feedImage": "https://c.ndtvimg.com/2026-10/sot8jqj4_russia-musk-reuters_625x300_29_October_26.jpeg",
+          "sources": [
+            {
+              "link": "https://www.ndtv.com/world-news/elon-musk-truly-a-genius-vladimir-putins-big-praise-has-a-starlink-connection-12251919#publisher=newsstand",
+              "source": "NDTV",
+              "feedImage": "https://c.ndtvimg.com/2026-10/sot8jqj4_russia-musk-reuters_625x300_29_October_26.jpeg"
+            },
+            {
+              "link": "https://www.theguardian.com/world/2026/oct/28/vladimir-putin-elon-musk-genius-russia-starlink",
+              "source": "The Guardian",
+              "feedImage": "https://i.guim.co.uk/img/media/c30fa2b71acd2ccc9f51fd6e605f144d1676cd70/750_0_3925_3141/master/3925.jpg?width=140&quality=85&auto=format&fit=max&s=a7b37881dd7f1290af5a036907ba0cf9"
+            }
+          ],
+          "published": "2026-10-29T04:46:17.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 8.1,
+          "photoError": "every candidate failed to download (HTTP 403; HTTP 401; only 4 KB — furniture, not a photograph)",
+          "photo": null,
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": "editorial",
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Elon Musk \"Truly A Genius\": Putin's Big Praise Has A Starlink Connection”. Reported by NDTV · The Guardian — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "india-1",
+          "story": "India ready to share 'battle-tested' anti-terror expertise with ASEAN",
+          "files": [
+            "data/editions/2026-10-29/india/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-29/india/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-29/india/1/alt.json",
+          "caption": "data/editions/2026-10-29/caption-india-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "india-2",
+          "story": "Elon Musk \"Truly A Genius\": Putin's Big Praise Has A Starlink Connection",
+          "files": [
+            "data/editions/2026-10-29/india/2/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-29/india/2/slide-1.jpg",
+          "alts": "data/editions/2026-10-29/india/2/alt.json",
+          "caption": "data/editions/2026-10-29/caption-india-2.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    },
+    {
+      "id": "world",
+      "label": "WORLD",
+      "stories": [
+        {
+          "headline": "Spain train crash kills at least 68",
+          "display": "Spain train crash kills at least 68",
+          "original": "Spain train crash kills at least 68",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "BBC News · CNN",
+          "sourceNames": [
+            "BBC News",
+            "CNN"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Warner Bros. Discovery"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB",
+            "US"
+          ],
+          "fundings": [
+            "state",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBkbE5FVXg5QWhQM0ZwSzdSbG50UkhsNTMtTHAzVU9CRUhUckw4ZWZTY2ZiRnVPUC1CYUMyYy1CaHE0NWNzWFRfelMyZFZoVUp2UHRnX2JUd29KemZOUURWYjF1Q2JWc2hPaF8yUXVCbWY5V3NwekZIdUlfQQ?oc=5",
+          "summary": "Spain train crash kills at least 68 &nbsp;&nbsp; CNN",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.bbc.co.uk/news/articles/c6p3g84kjqjlo?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/0c0f/live/1f7e90f0-d2e8-11f1-8d86-83eebc838351.jpg"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBkbE5FVXg5QWhQM0ZwSzdSbG50UkhsNTMtTHAzVU9CRUhUckw4ZWZTY2ZiRnVPUC1CYUMyYy1CaHE0NWNzWFRfelMyZFZoVUp2UHRnX2JUd29KemZOUURWYjF1Q2JWc2hPaF8yUXVCbWY5V3NwekZIdUlfQQ?oc=5",
+              "source": "CNN",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-29T04:56:12.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "lead",
+          "score": 15.55,
+          "photo": {
+            "path": "work/photos/world/photo-world-2.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/c6p3g84kjqjlo?at_medium=RSS&at_campaign=rss",
+            "query": "(the feed)",
+            "url": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/0c0f/live/1f7e90f0-d2e8-11f1-8d86-83eebc838351.jpg",
+            "size": "1024×576",
+            "edge": 1024,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Spain train crash kills at least 68”. Reported by BBC News · CNN — 2 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        },
+        {
+          "headline": "El Salvador pledges more than 2,000 soldiers as Haiti delays elections",
+          "display": "El Salvador pledges more than 2,000 soldiers as Haiti delays elections",
+          "original": "El Salvador pledges more than 2,000 soldiers as Haiti delays elections",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "BBC News · Al Jazeera",
+          "sourceNames": [
+            "BBC News",
+            "Al Jazeera"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Government of Qatar"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB",
+            "QA"
+          ],
+          "fundings": [
+            "state"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.aljazeera.com/news/2026/10/29/el-salvador-pledges-more-than-2000-soldiers-as-haiti-delays-elections?traffic_source=rss",
+          "summary": "El Salvador troops to support rescue mission to find four UN-backed soldiers who disappeared after ambush.",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.bbc.co.uk/news/articles/ck0e075n79j5o?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/846b/live/2e1cb430-d355-11f1-a772-cb496d11fa15.jpg"
+            },
+            {
+              "link": "https://www.aljazeera.com/news/2026/10/29/el-salvador-pledges-more-than-2000-soldiers-as-haiti-delays-elections?traffic_source=rss",
+              "source": "Al Jazeera",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-29T07:36:38.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.85,
+          "photo": {
+            "path": "work/photos/world/photo-world-3.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/ck0e075n79j5o?at_medium=RSS&at_campaign=rss",
+            "query": "(the feed)",
+            "url": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/846b/live/2e1cb430-d355-11f1-a772-cb496d11fa15.jpg",
+            "size": "1024×576",
+            "edge": 1024,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “El Salvador pledges more than 2,000 soldiers as Haiti delays elections”. Reported by BBC News · Al Jazeera — 2 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        },
+        {
+          "headline": "Hello Kitty company cuts ties with Japanese spy show after China outcry",
+          "display": "Hello Kitty company cuts ties with Japanese spy show after China outcry",
+          "original": "Hello Kitty company cuts ties with Japanese spy show after China outcry",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "BBC News · The Guardian",
+          "sourceNames": [
+            "BBC News",
+            "The Guardian"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Scott Trust"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB"
+          ],
+          "fundings": [
+            "state",
+            "trust"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.theguardian.com/world/2026/oct/29/hello-kitty-japanese-spy-show-vivant-china-outcry",
+          "summary": "Sanrio ends association with TV drama Vivant after China says portrayal of ruthless Chinese agents is ‘deliberate smear’ The company behind the successful Hello Kitty franchise has apologised and ended its commercial tie-up with a Japanese TV drama after Chinese state media and netizens condemned the show’s “deliberate smears” against China. Sanrio, a Japanese firm whose characters are popular aro",
+          "feedImage": "https://i.guim.co.uk/img/media/7d6d915fba59d8777de3d38003f4e35332cd9d9a/857_0_5000_4000/master/5000.jpg?width=140&quality=85&auto=format&fit=max&s=324b7d90b8e3820ef79590749d14470f",
+          "sources": [
+            {
+              "link": "https://www.bbc.co.uk/news/articles/cry4x177jlnyo?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/3ae0/live/865a2400-d343-11f1-ad8b-790d6224b426.jpg"
+            },
+            {
+              "link": "https://www.theguardian.com/world/2026/oct/29/hello-kitty-japanese-spy-show-vivant-china-outcry",
+              "source": "The Guardian",
+              "feedImage": "https://i.guim.co.uk/img/media/7d6d915fba59d8777de3d38003f4e35332cd9d9a/857_0_5000_4000/master/5000.jpg?width=140&quality=85&auto=format&fit=max&s=324b7d90b8e3820ef79590749d14470f"
+            }
+          ],
+          "published": "2026-10-29T08:03:00.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.85,
+          "photo": {
+            "path": "work/photos/world/photo-world-4.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/cry4x177jlnyo?at_medium=RSS&at_campaign=rss",
+            "query": "(the feed)",
+            "url": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/3ae0/live/865a2400-d343-11f1-ad8b-790d6224b426.jpg",
+            "size": "1024×575",
+            "edge": 1024,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Hello Kitty company cuts ties with Japanese spy show after China outcry”. Reported by BBC News · The Guardian — 2 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        },
+        {
+          "headline": "Arab parties Joint List and Ra'am could be kingmakers in Israel as Netanyahu",
+          "display": "Arab parties Joint List and Ra'am could be kingmakers in Israel as Netanyahu",
+          "original": "Arab parties Joint List and Ra'am could be kingmakers in Israel as Netanyahu, Eisenkot fall short of majority | World News",
+          "truncated": true,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "The Guardian · Hindustan Times",
+          "sourceNames": [
+            "The Guardian",
+            "Hindustan Times"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Scott Trust",
+            "HT Media / KK Birla family"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB",
+            "IN"
+          ],
+          "fundings": [
+            "trust",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMioAJBVV95cUxNTlo2OUxGTVc5YWZ3dU1FRVItaFdYQ3RRUUZFanYxQlBNaW96Rlo5eVdDc1U0WmEyMEpLQmZ0ZUhENGM5TzVYM2dIR29JcUNoOUdkbG52TjBtWGpWa0g5bWZxcEs4Rkl2SElhWGRPT18yVk9sQVh6M0Z0SXczUlMzSlFnM1BrblptVGt6cnYxQllNZ2R5Ry1PZDBjdTMxSnotMmx1TU94R0dWYTVPcG84d1ZkbU8xTEZaNWd5QnV6dEVROVZvdUFpNDBfTm9UZ2RIVmxObHdIN3ZxSDE2Q24xMzRERmlqUTkxaEpyV0w4WFM4dTYzQVZRS25Cemw2UjVrRzBiZXFtWkNrbTg",
+          "summary": "Arab parties Joint List and Ra'am could be kingmakers in Israel as Netanyahu, Eisenkot fall short of majority | World News &nbsp;&nbsp; Hindustan Times",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.theguardian.com/world/2026/oct/28/israel-election-exit-polls-suggest-netanyahu-eisenkot-blocs-tied-ntwnfb",
+              "source": "The Guardian",
+              "feedImage": "https://i.guim.co.uk/img/media/c3be783e5dae52047a4d2f3f90e3d94a0e37c305/0_0_5000_4000/master/5000.jpg?width=140&quality=85&auto=format&fit=max&s=a63e68064fb6a2c572b7701354acd540"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMioAJBVV95cUxNTlo2OUxGTVc5YWZ3dU1FRVItaFdYQ3RRUUZFanYxQlBNaW96Rlo5eVdDc1U0WmEyMEpLQmZ0ZUhENGM5TzVYM2dIR29JcUNoOUdkbG52TjBtWGpWa0g5bWZxcEs4Rkl2SElhWGRPT18yVk9sQVh6M0Z0SXczUlMzSlFnM1BrblptVGt6cnYxQllNZ2R5Ry1PZDBjdTMxSnotMmx1TU94R0dWYTVPcG84d1ZkbU8xTEZaNWd5QnV6dEVROVZvdUFpNDBfTm9UZ2RIVmxObHdIN3ZxSDE2Q24xMzRERmlqUTkxaEpyV0w4WFM4dTYzQVZRS25Cemw2UjVrRzBiZXFtWkNrbTg",
+              "source": "Hindustan Times",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-29T07:27:02.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.4,
+          "photoError": "every candidate failed to download (only 5 KB — furniture, not a photograph; HTTP 401)",
+          "photo": null,
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": "editorial",
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Arab parties Joint List and Ra'am could be kingmakers in Israel as Netanyahu”. Reported by The Guardian · Hindustan Times — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
+        },
+        {
+          "headline": "Flávio Bolsonaro denies fleeing Brazil after landing in Miami",
+          "display": "Flávio Bolsonaro denies fleeing Brazil after landing in Miami",
+          "original": "Flávio Bolsonaro denies fleeing Brazil after landing in Miami",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "BBC News · The Guardian",
+          "sourceNames": [
+            "BBC News",
+            "The Guardian"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Scott Trust"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB"
+          ],
+          "fundings": [
+            "state",
+            "trust"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.bbc.co.uk/news/articles/c6kglwe4lxwzo?at_medium=RSS&at_campaign=rss",
+          "summary": "The defeated Brazilian candidate claims to be the victim of a coup d’état and political persecution, recycling unsubstantiated allegations of “electoral fraud”.",
+          "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/2c2c/live/4c19c1e0-d2eb-11f1-b441-2b33b063138f.jpg",
+          "sources": [
+            {
+              "link": "https://www.bbc.co.uk/news/articles/c6kglwe4lxwzo?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/2c2c/live/4c19c1e0-d2eb-11f1-b441-2b33b063138f.jpg"
+            },
+            {
+              "link": "https://www.bbc.co.uk/news/videos/ck4g1xe5xny4o?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/c9c9/live/0a0506e0-d2f8-11f1-a701-fddedf244c16.jpg"
+            },
+            {
+              "link": "https://www.theguardian.com/world/2026/oct/28/flavio-bolsonaro-miami-us-fleeing-brazilian-election-defeat",
+              "source": "The Guardian",
+              "feedImage": "https://i.guim.co.uk/img/media/42124afb15a49939e6544c20b2c8ea9523ee7816/250_0_2500_2000/master/2500.jpg?width=140&quality=85&auto=format&fit=max&s=123bb61c6ce6f4c2626b76e350a4ebcd"
+            }
+          ],
+          "published": "2026-10-29T01:14:01.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.1,
+          "photo": {
+            "path": "work/photos/world/photo-world-6.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/c6kglwe4lxwzo?at_medium=RSS&at_campaign=rss",
+            "query": "(the feed)",
+            "url": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/2c2c/live/4c19c1e0-d2eb-11f1-b441-2b33b063138f.jpg",
+            "size": "1024×576",
+            "edge": 1024,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Flávio Bolsonaro denies fleeing Brazil after landing in Miami”. Reported by BBC News · The Guardian — 2 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        },
+        {
+          "headline": "Taiwan Suspects China Behind Pakistan's Brief Airspace Ban For Its Flights",
+          "display": "Taiwan Suspects China Behind Pakistan's Brief Airspace Ban For Its Flights",
+          "original": "Taiwan Suspects China Behind Pakistan's Brief Airspace Ban For Its Flights",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "NDTV · Business Standard",
+          "sourceNames": [
+            "NDTV",
+            "Business Standard"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Adani Group",
+            "Business Standard Pvt Ltd"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate",
+            "commercial"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQZTJBOFlsLU5CSVVxSl9HOXE2MDE4TEVRbW9UbnNhcU1tbHVNZ253VXhlb255cVpNWnRqeGhTZHdtSWV6RS1FUTBBa1padkdUMURIeHd2cThPcW1HMnQxb3I2Mnl1aWRhd1BJSVgybUl5X0s4SHZUeWN2dVJKRnUwUmxZbElHMGQwdG9ZNzBpUHNWRl9IMGJubmYzLWViTkNyUFctbkswOEhTeVp2RHJlSjI3eXXSAbwBQVVfeXFMTUpRandseHg0bEdJUk1uQ0JyUGJ3YjFiS1R3aUo4bEpiNllYTVpoS1dpWGZPZUhJczRLY0NDNGRtRFMtZUJJQW5Zd2JvUlQ0aU9ManU",
+          "summary": "Taiwan Suspects China Behind Pakistan's Brief Airspace Ban For Its Flights &nbsp;&nbsp; NDTV",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQZTJBOFlsLU5CSVVxSl9HOXE2MDE4TEVRbW9UbnNhcU1tbHVNZ253VXhlb255cVpNWnRqeGhTZHdtSWV6RS1FUTBBa1padkdUMURIeHd2cThPcW1HMnQxb3I2Mnl1aWRhd1BJSVgybUl5X0s4SHZUeWN2dVJKRnUwUmxZbElHMGQwdG9ZNzBpUHNWRl9IMGJubmYzLWViTkNyUFctbkswOEhTeVp2RHJlSjI3eXXSAbwBQVVfeXFMTUpRandseHg0bEdJUk1uQ0JyUGJ3YjFiS1R3aUo4bEpiNllYTVpoS1dpWGZPZUhJczRLY0NDNGRtRFMtZUJJQW5Zd2JvUlQ0aU9ManU",
+              "source": "NDTV",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQeGpVZnFCb0RVRlc3d3p2OEw5NTJNS1MwWUxiNUgxdEJ2d1V1QnNNeHoxQm12SnJlM2RuU0VJbVc3anhXdWZ0NFRIdW9sWDM3blkycFdTcml4LWh4SFl6WjJEMm1DSXl1dVgwd1Mzb25xaVdENm43dmhxRms4a3h4UnlBZG45X19rdzRqN3ByRXdNZGh3VFU1S2phNWczX2o0Q0lYZjQ0Z3BDenBzaWcxQUp3OFdUems1RDl5dU82RWYtc1NReTk5dUI3OXFHNWI4Rk8zbnlXTdIB3AFBVV95cUxNWFRTaGZlTTR5bFkzRnpSOG9Id0dGLXBhUV9RcmotN25yanE1NUU3ZW1",
+              "source": "Business Standard",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-29T07:40:44.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 7.8,
+          "articlePhotoError": "Business Standard: HTTP 400",
+          "photo": {
+            "path": "work/photos/world/photo-world-7.jpg",
+            "credit": "File photo: 丘崈 / CC0",
+            "license": "cc0",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:%E5%87%8C%E6%BA%90%E6%BD%9B%E9%BE%8D%E5%8C%96%E7%9F%B3.jpg",
+            "query": "Taiwan Suspects China",
+            "relevance": 0.14,
+            "title": "凌源潛龍化石",
+            "url": "https://upload.wikimedia.org/wikipedia/commons/3/39/%E5%87%8C%E6%BA%90%E6%BD%9B%E9%BE%8D%E5%8C%96%E7%9F%B3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "size": "1920×864",
+            "edge": 1920,
+            "from": "library"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Taiwan Suspects China Behind Pakistan's Brief Airspace Ban For Its Flights”. Reported by NDTV · Business Standard — 2 independent newsrooms. Behind the text is a library photograph captioned “凌源潛龍化石”, credited to 丘崈 / CC0. It is not a photograph of this event."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "world-1",
+          "story": "Spain train crash kills at least 68",
+          "files": [
+            "data/editions/2026-10-29/world/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-29/world/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-29/world/1/alt.json",
+          "caption": "data/editions/2026-10-29/caption-world-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "world-2",
+          "story": "El Salvador pledges more than 2,000 soldiers as Haiti delays elections",
+          "files": [
+            "data/editions/2026-10-29/world/2/slide-1.jpg",
+            "data/editions/2026-10-29/world/2/slide-2.jpg",
+            "data/editions/2026-10-29/world/2/slide-3.jpg"
+          ],
+          "cover": "data/editions/2026-10-29/world/2/slide-1.jpg",
+          "alts": "data/editions/2026-10-29/world/2/alt.json",
+          "caption": "data/editions/2026-10-29/caption-world-2.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "world-3",
+          "story": "Hello Kitty company cuts ties with Japanese spy show after China outcry",
+          "files": [
+            "data/editions/2026-10-29/world/3/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-29/world/3/slide-1.jpg",
+          "alts": "data/editions/2026-10-29/world/3/alt.json",
+          "caption": "data/editions/2026-10-29/caption-world-3.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "world-4",
+          "story": "Arab parties Joint List and Ra'am could be kingmakers in Israel as Netanyahu",
+          "files": [
+            "data/editions/2026-10-29/world/4/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-29/world/4/slide-1.jpg",
+          "alts": "data/editions/2026-10-29/world/4/alt.json",
+          "caption": "data/editions/2026-10-29/caption-world-4.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "world-5",
+          "story": "Flávio Bolsonaro denies fleeing Brazil after landing in Miami",
+          "files": [
+            "data/editions/2026-10-29/world/5/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-29/world/5/slide-1.jpg",
+          "alts": "data/editions/2026-10-29/world/5/alt.json",
+          "caption": "data/editions/2026-10-29/caption-world-5.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "world-6",
+          "story": "Taiwan Suspects China Behind Pakistan's Brief Airspace Ban For Its Flights",
+          "files": [
+            "data/editions/2026-10-29/world/6/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-29/world/6/slide-1.jpg",
+          "alts": "data/editions/2026-10-29/world/6/alt.json",
+          "caption": "data/editions/2026-10-29/caption-world-6.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    },
+    {
+      "id": "business",
+      "label": "BUSINESS",
+      "stories": [
+        {
+          "headline": "Shares in Google owner Alphabet sink on profit miss, ad slowdown",
+          "display": "Shares in Google owner Alphabet sink on profit miss, ad slowdown",
+          "original": "Shares in Google owner Alphabet sink on profit miss, ad slowdown",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA MARKETS",
+          "source": "The Guardian · Economic Times",
+          "sourceNames": [
+            "The Guardian",
+            "Economic Times"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Scott Trust",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB",
+            "IN"
+          ],
+          "fundings": [
+            "trust",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/shares-in-google-owner-alphabet-sink-on-profit-miss-ad-slowdown/articleshow/135292200.cms",
+          "summary": "Alphabet has witnessed a notable decline in its net profit and advertising revenue for the third quarter, specifically from July to September. The net profit dropped 25 percent to $26.2 billion, which fell short of analyst predictions. While YouTube's revenue growth has decelerated, Google Cloud's revenue impressive surged by 103 percent. The company reports substantial capital expenditures at $51",
+          "feedImage": "https://img.etimg.com/photo/msid-135292200,imgsize-2130512.cms",
+          "sources": [
+            {
+              "link": "https://www.theguardian.com/technology/2026/oct/28/google-alphabet-q3-earnings-report",
+              "source": "The Guardian",
+              "feedImage": "https://i.guim.co.uk/img/media/1fbb3bf8e595e794d2bb46b7c93c9e9f51b4634e/173_0_5155_4125/master/5155.jpg?width=140&quality=85&auto=format&fit=max&s=9785ad3246f1ebf0743f62c3582ab1b4"
+            },
+            {
+              "link": "https://economictimes.indiatimes.com/markets/us-stocks/news/shares-in-google-owner-alphabet-sink-on-profit-miss-ad-slowdown/articleshow/135292200.cms",
+              "source": "Economic Times",
+              "feedImage": "https://img.etimg.com/photo/msid-135292200,imgsize-2130512.cms"
+            }
+          ],
+          "published": "2026-10-29T05:44:46.000Z",
+          "topic": "markets-india",
+          "section": "business",
+          "tier": "notable",
+          "score": 7.8,
+          "photo": {
+            "path": "work/photos/business/photo-business-2.jpg",
+            "credit": "Photo: Economic Times",
+            "license": "publisher",
+            "pageUrl": "https://economictimes.indiatimes.com/markets/us-stocks/news/shares-in-google-owner-alphabet-sink-on-profit-miss-ad-slowdown/articleshow/135292200.cms",
+            "query": "(the feed)",
+            "url": "https://img.etimg.com/photo/msid-135292200,imgsize-2130512.cms",
+            "size": "1536×1024",
+            "edge": 1536,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA MARKETS. It reads: “Shares in Google owner Alphabet sink on profit miss, ad slowdown”. Reported by The Guardian · Economic Times — 2 independent newsrooms. Behind the text is a library photograph, Photo: Economic Times. It is not a photograph of this event."
+        },
+        {
+          "headline": "Passengers stranded in Cambodia after cruise halted due to high fuel costs",
+          "display": "Passengers stranded in Cambodia after cruise halted due to high fuel costs",
+          "original": "Passengers stranded in Cambodia after cruise halted due to high fuel costs",
+          "truncated": false,
+          "usable": true,
+          "category": "BUSINESS",
+          "source": "BBC News · The Guardian",
+          "sourceNames": [
+            "BBC News",
+            "The Guardian"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Scott Trust"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB"
+          ],
+          "fundings": [
+            "state",
+            "trust"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.theguardian.com/travel/2026/oct/28/cruise-passengers-stranded-cambodia-suspends-operations",
+          "summary": "The luxury MV Odyssey ship slated for a years-long voyage around the world suspends operations amid high fuel prices A luxury cruise ship that had embarked on a years-long voyage around the world was forced to suspend its operations and leave passengers stranded in Cambodia because of high fuel prices. The ship, known as the MV Odyssey, had been carrying 203 passengers, mostly Americans, along wit",
+          "feedImage": "https://i.guim.co.uk/img/media/8e73920b106cec0d5f4b8698c8b1f8afdaddd11a/762_0_6770_5415/master/6770.jpg?width=140&quality=85&auto=format&fit=max&s=0fc135c1a435747ac115bf5c9cf46849",
+          "sources": [
+            {
+              "link": "https://www.bbc.co.uk/news/articles/cwj342k62exyo?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7eaf/live/69ded4d0-d26f-11f1-a4f1-4fff2e6cf5f3.jpg"
+            },
+            {
+              "link": "https://www.theguardian.com/travel/2026/oct/28/cruise-passengers-stranded-cambodia-suspends-operations",
+              "source": "The Guardian",
+              "feedImage": "https://i.guim.co.uk/img/media/8e73920b106cec0d5f4b8698c8b1f8afdaddd11a/762_0_6770_5415/master/6770.jpg?width=140&quality=85&auto=format&fit=max&s=0fc135c1a435747ac115bf5c9cf46849"
+            }
+          ],
+          "published": "2026-10-28T15:30:27.000Z",
+          "topic": "business",
+          "section": "business",
+          "tier": "notable",
+          "score": 7.725,
+          "photo": {
+            "path": "work/photos/business/photo-business-3.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/cwj342k62exyo?at_medium=RSS&at_campaign=rss",
+            "query": "(the feed)",
+            "url": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/7eaf/live/69ded4d0-d26f-11f1-a4f1-4fff2e6cf5f3.jpg",
+            "size": "1024×576",
+            "edge": 1024,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed BUSINESS. It reads: “Passengers stranded in Cambodia after cruise halted due to high fuel costs”. Reported by BBC News · The Guardian — 2 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "business-1",
+          "story": "Shares in Google owner Alphabet sink on profit miss, ad slowdown",
+          "files": [
+            "data/editions/2026-10-29/business/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-29/business/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-29/business/1/alt.json",
+          "caption": "data/editions/2026-10-29/caption-business-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "business-2",
+          "story": "Passengers stranded in Cambodia after cruise halted due to high fuel costs",
+          "files": [
+            "data/editions/2026-10-29/business/2/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-29/business/2/slide-1.jpg",
+          "alts": "data/editions/2026-10-29/business/2/alt.json",
+          "caption": "data/editions/2026-10-29/caption-business-2.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    }
+  ]
+}
