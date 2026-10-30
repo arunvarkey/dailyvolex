@@ -1,0 +1,1222 @@
+{
+  "id": "2026-10-30",
+  "kind": "daily",
+  "builtAt": "2026-10-30T08:52:29.202Z",
+  "pool": 583,
+  "feedErrors": [
+    "indian-express: HTTP 403"
+  ],
+  "refusals": {
+    "read": 583,
+    "published": 12,
+    "refused": 229,
+    "consideredNotChosen": 342,
+    "byRule": {
+      "says nothing happened": {
+        "count": 128,
+        "samples": [
+          {
+            "title": "Record number of purges as Xi emphasises 'party discipline' at China political gathering",
+            "source": "BBC News"
+          },
+          {
+            "title": "How Kenyans got caught in $130m US ghost student scam",
+            "source": "BBC News"
+          },
+          {
+            "title": "'The city is alive': A brief peace in Kherson, but residents fear what comes next",
+            "source": "BBC News"
+          },
+          {
+            "title": "Three dead after two helicopters collide midair near Oregon airport",
+            "source": "BBC News"
+          },
+          {
+            "title": "Philippine police obtain warrant to search Thomas Markle's devices",
+            "source": "BBC News"
+          },
+          {
+            "title": "US sanctions Rwanda's defence ministry over DR Congo conflict",
+            "source": "BBC News"
+          },
+          {
+            "title": "What we know about Binance's $6.3bn hack",
+            "source": "BBC News"
+          },
+          {
+            "title": "AI’s real bottleneck is electricity. Who will pay for it?",
+            "source": "Al Jazeera"
+          }
+        ]
+      },
+      "older than the window": {
+        "count": 69,
+        "samples": [
+          {
+            "title": "Details of thousands of US immigration agents leaked in major hack",
+            "source": "BBC News"
+          },
+          {
+            "title": "Death of US actress Hayden Panettiere ruled accidental, ending local police probe",
+            "source": "BBC News"
+          },
+          {
+            "title": "El Salvador sends 2,000 troops to Haiti to rescue four missing soldiers",
+            "source": "BBC News"
+          },
+          {
+            "title": "Watch: King dances in the streets of the Bahamas capital",
+            "source": "BBC News"
+          },
+          {
+            "title": "Egypt fines prominent editor Lina Attalah and shuts independent news outlet Mada Masr",
+            "source": "The Guardian"
+          },
+          {
+            "title": "Africa’s ‘unprecedented’ Ebola outbreak could reach UK, says top health official",
+            "source": "The Guardian"
+          },
+          {
+            "title": "UK sanctions Sudanese military leaders implicated in El Fasher ‘campaign of rape’",
+            "source": "The Guardian"
+          },
+          {
+            "title": "Flávio Bolsonaro calls himself the ‘leader of Brazil’ after fleeing to Miami",
+            "source": "The Guardian"
+          }
+        ]
+      },
+      "not news": {
+        "count": 16,
+        "samples": [
+          {
+            "title": "Watch: What leaked audio reveals about Spain train crash",
+            "source": "BBC News"
+          },
+          {
+            "title": "Watch: VHS tapes and computers handed to police as Thomas Markle is investigated",
+            "source": "BBC News"
+          },
+          {
+            "title": "Israel election results: Qatar says accusations of election interference in Israel ‘ridiculous and dangerous’ – as it happened",
+            "source": "The Guardian"
+          },
+          {
+            "title": "Video. Latest news bulletin | October 30th, 2026 – Morning",
+            "source": "Euronews.com"
+          },
+          {
+            "title": "Video: Philippines' Mayon Volcano Erupts, Ash Plumes Rise To 3-Km High",
+            "source": "NDTV"
+          },
+          {
+            "title": "CEC row LIVE updates: INDIA bloc's 'public impeachment' of CEC postponed to Oct. 31 due to rain, Rahul Gandhi says",
+            "source": "The Hindu"
+          },
+          {
+            "title": "Video: Philippines' Mayon Volcano Erupts, Ash Plumes Rise To 3-Km High",
+            "source": "NDTV"
+          },
+          {
+            "title": "Stock Market LIVE Updates, Sensex Today: Sensex Jumps 500 Points Despite Negative Global Cues",
+            "source": "NDTV"
+          }
+        ]
+      },
+      "too thin to be a headline": {
+        "count": 5,
+        "samples": [
+          {
+            "title": "China Germany",
+            "source": "Post Register"
+          },
+          {
+            "title": "China Germany",
+            "source": "Post Register"
+          },
+          {
+            "title": "Semiconductor and AI Revolution",
+            "source": "pib.gov.in"
+          },
+          {
+            "title": "Middle East",
+            "source": "MUFG Research"
+          },
+          {
+            "title": "FX Daily Snapshot",
+            "source": "MUFG Research"
+          }
+        ]
+      },
+      "comment, not reporting": {
+        "count": 4,
+        "samples": [
+          {
+            "title": "Brazil’s victory for the planet and democracy: seven lessons from Lula’s win",
+            "source": "The Guardian"
+          },
+          {
+            "title": "Opinion: Opinion | How India Is Making Its Stock Market An Expensive Place To Invest",
+            "source": "NDTV"
+          },
+          {
+            "title": "Opinion | How India Is Making Its Stock Market An Expensive Place To Invest",
+            "source": "NDTV"
+          },
+          {
+            "title": "What Israel's Election Deadlock Means For India, Iran And Gaza",
+            "source": "NDTV"
+          }
+        ]
+      },
+      "marketing, not reporting": {
+        "count": 4,
+        "samples": [
+          {
+            "title": "Meet freestyle footballer Muhammed Riswan, one of the two Indian creators to win the Instagram Rings 2026",
+            "source": "The Hindu"
+          },
+          {
+            "title": "Meet AJ Jain, Aditya Ketkar: BITS alumni raise $52m for AI startup in US",
+            "source": "Times of India"
+          },
+          {
+            "title": "Meet Mahi Malhani, 17: Delhi student's waste-sorting robot hits 90% success",
+            "source": "Times of India"
+          },
+          {
+            "title": "Meet Counterpoint Research at MVNO Nation Europe 2026",
+            "source": "Counterpoint Research"
+          }
+        ]
+      },
+      "tips or price speculation": {
+        "count": 3,
+        "samples": [
+          {
+            "title": "Interview: The Nerve That Could Transform Medicine",
+            "source": "Undark Magazine"
+          },
+          {
+            "title": "Coal India shares fall 3% after Q2 results; Jefferies, Motilal Oswal, others cut target price",
+            "source": "Economic Times"
+          },
+          {
+            "title": "Asian Paints shares see target price cuts by Jefferies, Goldman Sachs, other brokerages after Q2 results. Buy, sell or hold?",
+            "source": "Economic Times"
+          }
+        ]
+      }
+    }
+  },
+  "sections": [
+    {
+      "id": "top",
+      "label": "TOP STORIES",
+      "stories": [
+        {
+          "headline": "Father, son fall to death from 23rd floor while plucking flowers in Greater Noida",
+          "display": "Father, son fall to death from 23rd floor while plucking flowers in Greater Noida",
+          "original": "Father, son fall to death from 23rd floor while plucking flowers in Greater Noida",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "NDTV · Times of India",
+          "sourceNames": [
+            "NDTV",
+            "Times of India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Adani Group",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://timesofindia.indiatimes.com/city/noida/father-son-fall-to-death-from-23rd-floor-while-plucking-flowers-in-greater-noida-society/articleshow/135349919.cms",
+          "summary": "In a heartbreaking incident on Friday, a father and his young son tragically fell from their apartment balcony while trying to gather flowers for a religious occasion. Randeep Patra, aged 40, and his 11-year-old son, Aarav, suffered critical injuries from the fall and sadly passed away in the hospital. Authorities are now investigating the tragic circumstances of their deaths, with their bodies se",
+          "feedImage": "https://static.toiimg.com/photo/msid-135350503,imgsize-1331451.cms",
+          "sources": [
+            {
+              "link": "https://www.ndtv.com/noida-news/mahagun-mywoods-society-fall-man-11-year-old-son-fall-from-23rd-floor-while-plucking-flowers-in-greater-noida-die-12257809#publisher=newsstand",
+              "source": "NDTV",
+              "feedImage": "https://c.ndtvimg.com/2026-10/49f5thuk_greater-noida-_625x300_30_October_26.jpg?im=FitAndFill,algorithm=dnn,width=1280,height=720"
+            },
+            {
+              "link": "https://timesofindia.indiatimes.com/city/noida/father-son-fall-to-death-from-23rd-floor-while-plucking-flowers-in-greater-noida-society/articleshow/135349919.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135350503,imgsize-1331451.cms"
+            }
+          ],
+          "published": "2026-10-30T07:40:06.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "lead",
+          "score": 15.4,
+          "photo": {
+            "path": "work/photos/top/photo-top-2.jpg",
+            "credit": "Photo: Times of India",
+            "license": "publisher",
+            "pageUrl": "https://timesofindia.indiatimes.com/city/noida/father-son-fall-to-death-from-23rd-floor-while-plucking-flowers-in-greater-noida-society/articleshow/135349919.cms",
+            "query": "(the feed)",
+            "url": "https://static.toiimg.com/photo/msid-135350503,imgsize-1331451.cms",
+            "size": "1280×720",
+            "edge": 1280,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Father, son fall to death from 23rd floor while plucking flowers in Greater Noida”. Reported by NDTV · Times of India — 2 independent newsrooms. Behind the text is a library photograph, Photo: Times of India. It is not a photograph of this event."
+        },
+        {
+          "headline": "INDIA bloc’s ‘public impeachment’ of CEC Gyanesh Kumar postponed to Oct. 31",
+          "display": "INDIA bloc’s ‘public impeachment’ of CEC Gyanesh Kumar postponed to Oct. 31",
+          "original": "INDIA bloc’s ‘public impeachment’ of CEC Gyanesh Kumar postponed to Oct. 31",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "The Hindu · Times of India · The New Indian Express",
+          "sourceNames": [
+            "The Hindu",
+            "Times of India",
+            "The New Indian Express",
+            "NDTV"
+          ],
+          "corroboration": 4,
+          "republishers": [],
+          "owners": [
+            "The Hindu Group (family-held)",
+            "Bennett, Coleman & Co",
+            "Adani Group"
+          ],
+          "ownerCount": 3,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial",
+            "conglomerate"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://www.thehindu.com/news/national/india-bloc-public-impeachment-of-cec-gyanesh-kumar-postponed-october-31-2026/article71644196.ece",
+          "summary": "The sources said the postponement was due to weather conditions as the lawns got muddy due to rains in New Delhi",
+          "feedImage": "https://th-i.thgim.com/public/incoming/pyauul/article71644229.ece/alternates/LANDSCAPE_1200/INDIA%20BLOC%20MEETING%20DELHI%208.jpg",
+          "sources": [
+            {
+              "link": "https://www.thehindu.com/news/national/india-bloc-public-impeachment-of-cec-gyanesh-kumar-postponed-october-31-2026/article71644196.ece",
+              "source": "The Hindu",
+              "feedImage": "https://th-i.thgim.com/public/incoming/pyauul/article71644229.ece/alternates/LANDSCAPE_1200/INDIA%20BLOC%20MEETING%20DELHI%208.jpg"
+            },
+            {
+              "link": "https://timesofindia.indiatimes.com/india/india-bloc-postpones-public-impeachment-of-cec-gyanesh-kumar-due-to-rains/articleshow/135349660.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135350361,imgsize-68494.cms"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxOanlENmNhQWI3bU5QV1pNNm1PSUhRdWlWTlhxeTVtc0c3RUo4aEE0enA0M202LTBDeU82YVRkSGNwbkd6dmVDdWxNX05IcUpLaS1OeUpDU3JPbWdwZ2xNRjJSYUdhUWx4NkVWeEVoNmx1RGRQOGZZOFExSTlmaFUta29SMmdXbkhPT1Z0THR4UnRMWFlEY25qNFM2bDZUNmloRkdReEthQUFYSnBDM0F6S1NQSW9FX2xBMzh1YzFsb0ZBS3l4cEQydFN3TjlaZTBZ?oc=5",
+              "source": "The Hindu",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNdW1mVlc2eWtVeWtfcm0tS1J0dHRQNEI0cVpCb2plbmoxQUhfSjZQeGIxMG81RUtyd1pJZVlGY0V1bVR3YnhWX2xUMVFBV1didjF2eW90TXR0eXBnNlhzVWFJS2tjQzh6ZnJVRGRpV2Mycl81T25CNmdZQ3JzaFRTODlJWkpFa293aTJoQTlpVXdWVFc1dURuQlh6VnRsNElscjdSeE9kZTA3Rk9zUG9JZ2FaSi1VMFE5ZzFVX21kV3N3dGPSAdABQVVfeXFMT0R0MG5aU1paZ0ZjakpJU0FnZVZyUE9FN3FJakx4VXE5QkpyUTc5NWRKZEU4NUdCTno5Z3RqOXg5NkdSSW1",
+              "source": "The New Indian Express",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-30T08:23:46.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 11.7,
+          "photo": {
+            "path": "work/photos/top/photo-top-3.jpg",
+            "credit": "Photo: The Hindu",
+            "license": "publisher",
+            "pageUrl": "https://www.thehindu.com/news/national/india-bloc-public-impeachment-of-cec-gyanesh-kumar-postponed-october-31-2026/article71644196.ece",
+            "query": "(the feed)",
+            "url": "https://th-i.thgim.com/public/incoming/pyauul/article71644229.ece/alternates/LANDSCAPE_1200/INDIA%20BLOC%20MEETING%20DELHI%208.jpg",
+            "size": "1200×675",
+            "edge": 1200,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “INDIA bloc’s ‘public impeachment’ of CEC Gyanesh Kumar postponed to Oct. 31”. Reported by The Hindu · Times of India · The New Indian Express — 4 independent newsrooms. Behind the text is a library photograph, Photo: The Hindu. It is not a photograph of this event."
+        },
+        {
+          "headline": "French economy shrinks 0.1% in third quarter",
+          "display": "French economy shrinks 0.1% in third quarter",
+          "original": "French economy shrinks 0.1% in third quarter",
+          "truncated": false,
+          "usable": true,
+          "category": "BUSINESS",
+          "source": "Firstpost · Financial Times",
+          "sourceNames": [
+            "Firstpost",
+            "Financial Times"
+          ],
+          "corroboration": 2,
+          "republishers": [
+            "TradingView"
+          ],
+          "owners": [
+            "Reliance Industries",
+            "Nikkei"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN",
+            "GB"
+          ],
+          "fundings": [
+            "conglomerate",
+            "commercial"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNRnAwVnJKYlVvQjhXdTR1OThNQ0FPX0g0ZHprdjBtVFZzaXBNeFFjem1RYnFPUlFNNDR4aDNpMU9EcDZ5TVZzVUc2OTJ4QkkxWnYwaXBIUGw0dll0bWNHcGotUE54dE8xSkJfS1NhTmhlRTQ1ZFQ0U2VLTHBzUG53Wmt4WVo?oc=5",
+          "summary": "French economy shrinks 0.1% in third quarter &nbsp;&nbsp; Financial Times",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQYXNUeTE2OWhfQXRqWGlrNEYwQzhJeDhjbk4zXzh5WUp1b2ZqbHRMTW1RV2dqQTNRRXJiM2lxWFRNa2l0NXpTWk8yWUtNUmE0RUdST25OOGkzZ2E3ajY5Q0MycWdiOXAyX2pDd0pRWkJaLVU2Qm9ibDZiOW5fbkRPdVByb3dCVHlCbWJ6cHBZZVJTMGx5REhwX2FLYjlySzU1YnFjQVpzTnR3b2FZYjYxTE1UZDFaUDNPVHBidEU4cktqSFNuOWfSAcsBQVVfeXFMUF9UU1Z6TVM5NWFmdWgwTE9ncDYxV2h5Ul9mb1l1Nmk2WEhDVWpiQ3VGVkJCam5CUlhySjJjaF9Eb20",
+              "source": "Firstpost",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNRnAwVnJKYlVvQjhXdTR1OThNQ0FPX0g0ZHprdjBtVFZzaXBNeFFjem1RYnFPUlFNNDR4aDNpMU9EcDZ5TVZzVUc2OTJ4QkkxWnYwaXBIUGw0dll0bWNHcGotUE54dE8xSkJfS1NhTmhlRTQ1ZFQ0U2VLTHBzUG53Wmt4WVo?oc=5",
+              "source": "Financial Times",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQUjJWWHpHNXNQb2Nqc1hRTzhVYVUxN1U3TUJUT1k4WWF4ZFVDSWdzVjhjZkNiZzBDSjg2ZWFZbE1aaE5uWnN5ZnRDVG9JODRPcUpmVDdQR1llaG5Mc0tDV3dtazdEc0lVd0JKaGdWc1BUNnpLYldqQ3otU0wzbldoSzVWeUNrdVBkcnFjLV9JeUJ4RFVFRXFVczdXLUlfZURZeGczbG1YbDB1aExsT3NfX2tBamsxVTA?oc=5",
+              "source": "TradingView",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-30T06:54:08.000Z",
+          "topic": "business",
+          "section": "business",
+          "tier": "notable",
+          "score": 7.8,
+          "articlePhotoError": "TradingView: the article declares no picture",
+          "photo": {
+            "path": "work/photos/top/photo-top-4.jpg",
+            "credit": "File photo: Jack Downey, U.S. Office of War Informat / Public Domain",
+            "license": "pdm",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Crowds_of_French_patriots_line_the_Champs_Elysees-edit2.jpg",
+            "query": "French",
+            "relevance": 0.5,
+            "title": "Crowds of French patriots line the Champs Elysees edit2",
+            "url": "https://upload.wikimedia.org/wikipedia/commons/7/78/Crowds_of_French_patriots_line_the_Champs_Elysees-edit2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "size": "1920×1508",
+            "edge": 1920,
+            "from": "library"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed BUSINESS. It reads: “French economy shrinks 0.1% in third quarter”. Reported by Firstpost · Financial Times — 2 independent newsrooms. Behind the text is a library photograph captioned “Crowds of French patriots line the Champs Elysees edit2”, credited to Jack Downey, U.S. Office of War Informat / Public Domain. It is not a photograph of this event."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "top-1",
+          "story": "Father, son fall to death from 23rd floor while plucking flowers in Greater Noida",
+          "files": [
+            "data/editions/2026-10-30/top/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-30/top/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-30/top/1/alt.json",
+          "caption": "data/editions/2026-10-30/caption-top-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "top-2",
+          "story": "INDIA bloc’s ‘public impeachment’ of CEC Gyanesh Kumar postponed to Oct. 31",
+          "files": [
+            "data/editions/2026-10-30/top/2/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-30/top/2/slide-1.jpg",
+          "alts": "data/editions/2026-10-30/top/2/alt.json",
+          "caption": "data/editions/2026-10-30/caption-top-2.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "top-3",
+          "story": "French economy shrinks 0.1% in third quarter",
+          "files": [
+            "data/editions/2026-10-30/top/3/slide-1.jpg",
+            "data/editions/2026-10-30/top/3/slide-2.jpg",
+            "data/editions/2026-10-30/top/3/slide-3.jpg"
+          ],
+          "cover": "data/editions/2026-10-30/top/3/slide-1.jpg",
+          "alts": "data/editions/2026-10-30/top/3/alt.json",
+          "caption": "data/editions/2026-10-30/caption-top-3.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "reel",
+          "id": "top-reel",
+          "files": [
+            "data/editions/2026-10-30/top/reel.mp4"
+          ],
+          "cover": "data/editions/2026-10-30/top/1/slide-1.jpg",
+          "caption": "data/editions/2026-10-30/caption-top-1.txt",
+          "alts": "",
+          "noAlts": "Instagram does not accept alt text on a reel; the caption carries the headline.",
+          "seconds": 20.5,
+          "bytes": 1951242,
+          "story": "Father, son fall to death from 23rd floor while plucking flowers in Greater Noida",
+          "footage": "the photograph, pushed in",
+          "spoken": "Daily Volex. Father, son fall to death from 23rd floor while plucking flowers in Greater Noida. In a heartbreaking incident on Friday, a father and his young son tragically fell from their apartment balcony while trying to gather flowers for a religious occasion. Reported by NDTV and Times of India."
+        }
+      ]
+    },
+    {
+      "id": "india",
+      "label": "INDIA",
+      "stories": [
+        {
+          "headline": "Expelled JDU MLA Anant Singh Must Surrender By December 1 In Murder Case: Top Court",
+          "display": "Expelled JDU MLA Anant Singh Must Surrender By December 1 In Murder Case: Top Court",
+          "original": "Expelled JDU MLA Anant Singh Must Surrender By December 1 In Murder Case: Top Court",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "The Hindu · NDTV",
+          "sourceNames": [
+            "The Hindu",
+            "NDTV"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "The Hindu Group (family-held)",
+            "Adani Group"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.ndtv.com/india-news/expelled-jdu-mla-anant-singh-must-surrender-by-december-1-in-murder-case-supreme-court-12257730#publisher=newsstand",
+          "summary": "expelled JD(U) MLA Anant Singh, who was earlier arrested in the case for allegedly orchestrating the killing in October last year, was granted bail by the Patna High Court in March this year.",
+          "feedImage": "https://c.ndtvimg.com/2026-01/5b0ed142_PTI11022025000116B.jpg?im=FeatureCrop,algorithm=dnn,width=1280,height=720",
+          "sources": [
+            {
+              "link": "https://www.thehindu.com/news/national/supreme-court-directs-expelled-jdu-mla-anant-singh-to-surrender-by-december-1/article71643970.ece",
+              "source": "The Hindu",
+              "feedImage": "https://th-i.thgim.com/public/incoming/1r185k/article71643982.ece/alternates/LANDSCAPE_1200/20261017153L.jpg"
+            },
+            {
+              "link": "https://www.ndtv.com/india-news/expelled-jdu-mla-anant-singh-must-surrender-by-december-1-in-murder-case-supreme-court-12257730#publisher=newsstand",
+              "source": "NDTV",
+              "feedImage": "https://c.ndtvimg.com/2026-01/5b0ed142_PTI11022025000116B.jpg?im=FeatureCrop,algorithm=dnn,width=1280,height=720"
+            }
+          ],
+          "published": "2026-10-30T07:35:47.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 8.7,
+          "photo": {
+            "path": "work/photos/india/photo-india-2.jpg",
+            "credit": "Photo: The Hindu",
+            "license": "publisher",
+            "pageUrl": "https://www.thehindu.com/news/national/supreme-court-directs-expelled-jdu-mla-anant-singh-to-surrender-by-december-1/article71643970.ece",
+            "query": "(the feed)",
+            "url": "https://th-i.thgim.com/public/incoming/1r185k/article71643982.ece/alternates/LANDSCAPE_1200/20261017153L.jpg",
+            "size": "1200×675",
+            "edge": 1200,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Expelled JDU MLA Anant Singh Must Surrender By December 1 In Murder Case: Top Court”. Reported by The Hindu · NDTV — 2 independent newsrooms. Behind the text is a library photograph, Photo: The Hindu. It is not a photograph of this event."
+        },
+        {
+          "headline": "Bhutan glacial lake outburst: Flash flood alert in Bengal, Assam; several evacuated",
+          "display": "Bhutan glacial lake outburst: Flash flood alert in Bengal, Assam; several evacuated",
+          "original": "Bhutan glacial lake outburst: Flash flood alert in Bengal, Assam; several evacuated",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "NDTV · Times of India",
+          "sourceNames": [
+            "NDTV",
+            "Times of India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Adani Group",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://timesofindia.indiatimes.com/india/strong-flow-bridges-feared-washed-away-bhutan-glacial-lake-outburst-puts-bengal-assam-on-alert/articleshow/135340797.cms",
+          "summary": null,
+          "feedImage": "https://static.toiimg.com/photo/msid-135348476,imgsize-115327.cms",
+          "sources": [
+            {
+              "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNVmJEMFBYY0tGV1lxVmhTM1llRkJCNkJPY3BEcHJ6NkpsaDJOeVVxQTZxRldXTzRnVHJieHc3OFhrSElibEpvUnRQcGQ3ZDhrSENlU1E3bWdMOEktVTd5MWpDaVFib0VYTmk3WXJhV1l1WEItSEVsdmVNSmdnczlEVjhaNHFvcEFWc3h3d1U3YVVrM0NYWUZTbldsM21uUFA0MWtxdi02QkdOcUtRUWNyb2s2VFRXaEEyNE01LUMtNE5rMWJESjQwNXVR0gHSAUFVX3lxTE1WUGVUbFJxaGZleTF2R0NWZUNUOGxGdEdkZ2NlT3hkVE52clhmZ3dLaDJLb1ZmVWg3WjhuZVN",
+              "source": "NDTV",
+              "feedImage": null
+            },
+            {
+              "link": "https://timesofindia.indiatimes.com/india/strong-flow-bridges-feared-washed-away-bhutan-glacial-lake-outburst-puts-bengal-assam-on-alert/articleshow/135340797.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135348476,imgsize-115327.cms"
+            }
+          ],
+          "published": "2026-10-30T03:11:35.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 7.65,
+          "photo": {
+            "path": "work/photos/india/photo-india-3.jpg",
+            "credit": "Photo: Times of India",
+            "license": "publisher",
+            "pageUrl": "https://timesofindia.indiatimes.com/india/strong-flow-bridges-feared-washed-away-bhutan-glacial-lake-outburst-puts-bengal-assam-on-alert/articleshow/135340797.cms",
+            "query": "(the feed)",
+            "url": "https://static.toiimg.com/photo/msid-135348476,imgsize-115327.cms",
+            "size": "1280×720",
+            "edge": 1280,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Bhutan glacial lake outburst: Flash flood alert in Bengal, Assam; several evacuated”. Reported by NDTV · Times of India — 2 independent newsrooms. Behind the text is a library photograph, Photo: Times of India. It is not a photograph of this event."
+        },
+        {
+          "headline": "Big blow for India: Star pacer ruled out of New Zealand ODI series due to injury",
+          "display": "Big blow for India: Star pacer ruled out of New Zealand ODI series due to injury",
+          "original": "Big blow for India: Star pacer ruled out of New Zealand ODI series due to injury",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "Times of India · ICC",
+          "sourceNames": [
+            "Times of India",
+            "ICC"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://timesofindia.indiatimes.com/sports/cricket/india-vs-new-zealand/big-blow-for-india-star-pacer-ruled-out-of-new-zealand-odi-series-due-to-injury/articleshow/135343482.cms",
+          "summary": "The right-arm pacer has not played competitive cricket since picking up an injury midway through the second ODI against the West Indies.",
+          "feedImage": "https://static.toiimg.com/photo/msid-135343720,imgsize-183645.cms",
+          "sources": [
+            {
+              "link": "https://timesofindia.indiatimes.com/sports/cricket/india-vs-new-zealand/big-blow-for-india-star-pacer-ruled-out-of-new-zealand-odi-series-due-to-injury/articleshow/135343482.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135343720,imgsize-183645.cms"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPTHQ2QUdjUzQyNUhWcWxlM0NlOWxkdWEyRUIyMGx2b3RqX0VHaWRzUE42NGtRX2JxOHI3eHhvbElWUDFJWmhiSW5TakRKQ3FkTzVuOHozRV9HRjNqcXhLQ0oxZFQ5c1NjNWFhTVd1bGRkZzI4S0ZBZjlTbGc4M2taUjZIVHpSckFablk5RVdiQ3YtQQ?oc=5",
+              "source": "ICC",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-30T04:35:10.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 7.65,
+          "photo": {
+            "path": "work/photos/india/photo-india-4.jpg",
+            "credit": "Photo: Times of India",
+            "license": "publisher",
+            "pageUrl": "https://timesofindia.indiatimes.com/sports/cricket/india-vs-new-zealand/big-blow-for-india-star-pacer-ruled-out-of-new-zealand-odi-series-due-to-injury/articleshow/135343482.cms",
+            "query": "(the feed)",
+            "url": "https://static.toiimg.com/photo/msid-135343720,imgsize-183645.cms",
+            "size": "1280×720",
+            "edge": 1280,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Big blow for India: Star pacer ruled out of New Zealand ODI series due to injury”. Reported by Times of India · ICC — 2 independent newsrooms. Behind the text is a library photograph, Photo: Times of India. It is not a photograph of this event."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "india-1",
+          "story": "Expelled JDU MLA Anant Singh Must Surrender By December 1 In Murder Case: Top Court",
+          "files": [
+            "data/editions/2026-10-30/india/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-30/india/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-30/india/1/alt.json",
+          "caption": "data/editions/2026-10-30/caption-india-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "india-2",
+          "story": "Bhutan glacial lake outburst: Flash flood alert in Bengal, Assam; several evacuated",
+          "files": [
+            "data/editions/2026-10-30/india/2/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-30/india/2/slide-1.jpg",
+          "alts": "data/editions/2026-10-30/india/2/alt.json",
+          "caption": "data/editions/2026-10-30/caption-india-2.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "india-3",
+          "story": "Big blow for India: Star pacer ruled out of New Zealand ODI series due to injury",
+          "files": [
+            "data/editions/2026-10-30/india/3/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-30/india/3/slide-1.jpg",
+          "alts": "data/editions/2026-10-30/india/3/alt.json",
+          "caption": "data/editions/2026-10-30/caption-india-3.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    },
+    {
+      "id": "world",
+      "label": "WORLD",
+      "stories": [
+        {
+          "headline": "Australian court rejects ‘mushroom murderer’ Erin Patterson’s appeal",
+          "display": "Australian court rejects ‘mushroom murderer’ Erin Patterson’s appeal",
+          "original": "Australian court rejects ‘mushroom murderer’ Erin Patterson’s appeal",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "BBC News · Al Jazeera",
+          "sourceNames": [
+            "BBC News",
+            "Al Jazeera"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Government of Qatar"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB",
+            "QA"
+          ],
+          "fundings": [
+            "state"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.aljazeera.com/news/2026/10/30/australian-mushroom-murderer-erin-patterson-loses-appeal-bid?traffic_source=rss",
+          "summary": "Court rules Patterson will spend the rest of her life behind bars after denying parole.",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.bbc.co.uk/news/articles/ck8dz8j5n993o?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/2fd0/live/73fed000-d3fa-11f1-ad77-7dc2f7c343f8.jpg"
+            },
+            {
+              "link": "https://www.aljazeera.com/news/2026/10/30/australian-mushroom-murderer-erin-patterson-loses-appeal-bid?traffic_source=rss",
+              "source": "Al Jazeera",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-30T07:38:20.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.85,
+          "photo": {
+            "path": "work/photos/world/photo-world-2.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/ck8dz8j5n993o?at_medium=RSS&at_campaign=rss",
+            "query": "(the feed)",
+            "url": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/2fd0/live/73fed000-d3fa-11f1-ad77-7dc2f7c343f8.jpg",
+            "size": "1024×576",
+            "edge": 1024,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Australian court rejects ‘mushroom murderer’ Erin Patterson’s appeal”. Reported by BBC News · Al Jazeera — 2 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        },
+        {
+          "headline": "Trump Capturing Maduro Opened \"Floodgate To Freedom\": Venezuela's Machado",
+          "display": "Trump Capturing Maduro Opened \"Floodgate To Freedom\": Venezuela's Machado",
+          "original": "Trump Capturing Maduro Opened \"Floodgate To Freedom\": Venezuela's Machado",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "Al Jazeera · NDTV",
+          "sourceNames": [
+            "Al Jazeera",
+            "NDTV"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Government of Qatar",
+            "Adani Group"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "QA",
+            "IN"
+          ],
+          "fundings": [
+            "state",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQanJJU1VSemc5WEVxd05NSGlXc010NEkxMktzclQ0ZU5uQS1GQjhybTNfM2lzMXhuSHdPVURZdE9zWUw5Q3M2Z29VRFIzb2V6eHlva0c1LUVKOTNEeTJPdG9RcGdfbWZNWFJxeE42eGh0M3BJbk5GNThLSGhHT2NJVFllRlhWU3JPeHJHRnFyVW9uSGgtSmlyTzFOc3h0b0lON0VfR3dZdlNfX21XVHNQVlZhMTh1ODRPWkhOMjA3bnFuWjctTktzWdIB0AFBVV95cUxOTEQ5MnRXdUlsVFlveF9YRWM4cWxxOXVjSVhVVTkzUnVwZFBGWEZ2eGxxdnFiWUU4Vm15NXpXTjV",
+          "summary": "Trump Capturing Maduro Opened \"Floodgate To Freedom\": Venezuela's Machado &nbsp;&nbsp; NDTV",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.aljazeera.com/news/2026/10/30/machado-lauds-trump-for-freedom-floodgate-urges-2027-elections?traffic_source=rss",
+              "source": "Al Jazeera",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQanJJU1VSemc5WEVxd05NSGlXc010NEkxMktzclQ0ZU5uQS1GQjhybTNfM2lzMXhuSHdPVURZdE9zWUw5Q3M2Z29VRFIzb2V6eHlva0c1LUVKOTNEeTJPdG9RcGdfbWZNWFJxeE42eGh0M3BJbk5GNThLSGhHT2NJVFllRlhWU3JPeHJHRnFyVW9uSGgtSmlyTzFOc3h0b0lON0VfR3dZdlNfX21XVHNQVlZhMTh1ODRPWkhOMjA3bnFuWjctTktzWdIB0AFBVV95cUxOTEQ5MnRXdUlsVFlveF9YRWM4cWxxOXVjSVhVVTkzUnVwZFBGWEZ2eGxxdnFiWUU4Vm15NXpXTjV",
+              "source": "NDTV",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-30T06:30:43.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.1,
+          "photo": {
+            "path": "work/photos/world/photo-world-3.jpg",
+            "credit": "Photo: Al Jazeera",
+            "license": "publisher",
+            "pageUrl": "https://www.aljazeera.com/news/2026/10/30/machado-lauds-trump-for-freedom-floodgate-urges-2027-elections?traffic_source=rss",
+            "query": "(the article)",
+            "url": "https://www.aljazeera.com/wp-content/uploads/2026/10/ap_6ae40d5cb60df-1793330524.jpg?resize=1920%2C1440",
+            "size": "1920×1440",
+            "edge": 1920,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Trump Capturing Maduro Opened \"Floodgate To Freedom\": Venezuela's Machado”. Reported by Al Jazeera · NDTV — 2 independent newsrooms. Behind the text is a library photograph, Photo: Al Jazeera. It is not a photograph of this event."
+        },
+        {
+          "headline": "Israel polls: Arab parties may hold key to govt formation as Netanyahu falls short",
+          "display": "Israel polls: Arab parties may hold key to govt formation as Netanyahu falls short",
+          "original": "Israel polls: Arab parties may hold key to govt formation as Netanyahu falls short",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "Al Jazeera · Times of India",
+          "sourceNames": [
+            "Al Jazeera",
+            "Times of India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Government of Qatar",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "QA",
+            "IN"
+          ],
+          "fundings": [
+            "state",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://timesofindia.indiatimes.com/world/middle-east/israel-elections-arab-parties-may-hold-key-to-next-government-after-netanyahu-falls-short-of-majority/articleshow/135345355.cms",
+          "summary": null,
+          "feedImage": "https://static.toiimg.com/photo/msid-135346325,imgsize-102753.cms",
+          "sources": [
+            {
+              "link": "https://www.aljazeera.com/video/newsfeed/2026/10/30/netanyahu-attacks-israels-arab-parties-as-he-falls-short-of-majority?traffic_source=rss",
+              "source": "Al Jazeera",
+              "feedImage": null
+            },
+            {
+              "link": "https://timesofindia.indiatimes.com/world/middle-east/israel-elections-arab-parties-may-hold-key-to-next-government-after-netanyahu-falls-short-of-majority/articleshow/135345355.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135346325,imgsize-102753.cms"
+            }
+          ],
+          "published": "2026-10-30T05:33:31.000Z",
+          "topic": "india",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.1,
+          "photo": {
+            "path": "work/photos/world/photo-world-4.jpg",
+            "credit": "Photo: Times of India",
+            "license": "publisher",
+            "pageUrl": "https://timesofindia.indiatimes.com/world/middle-east/israel-elections-arab-parties-may-hold-key-to-next-government-after-netanyahu-falls-short-of-majority/articleshow/135345355.cms",
+            "query": "(the feed)",
+            "url": "https://static.toiimg.com/photo/msid-135346325,imgsize-102753.cms",
+            "size": "1280×720",
+            "edge": 1280,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Israel polls: Arab parties may hold key to govt formation as Netanyahu falls short”. Reported by Al Jazeera · Times of India — 2 independent newsrooms. Behind the text is a library photograph, Photo: Times of India. It is not a photograph of this event."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "world-1",
+          "story": "Australian court rejects ‘mushroom murderer’ Erin Patterson’s appeal",
+          "files": [
+            "data/editions/2026-10-30/world/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-30/world/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-30/world/1/alt.json",
+          "caption": "data/editions/2026-10-30/caption-world-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "world-2",
+          "story": "Trump Capturing Maduro Opened \"Floodgate To Freedom\": Venezuela's Machado",
+          "files": [
+            "data/editions/2026-10-30/world/2/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-30/world/2/slide-1.jpg",
+          "alts": "data/editions/2026-10-30/world/2/alt.json",
+          "caption": "data/editions/2026-10-30/caption-world-2.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "world-3",
+          "story": "Israel polls: Arab parties may hold key to govt formation as Netanyahu falls short",
+          "files": [
+            "data/editions/2026-10-30/world/3/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-30/world/3/slide-1.jpg",
+          "alts": "data/editions/2026-10-30/world/3/alt.json",
+          "caption": "data/editions/2026-10-30/caption-world-3.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    },
+    {
+      "id": "business",
+      "label": "BUSINESS",
+      "stories": [
+        {
+          "headline": "French Economy Shrinks as Debt Worries Mount",
+          "display": "French Economy Shrinks as Debt Worries Mount",
+          "original": "French Economy Shrinks as Debt Worries Mount",
+          "truncated": false,
+          "usable": true,
+          "category": "BUSINESS",
+          "source": "Bloomberg.com · WSJ",
+          "sourceNames": [
+            "Bloomberg.com",
+            "WSJ"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Bloomberg LP",
+            "News Corp"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "US"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPdWRMVDlKNDhtc1N5cjBQTW1wZU5LM2JlNVpNUnJ2RTdROWxLc1g0R2VxT3hEM2hjdU5MWmQ3Z09FTHhWVVVqWmZzVEhLU1lsS0lLV2I5YmpyWW5zcG1kNFJKUF9jVFBBeE1wT1RfRllTZDBBaFUxal9YV1VXZGFKa2FabHlIcGlq?oc=5",
+          "summary": "French Economy Shrinks as Debt Worries Mount &nbsp;&nbsp; WSJ",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOcG9lV09SS3JveHBoRm1xaWQxeFpEQ2ZuSXVBLU5PS2ZocGxoSU1UNEh3Y1A3Y0hxU2h5al9OX3QxUXM2TjFuQTJPM0VMd2FDMTluT3NqQWlRZDVQaDYwZGhjX1hLLWw3aU5mZ010cUZXaXQ0bVRmVE5PREl0cXlUU25wUDRFU1lDSjE5M3o4N2VvR3FqQ2xBbW0xSEVqUlhzRTBDTnh4aU8xeGhwSm1veU1QTQ?oc=5",
+              "source": "Bloomberg.com",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPdWRMVDlKNDhtc1N5cjBQTW1wZU5LM2JlNVpNUnJ2RTdROWxLc1g0R2VxT3hEM2hjdU5MWmQ3Z09FTHhWVVVqWmZzVEhLU1lsS0lLV2I5YmpyWW5zcG1kNFJKUF9jVFBBeE1wT1RfRllTZDBBaFUxal9YV1VXZGFKa2FabHlIcGlq?oc=5",
+              "source": "WSJ",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-30T08:01:02.000Z",
+          "topic": "business",
+          "section": "business",
+          "tier": "notable",
+          "score": 7.8,
+          "articlePhotoError": "WSJ: the article declares no picture",
+          "photo": {
+            "path": "work/photos/business/photo-business-2.jpg",
+            "credit": "File photo: Marie-Lan Nguyen / CC BY 3.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Women_heptathlon_LJ_French_Athletics_Championships_2013_t144221.jpg",
+            "query": "French",
+            "relevance": 0.2,
+            "title": "Women heptathlon LJ French Athletics Championships 2013 t144221",
+            "url": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Women_heptathlon_LJ_French_Athletics_Championships_2013_t144221.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "size": "1920×1282",
+            "edge": 1920,
+            "from": "library"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed BUSINESS. It reads: “French Economy Shrinks as Debt Worries Mount”. Reported by Bloomberg.com · WSJ — 2 independent newsrooms. Behind the text is a library photograph captioned “Women heptathlon LJ French Athletics Championships 2013 t144221”, credited to Marie-Lan Nguyen / CC BY 3.0. It is not a photograph of this event."
+        },
+        {
+          "headline": "Rs 12,000 Crore Business At Stake: Traders Ask Sonia Gandhi To Postpone November 1 Rally",
+          "display": "Rs 12,000 Crore Business At Stake: Traders Ask Sonia Gandhi To Postpone November 1 Rally",
+          "original": "Rs 12,000 Crore Business At Stake: Traders Ask Sonia Gandhi To Postpone November 1 Rally",
+          "truncated": false,
+          "usable": true,
+          "category": "BUSINESS",
+          "source": "Times of India · NDTV",
+          "sourceNames": [
+            "Times of India",
+            "NDTV"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Bennett, Coleman & Co",
+            "Adani Group"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxQdU55b2hSb0RIcnlXbDQ4Qm1rSXFON0ZqMWpTX3gxNzhBdi1QaE9VUFhHdEk0aHRuUDA3V2Z5WkdJQm01Zjd1T01nV2JLMkM3cnlKX0dBM2RBMkZMSWFHQkoyQk54OXRBbEU3NkllX3FGTy04TEZuclJTaExjRC01ZGpVVDI5VExSVE9KdGdmUXgzMUxOalFtNWZPd2dnLVZvTmI2ZlVwaWdxazNKSFdOUnJHZjk3TFAxdkxhRTBET3UxR2dYSzBic21CdmgtYTBvWWhiZVB3?oc=5",
+          "summary": "Rs 12,000 Crore Business At Stake: Traders Ask Sonia Gandhi To Postpone November 1 Rally &nbsp;&nbsp; NDTV",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://timesofindia.indiatimes.com/india/20-markets-rs-12000cr-trade-delhi-traders-urge-sonia-gandhi-to-defer-rahuls-november-1-rally/articleshow/135341711.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135341794,imgsize-916780.cms"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxQdU55b2hSb0RIcnlXbDQ4Qm1rSXFON0ZqMWpTX3gxNzhBdi1QaE9VUFhHdEk0aHRuUDA3V2Z5WkdJQm01Zjd1T01nV2JLMkM3cnlKX0dBM2RBMkZMSWFHQkoyQk54OXRBbEU3NkllX3FGTy04TEZuclJTaExjRC01ZGpVVDI5VExSVE9KdGdmUXgzMUxOalFtNWZPd2dnLVZvTmI2ZlVwaWdxazNKSFdOUnJHZjk3TFAxdkxhRTBET3UxR2dYSzBic21CdmgtYTBvWWhiZVB3?oc=5",
+              "source": "NDTV",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-30T04:41:01.000Z",
+          "topic": "business",
+          "section": "business",
+          "tier": "notable",
+          "score": 7.65,
+          "photo": {
+            "path": "work/photos/business/photo-business-3.jpg",
+            "credit": "Photo: Times of India",
+            "license": "publisher",
+            "pageUrl": "https://timesofindia.indiatimes.com/india/20-markets-rs-12000cr-trade-delhi-traders-urge-sonia-gandhi-to-defer-rahuls-november-1-rally/articleshow/135341711.cms",
+            "query": "(the feed)",
+            "url": "https://static.toiimg.com/photo/msid-135341794,imgsize-916780.cms",
+            "size": "1280×720",
+            "edge": 1280,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed BUSINESS. It reads: “Rs 12,000 Crore Business At Stake: Traders Ask Sonia Gandhi To Postpone November 1 Rally”. Reported by Times of India · NDTV — 2 independent newsrooms. Behind the text is a library photograph, Photo: Times of India. It is not a photograph of this event."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "business-1",
+          "story": "French Economy Shrinks as Debt Worries Mount",
+          "files": [
+            "data/editions/2026-10-30/business/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-30/business/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-30/business/1/alt.json",
+          "caption": "data/editions/2026-10-30/caption-business-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "business-2",
+          "story": "Rs 12,000 Crore Business At Stake: Traders Ask Sonia Gandhi To Postpone November 1 Rally",
+          "files": [
+            "data/editions/2026-10-30/business/2/slide-1.jpg",
+            "data/editions/2026-10-30/business/2/slide-2.jpg",
+            "data/editions/2026-10-30/business/2/slide-3.jpg"
+          ],
+          "cover": "data/editions/2026-10-30/business/2/slide-1.jpg",
+          "alts": "data/editions/2026-10-30/business/2/alt.json",
+          "caption": "data/editions/2026-10-30/caption-business-2.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    },
+    {
+      "id": "tech",
+      "label": "TECHNOLOGY",
+      "stories": [
+        {
+          "headline": "North Korea’s Kim calls for 'absolute superiority' in drone technology",
+          "display": "North Korea’s Kim calls for 'absolute superiority' in drone technology",
+          "original": "North Korea’s Kim calls for 'absolute superiority' in drone technology",
+          "truncated": false,
+          "usable": true,
+          "category": "TECHNOLOGY",
+          "source": "The Hindu · Anadolu Ajansı",
+          "sourceNames": [
+            "The Hindu",
+            "Anadolu Ajansı"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "The Hindu Group (family-held)"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQb1RLam9oRDh4aUVvUFFGT3NqOVhsdVdsTlN0Zmlrc3ZLTzZnR1VFYkNXb0k4MExWUndwSlExSjFTNkViT3E3TW5lUGdMaGJ4alVoRFVBTmFscTdmY0tPazZXTzNEN29mUnl5NUxxLWhpTWFxX3RVaVloa2NQeUlycVU3b0JscjFLd25Kb0UzeXpaZ2MtVnhSTl9wakhQN2JiXzhTZFc4dHR5N2h2ckhN?oc=5",
+          "summary": "North Korea’s Kim calls for 'absolute superiority' in drone technology &nbsp;&nbsp; Anadolu Ajansı",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxPaE5fWDAzVllLV1Qxa19va1UxODZPNVY4WTJUMmZJYmh5MURzTVNkYU5UaGtxVkU2dVRLSmhiYVQyQkVSZWhoLXlNZ1czbXpLXzdNaHZwUm5FWDJYRWl0MUpHWWtZRE1WdnZsZG1mdFlHTnBUYUYwcHUwdVFobnh4dG9JQ3VvdkhrbEdHZ2pXeHA3RHVTbTQxQnd2b0UwMXlmMHQ4SGs5b2Q0MENLUC14NUxzN1JXbTlncDlVcFJmaUhtRU4yM1U0WG5HRlg3V01nOEhKS0U2UnJhc1JFT1BJQjc5MXg3c2V3RGfSAfABQVVfeXFMUHd4NGR2UG94aG8wbkNycEpWSlM0Vno",
+              "source": "The Hindu",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQb1RLam9oRDh4aUVvUFFGT3NqOVhsdVdsTlN0Zmlrc3ZLTzZnR1VFYkNXb0k4MExWUndwSlExSjFTNkViT3E3TW5lUGdMaGJ4alVoRFVBTmFscTdmY0tPazZXTzNEN29mUnl5NUxxLWhpTWFxX3RVaVloa2NQeUlycVU3b0JscjFLd25Kb0UzeXpaZ2MtVnhSTl9wakhQN2JiXzhTZFc4dHR5N2h2ckhN?oc=5",
+              "source": "Anadolu Ajansı",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-30T03:49:59.000Z",
+          "topic": "tech",
+          "section": "tech",
+          "tier": "notable",
+          "score": 7.5,
+          "articlePhotoError": "Anadolu Ajansı: the article declares no picture",
+          "photo": {
+            "path": "work/photos/tech/photo-tech-2.jpg",
+            "credit": "File photo: Mark Fahey from Sydney, Australia / CC BY 2.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Kim_Jong-il_in_North_Korean_propaganda_(6075328850).jpg",
+            "query": "North Korea’s Kim",
+            "relevance": 0.33,
+            "title": "Kim Jong il in North Korean propaganda (6075328850)",
+            "url": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Kim_Jong-il_in_North_Korean_propaganda_%286075328850%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "size": "1920×1440",
+            "edge": 1920,
+            "from": "library"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed TECHNOLOGY. It reads: “North Korea’s Kim calls for 'absolute superiority' in drone technology”. Reported by The Hindu · Anadolu Ajansı — 2 independent newsrooms. Behind the text is a library photograph captioned “Kim Jong il in North Korean propaganda (6075328850)”, credited to Mark Fahey from Sydney, Australia / CC BY 2.0. It is not a photograph of this event."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "tech-1",
+          "story": "North Korea’s Kim calls for 'absolute superiority' in drone technology",
+          "files": [
+            "data/editions/2026-10-30/tech/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-30/tech/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-30/tech/1/alt.json",
+          "caption": "data/editions/2026-10-30/caption-tech-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    }
+  ]
+}
