@@ -1,0 +1,1402 @@
+{
+  "id": "2026-10-31",
+  "kind": "daily",
+  "builtAt": "2026-10-31T08:41:25.542Z",
+  "pool": 580,
+  "feedErrors": [
+    "indian-express: HTTP 403"
+  ],
+  "refusals": {
+    "read": 580,
+    "published": 15,
+    "refused": 227,
+    "consideredNotChosen": 338,
+    "byRule": {
+      "says nothing happened": {
+        "count": 124,
+        "samples": [
+          {
+            "title": "Why North Korea's 'elite' hackers are the prime suspect in major Binance hack",
+            "source": "BBC News"
+          },
+          {
+            "title": "Spain train disaster clouds Sánchez chances of re-election",
+            "source": "BBC News"
+          },
+          {
+            "title": "How has the ceasefire in Russian-occupied Oleshky been unfolding?",
+            "source": "BBC News"
+          },
+          {
+            "title": "What's at stake for Trump in the US midterms?",
+            "source": "BBC News"
+          },
+          {
+            "title": "What we know about Binance's $6.3bn hack",
+            "source": "BBC News"
+          },
+          {
+            "title": "The Indian chef who brought curry to America - then vanished",
+            "source": "BBC News"
+          },
+          {
+            "title": "Suited and booted: How Joseph Kabila went from president to rebel leader",
+            "source": "BBC News"
+          },
+          {
+            "title": "Why are US, Russia and China racing to put nuclear reactors on the moon?",
+            "source": "Al Jazeera"
+          }
+        ]
+      },
+      "older than the window": {
+        "count": 84,
+        "samples": [
+          {
+            "title": "Mushroom murderer fails to overturn convictions in Australian court challenge",
+            "source": "BBC News"
+          },
+          {
+            "title": "Syrians struggle with soaring prices as crisis challenges post-Assad recovery",
+            "source": "BBC News"
+          },
+          {
+            "title": "Human rights lawyer couple sentenced to 10 years' prison in Pakistan",
+            "source": "BBC News"
+          },
+          {
+            "title": "Student-backed election winners demand sweeping resignations in Serbia",
+            "source": "BBC News"
+          },
+          {
+            "title": "Watch: Why Australia's mushroom murderer may now die in prison",
+            "source": "BBC News"
+          },
+          {
+            "title": "'I made the wrong decision,' Hyrox athlete who soiled herself in race tells BBC",
+            "source": "BBC News"
+          },
+          {
+            "title": "Democrats have an identity crisis - it won't be an easy fix",
+            "source": "BBC News"
+          },
+          {
+            "title": "Many Cubans voted for Trump - now they're turning on Republican immigration policies",
+            "source": "BBC News"
+          }
+        ]
+      },
+      "not news": {
+        "count": 11,
+        "samples": [
+          {
+            "title": "US approves sale of 500 Patriot missiles to Ukraine",
+            "source": "BBC News"
+          },
+          {
+            "title": "Chelsea vs Manchester United: LIVE – Premier League",
+            "source": "Al Jazeera"
+          },
+          {
+            "title": "Video. Latest news bulletin | October 31st, 2026 – Morning",
+            "source": "Euronews.com"
+          },
+          {
+            "title": "News in Pics | October 31, 2026: Best photos from around the world",
+            "source": "Deccan Herald"
+          },
+          {
+            "title": "US clears sale of 500 Patriot missiles to Ukraine as Zelensky flags delays | World News",
+            "source": "Hindustan Times"
+          },
+          {
+            "title": "US approves sale of 500 Patriot missiles to Ukraine",
+            "source": "BBC"
+          },
+          {
+            "title": "KTR questions proposed sale of IDBI Bank, asks if its valuable real estate assets were factored in valuation",
+            "source": "The Hindu"
+          },
+          {
+            "title": "Video: Mumbai Cop, BMW Driver Clash After She Rams Car At Traffic Stop",
+            "source": "NDTV"
+          }
+        ]
+      },
+      "too thin to be a headline": {
+        "count": 4,
+        "samples": [
+          {
+            "title": "Reuters World News Summary",
+            "source": "Devdiscourse"
+          },
+          {
+            "title": "KPMG 2026 India CEO Outlook",
+            "source": "kpmg.com"
+          },
+          {
+            "title": "Asteroid Psyche",
+            "source": "NASA Science (.gov)"
+          },
+          {
+            "title": "CALIPSO",
+            "source": "NASA (.gov)"
+          }
+        ]
+      },
+      "marketing, not reporting": {
+        "count": 2,
+        "samples": [
+          {
+            "title": "Meet Joan Ginther, who won $20m across four lottery jackpots",
+            "source": "Times of India"
+          },
+          {
+            "title": "Meet Grace De Souza, the 13-year-old from Goa who spent her summer break turning the moringa trees in her",
+            "source": "The Times of India"
+          }
+        ]
+      },
+      "comment, not reporting": {
+        "count": 2,
+        "samples": [
+          {
+            "title": "Opinion | A Growing Economy, Fewer Opportunities",
+            "source": "guwahati Plus News"
+          },
+          {
+            "title": "Retirement Could Be Bad For Your Health: Why Staying Active And Having A Purpose Matters As You Age",
+            "source": "NDTV"
+          }
+        ]
+      }
+    }
+  },
+  "sections": [
+    {
+      "id": "top",
+      "label": "TOP STORIES",
+      "stories": [
+        {
+          "headline": "Launch of NVS-03: PM Modi congratulates scientists, engineers at ISRO",
+          "display": "Launch of NVS-03: PM Modi congratulates scientists, engineers at ISRO",
+          "original": "Launch of NVS-03: PM Modi congratulates scientists, engineers at ISRO",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "The Hindu · PM India · Hindustan Times",
+          "sourceNames": [
+            "The Hindu",
+            "PM India",
+            "Hindustan Times"
+          ],
+          "corroboration": 3,
+          "republishers": [],
+          "owners": [
+            "The Hindu Group (family-held)",
+            "HT Media / KK Birla family"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial",
+            "conglomerate"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://www.thehindu.com/sci-tech/science/pm-modi-congratulates-isro-scientists-on-gslv-f18-launch-of-nvs-03/article71648465.ece",
+          "summary": "Mr. Modi also said that equipped with enhanced capabilities, NVS-03 will further India’s pursuit of self-reliance in critical technologies and support navigation services that benefit the people",
+          "feedImage": "https://th-i.thgim.com/public/news/national/dj97zx/article71648565.ece/alternates/LANDSCAPE_1200/gslv%20f18%20nvs%2003%20nabin.png",
+          "sources": [
+            {
+              "link": "https://www.thehindu.com/sci-tech/science/pm-modi-congratulates-isro-scientists-on-gslv-f18-launch-of-nvs-03/article71648465.ece",
+              "source": "The Hindu",
+              "feedImage": "https://th-i.thgim.com/public/news/national/dj97zx/article71648565.ece/alternates/LANDSCAPE_1200/gslv%20f18%20nvs%2003%20nabin.png"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxOUnNzT3R1Y2lfWC1HZEZYREV1bGNLNXVVODJoTmxpWkt6OV95cXBVUm13aDI0dW93V2VxUFd5MFQwR05rMXl6U1kyUkU1Ul90cEhfSUh5akJibFlUU1l3ODFyU1VuSUpBTm9nY08zT1ZTWEhKalpKa3NSYnc1ZWU4SEVQbzA2czdZSlNFTHNtUnpMR2lCWVpaeU82eFhIYmZwNFc1Rk1wNndna04ta1BXSklCcUFGbkhQblZ4dmtzMzlsLUZIU3N1Y2pkUmhuWnY5MC1RZk4weGh1bnpJVWlmSkZJZzk3MU5PWVRr?oc=5",
+              "source": "PM India",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMikAJBVV95cUxNajZMbEVuUDZQMmtCWDg1YTYxR3hwekY5aVMtOG5uazkwVlE1ckJLYmNCcHpTN3lWdElKSTZCb212TUpCVWJJYTUyR0lHQWN5c1ExMEY3bzllUFdkY3pqZEhBc2N6ekQ4ZXVXRWpVU2xFU2Y0bHZuVmR0ZDBPemFldE5Ja2haUm5tbFBvSFpScmtOZjlBcGZLc01xcndGdTZHcHVCXzJ6UnZ5eFl5Wm4zd2I1cjdkNXJqTU40RnU5ZHA0QkM3R2gtY3k2NXNZQnhvVjJCc21IU29iWGoxWU1tTjc2YklJb3VwaVdnTC1vbGNwUk1WbGVqc3ZJYV91UUtTaXlyekpnY0hwZG5",
+              "source": "Hindustan Times",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-31T07:22:55.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 10.2,
+          "photo": {
+            "path": "work/photos/top/photo-top-2.jpg",
+            "credit": "Photo: The Hindu",
+            "license": "publisher",
+            "pageUrl": "https://www.thehindu.com/sci-tech/science/pm-modi-congratulates-isro-scientists-on-gslv-f18-launch-of-nvs-03/article71648465.ece",
+            "query": "(the feed)",
+            "url": "https://th-i.thgim.com/public/news/national/dj97zx/article71648565.ece/alternates/LANDSCAPE_1200/gslv%20f18%20nvs%2003%20nabin.png",
+            "size": "1200×675",
+            "edge": 1200,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Launch of NVS-03: PM Modi congratulates scientists, engineers at ISRO”. Reported by The Hindu · PM India · Hindustan Times — 3 independent newsrooms. Behind the text is a library photograph, Photo: The Hindu. It is not a photograph of this event."
+        },
+        {
+          "headline": "AAP announces first list of 40 candidates for 2027 Punjab Assembly elections",
+          "display": "AAP announces first list of 40 candidates for 2027 Punjab Assembly elections",
+          "original": "AAP announces first list of 40 candidates for 2027 Punjab Assembly elections",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "The Hindu · NDTV",
+          "sourceNames": [
+            "The Hindu",
+            "NDTV"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "The Hindu Group (family-held)",
+            "Adani Group"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.thehindu.com/news/national/punjab/aap-announces-list-of-40-candidates-for-punjab-polls/article71648551.ece",
+          "summary": "Chief Minister Bhagwant Mann will seek re-election from the Dhuri constituency in Sangrur district",
+          "feedImage": "https://th-i.thgim.com/public/incoming/a0bzea/article71648722.ece/alternates/LANDSCAPE_1200/PTI10_07_2026_000176B.jpg",
+          "sources": [
+            {
+              "link": "https://www.thehindu.com/news/national/punjab/aap-announces-list-of-40-candidates-for-punjab-polls/article71648551.ece",
+              "source": "The Hindu",
+              "feedImage": "https://th-i.thgim.com/public/incoming/a0bzea/article71648722.ece/alternates/LANDSCAPE_1200/PTI10_07_2026_000176B.jpg"
+            },
+            {
+              "link": "https://www.ndtv.com/india-news/aap-bhagwant-mann-sanjeev-arora-punjab-assembly-polls-candidates-list-12262639#publisher=newsstand",
+              "source": "NDTV",
+              "feedImage": "https://c.ndtvimg.com/2026-10/bl4fd5rg_bhagwant-mann_625x300_19_October_26.jpg?im=FeatureCrop,algorithm=dnn,width=1280,height=720"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPRGtPNko5WXpxY3F1YkZVeE5DZlFoeTNMSVdhZndzcEJYUi01aDJic0RlOUJHam9rTjNlR3hxdWo0bXVuTFZLekdjQm9MbFlaVXhoTmsySkhHeHZhNTByT2pzcS1UTnpYakMtRXF5Zmlmcm5raC1iVkctVXFHQU9iQm9TY01jbU12QXdBUnY1dURmMmZ4RkJZRDVPWmYxSmF2UERGV3o1TE5IbkpSdnkw0gG3AUFVX3lxTE1WSi1mVVNGNXBYbTF3ZmRtWlJId0tMMzd6ZzdLRDNQY0dkSGlFajBzY3hlSHJqak82ZEphWktmc1pSUWNBQWlkNG52c0hkOWZUWkN0dmR4ZUp",
+              "source": "NDTV",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-31T08:25:45.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 8.7,
+          "photo": {
+            "path": "work/photos/top/photo-top-3.jpg",
+            "credit": "Photo: The Hindu",
+            "license": "publisher",
+            "pageUrl": "https://www.thehindu.com/news/national/punjab/aap-announces-list-of-40-candidates-for-punjab-polls/article71648551.ece",
+            "query": "(the feed)",
+            "url": "https://th-i.thgim.com/public/incoming/a0bzea/article71648722.ece/alternates/LANDSCAPE_1200/PTI10_07_2026_000176B.jpg",
+            "size": "1200×675",
+            "edge": 1200,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “AAP announces first list of 40 candidates for 2027 Punjab Assembly elections”. Reported by The Hindu · NDTV — 2 independent newsrooms. Behind the text is a library photograph, Photo: The Hindu. It is not a photograph of this event."
+        },
+        {
+          "headline": "Traffic curbs in Delhi for INDIA bloc rally at Ramlila Maidan on November 1 | LIVE",
+          "display": "Traffic curbs in Delhi for INDIA bloc rally at Ramlila Maidan on November 1 | LIVE",
+          "original": "Traffic curbs in Delhi for INDIA bloc rally at Ramlila Maidan on November 1 | LIVE",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "The Hindu · India Today",
+          "sourceNames": [
+            "The Hindu",
+            "India Today"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "The Hindu Group (family-held)",
+            "Living Media"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.thehindu.com/news/national/india-bloc-public-impeachment-cec-gyanesh-kumar-sir-protest-chalo-dilli-march-rahul-gandhi-live-updates-october-31-2026/article71648094.ece",
+          "summary": "INDIA Bloc says everyone united in protests, 'public impeachment' of CEC Gyanesh Kumar today",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.thehindu.com/news/national/india-bloc-public-impeachment-cec-gyanesh-kumar-sir-protest-chalo-dilli-march-rahul-gandhi-live-updates-october-31-2026/article71648094.ece",
+              "source": "The Hindu",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxOM0MwdkM2WmlubVVrUTdydDJiSmlGWUZ6VV9fdmhUVFRNVG02MHFsN2FmdmhsOFp4cExadUlaeHlVQjRZTUpZWEltSF9ucXJXTHZ3cmJPTXBVaG5NX09VOERQZ2VkeEF2VS1DSk96a1JRRDZfeDMzNktVX1d0cEJBY2M5MkFETWltaDdyUUFKdDNJbXZacTFZNmg5SDdUQTlKek5UR21xTHRTV1pOQW16RW9pOVVGa3BIbkQzc1Z6WThkT3J2MzFybzhvYTZKbUhUTWM4X3BVMF9jMkMzRko1YjQ4SFdNelBHRGJQVDJR0gHuAUFVX3lxTE4zQzB2QzZaaW5tVWtRN3J0MmJ",
+              "source": "India Today",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-31T08:24:22.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 8.7,
+          "photo": {
+            "path": "work/photos/top/photo-top-4.jpg",
+            "credit": "Photo: The Hindu",
+            "license": "publisher",
+            "pageUrl": "https://www.thehindu.com/news/national/india-bloc-public-impeachment-cec-gyanesh-kumar-sir-protest-chalo-dilli-march-rahul-gandhi-live-updates-october-31-2026/article71648094.ece",
+            "query": "(the article)",
+            "url": "https://th-i.thgim.com/public/incoming/kwhpj9/article71648108.ece/alternates/LANDSCAPE_1200/RAHUL%20GANDHI%20INDIA%20BLOC%20PC%201.JPG",
+            "size": "1200×675",
+            "edge": 1200,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Traffic curbs in Delhi for INDIA bloc rally at Ramlila Maidan on November 1 | LIVE”. Reported by The Hindu · India Today — 2 independent newsrooms. Behind the text is a library photograph, Photo: The Hindu. It is not a photograph of this event."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "top-1",
+          "story": "Launch of NVS-03: PM Modi congratulates scientists, engineers at ISRO",
+          "files": [
+            "data/editions/2026-10-31/top/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-31/top/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-31/top/1/alt.json",
+          "caption": "data/editions/2026-10-31/caption-top-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "top-2",
+          "story": "AAP announces first list of 40 candidates for 2027 Punjab Assembly elections",
+          "files": [
+            "data/editions/2026-10-31/top/2/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-31/top/2/slide-1.jpg",
+          "alts": "data/editions/2026-10-31/top/2/alt.json",
+          "caption": "data/editions/2026-10-31/caption-top-2.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "top-3",
+          "story": "Traffic curbs in Delhi for INDIA bloc rally at Ramlila Maidan on November 1 | LIVE",
+          "files": [
+            "data/editions/2026-10-31/top/3/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-31/top/3/slide-1.jpg",
+          "alts": "data/editions/2026-10-31/top/3/alt.json",
+          "caption": "data/editions/2026-10-31/caption-top-3.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "reel",
+          "id": "top-reel",
+          "files": [
+            "data/editions/2026-10-31/top/reel.mp4"
+          ],
+          "cover": "data/editions/2026-10-31/top/1/slide-1.jpg",
+          "caption": "data/editions/2026-10-31/caption-top-1.txt",
+          "alts": "",
+          "noAlts": "Instagram does not accept alt text on a reel; the caption carries the headline.",
+          "seconds": 12.5,
+          "bytes": 1405605,
+          "story": "Launch of NVS-03: PM Modi congratulates scientists, engineers at ISRO",
+          "footage": "the photograph, pushed in",
+          "spoken": "Daily Volex. Launch of NVS-03: PM Modi congratulates scientists, engineers at ISRO. Reported by The Hindu, PM India and Hindustan Times."
+        }
+      ]
+    },
+    {
+      "id": "india",
+      "label": "INDIA",
+      "stories": [
+        {
+          "headline": "Theni jailbreak: Tamil Nadu CM Vijay orders suspension of Theni district jail",
+          "display": "Theni jailbreak: Tamil Nadu CM Vijay orders suspension of Theni district jail",
+          "original": "Theni jailbreak: Tamil Nadu CM Vijay orders suspension of Theni district jail superintendent in-charge",
+          "truncated": true,
+          "usable": true,
+          "category": "INDIA",
+          "source": "The Hindu · NDTV",
+          "sourceNames": [
+            "The Hindu",
+            "NDTV"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "The Hindu Group (family-held)",
+            "Adani Group"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.thehindu.com/news/national/tamil-nadu/theni-jailbreak-tamil-nadu-cm-vijay-orders-suspension-of-superintendent-in-charge-over-security-lapse/article71648506.ece",
+          "summary": "R. Krishnaraj, Superintendent of Madurai Central Prison, has been transferred and posted as Superintendent of Salem Central Prison",
+          "feedImage": "https://th-i.thgim.com/public/incoming/4urkxp/article71648534.ece/alternates/LANDSCAPE_1200/2085_16_10_2026_16_51_6_4_DSC_2717.JPG",
+          "sources": [
+            {
+              "link": "https://www.thehindu.com/news/national/tamil-nadu/theni-jailbreak-tamil-nadu-cm-vijay-orders-suspension-of-superintendent-in-charge-over-security-lapse/article71648506.ece",
+              "source": "The Hindu",
+              "feedImage": "https://th-i.thgim.com/public/incoming/4urkxp/article71648534.ece/alternates/LANDSCAPE_1200/2085_16_10_2026_16_51_6_4_DSC_2717.JPG"
+            },
+            {
+              "link": "https://www.ndtv.com/india-news/tamil-nadu-jailbreak-vijay-suspends-senior-jail-official-reshuffles-staff-12262647#publisher=newsstand",
+              "source": "NDTV",
+              "feedImage": "https://c.ndtvimg.com/2026-10/vhs60mnc_cm-vijay-ians_625x300_31_October_26.jpeg"
+            }
+          ],
+          "published": "2026-10-31T08:15:35.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 8.7,
+          "photo": {
+            "path": "work/photos/india/photo-india-2.jpg",
+            "credit": "Photo: The Hindu",
+            "license": "publisher",
+            "pageUrl": "https://www.thehindu.com/news/national/tamil-nadu/theni-jailbreak-tamil-nadu-cm-vijay-orders-suspension-of-superintendent-in-charge-over-security-lapse/article71648506.ece",
+            "query": "(the feed)",
+            "url": "https://th-i.thgim.com/public/incoming/4urkxp/article71648534.ece/alternates/LANDSCAPE_1200/2085_16_10_2026_16_51_6_4_DSC_2717.JPG",
+            "size": "1200×675",
+            "edge": 1200,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Theni jailbreak: Tamil Nadu CM Vijay orders suspension of Theni district jail”. Reported by The Hindu · NDTV — 2 independent newsrooms. Behind the text is a library photograph, Photo: The Hindu. It is not a photograph of this event."
+        },
+        {
+          "headline": "Sting op row: K'taka Congress expels Kripa Alva for 6 years over Siddaramaiah video",
+          "display": "Sting op row: K'taka Congress expels Kripa Alva for 6 years over Siddaramaiah video",
+          "original": "Sting op row: K'taka Congress expels Kripa Alva for 6 years over Siddaramaiah video",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "NDTV · Times of India",
+          "sourceNames": [
+            "NDTV",
+            "Times of India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Adani Group",
+            "Bennett, Coleman & Co"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://timesofindia.indiatimes.com/india/siddaramaiah-sting-op-row-ktaka-cong-suspends-former-party-general-sec-for-6-years/articleshow/135391256.cms",
+          "summary": null,
+          "feedImage": "https://static.toiimg.com/photo/msid-135391416,imgsize-102905.cms",
+          "sources": [
+            {
+              "link": "https://www.ndtv.com/india-news/congress-expels-kripa-alva-over-sting-operation-of-party-leaders-in-karnataka-siddaramaiah-12261947#publisher=newsstand",
+              "source": "NDTV",
+              "feedImage": "https://c.ndtvimg.com/2026-10/042mhbc4_karnataka-pti_625x300_31_October_26.jpeg"
+            },
+            {
+              "link": "https://timesofindia.indiatimes.com/india/siddaramaiah-sting-op-row-ktaka-cong-suspends-former-party-general-sec-for-6-years/articleshow/135391256.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135391416,imgsize-102905.cms"
+            }
+          ],
+          "published": "2026-10-31T06:31:51.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 8.1,
+          "photo": {
+            "path": "work/photos/india/photo-india-3.jpg",
+            "credit": "Photo: Times of India",
+            "license": "publisher",
+            "pageUrl": "https://timesofindia.indiatimes.com/india/siddaramaiah-sting-op-row-ktaka-cong-suspends-former-party-general-sec-for-6-years/articleshow/135391256.cms",
+            "query": "(the feed)",
+            "url": "https://static.toiimg.com/photo/msid-135391416,imgsize-102905.cms",
+            "size": "1280×720",
+            "edge": 1280,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Sting op row: K'taka Congress expels Kripa Alva for 6 years over Siddaramaiah video”. Reported by NDTV · Times of India — 2 independent newsrooms. Behind the text is a library photograph, Photo: Times of India. It is not a photograph of this event."
+        },
+        {
+          "headline": "India Saw 496 Million Escape Poverty Since 2011, World Bank Says",
+          "display": "India Saw 496 Million Escape Poverty Since 2011, World Bank Says",
+          "original": "India Saw 496 Million Escape Poverty Since 2011, World Bank Says",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "Bloomberg · Vajiram & Ravi",
+          "sourceNames": [
+            "Bloomberg",
+            "Vajiram & Ravi"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Bloomberg LP"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "US"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNU2w3bzI0czh5ektKOEdJRDhiTDVVelBIbHdxUWVzbFkyNVRETmZ5cGtPOGFEMVVhT09uRTlwYUZ4a05TM3lybFhhbklRR2FzVnVwM1NSNnRiSm40WjU1YUFra29qd0xLLTk2alVoS0ExeDhlVGNTdHlQTGRlYVJJTnhVdFRteS0xWHM3azBfNXlDSjctTUFLcUZmV1ZKcUI1WWN1SW92Q0c?oc=5",
+          "summary": "India Saw 496 Million Escape Poverty Since 2011, World Bank Says &nbsp;&nbsp; Bloomberg",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNU2w3bzI0czh5ektKOEdJRDhiTDVVelBIbHdxUWVzbFkyNVRETmZ5cGtPOGFEMVVhT09uRTlwYUZ4a05TM3lybFhhbklRR2FzVnVwM1NSNnRiSm40WjU1YUFra29qd0xLLTk2alVoS0ExeDhlVGNTdHlQTGRlYVJJTnhVdFRteS0xWHM3azBfNXlDSjctTUFLcUZmV1ZKcUI1WWN1SW92Q0c?oc=5",
+              "source": "Bloomberg",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOanNhM1hDOTVZSTVGR3lBemozOVpYU3RoWW5TWkoybnlpcUZXdzh4V0VzZ0tCNzJjQk9La1BDWlYtWGxOTTFIYVh6TFVRY1pTUkxGa3ZrU0dXbjQzRTFEQklmX2pBU1lvT041YmpfR0h6RW1qTl8ybFBkZWVQbVVwb095dVBid0xF?oc=5",
+              "source": "Vajiram & Ravi",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-31T06:44:00.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 7.8,
+          "articlePhotoError": "Vajiram & Ravi: the article declares no picture",
+          "photo": {
+            "path": "work/photos/india/photo-india-4.jpg",
+            "credit": "File photo: DesiBoy101 / CC BY 4.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Corner_facade_of_Standard_Chartered_Bank_Building,_Mumbai.jpg",
+            "query": "bank building facade",
+            "relevance": 0.29,
+            "title": "Corner facade of Standard Chartered Bank Building, Mumbai",
+            "url": "https://upload.wikimedia.org/wikipedia/commons/f/fd/Corner_facade_of_Standard_Chartered_Bank_Building%2C_Mumbai.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "size": "1920×1440",
+            "edge": 1920,
+            "from": "library"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “India Saw 496 Million Escape Poverty Since 2011, World Bank Says”. Reported by Bloomberg · Vajiram & Ravi — 2 independent newsrooms. Behind the text is a library photograph captioned “Corner facade of Standard Chartered Bank Building, Mumbai”, credited to DesiBoy101 / CC BY 4.0. It is not a photograph of this event."
+        },
+        {
+          "headline": "Two Foreigners Die Of Electrocution At Bengaluru 5-Star Hotel Swimming Pool",
+          "display": "Two Foreigners Die Of Electrocution At Bengaluru 5-Star Hotel Swimming Pool",
+          "original": "Two Foreigners Die Of Electrocution At Bengaluru 5-Star Hotel Swimming Pool",
+          "truncated": false,
+          "usable": true,
+          "category": "INDIA",
+          "source": "Times of India · NDTV",
+          "sourceNames": [
+            "Times of India",
+            "NDTV"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Bennett, Coleman & Co",
+            "Adani Group"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNSEJSbjBSM2M4aTYwYXNjcEFwbTRSVXhIZGlYb21MdGxBWnNxdFFhNTQwd0xqbnVySmJ0OVRxUzljeE50U2NtVURNVHhVYnlZZktha2VaTXdvVWpHODVVZURYNTFmQnZuRDh0U0FOOWhGZlZyMmE5ZGYwb0ZKYWlHTmJvTUQtX2dFRWFQY0REM0pYV3dKdFpPbFA0bWVfQmFpMEZFTDh2cVlvanZVeVExN1E1MHVnMmxNQ2VDVVk1ZDJuU2o2OUtkcdIB0AFBVV95cUxQamJWVDVuY2FadDdiOVB3blUxOERESkUwLVJiUE5RTHNnWUVXR3djUXJoMl9OYjFWdnJ6VWFhS19",
+          "summary": "Two Foreigners Die Of Electrocution At Bengaluru 5-Star Hotel Swimming Pool &nbsp;&nbsp; NDTV",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://timesofindia.indiatimes.com/city/bengaluru/german-slovak-nationals-die-in-5-star-bengaluru-hotel-swimming-pool-us-guest-pool-attendant-injured-while-trying-to-rescue-them/articleshow/135387837.cms",
+              "source": "Times of India",
+              "feedImage": "https://static.toiimg.com/photo/msid-135390913,imgsize-151587.cms"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNSEJSbjBSM2M4aTYwYXNjcEFwbTRSVXhIZGlYb21MdGxBWnNxdFFhNTQwd0xqbnVySmJ0OVRxUzljeE50U2NtVURNVHhVYnlZZktha2VaTXdvVWpHODVVZURYNTFmQnZuRDh0U0FOOWhGZlZyMmE5ZGYwb0ZKYWlHTmJvTUQtX2dFRWFQY0REM0pYV3dKdFpPbFA0bWVfQmFpMEZFTDh2cVlvanZVeVExN1E1MHVnMmxNQ2VDVVk1ZDJuU2o2OUtkcdIB0AFBVV95cUxQamJWVDVuY2FadDdiOVB3blUxOERESkUwLVJiUE5RTHNnWUVXR3djUXJoMl9OYjFWdnJ6VWFhS19",
+              "source": "NDTV",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-31T06:01:20.000Z",
+          "topic": "india",
+          "section": "india",
+          "tier": "notable",
+          "score": 7.65,
+          "photo": {
+            "path": "work/photos/india/photo-india-5.jpg",
+            "credit": "Photo: Times of India",
+            "license": "publisher",
+            "pageUrl": "https://timesofindia.indiatimes.com/city/bengaluru/german-slovak-nationals-die-in-5-star-bengaluru-hotel-swimming-pool-us-guest-pool-attendant-injured-while-trying-to-rescue-them/articleshow/135387837.cms",
+            "query": "(the feed)",
+            "url": "https://static.toiimg.com/photo/msid-135390913,imgsize-151587.cms",
+            "size": "1280×720",
+            "edge": 1280,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed INDIA. It reads: “Two Foreigners Die Of Electrocution At Bengaluru 5-Star Hotel Swimming Pool”. Reported by Times of India · NDTV — 2 independent newsrooms. Behind the text is a library photograph, Photo: Times of India. It is not a photograph of this event."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "india-1",
+          "story": "Theni jailbreak: Tamil Nadu CM Vijay orders suspension of Theni district jail",
+          "files": [
+            "data/editions/2026-10-31/india/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-31/india/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-31/india/1/alt.json",
+          "caption": "data/editions/2026-10-31/caption-india-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "india-2",
+          "story": "Sting op row: K'taka Congress expels Kripa Alva for 6 years over Siddaramaiah video",
+          "files": [
+            "data/editions/2026-10-31/india/2/slide-1.jpg",
+            "data/editions/2026-10-31/india/2/slide-2.jpg",
+            "data/editions/2026-10-31/india/2/slide-3.jpg"
+          ],
+          "cover": "data/editions/2026-10-31/india/2/slide-1.jpg",
+          "alts": "data/editions/2026-10-31/india/2/alt.json",
+          "caption": "data/editions/2026-10-31/caption-india-2.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "india-3",
+          "story": "India Saw 496 Million Escape Poverty Since 2011, World Bank Says",
+          "files": [
+            "data/editions/2026-10-31/india/3/slide-1.jpg",
+            "data/editions/2026-10-31/india/3/slide-2.jpg",
+            "data/editions/2026-10-31/india/3/slide-3.jpg"
+          ],
+          "cover": "data/editions/2026-10-31/india/3/slide-1.jpg",
+          "alts": "data/editions/2026-10-31/india/3/alt.json",
+          "caption": "data/editions/2026-10-31/caption-india-3.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "india-4",
+          "story": "Two Foreigners Die Of Electrocution At Bengaluru 5-Star Hotel Swimming Pool",
+          "files": [
+            "data/editions/2026-10-31/india/4/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-31/india/4/slide-1.jpg",
+          "alts": "data/editions/2026-10-31/india/4/alt.json",
+          "caption": "data/editions/2026-10-31/caption-india-4.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    },
+    {
+      "id": "world",
+      "label": "WORLD",
+      "stories": [
+        {
+          "headline": "Riot police deployed to Poland’s constitutional court after judge suspended",
+          "display": "Riot police deployed to Poland’s constitutional court after judge suspended",
+          "original": "Riot police deployed to Poland’s constitutional court after judge suspended",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "BBC News · The Guardian",
+          "sourceNames": [
+            "BBC News",
+            "The Guardian"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Scott Trust"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB"
+          ],
+          "fundings": [
+            "state",
+            "trust"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQREpDZW5pblhBUGR0MzJPbGh4Nk1XYVNfNUdESTFuZGVUcWdwRjhRUTFRcFZVUGx4M0NMbnN0SVh5MmtsT2RPVHhiQ29OR0dmZmZTNGJDNVpxckw0NExJOXEtemZUMmpheU16dXFINUFrVWNSTTBoNzVsZ1N1cmdNakhOTGJMSDBWTnZDb050MGFNMjVvaHJnWnhJc1hsNlM0TjkwUDFrM2l6VWpCTmt3R0tCekhqcEJlTEVSeA?oc=5",
+          "summary": "Riot police deployed to Poland’s constitutional court after judge suspended &nbsp;&nbsp; The Guardian",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.bbc.co.uk/news/articles/crz9824d5e88o?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/b6c2/live/46cc2780-d49b-11f1-a701-fddedf244c16.jpg"
+            },
+            {
+              "link": "https://www.theguardian.com/world/2026/oct/31/riot-police-deployed-to-polands-constitutional-court-after-judge-suspended",
+              "source": "The Guardian",
+              "feedImage": "https://i.guim.co.uk/img/media/b595186b872d72d05a5c01e8ce0be90bb9af8d06/1355_185_5926_4743/master/5926.jpg?width=140&quality=85&auto=format&fit=max&s=694d71b1d782d4dd5f332088dec4289e"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQREpDZW5pblhBUGR0MzJPbGh4Nk1XYVNfNUdESTFuZGVUcWdwRjhRUTFRcFZVUGx4M0NMbnN0SVh5MmtsT2RPVHhiQ29OR0dmZmZTNGJDNVpxckw0NExJOXEtemZUMmpheU16dXFINUFrVWNSTTBoNzVsZ1N1cmdNakhOTGJMSDBWTnZDb050MGFNMjVvaHJnWnhJc1hsNlM0TjkwUDFrM2l6VWpCTmt3R0tCekhqcEJlTEVSeA?oc=5",
+              "source": "The Guardian",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE53ZU94RERoa2FxUnNTakNrdzVmYS1tUjJNMmRReEhvalJRY3VtZW1lck5VV1N5SEx3bU01bWVQQkRfMXphbHdFc1RLVHRsb3lNLTVweEhzNUU5QlU?oc=5",
+              "source": "BBC",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-31T06:37:00.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.55,
+          "photo": {
+            "path": "work/photos/world/photo-world-2.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/crz9824d5e88o?at_medium=RSS&at_campaign=rss",
+            "query": "(the feed)",
+            "url": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/b6c2/live/46cc2780-d49b-11f1-a701-fddedf244c16.jpg",
+            "size": "1024×575",
+            "edge": 1024,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Riot police deployed to Poland’s constitutional court after judge suspended”. Reported by BBC News · The Guardian — 2 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        },
+        {
+          "headline": "Hundreds evacuated from Melania-brokered ceasefire town of Oleshky",
+          "display": "Hundreds evacuated from Melania-brokered ceasefire town of Oleshky",
+          "original": "Hundreds evacuated from Melania-brokered ceasefire town of Oleshky",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "BBC News · Al Jazeera",
+          "sourceNames": [
+            "BBC News",
+            "Al Jazeera"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Government of Qatar"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB",
+            "QA"
+          ],
+          "fundings": [
+            "state"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.aljazeera.com/video/newsfeed/2026/10/31/hundreds-evacuated-from-melania-brokered-ceasefire-town-of-oleshky?traffic_source=rss",
+          "summary": "Hundreds have been evacuated from Russia-occupied Oleshky under a localised ceasefire brokered by Melania Trump.",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.bbc.co.uk/news/articles/c60me298k1yeo?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/21db/live/aec4b500-d482-11f1-a701-fddedf244c16.jpg"
+            },
+            {
+              "link": "https://www.aljazeera.com/video/newsfeed/2026/10/31/hundreds-evacuated-from-melania-brokered-ceasefire-town-of-oleshky?traffic_source=rss",
+              "source": "Al Jazeera",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-31T02:44:38.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.55,
+          "photo": {
+            "path": "work/photos/world/photo-world-3.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/c60me298k1yeo?at_medium=RSS&at_campaign=rss",
+            "query": "(the feed)",
+            "url": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/21db/live/aec4b500-d482-11f1-a701-fddedf244c16.jpg",
+            "size": "1024×576",
+            "edge": 1024,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Hundreds evacuated from Melania-brokered ceasefire town of Oleshky”. Reported by BBC News · Al Jazeera — 2 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        },
+        {
+          "headline": "US execution survivor Christa Pike says she is now in ‘constant pain’",
+          "display": "US execution survivor Christa Pike says she is now in ‘constant pain’",
+          "original": "US execution survivor Christa Pike says she is now in ‘constant pain’",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "BBC News · Al Jazeera",
+          "sourceNames": [
+            "BBC News",
+            "Al Jazeera"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Government of Qatar"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB",
+            "QA"
+          ],
+          "fundings": [
+            "state"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.aljazeera.com/news/2026/10/31/us-execution-survivor-christa-pike-says-she-is-now-in-constant?traffic_source=rss",
+          "summary": "Pike, 50, is being held in solitary confinement and faces an uncertain future after surviving a failed lethal injection.",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.bbc.co.uk/news/articles/ck62ydn7dj9eo?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/e22e/live/c1455920-d46c-11f1-93e1-3b657b665bcf.jpg"
+            },
+            {
+              "link": "https://www.aljazeera.com/news/2026/10/31/us-execution-survivor-christa-pike-says-she-is-now-in-constant?traffic_source=rss",
+              "source": "Al Jazeera",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-31T03:42:14.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.55,
+          "photo": {
+            "path": "work/photos/world/photo-world-4.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/ck62ydn7dj9eo?at_medium=RSS&at_campaign=rss",
+            "query": "(the feed)",
+            "url": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/e22e/live/c1455920-d46c-11f1-93e1-3b657b665bcf.jpg",
+            "size": "1024×576",
+            "edge": 1024,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “US execution survivor Christa Pike says she is now in ‘constant pain’”. Reported by BBC News · Al Jazeera — 2 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        },
+        {
+          "headline": "Pope Leo becomes first pontiff to vote in US general election",
+          "display": "Pope Leo becomes first pontiff to vote in US general election",
+          "original": "Pope Leo becomes first pontiff to vote in US general election",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "BBC News · Al Jazeera",
+          "sourceNames": [
+            "BBC News",
+            "Al Jazeera"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "BBC (licence fee)",
+            "Government of Qatar"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB",
+            "QA"
+          ],
+          "fundings": [
+            "state"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://www.aljazeera.com/news/2026/10/31/pope-leo-becomes-first-pontiff-to-vote-in-us-general-election?traffic_source=rss",
+          "summary": "Vatican confirms the pope submitted a mail-in ballot in his native Chicago ahead of November 3 midterm elections",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.bbc.co.uk/news/articles/ckwyq2509p7xo?at_medium=RSS&at_campaign=rss",
+              "source": "BBC News",
+              "feedImage": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/c8a0/live/e3a84f00-d470-11f1-9dda-1ba6fcc7d159.jpg"
+            },
+            {
+              "link": "https://www.aljazeera.com/news/2026/10/31/pope-leo-becomes-first-pontiff-to-vote-in-us-general-election?traffic_source=rss",
+              "source": "Al Jazeera",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-31T01:31:44.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.1,
+          "photo": {
+            "path": "work/photos/world/photo-world-5.jpg",
+            "credit": "Photo: BBC News",
+            "license": "publisher",
+            "pageUrl": "https://www.bbc.co.uk/news/articles/ckwyq2509p7xo?at_medium=RSS&at_campaign=rss",
+            "query": "(the feed)",
+            "url": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/c8a0/live/e3a84f00-d470-11f1-9dda-1ba6fcc7d159.jpg",
+            "size": "1024×575",
+            "edge": 1024,
+            "from": "article"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Pope Leo becomes first pontiff to vote in US general election”. Reported by BBC News · Al Jazeera — 2 independent newsrooms. Behind the text is a library photograph, Photo: BBC News. It is not a photograph of this event."
+        },
+        {
+          "headline": "US Approves Patriot Missile Sale To Ukraine, But Delivery Could Take Years",
+          "display": "US Approves Patriot Missile Sale To Ukraine, But Delivery Could Take Years",
+          "original": "US Approves Patriot Missile Sale To Ukraine, But Delivery Could Take Years",
+          "truncated": false,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "The Guardian · NDTV",
+          "sourceNames": [
+            "The Guardian",
+            "NDTV"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Scott Trust",
+            "Adani Group"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "GB",
+            "IN"
+          ],
+          "fundings": [
+            "trust",
+            "conglomerate"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNYktJX0VabXFuWXFmM09wTXZJLUNPUFFiYmxZVG8tUmVXN1A4UDg1aGQ4YVN0UGNkRXVvd3VfRzYxTFNPV0dQU2N0YlZpZ2xOVWZlQ0pfX2wxS2JGNktlMWprSDl0RVFkb1pTVFBLbWxSeEYzb3dkYndaczhYQVlBRURQM25UYTcxYVFBWUVnZHVKdFkyVFZoQWJ6YTRGUjVGSHdtVG5HZmUwRlRhbXI3Q0dQdknSAbwBQVVfeXFMUEtnZk1ZcHFVREl0VzRLQWREM3dsc1FPdkpJamtsWkpaYlRWVEVpSzJwUmY1a0J5T0ZqcGZaOHp0MDN3YVJ3bXd4VFRJemNHeFFKTlZ",
+          "summary": "US Approves Patriot Missile Sale To Ukraine, But Delivery Could Take Years &nbsp;&nbsp; NDTV",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://www.theguardian.com/world/2026/oct/31/ukraines-zelenskyy-praises-us-over-21bn-patriot-missile-deal-but-warns-it-could-take-years",
+              "source": "The Guardian",
+              "feedImage": "https://i.guim.co.uk/img/media/59605b4171430a7ce348936f13d40624c8ae6a16/410_0_4880_3904/master/4880.jpg?width=140&quality=85&auto=format&fit=max&s=c3b7da091ebff0f644cc57ec8aea5163"
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNYktJX0VabXFuWXFmM09wTXZJLUNPUFFiYmxZVG8tUmVXN1A4UDg1aGQ4YVN0UGNkRXVvd3VfRzYxTFNPV0dQU2N0YlZpZ2xOVWZlQ0pfX2wxS2JGNktlMWprSDl0RVFkb1pTVFBLbWxSeEYzb3dkYndaczhYQVlBRURQM25UYTcxYVFBWUVnZHVKdFkyVFZoQWJ6YTRGUjVGSHdtVG5HZmUwRlRhbXI3Q0dQdknSAbwBQVVfeXFMUEtnZk1ZcHFVREl0VzRLQWREM3dsc1FPdkpJamtsWkpaYlRWVEVpSzJwUmY1a0J5T0ZqcGZaOHp0MDN3YVJ3bXd4VFRJemNHeFFKTlZ",
+              "source": "NDTV",
+              "feedImage": null
+            },
+            {
+              "link": "https://www.ndtv.com/world-news/us-approves-patriot-missile-sale-to-ukraine-but-delivery-could-take-years-12261992#publisher=newsstand",
+              "source": "NDTV",
+              "feedImage": "https://c.ndtvimg.com/2022-12/5vbutas4_us-patriot-missiles-reuters_625x300_23_December_22.jpg?im=FeatureCrop,algorithm=dnn,width=1280,height=720"
+            }
+          ],
+          "published": "2026-10-31T03:28:31.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 8.1,
+          "photoError": "every candidate failed to download (only 6 KB — furniture, not a photograph; HTTP 401; HTTP 403)",
+          "photo": null,
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": "editorial",
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “US Approves Patriot Missile Sale To Ukraine, But Delivery Could Take Years”. Reported by The Guardian · NDTV — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
+        },
+        {
+          "headline": "Uranium transfer, Strait of Hormuz reopening",
+          "display": "Uranium transfer, Strait of Hormuz reopening",
+          "original": "Uranium transfer, Strait of Hormuz reopening: Key takeaways from Iran-US draft proposal | World News",
+          "truncated": true,
+          "usable": true,
+          "category": "WORLD NEWS",
+          "source": "Hindustan Times · Business Standard",
+          "sourceNames": [
+            "Hindustan Times",
+            "Business Standard"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "HT Media / KK Birla family",
+            "Business Standard Pvt Ltd"
+          ],
+          "ownerCount": 2,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "conglomerate",
+            "commercial"
+          ],
+          "unknownOwners": 0,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxNUGREbVV0MUt5U1BqZkh0TXZrZjFnSHZKSHY2UDNCVGJEZEJHbzl2QWkzaGR3SDlKN0JXZTI2Y3hQSGJpaDRUMjlLNUp6dVBHVkpCMWFKejYxTXU2Wk1pcEdHRnZ5LXU2TG9XdlJjRklPT0cyNjN4SS0zNTgxSDd2M0lETEkwc0JKVGcxQTQ3NDNtTmZXd2NVTXhsVHFncDNBejVJekplSmQyM3RoVE1FTjItd24wNEI0SGpqZXV3LWFqN2FpUmx0dEdGQ1BVdGNzOThTREhxTk82Z2NhNXBfblJB0gHnAUFVX3lxTFB1c3lTNWhQNEJseV9yeE5sb1hETElERDQxc3E0Vm5",
+          "summary": "Uranium transfer, Strait of Hormuz reopening: Key takeaways from Iran-US draft proposal | World News &nbsp;&nbsp; Hindustan Times",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxNUGREbVV0MUt5U1BqZkh0TXZrZjFnSHZKSHY2UDNCVGJEZEJHbzl2QWkzaGR3SDlKN0JXZTI2Y3hQSGJpaDRUMjlLNUp6dVBHVkpCMWFKejYxTXU2Wk1pcEdHRnZ5LXU2TG9XdlJjRklPT0cyNjN4SS0zNTgxSDd2M0lETEkwc0JKVGcxQTQ3NDNtTmZXd2NVTXhsVHFncDNBejVJekplSmQyM3RoVE1FTjItd24wNEI0SGpqZXV3LWFqN2FpUmx0dEdGQ1BVdGNzOThTREhxTk82Z2NhNXBfblJB0gHnAUFVX3lxTFB1c3lTNWhQNEJseV9yeE5sb1hETElERDQxc3E0Vm5",
+              "source": "Hindustan Times",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPeEdGSjJUb3pNQ2RUUm4zXy1rejFpUGtQZUw4ejl1aXdiUHRybnQtM2tybWNmUktSOTE3WFZZekpTT04tQlFJU1QxN0NWemNpNi1nbzZmbXphYjMwMkRWMnMzbHJ2c0JnU2RObHdXT2RjTmZfWnhVeVVCVTNCWDRhRHFmTXVIdjlGU081cjBYTUxWeVprYkgwVUZtMEdJaG5QaFZMUElJRlNveEUtNlBRNThpQkp6Qk9Bb1RCMEMtM1YtOUx6QkFsNFdpT3J3X3Zk0gHWAUFVX3lxTFBKMWdOZTNFTlMtQ0JxeHVudWNvVHRGVWlJcFQwaG5VeURQUG5HNnMwdi1DalB5RmJ",
+              "source": "Business Standard",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-31T08:03:05.000Z",
+          "topic": "world",
+          "section": "world",
+          "tier": "notable",
+          "score": 7.8,
+          "articlePhotoError": "Business Standard: HTTP 400",
+          "photo": {
+            "path": "work/photos/world/photo-world-7.jpg",
+            "credit": "File photo: Unspecified / Public Domain",
+            "license": "pdm",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:HEUraniumC.jpg",
+            "query": "Uranium",
+            "relevance": 0.2,
+            "title": "HEUraniumC",
+            "url": "https://upload.wikimedia.org/wikipedia/commons/d/d8/HEUraniumC.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "size": "1920×1536",
+            "edge": 1920,
+            "from": "library"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed WORLD NEWS. It reads: “Uranium transfer, Strait of Hormuz reopening”. Reported by Hindustan Times · Business Standard — 2 independent newsrooms. Behind the text is a library photograph captioned “HEUraniumC”, credited to Unspecified / Public Domain. It is not a photograph of this event."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "world-1",
+          "story": "Riot police deployed to Poland’s constitutional court after judge suspended",
+          "files": [
+            "data/editions/2026-10-31/world/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-31/world/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-31/world/1/alt.json",
+          "caption": "data/editions/2026-10-31/caption-world-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "world-2",
+          "story": "Hundreds evacuated from Melania-brokered ceasefire town of Oleshky",
+          "files": [
+            "data/editions/2026-10-31/world/2/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-31/world/2/slide-1.jpg",
+          "alts": "data/editions/2026-10-31/world/2/alt.json",
+          "caption": "data/editions/2026-10-31/caption-world-2.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "world-3",
+          "story": "US execution survivor Christa Pike says she is now in ‘constant pain’",
+          "files": [
+            "data/editions/2026-10-31/world/3/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-31/world/3/slide-1.jpg",
+          "alts": "data/editions/2026-10-31/world/3/alt.json",
+          "caption": "data/editions/2026-10-31/caption-world-3.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "world-4",
+          "story": "Pope Leo becomes first pontiff to vote in US general election",
+          "files": [
+            "data/editions/2026-10-31/world/4/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-31/world/4/slide-1.jpg",
+          "alts": "data/editions/2026-10-31/world/4/alt.json",
+          "caption": "data/editions/2026-10-31/caption-world-4.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "world-5",
+          "story": "US Approves Patriot Missile Sale To Ukraine, But Delivery Could Take Years",
+          "files": [
+            "data/editions/2026-10-31/world/5/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-31/world/5/slide-1.jpg",
+          "alts": "data/editions/2026-10-31/world/5/alt.json",
+          "caption": "data/editions/2026-10-31/caption-world-5.txt",
+          "commentOn": "",
+          "commentFile": ""
+        },
+        {
+          "kind": "carousel",
+          "id": "world-6",
+          "story": "Uranium transfer, Strait of Hormuz reopening",
+          "files": [
+            "data/editions/2026-10-31/world/6/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-31/world/6/slide-1.jpg",
+          "alts": "data/editions/2026-10-31/world/6/alt.json",
+          "caption": "data/editions/2026-10-31/caption-world-6.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    },
+    {
+      "id": "science",
+      "label": "SCIENCE",
+      "stories": [
+        {
+          "headline": "India to host CGIAR Science and Partnership Week in New Delhi in April 2027",
+          "display": "India to host CGIAR Science and Partnership Week in New Delhi in April 2027",
+          "original": "India to host CGIAR Science and Partnership Week in New Delhi in April 2027",
+          "truncated": false,
+          "usable": true,
+          "category": "SCIENCE",
+          "source": "News On AIR · Investment Guru India",
+          "sourceNames": [
+            "News On AIR",
+            "Investment Guru India"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "Government of India"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "state"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOb1FuSF9kbzNyX0N4dDlPSVUtMU1KeGxoNEJfZTBrdU9Ha2EzcFdyTFJtekcyMzhXLVZXWkYwRXE3ZHRrZWdhOUpaVXNOeThGalM3dDRuWHB5UkFpWm5mM0xaUFNTN1ZPTVh1Uk1Sc19hUng1c0djTDRheGgyX3M0MDhrR0pwa3VWOF9pXzJJWHhuci1pc1F5N09zOFV0bVhPTXZF?oc=5",
+          "summary": "India to host CGIAR Science and Partnership Week in New Delhi in April 2027 &nbsp;&nbsp; News On AIR",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOb1FuSF9kbzNyX0N4dDlPSVUtMU1KeGxoNEJfZTBrdU9Ha2EzcFdyTFJtekcyMzhXLVZXWkYwRXE3ZHRrZWdhOUpaVXNOeThGalM3dDRuWHB5UkFpWm5mM0xaUFNTN1ZPTVh1Uk1Sc19hUng1c0djTDRheGgyX3M0MDhrR0pwa3VWOF9pXzJJWHhuci1pc1F5N09zOFV0bVhPTXZF?oc=5",
+              "source": "News On AIR",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOVkNQWEEtR3E0bmtFOExuRFlkWkxwaWRTcGdUUHNlQ2ltN0d0S2ZWc1lNcFMzVFJ0Zi1zUWJHcHM1b2xCY1k4aEhhT0NKeXRqMUZJdWhMSWU4QU44NVhzdE95T0dLV3Z1N1RMVDFjNVIwZmRFWk5hZ081TGsyQzlvYno4TEdLcTVqVGlUUUxDdkRONXROVl9JVWtKN3ZCNVNCNWJILW5JMHdseHg0MUhhcjYyOExFcHd3cTliY3h3?oc=5",
+              "source": "Investment Guru India",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-31T07:25:57.000Z",
+          "topic": "science",
+          "section": "science",
+          "tier": "notable",
+          "score": 7.95,
+          "articlePhotoError": "Investment Guru India: the article declares no picture",
+          "photo": {
+            "path": "work/photos/science/photo-science-2.jpg",
+            "credit": "File photo: Foreign, Commonwealth & Development Offi / CC BY 2.0",
+            "license": "by",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Harnessing_Science_and_Technology_for_Food_and_Nutrition_Security_(Panel)_at_the_Global_Food_Security_Summit,_London,_20_November_2023_(53344320693).jpg",
+            "query": "CGIAR Science",
+            "relevance": 0.14,
+            "title": "Harnessing Science and Technology for Food and Nutrition Security (Panel) at the Global Food Security Summit, London, 20 November 2023 (53344320693)",
+            "url": "https://upload.wikimedia.org/wikipedia/commons/3/31/Harnessing_Science_and_Technology_for_Food_and_Nutrition_Security_%28Panel%29_at_the_Global_Food_Security_Summit%2C_London%2C_20_November_2023_%2853344320693%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "size": "1920×1280",
+            "edge": 1920,
+            "from": "library"
+          },
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": null,
+          "alt": "A news card from @dailyvolex, headed SCIENCE. It reads: “India to host CGIAR Science and Partnership Week in New Delhi in April 2027”. Reported by News On AIR · Investment Guru India — 2 independent newsrooms. Behind the text is a library photograph captioned “Harnessing Science and Technology for Food and Nutrition Security…”, credited to Foreign, Commonwealth & Development Offi / CC BY 2.0. It is not a photograph of this event."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "science-1",
+          "story": "India to host CGIAR Science and Partnership Week in New Delhi in April 2027",
+          "files": [
+            "data/editions/2026-10-31/science/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-31/science/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-31/science/1/alt.json",
+          "caption": "data/editions/2026-10-31/caption-science-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    },
+    {
+      "id": "health",
+      "label": "HEALTH",
+      "stories": [
+        {
+          "headline": "Delhi Police arrest two in online health supplement fraud targeting Punjab",
+          "display": "Delhi Police arrest two in online health supplement fraud targeting Punjab",
+          "original": "Delhi Police arrest two in online health supplement fraud targeting Punjab",
+          "truncated": false,
+          "usable": true,
+          "category": "HEALTH",
+          "source": "ANI News · The News Mill",
+          "sourceNames": [
+            "ANI News",
+            "The News Mill"
+          ],
+          "corroboration": 2,
+          "republishers": [],
+          "owners": [
+            "ANI Media Pvt Ltd"
+          ],
+          "ownerCount": 1,
+          "countries": [
+            "IN"
+          ],
+          "fundings": [
+            "commercial"
+          ],
+          "unknownOwners": 1,
+          "concentration": [],
+          "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQQzZ5SUJEYkxCMU1NaEthV1JPb2ZNSGJ6OGkzS2NBNUpjOE9lRTZKc1pjSVZkUXZpWE5PTTd0bWxnaksyVGs2SGFGbHR1LUM4Rnc0TkxsVUdaUUZMT2dXWTZfQzVOZjh1aDF3VlVzTGg5WXh3TE5za1NoVjFSdFhwZ0R0cDFZaFBTQjdaNHZzX3VlOWZ3ajVJN0NmeW1Ca0ltNDdVS1JVc2NPUGs?oc=5",
+          "summary": "Delhi Police arrest two in online health supplement fraud targeting Punjab &nbsp;&nbsp; The News Mill",
+          "feedImage": null,
+          "sources": [
+            {
+              "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxQU3hfb3lkY2tXSTdHcHllM3NEX2pESkdwODluQzl0XzNGZWowWjNLZnRsUjJsZkY1V19YTXE3U3VqWnFxTzNaODJPaGw2Wk1uMk8xWm9EZlZvMWk0RXFoZGdoUl9WNFBqMGtTcXR6UkdkbFE0d2drLS1Bd253c1p3bDVKWXhjN1N0MHZRdlJvODNveDJwdUE0VE1oWGJYTE02SlprbXN2TDlQcGVaUFlWLUsyWW9kelpMeVJjRUpVUmVlbUpOcnMzNjJ5UkJ1X1NSM0JHYmxNcEpKdDBpRC1ZMGtfSmplOEdEUnc?oc=5",
+              "source": "ANI News",
+              "feedImage": null
+            },
+            {
+              "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQQzZ5SUJEYkxCMU1NaEthV1JPb2ZNSGJ6OGkzS2NBNUpjOE9lRTZKc1pjSVZkUXZpWE5PTTd0bWxnaksyVGs2SGFGbHR1LUM4Rnc0TkxsVUdaUUZMT2dXWTZfQzVOZjh1aDF3VlVzTGg5WXh3TE5za1NoVjFSdFhwZ0R0cDFZaFBTQjdaNHZzX3VlOWZ3ajVJN0NmeW1Ca0ltNDdVS1JVc2NPUGs?oc=5",
+              "source": "The News Mill",
+              "feedImage": null
+            }
+          ],
+          "published": "2026-10-31T05:27:09.000Z",
+          "topic": "health",
+          "section": "health",
+          "tier": "notable",
+          "score": 7.65,
+          "articlePhotoError": "The News Mill: the article declares no picture",
+          "photoError": "no image matched the story closely enough (searched \"newspapers\")",
+          "photo": null,
+          "layout": "breaking",
+          "stat": null,
+          "backdrop": "editorial",
+          "alt": "A news card from @dailyvolex, headed HEALTH. It reads: “Delhi Police arrest two in online health supplement fraud targeting Punjab”. Reported by ANI News · The News Mill — 2 independent newsrooms. Behind the text is a brand graphic of concentric rings and a halftone pattern."
+        }
+      ],
+      "posts": [
+        {
+          "kind": "carousel",
+          "id": "health-1",
+          "story": "Delhi Police arrest two in online health supplement fraud targeting Punjab",
+          "files": [
+            "data/editions/2026-10-31/health/1/slide-1.jpg"
+          ],
+          "cover": "data/editions/2026-10-31/health/1/slide-1.jpg",
+          "alts": "data/editions/2026-10-31/health/1/alt.json",
+          "caption": "data/editions/2026-10-31/caption-health-1.txt",
+          "commentOn": "",
+          "commentFile": ""
+        }
+      ]
+    }
+  ]
+}
