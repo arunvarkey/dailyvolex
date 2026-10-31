@@ -317,7 +317,14 @@ async function main() {
     layout: arg('layout', 'breaking'),
     theme:  arg('theme', 'bbc'),
     ratio:  arg('ratio', '4:5'),       // 4:5 is the largest Instagram feed size
-    ticker: arg('ticker', 'DAILYVOLEX  ···  TODAY’S NEWS  ···  '),
+    /* The strip along the foot of every card.
+     *
+     * It used to read "DAILYVOLEX ··· TODAY'S NEWS ···", which is the card
+     * telling you what you are already looking at. It is the one piece of
+     * furniture on every single card, and 7 posts out of 8 are a single card
+     * with no other invitation to follow anywhere on the image. So it says
+     * the one useful thing instead. */
+    ticker: arg('ticker', 'FOLLOW @DAILYVOLEX FOR MORE STORIES LIKE THIS  ···  '),
     date:   arg('date', today),
     // Lifts the headline block off the bottom edge. Without it the card is
     // weighted right at the base of an otherwise empty frame.

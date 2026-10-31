@@ -222,7 +222,7 @@ async function main() {
         // counts — and the voice is reading the headline over it.
         noStat: true,
         theme: arg('theme', 'bbc'), ratio: '9:16', layout: 'breaking',
-        ticker: 'DAILYVOLEX  ···  TODAY’S NEWS  ···  ',
+        ticker: 'FOLLOW @DAILYVOLEX FOR MORE STORIES LIKE THIS  ···  ',
         date: new Date().toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' }),
         posy: '0', bg: 'editorial',
       });

@@ -184,6 +184,10 @@ async function main() {
       fundings: c.fundings || [],
       unknownOwners: c.unknownOwners ?? 0,
       concentration: c.concentration || [],
+      // Why the ranking expected a reader to pass this on. A tie-breaker
+      // inside the tier, never across one — recorded so the order a post went
+      // out in can be argued with rather than only trusted.
+      shareReasons: c.shareReasons || [],
       link: c.lead.link,
       // The outlet's own opening sentence. The reel's voiceover reads it,
       // and it is the only source of words beyond the headline that this

@@ -76,6 +76,9 @@ function storyLine(s) {
     + (s.unknownOwners ? ` (${s.unknownOwners} not in the register)` : '')
     + (s.countries?.length ? ` (${s.countries.join('/')})` : '')
     + (s.truncated ? ' · shortened to fit' : '')
+    // Why the ranking put this one first. Stated so the order can be
+    // disagreed with: a reason nobody can see is a reason nobody can argue.
+    + (s.shareReasons?.length ? `\n  _reach: ${s.shareReasons.join('; ')}_` : '')
     + (s.link ? `\n  ${s.link}` : '');
 }
 

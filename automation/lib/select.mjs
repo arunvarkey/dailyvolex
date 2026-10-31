@@ -9,6 +9,7 @@
 import { independentSources, concentrationWarnings } from './outlets.mjs';
 import { sortIntoSections } from './sections.mjs';
 import { tierOf, TIER_POINTS, TIERS } from './importance.mjs';
+import { shareScore, MAX_SHARE_POINTS } from './share.mjs';
 
 const STOP = new Set(('a an the and or but of for to in on at by with from as is are was were be been '
   + 'has have had will would could should may might can says said after before over under new '
@@ -395,7 +396,15 @@ export function rankClusters(clusters, { now = Date.now() } = {}) {
     // still carries real weight because it is the safety check, but it is no
     // longer what decides the lead.
     const tier = tierOf(lead.title, { topic: lead.topic });
+    /* How likely a reader is to pass it on — a tie-breaker inside the tier.
+     *
+     * Capped at 2.5, which is less than the gap between any two tiers, so a
+     * shareable minor story still cannot out-rank a lead. It decides which of
+     * two stories that matter equally goes first, and nothing else. The
+     * reasons are kept so the ordering can be argued with. */
+    const share = shareScore(lead.title, lead);
     const score = TIER_POINTS[tier]
+      + share.points
       + (sources * 1.5)
       + (freshnessScore(newest, now) * 1.5)
       + ((weight - 1) * 1.5);
@@ -404,6 +413,8 @@ export function rankClusters(clusters, { now = Date.now() } = {}) {
       ...c,
       lead,
       tier,
+      share: share.points,
+      shareReasons: share.reasons,
       sources,
       // How many of those newsrooms this channel can actually name an owner
       // for. Two sites nobody has heard of agreeing with each other is not

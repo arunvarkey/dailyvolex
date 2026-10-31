@@ -564,6 +564,18 @@ ok('the band still stops clear of Instagram’s caption UI', (() => {
    half ending at 96% black, so the credit rendered at about 3% white. The
    pictures are the outlets' own and the credit is what names them, so an
    unreadable one is no attribution at all. */
+/* The strip along the foot of every card used to say "DAILYVOLEX ··· TODAY'S
+   NEWS", which tells you what you are already looking at. It is the only
+   furniture on every card, and most posts are a single card with no other
+   invitation to follow anywhere on the image. */
+ok('every card carries the invitation to follow', (() => {
+  const r = fs.readFileSync(join(ROOT, 'automation/render.mjs'), 'utf8');
+  const reel = fs.readFileSync(join(ROOT, 'automation/reel.mjs'), 'utf8');
+  const wants = /FOLLOW @DAILYVOLEX/;
+  return wants.test(r) && wants.test(reel)
+    && !/TODAY’S NEWS/.test(r) && !/TODAY’S NEWS/.test(reel);
+})(), 'the one place on the image that is always free was saying nothing');
+
 ok('the photo credit is drawn over the layout, not under its scrim', (() => {
   const html = fs.readFileSync(join(ROOT, 'index.html'), 'utf8');
   const scene = html.slice(html.indexOf('function drawScene('));

@@ -67,7 +67,8 @@ You can also run the whole thing from the Actions tab â€” **Daily shortlist** â†
 > Doing this for the first time? **[SETUP.md](SETUP.md)** is the same thing
 > written out click by click, with what to check after each part and what the
 > common errors mean. The summary below assumes you already know the Meta
-> developer site.
+> developer site. Once it is set up, **[POSTING.md](POSTING.md)** is the
+> two minutes a day that follow.
 
 Instagram only allows posting to **Business** or **Creator** accounts, through
 a Facebook Page. A personal account cannot be posted to by any legitimate tool.

@@ -28,6 +28,7 @@ import { approvalIssue, warningsFor, superseded,
          editionIdIn, kindOfEdition } from './lib/offer.mjs';
 import { record } from './lib/ledger.mjs';
 import { tierOf, isCryptoVertical, TIER_POINTS } from './lib/importance.mjs';
+import { shareScore, sharePoints, MAX_SHARE_POINTS } from './lib/share.mjs';
 import { similarity, cluster, selectStories, selectSections, isRepeat, isTopical, isAdvice,
          isSpeculation, isJunk, isPressRelease, isUnverified, isOpinion, isTooThin,
          rankClusters, rankEligible, rejectionReason, cluster as clusterBy,
@@ -1538,6 +1539,18 @@ ok(`${kind} caption is not a bare count`, !/^\d+ stories/.test(caption.trim()), 
 
   const solo = buildCaption({ kind: 'story', display: 'Rupee steadies', source: 'Mint' });
   ok('one outlet is a source, not sources', /Source: Mint/.test(solo), solo);
+
+  /* Seven posts out of eight are a single card, so the caption is most of
+     the invitation there is. It used to say "follow for the day's news",
+     which describes a schedule to somebody who is deciding whether there
+     will be more stories like the one they just read. */
+  ok('the caption asks for the share before the follow', (() => {
+    const share = one.indexOf('Send it to them');
+    const follow = one.indexOf('Follow @dailyvolex');
+    return share > 0 && follow > share;
+  })(), 'a share reaches people who have never seen the account; a follow does not');
+  ok('the caption says what following gets you',
+     /more stories like this/.test(one), one);
   ok('a story with no outlet claims none',
      !/Sources?:/.test(buildCaption({ kind: 'story', display: 'x' })));
 }
@@ -2370,6 +2383,74 @@ ok('the subject cap survives the pass that fills empty slots', (() => {
     })));
     return selectStories(two, { count: 3, maxAgeHours: 99999 }).length;
   })() >= 2, 'a rule that eats real news is worse than three duplicate cards');
+}
+
+/* ── What a reader passes on ──────────────────────────────────────
+   The owner asked for stories people tend to share. The obvious way to do it
+   — rank by outrage, celebrity and speculation — turns a news account into a
+   content account inside a week, and the only asset here is being believed.
+   So this is a tie-breaker inside a tier, and these tests exist mostly to
+   keep it one. */
+{
+  ok('a figure people can repeat is worth something',
+     sharePoints('Meta fined $25bn for lies over user data privacy') > 0);
+  ok('so is the number of people it happened to',
+     sharePoints('Floods drive thousands from their homes in southern Spain') > 0);
+  ok('so is a first or a record',
+     sharePoints('India records its hottest day since records began') > 0);
+  ok('so is somebody being held to account',
+     sharePoints('Former minister sentenced to seven years for bribery') > 0);
+  ok('so is a rescue',
+     sharePoints('All 12 miners rescued after nine days underground') > 0);
+
+  /* The cap is the whole safety property. If this ever exceeds the smallest
+     gap between two tiers, a shareable triviality can outrank a lead. */
+  ok('the most it can add is less than one tier',
+     MAX_SHARE_POINTS < (TIER_POINTS.significant - TIER_POINTS.notable),
+     `${MAX_SHARE_POINTS} vs ${TIER_POINTS.significant - TIER_POINTS.notable}`);
+  ok('and nothing can score past the cap',
+     sharePoints('First ever: thousands rescued as record floods hit Kerala,'
+       + ' 40 killed, minister resigns and is sentenced') <= MAX_SHARE_POINTS);
+
+  /* A minor story, however shareable, must not reach a lead. This is the
+     property the cap exists for, stated as the arithmetic it protects. */
+  ok('the most shareable triviality still loses to a dull lead', (() => {
+    const triviality = TIER_POINTS[tierOf('Apple launches iPhone 18 with satellite messaging')]
+      + MAX_SHARE_POINTS;
+    const lead = TIER_POINTS[tierOf('Earthquake kills at least 40 in northern Afghanistan')];
+    return triviality < lead;
+  })(), 'reach must never decide what matters, only what goes first among equals');
+
+  /* The register this channel does not use. Each of these is how a news
+     account becomes a content account, so none of them is paid for. */
+  for (const [what, headline] of [
+    ['a question', 'Is the rupee about to collapse?'],
+    ['outrage', 'Minister slams opposition in shocking attack on parliament'],
+    ['speculation', 'Rupee could fall to 95 against the dollar, analysts say'],
+    ['somebody talking', 'Economy is strong and getting stronger, says the minister'],
+  ]) {
+    ok(`${what} earns nothing`, sharePoints(headline) === 0, headline);
+  }
+
+  ok('the reasons are recorded, so the order can be argued with',
+     shareScore('Meta fined $25bn for lies over user data privacy').reasons.length > 0);
+  ok('an empty headline scores nothing and says nothing',
+     sharePoints('') === 0 && shareScore('').reasons.length === 0);
+
+  /* The ranking uses it. Two stories of the same tier and the same
+     corroboration: the one somebody would forward goes first. */
+  ok('among equals, the one people would pass on goes first', (() => {
+    const mk = (title) => ['BBC News', 'Reuters'].map(source => ({
+      title, source, link: `https://x/${title.slice(0, 8)}-${source}`,
+      published: Date.now() - 3600000, topic: 'world',
+    }));
+    const items = [
+      ...mk('Trade ministry publishes its annual tariff schedule for review'),
+      ...mk('Former minister sentenced to seven years for bribery'),
+    ];
+    const picked = selectStories(items, { count: 2, maxAgeHours: 99999 });
+    return /sentenced/.test(picked[0]?.lead?.title || '');
+  })());
 }
 
 /* ── The approval issue a person actually reads ──────────────────── */

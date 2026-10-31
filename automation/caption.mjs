@@ -73,7 +73,21 @@ export function buildCaption(entry, { handle = '@dailyvolex' } = {}) {
     if (names.length) lines.push(`${names.length > 1 ? 'Sources' : 'Source'}: ${names.join(', ')}`);
   }
 
-  lines.push('', `Follow ${handle} for the day's news.`, '');
+  /* The two things a caption is actually for, after the story itself.
+   *
+   * "Follow for the day's news" describes a schedule. Somebody who has just
+   * read one story is deciding whether there will be more like it, so that
+   * is what it says now.
+   *
+   * The share line is first because a share reaches people who have never
+   * seen the account, and a follow only reaches somebody already looking at
+   * it. It asks for something specific — send it to one person — rather than
+   * "share if you agree", which is the register this channel does not use. */
+  lines.push('',
+    'Know someone who should see this? Send it to them.',
+    `Follow ${handle} for more stories like this — every morning, with the`
+      + ' outlets named.',
+    '');
 
   const topics = new Set(
     (entry.stories || [entry]).map(s => s.topic).filter(Boolean)
